@@ -13,9 +13,9 @@ Allows you to create your own custom interface styles by not being only restrict
 3. If you want your resource pack to be published on here, message me in Runelite discord
 
 ## Sample packs
-[Vanilla](https://github.com/melkypie/resource-packs/releases/download/1.0/Vanilla.zip)
+[Vanilla](https://github.com/melkypie/resource-packs/releases/download/1.0.1/vanilla_1.0.1.zip)
 
-[Mix between 2005 and 2010 runelite interface styles](https://github.com/melkypie/resource-packs/releases/download/1.0/Mix2005_2010.zip)
+[Mix between 2005 and 2010 runelite interface styles](https://github.com/melkypie/resource-packs/releases/download/1.0.1/2010_2005mix_1.0.1.zip)
 
 Before/After (These are just for show and are to be only used to make other resource packs):
 
