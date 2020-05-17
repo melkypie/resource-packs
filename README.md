@@ -21,5 +21,13 @@ Before/After (These are just for show and are to be only used to make other reso
 
 <img src="https://user-images.githubusercontent.com/5113962/82139560-48c65b80-9831-11ea-81cf-8de08c34461c.png" width="200" height="407" />&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://user-images.githubusercontent.com/5113962/82139480-b2923580-9830-11ea-8716-64cd02de2f0c.png" width="200" height="406" />
 
-![image](https://user-images.githubusercontent.com/5113962/82139832-71e7eb80-9833-11ea-91ae-17e20a3f5b6e.png)
-![image](https://user-images.githubusercontent.com/5113962/82139865-bffcef00-9833-11ea-8dcd-d6dc69ff7ce9.png)
+<img src="https://user-images.githubusercontent.com/5113962/82139832-71e7eb80-9833-11ea-91ae-17e20a3f5b6e.png" width="500" />
+<img src="https://user-images.githubusercontent.com/5113962/82139865-bffcef00-9833-11ea-8dcd-d6dc69ff7ce9.png" width="500" />
+
+## Change log
+
+### 1.0.1
+- Move chatbox.png to /chatbox and rename it to background.png
+
+### 1.0
+- Initial release
