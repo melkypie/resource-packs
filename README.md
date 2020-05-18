@@ -3,9 +3,10 @@ Allows you to create your own custom interface styles by not being only restrict
 
 ## How to use it:
 1. Add it from the plugin-hub
-2. Set the path to where your resource pack is stored in (without the trailing /)
-3. Make sure your interface styles plugin is set to the DEFAULT skin (it can cause weird issues otherwise)
-4. Restart the plugin and your resource pack should load in
+2. Download a resource pack from down below or somewhere else
+3. Set the path to where your resource pack is stored in (without the trailing /)
+4. Make sure your interface styles plugin is set to the DEFAULT skin (it can cause weird issues otherwise)
+5. Restart the plugin and your resource pack should load in
 
 ## How to create a resource pack
 1. Download one of the sample packs
