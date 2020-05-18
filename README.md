@@ -19,7 +19,7 @@ Allows you to create your own custom interface styles by not being only restrict
 
 Before/After (Difference between runescape and flatscape resource pack):
 
-![image](https://user-images.githubusercontent.com/5113962/82243998-350e1880-9949-11ea-8657-09df6fd9b356.png)
+![image](https://user-images.githubusercontent.com/5113962/82244509-02b0eb00-994a-11ea-8343-0a7dd7ddaa82.png)
 
 ![image](https://user-images.githubusercontent.com/5113962/82243998-350e1880-9949-11ea-8657-09df6fd9b356.png)
 
