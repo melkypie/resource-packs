@@ -15,26 +15,35 @@ Allows you to create your own custom interface styles by not being only restrict
 
 ## Resource packs
 
- - [Flatscape](https://github.com/melkypie/resource-packs/releases/download/1.0.2/flatscape1.0.2.zip)
+ - [Flatscape](https://github.com/melkypie/resource-packs/releases/download/1.0.3/flatscape1.0.3.zip)
 
 <img src="https://user-images.githubusercontent.com/5113962/82243998-350e1880-9949-11ea-8657-09df6fd9b356.png" width="765"><br/>
 
-- [Rs3](https://github.com/sgfost/runelite-textures/raw/c8ec2c762e6860707d8e28d3f28e1476d666c8e7/rs3/release/rs3-textures.zip) by [sgfost](https://github.com/sgfost)
+- [Rs3](https://github.com/sgfost/runelite-textures/raw/master/rs3/release/rs3-textures.zip) by [sgfost](https://github.com/sgfost)
 (Currently only works in resizeable mode)
 
 <img src="https://user-images.githubusercontent.com/5113962/83121070-8604d600-a0da-11ea-963a-92309dca329a.png" width="765"><br/>
 
-- [Dark theme for OSRS](https://github.com/iawhd/OSRS-Dark/releases/download/1.0.2/OSRS-Dark-1.0.2.zip) by [iawhd](https://github.com/iawhd)
+- [Dark theme for OSRS](https://github.com/iawhd/OSRS-Dark/releases/download/v1.0.3/OSRS-Dark-1.0.3.zip) by [iawhd](https://github.com/iawhd)
 
 <img src="https://camo.githubusercontent.com/3414e90ef8d40618d89bbb2c582838b1f80a29a9/68747470733a2f2f692e696d6775722e636f6d2f59704b555955612e706e67" width="765"><br/>
 
 ## Sample packs
 
-- [Vanilla](https://github.com/melkypie/resource-packs/releases/download/1.0.2/vanilla1.0.2.zip) (Includes regular runescape sprites)
+- [Vanilla](https://github.com/melkypie/resource-packs/releases/download/1.0.3/vanilla1.0.3.zip) (Includes regular runescape sprites)
 
 <img src="https://user-images.githubusercontent.com/5113962/82244509-02b0eb00-994a-11ea-8343-0a7dd7ddaa82.png" width="765"><br/>
 
 ## Change log
+
+### 1.0.3
+- Add the ability to switch between 3 resource packs
+- Add for `BUTTON` - `BOTTOM_LINE_MODE_WINDOW_CLOSE_SMALL`, `BOTTOM_LINE_MODE_WINDOW_CLOSE_SMALL_HOVERED`
+- Add for `OTHER` - `WINDOW_CLOSE_BUTTON`, `WINDOW_CLOSE_BUTTON_HOVERED`, `WINDOW_FRAME_EDGE_LEFT`
+- Created a new folder `DIALOG` with usable textures
+- Created a new folder `BANK` with usable textures
+
+Exact changes can be found [here](https://github.com/melkypie/resource-packs/compare/7c6b300e9a8a5e309740feb1d63b6164208938e9...256b3f9f9bc409f133905f5a74130aae8f51dfaa)
 
 ### 1.0.2
 - Add sprites for stats - tile_half_left_black, tile_half_right_black
