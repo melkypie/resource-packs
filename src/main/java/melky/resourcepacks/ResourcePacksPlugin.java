@@ -51,7 +51,7 @@ public class ResourcePacksPlugin extends Plugin
 	@Override
 	protected void startUp() throws Exception
 	{
-		if (!checkIfResourcePackPathIsNotEmpty())
+		if (checkIfResourcePackPathIsNotEmpty())
 		{
 			clientThread.invoke(this::updateAllOverrides);
 		}
