@@ -51,7 +51,7 @@ public class ResourcePacksPlugin extends Plugin
 	@Override
 	protected void startUp() throws Exception
 	{
-		if (!config.resourcePackPath().equals(""))
+		if (!checkIfResourcePackPathIsNotEmpty())
 		{
 			clientThread.invoke(this::updateAllOverrides);
 		}
@@ -78,9 +78,13 @@ public class ResourcePacksPlugin extends Plugin
 	{
 		if (event.getGroup().equals("resourcepacks"))
 		{
-			if (!config.resourcePackPath().equals(""))
+			if (event.getKey().equals("resourcePack"))
 			{
-				clientThread.invoke(this::updateAllOverrides);
+				clientThread.invoke(this::removeGameframe);
+				if (!checkIfResourcePackPathIsNotEmpty())
+				{
+					clientThread.invoke(this::updateAllOverrides);
+				}
 			}
 		}
 	}
@@ -102,6 +106,16 @@ public class ResourcePacksPlugin extends Plugin
 		if (!folder.equals("other"))
 		{
 			name = name.replaceFirst(folder + "_", "");
+		}
+
+		switch (config.resourcePack())
+		{
+			case FIRST:
+				return config.resourcePackPath() + "/" + folder + "/" + name + ".png";
+			case SECOND:
+				return config.resourcePack2Path() + "/" + folder + "/" + name + ".png";
+			case THIRD:
+				return config.resourcePack3Path() + "/" + folder + "/" + name + ".png";
 		}
 		return config.resourcePackPath() + "/" + folder + "/" + name + ".png";
 	}
@@ -178,5 +192,31 @@ public class ResourcePacksPlugin extends Plugin
 				widget.revalidate();
 			}
 		}
+	}
+
+	private boolean checkIfResourcePackPathIsNotEmpty()
+	{
+		switch (config.resourcePack())
+		{
+			case FIRST:
+				if (config.resourcePackPath().equals(""))
+				{
+					return false;
+				}
+				break;
+			case SECOND:
+				if (config.resourcePack2Path().equals(""))
+				{
+					return false;
+				}
+				break;
+			case THIRD:
+				if (config.resourcePack3Path().equals(""))
+				{
+					return false;
+				}
+				break;
+		}
+		return true;
 	}
 }
