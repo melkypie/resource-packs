@@ -8,7 +8,7 @@ import net.runelite.client.config.ConfigItem;
 public interface ResourcePacksConfig extends Config
 {
 
-	enum ReousrcePack
+	enum ResourcePack
 	{
 		FIRST,
 		SECOND,
@@ -21,9 +21,9 @@ public interface ResourcePacksConfig extends Config
 		description = "Select which resource pack you want to use",
 		position = 1
 	)
-	default ReousrcePack resourcePack()
+	default ResourcePack resourcePack()
 	{
-		return ReousrcePack.FIRST;
+		return ResourcePack.FIRST;
 	}
 
 	@ConfigItem(
