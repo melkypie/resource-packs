@@ -10,7 +10,7 @@ repositories {
 	mavenCentral()
 }
 
-def runeLiteVersion = '1.6.17-SNAPSHOT'
+def runeLiteVersion = '1.6.18-SNAPSHOT'
 
 dependencies {
 	compileOnly group: 'net.runelite', name:'client', version: runeLiteVersion
@@ -26,7 +26,7 @@ dependencies {
 }
 
 group = 'melky.resourcepacks'
-version = '1.0.2'
+version = '1.0.3'
 sourceCompatibility = '1.8'
 
 tasks.withType(JavaCompile) {
