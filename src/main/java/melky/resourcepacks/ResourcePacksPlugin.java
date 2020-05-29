@@ -81,7 +81,7 @@ public class ResourcePacksPlugin extends Plugin
 			if (event.getKey().equals("resourcePack"))
 			{
 				clientThread.invoke(this::removeGameframe);
-				if (!checkIfResourcePackPathIsNotEmpty())
+				if (checkIfResourcePackPathIsNotEmpty())
 				{
 					clientThread.invoke(this::updateAllOverrides);
 				}
