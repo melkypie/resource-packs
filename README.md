@@ -12,8 +12,8 @@ Allows you to create your own custom interface styles by not being only restrict
 1. Download one of the sample packs or resource packs
 2. Edit the images while keeping the image sizes and folder structure the same
 3. If you want your resource pack to be published on here among the other resource packs,
-make a pull request to this repo, to add a new branch which contains your resource pack's files and a README.md that includes info about the pack.
-(The branch name should follow the standard: pack-example)
+make a pull request to this repo (before you actually make one contact me on Runelite discord to make a new branch since github doesn't allow PRs to create new branches), which contains your resource pack's files and a README.md that includes info about the pack.
+
 
 ## Resource packs
 
