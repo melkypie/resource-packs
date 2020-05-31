@@ -26,7 +26,7 @@ make a pull request to this repo (before you actually make one contact me on Run
 
 <img src="https://user-images.githubusercontent.com/5113962/83121070-8604d600-a0da-11ea-963a-92309dca329a.png" width="765"><br/>
 
-- [Dark theme for OSRS](https://github.com/iawhd/OSRS-Dark/releases/download/v1.0.3/OSRS-Dark-1.0.3.zip) by [iawhd](https://github.com/iawhd)
+- [Dark theme for OSRS](https://github.com/melkypie/resource-packs/tree/pack-osrs-dark) ([Download](https://github.com/melkypie/resource-packs/archive/pack-osrs-dark.zip)) by [iawhd](https://github.com/iawhd)
 
 <img src="https://camo.githubusercontent.com/3414e90ef8d40618d89bbb2c582838b1f80a29a9/68747470733a2f2f692e696d6775722e636f6d2f59704b555955612e706e67" width="765"><br/>
 
