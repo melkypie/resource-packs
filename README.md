@@ -11,11 +11,13 @@ Allows you to create your own custom interface styles by not being only restrict
 ## How to create a resource pack
 1. Download one of the sample packs or resource packs
 2. Edit the images while keeping the image sizes and folder structure the same
-3. If you want your resource pack to be published on here, message me in Runelite discord
+3. If you want your resource pack to be published on here among the other resource packs,
+make a pull request to this repo, to add a new branch which contains your resource pack's files and a README.md that includes info about the pack.
+(The branch name should follow the standard: pack-example)
 
 ## Resource packs
 
- - [Flatscape](https://github.com/melkypie/resource-packs/releases/download/1.0.4/flatscape1.0.4.zip)
+ - [Flatscape](https://github.com/melkypie/resource-packs/tree/pack-flatscape) ([Download](https://github.com/melkypie/resource-packs/archive/pack-flatscape.zip))
 
 <img src="https://user-images.githubusercontent.com/5113962/82243998-350e1880-9949-11ea-8657-09df6fd9b356.png" width="765"><br/>
 
@@ -30,7 +32,7 @@ Allows you to create your own custom interface styles by not being only restrict
 
 ## Sample packs
 
-- [Vanilla](https://github.com/melkypie/resource-packs/releases/download/1.0.4/vanilla1.0.4.zip) (Includes regular runescape sprites)
+- [Vanilla](https://github.com/melkypie/resource-packs/tree/sample-vanilla) ([Download](https://github.com/melkypie/resource-packs/archive/sample-vanilla.zip)) (Includes regular runescape sprites)
 
 <img src="https://user-images.githubusercontent.com/5113962/82244509-02b0eb00-994a-11ea-8343-0a7dd7ddaa82.png" width="765"><br/>
 
