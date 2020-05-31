@@ -2,7 +2,7 @@
 
 To use this Resource Pack you must first install Runelite, as well as the external plugin '[Resource Packs](https://github.com/melkypie/resource-packs)' from the plugin hub.
 
-You must then download the latest zip file from the [releases page](https://github.com/iawhd/OSRS-Dark/releases), Extract it to a folder and then follow the instructions on the '[Resource Packs](https://github.com/melkypie/resource-packs)' plugin page.
+You must then download the latest zip file from the [releases page](https://github.com/melkypie/resource-packs/archive/pack-osrs-dark.zip), Extract it to a folder and then follow the instructions on the '[Resource Packs](https://github.com/melkypie/resource-packs)' plugin page.
 
 **Note:** *Some textures are still missing, this is due to the current version of '[Resource Packs](https://github.com/melkypie/resource-packs)' (v1.0.4) not supporting said textures, I will update this plugin as new versions of '[Resource Packs](https://github.com/melkypie/resource-packs)' are released.* 
 
