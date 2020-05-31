@@ -15,7 +15,7 @@ Allows you to create your own custom interface styles by not being only restrict
 
 ## Resource packs
 
- - [Flatscape](https://github.com/melkypie/resource-packs/releases/download/1.0.3/flatscape1.0.3.zip)
+ - [Flatscape](https://github.com/melkypie/resource-packs/releases/download/1.0.4/flatscape1.0.4.zip)
 
 <img src="https://user-images.githubusercontent.com/5113962/82243998-350e1880-9949-11ea-8657-09df6fd9b356.png" width="765"><br/>
 
@@ -30,11 +30,16 @@ Allows you to create your own custom interface styles by not being only restrict
 
 ## Sample packs
 
-- [Vanilla](https://github.com/melkypie/resource-packs/releases/download/1.0.3/vanilla1.0.3.zip) (Includes regular runescape sprites)
+- [Vanilla](https://github.com/melkypie/resource-packs/releases/download/1.0.4/vanilla1.0.4.zip) (Includes regular runescape sprites)
 
 <img src="https://user-images.githubusercontent.com/5113962/82244509-02b0eb00-994a-11ea-8343-0a7dd7ddaa82.png" width="765"><br/>
 
 ## Change log
+
+### 1.0.4
+- Add for `DIALOG` - `BACKGROUND_BRIGHTER`
+- Add for `EQUIPMENT` - `SLOT_HEAD`, `SLOT_CAPE`, `SLOT_NECK`, `SLOT_WEAPON`, `SLOT_RING`, `SLOT_TORSO`, `SLOT_SHIELD`, `SLOT_LEGS`, `SLOT_HANDS`, `SLOT_FEET`, `SLOT_AMMUNITION`
+- Create a new folder `OPTIONS`
 
 ### 1.0.3
 - Add the ability to switch between 3 resource packs
