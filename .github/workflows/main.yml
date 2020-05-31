@@ -1,0 +1,16 @@
+name: Manifest updater
+
+on:
+  push:
+    branches: [ github-actions ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Install neccessary packages
+      run: npm install
+    - name: Run the manifest updater
+      uses: melkypie/resource-packs-manifest-updater@master
+      env:
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
