@@ -25,5 +25,5 @@ This is a WIP (Work in Progress).
 
 # Screenshots
 ## Dark
-![image](https://raw.githubusercontent.com/Nan0bit/Resource-Packs/master/Dark/screenshots/resizeable_nosidepanels_transparentchat_WIP.png)
+![image](https://user-images.githubusercontent.com/5113962/83461325-17749f00-a471-11ea-866d-e5515ad5ba00.png)
 ![image](https://raw.githubusercontent.com/Nan0bit/Resource-Packs/master/Dark/screenshots/resizeable_sidepanels_opaquechat_WIP.png)
