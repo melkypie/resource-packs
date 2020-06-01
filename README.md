@@ -26,5 +26,5 @@ This is a WIP (Work in Progress).
 # Screenshots
 ## Dark - Fixed
 ![image](https://user-images.githubusercontent.com/5113962/83461470-85b96180-a471-11ea-8a54-3469cd3acbca.png)
-![image](https://raw.githubusercontent.com/Nan0bit/Resource-Packs/master/Dark_Fixed/screenshots/fixed_inv_statusbars_WIP.png)
+![image](https://user-images.githubusercontent.com/5113962/83461539-abdf0180-a471-11ea-870b-c0e1a2643c95.png)
 ![image](https://user-images.githubusercontent.com/5113962/83461575-bf8a6800-a471-11ea-8d6b-8356ab7f4f8a.png)
