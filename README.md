@@ -30,6 +30,10 @@ make a pull request to this repo (before you actually make one contact me on Run
 
 <img src="https://camo.githubusercontent.com/3414e90ef8d40618d89bbb2c582838b1f80a29a9/68747470733a2f2f692e696d6775722e636f6d2f59704b555955612e706e67" width="765"><br/>
 
+- [Orange](https://github.com/melkypie/resource-packs/tree/pack-osrs-dark) ([Download](https://github.com/melkypie/resource-packs/archive/pack-orange.zip)) by anonymous
+
+<img src="https://user-images.githubusercontent.com/5113962/83431719-7968e080-a440-11ea-9c68-35b56d6357ad.png" width="765"><br/>
+
 ## Sample packs
 
 - [Vanilla](https://github.com/melkypie/resource-packs/tree/sample-vanilla) ([Download](https://github.com/melkypie/resource-packs/archive/sample-vanilla.zip)) (Includes regular runescape sprites)
