@@ -14,7 +14,7 @@ This is a WIP (Work in Progress).
 
 
 ## Available Resource Packs:
-- [Dark - Fixed](https://github.com/Nan0bit/Resource-Packs/raw/master/Dark_Fixed/release/Dark_Fixed.7z)
+- [Dark - Fixed](https://github.com/melkypie/resource-packs/archive/pack-dark-fixed.zip)
   * Only supports Fixed mode.
   
   
