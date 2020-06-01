@@ -25,6 +25,6 @@ This is a WIP (Work in Progress).
 
 # Screenshots
 ## Dark - Fixed
-![image](https://raw.githubusercontent.com/Nan0bit/Resource-Packs/master/Dark_Fixed/screenshots/fixed_full_WIP.png)
+![image](https://user-images.githubusercontent.com/5113962/83461470-85b96180-a471-11ea-8a54-3469cd3acbca.png)
 ![image](https://raw.githubusercontent.com/Nan0bit/Resource-Packs/master/Dark_Fixed/screenshots/fixed_inv_statusbars_WIP.png)
 ![image](https://raw.githubusercontent.com/Nan0bit/Resource-Packs/master/Dark_Fixed/screenshots/fixed_banking_WIP.png)
