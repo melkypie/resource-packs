@@ -14,7 +14,7 @@ This is a WIP (Work in Progress).
 
 
 ## Available Resource Packs:
-- [Dark](https://github.com/Nan0bit/Resource-Packs/raw/master/Dark/release/Dark.7z)
+- [Dark](https://github.com/melkypie/resource-packs/archive/pack-dark.zip)
   * Only supports Resizeable mode.
   
   
