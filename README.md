@@ -4,15 +4,19 @@ Allows you to create your own custom interface styles by not being only restrict
 ## How to use it:
 1. Add it from the plugin-hub
 2. Download a resource pack from down below or somewhere else
-3. Set the path to where your resource pack is stored in (without the trailing /)
-4. Make sure your interface styles plugin is set to the DEFAULT skin (it can cause weird issues otherwise)
-5. Restart the plugin and your resource pack should load in
+3. Extract the .zip file if you downloaded from below
+4. Set the path to where your resource pack is stored in (without the trailing /)
+(ex. C:\Users\user\Downloads\resource-pack (Windows) or /Users/user/resource-pack (Mac))
+(It should be the path to where you can see all the folders - button, bank, chatbox, etc.)
+5. Make sure your interface styles plugin is set to the DEFAULT skin (it can cause weird issues otherwise)
+6. Restart the plugin and your resource pack should load in
 
 ## How to create a resource pack
 1. Download one of the sample packs or resource packs
 2. Edit the images while keeping the image sizes and folder structure the same
 3. If you want your resource pack to be published on here among the other resource packs,
-make a pull request to this repo (before you actually make one contact me on Runelite discord to make a new branch since github doesn't allow PRs to create new branches), which contains your resource pack's files and a README.md that includes info about the pack.
+make a pull request to this repo (before you actually make one contact me on Runelite discord to make a new branch since github doesn't allow PRs to create new branches), which contains your resource pack's files and a README.md that includes info about the pack (If you didn't understand any of this just contact me on discord and I will do it all for you).
+
 
 
 ## Resource packs
