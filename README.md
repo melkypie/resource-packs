@@ -5,10 +5,15 @@ Allows you to create your own custom interface styles by not being only restrict
 1. Add it from the plugin-hub
 2. Download a resource pack from down below or somewhere else
 3. Extract the .zip file if you downloaded from below
-4. Set the path to where your resource pack is stored in (without the trailing /)
-(ex. C:\Users\user\Downloads\resource-pack (Windows) or /Users/user/resource-pack (Mac))
+4. Set the path to where your resource pack is stored in (without the trailing /)  
+ex. C:\Users\user\Downloads\resource-packs-pack-osrs-dark (Windows) 
+![image](https://i.imgur.com/JRuVXFQ.png)  
+/Users/user/Downloads/resource-packs-pack-osrs-dark (Mac) - where user is your Mac username  
+[How to find your file path on Mac](https://www.maketecheasier.com/reveal-path-file-mac/)
 (It should be the path to where you can see all the folders - button, bank, chatbox, etc.)
-5. Make sure your interface styles plugin is set to the DEFAULT skin (it can cause weird issues otherwise)
+5. Make sure your interface styles plugin gameframe is set to the DEFAULT skin (it can cause weird issues otherwise). Everything else is fine but will require a restart of the plugin should you activate any of them after you have resource pack set up.
+6. After you have the path copy and paste it into where the image below has it in. Make sure there is no / at the end of it.
+![image](https://user-images.githubusercontent.com/5113962/84203078-7e1d3c80-aab1-11ea-9c75-e684c91730b1.png)
 6. Restart the plugin and your resource pack should load in
 
 ## How to create a resource pack
