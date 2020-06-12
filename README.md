@@ -47,6 +47,10 @@ make a pull request to this repo (before you actually make one contact me on Run
 
 <img src="https://user-images.githubusercontent.com/5113962/83461470-85b96180-a471-11ea-8a54-3469cd3acbca.png" width="765"><br/>
 
+- [Wood cabin](https://github.com/melkypie/resource-packs/tree/pack-wood-cabin) ([Download](https://github.com/melkypie/resource-packs/archive/pack-wood-cabin.zip)) by Duke (Currently only works in resizeable mode)
+
+<img src="https://user-images.githubusercontent.com/5113962/84534943-82d13300-acf3-11ea-8480-cddd8b02800b.png" width="765"><br/>
+
 ## Sample packs
 
 - [Vanilla](https://github.com/melkypie/resource-packs/tree/sample-vanilla) ([Download](https://github.com/melkypie/resource-packs/archive/sample-vanilla.zip)) (Includes regular runescape sprites)
