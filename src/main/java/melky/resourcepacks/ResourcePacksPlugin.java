@@ -4,6 +4,7 @@ import com.google.inject.Provides;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import javax.imageio.ImageIO;
 import javax.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
@@ -51,10 +52,7 @@ public class ResourcePacksPlugin extends Plugin
 	@Override
 	protected void startUp() throws Exception
 	{
-		if (checkIfResourcePackPathIsNotEmpty())
-		{
-			clientThread.invoke(this::updateAllOverrides);
-		}
+		clientThread.invokeLater(this::updateAllOverrides);
 	}
 
 	@Override
@@ -76,16 +74,13 @@ public class ResourcePacksPlugin extends Plugin
 	@Subscribe
 	public void onConfigChanged(ConfigChanged event)
 	{
-		if (event.getGroup().equals("resourcepacks"))
+		if (event.getGroup().equals("resourcepacks") && event.getKey().equals("resourcePack"))
 		{
-			if (event.getKey().equals("resourcePack"))
-			{
-				clientThread.invoke(this::removeGameframe);
-				if (checkIfResourcePackPathIsNotEmpty())
-				{
-					clientThread.invoke(this::updateAllOverrides);
-				}
-			}
+			clientThread.invoke(this::updateAllOverrides);
+		}
+		else if (event.getGroup().equals("banktags") && event.getKey().equals("useTabs"))
+		{
+			clientThread.invoke(this::updateAllOverrides);
 		}
 	}
 
@@ -96,6 +91,12 @@ public class ResourcePacksPlugin extends Plugin
 		for (SpriteOverride spriteOverride : SpriteOverride.values())
 		{
 			client.getSpriteOverrides().remove(spriteOverride.getSpriteID());
+		}
+		for (TabSprites tabSprite : TabSprites.values())
+		{
+			BufferedImage image = ImageUtil.getResourceStreamFromClass(getClass(), tabSprite.getFileName());
+			SpritePixels sp = ImageUtil.getImageSpritePixels(image, client);
+			client.getSpriteOverrides().put(tabSprite.getSpriteId(), sp);
 		}
 	}
 
@@ -153,6 +154,10 @@ public class ResourcePacksPlugin extends Plugin
 			}
 			else
 			{
+				if (spriteOverride.getSpriteID() < -200)
+				{
+					client.getSpriteOverrides().remove(spriteOverride.getSpriteID());
+				}
 				client.getSpriteOverrides().put(spriteOverride.getSpriteID(), spritePixels);
 			}
 		}
@@ -173,6 +178,10 @@ public class ResourcePacksPlugin extends Plugin
 
 	private void updateAllOverrides()
 	{
+		if (!checkIfResourcePackPathIsNotEmpty())
+		{
+			return;
+		}
 		removeGameframe();
 		overrideSprites();
 		adjustWidgetDimensions(ORIGINAL_TAB_WIDTH);
