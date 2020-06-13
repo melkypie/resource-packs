@@ -59,6 +59,15 @@ make a pull request to this repo (before you actually make one contact me on Run
 
 ## Change log
 
+### 1.0.5
+- Add for `BUTTON` - `TUTORIAL`, `TUTORIAL_HOVERED`, `SLAYER_REWARDS_AND_POLL_HISTORY`, `SLAYER_REWARDS_AND_POLL_HISTORY_SELECTED`
+- Add for `DIALOG` - `BOTTOM_LINE_MODE_SIDE_PANEL_INTERSECTION_TOP`, `BOTTOM_LINE_MODE_SIDE_PANEL_INTERSECTION_BOTTOM` (Also fixed the vanilla pack to have proper naming for `bottom_line_mode_window_close_small` and `bottom_line_mode_window_close_small_hovered`)
+- Add for `BANK` - `TAB_EMPTY`, `TAB_ADD_ICON`, `TAB_ALL_ITEMS_ICON`, `TAG_TAB`, `TAG_TAB_ACTIVE`, `TAG_UP_ARROW`, `TAG_DOWN_ARROW`, `TAG_NEW_TAB`
+- Add for `OPTIONS` - `ROUND_CHECK_BOX`, `ROUND_CHECK_BOX_CHECKED`, `ROUND_CHECK_BOX_CROSSED`
+- Create a new folder `GE`
+
+Exact changes can be found [here](https://github.com/melkypie/resource-packs/commit/e29edab9d22ed59918d73d21ab864c86f1428d2d)
+
 ### 1.0.4
 - Add for `DIALOG` - `BACKGROUND_BRIGHTER`
 - Add for `EQUIPMENT` - `SLOT_HEAD`, `SLOT_CAPE`, `SLOT_NECK`, `SLOT_WEAPON`, `SLOT_RING`, `SLOT_TORSO`, `SLOT_SHIELD`, `SLOT_LEGS`, `SLOT_HANDS`, `SLOT_FEET`, `SLOT_AMMUNITION`
