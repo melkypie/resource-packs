@@ -67,6 +67,7 @@ make a pull request to this repo (before you actually make one contact me on Run
 - Create a new folder `GE`
 
 Exact changes can be found [here](https://github.com/melkypie/resource-packs/commit/e29edab9d22ed59918d73d21ab864c86f1428d2d)
+Exact changes made to vanilla pack [here](https://github.com/melkypie/resource-packs/compare/506f8fd559a1cb8b058939c4722837072b9f3c63...95f1adeae29701e12b66c2644c10c2d821d8eeff)
 
 ### 1.0.4
 - Add for `DIALOG` - `BACKGROUND_BRIGHTER`
