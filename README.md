@@ -2,7 +2,7 @@
 Allows you to create your own custom interface styles by not being only restricted to 2005/2006/2010 ones.
 
 ## How to use it:
-1. Add it from the plugin-hub
+1. Add it from the runelite [plugin-hub](https://github.com/runelite/runelite/wiki/Information-about-the-Plugin-Hub)
 2. Download a resource pack from down below or somewhere else
 3. Extract the .zip file if you downloaded from below
 4. Set the path to where your resource pack is stored in (without the trailing /)  
