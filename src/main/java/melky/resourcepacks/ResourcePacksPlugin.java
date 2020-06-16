@@ -4,7 +4,6 @@ import com.google.inject.Provides;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 import javax.imageio.ImageIO;
 import javax.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
@@ -28,9 +27,6 @@ import net.runelite.client.util.ImageUtil;
 )
 public class ResourcePacksPlugin extends Plugin
 {
-	private static final int ADJUSTED_TAB_WIDTH = 33;
-	private static final int ORIGINAL_TAB_WIDTH = 38;
-
 	@Inject
 	private Client client;
 
@@ -60,7 +56,7 @@ public class ResourcePacksPlugin extends Plugin
 	{
 		clientThread.invoke(() ->
 		{
-			adjustWidgetDimensions(ORIGINAL_TAB_WIDTH);
+			adjustWidgetDimensions(false);
 			removeGameframe();
 		});
 	}
@@ -68,7 +64,7 @@ public class ResourcePacksPlugin extends Plugin
 	@Subscribe
 	public void onBeforeRender(BeforeRender event)
 	{
-		adjustWidgetDimensions(ADJUSTED_TAB_WIDTH);
+		adjustWidgetDimensions(true);
 	}
 
 	@Subscribe
@@ -184,20 +180,68 @@ public class ResourcePacksPlugin extends Plugin
 		}
 		removeGameframe();
 		overrideSprites();
-		adjustWidgetDimensions(ORIGINAL_TAB_WIDTH);
-		adjustWidgetDimensions(ADJUSTED_TAB_WIDTH);
+		adjustWidgetDimensions(false);
+		adjustWidgetDimensions(true);
 	}
 
-	// Adjust certain tabs to match other tabs because of Jagex's inconsistent tab sizes
-	private void adjustWidgetDimensions(int width)
+	private void adjustWidgetDimensions(boolean modify)
 	{
 		for (WidgetResize widgetResize : WidgetResize.values())
 		{
-			Widget widget = client.getWidget(widgetResize.getWidgetInfo());
+			Widget widget = client.getWidget(widgetResize.getGroup(), widgetResize.getChild());
 
 			if (widget != null)
 			{
-				widget.setOriginalWidth(width);
+				if (widgetResize.getOriginalX() != null)
+				{
+					if (modify)
+					{
+						widget.setOriginalX(widgetResize.getModifiedX());
+					}
+					else
+					{
+						widget.setOriginalX(widgetResize.getOriginalX());
+					}
+				}
+
+				if (widgetResize.getOriginalY() != null)
+				{
+					if (modify)
+					{
+						widget.setOriginalY(widgetResize.getModifiedY());
+					}
+					else
+					{
+						widget.setOriginalY(widgetResize.getOriginalY());
+					}
+				}
+
+				if (widgetResize.getOriginalWidth() != null)
+				{
+					if (modify)
+					{
+						widget.setOriginalWidth(widgetResize.getModifiedWidth());
+					}
+					else
+					{
+						widget.setOriginalWidth(widgetResize.getOriginalWidth());
+					}
+				}
+
+				if (widgetResize.getOriginalHeight() != null)
+				{
+					if (modify)
+					{
+						widget.setOriginalWidth(widgetResize.getModifiedHeight());
+					}
+					else
+					{
+						widget.setOriginalWidth(widgetResize.getOriginalHeight());
+					}
+				}
+			}
+			if (widget != null)
+			{
 				widget.revalidate();
 			}
 		}
