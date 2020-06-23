@@ -1,4 +1,4 @@
-# Orange made by anonymous
+# Wood cabin by Duke
 [Download](https://github.com/melkypie/resource-packs/archive/pack-wood-cabin.zip)
 
 Make your Runescape wood cabin themed.
