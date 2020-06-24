@@ -2,6 +2,18 @@
 Allows you to create your own custom interface styles by not being only restricted to 2005/2006/2010 ones.
 
 ## How to use it:
+#### **New method:**
+1. Add the plugin from the runelite [plugin-hub](https://github.com/runelite/runelite/wiki/Information-about-the-Plugin-Hub)
+2. Look for this icon in the side panel: ![image](https://user-images.githubusercontent.com/5113962/85605204-a59c0980-b65a-11ea-9f06-627240d4a09c.png)
+3. To install one of the packs, click the green **Install** button  ![image](https://user-images.githubusercontent.com/5113962/85605474-dbd98900-b65a-11ea-9f32-e16a9aca9f75.png)
+4. The pack will automatically install and be applied.
+5. If you want to switch between the installed packs use the selected pack dropdown menu: ![image](https://user-images.githubusercontent.com/5113962/85605673-0f1c1800-b65b-11ea-96aa-c7682c92cda6.png)
+6. You can easily remove a pack by pressing the red Remove button.
+
+The installed packs are automatically updated when starting the client or you can press the update button in the panel to update that pack.
+
+#### Old method
+(For people who want to have a custom made pack and not the ones from the hub)
 1. Add it from the runelite [plugin-hub](https://github.com/runelite/runelite/wiki/Information-about-the-Plugin-Hub)
 2. Download a resource pack from down below or somewhere else
 3. Extract the .zip file if you downloaded from below
@@ -18,22 +30,17 @@ ex. C:\Users\user\Downloads\resource-packs-pack-osrs-dark (Windows) where user i
 
 ## How to create a resource pack
 1. Download one of the sample packs or resource packs
-2. Edit the images while keeping the image sizes and folder structure the same
-3. If you want your resource pack to be published on here among the other resource packs,
-make a pull request to this repo (before you actually make one contact me on Runelite discord to make a new branch since github doesn't allow PRs to create new branches), which contains your resource pack's files and a README.md that includes info about the pack (If you didn't understand any of this just contact me on discord and I will do it all for you).
+2. Edit the images while keeping the image sizes and folder structure the same  
+**DO NOT PUT OR EDIT YOUR RESOURCE PACK INSIDE .runelite/resource-packs-repository OR IT WILL GET DELETED.**
+3. If you want your resource pack to be published on here among the other resource packs and shown inside the resource pack hub, Contact me on discord (You can find me by the same in Runelite discord) and I will explain how.
 
 
 
-## Resource packs
+## Resource packs in the hub
 
  - [Flatscape](https://github.com/melkypie/resource-packs/tree/pack-flatscape) ([Download](https://github.com/melkypie/resource-packs/archive/pack-flatscape.zip))
 
 <img src="https://user-images.githubusercontent.com/5113962/82243998-350e1880-9949-11ea-8657-09df6fd9b356.png" width="765"><br/>
-
-- [Rs3](https://github.com/sgfost/runelite-textures/raw/master/rs3/release/rs3-textures.zip) by [sgfost](https://github.com/sgfost)
-(Currently only works in resizeable mode)
-
-<img src="https://user-images.githubusercontent.com/5113962/83121070-8604d600-a0da-11ea-963a-92309dca329a.png" width="765"><br/>
 
 - [Dark theme for OSRS](https://github.com/melkypie/resource-packs/tree/pack-osrs-dark) ([Download](https://github.com/melkypie/resource-packs/archive/pack-osrs-dark.zip)) by [iawhd](https://github.com/iawhd)
 
@@ -58,6 +65,9 @@ make a pull request to this repo (before you actually make one contact me on Run
 <img src="https://user-images.githubusercontent.com/5113962/82244509-02b0eb00-994a-11ea-8343-0a7dd7ddaa82.png" width="765"><br/>
 
 ## Change log
+
+### 1.1
+- Add resource pack hub
 
 ### 1.0.5
 - Add for `BUTTON` - `TUTORIAL`, `TUTORIAL_HOVERED`, `SLAYER_REWARDS_AND_POLL_HISTORY`, `SLAYER_REWARDS_AND_POLL_HISTORY_SELECTED`

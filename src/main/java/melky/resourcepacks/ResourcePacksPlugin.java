@@ -4,40 +4,56 @@ import com.google.inject.Provides;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import javax.imageio.ImageIO;
+import java.util.concurrent.ScheduledExecutorService;
 import javax.inject.Inject;
-import lombok.extern.slf4j.Slf4j;
-import net.runelite.api.Client;
-import net.runelite.api.SpriteID;
-import net.runelite.api.SpritePixels;
+import javax.swing.SwingUtilities;
+import melky.resourcepacks.event.ResourcePacksChanged;
+import melky.resourcepacks.hub.ResourcePacksClient;
+import melky.resourcepacks.hub.ResourcePacksHubPanel;
 import net.runelite.api.events.BeforeRender;
-import net.runelite.api.widgets.Widget;
+import net.runelite.client.RuneLite;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.events.ConfigChanged;
-import net.runelite.client.game.SpriteManager;
+import net.runelite.client.events.SessionClose;
+import net.runelite.client.events.SessionOpen;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
+import net.runelite.client.ui.ClientToolbar;
+import net.runelite.client.ui.NavigationButton;
 import net.runelite.client.util.ImageUtil;
+import okhttp3.HttpUrl;
 
-@Slf4j
 @PluginDescriptor(
 	name = "Resource packs"
 )
 public class ResourcePacksPlugin extends Plugin
 {
-	@Inject
-	private Client client;
+	public static final File RESOURCEPACKS_DIR = new File(RuneLite.RUNELITE_DIR.getPath() + File.separator + "resource-packs-repository");
+	public static final File NOTICE_FILE = new File(RESOURCEPACKS_DIR.getPath() + File.separator + "DO_NOT_EDIT_CHANGES_WILL_BE_OVERWRITTEN");
+	public static final HttpUrl GITHUB = HttpUrl.parse("https://github.com/melkypie/resource-packs");
+	public static final HttpUrl RAW_GITHUB = HttpUrl.parse("https://raw.githubusercontent.com/melkypie/resource-packs");
+	public static final HttpUrl API_GITHUB = HttpUrl.parse("https://api.github.com/repos/melkypie/resource-packs");
 
 	@Inject
 	private ClientThread clientThread;
 
 	@Inject
-	private SpriteManager spriteManager;
+	private ClientToolbar clientToolbar;
 
 	@Inject
-	private ResourcePacksConfig config;
+	private ResourcePacksManager resourcePacksManager;
+
+	@Inject
+	private ResourcePacksClient resourcePacksClient;
+
+	@Inject
+	private ScheduledExecutorService executor;
+
+	private ResourcePacksHubPanel resourcePacksHubPanel;
+
+	private NavigationButton navButton;
 
 	@Provides
 	ResourcePacksConfig provideConfig(ConfigManager configManager)
@@ -48,228 +64,94 @@ public class ResourcePacksPlugin extends Plugin
 	@Override
 	protected void startUp() throws Exception
 	{
-		clientThread.invokeLater(this::updateAllOverrides);
+		clientThread.invokeLater(resourcePacksManager::updateAllOverrides);
+
+		resourcePacksHubPanel = injector.getInstance(ResourcePacksHubPanel.class);
+		final BufferedImage icon = ImageUtil.getResourceStreamFromClass(getClass(), "/panel.png");
+
+		navButton = NavigationButton.builder()
+			.tooltip("Resource packs hub")
+			.icon(icon)
+			.priority(10)
+			.panel(resourcePacksHubPanel)
+			.build();
+
+		clientToolbar.addNavigation(navButton);
+
+		if (!RESOURCEPACKS_DIR.exists())
+		{
+			RESOURCEPACKS_DIR.mkdirs();
+		}
+
+		if (!NOTICE_FILE.exists())
+		{
+			NOTICE_FILE.createNewFile();
+		}
+
+		executor.submit(resourcePacksManager::refreshPlugins);
+
+		String export = System.getProperty("pluginhub.resourcepacks.export");
+		if (export != null && export.equals("true"))
+		{
+			executor.execute(() -> {
+				try
+				{
+					resourcePacksClient.extractPacks();
+				}
+				catch (IOException e)
+				{
+					e.printStackTrace();
+				}
+			});
+		}
+
 	}
 
 	@Override
 	protected void shutDown() throws Exception
 	{
-		clientThread.invoke(() ->
+		clientThread.invokeLater(() ->
 		{
-			adjustWidgetDimensions(false);
-			removeGameframe();
+			resourcePacksManager.adjustWidgetDimensions(false);
+			resourcePacksManager.removeGameframe();
 		});
+		clientToolbar.removeNavigation(navButton);
 	}
 
 	@Subscribe
 	public void onBeforeRender(BeforeRender event)
 	{
-		adjustWidgetDimensions(true);
+		resourcePacksManager.adjustWidgetDimensions(true);
 	}
 
 	@Subscribe
 	public void onConfigChanged(ConfigChanged event)
 	{
-		if (event.getGroup().equals("resourcepacks") && event.getKey().equals("resourcePack"))
+		if (event.getGroup().equals(ResourcePacksConfig.GROUP_NAME) && event.getKey().equals("resourcePack"))
 		{
-			clientThread.invoke(this::updateAllOverrides);
+			clientThread.invokeLater(resourcePacksManager::updateAllOverrides);
 		}
 		else if (event.getGroup().equals("banktags") && event.getKey().equals("useTabs"))
 		{
-			clientThread.invoke(this::updateAllOverrides);
+			clientThread.invoke(resourcePacksManager::updateAllOverrides);
 		}
 	}
 
-	private void restoreSprites()
+	@Subscribe
+	public void onResourcePacksChanged(ResourcePacksChanged packsChanged)
 	{
-		client.getWidgetSpriteCache().reset();
-
-		for (SpriteOverride spriteOverride : SpriteOverride.values())
-		{
-			client.getSpriteOverrides().remove(spriteOverride.getSpriteID());
-		}
-		for (TabSprites tabSprite : TabSprites.values())
-		{
-			BufferedImage image = ImageUtil.getResourceStreamFromClass(getClass(), tabSprite.getFileName());
-			SpritePixels sp = ImageUtil.getImageSpritePixels(image, client);
-			client.getSpriteOverrides().put(tabSprite.getSpriteId(), sp);
-		}
+		SwingUtilities.invokeLater(() -> resourcePacksHubPanel.reloadResourcePackList(packsChanged.getNewManifest()));
 	}
 
-	private String getSpritePath(SpriteOverride spriteOverride)
+	@Subscribe
+	public void onSessionOpen(SessionOpen event)
 	{
-		String folder = spriteOverride.getFolder().name().toLowerCase();
-		String name = spriteOverride.name().toLowerCase();
-		if (!folder.equals("other"))
-		{
-			name = name.replaceFirst(folder + "_", "");
-		}
-
-		switch (config.resourcePack())
-		{
-			case FIRST:
-				return config.resourcePackPath() + "/" + folder + "/" + name + ".png";
-			case SECOND:
-				return config.resourcePack2Path() + "/" + folder + "/" + name + ".png";
-			case THIRD:
-				return config.resourcePack3Path() + "/" + folder + "/" + name + ".png";
-		}
-		return config.resourcePackPath() + "/" + folder + "/" + name + ".png";
+		executor.submit(resourcePacksManager::refreshPlugins);
 	}
 
-	private SpritePixels getFileSpritePixels(String file)
+	@Subscribe
+	public void onSessionClose(SessionClose event)
 	{
-		try
-		{
-			log.debug("Loading: {}", file);
-			BufferedImage image = ImageIO.read(new File(file));
-			return ImageUtil.getImageSpritePixels(image, client);
-		}
-		catch (RuntimeException | IOException ex)
-		{
-			log.debug("Unable to find image: ", ex);
-		}
-
-		return null;
-	}
-
-	private void overrideSprites()
-	{
-		for (SpriteOverride spriteOverride : SpriteOverride.values())
-		{
-			String file = getSpritePath(spriteOverride);
-			SpritePixels spritePixels = getFileSpritePixels(file);
-			if (spritePixels == null)
-			{
-				continue;
-			}
-
-			if (spriteOverride.getSpriteID() == SpriteID.COMPASS_TEXTURE)
-			{
-				client.setCompass(spritePixels);
-			}
-			else
-			{
-				if (spriteOverride.getSpriteID() < -200)
-				{
-					client.getSpriteOverrides().remove(spriteOverride.getSpriteID());
-				}
-				client.getSpriteOverrides().put(spriteOverride.getSpriteID(), spritePixels);
-			}
-		}
-	}
-
-	private void removeGameframe()
-	{
-		restoreSprites();
-
-		BufferedImage compassImage = spriteManager.getSprite(SpriteID.COMPASS_TEXTURE, 0);
-
-		if (compassImage != null)
-		{
-			SpritePixels compass = ImageUtil.getImageSpritePixels(compassImage, client);
-			client.setCompass(compass);
-		}
-	}
-
-	private void updateAllOverrides()
-	{
-		if (!checkIfResourcePackPathIsNotEmpty())
-		{
-			return;
-		}
-		removeGameframe();
-		overrideSprites();
-		adjustWidgetDimensions(false);
-		adjustWidgetDimensions(true);
-	}
-
-	private void adjustWidgetDimensions(boolean modify)
-	{
-		for (WidgetResize widgetResize : WidgetResize.values())
-		{
-			Widget widget = client.getWidget(widgetResize.getGroup(), widgetResize.getChild());
-
-			if (widget != null)
-			{
-				if (widgetResize.getOriginalX() != null)
-				{
-					if (modify)
-					{
-						widget.setOriginalX(widgetResize.getModifiedX());
-					}
-					else
-					{
-						widget.setOriginalX(widgetResize.getOriginalX());
-					}
-				}
-
-				if (widgetResize.getOriginalY() != null)
-				{
-					if (modify)
-					{
-						widget.setOriginalY(widgetResize.getModifiedY());
-					}
-					else
-					{
-						widget.setOriginalY(widgetResize.getOriginalY());
-					}
-				}
-
-				if (widgetResize.getOriginalWidth() != null)
-				{
-					if (modify)
-					{
-						widget.setOriginalWidth(widgetResize.getModifiedWidth());
-					}
-					else
-					{
-						widget.setOriginalWidth(widgetResize.getOriginalWidth());
-					}
-				}
-
-				if (widgetResize.getOriginalHeight() != null)
-				{
-					if (modify)
-					{
-						widget.setOriginalWidth(widgetResize.getModifiedHeight());
-					}
-					else
-					{
-						widget.setOriginalWidth(widgetResize.getOriginalHeight());
-					}
-				}
-			}
-			if (widget != null)
-			{
-				widget.revalidate();
-			}
-		}
-	}
-
-	private boolean checkIfResourcePackPathIsNotEmpty()
-	{
-		switch (config.resourcePack())
-		{
-			case FIRST:
-				if (config.resourcePackPath().equals(""))
-				{
-					return false;
-				}
-				break;
-			case SECOND:
-				if (config.resourcePack2Path().equals(""))
-				{
-					return false;
-				}
-				break;
-			case THIRD:
-				if (config.resourcePack3Path().equals(""))
-				{
-					return false;
-				}
-				break;
-		}
-		return true;
+		executor.submit(resourcePacksManager::refreshPlugins);
 	}
 }

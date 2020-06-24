@@ -4,15 +4,19 @@ import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 
-@ConfigGroup("resourcepacks")
+@ConfigGroup(ResourcePacksConfig.GROUP_NAME)
 public interface ResourcePacksConfig extends Config
 {
+	String GROUP_NAME = "resourcepacks";
+	String HUB_RESOURCEPACKS = "hubPacks";
+
 
 	enum ResourcePack
 	{
 		FIRST,
 		SECOND,
-		THIRD
+		THIRD,
+		HUB
 	}
 
 	@ConfigItem(
@@ -55,6 +59,17 @@ public interface ResourcePacksConfig extends Config
 		position = 4
 	)
 	default String resourcePack3Path()
+	{
+		return "";
+	}
+
+	@ConfigItem(
+		keyName = "selectedHubPack",
+		name = "Selected pack in hub",
+		description = "Internal name of the selected pack from the hub",
+		hidden = true
+	)
+	default String selectedHubPack()
 	{
 		return "";
 	}
