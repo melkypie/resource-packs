@@ -58,6 +58,10 @@ ex. C:\Users\user\Downloads\resource-packs-pack-osrs-dark (Windows) where user i
 
 <img src="https://user-images.githubusercontent.com/5113962/84534943-82d13300-acf3-11ea-8480-cddd8b02800b.png" width="765"><br/>
 
+- [Psyda Midnight](https://github.com/melkypie/resource-packs/tree/pack-psyda-midnight) ([Download](https://github.com/melkypie/resource-packs/archive/pack-psyda-midnight.zip)) by [psyda](https://github.com/melkypie/resource-packs/commits?author=Psyda)
+
+<img src="https://user-images.githubusercontent.com/17040097/85811903-4bb84400-b72d-11ea-8f2f-fa49720d14c8.png" width="765"><br/>
+
 ## Sample packs
 
 - [Vanilla](https://github.com/melkypie/resource-packs/tree/sample-vanilla) ([Download](https://github.com/melkypie/resource-packs/archive/sample-vanilla.zip)) (Includes regular runescape sprites)
