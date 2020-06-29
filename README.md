@@ -12,7 +12,3 @@ This is the most gaudy resourcepack you'll find. Enjoy flashing your wealth with
 To use this Resource Pack you must first install Runelite, as well as the external plugin '[Resource Packs](https://github.com/melkypie/resource-packs)' from the plugin hub.
 
 You should be able to download the pack from directly within the plugin.
-
-**Note:** *Some textures are still missing, this is due to the current version of '[Resource Packs](https://github.com/melkypie/resource-packs)' (v1.0.5) not supporting said textures, I will update this resource-pack as new versions of '[Resource Packs](https://github.com/melkypie/resource-packs)' are released.*
-
-As more functionality is added to the resource packs, I'd like to add a lot more quirks to the theme making it more unique.
