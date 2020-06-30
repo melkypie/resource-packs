@@ -1,6 +1,6 @@
 # Psyda's Sand Casino
 
-This is the most gaudy resourcepack you'll find. Enjoy flashing your wealth with this obnoxious pack. - If you lose your bank in the sand casino while using this skin and send me a clip I'll feel obligated to make a bronze version of the theme for you.
+This is the gaudiest resourcepack you'll find. Enjoy flashing your wealth with this obnoxious pack. - If you lose your bank in the sand casino while using this skin and send me a clip I'll feel obligated to make a bronze version of the theme for you.
 
 <img src="https://user-images.githubusercontent.com/17040097/86070480-d8734280-ba4a-11ea-9a2f-6254dbf56fa0.png" width="765"><br/>
 
