@@ -78,6 +78,10 @@ ex. C:\Users\user\Downloads\resource-packs-pack-osrs-dark (Windows) where user i
 
 ## Change log
 
+### 1.1.1
+- Optimize the sprite loading
+- Over 200 new sprites were added. What was changed can be found [here](https://github.com/melkypie/resource-packs/compare/95f1adeae29701e12b66c2644c10c2d821d8eeff...8038e1340344926832fa0c3a5f7917fd4691ee3e) 
+
 ### 1.1
 - Add resource pack hub
 

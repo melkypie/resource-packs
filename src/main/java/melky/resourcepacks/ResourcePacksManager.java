@@ -283,15 +283,19 @@ public class ResourcePacksManager
 		}
 
 
-		String spritePath = currentPackPath + File.separator + folder + File.separator + name + ".png";
+		File spriteFile = new File(currentPackPath + File.separator + folder + File.separator + name + ".png");
+		if (!spriteFile.exists()) {
+			log.debug("Sprite doesn't exist (" + spriteFile.getPath() + "): ");
+			return null;
+		}
 		try
 		{
-			BufferedImage image = ImageIO.read(new File(spritePath));
+			BufferedImage image = ImageIO.read(spriteFile);
 			return ImageUtil.getImageSpritePixels(image, client);
 		}
 		catch (RuntimeException | IOException ex)
 		{
-			log.debug("Unable to find image (" + spritePath + "): ");
+			log.debug("Unable to find image (" + spriteFile.getPath() + "): ");
 		}
 		return null;
 	}
