@@ -1,4 +1,4 @@
-# OSRS-Dark-Light theme by Noedel
+# OSRS-Grey theme by Noedel
 [OSRS-Dark by iawhd](https://github.com/melkypie/resource-packs/tree/pack-osrs-dark) but with a few tweaks. This pack works for both fixed and resizable.  
 
 ![darkmode-tweaked](https://i.imgur.com/PV9XUyd.png)  
