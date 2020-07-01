@@ -62,6 +62,14 @@ ex. C:\Users\user\Downloads\resource-packs-pack-osrs-dark (Windows) where user i
 
 <img src="https://user-images.githubusercontent.com/17040097/85811903-4bb84400-b72d-11ea-8f2f-fa49720d14c8.png" width="765"><br/>
 
+- [OSRS-Grey theme](https://github.com/melkypie/resource-packs/tree/pack-osrs-dark-light) ([Download](https://github.com/melkypie/resource-packs/archive/pack-osrs-dark-light.zip)) by Noedel
+
+<img src="https://camo.githubusercontent.com/aaea20c13374be647e8fa546b8653957c5e63d07/68747470733a2f2f692e696d6775722e636f6d2f374d636b5a30692e706e67" width="765"><br/>
+
+- [Sand casiono](https://github.com/melkypie/resource-packs/tree/pack-sand-casino) ([Download](https://github.com/melkypie/resource-packs/archive/pack-sand-casino.zip)) by [psyda](https://github.com/melkypie/resource-packs/commits?author=Psyda)
+
+<img src="https://user-images.githubusercontent.com/17040097/86070480-d8734280-ba4a-11ea-9a2f-6254dbf56fa0.png" width="765"><br/>
+
 ## Sample packs
 
 - [Vanilla](https://github.com/melkypie/resource-packs/tree/sample-vanilla) ([Download](https://github.com/melkypie/resource-packs/archive/sample-vanilla.zip)) (Includes regular runescape sprites)
