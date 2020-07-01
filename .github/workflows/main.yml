@@ -1,16 +1,20 @@
-name: Manifest updater
+name: Manifest updater github-actions
 
 on:
-  push:
-    branches: [ github-actions ]
+  repository_dispatch:
+    types: [pushed]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
+      with:
+        repository: 'melkypie/resource-packs-manifest-updater'
+        ref: 'master'
     - name: Install neccessary packages
       run: npm install
     - name: Run the manifest updater
-      uses: melkypie/resource-packs-manifest-updater@master
+      uses: ./
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
