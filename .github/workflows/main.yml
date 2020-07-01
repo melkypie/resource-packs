@@ -1,0 +1,20 @@
+name: Manifest updater
+
+on:
+  repository_dispatch:
+    types: [pushed]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        repository: 'melkypie/resource-packs-manifest-updater'
+        ref: 'master'
+    - name: Install neccessary packages
+      run: npm install
+    - name: Run the manifest updater
+      uses: ./
+      env:
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
