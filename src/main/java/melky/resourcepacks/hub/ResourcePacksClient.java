@@ -20,6 +20,7 @@ import javax.imageio.ImageIO;
 import javax.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 import static melky.resourcepacks.ResourcePacksPlugin.API_GITHUB;
+import static melky.resourcepacks.ResourcePacksPlugin.BRANCH;
 import static melky.resourcepacks.ResourcePacksPlugin.GITHUB;
 import static melky.resourcepacks.ResourcePacksPlugin.RAW_GITHUB;
 import net.runelite.client.RuneLite;
@@ -46,7 +47,7 @@ public class ResourcePacksClient
 	{
 		HttpUrl manifest = RAW_GITHUB
 			.newBuilder()
-			.addPathSegment("master")
+			.addPathSegment(BRANCH)
 			.addPathSegment("manifest.js")
 			.build();
 
@@ -63,21 +64,6 @@ public class ResourcePacksClient
 				new TypeToken<List<ResourcePackManifest>>()
 				{
 				}.getType());
-		}
-		//return useOfflineManifest();
-	}
-
-
-	// Only run after exporting
-	public List<ResourcePackManifest> useOfflineManifest() throws IOException
-	{
-		log.debug("Using offline manifest");
-		File manifestFile = new File(RuneLite.RUNELITE_DIR.getPath() + File.separator + "manifest.js");
-		try (JsonReader reader = new JsonReader(new FileReader(manifestFile)))
-		{
-			return RuneLiteAPI.GSON.fromJson(reader, new TypeToken<List<ResourcePackManifest>>()
-			{
-			}.getType());
 		}
 	}
 
@@ -102,91 +88,6 @@ public class ResourcePacksClient
 			{
 				return ImageIO.read(new ByteArrayInputStream(bytes));
 			}
-		}
-	}
-
-	// Run before using offline manifest
-	public void extractPacks() throws IOException
-	{
-
-		HttpUrl url = API_GITHUB
-			.newBuilder()
-			.addPathSegment("branches")
-			.build();
-
-		try (Response res = cachingClient.newCall(new Request.Builder().url(url).build()).execute())
-		{
-			String data = res.body().string();
-			// We don't stream so the lock doesn't block the edt trying to load something at the same time
-			JsonParser jsonParser = new JsonParser();
-			Properties properties = new Properties();
-			List<ResourcePackManifest> resourcePackManifests = new ArrayList<>();
-			for (JsonElement jsonElement : jsonParser.parse(data).getAsJsonArray())
-			{
-				JsonObject jsonObject = jsonElement.getAsJsonObject();
-				String internalName = jsonObject.get("name").getAsString();
-				if (internalName.startsWith("pack-"))
-				{
-					JsonObject commitObject = jsonObject.get("commit").getAsJsonObject();
-					String commit = commitObject.get("sha").getAsString();
-					log.debug("Checking: " + internalName + " : " + commit);
-					HttpUrl packProeprtiesUrl = RAW_GITHUB
-						.newBuilder()
-						.addPathSegment(commit)
-						.addPathSegment("pack.properties")
-						.build();
-					try (Response packPropertiesResponse = cachingClient.newCall(new Request.Builder().url(packProeprtiesUrl).build()).execute())
-					{
-						if (packPropertiesResponse.code() != 200)
-						{
-							log.debug(internalName + " doesn't have a pack.properties file - skipping");
-							continue;
-						}
-						properties.load(packPropertiesResponse.body().byteStream());
-						String displayName = properties.getProperty("displayName");
-						String compatibleVersion = properties.getProperty("compatibleVersion");
-						String author = properties.getProperty("author");
-						String tags = properties.getProperty("tags");
-						String[] tagsArray = null;
-						if (tags != null && !tags.equals(""))
-						{
-							tagsArray = Text.fromCSV(properties.getProperty("tags")).toArray(new String[0]);
-						}
-						URL repoUrl = GITHUB
-							.newBuilder()
-							.addPathSegment("tree")
-							.addPathSegment(internalName)
-							.build().url();
-
-						HttpUrl packiconUrl = RAW_GITHUB
-							.newBuilder()
-							.addPathSegment(commit)
-							.addPathSegment("icon.png")
-							.build();
-						boolean hasIcon = false;
-						try (Response packIconResponse = cachingClient.newCall(new Request.Builder().url(packiconUrl).build()).execute())
-						{
-							if (packIconResponse.code() == 200)
-							{
-								hasIcon = true;
-							}
-						}
-
-						resourcePackManifests.add(new ResourcePackManifest(internalName, commit, displayName, compatibleVersion, author, tagsArray, repoUrl, hasIcon));
-					}
-				}
-			}
-			log.debug("Writing manifest.js");
-			File manifestFile = new File(RuneLite.RUNELITE_DIR + File.separator + "manifest.js");
-			if (manifestFile.exists())
-			{
-				manifestFile.delete();
-			}
-			// Write to file
-			FileWriter fileWriter = new FileWriter(manifestFile);
-			Gson gson = RuneLiteAPI.GSON;//new GsonBuilder().setPrettyPrinting().create();
-			gson.toJson(resourcePackManifests, fileWriter);
-			fileWriter.close();
 		}
 	}
 }

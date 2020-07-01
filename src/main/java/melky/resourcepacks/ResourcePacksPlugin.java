@@ -32,6 +32,7 @@ public class ResourcePacksPlugin extends Plugin
 {
 	public static final File RESOURCEPACKS_DIR = new File(RuneLite.RUNELITE_DIR.getPath() + File.separator + "resource-packs-repository");
 	public static final File NOTICE_FILE = new File(RESOURCEPACKS_DIR.getPath() + File.separator + "DO_NOT_EDIT_CHANGES_WILL_BE_OVERWRITTEN");
+	public static final String BRANCH = "github-actions";
 	public static final HttpUrl GITHUB = HttpUrl.parse("https://github.com/melkypie/resource-packs");
 	public static final HttpUrl RAW_GITHUB = HttpUrl.parse("https://raw.githubusercontent.com/melkypie/resource-packs");
 	public static final HttpUrl API_GITHUB = HttpUrl.parse("https://api.github.com/repos/melkypie/resource-packs");
@@ -44,9 +45,6 @@ public class ResourcePacksPlugin extends Plugin
 
 	@Inject
 	private ResourcePacksManager resourcePacksManager;
-
-	@Inject
-	private ResourcePacksClient resourcePacksClient;
 
 	@Inject
 	private ScheduledExecutorService executor;
@@ -89,22 +87,6 @@ public class ResourcePacksPlugin extends Plugin
 		}
 
 		executor.submit(resourcePacksManager::refreshPlugins);
-
-		String export = System.getProperty("pluginhub.resourcepacks.export");
-		if (export != null && export.equals("true"))
-		{
-			executor.execute(() -> {
-				try
-				{
-					resourcePacksClient.extractPacks();
-				}
-				catch (IOException e)
-				{
-					e.printStackTrace();
-				}
-			});
-		}
-
 	}
 
 	@Override
