@@ -1,6 +1,6 @@
 # Changelog
-	Release 1.0.6
-        * Updated to work with '[Resource Packs](https://github.com/melkypie/resource-packs)' 1.0.6.
+	Release 1.1.1
+        * Updated to work with '[Resource Packs](https://github.com/melkypie/resource-packs)' 1.1.1.
 	Release 1.0.5
         * Updated to work with '[Resource Packs](https://github.com/melkypie/resource-packs)' 1.0.5.
     Release 1.0.4
