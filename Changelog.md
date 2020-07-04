@@ -1,7 +1,7 @@
 # Changelog
     
 	Commit 7031a69
-		* Added required files for publsihing.
+		* Added required files for publishing.
 	Commit 9abf85f
 		* Added custom wiki select button.
 	Commit a9dfa7d
