@@ -1,6 +1,8 @@
 # OSRS-Grey theme by Noedel
 [OSRS-Dark by iawhd](https://github.com/melkypie/resource-packs/tree/pack-osrs-dark) but with a few tweaks. This pack works for both fixed and resizable.  
 
+![osrs-grey](https://i.imgur.com/PV9XUyd.png)  
+
 ## HOW TO INSTALL:
 To install this resource pack for RuneLite, you'll need the 'Resource packs' plugin, which can be found [here](https://github.com/melkypie/resource-packs/tree/master).
 
