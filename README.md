@@ -40,7 +40,7 @@ ex. C:\Users\user\Downloads\resource-packs-pack-osrs-dark (Windows) where user i
 
  - [Flatscape](https://github.com/melkypie/resource-packs/tree/pack-flatscape) ([Download](https://github.com/melkypie/resource-packs/archive/pack-flatscape.zip))
 
-<img src="https://user-images.githubusercontent.com/5113962/82243998-350e1880-9949-11ea-8657-09df6fd9b356.png" width="765"><br/>
+<img src="https://user-images.githubusercontent.com/5113962/86533966-95e3b700-bedd-11ea-9705-43dc712a5526.png" width="765"><br/>
 
 - [Dark theme for OSRS](https://github.com/melkypie/resource-packs/tree/pack-osrs-dark) ([Download](https://github.com/melkypie/resource-packs/archive/pack-osrs-dark.zip)) by [iawhd](https://github.com/iawhd)
 
