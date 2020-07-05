@@ -40,7 +40,7 @@ ex. C:\Users\user\Downloads\resource-packs-pack-osrs-dark (Windows) where user i
 
  - [Flatscape](https://github.com/melkypie/resource-packs/tree/pack-flatscape) ([Download](https://github.com/melkypie/resource-packs/archive/pack-flatscape.zip))
 
-<img src="https://user-images.githubusercontent.com/5113962/82243998-350e1880-9949-11ea-8657-09df6fd9b356.png" width="765"><br/>
+<img src="https://user-images.githubusercontent.com/5113962/86533966-95e3b700-bedd-11ea-9705-43dc712a5526.png" width="765"><br/>
 
 - [Dark theme for OSRS](https://github.com/melkypie/resource-packs/tree/pack-osrs-dark) ([Download](https://github.com/melkypie/resource-packs/archive/pack-osrs-dark.zip)) by [iawhd](https://github.com/iawhd)
 
@@ -77,6 +77,10 @@ ex. C:\Users\user\Downloads\resource-packs-pack-osrs-dark (Windows) where user i
 <img src="https://user-images.githubusercontent.com/5113962/82244509-02b0eb00-994a-11ea-8343-0a7dd7ddaa82.png" width="765"><br/>
 
 ## Change log
+
+### 1.1.2
+- Add option to allow resource packs to take over login screen background (on by default, will save your configuration)
+- Add option to allow resource packs to take over your overlay background color (on by default, will save your configuration)
 
 ### 1.1.1
 - Optimize the sprite loading
