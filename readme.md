@@ -1,16 +1,16 @@
 [!image](https://img.onl/2d6OIO)
 
-2012 INTERFACE (RESIZEABLE) 1.0
+# 2012 INTERFACE (RESIZEABLE) 1.0
 
-IF YOU WANT TO HELP ME COMPLETE THIS PROJECT, CONTACT ME ON DISCORD @ Shredit#6109
+# IF YOU WANT TO HELP ME COMPLETE THIS PROJECT, CONTACT ME ON DISCORD @ Shredit#6109
 
-Change log:
+## Change log:
 Will be updated forward from this initial release
 
-Current progress:
+## Current progress:
 85% completed out of all sprites that can be replaced
 
-To be done:
+## To be done:
 WELCOME_SCREEN:
 (Whole folder is untouched, 2012 had a different "welcome screen" therefore the sprites wont match with ours)
 
@@ -60,7 +60,7 @@ tag_up_arrow (needs to be remade)
 tag_down_arrow (needs to be remade)
 show_menu_icon (needs to be remade)
 
-Credits:
+## Credits:
 Jagex for assets
 Melkypie for the plugin and assets
 Shredit
