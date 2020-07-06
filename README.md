@@ -74,6 +74,10 @@ ex. C:\Users\user\Downloads\resource-packs-pack-osrs-dark (Windows) where user i
 
 <img src="https://user-images.githubusercontent.com/5113962/86645862-72a52e80-bfe7-11ea-895b-7491deed6e77.png" width="765"><br/>
 
+- [PrincessLite](https://github.com/melkypie/resource-packs/tree/pack-princess-lite) ([Download](https://github.com/melkypie/resource-packs/archive/pack-princess-lite.zip)) by Princess dps
+
+<img src="https://user-images.githubusercontent.com/5113962/86652015-b2bae000-bfec-11ea-89c5-3090ffa03d12.png" width="765"><br/>
+
 ## Sample packs
 
 - [Vanilla](https://github.com/melkypie/resource-packs/tree/sample-vanilla) ([Download](https://github.com/melkypie/resource-packs/archive/sample-vanilla.zip)) (Includes regular runescape sprites)
