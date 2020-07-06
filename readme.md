@@ -28,12 +28,12 @@ side_panel_edge_right (not sure if even used anywhere, but incase it is, needs t
 side_panel_edge_right (not sure if even used anywhere, but incase it is, needs to be remade to match 2012 look)
 
 SCROLLBAR:
-decorated_arrow_down (to be replaced) (not sure where used)
-decorated_arrow_up (to be replaced) (not sure where used)
-decorated_frame_bottom (to be replaced) (not sure where used)
-decorated_frame_middle (to be replaced) (not sure where used)
-decorated_frame_top (to be replaced) (not sure where used)
-decorated_middle (to be replaced) (not sure where used)
+decorated_arrow_down (to be replaced)
+decorated_arrow_up (to be replaced)
+decorated_frame_bottom (to be replaced)
+decorated_frame_middle (to be replaced)
+decorated_frame_top (to be replaced)
+decorated_middle (to be replaced)
 
 OPTIONS:
 (Whole folder needs to be replaced except thumb sliders)
