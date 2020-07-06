@@ -12,6 +12,6 @@ This resource pack is part of another plugin, '[Resource Packs](https://github.c
 In turn, [Runelite itself has been confirmed as fully compliant by Jagex](https://secure.runescape.com/m=news/a=13/another-message-about-unofficial-clients?oldschool=1).
 
 ## Screenshots
-![Fixed Mode](https://i.imgur.com/a/L6CzphX)
-![Resizable Mode](https://i.imgur.com/a/YW98MJZ)
+![Fixed Mode](https://user-images.githubusercontent.com/5113962/86652015-b2bae000-bfec-11ea-89c5-3090ffa03d12.png)
+![Resizable Mode](https://user-images.githubusercontent.com/5113962/86652201-ded66100-bfec-11ea-855c-b7adeae29775.png)
 
