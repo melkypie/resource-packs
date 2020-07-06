@@ -66,9 +66,13 @@ ex. C:\Users\user\Downloads\resource-packs-pack-osrs-dark (Windows) where user i
 
 <img src="https://camo.githubusercontent.com/aaea20c13374be647e8fa546b8653957c5e63d07/68747470733a2f2f692e696d6775722e636f6d2f374d636b5a30692e706e67" width="765"><br/>
 
-- [Sand casiono](https://github.com/melkypie/resource-packs/tree/pack-sand-casino) ([Download](https://github.com/melkypie/resource-packs/archive/pack-sand-casino.zip)) by [psyda](https://github.com/melkypie/resource-packs/commits?author=Psyda)
+- [Sand casino](https://github.com/melkypie/resource-packs/tree/pack-sand-casino) ([Download](https://github.com/melkypie/resource-packs/archive/pack-sand-casino.zip)) by [psyda](https://github.com/melkypie/resource-packs/commits?author=Psyda)
 
 <img src="https://user-images.githubusercontent.com/17040097/86070480-d8734280-ba4a-11ea-9a2f-6254dbf56fa0.png" width="765"><br/>
+
+- [2012 interface](https://github.com/melkypie/resource-packs/tree/pack-2012-interface) ([Download](https://github.com/melkypie/resource-packs/archive/pack-2012-interface)) by [Shredit](https://github.com/ShreditRS)
+
+<img src="https://user-images.githubusercontent.com/5113962/86645862-72a52e80-bfe7-11ea-895b-7491deed6e77.png" width="765"><br/>
 
 ## Sample packs
 
