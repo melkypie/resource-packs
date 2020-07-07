@@ -1,14 +1,20 @@
-![!image](https://img.onl/2d6OIO)
+![!image](https://i.ibb.co/p3NYnV5/Untitled.png)
 
-# 2012 INTERFACE (RESIZEABLE) 1.0
+# 2012 INTERFACE (RESIZEABLE) 1.1 (07-Jul-2020)
 
 # IF YOU WANT TO HELP ME COMPLETE THIS PROJECT, CONTACT ME ON DISCORD @ Shredit#6109
 
 ## Change log:
-Will be updated forward from this initial release
+- Updated the sprites for decorated scrollbar in the SCROLLBAR -folder
+- Updated the sprites for various icons in the OPTIONS -folder
+- Updated the sprites for Increment and Decrement buttons for GE -folder
+- Updated the sprites for various buttons in Worn Equipment screen in BUTTON -folder
+- Updated the sprites for various icons in the BANK -folder
+- Updated the sprites for minimap and compass in the RESIZEABLE_MODE -folder
+
 
 ## Current progress:
-85% completed out of all sprites that can be replaced
+90% completed out of all sprites that can be replaced
 
 ## To be done:
 WELCOME_SCREEN:
@@ -22,23 +28,18 @@ stash_units_slanted_edge_right (to be replaced)
 stash_units_slanted_edge_right_hovered (to be replaced)
 stash_units_slanted_middle (to be replaced)
 stash_units_slanted_middle_hovered (to be replaced)
+logout (to be reworked)
+logout_small (to be reworked)
 
 
 RESIZEABLE_MODE:
-minimap_and_compass_frame (currently a placeholder, needs to be remade to match the original 2012 look)
 side_panel_edge_right (not sure if even used anywhere, but incase it is, needs to be remade to match 2012 look)
 side_panel_edge_right (not sure if even used anywhere, but incase it is, needs to be remade to match 2012 look)
 
-SCROLLBAR:
-decorated_arrow_down (to be replaced)
-decorated_arrow_up (to be replaced)
-decorated_frame_bottom (to be replaced)
-decorated_frame_middle (to be replaced)
-decorated_frame_top (to be replaced)
-decorated_middle (to be replaced)
+
 
 OPTIONS:
-(Whole folder needs to be replaced except thumb sliders)
+(Few more icons to be updated/reworked)
 slider_and_thumb_3_of_4 (needs to be recolored)
 slider_and_thumb_4_of_4 (needs to be recolored)
 
@@ -51,14 +52,8 @@ COMBAT:
 BUTTON:
 EQUIPMENT_EDGE... (Original sprites are fine and fitting, but could be replaced if wanted)
 WORLD_MAP_EDGE... (Original sprites are fine and fitting, but could be replaced if wanted)
-equipment_guide_prices (needs to be replaced)
-equipment_items_lost_on_death (needs to be replaced)
-equipment_stats_icon (needs to be replaced)
 
-BANK:
-tag_up_arrow (needs to be remade)
-tag_down_arrow (needs to be remade)
-show_menu_icon (needs to be remade)
+
 
 ## Credits:
 Jagex for assets
