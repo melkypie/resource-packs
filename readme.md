@@ -1,11 +1,34 @@
-![!image](https://i.ibb.co/Wg3yWt9/new-icon.png)
+![!image](https://i.ibb.co/jJM3Qtw/icon.png)
 
 
-# 2012 INTERFACE (RESIZEABLE) 1.2 (08-Jul-2020)
+# 2012 INTERFACE (RESIZEABLE) 1.5 (10-Jul-2020)
 
 # IF YOU WANT TO HELP ME COMPLETE THIS PROJECT, CONTACT ME ON DISCORD @ Shredit#6109
 
 ## Change log:
+10-Jul-2020:
+- Updated the chatbox to match the original 2012 look
+- Updated the dialog borders to match the original 2012 look
+- Fixed a problem with sprites that caused weird flickering in the trading screen (temporary fix)
+- Remade the HP, PRAY and RUN icons on the minimap status orbs
+- Changed the compass sprite witht the original 2012 one
+- Changed the whole minimap sprite to match the original 2012 look
+- Changed the logout buttons to correct ones
+- Remade the report abuse buttons to match the original 2012 look
+- Cleaned up alot of sprites from TAB and SKILL -folders
+- Cleaned up alot of sprites from OPTIONS -folders
+
+09-Jul-2020:
+- Fixed a problem with a sprite that may have caused weird issues in Grand Exchange interface
+- Fixed a size problem with login screen background
+- More clean up for various sprites
+- Updated the sprites for various icons in the QUEST_TAB -folder
+- Updated the sprites for various icons in the OPTIONS -folder
+- Fixed the logout buttons for FIXED_MODE in the TAB -folder
+- Fixed naming order for the XP Orbs in the OTHER -folder
+- Cleaned alot of sprites in the COMBAT -folder
+- Added new style for Decorated scrollbars in SCROLLBARS -folder
+
 08-Jul-2020:
 - Updated the sprites for various icons in the OPTIONS -folder
 - Redid the whole tab area for both FIXED_MODE and RESIZEABLE_MODE -folders
@@ -36,20 +59,12 @@ stash_units_slanted_edge_right (to be replaced)
 stash_units_slanted_edge_right_hovered (to be replaced)
 stash_units_slanted_middle (to be replaced)
 stash_units_slanted_middle_hovered (to be replaced)
-logout (to be reworked)
-logout_small (to be reworked)
+
 
 
 RESIZEABLE_MODE:
 side_panel_edge_right (needs to be reworked as part of the FIXED mode project for this pack)
 side_panel_edge_right (needs to be reworked as part of the FIXED mode project for this pack)
-
-
-
-OPTIONS:
-(Few more icons to be updated/reworked)
-slider_and_thumb_3_of_4 (needs to be recolored)
-slider_and_thumb_4_of_4 (needs to be recolored)
 
 FIXED_MODE:
 minimap_and_compass_frame (needs to be reworked as part of the FIXED mode project for this pack)
@@ -67,5 +82,7 @@ WORLD_MAP_EDGE... (Original sprites are fine and fitting, but could be replaced 
 Jagex for assets
 
 Melkypie for the plugin and assets
+
+Bwaaark for helping with sprite cleanup
 
 Shredit
