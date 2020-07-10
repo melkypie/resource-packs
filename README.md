@@ -35,48 +35,7 @@ ex. C:\Users\user\Downloads\resource-packs-pack-osrs-dark (Windows) where user i
 3. If you want your resource pack to be published on here among the other resource packs and shown inside the resource pack hub, Contact me on discord (You can find me by the same in Runelite discord) and I will explain how.
 
 
-
-## Resource packs in the hub
-
- - [Flatscape](https://github.com/melkypie/resource-packs/tree/pack-flatscape) ([Download](https://github.com/melkypie/resource-packs/archive/pack-flatscape.zip))
-
-<img src="https://user-images.githubusercontent.com/5113962/86533966-95e3b700-bedd-11ea-9705-43dc712a5526.png" width="765"><br/>
-
-- [Dark theme for OSRS](https://github.com/melkypie/resource-packs/tree/pack-osrs-dark) ([Download](https://github.com/melkypie/resource-packs/archive/pack-osrs-dark.zip)) by [iawhd](https://github.com/iawhd)
-
-<img src="https://camo.githubusercontent.com/3414e90ef8d40618d89bbb2c582838b1f80a29a9/68747470733a2f2f692e696d6775722e636f6d2f59704b555955612e706e67" width="765"><br/>
-
-- [Orange](https://github.com/melkypie/resource-packs/tree/pack-orange) ([Download](https://github.com/melkypie/resource-packs/archive/pack-orange.zip)) by anonymous
-
-<img src="https://user-images.githubusercontent.com/5113962/85879312-cee7a180-b7e2-11ea-8fad-bbee04a7d470.png" width="765"><br/>
-
-- Dark [Fixed](https://github.com/melkypie/resource-packs/tree/pack-dark-fixed) ([Download](https://github.com/melkypie/resource-packs/archive/pack-dark-fixed.zip)) [Resizable](https://github.com/melkypie/resource-packs/archive/pack-dark.zip) ([Download](https://github.com/melkypie/resource-packs/archive/pack-dark.zip)) by [Nan0bit](https://github.com/Nan0bit)
-
-<img src="https://user-images.githubusercontent.com/5113962/83461470-85b96180-a471-11ea-8a54-3469cd3acbca.png" width="765"><br/>
-
-- [Wood cabin](https://github.com/melkypie/resource-packs/tree/pack-wood-cabin) ([Download](https://github.com/melkypie/resource-packs/archive/pack-wood-cabin.zip)) by Duke (Currently only works in resizeable mode)
-
-<img src="https://user-images.githubusercontent.com/5113962/84534943-82d13300-acf3-11ea-8480-cddd8b02800b.png" width="765"><br/>
-
-- [Psyda Midnight](https://github.com/melkypie/resource-packs/tree/pack-psyda-midnight) ([Download](https://github.com/melkypie/resource-packs/archive/pack-psyda-midnight.zip)) by [psyda](https://github.com/melkypie/resource-packs/commits?author=Psyda)
-
-<img src="https://user-images.githubusercontent.com/17040097/85811903-4bb84400-b72d-11ea-8f2f-fa49720d14c8.png" width="765"><br/>
-
-- [OSRS-Grey theme](https://github.com/melkypie/resource-packs/tree/pack-osrs-dark-light) ([Download](https://github.com/melkypie/resource-packs/archive/pack-osrs-dark-light.zip)) by Noedel
-
-<img src="https://camo.githubusercontent.com/aaea20c13374be647e8fa546b8653957c5e63d07/68747470733a2f2f692e696d6775722e636f6d2f374d636b5a30692e706e67" width="765"><br/>
-
-- [Sand casino](https://github.com/melkypie/resource-packs/tree/pack-sand-casino) ([Download](https://github.com/melkypie/resource-packs/archive/pack-sand-casino.zip)) by [psyda](https://github.com/melkypie/resource-packs/commits?author=Psyda)
-
-<img src="https://user-images.githubusercontent.com/17040097/86070480-d8734280-ba4a-11ea-9a2f-6254dbf56fa0.png" width="765"><br/>
-
-- [2012 interface](https://github.com/melkypie/resource-packs/tree/pack-2012-interface) ([Download](https://github.com/melkypie/resource-packs/archive/pack-2012-interface.zip)) by [Shredit](https://github.com/ShreditRS)
-
-<img src="https://user-images.githubusercontent.com/5113962/86645862-72a52e80-bfe7-11ea-895b-7491deed6e77.png" width="765"><br/>
-
-- [PrincessLite](https://github.com/melkypie/resource-packs/tree/pack-princess-lite) ([Download](https://github.com/melkypie/resource-packs/archive/pack-princess-lite.zip)) by Princess dps
-
-<img src="https://user-images.githubusercontent.com/5113962/86652015-b2bae000-bfec-11ea-89c5-3090ffa03d12.png" width="765"><br/>
+## Available resource packs in the hub can be found [in the wiki](https://github.com/melkypie/resource-packs/wiki/Resource-packs-hub)
 
 ## Sample packs
 
