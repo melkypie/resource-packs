@@ -66,13 +66,6 @@ RESIZEABLE_MODE:
 side_panel_edge_right (needs to be reworked as part of the FIXED mode project for this pack)
 side_panel_edge_right (needs to be reworked as part of the FIXED mode project for this pack)
 
-
-
-OPTIONS:
-(Few more icons to be updated/reworked)
-slider_and_thumb_3_of_4 (needs to be recolored)
-slider_and_thumb_4_of_4 (needs to be recolored)
-
 FIXED_MODE:
 minimap_and_compass_frame (needs to be reworked as part of the FIXED mode project for this pack)
 
