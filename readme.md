@@ -1,11 +1,31 @@
-![!image](https://i.ibb.co/jJM3Qtw/icon.png)
+![!image](https://i.ibb.co/jg8c5sb/icon-res.png)
 
+![!image](https://i.ibb.co/JzkSZF6/icon-fixed.png)
 
-# 2012 INTERFACE (RESIZEABLE) 1.5 (10-Jul-2020)
+# 2012 INTERFACE 2.2 (14-Jul-2020)
 
 # IF YOU WANT TO HELP ME COMPLETE THIS PROJECT, CONTACT ME ON DISCORD @ Shredit#6109
 
+## Known bugs/issues:
+
+- When you get poisoned or venomed, your HP icon will reset to vanilla sprites
+  However I have made the sprites for HP_Poisoned, HP_Venomed and HP_Diseased icons for whenever those get added to the base plugin.
+- Trading screen 2 (Last confirm before trade accept) has a + type of intersection sprite which I cannot change, however
+  it is being fixed soon as far as I know.
+- Prayer, Magic spells and Emote icons are still vanilla style, as I cannot change those. I have requested the author of the base plugin
+  to make them replaceable but not everything always works out, lets just wait!
+
 ## Change log:
+
+13-Jul-2020:
+- Redid the whole FIXED_MODE -folder
+- Redid some sprites in OTHER -folder
+- Redid the whole trading screen in DIALOGUE -folder (there's still something Id like to do there but its good for now)
+- Cleaned all sprites in SKILL -folder
+- Cleaned all sprites in TAB -folder
+- Fixed the THUMB_SLIDERS for the screen brightness adjustment in OPTIONS -folder
+- Cleaned all sprites in BANK -folder
+
 10-Jul-2020:
 - Updated the chatbox to match the original 2012 look
 - Updated the dialog borders to match the original 2012 look
@@ -46,7 +66,7 @@
 
 
 ## Current progress:
-90% completed out of all sprites that can be replaced
+95% completed out of all sprites that can be replaced
 
 ## To be done:
 WELCOME_SCREEN:
@@ -61,16 +81,8 @@ stash_units_slanted_middle (to be replaced)
 stash_units_slanted_middle_hovered (to be replaced)
 
 
-
-RESIZEABLE_MODE:
-side_panel_edge_right (needs to be reworked as part of the FIXED mode project for this pack)
-side_panel_edge_right (needs to be reworked as part of the FIXED mode project for this pack)
-
-FIXED_MODE:
-minimap_and_compass_frame (needs to be reworked as part of the FIXED mode project for this pack)
-
 COMBAT:
-(All sprited need cleanup)
+(Some sprites need cleanup)
 
 BUTTON:
 EQUIPMENT_EDGE... (Original sprites are fine and fitting, but could be replaced if wanted)
