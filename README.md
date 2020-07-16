@@ -45,6 +45,13 @@ ex. C:\Users\user\Downloads\resource-packs-pack-osrs-dark (Windows) where user i
 
 ## Change log
 
+### 1.1.3
+- Add the widely request quest tab sprites along with some other sprites
+- The plugin-hub and the resource hub icons have been changed to rainbow paint brushes (All credits go to [psyda](https://github.com/melkypie/resource-packs/commits?author=Psyda) for creating them)
+
+
+More info on the exact sprites added can be found [here](https://github.com/melkypie/resource-packs/compare/16a3a76f7cbeeab8152eb91062e13d46cefbfdf7...b1184a15ebfdde33909e278eb43608adc30a113c)
+
 ### 1.1.2
 - Add option to allow resource packs to take over login screen background (on by default, will save your configuration)
 - Add option to allow resource packs to take over your overlay background color (on by default, will save your configuration)
