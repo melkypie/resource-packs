@@ -1,29 +1,40 @@
 # RESIZABLE:
-![!image](https://i.ibb.co/jg8c5sb/icon-res.png)
+![!image](https://i.ibb.co/hyxWCXD/resized-icon.png)
 # RESIZABLE (SIDE PANELS ON):
-![!image](https://i.ibb.co/Z1Ks6k1/resizable-sidepanels-on.png)
+![!image](https://i.ibb.co/VCPWwDk/resized-panels-icon.png)
 # FIXED:
-![!image](https://i.ibb.co/CmZX2qM/fixed.png)
+![!image](https://i.ibb.co/THYJv80/fixed-icon.png)
 
-# 2012 INTERFACE 2.2 (14-Jul-2020)
+# 2012 INTERFACE 2.6 (15-Jul-2020)
 
 # IF YOU WANT TO HELP ME COMPLETE THIS PROJECT, CONTACT ME ON DISCORD @ Shredit#6109
 
 ## Known bugs/issues:
 
-- When you get poisoned or venomed, your HP icon will reset to vanilla sprites
-  However I have made the sprites for HP_Poisoned, HP_Venomed and HP_Diseased icons for whenever those get added to the base plugin.
-- Trading screen 2 (Last confirm before trade accept) has a + type of intersection sprite which I cannot change, however
-  it is being fixed soon as far as I know.
+- When you get poisoned or venomed, your HP icon will reset to vanilla sprites due to a conflict with "Poison" plugin, to fix this
+  simply turn off "Change HP Orb Icon" tab from the plugin.
+
 - Prayer, Magic spells and Emote icons are still vanilla style, as I cannot change those. I have requested the author of the base plugin
   to make them replaceable but not everything always works out, lets just wait!
 
 ## Change log:
+15-Jul-2020 - 19-Jul-2020:
+- Realigned some buttons so they dont overlap with any corners/framing of the interfaces
+- Redid the Hitpoints, Prayer and Run icons on the minimap status orbs
+- Reverted a few icons in BANK -folder back to vanilla style as they were the same in 2012
+- Cleaned all the sprites in the COMBAT -folder
+- Cleaned all the sprites in the EQUIPMENT -folder
+- Remade the iron borders for various interfacesi´in the DIALOGUE -folder
+- Replaced a few sprites that were added in the last update of the base plugin
+- Remade the quest tab sprites
+- Fixed a missing sprite in the trading screen borders
+- Made the mouse overlay info box colors match with the blueish/darkish color of the inventory
+
 
 13-Jul-2020:
-- Redid the whole FIXED_MODE -folder
-- Redid some sprites in OTHER -folder
-- Redid the whole trading screen in DIALOGUE -folder (there's still something Id like to do there but its good for now)
+- Remade the whole FIXED_MODE -folder
+- Remade some sprites in OTHER -folder
+- Remade the whole trading screen in DIALOGUE -folder (there's still something Id like to do there but its good for now)
 - Cleaned all sprites in SKILL -folder
 - Cleaned all sprites in TAB -folder
 - Fixed the THUMB_SLIDERS for the screen brightness adjustment in OPTIONS -folder
@@ -56,7 +67,7 @@
 - Updated the sprites for various icons in the OPTIONS -folder
 - Redid the whole tab area for both FIXED_MODE and RESIZEABLE_MODE -folders
 - Cleaned up all the icons used on tabs in the TAB -folder
-- Redid the buttons and framing for Grand Exchange in the GE -folder
+- Remade the buttons and framing for Grand Exchange in the GE -folder
 - Updated the minimap for fixed mode in the FIXED_MODE -folder
 
 07-Jul-2020:
@@ -73,7 +84,7 @@
 
 ## To be done:
 WELCOME_SCREEN:
-(Whole folder is untouched, 2012 had a different "welcome screen" therefore the sprites wont match with ours)
+(Not much I can do with this, remade a few sprites to give it a bit more matching look though)
 
 TAB:
 stash_units_slanted_edge_left (to be replaced)
@@ -83,9 +94,6 @@ stash_units_slanted_edge_right_hovered (to be replaced)
 stash_units_slanted_middle (to be replaced)
 stash_units_slanted_middle_hovered (to be replaced)
 
-
-COMBAT:
-(Some sprites need cleanup)
 
 BUTTON:
 EQUIPMENT_EDGE... (Original sprites are fine and fitting, but could be replaced if wanted)
