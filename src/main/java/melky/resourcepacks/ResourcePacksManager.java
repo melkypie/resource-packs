@@ -16,6 +16,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
@@ -489,38 +491,46 @@ public class ResourcePacksManager
 	void overrideSprites()
 	{
 		String currentPackPath = getCurrentPackPath();
-		for (SpriteOverride spriteOverride : SpriteOverride.values())
-		{
-			SpritePixels spritePixels = getSpritePixels(spriteOverride, currentPackPath);
-			if (config.allowLoginScreen() && spriteOverride == SpriteOverride.LOGIN_SCREEN_BACKGROUND)
+		SpriteOverride.getOverrides().asMap().forEach((key, collection) -> {
+			if (!Files.isDirectory(Paths.get(currentPackPath + File.separator + key.name().toLowerCase())) ||
+				(!config.allowSpellsPrayers() && (key.name().contains("SPELL") || key.equals(SpriteOverride.Folder.PRAYER))))
 			{
-				if (spritePixels != null)
+				return;
+			}
+
+			for (SpriteOverride spriteOverride : collection)
+			{
+				SpritePixels spritePixels = getSpritePixels(spriteOverride, currentPackPath);
+				if (config.allowLoginScreen() && spriteOverride == SpriteOverride.LOGIN_SCREEN_BACKGROUND)
 				{
-					client.setLoginScreen(spritePixels);
+					if (spritePixels != null)
+					{
+						client.setLoginScreen(spritePixels);
+					}
+					else
+					{
+						resetLoginScreen();
+					}
+				}
+				if (spritePixels == null)
+				{
+					continue;
+				}
+
+				if (spriteOverride.getSpriteID() == SpriteID.COMPASS_TEXTURE)
+				{
+					client.setCompass(spritePixels);
 				}
 				else
 				{
-					resetLoginScreen();
+					if (spriteOverride.getSpriteID() < -200)
+					{
+						client.getSpriteOverrides().remove(spriteOverride.getSpriteID());
+					}
+					client.getSpriteOverrides().put(spriteOverride.getSpriteID(), spritePixels);
 				}
 			}
-			if (spritePixels == null)
-			{
-				continue;
-			}
-
-			if (spriteOverride.getSpriteID() == SpriteID.COMPASS_TEXTURE)
-			{
-				client.setCompass(spritePixels);
-			}
-			else
-			{
-				if (spriteOverride.getSpriteID() < -200)
-				{
-					client.getSpriteOverrides().remove(spriteOverride.getSpriteID());
-				}
-				client.getSpriteOverrides().put(spriteOverride.getSpriteID(), spritePixels);
-			}
-		}
+		});
 	}
 
 	void resetLoginScreen()

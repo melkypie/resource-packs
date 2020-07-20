@@ -45,6 +45,13 @@ ex. C:\Users\user\Downloads\resource-packs-pack-osrs-dark (Windows) where user i
 
 ## Change log
 
+### 1.1.4
+- Added the ability to customize spells/prayers/emotes
+- Added transparent chatbox scrollbars and house viewer refresh icon
+
+
+More info on the exact changes made can be seen [here](https://github.com/melkypie/resource-packs/commit/27140f067e6cc42b2634962b3f3ad87521e99061)
+
 ### 1.1.3
 - Add the widely request quest tab sprites along with some other sprites
 - The plugin-hub and the resource hub icons have been changed to rainbow paint brushes (All credits go to [psyda](https://github.com/melkypie/resource-packs/commits?author=Psyda) for creating them)

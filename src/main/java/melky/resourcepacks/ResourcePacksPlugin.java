@@ -129,31 +129,32 @@ public class ResourcePacksPlugin extends Plugin
 	{
 		if (event.getGroup().equals(ResourcePacksConfig.GROUP_NAME))
 		{
-			if (event.getKey().equals("resourcePack"))
+			switch (event.getKey())
 			{
-				clientThread.invokeLater(resourcePacksManager::updateAllOverrides);
-			}
-			else if (event.getKey().equals("allowOverlayColor"))
-			{
-				if (config.allowOverlayColor())
-				{
+				case "allowSpellsPrayers":
+				case "resourcePack":
 					clientThread.invokeLater(resourcePacksManager::updateAllOverrides);
-				}
-				else
-				{
-					resourcePacksManager.resetOverlayColor();
-				}
-			}
-			else if (event.getKey().equals("allowLoginScreen"))
-			{
-				if (config.allowLoginScreen())
-				{
-					clientThread.invokeLater(resourcePacksManager::updateAllOverrides);
-				}
-				else
-				{
-					resourcePacksManager.resetLoginScreen();
-				}
+					break;
+				case "allowOverlayColor":
+					if (config.allowOverlayColor())
+					{
+						clientThread.invokeLater(resourcePacksManager::updateAllOverrides);
+					}
+					else
+					{
+						resourcePacksManager.resetOverlayColor();
+					}
+					break;
+				case "allowLoginScreen":
+					if (config.allowLoginScreen())
+					{
+						clientThread.invokeLater(resourcePacksManager::updateAllOverrides);
+					}
+					else
+					{
+						resourcePacksManager.resetLoginScreen();
+					}
+					break;
 			}
 		}
 		else if (event.getGroup().equals("banktags") && event.getKey().equals("useTabs"))

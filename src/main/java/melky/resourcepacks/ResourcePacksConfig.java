@@ -96,6 +96,17 @@ public interface ResourcePacksConfig extends Config
 	}
 
 	@ConfigItem(
+		keyName = "allowSpellsPrayers",
+		name = "Allow spells/prayers to be changed",
+		description = "Gives permissions for resource packs to change your spells and prayers icons",
+		position = 7
+	)
+	default boolean allowSpellsPrayers()
+	{
+		return true;
+	}
+
+	@ConfigItem(
 		keyName = "selectedHubPack",
 		name = "Selected pack in hub",
 		description = "Internal name of the selected pack from the hub",
