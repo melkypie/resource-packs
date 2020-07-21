@@ -1,23 +1,28 @@
 # RESIZABLE:
-![!image](https://i.ibb.co/hyxWCXD/resized-icon.png)
+![!image](https://i.ibb.co/CKPy9GW/resizable-icon.png)
 # RESIZABLE (SIDE PANELS ON):
-![!image](https://i.ibb.co/VCPWwDk/resized-panels-icon.png)
+![!image](https://i.ibb.co/LRbn877/resizable-sidepanel-icon.png)
 # FIXED:
-![!image](https://i.ibb.co/THYJv80/fixed-icon.png)
+![!image](https://i.ibb.co/wW7cnFT/fixed-icon.png)
 
-# 2012 INTERFACE 2.6 (15-Jul-2020)
+# 2012 INTERFACE 3.0 (21-Jul-2020)
 
-# IF YOU WANT TO HELP ME COMPLETE THIS PROJECT, CONTACT ME ON DISCORD @ Shredit#6109
+# IF YOU HAVE ANY QUESTIONS OR FIND ANY ISSUES, PLEASE MESSAGE ME AT DISCORD @Shredit#6109
 
-## Known bugs/issues:
+## IMPORTANT:
 
-- When you get poisoned or venomed, your HP icon will reset to vanilla sprites due to a conflict with "Poison" plugin, to fix this
+- When you get poisoned or venomed, your HP icon will reset to vanilla sprites due to a conflict with the "Poison" plugin, to fix this
   simply turn off "Change HP Orb Icon" tab from the plugin.
-
-- Prayer, Magic spells and Emote icons are still vanilla style, as I cannot change those. I have requested the author of the base plugin
-  to make them replaceable but not everything always works out, lets just wait!
+- If you prefer using the vanilla spell/prayer icons, you can select so in the resource packs plugin settings.
 
 ## Change log:
+21-Jul-2020:
+- Remade the resizable mode minimap and compass sprite again
+- Added all spell icons (except arcaeus as that spellbook never existed in 2012)
+- Added all prayer icons
+- Added all emote icons (except a few ones since they never existed in 2012)
+- Redid the scrollbar icons on the chatbox for the transparent chatbox -mode.
+
 15-Jul-2020 - 19-Jul-2020:
 - Realigned some buttons so they dont overlap with any corners/framing of the interfaces
 - Redid the Hitpoints, Prayer and Run icons on the minimap status orbs
