@@ -3,7 +3,12 @@ name: Manifest updater
 on:
   repository_dispatch:
     types: [pushed]
-
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'     
+        required: true
+        default: 'warning'
 jobs:
   build:
     runs-on: ubuntu-latest
