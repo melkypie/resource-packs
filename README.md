@@ -1,6 +1,6 @@
 # Reaper
 Designed by **EXpoZuR** <br/>
-[Download](https://github.com/melkypie/resource-packs/tree/pack-reaper.zip)
+[Download](https://github.com/melkypie/resource-packs/archive/pack-reaper.zip)
 
 Reaper is a professionally designed dark and minimalist reimagining of the Old School Runescape interface.
 
