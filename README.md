@@ -45,6 +45,12 @@ ex. C:\Users\user\Downloads\resource-packs-pack-osrs-dark (Windows) where user i
 
 ## Change log
 
+### 1.1.5
+- Add a Advanced options section which includes the ability to color the current pack
+- More new sprites
+
+More info on sprites added can be seen [here](https://github.com/melkypie/resource-packs/commit/1417a71e39463d3b46cb8f042882aa5a5c335710)
+
 ### 1.1.4
 - Added the ability to customize spells/prayers/emotes
 - Added transparent chatbox scrollbars and house viewer refresh icon

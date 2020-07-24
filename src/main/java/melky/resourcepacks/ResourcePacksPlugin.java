@@ -132,6 +132,7 @@ public class ResourcePacksPlugin extends Plugin
 			switch (event.getKey())
 			{
 				case "allowSpellsPrayers":
+				case "colorPack":
 				case "resourcePack":
 					clientThread.invokeLater(resourcePacksManager::updateAllOverrides);
 					break;

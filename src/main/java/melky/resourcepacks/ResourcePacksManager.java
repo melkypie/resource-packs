@@ -5,7 +5,9 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.io.MoreFiles;
 import com.google.common.io.RecursiveDeleteOption;
 import com.google.gson.stream.JsonReader;
+import java.awt.AlphaComposite;
 import java.awt.Color;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -479,6 +481,10 @@ public class ResourcePacksManager
 		try
 		{
 			BufferedImage image = ImageIO.read(spriteFile);
+			if (config.colorPack() != null)
+			{
+				image = dye(image, config.colorPack());
+			}
 			return ImageUtil.getImageSpritePixels(image, client);
 		}
 		catch (RuntimeException | IOException ex)
@@ -572,7 +578,16 @@ public class ResourcePacksManager
 				configManager.getConfiguration(RuneLiteConfig.GROUP_NAME, OVERLAY_COLOR_CONFIG));
 		}
 		ResourcePacksPlugin.setIgnoreOverlayConfig(true);
-		Color overlayColor = ColorUtil.fromHex(colorProperties.getProperty("overlay_color"));
+		Color overlayColor;
+		if (config.colorPack() != null && config.colorPack().getAlpha() != 0)
+		{
+			overlayColor = config.colorPack();
+		}
+		else
+		{
+			overlayColor = ColorUtil.fromHex(colorProperties.getProperty("overlay_color"));
+		}
+
 		configManager.setConfiguration(RuneLiteConfig.GROUP_NAME, OVERLAY_COLOR_CONFIG, overlayColor);
 		ResourcePacksPlugin.setIgnoreOverlayConfig(false);
 	}
@@ -585,5 +600,19 @@ public class ResourcePacksManager
 				configManager.getConfiguration(ResourcePacksConfig.GROUP_NAME, ResourcePacksConfig.ORIGINAL_OVERLAY_COLOR));
 			configManager.unsetConfiguration(ResourcePacksConfig.GROUP_NAME, ResourcePacksConfig.ORIGINAL_OVERLAY_COLOR);
 		}
+	}
+
+	private BufferedImage dye(BufferedImage image, Color color)
+	{
+		int w = image.getWidth();
+		int h = image.getHeight();
+		BufferedImage dyed = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+		Graphics2D g = dyed.createGraphics();
+		g.drawImage(image, 0, 0, null);
+		g.setComposite(AlphaComposite.SrcAtop);
+		g.setColor(color);
+		g.fillRect(0, 0, w, h);
+		g.dispose();
+		return dyed;
 	}
 }

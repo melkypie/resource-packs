@@ -1,5 +1,7 @@
 package melky.resourcepacks;
 
+import java.awt.Color;
+import net.runelite.client.config.Alpha;
 import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
@@ -25,6 +27,13 @@ public interface ResourcePacksConfig extends Config
 		position = 2
 	)
 	String resourcePackPaths = "resourcePackPaths";
+
+	@ConfigSection(name = "Advanced options",
+		description = "Do not touch if you don't know what you are doing",
+		position = 8,
+		closedByDefault = true
+	)
+	String advancedOptions = "advancedOptions";
 
 	@ConfigItem(
 		keyName = "resourcePack",
@@ -105,6 +114,16 @@ public interface ResourcePacksConfig extends Config
 	{
 		return true;
 	}
+
+	@Alpha
+	@ConfigItem(
+		keyName = "colorPack",
+		name = "Color current pack",
+		description = "Allows you to apply a color overlay over the currently selected resource pack",
+		position = 8,
+		section = advancedOptions
+	)
+	Color colorPack();
 
 	@ConfigItem(
 		keyName = "selectedHubPack",
