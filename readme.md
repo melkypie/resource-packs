@@ -5,7 +5,7 @@
 # FIXED:
 ![!image](https://i.ibb.co/wW7cnFT/fixed-icon.png)
 
-# 2012 INTERFACE 3.0 (21-Jul-2020)
+# 2012 INTERFACE 3.1 (26-Jul-2020)
 
 # IF YOU HAVE ANY QUESTIONS OR FIND ANY ISSUES, PLEASE MESSAGE ME AT DISCORD @Shredit#6109
 
@@ -16,6 +16,15 @@
 - If you prefer using the vanilla spell/prayer icons, you can select so in the resource packs plugin settings.
 
 ## Change log:
+26-Jul-2020:
+- Remade the bank tabs
+- Reverted a few sprites to vanilla sprites as they were the same in 2012-13 era
+- Realigned the minimap and compass sprite a little bit
+- Remade the combat style buttons
+- Remade the stash unit sprites used in ex. collection log
+- Redid all checkbox sprites used in various interfaces
+- Cleaned some sprites
+- Remade the TASK_OPEN and TASK_CLOSED buttons for the Kourend Task overlay in the QUEST_TAB folder
 21-Jul-2020:
 - Remade the resizable mode minimap and compass sprite again
 - Added all spell icons (except arcaeus as that spellbook never existed in 2012)
@@ -90,14 +99,6 @@
 ## To be done:
 WELCOME_SCREEN:
 (Not much I can do with this, remade a few sprites to give it a bit more matching look though)
-
-TAB:
-stash_units_slanted_edge_left (to be replaced)
-stash_units_slanted_edge_left_hovered (to be replaced)
-stash_units_slanted_edge_right (to be replaced)
-stash_units_slanted_edge_right_hovered (to be replaced)
-stash_units_slanted_middle (to be replaced)
-stash_units_slanted_middle_hovered (to be replaced)
 
 
 BUTTON:
