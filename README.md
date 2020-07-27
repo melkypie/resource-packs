@@ -1,4 +1,4 @@
-# Dark them (Spacenation edition) by Levy (Originally by iawhd)
+# Dark theme (Spacenation edition) by Levy (Originally by iawhd)
 [Download](https://github.com/melkypie/resource-packs/archive/pack-osrs-dark-spacenation.zip)
 
 
