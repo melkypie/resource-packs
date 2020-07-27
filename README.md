@@ -45,6 +45,11 @@ ex. C:\Users\user\Downloads\resource-packs-pack-osrs-dark (Windows) where user i
 
 ## Change log
 
+### 1.2.0
+- Add ability to change colors
+
+More info on colors that can be changed [here](https://github.com/melkypie/resource-packs/commit/1a39e794634072fa1ff3ff9239223527782ecdbd)
+
 ### 1.1.5
 - Add a Advanced options section which includes the ability to color the current pack
 - More new sprites

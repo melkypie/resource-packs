@@ -9,7 +9,9 @@ import javax.swing.SwingUtilities;
 import lombok.Setter;
 import melky.resourcepacks.event.ResourcePacksChanged;
 import melky.resourcepacks.hub.ResourcePacksHubPanel;
+import net.runelite.api.Client;
 import net.runelite.api.events.BeforeRender;
+import net.runelite.api.events.ScriptPostFired;
 import net.runelite.client.RuneLite;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.config.ConfigManager;
@@ -40,6 +42,9 @@ public class ResourcePacksPlugin extends Plugin
 
 	@Setter
 	private static boolean ignoreOverlayConfig = false;
+
+	@Inject
+	private Client client;
 
 	@Inject
 	private ClientThread clientThread;
@@ -186,5 +191,17 @@ public class ResourcePacksPlugin extends Plugin
 	public void onSessionClose(SessionClose event)
 	{
 		executor.submit(resourcePacksManager::refreshPlugins);
+	}
+
+	@Subscribe
+	public void onScriptPostFired(ScriptPostFired event)
+	{
+		if (WidgetOverride.scriptWidgetOverrides.containsKey(event.getScriptId()) && !resourcePacksManager.getColorProperties().isEmpty())
+		{
+			for (WidgetOverride widgetOverride : WidgetOverride.scriptWidgetOverrides.get(event.getScriptId()))
+			{
+				resourcePacksManager.addPropertyToWidget(widgetOverride);
+			}
+		}
 	}
 }

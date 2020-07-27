@@ -35,6 +35,7 @@ import java.util.zip.ZipInputStream;
 import javax.imageio.ImageIO;
 import javax.inject.Inject;
 import javax.inject.Singleton;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import static melky.resourcepacks.ResourcePacksPlugin.GITHUB;
 import static melky.resourcepacks.ResourcePacksPlugin.OVERLAY_COLOR_CONFIG;
@@ -63,6 +64,7 @@ import okhttp3.Response;
 @Slf4j
 public class ResourcePacksManager
 {
+	@Getter
 	private final Properties colorProperties = new Properties();
 
 	@Inject
@@ -336,6 +338,7 @@ public class ResourcePacksManager
 		removeGameframe();
 		overrideSprites();
 		reloadColorProperties();
+		applyWidgetOverrides();
 		adjustWidgetDimensions(false);
 		adjustWidgetDimensions(true);
 	}
@@ -614,5 +617,68 @@ public class ResourcePacksManager
 		g.fillRect(0, 0, w, h);
 		g.dispose();
 		return dyed;
+	}
+
+	private void applyWidgetOverrides()
+	{
+		if (colorProperties.isEmpty())
+		{
+			return;
+		}
+
+		for (WidgetOverride widgetOverride : WidgetOverride.values())
+		{
+			addPropertyToWidget(widgetOverride);
+		}
+	}
+
+	public void addPropertyToWidget(WidgetOverride widgetOverride)
+	{
+		int property;
+		if (colorProperties.containsKey(widgetOverride.name().toLowerCase()))
+		{
+			String widgetProperty = colorProperties.getProperty(widgetOverride.name().toLowerCase());
+			if (!widgetProperty.isEmpty())
+			{
+				property = Integer.decode(widgetProperty);
+			}
+			else
+			{
+				property = widgetOverride.getDefaultColor();
+			}
+		}
+		else
+		{
+			property = widgetOverride.getDefaultColor();
+		}
+
+		for (Integer childId : widgetOverride.getWidgetChildIds())
+		{
+			Widget widgetToOverride = client.getWidget(widgetOverride.getWidgetGroupId(), childId);
+			if (widgetToOverride == null)
+			{
+				continue;
+			}
+
+			if (widgetOverride.getWidgetArrayIds()[0] != -1)
+			{
+				for (int arrayId : widgetOverride.getWidgetArrayIds())
+				{
+					Widget arrayWidget = widgetToOverride.getChild(arrayId);
+					if (arrayWidget == null || arrayWidget.getTextColor() == -1)
+					{
+						continue;
+					}
+					arrayWidget.setTextColor(property);
+				}
+			}
+			else
+			{
+				if (widgetToOverride.getTextColor() != -1)
+				{
+					widgetToOverride.setTextColor(property);
+				}
+			}
+		}
 	}
 }
