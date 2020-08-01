@@ -5,7 +5,7 @@
 # FIXED:
 ![!image](https://i.ibb.co/wW7cnFT/fixed-icon.png)
 
-# 2012 INTERFACE 3.1 (26-Jul-2020)
+# 2012 INTERFACE 3.2 (01-Aug-2020)
 
 # IF YOU HAVE ANY QUESTIONS OR FIND ANY ISSUES, PLEASE MESSAGE ME AT DISCORD @Shredit#6109
 
@@ -16,6 +16,14 @@
 - If you prefer using the vanilla spell/prayer icons, you can select so in the resource packs plugin settings.
 
 ## Change log:
+01-Aug-2020:
+- Remade the GE interface
+- Remade the Bank interface
+- Changed icon.png for the hub
+- Remade the FIXED_MODE and RESIZABLE_MODE enabled and disabled buttons in the OPTIONS -folder
+- Changed a few colors in the color.properties file
+- Fixed a weird shadowing on some bank buttons and combat style buttons
+
 26-Jul-2020:
 - Remade the bank tabs
 - Reverted a few sprites to vanilla sprites as they were the same in 2012-13 era
