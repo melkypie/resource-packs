@@ -5,7 +5,7 @@
 # FIXED:
 ![!image](https://i.imgur.com/EIqZpUs.png)
 
-# 2010 Legacy 1.0 (28-Jul-2020)
+# 2010 Legacy 1.1 (04-Aug-2020)
 
 # IF YOU HAVE ANY QUESTIONS OR FIND ANY ISSUES, PLEASE MESSAGE ME ON DISCORD @Shredit#6109
 
@@ -16,6 +16,13 @@
 - If you prefer using the vanilla spell/prayer icons, you can select so in the resource packs plugin settings.
 
 ## Change log:
+04-Aug-2020:
+- Cleaned up alot of sprites in the BUTTONS -folder
+- Remade the bank tabs and buttons
+- Remade the compass
+- Remade a few sprites in the GE -folder
+- Remade the equipment tab sprites in the EQUIPMENT -folder
+
 28-Jul-2020:
 
 - Initial release of the pack
