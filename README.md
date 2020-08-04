@@ -4,7 +4,7 @@ Allows you to create your own custom interface styles by not being only restrict
 ## How to use it:
 #### **New method:**
 1. Add the plugin from the runelite [plugin-hub](https://github.com/runelite/runelite/wiki/Information-about-the-Plugin-Hub)
-2. Look for this icon in the side panel: ![image](https://user-images.githubusercontent.com/5113962/85605204-a59c0980-b65a-11ea-9f06-627240d4a09c.png)
+2. Look for this icon in the side panel: ![image](https://i.imgur.com/gpg7VJK.png)
 3. To install one of the packs, click the green **Install** button  ![image](https://user-images.githubusercontent.com/5113962/85605474-dbd98900-b65a-11ea-9f32-e16a9aca9f75.png)
 4. The pack will automatically install and be applied.
 5. If you want to switch between the installed packs use the selected pack dropdown menu: ![image](https://user-images.githubusercontent.com/5113962/85605673-0f1c1800-b65b-11ea-96aa-c7682c92cda6.png)
