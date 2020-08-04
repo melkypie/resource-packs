@@ -5,7 +5,7 @@
 # FIXED:
 ![!image](https://i.ibb.co/wW7cnFT/fixed-icon.png)
 
-# 2012 INTERFACE 3.2 (01-Aug-2020)
+# 2012 INTERFACE 3.3 (04-Aug-2020)
 
 # IF YOU HAVE ANY QUESTIONS OR FIND ANY ISSUES, PLEASE MESSAGE ME AT DISCORD @Shredit#6109
 
@@ -16,6 +16,14 @@
 - If you prefer using the vanilla spell/prayer icons, you can select so in the resource packs plugin settings.
 
 ## Change log:
+04-Aug-2020:
+- Remade the border framing to match the 2012 look for various interfaces (iron rivets)
+- Changed the Worn Equipment tab icon to match the 2012 one'
+- Cleaned up a lot of sprites in the BUTTONS -folder
+- Changed a few colors in the color.properties file
+- Fixed the chatbox buttons (they were upside down when selected or hovered over)
+- Remade the listing sorting arrows in the OTHER -folder
+- Remade the BANK_PIN buttons
 01-Aug-2020:
 - Remade the GE interface
 - Remade the Bank interface
