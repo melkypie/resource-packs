@@ -1,11 +1,11 @@
 # RESIZABLE:
-![!image](https://i.imgur.com/wUqr4Dh.png)
+![!image](https://i.imgur.com/84xXGE5.png)
 # RESIZABLE (SIDE PANELS ON):
-![!image](https://i.imgur.com/tDxm6zM.png)
+![!image](https://i.imgur.com/68krPBa.png)
 # FIXED:
-![!image](https://i.imgur.com/EIqZpUs.png)
+![!image](https://i.imgur.com/cTAmA9q.png)
 
-# 2010 Legacy 1.1 (04-Aug-2020)
+# 2010 Legacy 2.0 (08-Aug-2020)
 
 # IF YOU HAVE ANY QUESTIONS OR FIND ANY ISSUES, PLEASE MESSAGE ME ON DISCORD @Shredit#6109
 
@@ -16,7 +16,19 @@
 - If you prefer using the vanilla spell/prayer icons, you can select so in the resource packs plugin settings.
 
 ## Change log:
+
+08-Aug-2020:
+
+- Remade around 50% current sprites, more details below
+- RESIZABLE_MODE -folder redone
+- FIXED_MODE -folder redone
+- Remade chatbox, report_abuse button and pointy swords
+- Remade the tabs and tab areas to match the RS3 Legacy interface
+- Remade the dialogue borders to match the RS3 Legacy interface
+- Remade most of the buttons to match the RS3 Legacy interface
+
 04-Aug-2020:
+
 - Cleaned up alot of sprites in the BUTTONS -folder
 - Remade the bank tabs and buttons
 - Remade the compass
