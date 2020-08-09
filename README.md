@@ -5,7 +5,7 @@
 # FIXED:
 ![!image](https://i.imgur.com/cTAmA9q.png)
 
-# 2010 Legacy 2.0 (08-Aug-2020)
+# 2010 Legacy 2.1 (09-Aug-2020)
 
 # IF YOU HAVE ANY QUESTIONS OR FIND ANY ISSUES, PLEASE MESSAGE ME ON DISCORD @Shredit#6109
 
@@ -16,6 +16,15 @@
 - If you prefer using the vanilla spell/prayer icons, you can select so in the resource packs plugin settings.
 
 ## Change log:
+09-Aug-2020:
+
+- Remade ironrivets (framing borders for various intefaces)
+- Remade thumbs_up and thumbs_down icons on the logout screen
+- Remade all close_buttons, all buttons now have correct hover overs
+- Replaced selected_item_glowing sprites from 2011 era RuneScape
+- Replaced inventory backgrounds for both RESIZABLE_MODE and FIXED_MODE
+- Remade interface backgrounds the same as they are in RS3 Legacy UI
+- Remade bank menu icon and added back the correct Equipment button for the bank interface
 
 08-Aug-2020:
 
