@@ -11,14 +11,14 @@ Old inventory:
 ![inv_old](https://i.imgur.com/C8OCNVw.png) 
 ![inv_old](https://i.imgur.com/WtYwv0J.png)  
 Tweaked (lighter for more visibility):  
-![inv_new](https://i.imgur.com/s7Vqtor.png) 
-![inv_new](https://i.imgur.com/41icSKf.png)  
+![inv_new](https://i.imgur.com/XkieMh6.png) 
+![inv_new](https://i.imgur.com/O86e8Tf.png)  
 
 ## Tweaked bank
 Old bank:  
 ![bank_old](https://i.imgur.com/EPzasSb.png)  
 Tweaked (lighter for more visibility):  
-![bank_new](https://i.imgur.com/7MckZ0i.png)  
+![bank_new](https://i.imgur.com/kyGngXj.png)  
 
 ## Tweaked chat buttons
 Old buttons:  
