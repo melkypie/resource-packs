@@ -1,11 +1,11 @@
 # RESIZABLE:
-![!image](https://i.imgur.com/84xXGE5.png)
+![!image](https://i.imgur.com/YnM9FYV.png)
 # RESIZABLE (SIDE PANELS ON):
-![!image](https://i.imgur.com/68krPBa.png)
+![!image](https://i.imgur.com/lMJzsFa.png)
 # FIXED:
-![!image](https://i.imgur.com/cTAmA9q.png)
+![!image](https://i.imgur.com/Bz6H9ks.png)
 
-# 2010 Legacy 2.1 (09-Aug-2020)
+# 2010 Legacy 2.2 (22-Aug-2020)
 
 # IF YOU HAVE ANY QUESTIONS OR FIND ANY ISSUES, PLEASE MESSAGE ME ON DISCORD @Shredit#6109
 
@@ -16,6 +16,12 @@
 - If you prefer using the vanilla spell/prayer icons, you can select so in the resource packs plugin settings.
 
 ## Change log:
+22-Aug-2020:
+
+- Fixed sizing on FIXED_MODE corner tabs
+- Remade the thumbs_up and thumbs_down button on the logout screen
+- Changed some other small stuff
+
 09-Aug-2020:
 
 - Remade ironrivets (framing borders for various intefaces)
