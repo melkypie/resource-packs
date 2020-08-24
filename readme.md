@@ -1,11 +1,11 @@
 # RESIZABLE:
-![!image](https://i.ibb.co/CKPy9GW/resizable-icon.png)
+![!image](https://i.imgur.com/757lLAa.png)
 # RESIZABLE (SIDE PANELS ON):
-![!image](https://i.ibb.co/LRbn877/resizable-sidepanel-icon.png)
+![!image](https://i.imgur.com/RC2DF6n.png)
 # FIXED:
-![!image](https://i.ibb.co/wW7cnFT/fixed-icon.png)
+![!image](https://i.imgur.com/kB06hn0.png)
 
-# 2012 INTERFACE 3.3 (04-Aug-2020)
+# 2012 INTERFACE 3.4 (22-Aug-2020)
 
 # IF YOU HAVE ANY QUESTIONS OR FIND ANY ISSUES, PLEASE MESSAGE ME AT DISCORD @Shredit#6109
 
@@ -16,6 +16,11 @@
 - If you prefer using the vanilla spell/prayer icons, you can select so in the resource packs plugin settings.
 
 ## Change log:
+22-Aug-2020:
+- Fixed sizing on FIXED_MODE corner tabs
+- Remade the thumbs_up and thumbs_down button on the logout screen
+- Changed some other small stuff
+
 04-Aug-2020:
 - Remade the border framing to match the 2012 look for various interfaces (iron rivets)
 - Changed the Worn Equipment tab icon to match the 2012 one'
@@ -24,6 +29,7 @@
 - Fixed the chatbox buttons (they were upside down when selected or hovered over)
 - Remade the listing sorting arrows in the OTHER -folder
 - Remade the BANK_PIN buttons
+
 01-Aug-2020:
 - Remade the GE interface
 - Remade the Bank interface
