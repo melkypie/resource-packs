@@ -1,5 +1,6 @@
 package melky.resourcepacks.hub;
 
+import com.google.common.base.Splitter;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.ImmutableMap;
 import java.awt.BorderLayout;
@@ -54,6 +55,7 @@ public class ResourcePacksHubPanel extends PluginPanel
 	private final ResourcePacksClient resourcePacksClient;
 	private final ScheduledExecutorService executor;
 	private final ResourcePacksConfig config;
+	private static final Splitter SPLITTER = Splitter.on(" ").trimResults().omitEmptyStrings();
 
 	private final IconTextField searchBar;
 	public final JComboBox currentHubPackComboBox;
@@ -290,9 +292,8 @@ public class ResourcePacksHubPanel extends PluginPanel
 		boolean isSearching = search != null && !search.trim().isEmpty();
 		if (isSearching)
 		{
-			String[] searchArray = SPACES.split(search.toLowerCase());
 			stream = stream
-				.filter(p -> Text.matchesSearchTerms(searchArray, p.keywords))
+				.filter(p -> Text.matchesSearchTerms(SPLITTER.split(search.toLowerCase()), p.keywords))
 				.sorted(Comparator.comparing(p -> p.manifest.getDisplayName()));
 		}
 		else
