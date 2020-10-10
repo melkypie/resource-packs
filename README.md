@@ -5,4 +5,4 @@
 Give your Runelite client a dark blue look. 
 
 
-<img src="https://i.imgur.com/TykmH8a.png" width="765"><br/>
+<img src="https://i.imgur.com/MhLrGDK.png" width="765"><br/>
