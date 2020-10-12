@@ -287,6 +287,8 @@ public class ResourcePacksManager
 			clientThread.invokeLater(() ->
 			{
 				adjustWidgetDimensions(false);
+				reloadColorProperties();
+				resetLoginScreen();
 				removeGameframe();
 			});
 		}

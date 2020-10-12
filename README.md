@@ -45,6 +45,12 @@ ex. C:\Users\user\Downloads\resource-packs-pack-osrs-dark (Windows) where user i
 
 ## Change log
 
+### 1.2.1
+- Fixes the login screen and overlay not toggling when switching the hub option to None
+- Adds a new color option `make_all_background_clicked`
+- Fixes not being able to recolor the xpgoals overlay goal border.
+- Rename Advanced options to Experimental options and added a toggle to enable color current pack option and toggle to disable overlay recoloring
+
 ### 1.2.0
 - Add ability to change colors
 

@@ -51,11 +51,11 @@ import net.runelite.client.util.Text;
 public class ResourcePacksHubPanel extends PluginPanel
 {
 	public static final Pattern SPACES = Pattern.compile(" +");
+	public static final Splitter SPLITTER = Splitter.on(" ").trimResults().omitEmptyStrings();
 	private final ResourcePacksManager resourcePacksManager;
 	private final ResourcePacksClient resourcePacksClient;
 	private final ScheduledExecutorService executor;
 	private final ResourcePacksConfig config;
-	private static final Splitter SPLITTER = Splitter.on(" ").trimResults().omitEmptyStrings();
 
 	private final IconTextField searchBar;
 	public final JComboBox currentHubPackComboBox;
