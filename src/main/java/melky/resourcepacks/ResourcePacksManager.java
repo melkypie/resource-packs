@@ -484,7 +484,7 @@ public class ResourcePacksManager
 		try
 		{
 			BufferedImage image = ImageIO.read(spriteFile);
-			if (config.colorPack() != null)
+			if (config.allowColorPack() && config.colorPack() != null)
 			{
 				image = dye(image, config.colorPack());
 			}
@@ -581,14 +581,10 @@ public class ResourcePacksManager
 				configManager.getConfiguration(RuneLiteConfig.GROUP_NAME, OVERLAY_COLOR_CONFIG));
 		}
 		ResourcePacksPlugin.setIgnoreOverlayConfig(true);
-		Color overlayColor;
-		if (config.colorPack() != null && config.colorPack().getAlpha() != 0)
+		Color overlayColor = ColorUtil.fromHex(colorProperties.getProperty("overlay_color"));
+		if (config.allowColorPack() && config.colorPack() != null && config.colorPack().getAlpha() != 0 && config.colorPackOverlay())
 		{
 			overlayColor = config.colorPack();
-		}
-		else
-		{
-			overlayColor = ColorUtil.fromHex(colorProperties.getProperty("overlay_color"));
 		}
 
 		configManager.setConfiguration(RuneLiteConfig.GROUP_NAME, OVERLAY_COLOR_CONFIG, overlayColor);

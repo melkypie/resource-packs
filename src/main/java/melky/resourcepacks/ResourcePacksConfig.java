@@ -28,12 +28,12 @@ public interface ResourcePacksConfig extends Config
 	)
 	String resourcePackPaths = "resourcePackPaths";
 
-	@ConfigSection(name = "Advanced options",
+	@ConfigSection(name = "Experimental options",
 		description = "Do not touch if you don't know what you are doing",
 		position = 8,
 		closedByDefault = true
 	)
-	String advancedOptions = "advancedOptions";
+	String experimentalOptions = "experimentalOptions";
 
 	@ConfigItem(
 		keyName = "resourcePack",
@@ -115,15 +115,39 @@ public interface ResourcePacksConfig extends Config
 		return true;
 	}
 
+	@ConfigItem(
+		keyName = "allowColorPack",
+		name = "Enables color current pack option",
+		description = "This option must be on for Color current pack option to work",
+		position = 8,
+		section = experimentalOptions
+	)
+	default boolean allowColorPack()
+	{
+		return false;
+	}
+
 	@Alpha
 	@ConfigItem(
 		keyName = "colorPack",
 		name = "Color current pack",
 		description = "Allows you to apply a color overlay over the currently selected resource pack",
-		position = 8,
-		section = advancedOptions
+		position = 9,
+		section = experimentalOptions
 	)
 	Color colorPack();
+
+	@ConfigItem(
+		keyName = "colorPackOverlay",
+		name = "Allows color current pack to change overlays",
+		description = "This option will only work if color current pack is enabled and a color is assigned",
+		position = 10,
+		section = experimentalOptions
+	)
+	default boolean colorPackOverlay()
+	{
+		return true;
+	}
 
 	@ConfigItem(
 		keyName = "selectedHubPack",
