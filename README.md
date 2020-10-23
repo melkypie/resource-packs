@@ -1,4 +1,4 @@
-# Resource packs
+# Resource packs [![Active Installs](http://img.shields.io/endpoint?url=https://i.pluginhub.info/shields/installs/plugin/resource-packs)](https://runelite.net/plugin-hub/melky) [![Plugin Rank](http://img.shields.io/endpoint?url=https://i.pluginhub.info/shields/rank/plugin/resource-packs)](https://runelite.net/plugin-hub)
 Allows you to create your own custom interface styles by not being only restricted to 2005/2006/2010 ones.
 
 ## How to use it:
