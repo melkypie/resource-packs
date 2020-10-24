@@ -9,6 +9,7 @@ Allows you to create your own custom interface styles by not being only restrict
 4. The pack will automatically install and be applied.
 5. If you want to switch between the installed packs use the selected pack dropdown menu: ![image](https://user-images.githubusercontent.com/5113962/85605673-0f1c1800-b65b-11ea-96aa-c7682c92cda6.png)
 6. You can easily remove a pack by pressing the red Remove button.
+7. Make sure your interface styles plugin gameframe is set to the DEFAULT skin (it can cause weird issues otherwise). Everything else is fine but will require a restart of the plugin should you activate any of them after you have resource pack set up.
 
 The installed packs are automatically updated when starting the client or you can press the update button in the panel to update that pack.
 
