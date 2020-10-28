@@ -46,6 +46,9 @@ ex. C:\Users\user\Downloads\resource-packs-pack-osrs-dark (Windows) where user i
 
 ## Change log
 
+### 1.2.1.1
+- Added a new sprite DIALOG_IRON_RIVETS_BOTTOM which is the same sprite as DIALOG_IRON_RIVETS_HORIZONTAL (pack creators beware due to the addition of the new sprite both of the sprites have changed a bit. All hub packs will be updated)
+
 ### 1.2.1
 - Fixes the login screen and overlay not toggling when switching the hub option to None
 - Adds a new color option `make_all_background_clicked`
