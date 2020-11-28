@@ -15,5 +15,5 @@ In turn, [Runelite itself has been confirmed as fully compliant by Jagex](https:
 ![Resizable Mode](https://i.imgur.com/3k1iaEA.png)
 
 ## Changelog
-     Release 1.0
-        * Initial release.
+Version 1.0 - Initial release.
+Version 1.2.1.1 - Reduced pack size, fixed default overlay color; updated to 1.2.1.1.
