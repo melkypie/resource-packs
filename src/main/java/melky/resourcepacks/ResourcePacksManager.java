@@ -64,27 +64,6 @@ import okhttp3.Response;
 @Slf4j
 public class ResourcePacksManager
 {
-	enum ApiFormat
-	{
-		v1,
-		v2;
-
-		public static ApiFormat getFormat(String input)
-		{
-			for (ApiFormat format : ApiFormat.values())
-			{
-				if (format.toString().equals(input))
-				{
-					return format;
-				}
-			}
-
-			return v1;
-		}
-	}
-
-	private ApiFormat currentFormat;
-
 	@Getter
 	private final Properties properties = new Properties();
 
@@ -364,7 +343,7 @@ public class ResourcePacksManager
 		overrideSprites();
 		applyWidgetOverrides();
 
-		if (currentFormat == ApiFormat.v1)
+		if (config.apiFormat() == ResourcePacksConfig.ApiFormat.v1)
 		{
 			adjustWidgetDimensions(false);
 			adjustWidgetDimensions(true);
@@ -538,7 +517,7 @@ public class ResourcePacksManager
 			for (SpriteOverride spriteOverride : collection)
 			{
 				SpritePixels spritePixels = getSpritePixels(spriteOverride, currentPackPath);
-				if (currentFormat != ApiFormat.v1)
+				if (config.apiFormat() != ResourcePacksConfig.ApiFormat.v1)
 				{
 					SpritePixels[] sp = client.getSprites(client.getIndexSprites(), spriteOverride.getSpriteID(), 0);
 					if (sp == null)
@@ -616,13 +595,13 @@ public class ResourcePacksManager
 		}
 		catch (IOException e)
 		{
-			currentFormat = ApiFormat.v1;
+			config.apiFormat(ResourcePacksConfig.ApiFormat.v1);
 			log.debug("properties not found");
 			resetOverlayColor();
 			return;
 		}
 
-		currentFormat = ApiFormat.getFormat((String) properties.getOrDefault("api_format", "v1"));
+		config.apiFormat(ResourcePacksConfig.ApiFormat.getFormat((String) properties.getOrDefault("api_format", "v1")));
 		if (config.allowOverlayColor())
 		{
 			changeOverlayColor();
