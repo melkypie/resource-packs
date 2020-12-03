@@ -198,7 +198,7 @@ public class ResourcePacksPlugin extends Plugin
 	@Subscribe
 	public void onScriptPostFired(ScriptPostFired event)
 	{
-		if (WidgetOverride.scriptWidgetOverrides.containsKey(event.getScriptId()) && !resourcePacksManager.getColorProperties().isEmpty())
+		if (WidgetOverride.scriptWidgetOverrides.containsKey(event.getScriptId()) && !resourcePacksManager.getProperties().isEmpty())
 		{
 			for (WidgetOverride widgetOverride : WidgetOverride.scriptWidgetOverrides.get(event.getScriptId()))
 			{
