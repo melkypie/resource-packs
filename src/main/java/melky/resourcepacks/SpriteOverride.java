@@ -1124,7 +1124,9 @@ enum SpriteOverride
 	IMPLING_LUCKY(SpriteID.PURO_PURO_LUCKY_IMPLING, Folder.IMPLING),
 	;
 
+	@Getter
 	private final int spriteID;
+	@Getter
 	private final Folder folder;
 	@Getter
 	private static final ImmutableSetMultimap<Folder, SpriteOverride> overrides;

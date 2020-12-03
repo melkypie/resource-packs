@@ -65,7 +65,7 @@ import okhttp3.Response;
 public class ResourcePacksManager
 {
 	@Getter
-	private final Properties colorProperties = new Properties();
+	private final Properties properties = new Properties();
 
 	@Inject
 	private Client client;
@@ -287,7 +287,7 @@ public class ResourcePacksManager
 			clientThread.invokeLater(() ->
 			{
 				adjustWidgetDimensions(false);
-				reloadColorProperties();
+				reloadProperties();
 				resetLoginScreen();
 				removeGameframe();
 			});
@@ -337,12 +337,17 @@ public class ResourcePacksManager
 		{
 			return;
 		}
+
 		removeGameframe();
+		reloadProperties();
 		overrideSprites();
-		reloadColorProperties();
 		applyWidgetOverrides();
-		adjustWidgetDimensions(false);
-		adjustWidgetDimensions(true);
+
+		if (config.apiFormat() == ResourcePacksConfig.ApiFormat.v1)
+		{
+			adjustWidgetDimensions(false);
+			adjustWidgetDimensions(true);
+		}
 	}
 
 	void removeGameframe()
@@ -471,11 +476,11 @@ public class ResourcePacksManager
 	{
 		String folder = spriteOverride.getFolder().name().toLowerCase();
 		String name = spriteOverride.name().toLowerCase();
+
 		if (!folder.equals("other"))
 		{
 			name = name.replaceFirst(folder + "_", "");
 		}
-
 
 		File spriteFile = new File(currentPackPath + File.separator + folder + File.separator + name + ".png");
 		if (!spriteFile.exists())
@@ -512,6 +517,21 @@ public class ResourcePacksManager
 			for (SpriteOverride spriteOverride : collection)
 			{
 				SpritePixels spritePixels = getSpritePixels(spriteOverride, currentPackPath);
+				if (config.apiFormat() != ResourcePacksConfig.ApiFormat.v1)
+				{
+					SpritePixels[] sp = client.getSprites(client.getIndexSprites(), spriteOverride.getSpriteID(), 0);
+					if (sp == null)
+					{
+						continue;
+					}
+					SpritePixels originalSprite = sp[0];
+
+					spritePixels.setMaxHeight(originalSprite.getMaxHeight());
+					spritePixels.setMaxWidth(originalSprite.getMaxWidth());
+					spritePixels.setOffsetX(originalSprite.getOffsetX());
+					spritePixels.setOffsetY(originalSprite.getOffsetY());
+				}
+
 				if (config.allowLoginScreen() && spriteOverride == SpriteOverride.LOGIN_SCREEN_BACKGROUND)
 				{
 					if (spritePixels != null)
@@ -554,20 +574,34 @@ public class ResourcePacksManager
 		eventBus.post(loginScreenConfigChanged);
 	}
 
-	void reloadColorProperties()
+	private File getPropertiesFile()
 	{
-		colorProperties.clear();
-		File colorPropertiesFile = new File(getCurrentPackPath() + "/color.properties");
+		File propertiesFile = new File(getCurrentPackPath() + "/config.properties");
+		if (propertiesFile.exists())
+		{
+			return propertiesFile;
+		}
+
+		return new File(getCurrentPackPath() + "/color.properties");
+	}
+
+	void reloadProperties()
+	{
+		properties.clear();
+		File colorPropertiesFile = getPropertiesFile();
 		try (InputStream in = new FileInputStream(colorPropertiesFile))
 		{
-			colorProperties.load(in);
+			properties.load(in);
 		}
 		catch (IOException e)
 		{
-			log.debug("Color properties not found");
+			config.apiFormat(ResourcePacksConfig.ApiFormat.v1);
+			log.debug("properties not found");
 			resetOverlayColor();
 			return;
 		}
+
+		config.apiFormat(ResourcePacksConfig.ApiFormat.getFormat((String) properties.getOrDefault("api_format", "v1")));
 		if (config.allowOverlayColor())
 		{
 			changeOverlayColor();
@@ -583,7 +617,7 @@ public class ResourcePacksManager
 				configManager.getConfiguration(RuneLiteConfig.GROUP_NAME, OVERLAY_COLOR_CONFIG));
 		}
 		ResourcePacksPlugin.setIgnoreOverlayConfig(true);
-		Color overlayColor = ColorUtil.fromHex(colorProperties.getProperty("overlay_color"));
+		Color overlayColor = ColorUtil.fromHex(properties.getProperty("overlay_color"));
 		if (config.allowColorPack() && config.colorPack() != null && config.colorPack().getAlpha() != 0 && config.colorPackOverlay())
 		{
 			overlayColor = config.colorPack();
@@ -619,7 +653,7 @@ public class ResourcePacksManager
 
 	private void applyWidgetOverrides()
 	{
-		if (colorProperties.isEmpty())
+		if (properties.isEmpty())
 		{
 			return;
 		}
@@ -633,9 +667,9 @@ public class ResourcePacksManager
 	public void addPropertyToWidget(WidgetOverride widgetOverride)
 	{
 		int property;
-		if (colorProperties.containsKey(widgetOverride.name().toLowerCase()))
+		if (properties.containsKey(widgetOverride.name().toLowerCase()))
 		{
-			String widgetProperty = colorProperties.getProperty(widgetOverride.name().toLowerCase());
+			String widgetProperty = properties.getProperty(widgetOverride.name().toLowerCase());
 			if (!widgetProperty.isEmpty())
 			{
 				property = Integer.decode(widgetProperty);
