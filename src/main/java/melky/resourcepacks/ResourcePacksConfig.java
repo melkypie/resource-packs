@@ -22,25 +22,6 @@ public interface ResourcePacksConfig extends Config
 		HUB
 	}
 
-	enum ApiFormat
-	{
-		v1,
-		v2;
-
-		public static ApiFormat getFormat(String input)
-		{
-			for (ApiFormat format : ApiFormat.values())
-			{
-				if (format.toString().equals(input))
-				{
-					return format;
-				}
-			}
-
-			return v1;
-		}
-	}
-
 	@ConfigSection(name = "Resource pack paths",
 		description = "Contains resource pack paths",
 		position = 2
@@ -178,23 +159,4 @@ public interface ResourcePacksConfig extends Config
 	{
 		return "";
 	}
-
-	@ConfigItem(
-		keyName = "apiFormat",
-		hidden = true,
-		description = "",
-		name = ""
-	)
-	default ApiFormat apiFormat()
-	{
-		return ApiFormat.v1;
-	}
-
-	@ConfigItem(
-		keyName = "apiFormat",
-		hidden = true,
-		description = "",
-		name = ""
-	)
-	void apiFormat(ApiFormat apiFormat);
 }
