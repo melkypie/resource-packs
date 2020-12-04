@@ -46,6 +46,15 @@ ex. C:\Users\user\Downloads\resource-packs-pack-osrs-dark (Windows) where user i
 
 ## Change log
 
+### 1.3.0
+- Added medium tabs in the bond pouch interface
+- Added the side tabs in the new options interface
+- Added the new options checkboxes, sliders and the audio tab icon
+- Added a test which allows for generation of sample-vanilla automatically from a sprite dump
+  - Due to this the sample-vanilla pack has changed a bit (quite a bit of dimensions have been corrected). These changes won't affect existing packs but I suggest you look through the list which can be found [here](https://github.com/melkypie/resource-packs/commit/4d5639e2a3b7dc853f6499e9aba64b7a9f27da5c)
+  
+More info on sprites added can be seen [here](https://github.com/melkypie/resource-packs/commit/294f9d6f613300f82bc282a9f5ce30a904887f94)
+
 ### 1.2.1.1
 - Added a new sprite DIALOG_IRON_RIVETS_BOTTOM which is the same sprite as DIALOG_IRON_RIVETS_HORIZONTAL (pack creators beware due to the addition of the new sprite both of the sprites have changed a bit. All hub packs will be updated)
 
@@ -54,6 +63,8 @@ ex. C:\Users\user\Downloads\resource-packs-pack-osrs-dark (Windows) where user i
 - Adds a new color option `make_all_background_clicked`
 - Fixes not being able to recolor the xpgoals overlay goal border.
 - Rename Advanced options to Experimental options and added a toggle to enable color current pack option and toggle to disable overlay recoloring
+
+More info on sprites added can be seen [here](https://github.com/melkypie/resource-packs/commit/1417a71e39463d3b46cb8f042882aa5a5c335710)
 
 ### 1.2.0
 - Add ability to change colors
