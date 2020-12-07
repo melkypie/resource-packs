@@ -14,6 +14,7 @@ In turn, [Runelite itself has been confirmed as fully compliant by Jagex](https:
 ![Fixed Mode](https://i.imgur.com/NALUNpy.png)
 ![Resizable Mode](https://i.imgur.com/3k1iaEA.png)
 
-## Changelog
+# Changelog
 Version 1.0 - Initial release.
 Version 1.2.1.1 - Reduced pack size, fixed default overlay color; updated to 1.2.1.1.
+Version 1.3.0 - New icons recolored, removed unused icons, new sliders added; updated to 1.3.0.
