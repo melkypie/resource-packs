@@ -44,9 +44,6 @@ public class ResourcePacksPlugin extends Plugin
 	private static boolean ignoreOverlayConfig = false;
 
 	@Inject
-	private Client client;
-
-	@Inject
 	private ClientThread clientThread;
 
 	@Inject
@@ -167,7 +164,7 @@ public class ResourcePacksPlugin extends Plugin
 		}
 		else if (event.getGroup().equals("banktags") && event.getKey().equals("useTabs"))
 		{
-			clientThread.invoke(resourcePacksManager::updateAllOverrides);
+			clientThread.invoke(resourcePacksManager::reloadBankTagSprites);
 		}
 		else if (config.allowOverlayColor() && !ignoreOverlayConfig &&
 			event.getGroup().equals(RuneLiteConfig.GROUP_NAME) && event.getKey().equals(OVERLAY_COLOR_CONFIG))

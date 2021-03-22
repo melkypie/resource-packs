@@ -544,6 +544,26 @@ public class ResourcePacksManager
 		});
 	}
 
+	void reloadBankTagSprites()
+	{
+		String currentPackPath = getCurrentPackPath();
+		SpriteOverride.getOverrides().asMap().forEach((key, collection) -> {
+			if (!Files.isDirectory(Paths.get(currentPackPath + File.separator + key.name().toLowerCase())))
+			{
+				return;
+			}
+			for (SpriteOverride spriteOverride : collection)
+			{
+				if (spriteOverride.getSpriteID() < -200)
+				{
+					SpritePixels spritePixels = getSpritePixels(spriteOverride, currentPackPath);
+					client.getSpriteOverrides().remove(spriteOverride.getSpriteID());
+					client.getSpriteOverrides().put(spriteOverride.getSpriteID(), spritePixels);
+				}
+			}
+		});
+	}
+
 	void resetLoginScreen()
 	{
 		ConfigChanged loginScreenConfigChanged = new ConfigChanged();
