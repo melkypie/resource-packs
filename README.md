@@ -1,6 +1,6 @@
 # High detail
 
-This pack is meant to thematically go with the 'high detail menu' option in the base client's Interface Styles plugin, with a few personal touches added.
+This pack is meant to thematically go with the 'high detail menu' option in the base client's Interface Styles plugin, with a few personal touches added. If you have any questions or suggestions, feel free to hit me on twtiter I'm @6cythe :)
 
 Screenshots
 
