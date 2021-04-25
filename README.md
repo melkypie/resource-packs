@@ -1,10 +1,10 @@
-![icon](https://raw.githubusercontent.com/Kalapen0/resource-packs/pack-k-purple/icon.png)
+![icon](https://i.imgur.com/3rrt5b9.png)
 
 
 ## Resizable
-![resizable](https://raw.githubusercontent.com/Kalapen0/resource-packs/pack-k-purple/resizeable_mode.png)
+![resizable](https://i.imgur.com/FQZHqJm.png)
 
 ## Fixed
-![resizable](https://raw.githubusercontent.com/Kalapen0/resource-packs/pack-k-purple/fixed_mode.png)
+![resizable](https://i.imgur.com/5rb6QUN.png)
 
-### Big thanks to Melky for having the patience to deal with my garbage Git skills.
+Big thanks to Melky for having the patience to deal with my garbage Git skills.
