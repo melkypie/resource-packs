@@ -1,0 +1,1 @@
+{"internalName":"K-Purple","commit":" ","displayName":"Kalapeno's Purple","compatibleVersion":"1.3.0","author":"Kalapeno","tags":[,"purple","dark","vanilla","recolor"],"repo":"https://github.com/Kalapen0/Pack-K-Purple","hasIcon":true}
