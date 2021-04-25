@@ -1,1 +1,1 @@
-{"internalName":"K-Purple","commit":" ","displayName":"Kalapeno's Purple","compatibleVersion":"1.3.0","author":"Kalapeno","tags":[,"purple","dark","vanilla","recolor"],"repo":"https://github.com/Kalapen0/resource-packs/tree/pack-k-purple","hasIcon":true}
+{"internalName":"K-Purple","commit":"689ca0d65b6cfc6e8f05745ba6af2c61c949f67e","displayName":"Kalapeno's Purple","compatibleVersion":"1.3.0","author":"Kalapeno","tags":[,"purple","dark","vanilla","recolor"],"repo":"https://github.com/Kalapen0/resource-packs/tree/pack-k-purple","hasIcon":true}
