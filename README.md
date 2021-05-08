@@ -50,6 +50,15 @@ ex. C:\Users\user\Downloads\resource-packs-pack-osrs-dark (Windows) where user i
 
 ## Change log
 
+### 1.3.2
+- Quite a lot of changes to arceuus spelbook due to the rework
+- Added the ge cancel offer button
+- Added the special attack bar coloring
+- Added a discord invite link to the resource packs hub panel
+- Some sprites had been changed by Jagex at some point, the changes are pretty minor.
+
+More info on sprites added can be seen [here](https://github.com/melkypie/resource-packs/commit/81b665d438d7835a24563572e4f9a7edf84953c4)
+
 ### 1.3.0
 - Added medium tabs in the bond pouch interface
 - Added the side tabs in the new options interface

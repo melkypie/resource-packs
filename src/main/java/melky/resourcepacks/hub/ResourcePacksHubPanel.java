@@ -9,6 +9,7 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -27,6 +28,7 @@ import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -40,10 +42,13 @@ import javax.swing.event.DocumentListener;
 import lombok.extern.slf4j.Slf4j;
 import melky.resourcepacks.ResourcePacksConfig;
 import melky.resourcepacks.ResourcePacksManager;
+import net.runelite.client.plugins.discord.DiscordPlugin;
 import net.runelite.client.ui.ColorScheme;
 import net.runelite.client.ui.DynamicGridLayout;
 import net.runelite.client.ui.PluginPanel;
 import net.runelite.client.ui.components.IconTextField;
+import net.runelite.client.util.ImageUtil;
+import net.runelite.client.util.LinkBrowser;
 import net.runelite.client.util.Text;
 
 @Slf4j
@@ -61,8 +66,17 @@ public class ResourcePacksHubPanel extends PluginPanel
 	public final JComboBox currentHubPackComboBox;
 	private final JLabel refreshing;
 	private final JPanel mainPanel;
+	private static final ImageIcon DISCORD_ICON;
+	private static final int BOTTOM_LINE_HEIGHT = 24;
+	private static final int DISCORD_ICON_SIZE = 18;
 	private List<ResourcePacksHubItem> packs = null;
 	private boolean ignoreSelected = false;
+
+	static
+	{
+		final BufferedImage discordIcon = ImageUtil.resizeImage(ImageUtil.loadImageResource(DiscordPlugin.class, "discord.png"), DISCORD_ICON_SIZE, DISCORD_ICON_SIZE);
+		DISCORD_ICON = new ImageIcon(discordIcon);
+	}
 
 	@Inject
 	ResourcePacksHubPanel(
@@ -119,6 +133,27 @@ public class ResourcePacksHubPanel extends PluginPanel
 			}
 		});
 
+		JButton discordButton = new JButton();
+		discordButton.setIcon(DISCORD_ICON);
+		discordButton.setBackground(ColorScheme.DARK_GRAY_COLOR);
+		discordButton.addActionListener((ev) -> LinkBrowser.browse("https://discord.gg/DsDhUz4NNN"));
+		discordButton.setToolTipText("Hang out with pack creators and ask for any help");
+		discordButton.addChangeListener(ev ->
+		{
+			if (discordButton.getModel().isPressed())
+			{
+				discordButton.setBackground(ColorScheme.DARKER_GRAY_COLOR);
+			}
+			else if (discordButton.getModel().isRollover())
+			{
+				discordButton.setBackground(ColorScheme.DARK_GRAY_HOVER_COLOR);
+			}
+			else
+			{
+				discordButton.setBackground(ColorScheme.DARK_GRAY_COLOR);
+			}
+		});
+
 		currentHubPackComboBox = new JComboBox();
 		currentHubPackComboBox.setPrototypeDisplayValue("XXXXXXXXXXX");
 		currentHubPackComboBox.addItemListener(e -> {
@@ -158,7 +193,9 @@ public class ResourcePacksHubPanel extends PluginPanel
 
 		layout.setVerticalGroup(layout.createSequentialGroup()
 			.addGap(5)
-			.addComponent(searchBar)
+			.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+				.addComponent(searchBar, BOTTOM_LINE_HEIGHT, BOTTOM_LINE_HEIGHT, BOTTOM_LINE_HEIGHT)
+				.addComponent(discordButton, BOTTOM_LINE_HEIGHT, BOTTOM_LINE_HEIGHT, BOTTOM_LINE_HEIGHT))
 			.addGap(5)
 			.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
 				.addComponent(currentHubPackLabel)
@@ -170,6 +207,8 @@ public class ResourcePacksHubPanel extends PluginPanel
 			.addGroup(layout.createSequentialGroup()
 				.addGap(7)
 				.addComponent(searchBar)
+				.addGap(3)
+				.addComponent(discordButton, 0, 24, 24)
 				.addGap(7))
 			.addGroup(layout.createSequentialGroup()
 				.addGap(7)
