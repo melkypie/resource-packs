@@ -50,6 +50,11 @@ ex. C:\Users\user\Downloads\resource-packs-pack-osrs-dark (Windows) where user i
 
 ## Change log
 
+### 1.3.2.1
+- Remove the previously added special attack bar recoloring due to it being a conditional recolor based on if you have enough special attack
+
+More info can be found here [here](https://github.com/melkypie/resource-packs/commit/f7238b1a85c0a4d5b42b4dd454bc6d5faeda084b)
+
 ### 1.3.2
 - Quite a lot of changes to arceuus spelbook due to the rework
 - Added the ge cancel offer button
