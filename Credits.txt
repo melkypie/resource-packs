@@ -1,0 +1,10 @@
+
+
+This interface is a replica of an unrealeased RSHD interface by Tom Geoghegan:
+https://www.behance.net/gallery/13412965/RuneScape-User-Interface
+
+This pack is partially based on the 2012 interface by Shredit:
+https://github.com/melkypie/resource-packs/wiki/Resource-packs-hub
+
+
+Additional help was provided to me by Frankz
