@@ -50,6 +50,14 @@ ex. C:\Users\user\Downloads\resource-packs-pack-osrs-dark (Windows) where user i
 
 ## Change log
 
+### 1.3.2
+- Changes the chatbox and report buttons to match with latest osrs update (the sprites luckily don't need to be updated by pack makers and only report button size has changed)
+- Add the new tab clan_channel and guest_clan_channel sprites
+- Add a new folder clans_tab
+- Some sprites have been cleaned up by Jagex so those have been updated accordingly in sample pack
+
+More info on sprites added can be seen [here](https://github.com/melkypie/resource-packs/compare/f7238b1a85c0...17583c24df5c)
+
 ### 1.3.2.1
 - Remove the previously added special attack bar recoloring due to it being a conditional recolor based on if you have enough special attack
 
