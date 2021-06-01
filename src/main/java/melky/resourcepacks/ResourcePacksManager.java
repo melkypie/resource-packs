@@ -650,6 +650,16 @@ public class ResourcePacksManager
 		}
 	}
 
+	public void resetWidgetOverrides()
+	{
+		colorProperties.clear();
+
+		for (WidgetOverride widgetOverride : WidgetOverride.values())
+		{
+			addPropertyToWidget(widgetOverride);
+		}
+	}
+
 	public void addPropertyToWidget(WidgetOverride widgetOverride)
 	{
 		int property;

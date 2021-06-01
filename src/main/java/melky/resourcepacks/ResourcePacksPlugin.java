@@ -107,6 +107,7 @@ public class ResourcePacksPlugin extends Plugin
 		{
 			resourcePacksManager.adjustWidgetDimensions(false);
 			resourcePacksManager.removeGameframe();
+			resourcePacksManager.resetWidgetOverrides();
 		});
 		if (config.allowLoginScreen())
 		{

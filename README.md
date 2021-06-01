@@ -50,7 +50,15 @@ ex. C:\Users\user\Downloads\resource-packs-pack-osrs-dark (Windows) where user i
 
 ## Change log
 
-### 1.3.2
+### 1.3.4
+- Add the Settings window keybinding channel icon
+- Allow to recolor settings tabs, channel tabs and kourend favour seperator lines
+- Fix the chatbox seperator line not being recolored
+- Fix the plugin being shut down not setting the colors back to vanilla
+
+More info on sprites/colors added can be seen [here](https://github.com/melkypie/resource-packs/commit/fb85fdbe6acff0a8b384c68782928fb550c52d7f)
+
+### 1.3.3
 - Changes the chatbox and report buttons to match with latest osrs update (the sprites luckily don't need to be updated by pack makers and only report button size has changed)
 - Add the new tab clan_channel and guest_clan_channel sprites
 - Add a new folder clans_tab
