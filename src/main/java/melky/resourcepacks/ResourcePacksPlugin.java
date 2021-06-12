@@ -10,7 +10,9 @@ import lombok.Setter;
 import melky.resourcepacks.event.ResourcePacksChanged;
 import melky.resourcepacks.hub.ResourcePacksHubPanel;
 import net.runelite.api.Client;
+import net.runelite.api.GameState;
 import net.runelite.api.events.BeforeRender;
+import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.ScriptPostFired;
 import net.runelite.client.RuneLite;
 import net.runelite.client.callback.ClientThread;
@@ -108,6 +110,7 @@ public class ResourcePacksPlugin extends Plugin
 			resourcePacksManager.adjustWidgetDimensions(false);
 			resourcePacksManager.removeGameframe();
 			resourcePacksManager.resetWidgetOverrides();
+			resourcePacksManager.resetCrossSprites();
 		});
 		if (config.allowLoginScreen())
 		{
@@ -151,6 +154,16 @@ public class ResourcePacksPlugin extends Plugin
 						resourcePacksManager.resetOverlayColor();
 					}
 					break;
+				case "allowCrossSprites":
+					if (config.allowCrossSprites())
+					{
+						clientThread.invokeLater(resourcePacksManager::changeCrossSprites);
+					}
+					else
+					{
+						resourcePacksManager.resetCrossSprites();
+					}
+					break;
 				case "allowLoginScreen":
 					if (config.allowLoginScreen())
 					{
@@ -191,6 +204,17 @@ public class ResourcePacksPlugin extends Plugin
 	public void onSessionClose(SessionClose event)
 	{
 		executor.submit(resourcePacksManager::refreshPlugins);
+	}
+
+	@Subscribe
+	public void onGameStateChanged(GameStateChanged gameStateChanged)
+	{
+		if (gameStateChanged.getGameState() != GameState.LOGIN_SCREEN)
+		{
+			return;
+		}
+
+		resourcePacksManager.changeCrossSprites();
 	}
 
 	@Subscribe

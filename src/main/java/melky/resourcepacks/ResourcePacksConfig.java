@@ -30,7 +30,7 @@ public interface ResourcePacksConfig extends Config
 
 	@ConfigSection(name = "Experimental options",
 		description = "Do not touch if you don't know what you are doing",
-		position = 8,
+		position = 9,
 		closedByDefault = true
 	)
 	String experimentalOptions = "experimentalOptions";
@@ -116,10 +116,21 @@ public interface ResourcePacksConfig extends Config
 	}
 
 	@ConfigItem(
+		keyName = "allowCrossSprites",
+		name = "Allow mouse click sprite to be changed",
+		description = "Allows the cross/mouse click sprites to be changed (This won't work if you have cross sprites enabled in Interface styles)",
+		position = 8
+	)
+	default boolean allowCrossSprites()
+	{
+		return true;
+	}
+
+	@ConfigItem(
 		keyName = "allowColorPack",
 		name = "Enables color current pack option",
 		description = "This option must be on for Color current pack option to work",
-		position = 8,
+		position = 9,
 		section = experimentalOptions
 	)
 	default boolean allowColorPack()
@@ -132,7 +143,7 @@ public interface ResourcePacksConfig extends Config
 		keyName = "colorPack",
 		name = "Color current pack",
 		description = "Allows you to apply a color overlay over the currently selected resource pack",
-		position = 9,
+		position = 10,
 		section = experimentalOptions
 	)
 	Color colorPack();
@@ -141,7 +152,7 @@ public interface ResourcePacksConfig extends Config
 		keyName = "colorPackOverlay",
 		name = "Allows color current pack to change overlays",
 		description = "This option will only work if color current pack is enabled and a color is assigned",
-		position = 10,
+		position = 11,
 		section = experimentalOptions
 	)
 	default boolean colorPackOverlay()

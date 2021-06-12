@@ -66,6 +66,7 @@ public class ResourcePacksManager
 {
 	@Getter
 	private final Properties colorProperties = new Properties();
+	private SpritePixels[] defaultCrossSprites;
 
 	@Inject
 	private Client client;
@@ -343,6 +344,7 @@ public class ResourcePacksManager
 		applyWidgetOverrides();
 		adjustWidgetDimensions(false);
 		adjustWidgetDimensions(true);
+		changeCrossSprites();
 	}
 
 	void removeGameframe()
@@ -511,6 +513,11 @@ public class ResourcePacksManager
 
 			for (SpriteOverride spriteOverride : collection)
 			{
+				if (spriteOverride.getFolder() == SpriteOverride.Folder.CROSS_SPRITES)
+				{
+					continue;
+				}
+
 				SpritePixels spritePixels = getSpritePixels(spriteOverride, currentPackPath);
 				if (config.allowLoginScreen() && spriteOverride == SpriteOverride.LOGIN_SCREEN_BACKGROUND)
 				{
@@ -621,6 +628,53 @@ public class ResourcePacksManager
 				configManager.getConfiguration(ResourcePacksConfig.GROUP_NAME, ResourcePacksConfig.ORIGINAL_OVERLAY_COLOR));
 			configManager.unsetConfiguration(ResourcePacksConfig.GROUP_NAME, ResourcePacksConfig.ORIGINAL_OVERLAY_COLOR);
 		}
+	}
+
+	void changeCrossSprites()
+	{
+		if (!config.allowCrossSprites() || Boolean.getBoolean(configManager.getConfiguration("interfaceStyles", "rsCrossSprites")) || defaultCrossSprites != null)
+		{
+			return;
+		}
+
+		SpritePixels[] crossSprites = client.getCrossSprites();
+		if (crossSprites == null)
+		{
+			return;
+		}
+		defaultCrossSprites = new SpritePixels[crossSprites.length];
+		System.arraycopy(crossSprites, 0, defaultCrossSprites, 0, defaultCrossSprites.length);
+
+		String currentPackPath = getCurrentPackPath();
+		SpriteOverride.getOverrides().asMap().forEach((key, collection) -> {
+			if (key != SpriteOverride.Folder.CROSS_SPRITES || !Files.isDirectory(Paths.get(currentPackPath + File.separator + key.name().toLowerCase())))
+			{
+				return;
+			}
+
+			for (SpriteOverride spriteOverride : collection)
+			{
+				SpritePixels spritePixels = getSpritePixels(spriteOverride, currentPackPath);
+				crossSprites[spriteOverride.getFrameID()] = spritePixels;
+			}
+		});
+	}
+
+	void resetCrossSprites()
+	{
+		if (defaultCrossSprites == null)
+		{
+			return;
+		}
+
+		SpritePixels[] crossSprites = client.getCrossSprites();
+
+		if (crossSprites != null && defaultCrossSprites.length == crossSprites.length)
+		{
+			System.arraycopy(defaultCrossSprites, 0, crossSprites, 0, defaultCrossSprites.length);
+		}
+
+		defaultCrossSprites = null;
 	}
 
 	private BufferedImage dye(BufferedImage image, Color color)
