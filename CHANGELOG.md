@@ -1,5 +1,12 @@
 ## Change log
 
+### 1.4.1
+- Add support for new arceuus spells
+- Add spell requirement locks
+- Fix some bugs with cross sprites
+
+More info on sprites/colors added can be seen [here](https://github.com/melkypie/resource-packs/commit/50f02b1607913a8afaf1c28fd34ac317c18e395c)
+
 ### 1.4.0
 - Add support for changing cross sprites (left click/mouse click sprites)
 - Add a new left arrow button (seems to only be used in ToB party interface)
