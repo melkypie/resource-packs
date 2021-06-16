@@ -344,6 +344,7 @@ public class ResourcePacksManager
 		applyWidgetOverrides();
 		adjustWidgetDimensions(false);
 		adjustWidgetDimensions(true);
+		resetCrossSprites();
 		changeCrossSprites();
 	}
 
@@ -506,17 +507,14 @@ public class ResourcePacksManager
 		String currentPackPath = getCurrentPackPath();
 		SpriteOverride.getOverrides().asMap().forEach((key, collection) -> {
 			if (!Files.isDirectory(Paths.get(currentPackPath + File.separator + key.name().toLowerCase())) ||
-				(!config.allowSpellsPrayers() && (key.name().contains("SPELL") || key.equals(SpriteOverride.Folder.PRAYER))))
+				(!config.allowSpellsPrayers() && (key.name().contains("SPELL") || key.equals(SpriteOverride.Folder.PRAYER))) ||
+				key == SpriteOverride.Folder.CROSS_SPRITES)
 			{
 				return;
 			}
 
 			for (SpriteOverride spriteOverride : collection)
 			{
-				if (spriteOverride.getFolder() == SpriteOverride.Folder.CROSS_SPRITES)
-				{
-					continue;
-				}
 
 				SpritePixels spritePixels = getSpritePixels(spriteOverride, currentPackPath);
 				if (config.allowLoginScreen() && spriteOverride == SpriteOverride.LOGIN_SCREEN_BACKGROUND)
@@ -655,6 +653,9 @@ public class ResourcePacksManager
 			for (SpriteOverride spriteOverride : collection)
 			{
 				SpritePixels spritePixels = getSpritePixels(spriteOverride, currentPackPath);
+				if (spritePixels == null) {
+					continue;
+				}
 				crossSprites[spriteOverride.getFrameID()] = spritePixels;
 			}
 		});
@@ -747,7 +748,7 @@ public class ResourcePacksManager
 				for (int arrayId : widgetOverride.getWidgetArrayIds())
 				{
 					Widget arrayWidget = widgetToOverride.getChild(arrayId);
-					if (arrayWidget == null || arrayWidget.getTextColor() == -1)
+					if (arrayWidget == null || arrayWidget.getTextColor() == -1 || arrayWidget.getTextColor() == property)
 					{
 						continue;
 					}
@@ -756,7 +757,7 @@ public class ResourcePacksManager
 			}
 			else
 			{
-				if (widgetToOverride.getTextColor() != -1)
+				if (widgetToOverride.getTextColor() != -1 || widgetToOverride.getTextColor() != property)
 				{
 					widgetToOverride.setTextColor(property);
 				}
