@@ -75,7 +75,20 @@ public class ResourcePacksPlugin extends Plugin
 	@Override
 	protected void startUp() throws Exception
 	{
-		clientThread.invokeLater(resourcePacksManager::updateAllOverrides);
+		if (!RESOURCEPACKS_DIR.exists())
+		{
+			RESOURCEPACKS_DIR.mkdirs();
+		}
+
+		if (!NOTICE_FILE.exists())
+		{
+			NOTICE_FILE.createNewFile();
+		}
+
+		executor.submit(() -> {
+			resourcePacksManager.refreshPlugins();
+			clientThread.invokeLater(resourcePacksManager::updateAllOverrides);
+		});
 
 		resourcePacksHubPanel = injector.getInstance(ResourcePacksHubPanel.class);
 		final BufferedImage icon = ImageUtil.loadImageResource(getClass(), "/panel.png");
@@ -88,18 +101,6 @@ public class ResourcePacksPlugin extends Plugin
 			.build();
 
 		clientToolbar.addNavigation(navButton);
-
-		if (!RESOURCEPACKS_DIR.exists())
-		{
-			RESOURCEPACKS_DIR.mkdirs();
-		}
-
-		if (!NOTICE_FILE.exists())
-		{
-			NOTICE_FILE.createNewFile();
-		}
-
-		executor.submit(resourcePacksManager::refreshPlugins);
 	}
 
 	@Override
