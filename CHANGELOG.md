@@ -1,5 +1,12 @@
 ## Change log
 
+### 1.4.2
+- Add relic unlock trailblazer emote
+- Correct the ids of the arceuus salve graveyard teleport sprites
+- Potentially fix a bug where if the selected pack is being updated on the startup, the hub panel would stop loading, and some sprites may not have loaded
+
+More info on sprites added/changed can be seen [here](https://github.com/melkypie/resource-packs/commit/d085fbe1a96e41b20665ef51e71c470ed8a1c788)
+
 ### 1.4.1
 - Add support for new arceuus spells
 - Add spell requirement locks
