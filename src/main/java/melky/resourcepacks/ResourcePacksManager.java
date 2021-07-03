@@ -410,7 +410,7 @@ public class ResourcePacksManager
 		}
 		for (TabSprites tabSprite : TabSprites.values())
 		{
-			BufferedImage image = ImageUtil.getResourceStreamFromClass(getClass(), tabSprite.getFileName());
+			BufferedImage image = ImageUtil.loadImageResource(getClass(), tabSprite.getFileName());
 			SpritePixels sp = ImageUtil.getImageSpritePixels(image, client);
 			client.getSpriteOverrides().put(tabSprite.getSpriteId(), sp);
 		}
