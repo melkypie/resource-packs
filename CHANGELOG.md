@@ -1,5 +1,16 @@
 ## Change log
 
+### 1.4.3
+- Add new folder combat_achievements
+- Add dialog/progress_bar_grey and green (used in combat_achievements dialog currently)
+- Add tab/side_bar_* corners and tab/combat_achievements
+- Add quests_tab/combat_achievements_* icons in combat_achievements tab
+- Add other/plus* and other/minus*
+- Add button/menu*
+- Fix xp tracker border coloring
+
+More info on sprites added can be seen [here](https://github.com/melkypie/resource-packs/compare/4df6e8ee1b4bc8f9691fdafc002257c824ec273d..e1f8ae705d53623dc0162625916e4f8592dfd1f7)
+
 ### 1.4.2
 - Add relic unlock trailblazer emote
 - Correct the ids of the arceuus salve graveyard teleport sprites
