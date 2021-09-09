@@ -18,8 +18,8 @@ Here is a dark RS3 cursor to go with the pack. Save the following image as `curs
 Note: Some icons cannot be lined up perfectly in Fixed mode and Classic Resizable mode. I reccomend playing with `Resizable - Modern layout` for the best experience. If something looks off or misaligned, odds are it can't be fixed. I tried my best to make the pack be at least on par with the Interface Styles plugin.
  
 ## Resizable mode
-![image](https://user-images.githubusercontent.com/72536899/130370139-70d58fa4-0680-45d3-ac06-7f0f68c45ca4.png)
+![image](https://user-images.githubusercontent.com/72536899/132610218-ac6f2263-7a2c-4dcf-827e-8135c0bed157.png)
 
 ## Fixed mode
-![image](https://user-images.githubusercontent.com/72536899/130370141-a57dff18-4247-4403-bac3-b5011bf973c0.png)
+![image](https://user-images.githubusercontent.com/72536899/132610170-a03db911-daf5-442e-91a3-b8659d89a1b4.png)
 
