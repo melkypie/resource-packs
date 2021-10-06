@@ -1,5 +1,14 @@
 ## Change log
 
+### 1.4.4
+- Add the new group ironman sprites
+- Add minimap orb frame flashing (seems to only be used in tutorial island)
+- Add store button sprites
+- Minigame sprites are now the same as grouping sprites (after Jagex's rename of the minigame tab)
+- Updated some sprites to match vanilla sprites
+
+More info on sprites added can be seen [here](https://github.com/melkypie/resource-packs/compare/e1f8ae705d53623dc0162625916e4f8592dfd1f7..3398ecae733f74d47c36a07c46fcf7fd7f939392)
+
 ### 1.4.3
 - Add new folder combat_achievements
 - Add dialog/progress_bar_grey and green (used in combat_achievements dialog currently)
