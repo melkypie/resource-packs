@@ -13,7 +13,7 @@ The old Dark mode resource packs on the hub are many versions out of date so I w
 ![image](https://user-images.githubusercontent.com/72536899/136249443-90d30712-3a9e-4c35-b3f3-10ab319e496b.png)
 
 ## Custom inventory background
-If you want to have a custom inventory background, download the following images, overlay your desired image and save them in the `resizable_mode` folder and/or the `fixed_mode` folder respectively.[^1]
+If you want to have a custom inventory background[^1], download the following images, overlay your desired image and save them in the `resizable_mode` folder and/or the `fixed_mode` folder respectively.
 
 #### resizable_mode:[^2]
 ![side_panel_background](https://user-images.githubusercontent.com/72536899/148162691-87bedc1f-b87d-40e1-9930-a57331ceaae5.png)
