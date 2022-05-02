@@ -1,5 +1,5 @@
 # 2012 Interface
-## Latest version: v4.1 (2-May-2022)
+## Latest version: v4.3 (2-May-2022)
 
 *If you have any questions or find any issues, please message Discord **@Shredit#6109** or **@Leyline#5438***
 
@@ -34,7 +34,19 @@
 ```
 
 ---
-## v4.1 (2-May-2022)
+
+## v4.2 (2-May-2022)
+![!image](https://i.imgur.com/MP8leAj.png)
+- Restored HD cross sprites
+- Settings sliders have been improved
+  - Smoothened out shading
+  - Restored the '+' caret on the right side of the sliders
+- The bond pouch background has been restored with the old money pouch background
+- Added combat achievement icons
+
+---
+
+## v4.1 (2-May-2022 midnight)
 
 
 ![!image](https://i.imgur.com/fOMlsgb.png)
