@@ -1,5 +1,5 @@
 # 2012 Interface
-## Latest version: v4.3 (2-May-2022)
+## Latest version: v4.3 (4-May-2022)
 
 *If you have any questions or find any issues, please message Discord **@Shredit#6109** or **@Leyline#5438***
 
@@ -35,8 +35,25 @@
 
 ---
 
+## v4.3 (4-May-2022)
+![!image](https://i.imgur.com/5KILROG.png)
+- Bank
+  - Saarch icon has been moved slightly
+  - Changed out the smaller magnifying glass for the GE and music player interface search functions
+  - Improved the alias and colouring on the bank shuffle icon in the group ironman bank interface
+- Several osrs buttons have been upgraded to the 2012 style
+  - Several buttons throughout the interface such as equipment
+  - Left/right arrows
+  - Combat achievements interface buttons
+- Inverted the shading on the 'thumbs up' and 'thumbs down' icons on the logout menu
+  - It is now more clear when you hover over them
+- Slightly improved the contrast on running icons
+- Highly improved the alias quality of the prayer icon and resolved its transparency issues
+  - Previously black pixels were visible due to 'glow' of the icon, which resulted in darkening during alpha conversion
+---
+
 ## v4.2 (2-May-2022)
-![!image](https://i.imgur.com/MP8leAj.png)
+![!image](https://i.imgur.com/4dHmXQt.png)
 - Restored HD cross sprites
 - Settings sliders have been improved
   - Smoothened out shading
