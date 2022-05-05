@@ -38,7 +38,7 @@ Refer to the official resource-packs instructions -
 
 ## Screenshots
 
-<img src="https://user-images.githubusercontent.com/20504972/166666513-2df5178a-eefb-4b8e-8f47-a652be015b1d.png" width="45%"></img> <img src="https://user-images.githubusercontent.com/20504972/166666528-5d64a8eb-9698-41cb-9ccf-27bb237c2f28.png" width="45%"></img> <img src="https://user-images.githubusercontent.com/20504972/166922522-9cb8d9e7-b12d-4865-8670-b9698d29cc32.png" width="45%"></img> <img src="https://user-images.githubusercontent.com/20504972/166666567-bf60b3c0-1a67-462b-9c9c-e85f6209468c.png" width="45%"></img> <img src="https://user-images.githubusercontent.com/20504972/166666598-6f78f018-78d2-4208-91bf-aab09235f076.png" width="45%"></img> <img src="https://user-images.githubusercontent.com/20504972/166666581-b3a38f07-9bac-4f32-85cc-626c4dfe073f.png" width="45%"></img> 
+<img src="https://user-images.githubusercontent.com/20504972/166666513-2df5178a-eefb-4b8e-8f47-a652be015b1d.png" width="49%"></img> <img src="https://user-images.githubusercontent.com/20504972/166666528-5d64a8eb-9698-41cb-9ccf-27bb237c2f28.png" width="49%"></img> <img src="https://user-images.githubusercontent.com/20504972/166922522-9cb8d9e7-b12d-4865-8670-b9698d29cc32.png" width="49%"></img> <img src="https://user-images.githubusercontent.com/20504972/166666567-bf60b3c0-1a67-462b-9c9c-e85f6209468c.png" width="49%"></img> <img src="https://user-images.githubusercontent.com/20504972/166666598-6f78f018-78d2-4208-91bf-aab09235f076.png" width="49%"></img> <img src="https://user-images.githubusercontent.com/20504972/166666581-b3a38f07-9bac-4f32-85cc-626c4dfe073f.png" width="49%"></img> 
 
 
 ## Credits
