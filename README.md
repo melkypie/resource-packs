@@ -5,10 +5,14 @@
 # FIXED:
 ![!image](https://i.imgur.com/HzCrSiy.png)
 
-# RSHD-Style Pack by Surprise Pie (Sept 10, 2021)
+# RSHD-Style Pack by Surprise Pie (May 4, 2022)
 
 
 ## Change log:
+
+4 May 2022
+
+- Updated a ton of textures courtesey of u/KaleyRS, including general interface buttons and the entire Arceuus spellbook.
 
 10 Sept 2021
 
@@ -28,5 +32,9 @@ Jagex for assets
 Melkypie for the plugin and assets
 
 Shredit for the 2010 pack which served as a base for this one
+
+KaleyRS for the assets from the 2012 interface pack
+
+DemHunter for the assets from the 2010 HD Overhaul pack
 
 Surprise Pie for some sprite edits
