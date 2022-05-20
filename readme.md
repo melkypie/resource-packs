@@ -1,5 +1,5 @@
 # 2012 Interface
-## Latest version: v4.5 (9-May-2022)
+## Latest version: v4.6 (20-5-2022)
 
 *If you have any questions or find any issues, please message Discord **@Shredit#6109** or **@Leyline#5438***
 
@@ -31,6 +31,12 @@
 ```diff
 - When you get poisoned or venomed, your HP icon will reset to vanilla sprites due to a conflict with the "Poison" plugin, to fix this. Simply turn off "Change HP Orb Icon" tab from the plugin.
 ```
+## v4.6 (20-5-2022)
+![!image](https://i.imgur.com/GCwSEeP.png)
+- Upgraded a variety of checkboxes to the 2012 styles
+- Improved the true colours of the quick-prayer selection checkboxes
+- Slightly improved the side panel rivets
+  - *Unfortunately due to how the old school sprites work it's not possible to remove the black behind the rivets entirely, since it's not actually part of the sprite*
 
 ## v4.5 (9-may-2022)
 - Upgraded progress bars in the combat achievements interface
@@ -272,17 +278,11 @@ It was about time this pack got some love! To start with, we've put together a b
 
 
 ## Current progress:
-95% completed out of all sprites that can be replaced
+Almost everything has been replaced as far as it is possible to do so with this plugin. If you have any questions or feedback, feel free to DM us or join the resource pack plugin server!
 
 ## To be done:
-WELCOME_SCREEN:
-(Not much I can do with this, remade a few sprites to give it a bit more matching look though)
-
-
-BUTTON:
-EQUIPMENT_EDGE... (Original sprites are fine and fitting, but could be replaced if wanted)
-WORLD_MAP_EDGE... (Original sprites are fine and fitting, but could be replaced if wanted)
-
+- **Welcome screen:** Perhaps improve buttons
+- **Trade screen:** Has to be redone whilst having the interface open. Probably needs custom sprites.
 
 
 ## Credits:
