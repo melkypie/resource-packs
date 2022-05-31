@@ -1,5 +1,5 @@
 # 2012 Interface
-## Latest version: v4.6 (20-5-2022)
+## Latest version: v4.7 (31-5-2022)
 
 *If you have any questions or find any issues, please message Discord **@Shredit#6109** or **@Leyline#5438***
 
@@ -31,6 +31,13 @@
 ```diff
 - When you get poisoned or venomed, your HP icon will reset to vanilla sprites due to a conflict with the "Poison" plugin, to fix this. Simply turn off "Change HP Orb Icon" tab from the plugin.
 ```
+## v4.7 (31-5-2022)
+![!image](https://i.imgur.com/BMr5ons.gif)
+- Restored the true 2012 skilling icons
+  - *Some skilling icons will also look visibly different from the old ones, this is intended as they actually differ from the RS3 icons*
+- Altered the skilling icons slightly to be compatible without alpha values
+  - *Similarly to other alpha conversion fixes, this improves the quality, removes artifacts, or increases the contrast of the sprites. Notably the firemaking and prayer icons in this case*
+
 ## v4.6 (20-5-2022)
 ![!image](https://i.imgur.com/GCwSEeP.png)
 - Upgraded a variety of checkboxes to the 2012 styles
