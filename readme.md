@@ -1,5 +1,5 @@
 # 2012 Interface
-## Latest version: v4.7 (31-5-2022)
+## Latest version: v4.8 (13-6-2022)
 
 *If you have any questions or find any issues, please message Discord **@Shredit#6109** or **@Leyline#5438***
 
@@ -20,17 +20,46 @@
 
 ## Previews
 ### Fixed:
-![!image](https://i.imgur.com/nQ0Xca3.png)
+![!image](https://i.imgur.com/IEZbhN4.png)
 ### Resizable:
-![!image](https://i.imgur.com/cx7BOsY.jpeg)
+![!image](https://i.imgur.com/gpilfbb.png)
 ### Resizable (modern):
-![!image](https://i.imgur.com/bMv9mzz.png)
+![!image](https://i.imgur.com/1c1gL3e.png)
+
+# Customizable XP drops settings
+*This plugin can be found in the RuneLite plugin hub.*
+
+![!image](https://i.imgur.com/X1L6Xrh.png)
+
+![!image](https://i.imgur.com/7kcRA8T.png)
 
 # Changelog:
 ## Issues:
 ```diff
 - When you get poisoned or venomed, your HP icon will reset to vanilla sprites due to a conflict with the "Poison" plugin, to fix this. Simply turn off "Change HP Orb Icon" tab from the plugin.
 ```
+## v4.8 (13-6-2022)
+![!image](https://i.imgur.com/fcAXPmz.png)
+- Removed an unnecessary file
+- Updated the pack preview image with the updated skilling icons
+- Updated interface previews
+- Appended the customizable xp drop settings to the readme
+  - This plugin now supports the resource packs plugin! Custom skilling icons will now show next to your XP drops provided the setting is enabled.
+- Improved and upgraded the trade screen interface
+  - Added texture to the background
+  - Added rivets and changed some of its sprites to accomodate for its unusual style and indents
+  
+  *The trade screen was one of the last things that was on the list of things that still needed to be worked on (Sorry that it has taken this long!). It had been postponed for a variety of reasons, namely the way the 2012 rivets are indented and are notorious for causing all sorts of problems with the way the oldschool interface is assembled, as well as having to keep the trade window open (this interface has too many differences to take any other as a template).*
+- Upgraded the GE interface windows
+  - Main GE window
+  - Collection box
+  - Sell/buy
+  - Colour alterations
+
+  *Although the Grand Exchange interfaces did get an upgrade in our previous iterations, they were mostly based on the RS3 style. This is because this interface never got updated in 2012, so the sprites do not exist. If we were to take the 2012 GE interface, it would look more like the 2010 version. The screens have now been completely remade in the 2012 style with custom buttons.*
+
+  *The colours have also been changed. Instead of the blue RS3 style, we now use the combination of white/silvery rivets, black, darkblue and bright orange. This creates a higher contrast which improves the visibility for colourblind people (and people that are not of course). Enjoy!*
+
 ## v4.7 (31-5-2022)
 ![!image](https://i.imgur.com/BMr5ons.gif)
 - Restored the true 2012 skilling icons
