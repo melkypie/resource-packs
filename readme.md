@@ -1,5 +1,5 @@
 # 2012 Interface
-## Latest version: v4.8 (13-6-2022)
+## Latest version: v4.9 (7-7-2022)
 
 *If you have any questions or find any issues, please message Discord **@Shredit#6109** or **@Leyline#5438***
 
@@ -22,7 +22,7 @@
 ### Fixed:
 ![!image](https://i.imgur.com/IEZbhN4.png)
 ### Resizable:
-![!image](https://i.imgur.com/gpilfbb.png)
+![!image](https://i.imgur.com/fmMulqF.png)
 ### Resizable (modern):
 ![!image](https://i.imgur.com/1c1gL3e.png)
 
@@ -38,6 +38,14 @@
 ```diff
 - When you get poisoned or venomed, your HP icon will reset to vanilla sprites due to a conflict with the "Poison" plugin, to fix this. Simply turn off "Change HP Orb Icon" tab from the plugin.
 ```
+
+## v4.9 (7-7-2022)
+![!image](https://i.imgur.com/cyr6y0I.gif)
+- Added a missing pixel on the minimap compass
+- Upgraded the bank interface tabs and buttons
+
+ *Same story as mentioned in v4.8. These have now been upgraded with custom sprites to reflect the 2012 interface style*
+
 ## v4.8 (13-6-2022)
 ![!image](https://i.imgur.com/fcAXPmz.png)
 - Removed an unnecessary file
@@ -319,7 +327,7 @@ Almost everything has been replaced as far as it is possible to do so with this 
 ## To be done:
 - **Welcome screen:** Perhaps improve buttons
 - **Trade screen:** Has to be redone whilst having the interface open. Probably needs custom sprites.
-
+- **Some buttons:** The smallest buttons can be improved slightly
 
 ## Credits:
 
@@ -330,3 +338,5 @@ Melkypie - Plugin author
 Shredit - Author
 
 Leyline - Co-Author
+
+Zweeper - Providing base for (unselected) bank tab
