@@ -1,34 +1,16 @@
-# Resource packs 
-[![Active Installs](http://img.shields.io/endpoint?url=https://i.pluginhub.info/shields/installs/plugin/resource-packs)](https://runelite.net/plugin-hub/melky) [![Plugin Rank](http://img.shields.io/endpoint?url=https://i.pluginhub.info/shields/rank/plugin/resource-packs)](https://runelite.net/plugin-hub)
+<img src="https://i.imgur.com/UpSewwL.png"><br/>
 
-[![Discord](https://user-images.githubusercontent.com/5113962/116616080-e2a0ee80-a944-11eb-8c1f-b838233b29d5.png)](https://discord.com/invite/DsDhUz4NNN)
+# Dark Amethyst :black_heart: :purple_heart:
 
-Allows you to create your own custom interface styles by not being only restricted to 2005/2006/2010 ones.
+A theme for OSRS/runelite by R-Y-M-R.
 
-## How to use it:
-#### **New method:**
-1. Add the plugin from the runelite [plugin-hub](https://github.com/runelite/runelite/wiki/Information-about-the-Plugin-Hub)
-2. Look for this icon in the side panel: ![image](https://i.imgur.com/gpg7VJK.png)
-3. To install one of the packs, click the green **Install** button  ![image](https://user-images.githubusercontent.com/5113962/85605474-dbd98900-b65a-11ea-9f32-e16a9aca9f75.png)
-4. The pack will automatically install and be applied.
-5. If you want to switch between the installed packs use the selected pack dropdown menu: ![image](https://user-images.githubusercontent.com/5113962/85605673-0f1c1800-b65b-11ea-96aa-c7682c92cda6.png)
-6. You can easily remove a pack by pressing the red Remove button.
-7. Make sure your interface styles plugin gameframe is set to the DEFAULT skin (it can cause weird issues otherwise). Everything else is fine but will require a restart of the plugin should you activate any of them after you have resource pack set up.
+## Credit to Levy for Spacenation edition :blue_heart: and iawhd for the original :black_heart: version. :purple_heart: :purple_heart: :purple_heart:
 
-The installed packs are automatically updated when starting the client or you can press the update button in the panel to update that pack.
+[Download](https://github.com/R-Y-M-R/dark-amethyst-osrs-resource-pack/releases) the source.zip and read [how to use a custom pack (not from the hub)](https://github.com/melkypie/resource-packs/wiki/Using-a-custom-pack-%28not-from-the-hub%29).
 
-#### Using a custom pack and/or making one
 
-Information can be found on the [wiki](https://github.com/melkypie/resource-packs/wiki) under relevant sections
+Give your Runelite client an Amethyst vibe. 
 
-## Available resource packs in the hub can also be found [in the wiki](https://github.com/melkypie/resource-packs/wiki/Resource-packs-hub)
+<img src="https://i.imgur.com/rnAF8Xw.png"><br/>
 
-## Sample packs
-
-- [Vanilla](https://github.com/melkypie/resource-packs/tree/sample-vanilla) ([Download](https://github.com/melkypie/resource-packs/archive/sample-vanilla.zip)) (Includes regular runescape sprites)
-
-<img src="https://user-images.githubusercontent.com/5113962/82244509-02b0eb00-994a-11ea-8343-0a7dd7ddaa82.png" width="765"><br/>
-
-## Change log
-
-All changes have been moved to [CHANGELOG.md](CHANGELOG.md)
+<img src="https://i.imgur.com/3opqxcV.png"><br/>
