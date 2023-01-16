@@ -28,7 +28,7 @@ public class ResourcePacksPluginTest
 	 * Allow you to build your own sample-vanilla pack (with some drawbacks)
 	 * Sprite 990 is custom made (is janky when using a dumper), login screen is also not being moved and also runelite's tag tab sprites are not moved. These have to be manually added
 	 * <p>
-	 * spriteFolder needs sprites to be dumped using correct offsets/correct max dimensions otherwise most of the sprites will be not positioned correctly (can be download from sprite-exporter repo)
+	 * spriteFolder needs sprites to be dumped using correct offsets/correct max dimensions otherwise most of the sprites will be not positioned correctly (can be downloaded from sprite-exporter repo)
 	 * packFolder where to output the sample-vanilla pack to
 	 *
 	 * @throws IOException
@@ -47,8 +47,7 @@ public class ResourcePacksPluginTest
 		{
 			// TODO:
 			// Grab the tag tab images from rl repo and make an exception for login screen
-			// Figure out why 990 is so janky
-			if (override.getSpriteID() < 0 || override.getSpriteID() == 990)
+			if (override.getSpriteID() < 0)
 			{
 				continue;
 			}
@@ -76,9 +75,9 @@ public class ResourcePacksPluginTest
 	}
 
 	/**
-	 * Allow you to check whether or not a pack does not contain files that should not be in there or sprites that are the same as vanilla
+	 * Allow you to check whether a pack does not contain files that should not be in there or sprites that are the same as vanilla
 	 * <p>
-	 * spriteFolder needs to be dumped using correct offsets/correct max dimensions for the vanilla comparison to work
+	 * spriteFolder needs to be dumped using correct offsets/correct max dimensions for the vanilla comparison to work (can be downloaded from sprite-exporter repo)
 	 * packFolder is the path to the pack you want to be testing against
 	 *
 	 * @throws IOException

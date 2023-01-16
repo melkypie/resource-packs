@@ -10,7 +10,6 @@ import net.runelite.api.widgets.WidgetInfo;
 public enum WidgetResize
 {
 
-	GE_BORDER_RIGHT(WidgetID.GRAND_EXCHANGE_GROUP_ID, 20, 340, null, 344, null, null, null, null, null),
 	RESIZABLE_QUESTS_TAB(WidgetInfo.RESIZABLE_VIEWPORT_QUESTS_TAB.getGroupId(), WidgetInfo.RESIZABLE_VIEWPORT_QUESTS_TAB.getChildId(), null, null, null, null, 33, null, 38, null),
 	RESIZABLE_IGNORES_TAB(WidgetInfo.RESIZABLE_VIEWPORT_IGNORES_TAB.getGroupId(), WidgetInfo.RESIZABLE_VIEWPORT_IGNORES_TAB.getChildId(), null, null, null, null, 33, null, 38, null),
 	FIXED_QUESTS_TAB(WidgetInfo.FIXED_VIEWPORT_QUESTS_TAB.getGroupId(), WidgetInfo.FIXED_VIEWPORT_QUESTS_TAB.getChildId(), null, null, null, null, 33, null, 38, null),

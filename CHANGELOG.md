@@ -1,5 +1,12 @@
 ## Change log
 
+### 1.4.5
+- Add the Giants foundry button borders
+- Add the activity adviser minimap orb and the icon
+- Add hitpoints low life minimap orb icon
+- Add Greater and Lesser corruption prayer minimap orb icons
+- Fix the Grand Exchange offer completion borders (Note: This requires pack owners to update ge/border_offer_right.png)
+
 ### 1.4.4
 - Add the new group ironman sprites
 - Add minimap orb frame flashing (seems to only be used in tutorial island)
