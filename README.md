@@ -8,7 +8,7 @@ Allows you to create your own custom interface styles by not being only restrict
 ## How to use the plugin
 ### Resource packs hub
 1. Add the plugin from RuneLite's [Plugin Hub](https://github.com/runelite/runelite/wiki/Information-about-the-Plugin-Hub)
-2. Look for the paintbrush icon in the side panel: <img src="https://i.imgur.com/BTDGjZu.png">
+2. Look for the paintbrush icon in the side panel: <img src="https://github.com/nickyGyul/resource-packs/blob/master/src/main/resources/panel.png?raw=true">
 3. To install one of the packs, click the green "**Install**" button. The pack will automatically install and be applied.
 <img src="https://i.imgur.com/80kwdnf.png">
 
