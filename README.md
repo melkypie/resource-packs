@@ -12,15 +12,11 @@ Here is how to make the Interface Styles plugin (i.e. High detail menu, High det
 
 If it somehow bugs out and your interface looks messed up just repeat the above steps.
 
-Note: Having the `Gameframe` setting **not** set to `Default` within the `Interface Styles` plugin ***will*** make the menu icons misalign. Make sure your Interface Styles settings are set to the correct things as outlined above. 
+> ⚠️ Having the `Gameframe` setting **not** set to `Default` within the `Interface Styles` plugin ***will*** make the menu icons misalign. Make sure your Interface Styles settings are set to the correct things as outlined above. 
 
-Besides that, some stone tab icons (namely the corners) cannot be lined up perfectly in Fixed mode and Classic Resizable mode. I recommend playing with `Resizable - Modern layout` for the best experience. If something looks off or misaligned, odds are it can't be fixed. I tried my best to make the pack be at least on par with the Interface Styles plugin.
+Besides that, some stone tab icons (namely the corners) cannot be lined up perfectly in Fixed mode and Classic Resizable mode. I recommend playing with `Resizable - Modern layout` for the best experience. I tried my best to make the pack be at least on par with the Interface Styles plugin.
 
-## RS3 cursor and cross sprites
-Here is a dark RS3 cursor to go with the pack. Save the following image as `cursor.png` and then put it in your `.runelite` folder. Then enable the `Custom Cursor` plugin and select `Custom Image` as your Cursor.
-
-![cursor](https://user-images.githubusercontent.com/72536899/132142011-05e12573-7450-4c8d-b7f6-785db01a300a.png)
-
+##Cross sprites
 RSHD (RS3) cross sprites are built into the pack. To enable/disable them, go into `Resource packs` plugin settings and tick `Allow mouse click sprite to be changed`.
 
 ## Resizable mode
