@@ -16,6 +16,13 @@ In turn, [Runelite itself has been confirmed as fully compliant by Jagex](https:
 ![Resizable Mode](https://i.imgur.com/NJKECCL.png)
 
 ## Changelog
+	Release 1.4.5
+        * Updated to work with '[Resource Packs](https://github.com/melkypie/resource-packs)' 1.4.5.
+        * This is a huge release covering everything I've missed from the last 2 years of updates.
+	Release 1.1.1
+        * Updated to work with '[Resource Packs](https://github.com/melkypie/resource-packs)' 1.1.1.
+	Release 1.0.5
+        * Updated to work with '[Resource Packs](https://github.com/melkypie/resource-packs)' 1.0.5.
     Release 1.0.4
         * Updated to work with '[Resource Packs](https://github.com/melkypie/resource-packs)' 1.0.4.
         * Fixed a flickering texture in the world map and bank
