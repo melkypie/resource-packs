@@ -1,4 +1,7 @@
 # Changelog
+	Release 1.4.5
+        * Updated to work with '[Resource Packs](https://github.com/melkypie/resource-packs)' 1.4.5.
+        * This is a huge release covering everything I've missed from the last 2 years of updates.
 	Release 1.1.1
         * Updated to work with '[Resource Packs](https://github.com/melkypie/resource-packs)' 1.1.1.
 	Release 1.0.5
