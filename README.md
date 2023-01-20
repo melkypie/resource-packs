@@ -7,8 +7,8 @@ Works with all default UI layouts
 [download](link go here)
 
 ## Screenshots
-[preview](https://ibb.co/R3GQ8Tr)
-[preview](https://ibb.co/3kz0rCq)
+![preview](https://ibb.co/R3GQ8Tr)
+![preview](https://ibb.co/3kz0rCq)
 
 ## Versions
 
