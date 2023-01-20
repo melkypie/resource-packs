@@ -4,7 +4,7 @@ This is a resource pack created for use with [Melky's resource pack plugin](http
 A simple pack designed to replace the default theme's brown colors with pink.
 Works with all default UI layouts
 
-[download](link go here)
+[download](https://github.com/Airships01/resource-packs/archive/refs/heads/pack-pinklite.zip)
 
 ## Screenshots
 ![preview](https://i.ibb.co/1rYRcGy/2023-01-19-18-47-02.png)
