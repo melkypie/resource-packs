@@ -5,11 +5,12 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.concurrent.ScheduledExecutorService;
 import javax.inject.Inject;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import melky.resourcepacks.event.ResourcePacksChanged;
 import melky.resourcepacks.hub.ResourcePacksHubPanel;
-import net.runelite.api.Client;
 import net.runelite.api.GameState;
 import net.runelite.api.events.BeforeRender;
 import net.runelite.api.events.GameStateChanged;
@@ -24,6 +25,7 @@ import net.runelite.client.events.SessionClose;
 import net.runelite.client.events.SessionOpen;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
+import net.runelite.client.plugins.interfacestyles.Skin;
 import net.runelite.client.ui.ClientToolbar;
 import net.runelite.client.ui.NavigationButton;
 import net.runelite.client.util.ImageUtil;
@@ -32,6 +34,7 @@ import okhttp3.HttpUrl;
 @PluginDescriptor(
 	name = "Resource packs"
 )
+@Slf4j
 public class ResourcePacksPlugin extends Plugin
 {
 	public static final File RESOURCEPACKS_DIR = new File(RuneLite.RUNELITE_DIR.getPath() + File.separator + "resource-packs-repository");
@@ -104,6 +107,35 @@ public class ResourcePacksPlugin extends Plugin
 		{
 			clientToolbar.addNavigation(navButton);
 		}
+
+		if (configManager.getConfiguration("interfaceStyles", "gameframe", Skin.DEFAULT.getDeclaringClass()).equals(Skin.DEFAULT) ||
+			config.disableInterfaceStylesPrompt())
+		{
+			return;
+		}
+
+		SwingUtilities.invokeLater(() -> {
+			String[] options = new String[] {"Yes", "No", "No, Don't ask again"};
+			int result = JOptionPane.showOptionDialog(
+				null,
+				"<html><p>Your Interface Styles gameframe option is not set to Default<br/> This can cause some interfaces to be misaligned</p><br/><strong>Would you like it to be set to Default?</strong></html>",
+				"Interface Styles conflict",
+				JOptionPane.DEFAULT_OPTION,
+				JOptionPane.WARNING_MESSAGE,
+				null, options, options[0]);
+			switch (options[result])
+			{
+				case "Yes":
+					configManager.setConfiguration("interfaceStyles", "gameframe", Skin.DEFAULT);
+					clientThread.invokeLater(resourcePacksManager::updateAllOverrides);
+					break;
+				case "No":
+					break;
+				case "No, Don't ask again":
+					configManager.setConfiguration(ResourcePacksConfig.GROUP_NAME, "disableInterfaceStylesPrompt", true);
+					break;
+			}
+		});
 	}
 
 	@Override

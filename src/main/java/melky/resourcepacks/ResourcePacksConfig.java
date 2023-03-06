@@ -137,10 +137,21 @@ public interface ResourcePacksConfig extends Config
 	}
 
 	@ConfigItem(
+		keyName = "disableInterfaceStylesPrompt",
+		name = "Disable Interface Styles gameframe prompt",
+		description = "Turning this option on will disable the prompt that asks you to switch Interface Styles option gameframe to Default ",
+		position = 10
+	)
+	default boolean disableInterfaceStylesPrompt()
+	{
+		return false;
+	}
+
+	@ConfigItem(
 		keyName = "allowColorPack",
 		name = "Enables color current pack option",
 		description = "This option must be on for Color current pack option to work",
-		position = 10,
+		position = 11,
 		section = experimentalOptions
 	)
 	default boolean allowColorPack()
@@ -153,7 +164,7 @@ public interface ResourcePacksConfig extends Config
 		keyName = "colorPack",
 		name = "Color current pack",
 		description = "Allows you to apply a color overlay over the currently selected resource pack",
-		position = 11,
+		position = 12,
 		section = experimentalOptions
 	)
 	Color colorPack();
@@ -162,7 +173,7 @@ public interface ResourcePacksConfig extends Config
 		keyName = "colorPackOverlay",
 		name = "Allows color current pack to change overlays",
 		description = "This option will only work if color current pack is enabled and a color is assigned",
-		position = 12,
+		position = 13,
 		section = experimentalOptions
 	)
 	default boolean colorPackOverlay()
