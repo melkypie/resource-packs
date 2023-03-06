@@ -83,10 +83,20 @@ public interface ResourcePacksConfig extends Config
 	}
 
 	@ConfigItem(
+			keyName = "hideSidePanelButton",
+			name = "Hide side panel button",
+			description = "Allows you to hide the side panel button to reduce clutter when not changing packs frequently",
+			position = 5
+	)
+	default boolean hideSidePanelButton() {
+		return false;
+	}
+
+	@ConfigItem(
 		keyName = "allowLoginScreen",
 		name = "Allow login screen to be changed",
 		description = "Gives permissions for resource packs to change your login screen",
-		position = 5
+		position = 6
 	)
 	default boolean allowLoginScreen()
 	{
@@ -97,7 +107,7 @@ public interface ResourcePacksConfig extends Config
 		keyName = "allowOverlayColor",
 		name = "Allow overlay color to be changed",
 		description = "Gives permissions for resource packs to change your overlays color",
-		position = 6
+		position = 7
 	)
 	default boolean allowOverlayColor()
 	{
@@ -108,7 +118,7 @@ public interface ResourcePacksConfig extends Config
 		keyName = "allowSpellsPrayers",
 		name = "Allow spells/prayers to be changed",
 		description = "Gives permissions for resource packs to change your spells and prayers icons",
-		position = 7
+		position = 8
 	)
 	default boolean allowSpellsPrayers()
 	{
@@ -119,7 +129,7 @@ public interface ResourcePacksConfig extends Config
 		keyName = "allowCrossSprites",
 		name = "Allow mouse click sprite to be changed",
 		description = "Allows the cross/mouse click sprites to be changed (This won't work if you have cross sprites enabled in Interface styles)",
-		position = 8
+		position = 9
 	)
 	default boolean allowCrossSprites()
 	{
@@ -130,7 +140,7 @@ public interface ResourcePacksConfig extends Config
 		keyName = "allowColorPack",
 		name = "Enables color current pack option",
 		description = "This option must be on for Color current pack option to work",
-		position = 9,
+		position = 10,
 		section = experimentalOptions
 	)
 	default boolean allowColorPack()
@@ -143,7 +153,7 @@ public interface ResourcePacksConfig extends Config
 		keyName = "colorPack",
 		name = "Color current pack",
 		description = "Allows you to apply a color overlay over the currently selected resource pack",
-		position = 10,
+		position = 11,
 		section = experimentalOptions
 	)
 	Color colorPack();
@@ -152,7 +162,7 @@ public interface ResourcePacksConfig extends Config
 		keyName = "colorPackOverlay",
 		name = "Allows color current pack to change overlays",
 		description = "This option will only work if color current pack is enabled and a color is assigned",
-		position = 11,
+		position = 12,
 		section = experimentalOptions
 	)
 	default boolean colorPackOverlay()

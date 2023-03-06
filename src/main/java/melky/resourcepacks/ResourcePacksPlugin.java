@@ -100,7 +100,10 @@ public class ResourcePacksPlugin extends Plugin
 			.panel(resourcePacksHubPanel)
 			.build();
 
-		clientToolbar.addNavigation(navButton);
+		if (!config.hideSidePanelButton())
+		{
+			clientToolbar.addNavigation(navButton);
+		}
 	}
 
 	@Override
@@ -175,6 +178,9 @@ public class ResourcePacksPlugin extends Plugin
 						resourcePacksManager.resetLoginScreen();
 					}
 					break;
+				case "hideSidePanelButton":
+					clientThread.invokeLater(this::toggleSidePanelButton);
+					break;
 			}
 		}
 		else if (event.getGroup().equals("banktags") && event.getKey().equals("useTabs"))
@@ -227,6 +233,19 @@ public class ResourcePacksPlugin extends Plugin
 			{
 				resourcePacksManager.addPropertyToWidget(widgetOverride);
 			}
+		}
+	}
+
+	private void toggleSidePanelButton()
+	{
+		if (config.hideSidePanelButton())
+		{
+			clientToolbar.removeNavigation(navButton);
+			navButton.setSelected(false);
+		}
+		else
+		{
+			clientToolbar.addNavigation(navButton);
 		}
 	}
 }
