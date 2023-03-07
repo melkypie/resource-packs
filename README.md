@@ -4,8 +4,9 @@
 Simple take on RuneLites' UI aesthetics
 
 This pack was inspired by:
-	[RL Immersive Pack | by BasVonSpace] (https://github.com/melkypie/resource-packs/tree/pack-rl-immersive)
-	[Reaper | by EXpoZuR] (https://github.com/melkypie/resource-packs/tree/pack-reaper)
+
+[RL Immersive Pack | by BasVonSpace](https://github.com/melkypie/resource-packs/tree/pack-rl-immersive)
+[Reaper | by EXpoZuR](https://github.com/melkypie/resource-packs/tree/pack-reaper)
 
 Screenshots:
 
