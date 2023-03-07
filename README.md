@@ -1,5 +1,5 @@
 # lite:ui
-[Download](https://github.com/its-cue/resource-packs/archive/pack-lite-ui.zip)
+[Download](https://github.com/melkypie/resource-packs/archive/pack-lite-ui.zip)
 
 Simple take on RuneLites' UI aesthetics
 
