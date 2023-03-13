@@ -1,37 +1,15 @@
+# lite:ui
 [Download](https://github.com/melkypie/resource-packs/archive/pack-lite-ui.zip)
 
-Simple take on RuneLites' UI aesthetics, designed by cue
+Simple take on RuneLites' UI aesthetics
 
-This pack was inspired by:
+This pack was inspired by (RL Immersive Pack | by BasVonSpace) and (Reaper | by EXpoZuR)
 
-[RuneLite](https://runelite.net) by RuneLite Devs
+Screenshots:
+<img src="https://imgur.com/0j2ArhD" width="765"><br/>
 
-[RL Immersive Pack](https://github.com/melkypie/resource-packs/tree/pack-rl-immersive) by BasVonSpace
+<img src="https://imgur.com/MUe34Cv" width="765"><br/>
 
-[Reaper](https://github.com/melkypie/resource-packs/tree/pack-reaper)  by EXpoZuR
+<img src="https://imgur.com/dNsxqpS" width="765"><br/>
 
-This pack looks best in 'Resizable : Classic layout', with the plugin 'Status bars',
-
-Resizable;
-
-<img src="https://i.imgur.com/RtddsnJ.png" width="765"><br/>
-
-Fixed;
-
-<img src="https://i.imgur.com/jXEIQbI.png" width="765"><br/>
-
-Bank;
-
-<img src="https://i.imgur.com/nNQdrMZ.png" width="765"><br/>
-
-Settings;
-
-<img src="https://i.imgur.com/gEoPICS.png" width="765"><br/>
-
-Grand Exchange;
-
-<img src="https://i.imgur.com/jW4wqng.png" width="765"><br/>
-
-Make-Background;
-
-<img src="https://i.imgur.com/S3wvsar.png" width="765"><br/>
+<img src="https://imgur.com/dadh2WO" width="765"><br/>
