@@ -1,5 +1,8 @@
 ## Change log
 
+### 1.4.6.1
+- Change the Interface Style gameframe prompt to a chat message
+
 ### 1.4.6
 - Add a prompt to set Interface Styles gameframe option to Default if it is not set to Default
 - Add option to hide the sidepanel icon. Thanks to [m0bilebtw](https://github.com/melkypie/resource-packs/pull/120)

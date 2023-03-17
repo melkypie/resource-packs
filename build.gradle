@@ -27,7 +27,7 @@ dependencies {
 }
 
 group = 'melky.resourcepacks'
-version = '1.4.6'
+version = '1.4.6.1'
 sourceCompatibility = '1.8'
 
 tasks.withType(JavaCompile) {
