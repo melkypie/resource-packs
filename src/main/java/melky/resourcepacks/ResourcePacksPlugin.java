@@ -11,12 +11,18 @@ import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import melky.resourcepacks.event.ResourcePacksChanged;
 import melky.resourcepacks.hub.ResourcePacksHubPanel;
+import net.runelite.api.ChatMessageType;
+import net.runelite.api.Client;
 import net.runelite.api.GameState;
 import net.runelite.api.events.BeforeRender;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.ScriptPostFired;
 import net.runelite.client.RuneLite;
 import net.runelite.client.callback.ClientThread;
+import net.runelite.client.chat.ChatColorType;
+import net.runelite.client.chat.ChatMessageBuilder;
+import net.runelite.client.chat.ChatMessageManager;
+import net.runelite.client.chat.QueuedMessage;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.config.RuneLiteConfig;
 import net.runelite.client.eventbus.Subscribe;
@@ -47,6 +53,12 @@ public class ResourcePacksPlugin extends Plugin
 
 	@Setter
 	private static boolean ignoreOverlayConfig = false;
+
+	@Inject
+	private ChatMessageManager chatMessageManager;
+
+	@Inject
+	private Client client;
 
 	@Inject
 	private ClientThread clientThread;
@@ -88,6 +100,12 @@ public class ResourcePacksPlugin extends Plugin
 			NOTICE_FILE.createNewFile();
 		}
 
+		if (client.getGameState() == GameState.LOGGED_IN && !configManager.getConfiguration("interfaceStyles", "gameframe", Skin.DEFAULT.getDeclaringClass()).equals(Skin.DEFAULT) &&
+			!config.disableInterfaceStylesPrompt())
+		{
+			setInterfaceStylesGameframeOption();
+		}
+
 		executor.submit(() -> {
 			resourcePacksManager.refreshPlugins();
 			clientThread.invokeLater(resourcePacksManager::updateAllOverrides);
@@ -107,35 +125,6 @@ public class ResourcePacksPlugin extends Plugin
 		{
 			clientToolbar.addNavigation(navButton);
 		}
-
-		if (configManager.getConfiguration("interfaceStyles", "gameframe", Skin.DEFAULT.getDeclaringClass()).equals(Skin.DEFAULT) ||
-			config.disableInterfaceStylesPrompt())
-		{
-			return;
-		}
-
-		SwingUtilities.invokeLater(() -> {
-			String[] options = new String[] {"Yes", "No", "No, Don't ask again"};
-			int result = JOptionPane.showOptionDialog(
-				null,
-				"<html><p>Your Interface Styles gameframe option is not set to Default<br/> This can cause some interfaces to be misaligned</p><br/><strong>Would you like it to be set to Default?</strong></html>",
-				"Interface Styles conflict",
-				JOptionPane.DEFAULT_OPTION,
-				JOptionPane.WARNING_MESSAGE,
-				null, options, options[0]);
-			switch (options[result])
-			{
-				case "Yes":
-					configManager.setConfiguration("interfaceStyles", "gameframe", Skin.DEFAULT);
-					clientThread.invokeLater(resourcePacksManager::updateAllOverrides);
-					break;
-				case "No":
-					break;
-				case "No, Don't ask again":
-					configManager.setConfiguration(ResourcePacksConfig.GROUP_NAME, "disableInterfaceStylesPrompt", true);
-					break;
-			}
-		});
 	}
 
 	@Override
@@ -248,12 +237,17 @@ public class ResourcePacksPlugin extends Plugin
 	@Subscribe
 	public void onGameStateChanged(GameStateChanged gameStateChanged)
 	{
-		if (gameStateChanged.getGameState() != GameState.LOGIN_SCREEN)
+		if (gameStateChanged.getGameState() == GameState.LOGIN_SCREEN)
 		{
-			return;
+			resourcePacksManager.changeCrossSprites();
 		}
 
-		resourcePacksManager.changeCrossSprites();
+		if (client.getGameState() == GameState.LOGGED_IN && !configManager.getConfiguration("interfaceStyles", "gameframe", Skin.DEFAULT.getDeclaringClass()).equals(Skin.DEFAULT) &&
+			!config.disableInterfaceStylesPrompt())
+		{
+			setInterfaceStylesGameframeOption();
+			clientThread.invokeLater(resourcePacksManager::updateAllOverrides);
+		}
 	}
 
 	@Subscribe
@@ -279,5 +273,23 @@ public class ResourcePacksPlugin extends Plugin
 		{
 			clientToolbar.addNavigation(navButton);
 		}
+	}
+
+	private void setInterfaceStylesGameframeOption() {
+		String message = new ChatMessageBuilder()
+			.append(ChatColorType.NORMAL)
+			.append("[")
+			.append(ChatColorType.HIGHLIGHT)
+			.append("Resource Packs")
+			.append(ChatColorType.NORMAL)
+			.append("] Your interface styles gameframe option was set to default to fix interfaces being misaligned. You can disable Resource packs changing it to default inside it's config")
+			.build();
+
+		chatMessageManager.queue(QueuedMessage.builder()
+			.type(ChatMessageType.CONSOLE)
+			.runeLiteFormattedMessage(message)
+			.build());
+
+		configManager.setConfiguration("interfaceStyles", "gameframe", Skin.DEFAULT);
 	}
 }
