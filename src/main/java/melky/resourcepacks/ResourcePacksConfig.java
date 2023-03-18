@@ -138,8 +138,8 @@ public interface ResourcePacksConfig extends Config
 
 	@ConfigItem(
 		keyName = "disableInterfaceStylesPrompt",
-		name = "Disable Interface Styles gameframe prompt",
-		description = "Turning this option on will disable the prompt that asks you to switch Interface Styles option gameframe to Default ",
+		name = "Don't change Interface Styles gameframe option",
+		description = "Turning this option on will disable resource packs changing the Interface Styles gameframe option to default",
 		position = 10
 	)
 	default boolean disableInterfaceStylesPrompt()
