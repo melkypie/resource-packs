@@ -1,5 +1,12 @@
 ## Change log
 
+### 1.4.7
+- Add the resized spell sprites
+- Add the party emote
+- Add the World switch speedrunning start
+- Fix make all background where there are more items in make-all window than I previously had considered
+- Fix the config name for Interace Styles conflict option
+
 ### 1.4.6.1
 - Change the Interface Style gameframe prompt to a chat message
 
