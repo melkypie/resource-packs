@@ -1,5 +1,9 @@
 ## Change log
 
+### 1.4.8
+- Add the unranked group ironman sprites
+- Add the Dinh's bulwark pummel combat style sprite
+
 ### 1.4.7
 - Add the resized spell sprites
 - Add the party emote
