@@ -23,7 +23,7 @@ free time and am still playing OSRS.
 * [GIMP](https://www.gimp.org/) - Image processing tool.
 * [Imagemagick](https://github.com/ImageMagick/ImageMagick) - Bulk image processing tool and resizing with CubicSpline algorithm.
 * [Optipng](http://optipng.sourceforge.net/) - Lossless PNG compression.
-* [paint.NET] (https://www.getpaint.net/) - Image processing tool.
+* [paint.NET](https://www.getpaint.net/) - Image processing tool.
 
 ## Usage 
 
