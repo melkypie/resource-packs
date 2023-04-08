@@ -1,6 +1,6 @@
 # Rs3xOsrs Resource Pack for RuneLite
 
-[!icon](https://i.imgur.com/yIiAzj6.png)
+![icon](https://i.imgur.com/yIiAzj6.png)
 
 ## Description
 
