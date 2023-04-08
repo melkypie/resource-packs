@@ -1,6 +1,6 @@
 # Rs3xOsrs Resource Pack for RuneLite
 
-<iframe src="https://drive.google.com/file/d/1u3iUTmU6j-qifcv-m6ATVmQK2wiH3YnK/preview" width="640" height="480" allow="autoplay"></iframe>
+[!icon](https://i.imgur.com/yIiAzj6.png)
 
 ## Description
 
@@ -11,11 +11,11 @@ decided to make my own vision of it for oldschool runescape. I've mainly used as
 free time and am still playing OSRS.
 
 ## Resizeable mode
-<iframe src="https://drive.google.com/file/d/1_8IQM_hELi5iBgMJGZkIRGpLjBOEcIf9/preview" width="640" height="480" allow="autoplay"></iframe>
-<iframe src="https://drive.google.com/file/d/1LqJnolRHz8WhTNeFZkilgUSppMs6Wrc3/preview" width="640" height="480" allow="autoplay"></iframe>
+![modern](https://i.imgur.com/NCLP374.jpeg)
+![classic](https://i.imgur.com/s4BmLGb.jpeg)
 
 ## Fixed mode
-<iframe src="https://drive.google.com/file/d/1ZLOYQtG9Ix0nBQ8vYsT_rHhzdjlTiKqk/preview" width="640" height="480" allow="autoplay"></iframe>
+![fixed](https://i.imgur.com/rs3L5yz.png)
 
 ## Tools
 
