@@ -1,6 +1,6 @@
 # Rs3xOsrs Resource Pack for RuneLite
 
-![icon](https://i.imgur.com/yIiAzj6.png)
+![icon](https://i.imgur.com/dkiXMCt.png)
 
 ## Description
 
@@ -10,12 +10,11 @@ Image editing and creating has been longtime hobby of mine. I've played runescap
 decided to make my own vision of it for oldschool runescape. I've mainly used assets from Frankz's "RS3" resource pack, so big chunk of credits should go straight to him. This pack is mainly made for my personal usage, but will get updated whenever i have
 free time and am still playing OSRS.
 
-## Resizeable mode
-![modern](https://i.imgur.com/NCLP374.jpeg)
-![classic](https://i.imgur.com/s4BmLGb.jpeg)
+## Resizeable modern mode(https://i.imgur.com/d1nXcYC.png)
 
-## Fixed mode
-![fixed](https://i.imgur.com/rs3L5yz.png)
+## Resizeable classic mode(https://i.imgur.com/3fxBaBX.png)
+
+## Fixed mode(https://i.imgur.com/Z5NETSG.png)
 
 ## Tools
 
