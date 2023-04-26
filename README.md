@@ -14,24 +14,8 @@ This pack looks best in 'Resizable : Classic layout', with the plugin 'Status ba
 
 Resizable;
 
-<img src="https://i.imgur.com/RtddsnJ.png" width="765"><br/>
+<img src="https://i.imgur.com/3NqqySf.png" width="765"><br/>
 
 Fixed;
 
-<img src="https://i.imgur.com/jXEIQbI.png" width="765"><br/>
-
-Bank;
-
-<img src="https://i.imgur.com/nNQdrMZ.png" width="765"><br/>
-
-Settings;
-
-<img src="https://i.imgur.com/gEoPICS.png" width="765"><br/>
-
-Grand Exchange;
-
-<img src="https://i.imgur.com/jW4wqng.png" width="765"><br/>
-
-Make-Background;
-
-<img src="https://i.imgur.com/S3wvsar.png" width="765"><br/>
+<img src="https://i.imgur.com/Csx7mpG.png" width="765"><br/>
