@@ -8,17 +8,4 @@ Pack has Custom Options for: Login Screen, Spells/Prayers, and Overlay Colour. T
 
 Want to provide feedback? @Skyzx on the Resource Pack discord with a suggestion!
 
-
-<img src="https://i.imgur.com/tJIl4Mv.png" width="765"><br/>
-
-<img src="https://i.imgur.com/g3Xfrgv.png" width="765"><br/>
-
-<img src="https://i.imgur.com/QwexIId.png" width="765"><br/>
-
-<img src="https://i.imgur.com/n5DJGaS.png" width="765"><br/>
-
-<img src="https://i.imgur.com/RpccjdD.png" width="765"><br/>
-
-<img src="https://i.imgur.com/FNGwQTM.png" width="765"><br/>
-
-<img src="https://i.imgur.com/T7nTsW6.png" width="765"><br/>
+Screenshots soon (tm)
