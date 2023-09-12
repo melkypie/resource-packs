@@ -361,37 +361,54 @@ public class ResourcePacksManager
 		}
 	}
 
-	void adjustWidgetDimensions(boolean modify)
+	void adjustWidgetDimensions(boolean modify) 
 	{
-		for (WidgetResize widgetResize : WidgetResize.values())
+		for (WidgetResize widgetResize : WidgetResize.values()) 
 		{
-			Widget widget = client.getWidget(widgetResize.getGroup(), widgetResize.getChild());
-
-			if (widget != null)
+			for (Integer childId : widgetResize.getChild()) 
 			{
-				if (widgetResize.getOriginalX() != null)
-				{
-					widget.setOriginalX(modify ? widgetResize.getModifiedX() : widgetResize.getOriginalX());
-				}
+				Widget widget = client.getWidget(widgetResize.getGroup(), childId);
 
-				if (widgetResize.getOriginalY() != null)
+				if (widget != null) 
 				{
-					widget.setOriginalY(modify ? widgetResize.getModifiedY() : widgetResize.getOriginalY());
-				}
+					if (widgetResize.getChildIndex() != null) 
+					{
+						Widget child = widget.getChild(widgetResize.getChildIndex());
+						if (child != null) 
+						{
+							widget = child;
+						}
+					}
+					if (widgetResize.getOriginalX() != null) 
+					{
+						widget.setOriginalX(modify ? widgetResize.getModifiedX() : widgetResize.getOriginalX());
+					}
 
-				if (widgetResize.getOriginalWidth() != null)
-				{
-					widget.setOriginalWidth(modify ? widgetResize.getModifiedWidth() : widgetResize.getOriginalWidth());
-				}
+					if (widgetResize.getOriginalY() != null) 
+					{
+						widget.setOriginalY(modify ? widgetResize.getModifiedY() : widgetResize.getOriginalY());
+					}
 
-				if (widgetResize.getOriginalHeight() != null)
-				{
-					widget.setOriginalWidth(modify ? widgetResize.getModifiedHeight() : widgetResize.getOriginalHeight());
+					if (widgetResize.getOriginalWidth() != null) 
+					{
+						widget.setOriginalWidth(modify ? widgetResize.getModifiedWidth() : widgetResize.getOriginalWidth());
+					}
+
+					if (widgetResize.getOriginalHeight() != null) 
+					{
+						/**if(widgetResize.getGroup() == WidgetResize.Group.HOUSE_OPTIONS_GROUP) {
+						 widget.setSpriteTiling(false);//set to stretched, confirmed sprite tiling was setting clipping mask instead of resizing sprites width and height
+						 }*/
+						 
+						//changed from setOriginalWidth(...); 
+						widget.setOriginalHeight(modify ? widgetResize.getModifiedHeight() : widgetResize.getOriginalHeight());
+
+					}
 				}
-			}
-			if (widget != null)
-			{
-				widget.revalidate();
+				if (widget != null) 
+				{
+					widget.revalidate();
+				}
 			}
 		}
 	}
@@ -717,50 +734,94 @@ public class ResourcePacksManager
 
 	public void addPropertyToWidget(WidgetOverride widgetOverride)
 	{
-		int property;
-		if (colorProperties.containsKey(widgetOverride.name().toLowerCase()))
+		int color;
+		int alpha = -1;
+		if (colorProperties.containsKey(widgetOverride.name().toLowerCase())) 
 		{
-			String widgetProperty = colorProperties.getProperty(widgetOverride.name().toLowerCase());
-			if (!widgetProperty.isEmpty())
+			String property = colorProperties.getProperty(widgetOverride.name().toLowerCase());
+			Color hex = ColorUtil.fromHex(property);
+			if (!property.isEmpty()) 
 			{
-				property = Integer.decode(widgetProperty);
-			}
-			else
+				if(hex != null && ColorUtil.isAlphaHex(property)) 
+				{
+					color = hex.getRGB();
+					alpha = hex.getAlpha();
+				} else 
+				{
+					color = Integer.decode(property);
+				}
+			} else 
 			{
-				property = widgetOverride.getDefaultColor();
+				color = widgetOverride.getDefaultColor();
 			}
-		}
-		else
+		} else 
 		{
-			property = widgetOverride.getDefaultColor();
+			color = widgetOverride.getDefaultColor();
 		}
 
-		for (Integer childId : widgetOverride.getWidgetChildIds())
+		for (Integer childId : widgetOverride.getWidgetChildIds()) 
 		{
 			Widget widgetToOverride = client.getWidget(widgetOverride.getWidgetGroupId(), childId);
-			if (widgetToOverride == null)
+			if (widgetToOverride == null) 
 			{
 				continue;
 			}
 
-			if (widgetOverride.getWidgetArrayIds()[0] != -1)
+			if (widgetOverride.getWidgetArrayIds()[0] != -1) 
 			{
-				for (int arrayId : widgetOverride.getWidgetArrayIds())
+				for (int arrayId : widgetOverride.getWidgetArrayIds()) 
 				{
 					Widget arrayWidget = widgetToOverride.getChild(arrayId);
-					if (arrayWidget == null || arrayWidget.getTextColor() == -1 || arrayWidget.getTextColor() == property)
+					if (arrayWidget == null || arrayWidget.getTextColor() == -1 || arrayWidget.getTextColor() == color) 
 					{
 						continue;
 					}
-					arrayWidget.setTextColor(property);
+
+					if (widgetOverride.getWidgetGroupId() == WidgetID.CHATBOX_GROUP_ID
+							&& arrayWidget.getWidth() != widgetOverride.getWidth()) 
+					{//hard code fix for chatbox line separator, uses (group and child) index[0] for fixed, and the top left corner segment [width25] in resized... so set the width to the value when in fixed/resized
+						continue;
+					}
+
+					if ((widgetOverride.getWidgetGroupId() == WidgetOverride.Group.FORESTRY_SHOP_GROUP_ID ||
+							widgetOverride.getWidgetGroupId() == WidgetOverride.Group.GIANTS_FOUNDRY_GROUP_ID)
+							&& arrayWidget.getTextColor() != widgetOverride.getDefaultColor()) 
+					{//forestry/giants foundry shop check, button colors changed based on scriptId, ignore color change if the textColor != default color in WidgetOverride
+						continue;
+
+					}
+
+					if((widgetOverride.getWidgetGroupId() == WidgetID.SMITHING_GROUP_ID)
+							&& arrayWidget.getText() != "") 
+					{//anvil smithing widget creates the box at index [0] which also happens to be the same as the item name, ignore if the field is filled
+						continue;
+					}
+
+					if((widgetOverride.getWidgetGroupId() == WidgetOverride.Group.SEED_VAULT_GROUP_ID)
+							&& arrayWidget.getSpriteId() != -1) 
+					{//seed vault search button corner and clicked overlay color share child [0], ignore if spriteId is present on the child
+						continue;
+					}
+
+					arrayWidget.setTextColor(color);
+
+					if(alpha == -1 || arrayWidget.getOpacity() == alpha) 
+					{
+						continue;
+					}
+
+					arrayWidget.setOpacity(alpha);
 				}
-			}
-			else
+			} else 
 			{
-				if (widgetToOverride.getTextColor() != -1 || widgetToOverride.getTextColor() != property)
+				if (widgetToOverride.getTextColor() != -1 || widgetToOverride.getTextColor() != color) 
 				{
-					widgetToOverride.setTextColor(property);
+					widgetToOverride.setTextColor(color);
 				}
+				if(alpha == -1 || widgetToOverride.getOpacity() == alpha)
+					continue;
+
+				widgetToOverride.setOpacity(alpha);
 			}
 		}
 	}
