@@ -1,5 +1,8 @@
 ## Change log
 
+### 1.4.9
+- Fix FlatLaf compatibility
+
 ### 1.4.8
 - Add the unranked group ironman sprites
 - Add the Dinh's bulwark pummel combat style sprite
