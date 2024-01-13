@@ -365,7 +365,7 @@ public class ResourcePacksManager
 	{
 		for (WidgetResize widgetResize : WidgetResize.values())
 		{
-			Widget widget = client.getWidget(widgetResize.getGroup(), widgetResize.getChild());
+			Widget widget = client.getWidget(widgetResize.getComponent());
 
 			if (widget != null)
 			{
@@ -737,7 +737,7 @@ public class ResourcePacksManager
 
 		for (Integer childId : widgetOverride.getWidgetChildIds())
 		{
-			Widget widgetToOverride = client.getWidget(widgetOverride.getWidgetGroupId(), childId);
+			Widget widgetToOverride = client.getWidget(widgetOverride.getWidgetInterfaceId(), childId);
 			if (widgetToOverride == null)
 			{
 				continue;

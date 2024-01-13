@@ -2,22 +2,22 @@ package melky.resourcepacks;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import net.runelite.api.widgets.WidgetID;
-import net.runelite.api.widgets.WidgetInfo;
+import net.runelite.api.annotations.Component;
+import net.runelite.api.widgets.ComponentID;
 
 @Getter
 @RequiredArgsConstructor
 public enum WidgetResize
 {
 
-	RESIZABLE_QUESTS_TAB(WidgetInfo.RESIZABLE_VIEWPORT_QUESTS_TAB.getGroupId(), WidgetInfo.RESIZABLE_VIEWPORT_QUESTS_TAB.getChildId(), null, null, null, null, 33, null, 38, null),
-	RESIZABLE_IGNORES_TAB(WidgetInfo.RESIZABLE_VIEWPORT_IGNORES_TAB.getGroupId(), WidgetInfo.RESIZABLE_VIEWPORT_IGNORES_TAB.getChildId(), null, null, null, null, 33, null, 38, null),
-	FIXED_QUESTS_TAB(WidgetInfo.FIXED_VIEWPORT_QUESTS_TAB.getGroupId(), WidgetInfo.FIXED_VIEWPORT_QUESTS_TAB.getChildId(), null, null, null, null, 33, null, 38, null),
-	FIXED_IGNORES_TAB(WidgetInfo.FIXED_VIEWPORT_IGNORES_TAB.getGroupId(), WidgetInfo.FIXED_VIEWPORT_IGNORES_TAB.getChildId(), null, null, null, null, 33, null, 38, null),
+	RESIZABLE_QUESTS_TAB(ComponentID.RESIZABLE_VIEWPORT_QUESTS_TAB, null, null, null, null, 33, null, 38, null),
+	RESIZABLE_IGNORES_TAB(ComponentID.RESIZABLE_VIEWPORT_IGNORES_TAB, null, null, null, null, 33, null, 38, null),
+	FIXED_QUESTS_TAB(ComponentID.FIXED_VIEWPORT_QUESTS_TAB, null, null, null, null, 33, null, 38, null),
+	FIXED_IGNORES_TAB(ComponentID.FIXED_VIEWPORT_IGNORES_TAB, null, null, null, null, 33, null, 38, null),
 	;
 
-	private final Integer group;
-	private final Integer child;
+	@Component
+	private final int component;
 	private final Integer modifiedX;
 	private final Integer modifiedY;
 	private final Integer originalX;
