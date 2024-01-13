@@ -267,7 +267,6 @@ public class ResourcePacksPlugin extends Plugin
 		if (config.hideSidePanelButton())
 		{
 			clientToolbar.removeNavigation(navButton);
-			navButton.setSelected(false);
 		}
 		else
 		{
