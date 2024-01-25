@@ -1,7 +1,7 @@
-# Vanilla
-[Download](https://github.com/melkypie/resource-packs/archive/sample-vanilla.zip)
+# Screwed Purple
+- By Watlingj
+- 
+This pack was made with a combination of oldschool & RS3 sprites
+<img src="https://i.imgur.com/cJD7Ahw.png"><br/>
 
-THis is a sample pack that allows you to create other resource packs. Includes the default runescape textures.
-<img src="https://user-images.githubusercontent.com/5113962/82244509-02b0eb00-994a-11ea-8343-0a7dd7ddaa82.png" width="765"><br/>
-
-
+<img src="https://i.imgur.com/F0P8wFH.png"> <img src="https://i.imgur.com/vptwioj.png">
