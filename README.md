@@ -4,6 +4,6 @@
 [Download](https://github.com/JaidenW/Screwed-Purple)
 
 This resource pack is built using RS2 HD/RS3 Sprites, but with a purple twist!
-<img src="https://i.imgur.com/fLsYRyo.png" width="765"><br/>
+<img src="https://i.imgur.com/fLsYRyo.png"><br/>
 
 
