@@ -12,5 +12,8 @@ Works with all default UI layouts
 
 ## Versions
 
+#### 1.2.0
+* Party emote, compass, more borders fixed
+
 #### 1.1.0
 * Giants' foundry GUI & GE borders fix
