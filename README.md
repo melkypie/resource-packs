@@ -21,11 +21,11 @@ Refer to the official resource-packs instructions -
 
 ## Screenshots
 
-### Resizeable mode
-![ResizeableMode](https://i.imgur.com/u1sbe1x.png)
-
 ### Fixed Mode
-![FixedMode](https://i.imgur.com/2CvC4Os.png)
+![FixedMode](https://i.imgur.com/u1sbe1x.png)
+
+### Resizeable Mode
+![ResizeableMode](https://i.imgur.com/2CvC4Os.png)
 
 ## Credits
 * melkypie - creating the resource pack plugin
