@@ -22,7 +22,7 @@ Disable and Reenable the Resource packs plugin, and you should be done.
 ## Inventory Background
 If you only plan on using Fixed mode, or don't like the way the outside of the chatbox/around the stones underneath is fully transparent, download the following images and replace `background.png` and `buttons_background_stones.png` in the chatbox folder.
 #### Chat Background
-![ChatBackground](https://imgur.com/a/dJm6l2O)
+![ChatBackground](https://imgur.com/a/mQaEFrh)
 
 #### Button Stones
-![ButtonStones](https://imgur.com/a/j4oY8Mw)
+![ButtonStones](https://imgur.com/a/yzUEwKN)
