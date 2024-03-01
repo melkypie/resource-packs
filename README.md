@@ -6,29 +6,19 @@ This pack was created to recreate the gameframe of late 2006, when hunter was re
 Hope you enjoy
 
 ## Resizeable mode
-![ResizeableMode](https://i.imgur.com/VVBZUgy.png)
-![ResizeableMode](https://i.imgur.com/bMVHtzW.png)
+![ResizeableMode](https://i.imgur.com/xKOETtD.png)
+![ResizeableMode](https://i.imgur.com/l6ZG4gO.png)
 
 ## Fixed mode
-![FixedMode](https://i.imgur.com/3WfLMyN.png)
-
+![FixedMode](https://i.imgur.com/cLuawr7.png)
 **In order to correctly use in fixed mode theres a couple steps required:**
 1. Go to Runelite's plugins and enable "Interface Styles", open the settings and set 'gameframe' to 2006.
-   
 ![InterfaceStyleSetting](https://i.imgur.com/tRdE7xx.png)
-
-3. Go to the Resource packs plugin settings and tick the experimental setting at the bottom 'Don't change Interface Styles'
-
+2. Go to the Resource packs plugin settings and tick the experimental setting at the bottom 'Don't change Interface Styles'
 ![ResourcePackOption](https://i.imgur.com/y1PH1Jt.png)
-
 3. Disable and Reenable the Resource packs plugin, and you should be done.
-
 **If you want to use other packs in fixed mode, you have to make sure to disable the plugin 'Interface Styles' and disable/reenable resource packs for them to work correctly, unless the creators' specify otherwise.**
 
-## Inventory Background
-If you only plan on using Fixed mode, or don't like the way the outside of the chatbox/around the stones underneath is fully transparent, download the following images and replace `background.png` and `buttons_background_stones.png` in the chatbox folder.
-#### Chat Background
-![ChatBackground](https://i.imgur.com/GAuAunv.png)
-
-#### Button Stones
-![ButtonStones](https://i.imgur.com/MCXnT00.png)
+## Chat
+If you prefer to have the chat and stones behind the buttons underneath transparent like the example above, download the following image and replace `background.png` in the chatbox folder. For the stones behind the buttons, open up `buttons_background_stones.png` in the chatbox folder and make the whole image fully transparent.
+![ChatBackground](https://i.imgur.com/VCX1NPM.png)
