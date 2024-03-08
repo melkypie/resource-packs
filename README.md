@@ -6,8 +6,8 @@ This pack was created to recreate the gameframe of late 2006, when hunter was re
 Hope you enjoy
 
 ## Resizeable mode
-![ResizeableMode](https://i.imgur.com/EqVb9g1.png)
-![ResizeableMode](https://i.imgur.com/8CrAT8D.png)
+![ResizeableMode](https://i.imgur.com/OjNXqQ1.png)
+![ResizeableMode](https://i.imgur.com/lxsu2hs.png)
 
 ## Fixed mode
 ![FixedMode](https://i.imgur.com/9epAOPJ.png)
@@ -29,4 +29,4 @@ Hope you enjoy
 If you prefer to have the chat and stones behind the buttons underneath transparent like the example above, download the following image and replace `background.png` in the chatbox folder. For the stones behind the buttons, open up `buttons_background_stones.png` in the chatbox folder and make the whole image fully transparent.
 
 #### Background
-![ChatBackground](https://i.imgur.com/6hQaI1L.png)
+![ChatBackground](https://i.imgur.com/yHgxSTe.png)
