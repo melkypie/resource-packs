@@ -6,11 +6,11 @@ This pack was created to recreate the gameframe of late 2006, when hunter was re
 Hope you enjoy
 
 ## Resizeable mode
-![ResizeableMode](https://i.imgur.com/OjNXqQ1.png)
-![ResizeableMode](https://i.imgur.com/lxsu2hs.png)
+![ResizeableMode](https://i.imgur.com/9wJbsUx.png)
+![ResizeableMode](https://i.imgur.com/goMSCwB.png)
 
 ## Fixed mode
-![FixedMode](https://i.imgur.com/9epAOPJ.png)
+![FixedMode](https://i.imgur.com/RD26R2J.png)
 
 **In order to correctly use in fixed mode theres a couple steps required:**
 1. Go to Runelite's plugins and enable "Interface Styles", open the settings and set 'gameframe' to 2006.
