@@ -26,6 +26,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.ScheduledExecutorService;
@@ -43,9 +44,16 @@ import melky.resourcepacks.event.ResourcePacksChanged;
 import melky.resourcepacks.hub.ResourcePackManifest;
 import melky.resourcepacks.hub.ResourcePacksClient;
 import net.runelite.api.Client;
+import net.runelite.api.Player;
+import net.runelite.api.ScriptID;
 import net.runelite.api.SpriteID;
 import net.runelite.api.SpritePixels;
+import net.runelite.api.VarPlayer;
+import net.runelite.api.Varbits;
+import net.runelite.api.widgets.ComponentID;
 import net.runelite.api.widgets.Widget;
+import net.runelite.api.widgets.WidgetType;
+import net.runelite.api.widgets.WidgetUtil;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.config.RuneLiteConfig;
@@ -57,6 +65,7 @@ import net.runelite.client.util.ImageUtil;
 import net.runelite.client.util.Text;
 import net.runelite.http.api.RuneLiteAPI;
 import okhttp3.HttpUrl;
+import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
@@ -66,6 +75,9 @@ public class ResourcePacksManager
 {
 	@Getter
 	private final Properties colorProperties = new Properties();
+	
+	@Getter
+	private final Properties offsetProperties = new Properties();
 	private SpritePixels[] defaultCrossSprites;
 
 	@Inject
@@ -91,6 +103,9 @@ public class ResourcePacksManager
 
 	@Inject
 	private EventBus eventBus;
+	
+	@Inject
+	private OkHttpClient okHttpClient;
 
 	public void refreshPlugins()
 	{
@@ -173,7 +188,7 @@ public class ResourcePacksManager
 					.addPathSegment(manifest.getCommit() + ".zip")
 					.build();
 
-				try (Response res = RuneLiteAPI.CLIENT.newCall(new Request.Builder().url(url).build()).execute())
+				try (Response res = okHttpClient.newCall(new Request.Builder().url(url).build()).execute())
 				{
 					BufferedInputStream is = new BufferedInputStream(res.body().byteStream());
 					ZipInputStream zipInputStream = new ZipInputStream(is);
@@ -287,8 +302,10 @@ public class ResourcePacksManager
 			configManager.setConfiguration(ResourcePacksConfig.GROUP_NAME, "selectedHubPack", "");
 			clientThread.invokeLater(() ->
 			{
-				adjustWidgetDimensions(false);
+				applyWidgetChanges(false);
+				replaceWidgetSprites(false);
 				reloadColorProperties();
+				reloadOffsetProperties();
 				resetLoginScreen();
 				removeGameframe();
 			});
@@ -338,12 +355,14 @@ public class ResourcePacksManager
 		{
 			return;
 		}
+
 		removeGameframe();
 		overrideSprites();
 		reloadColorProperties();
+		reloadOffsetProperties();
 		applyWidgetOverrides();
-		adjustWidgetDimensions(false);
-		adjustWidgetDimensions(true);
+		applyWidgetChanges(false);
+		applyWidgetChanges(true);
 		resetCrossSprites();
 		changeCrossSprites();
 	}
@@ -351,7 +370,6 @@ public class ResourcePacksManager
 	void removeGameframe()
 	{
 		restoreSprites();
-
 		BufferedImage compassImage = spriteManager.getSprite(SpriteID.COMPASS_TEXTURE, 0);
 
 		if (compassImage != null)
@@ -361,22 +379,79 @@ public class ResourcePacksManager
 		}
 	}
 
+	void applyWidgetChanges(boolean modify)
+	{
+		adjustWidgetDimensions(modify);
+
+		refreshSpecialAttackText(modify);
+
+	}
+
+	public void resetOffsets()
+	{
+		offsetProperties.clear();
+		for (WidgetResize widgetResize : WidgetResize.values())
+		{
+			Widget widget = client.getWidget(widgetResize.getComponentId());
+
+			if (widget != null)
+			{
+				widget.revalidate();
+			}
+		}
+	}
+
 	void adjustWidgetDimensions(boolean modify)
 	{
 		for (WidgetResize widgetResize : WidgetResize.values())
 		{
-			Widget widget = client.getWidget(widgetResize.getComponent());
+			int xOffset = 0;
+			int yOffset = 0;
+			if (offsetProperties.containsKey(widgetResize.name().toLowerCase()))
+			{
+				String[] property = offsetProperties.getProperty(widgetResize.name().toLowerCase()).trim().split(",");
+				for (int index = 0; index < property.length; index++)
+				{
+					String value = property[index].replaceAll("[^\\d-]", "");
+					if (value.startsWith("0") || (value.contains("-") && !value.startsWith("-")))
+					{
+						continue;
+					}
+					if (!Objects.equals(property[index], ""))
+					{
+						if (index == 0)
+						{
+							xOffset = Integer.parseInt(value);
+						}
+						if (index == 1)
+						{
+							yOffset = Integer.parseInt(value);
+						}
+					}
+				}
+			}
+
+			Widget widget = client.getWidget(widgetResize.getComponentId());
 
 			if (widget != null)
 			{
+				if (widgetResize.getChildIndex() != null)
+				{
+					Widget child = widget.getChild(widgetResize.getChildIndex());
+					if (child != null)
+					{
+						widget = child;
+					}
+				}
+
 				if (widgetResize.getOriginalX() != null)
 				{
-					widget.setOriginalX(modify ? widgetResize.getModifiedX() : widgetResize.getOriginalX());
+					widget.setOriginalX(modify ? (xOffset != 0 ? widgetResize.getOriginalX() + xOffset : widgetResize.getModifiedX()) : widgetResize.getOriginalX());
 				}
 
 				if (widgetResize.getOriginalY() != null)
 				{
-					widget.setOriginalY(modify ? widgetResize.getModifiedY() : widgetResize.getOriginalY());
+					widget.setOriginalY(modify ? (yOffset != 0 ? widgetResize.getOriginalY() + yOffset : widgetResize.getModifiedY()) : widgetResize.getOriginalY());
 				}
 
 				if (widgetResize.getOriginalWidth() != null)
@@ -396,10 +471,10 @@ public class ResourcePacksManager
 		}
 	}
 
+
 	void restoreSprites()
 	{
 		client.getWidgetSpriteCache().reset();
-
 		for (SpriteOverride spriteOverride : SpriteOverride.values())
 		{
 			if (spriteOverride.equals(SpriteOverride.LOGIN_SCREEN_BACKGROUND))
@@ -408,12 +483,13 @@ public class ResourcePacksManager
 			}
 			client.getSpriteOverrides().remove(spriteOverride.getSpriteID());
 		}
-		for (TabSprites tabSprite : TabSprites.values())
+		for (ResourceSprites re : ResourceSprites.values())
 		{
-			BufferedImage image = ImageUtil.loadImageResource(getClass(), tabSprite.getFileName());
+			BufferedImage image = ImageUtil.loadImageResource(getClass(), re.getFileName());
 			SpritePixels sp = ImageUtil.getImageSpritePixels(image, client);
-			client.getSpriteOverrides().put(tabSprite.getSpriteId(), sp);
+			client.getSpriteOverrides().put(re.getSpriteId(), sp);
 		}
+
 	}
 
 	public String getCurrentPackPath()
@@ -515,7 +591,6 @@ public class ResourcePacksManager
 
 			for (SpriteOverride spriteOverride : collection)
 			{
-
 				SpritePixels spritePixels = getSpritePixels(spriteOverride, currentPackPath);
 				if (config.allowLoginScreen() && spriteOverride == SpriteOverride.LOGIN_SCREEN_BACKGROUND)
 				{
@@ -528,18 +603,18 @@ public class ResourcePacksManager
 						resetLoginScreen();
 					}
 				}
+
 				if (spritePixels == null)
 				{
 					continue;
 				}
-
 				if (spriteOverride.getSpriteID() == SpriteID.COMPASS_TEXTURE)
 				{
 					client.setCompass(spritePixels);
 				}
 				else
 				{
-					if (spriteOverride.getSpriteID() < -200)
+					if (spriteOverride.getSpriteID() < -200 && spriteOverride.getSpriteID() > -210)
 					{
 						client.getSpriteOverrides().remove(spriteOverride.getSpriteID());
 					}
@@ -559,7 +634,7 @@ public class ResourcePacksManager
 			}
 			for (SpriteOverride spriteOverride : collection)
 			{
-				if (spriteOverride.getSpriteID() < -200)
+				if (spriteOverride.getSpriteID() < -200 && spriteOverride.getSpriteID() > -206)
 				{
 					SpritePixels spritePixels = getSpritePixels(spriteOverride, currentPackPath);
 					client.getSpriteOverrides().remove(spriteOverride.getSpriteID());
@@ -600,6 +675,25 @@ public class ResourcePacksManager
 		// Add more properties
 	}
 
+	void reloadOffsetProperties()
+	{
+		offsetProperties.clear();
+		File offsetPropertiesFile = new File(getCurrentPackPath() + "/offset.properties");
+		try (InputStream in = new FileInputStream(offsetPropertiesFile))
+		{
+			offsetProperties.load(in);
+		}
+		catch (IOException e)
+		{
+			log.debug("Offset properties not found");
+			return;
+		}
+		if (config.allowOverlayColor())
+		{
+			changeOverlayColor();
+		}
+	}
+
 	void changeOverlayColor()
 	{
 		if (configManager.getConfiguration(ResourcePacksConfig.GROUP_NAME, ResourcePacksConfig.ORIGINAL_OVERLAY_COLOR) == null)
@@ -636,6 +730,7 @@ public class ResourcePacksManager
 		}
 
 		SpritePixels[] crossSprites = client.getCrossSprites();
+
 		if (crossSprites == null)
 		{
 			return;
@@ -649,11 +744,11 @@ public class ResourcePacksManager
 			{
 				return;
 			}
-
 			for (SpriteOverride spriteOverride : collection)
 			{
 				SpritePixels spritePixels = getSpritePixels(spriteOverride, currentPackPath);
-				if (spritePixels == null) {
+				if (spritePixels == null)
+				{
 					continue;
 				}
 				crossSprites[spriteOverride.getFrameID()] = spritePixels;
@@ -717,28 +812,29 @@ public class ResourcePacksManager
 
 	public void addPropertyToWidget(WidgetOverride widgetOverride)
 	{
-		int property;
+		int color = widgetOverride.getDefaultColor();
+		int alpha = -1;
 		if (colorProperties.containsKey(widgetOverride.name().toLowerCase()))
 		{
-			String widgetProperty = colorProperties.getProperty(widgetOverride.name().toLowerCase());
-			if (!widgetProperty.isEmpty())
+			String property = colorProperties.getProperty(widgetOverride.name().toLowerCase());
+			Color hex = ColorUtil.fromHex(property);
+			if (!property.isEmpty())
 			{
-				property = Integer.decode(widgetProperty);
-			}
-			else
-			{
-				property = widgetOverride.getDefaultColor();
+				if (hex != null && ColorUtil.isAlphaHex(property))
+				{
+					color = hex.getRGB();
+					alpha = hex.getAlpha();
+				}
+				else
+				{
+					color = Integer.decode(property);
+				}
 			}
 		}
-		else
+		for (Integer override : widgetOverride.getComponentId())
 		{
-			property = widgetOverride.getDefaultColor();
-		}
-
-		for (Integer childId : widgetOverride.getWidgetChildIds())
-		{
-			Widget widgetToOverride = client.getWidget(widgetOverride.getWidgetInterfaceId(), childId);
-			if (widgetToOverride == null)
+			Widget widget = client.getWidget(override);
+			if (widget == null)
 			{
 				continue;
 			}
@@ -747,21 +843,348 @@ public class ResourcePacksManager
 			{
 				for (int arrayId : widgetOverride.getWidgetArrayIds())
 				{
-					Widget arrayWidget = widgetToOverride.getChild(arrayId);
-					if (arrayWidget == null || arrayWidget.getTextColor() == -1 || arrayWidget.getTextColor() == property)
+					Widget child = widget.getChild(arrayId);
+					if (child == null || child.getTextColor() == -1 || child.getTextColor() == color)
 					{
 						continue;
 					}
-					arrayWidget.setTextColor(property);
+
+					if (override == ComponentID.CHATBOX_TRANSPARENT_BACKGROUND_LINES
+						&& child.getWidth() != widgetOverride.getWidth())
+					{
+						continue;
+					}
+					if ((override == WidgetOverride.ComponentId.FORESTRY_BAG_BUTTON_COMPONENT_ID
+						|| override == WidgetOverride.ComponentId.FORESTRY_SHOP_BUTTON_COMPONENT_ID
+						|| override == WidgetOverride.ComponentId.GIANTS_FOUNDRY_SHOP_BUTTON_COMPONENT_ID
+						|| override == WidgetOverride.ComponentId.FORTIS_COLOSSEUM_MODIFIERS_COMPONENT_IDS[0]
+						|| override == WidgetOverride.ComponentId.FORTIS_COLOSSEUM_MODIFIERS_COMPONENT_IDS[1]
+						|| override == WidgetOverride.ComponentId.FORTIS_COLOSSEUM_MODIFIERS_COMPONENT_IDS[2]
+					)
+						&& child.getTextColor() != widgetOverride.getDefaultColor())
+					{
+						continue;
+					}
+					if (WidgetUtil.componentToInterface(override) == WidgetUtil.componentToInterface(WidgetOverride.ComponentId.SMITHING_COMPONENT_IDS[0])
+						&& !Objects.equals(child.getText(), ""))
+					{
+						continue;
+					}
+
+					child.setTextColor(color);
+
+					if (alpha == -1 || child.getOpacity() != 0)
+					{
+						if (child.isHidden())
+						{
+							child.setHidden(false);
+						}
+
+						continue;
+					}
+					int opacity = 255 - alpha;
+
+					if (alpha == 0)
+					{
+						child.setHidden(true);
+					}
+					else
+					{
+						child.setOpacity(opacity);
+					}
 				}
 			}
 			else
 			{
-				if (widgetToOverride.getTextColor() != -1 || widgetToOverride.getTextColor() != property)
+				if (widget.getTextColor() != -1 || widget.getTextColor() != color)
 				{
-					widgetToOverride.setTextColor(property);
+					widget.setTextColor(color);
+				}
+
+				if (alpha != -1 && widget.getOpacity() == 0)
+				{
+					int opacity = 255 - alpha;
+					if (alpha == 0)
+					{
+						widget.setHidden(true);
+					}
+					else
+					{
+						widget.setOpacity(opacity);
+					}
+				}
+				else
+				{
+					if (widget.isHidden())
+					{
+						widget.setHidden(false);
+					}
 				}
 			}
 		}
 	}
+
+	public void replaceWidgetSprites(boolean modify)
+	{
+		for (WidgetReplace replace : WidgetReplace.values())
+		{
+			for (Integer override : replace.getComponentId())
+			{
+				Widget widget = client.getWidget(override);
+				if (widget != null && !widget.isHidden())
+				{
+					for (int arrayId : replace.getChildIndex())
+					{
+						Widget child = widget.getChild(arrayId);
+						int id = replace.getSpriteId();
+						if (!modify)
+						{
+
+							if (override == WidgetReplace.Constants.RESIZABLE_VIEWPORT_CLASSIC_COMPONENT_ID
+								|| override == WidgetReplace.Constants.RESIZABLE_VIEWPORT_MODERN_COMPONENT_ID)
+							{
+								if (widget.getOpacity() == 0)
+								{
+									id = 897;
+								}
+								else
+								{
+									id = 1040;
+								}
+							}
+							else
+							{
+								id = Math.abs(id);
+							}
+						}
+						if (child != null && arrayId != -1)
+						{
+							child.setSpriteId(id);
+							continue;
+						}
+						widget.setSpriteId(id);
+					}
+				}
+			}
+		}
+	}
+
+
+	final String DEFAULT_SPECIAL_ATTACK_TEXT = "Special Attack: ";
+	final String RETRO_SPECIAL_ATTACK_TEXT = "S P E C I A L  A T T A C K";
+	final int COMBAT_SPECIAL_BAR_BORDER = 38862885;
+	final int COMBAT_SPECIAL_BAR_EMPTY = 38862886;
+	final int COMBAT_SPECIAL_BAR_FILL = 38862888;
+	final int COMBAT_SPECIAL_BAR_TEXT = 38862889;
+	final int COMBAT_SPECIAL_BAR_OUTLINE = 38862890;
+	final SpriteOverride[] SPECIAL_BAR_BORDER_SPRITES = new SpriteOverride[]{
+		SpriteOverride.COMBAT_SPECIAL_BORDER_TOP_LEFT_CORNER,
+		SpriteOverride.COMBAT_SPECIAL_BORDER_TOP,
+		SpriteOverride.COMBAT_SPECIAL_BORDER_TOP_RIGHT_CORNER,
+		SpriteOverride.COMBAT_SPECIAL_BORDER_LEFT,
+		SpriteOverride.COMBAT_SPECIAL_BORDER_MIDDLE,
+		SpriteOverride.COMBAT_SPECIAL_BORDER_RIGHT,
+		SpriteOverride.COMBAT_SPECIAL_BORDER_BOTTOM_LEFT_CORNER,
+		SpriteOverride.COMBAT_SPECIAL_BORDER_BOTTOM,
+		SpriteOverride.COMBAT_SPECIAL_BORDER_BOTTOM_RIGHT_CORNER,
+	};
+
+	int specialAttackTextColor(boolean modify)
+	{
+		switch (client.getVarpValue(VarPlayer.SPECIAL_ATTACK_ENABLED))
+		{
+			case 1:
+				return (modify ? config.enabledSpecialTextColor().getRGB() : 0xffff00);
+
+			case 0:
+			default:
+				return (modify ? config.disableSpecialTextColor().getRGB() : 10);
+		}
+	}
+
+	void refreshSpecialAttackText(boolean modify)
+	{
+		Widget specialAttackText = client.getWidget(COMBAT_SPECIAL_BAR_TEXT);
+		if (specialAttackText != null && !specialAttackText.isHidden())
+		{
+			specialAttackText.setText(((!config.retroSpecialAttackText() || !modify) ? DEFAULT_SPECIAL_ATTACK_TEXT + (client.getVarpValue(VarPlayer.SPECIAL_ATTACK_PERCENT) / 10) + "%" : RETRO_SPECIAL_ATTACK_TEXT));
+			specialAttackText.setTextColor(specialAttackTextColor(config.recolorSpecialAttackText()));
+		}
+	}
+
+
+	public void setSpecialBarTo(boolean modify)
+	{
+		boolean bar = (
+			configManager.getConfiguration(ResourcePacksConfig.GROUP_NAME, "specialBarSelection").equals("BAR")
+				|| configManager.getConfiguration(ResourcePacksConfig.GROUP_NAME, "specialBarSelection").equals("BOTH")
+		) && modify;
+
+		boolean border = (
+			configManager.getConfiguration(ResourcePacksConfig.GROUP_NAME, "specialBarSelection").equals("BORDER")
+				|| configManager.getConfiguration(ResourcePacksConfig.GROUP_NAME, "specialBarSelection").equals("BOTH")
+		) && modify;
+
+		int id = -1;
+
+		Widget empty = client.getWidget(COMBAT_SPECIAL_BAR_EMPTY);
+		if (empty != null && !empty.isHidden())
+		{
+			if (modify && bar)
+			{
+				id = SpriteOverride.COMBAT_SPECIAL_BAR_EMPTY.getSpriteID();
+			}
+			empty.setType((modify && bar) ? WidgetType.GRAPHIC : WidgetType.RECTANGLE);
+			empty.setSpriteId(id);
+		}
+
+		Widget fill = client.getWidget(COMBAT_SPECIAL_BAR_FILL);
+		if (fill != null && !fill.isHidden())
+		{
+			if (modify && bar)
+			{
+				id = (fill.getTextColor() == 0x397d3b ? SpriteOverride.COMBAT_SPECIAL_BAR_FULL.getSpriteID() : SpriteOverride.COMBAT_SPECIAL_BAR_FILL.getSpriteID());
+				fill.setSpriteTiling(true);
+			}
+			fill.setType((modify && bar) ? WidgetType.GRAPHIC : WidgetType.RECTANGLE);
+			fill.setSpriteId(id);
+		}
+
+		Widget outline = client.getWidget(COMBAT_SPECIAL_BAR_OUTLINE);
+		if (outline != null && !outline.isHidden())
+		{
+			if (modify && bar)
+			{
+				id = SpriteOverride.COMBAT_SPECIAL_BAR_BORDER.getSpriteID();
+			}
+			outline.setType((modify && bar) ? WidgetType.GRAPHIC : WidgetType.RECTANGLE);
+			outline.setSpriteId(id);
+		}
+
+		Widget widget = client.getWidget(COMBAT_SPECIAL_BAR_BORDER);
+		if (widget != null && !widget.isHidden())
+		{
+			for (int index = 0; index < SPECIAL_BAR_BORDER_SPRITES.length; index++)
+			{
+				Widget child = widget.getChild(index);
+				if (child != null)
+				{
+					id = SPECIAL_BAR_BORDER_SPRITES[index].getSpriteID();
+					if (!border && id != -1)
+					{
+						id = Math.abs(id);
+					}
+					child.setSpriteId(id);
+				}
+			}
+		}
+	}
+
+	public void manageBankSeparatorLines(boolean modify)
+	{
+		Widget widget = client.getWidget(ComponentID.BANK_ITEM_CONTAINER);
+		if (widget != null)
+		{
+			Widget bankTitle = client.getWidget(ComponentID.BANK_TITLE_BAR);
+			if (bankTitle != null)
+			{
+				//bank tags tab
+				if (bankTitle.getText().startsWith("Tag tab <col=ff0000>"))
+				{
+					if (configManager.getConfiguration("banktags", "removeTabSeparators").equals("true"))
+					{
+						for (Widget child : widget.getDynamicChildren())
+						{
+							if (child.getSpriteId() == -897 && !child.isHidden())
+							{
+								child.setHidden(true);
+							}
+						}
+					}
+				}
+
+				//quest helper tab
+				if (bankTitle.getText().startsWith("Tab <col=ff0000>"))
+				{
+					for (Widget child : widget.getDynamicChildren())
+					{
+						if (child.getIndex() >= 1220 && child.getIndex() <= 1228)
+						{
+							if (!child.isHidden())
+							{
+								child.setHidden(modify);
+							}
+
+						}
+						if (!modify)
+						{
+							continue;
+						}
+						if (child.getSpriteId() == SpriteID.RESIZEABLE_MODE_SIDE_PANEL_BACKGROUND
+							|| child.getText().contains("Tab"))
+						{
+							child.setSpriteId(-897);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	public void fixEmoteTabGrid()
+	{
+		Widget widget = client.getWidget(ComponentID.EMOTES_EMOTE_CONTAINER);
+		if (widget != null)
+		{
+			if (widget.getChildren() == null)
+			{
+				return;
+			}
+
+			for (int index = 0; index < (widget.getChildren().length / 2); index++)
+			{
+				Widget child = widget.getChild(index);
+				if (child != null)
+				{
+					child.setType(WidgetType.GRAPHIC);
+				}
+			}
+		}
+	}
+
+	public void replaceXPLampBackground()
+	{
+		Widget background = client.getWidget(15728641);
+		if (background != null)
+		{
+			if (configManager.getConfiguration(ResourcePacksConfig.GROUP_NAME, "lampBackground").
+				equals("DARK"))
+			{
+				background.setModelId(41569);
+				background.setRotationX(0);
+				background.setRotationY(0);
+				background.setRotationZ(0);
+				background.setModelZoom(508);
+			}
+			if (configManager.getConfiguration(ResourcePacksConfig.GROUP_NAME, "lampBackground").
+				equals("SCROLL"))
+			{
+				background.setModelId(21821);
+				background.setRotationX(512);
+				background.setRotationY(0);
+				background.setRotationZ(1033);
+				background.setModelZoom(612);
+			}
+			if (configManager.getConfiguration(ResourcePacksConfig.GROUP_NAME, "lampBackground").
+				equals("DARK_BLUE"))
+			{
+				background.setModelId(4011);
+				background.setRotationX(0);
+				background.setRotationY(0);
+				background.setRotationZ(0);
+				background.setModelZoom(550);
+			}
+		}
+	}
+	
 }

@@ -6,6 +6,7 @@ import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 import net.runelite.client.config.ConfigSection;
+import net.runelite.client.ui.JagexColors;
 
 @ConfigGroup(ResourcePacksConfig.GROUP_NAME)
 public interface ResourcePacksConfig extends Config
@@ -22,18 +23,43 @@ public interface ResourcePacksConfig extends Config
 		HUB
 	}
 
-	@ConfigSection(name = "Resource pack paths",
+	enum SpecialBar
+	{
+		BAR,
+		BORDER,
+		BOTH
+	}
+
+	enum LampBackground
+	{
+		DEFAULT,
+		SCROLL,
+		DARK,
+		DARK_BLUE,
+	}
+
+	@ConfigSection(
+		name = "Resource pack paths",
 		description = "Contains resource pack paths",
 		position = 2
 	)
 	String resourcePackPaths = "resourcePackPaths";
 
-	@ConfigSection(name = "Experimental options",
+	@ConfigSection(
+		name = "Experimental options",
 		description = "Do not touch if you don't know what you are doing",
-		position = 9,
+		position = 11,
 		closedByDefault = true
 	)
 	String experimentalOptions = "experimentalOptions";
+
+	@ConfigSection(
+		name = "Style Options",
+		description = "Options to change the style of certain widgets",
+		position = 10
+	)
+	String styleOptions = "styleOptions";
+
 
 	@ConfigItem(
 		keyName = "resourcePack",
@@ -83,12 +109,13 @@ public interface ResourcePacksConfig extends Config
 	}
 
 	@ConfigItem(
-			keyName = "hideSidePanelButton",
-			name = "Hide side panel button",
-			description = "Allows you to hide the side panel button to reduce clutter when not changing packs frequently",
-			position = 5
+		keyName = "hideSidePanelButton",
+		name = "Hide side panel button",
+		description = "Allows you to hide the side panel button to reduce clutter when not changing packs frequently",
+		position = 5
 	)
-	default boolean hideSidePanelButton() {
+	default boolean hideSidePanelButton()
+	{
 		return false;
 	}
 
@@ -137,10 +164,33 @@ public interface ResourcePacksConfig extends Config
 	}
 
 	@ConfigItem(
+		keyName = "allowCustomSpriteOverrides",
+		name = "Allow custom sprites",
+		description = "Allow packs to use remapped sprites to certain widget components, disable this option for legacy packs",
+		position = 10
+	)
+	default boolean allowCustomSpriteOverrides()
+	{
+		return true;
+	}
+
+	@ConfigItem(
+		keyName = "lampBackground",
+		name = "XP Lamp background",
+		description = "Replace the xp lamp background",
+		position = 22,
+		section = styleOptions
+	)
+	default LampBackground lampBackground()
+	{
+		return LampBackground.DEFAULT;
+	}
+
+	@ConfigItem(
 		keyName = "disableInterfaceStylesPrompt",
 		name = "Don't change Interface Styles gameframe option",
 		description = "Turning this option on will disable resource packs changing the Interface Styles gameframe option to default",
-		position = 10
+		position = 21
 	)
 	default boolean disableInterfaceStylesPrompt()
 	{
@@ -148,10 +198,82 @@ public interface ResourcePacksConfig extends Config
 	}
 
 	@ConfigItem(
+		keyName = "allowSpecialBarChanges",
+		name = "Allow changes to the special attack bar",
+		description = "Turning this option on will enable packs to use their own special attack bar sprites",
+		position = 12,
+		section = styleOptions
+	)
+	default boolean allowSpecialBarChanges()
+	{
+		return true;
+	}
+
+	@ConfigItem(
+		keyName = "specialBarSelection",
+		name = "Select changes",
+		description = "Only show changes to the fill bar, border, or both",
+		position = 13,
+		section = styleOptions
+	)
+	default SpecialBar specialBar()
+	{
+		return SpecialBar.BOTH;
+	}
+
+	@ConfigItem(
+		keyName = "retroSpecialAttackText",
+		name = "Change special bar text style",
+		description = "Turning this on will change the special bar text to the 2007 version without current percent",
+		position = 14,
+		section = styleOptions
+	)
+	default boolean retroSpecialAttackText()
+	{
+		return false;
+	}
+
+	@ConfigItem(
+		keyName = "recolorSpecialAttackText",
+		name = "Change special bar text colors",
+		description = "Turning this on will change the special bar text colors to the below selected colors",
+		position = 15,
+		section = styleOptions
+	)
+	default boolean recolorSpecialAttackText()
+	{
+		return false;
+	}
+
+	@ConfigItem(
+		keyName = "disableSpecialTextColor",
+		name = "Special attack disabled",
+		description = "Allows you to change the color of the special attack disabled text, left click to reset to default",
+		position = 16,
+		section = styleOptions
+	)
+	default Color disableSpecialTextColor()
+	{
+		return new Color(0, 0, 10);
+	}
+
+	@ConfigItem(
+		keyName = "enabledSpecialTextColor",
+		name = "Special attack enabled",
+		description = "Allows you to change the color of the special attack enabled text, left click to reset to default",
+		position = 17,
+		section = styleOptions
+	)
+	default Color enabledSpecialTextColor()
+	{
+		return new Color(255, 255, 0);
+	}
+
+	@ConfigItem(
 		keyName = "allowColorPack",
 		name = "Enables color current pack option",
 		description = "This option must be on for Color current pack option to work",
-		position = 11,
+		position = 18,
 		section = experimentalOptions
 	)
 	default boolean allowColorPack()
@@ -164,7 +286,7 @@ public interface ResourcePacksConfig extends Config
 		keyName = "colorPack",
 		name = "Color current pack",
 		description = "Allows you to apply a color overlay over the currently selected resource pack",
-		position = 12,
+		position = 19,
 		section = experimentalOptions
 	)
 	Color colorPack();
@@ -173,7 +295,7 @@ public interface ResourcePacksConfig extends Config
 		keyName = "colorPackOverlay",
 		name = "Allows color current pack to change overlays",
 		description = "This option will only work if color current pack is enabled and a color is assigned",
-		position = 13,
+		position = 20,
 		section = experimentalOptions
 	)
 	default boolean colorPackOverlay()
