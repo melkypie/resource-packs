@@ -1,5 +1,32 @@
 ## Change log
 
+### 1.5.0
+- Added support to allow packs to load custom sprites that were mapped to other widget components, listed below
+  - Bank background 
+  - Bank separator lines (including Seed vault)
+  - Inventory background, classic and modern (supports transparent side panel)
+  - Special attack bar border
+- Overhauled the WidgetOverride class
+- Added over 120 new overrides to the WidgetOverride class
+- Added over 140 new sprites to the SpriteOverride class
+- Added 32 changes to ./ge/BORDER_OFFER_LEFT.png where the sprite was positioned 1 pixel to the left in a lot of misc. widgets
+- Fixed the squished Fairy Ring search icon
+- Fixed the squished Fossil Island Hopper close button
+- Added the ability to customize the Special Attack bar sprites
+  - Fill, Full, Empty, Border; 
+    - dir ./combat/
+- Added 9 new Config options;
+  - Allow changes to the special attack bar
+  - Selection of changes include
+    - BAR, BORDER or BOTH
+  - Retro style special attack text (without % remaining)
+  - Color selector to customize the text color of the special attack text (supports both states)
+  - Setting to disable custom sprites for legacy/older packs
+  - XP lamp background selection
+- Added a warning for users when changing the Overlay color in the Runelite config while the Resource Packs config had "Allow overlay color to be changed" active as requested [here](https://github.com/melkypie/resource-packs/issues/224#issue-2081436901)
+- Added a new file 'offset.properties' (allows the ability to modify the tab stones and icons x, and y offsets for fixed, resizable classic, and resizable modern)
+- Fixed a minor bug where a grid pattern was showing faintly in the Emotes tab
+
 ### 1.4.9
 - Fix FlatLaf compatibility
 

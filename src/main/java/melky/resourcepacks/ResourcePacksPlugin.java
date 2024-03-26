@@ -132,15 +132,22 @@ public class ResourcePacksPlugin extends Plugin
 	{
 		clientThread.invokeLater(() ->
 		{
-			resourcePacksManager.adjustWidgetDimensions(false);
+			resourcePacksManager.applyWidgetChanges(false);
+			resourcePacksManager.replaceWidgetSprites(false);
+			resourcePacksManager.resetOffsets();
 			resourcePacksManager.removeGameframe();
 			resourcePacksManager.resetWidgetOverrides();
 			resourcePacksManager.resetCrossSprites();
+			resourcePacksManager.resetFixedModeHideChatFix();
+			resourcePacksManager.setSpecialBarTo(false);
+			resourcePacksManager.manageBankSeparatorLines(false);
 		});
+
 		if (config.allowLoginScreen())
 		{
 			resourcePacksManager.resetLoginScreen();
 		}
+
 		if (config.allowOverlayColor())
 		{
 			resourcePacksManager.resetOverlayColor();
@@ -152,7 +159,18 @@ public class ResourcePacksPlugin extends Plugin
 	@Subscribe
 	public void onBeforeRender(BeforeRender event)
 	{
-		resourcePacksManager.adjustWidgetDimensions(true);
+
+		if (client.getGameState() != GameState.LOGGED_IN)
+		{
+			return;
+		}
+		resourcePacksManager.applyWidgetChanges(true);
+
+		resourcePacksManager.replaceWidgetSprites(
+			config.allowCustomSpriteOverrides()
+				&& !resourcePacksManager.getCurrentPackPath().equals("")
+		);
+
 	}
 
 	@Subscribe
@@ -169,6 +187,7 @@ public class ResourcePacksPlugin extends Plugin
 				case "resourcePack":
 					clientThread.invokeLater(resourcePacksManager::updateAllOverrides);
 					break;
+
 				case "allowOverlayColor":
 					if (config.allowOverlayColor())
 					{
@@ -179,6 +198,7 @@ public class ResourcePacksPlugin extends Plugin
 						resourcePacksManager.resetOverlayColor();
 					}
 					break;
+
 				case "allowCrossSprites":
 					if (config.allowCrossSprites())
 					{
@@ -189,6 +209,7 @@ public class ResourcePacksPlugin extends Plugin
 						resourcePacksManager.resetCrossSprites();
 					}
 					break;
+
 				case "allowLoginScreen":
 					if (config.allowLoginScreen())
 					{
@@ -199,9 +220,19 @@ public class ResourcePacksPlugin extends Plugin
 						resourcePacksManager.resetLoginScreen();
 					}
 					break;
+
 				case "hideSidePanelButton":
 					clientThread.invokeLater(this::toggleSidePanelButton);
 					break;
+
+				case "allowSpecialBarChanges":
+				case "allowCustomSpriteOverrides":
+				case "specialBarSelection":
+					clientThread.invokeLater(() -> resourcePacksManager.setSpecialBarTo(
+						(config.allowSpecialBarChanges() && config.allowCustomSpriteOverrides()))
+					);
+					break;
+
 			}
 		}
 		else if (event.getGroup().equals("banktags") && event.getKey().equals("useTabs"))
@@ -211,6 +242,24 @@ public class ResourcePacksPlugin extends Plugin
 		else if (config.allowOverlayColor() && !ignoreOverlayConfig &&
 			event.getGroup().equals(RuneLiteConfig.GROUP_NAME) && event.getKey().equals(OVERLAY_COLOR_CONFIG))
 		{
+			String warn = new ChatMessageBuilder()
+				.append(ChatColorType.HIGHLIGHT)
+				.append("Warning: ")
+				.append(ChatColorType.NORMAL)
+				.append("Resource pack")
+				.append(ChatColorType.HIGHLIGHT)
+				.append(" is overriding the Overlay Color. To disable, uncheck 'Allow overlay color to be changed' in the ")
+				.append(ChatColorType.NORMAL)
+				.append("Resource packs")
+				.append(ChatColorType.HIGHLIGHT)
+				.append(" config settings.")
+				.build();
+
+			chatMessageManager.queue(QueuedMessage.builder()
+				.type(ChatMessageType.CONSOLE)
+				.runeLiteFormattedMessage(warn)
+				.build());
+
 			configManager.setConfiguration(ResourcePacksConfig.GROUP_NAME, ResourcePacksConfig.ORIGINAL_OVERLAY_COLOR,
 				event.getNewValue());
 		}
@@ -242,7 +291,8 @@ public class ResourcePacksPlugin extends Plugin
 			resourcePacksManager.changeCrossSprites();
 		}
 
-		if (client.getGameState() == GameState.LOGGED_IN && !configManager.getConfiguration("interfaceStyles", "gameframe", Skin.DEFAULT.getDeclaringClass()).equals(Skin.DEFAULT) &&
+		if (client.getGameState() == GameState.LOGGED_IN
+			&& !configManager.getConfiguration("interfaceStyles", "gameframe", Skin.DEFAULT.getDeclaringClass()).equals(Skin.DEFAULT) &&
 			!config.disableInterfaceStylesPrompt())
 		{
 			setInterfaceStylesGameframeOption();
@@ -260,6 +310,23 @@ public class ResourcePacksPlugin extends Plugin
 				resourcePacksManager.addPropertyToWidget(widgetOverride);
 			}
 		}
+
+		if (event.getScriptId() == 914)
+		{
+			resourcePacksManager.fixEmoteTabGrid();
+		}
+		if (event.getScriptId() == 3805)
+		{
+			resourcePacksManager.replaceXPLampBackground();
+		}
+		if (event.getScriptId() == 186 || event.getScriptId() == 188 || event.getScriptId() == 905 || event.getScriptId() == 914)
+		{
+			resourcePacksManager.setSpecialBarTo((config.allowSpecialBarChanges() && config.allowCustomSpriteOverrides()));
+		}
+		if (event.getScriptId() == 839)
+		{
+			resourcePacksManager.manageBankSeparatorLines(config.allowCustomSpriteOverrides());
+		}
 	}
 
 	private void toggleSidePanelButton()
@@ -274,7 +341,8 @@ public class ResourcePacksPlugin extends Plugin
 		}
 	}
 
-	private void setInterfaceStylesGameframeOption() {
+	private void setInterfaceStylesGameframeOption()
+	{
 		String message = new ChatMessageBuilder()
 			.append(ChatColorType.NORMAL)
 			.append("[")
