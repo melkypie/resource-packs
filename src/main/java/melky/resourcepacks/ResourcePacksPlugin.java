@@ -138,7 +138,6 @@ public class ResourcePacksPlugin extends Plugin
 			resourcePacksManager.removeGameframe();
 			resourcePacksManager.resetWidgetOverrides();
 			resourcePacksManager.resetCrossSprites();
-			resourcePacksManager.resetFixedModeHideChatFix();
 			resourcePacksManager.setSpecialBarTo(false);
 			resourcePacksManager.manageBankSeparatorLines(false);
 		});
