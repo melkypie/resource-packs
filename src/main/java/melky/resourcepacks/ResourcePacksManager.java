@@ -1040,8 +1040,6 @@ public class ResourcePacksManager
 			return;
 		}
 
-		//keyremappingplus lets you change the "Press Enter to Chat" string, so just look for the asterisk now
-		boolean enterToChat = !chatboxInput.getText().endsWith("*");
 		final boolean isChatboxTransparent = client.isResized() && client.getVarbitValue(Varbits.TRANSPARENT_CHATBOX) == 1;
 		Color inputColor = isChatboxTransparent ? config.transparentChatboxInputColor() : config.opaqueChatboxInputColor();
 		Color nameColor = isChatboxTransparent ? config.transparentNameColor() : config.opaqueNameColor();
@@ -1053,9 +1051,15 @@ public class ResourcePacksManager
 
 		if (idx != -1)
 		{
-			String newText =
-				ColorUtil.wrapWithColorTag(name + ":", nameColor)
-					+ (enterToChat ? input : ColorUtil.wrapWithColorTag(client.getVarcStrValue(VarClientStr.CHATBOX_TYPED_TEXT) + "*", inputColor));
+			String newName = ColorUtil.wrapWithColorTag(name + ":", nameColor);
+			boolean enterToChat = (
+				input.equals(" Press Enter to Chat...") ||
+				configManager.getConfiguration("keyremappingplus", "promptText").endsWith(input + ColorUtil.CLOSING_COLOR_TAG) ||
+				!input.endsWith("*" + ColorUtil.CLOSING_COLOR_TAG)
+			);
+			String newInput = enterToChat ? input : ColorUtil.wrapWithColorTag(client.getVarcStrValue(VarClientStr.CHATBOX_TYPED_TEXT) + "*", inputColor);
+
+			String newText = newName + (!enterToChat ? " " : "") + newInput;
 
 			chatboxInput.setText(newText);
 		}
