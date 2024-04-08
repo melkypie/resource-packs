@@ -109,6 +109,7 @@ public class ResourcePacksPlugin extends Plugin
 		executor.submit(() -> {
 			resourcePacksManager.refreshPlugins();
 			clientThread.invokeLater(resourcePacksManager::updateAllOverrides);
+			clientThread.invokeLater(resourcePacksManager::refreshMinimap);
 		});
 
 		resourcePacksHubPanel = injector.getInstance(ResourcePacksHubPanel.class);
@@ -140,6 +141,7 @@ public class ResourcePacksPlugin extends Plugin
 			resourcePacksManager.resetCrossSprites();
 			resourcePacksManager.setSpecialBarTo(false);
 			resourcePacksManager.manageBankSeparatorLines(false);
+			resourcePacksManager.refreshMinimap();
 		});
 
 		if (config.allowLoginScreen())
@@ -179,6 +181,10 @@ public class ResourcePacksPlugin extends Plugin
 				case "colorPack":
 				case "resourcePack":
 					clientThread.invokeLater(resourcePacksManager::updateAllOverrides);
+					if(event.getKey().equals("resourcePack"))
+					{
+						clientThread.invokeLater(resourcePacksManager::refreshMinimap);
+					}
 					break;
 
 				case "allowHitsplats":

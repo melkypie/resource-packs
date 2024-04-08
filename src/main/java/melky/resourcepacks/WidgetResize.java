@@ -100,8 +100,6 @@ public enum WidgetResize
 	RESIZABLE_VIEWPORT_BOTTOM_EMOTES_ICON(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_EMOTE_ICON, 33, 0, 33, 0, null, null, null, null, null, true),
 	RESIZABLE_VIEWPORT_BOTTOM_MUSIC_ICON(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_MUSIC_ICON, 0, 0, 0, 0, null, null, null, null, null, true),
 
-	/* TODO : still a bit buggy (doesn't update like it should sometimes when initialized)
-	
 	//minimap classic
 	RESIZABLE_CLASSIC_MINIMAP(10551318, 0, 0, 0, 0, 211, 186, 0, 186, null, 1, 0, true),
 	RESIZABLE_CLASSIC_MINIMAP_CONTAINER(10551391, 0, 0, 0, 0, 211, 207, 211, 207, null, null, null, true),
@@ -129,7 +127,6 @@ public enum WidgetResize
 	RESIZABLE_MODERN_MINIMAP_164_28(10747932, 0, 155, 0, 155, 121, 11, 121, 11, null, true),
 	RESIZABLE_MODERN_MINIMAP_COMPASS(10747933, 34, 5, 34, 5, null, null, null, null, null, true),
 	RESIZABLE_MODERN_MINIMAP_COMPASS_SET_NORTH(10747935, 32, 3, 32, 3, null, null, null, null, null, true),
-	*/
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Don't modify from file

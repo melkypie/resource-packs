@@ -1069,6 +1069,11 @@ public class ResourcePacksManager
 	{
 		client.runScript(ScriptID.CHAT_PROMPT_INIT);
 	}
+	
+	void refreshMinimap()
+	{
+		client.runScript(902, ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_MINIMAP, 1131);
+	}
 
 	final String DEFAULT_SPECIAL_ATTACK_TEXT = "Special Attack: ";
 	final String RETRO_SPECIAL_ATTACK_TEXT = "S P E C I A L  A T T A C K";
