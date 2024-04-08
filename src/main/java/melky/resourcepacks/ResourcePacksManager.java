@@ -12,7 +12,6 @@ import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -20,6 +19,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
@@ -44,10 +44,10 @@ import melky.resourcepacks.event.ResourcePacksChanged;
 import melky.resourcepacks.hub.ResourcePackManifest;
 import melky.resourcepacks.hub.ResourcePacksClient;
 import net.runelite.api.Client;
-import net.runelite.api.Player;
 import net.runelite.api.ScriptID;
 import net.runelite.api.SpriteID;
 import net.runelite.api.SpritePixels;
+import net.runelite.api.VarClientStr;
 import net.runelite.api.VarPlayer;
 import net.runelite.api.Varbits;
 import net.runelite.api.widgets.ComponentID;
@@ -75,7 +75,7 @@ public class ResourcePacksManager
 {
 	@Getter
 	private final Properties colorProperties = new Properties();
-	
+
 	@Getter
 	private final Properties offsetProperties = new Properties();
 	private SpritePixels[] defaultCrossSprites;
@@ -103,7 +103,7 @@ public class ResourcePacksManager
 
 	@Inject
 	private EventBus eventBus;
-	
+
 	@Inject
 	private OkHttpClient okHttpClient;
 
@@ -382,9 +382,11 @@ public class ResourcePacksManager
 	void applyWidgetChanges(boolean modify)
 	{
 		adjustWidgetDimensions(modify);
-
 		refreshSpecialAttackText(modify);
-
+		if (!modify)
+		{
+			resetChatboxNameAndInput();
+		}
 	}
 
 	public void resetOffsets()
@@ -407,11 +409,19 @@ public class ResourcePacksManager
 		{
 			int xOffset = 0;
 			int yOffset = 0;
+			//for minimap resizing TODO
+			int widthOffset = 0;
+			int heightOffset = 0;
 			if (offsetProperties.containsKey(widgetResize.name().toLowerCase()))
 			{
 				String[] property = offsetProperties.getProperty(widgetResize.name().toLowerCase()).trim().split(",");
 				for (int index = 0; index < property.length; index++)
 				{
+					if (property[index].isEmpty())
+					{
+						continue;
+					}
+
 					String value = property[index].replaceAll("[^\\d-]", "");
 					if (value.startsWith("0") || (value.contains("-") && !value.startsWith("-")))
 					{
@@ -427,7 +437,24 @@ public class ResourcePacksManager
 						{
 							yOffset = Integer.parseInt(value);
 						}
+						//for minimap resizing TODO
+						if (index == 2)
+						{
+							widthOffset = Integer.parseInt(value);
+						}
+						//for minimap resizing TODO
+						if (index == 3)
+						{
+							heightOffset = Integer.parseInt(value);
+						}
 					}
+				}
+			}
+			else
+			{
+				if (modify && widgetResize.isModify())
+				{
+					continue;
 				}
 			}
 
@@ -456,16 +483,20 @@ public class ResourcePacksManager
 
 				if (widgetResize.getOriginalWidth() != null)
 				{
-					widget.setOriginalWidth(modify ? widgetResize.getModifiedWidth() : widgetResize.getOriginalWidth());
+					widget.setOriginalWidth(modify ? (widthOffset != 0 ? widgetResize.getOriginalWidth() + widthOffset : widgetResize.getModifiedWidth()) : widgetResize.getOriginalWidth());
 				}
 
 				if (widgetResize.getOriginalHeight() != null)
 				{
-					widget.setOriginalWidth(modify ? widgetResize.getModifiedHeight() : widgetResize.getOriginalHeight());
+					widget.setOriginalHeight(modify ? (heightOffset != 0 ? widgetResize.getOriginalHeight() + heightOffset : widgetResize.getModifiedHeight()) : widgetResize.getOriginalHeight());
 				}
-			}
-			if (widget != null)
-			{
+				
+				//for minimap resizing TODO
+				if (widgetResize.getWidthModeOrig() != null)
+				{
+					widget.setWidthMode(modify ? (widthOffset != 0 ? widgetResize.getWidthModeMod() : widgetResize.getWidthModeOrig()) : widgetResize.getWidthModeOrig());
+				}
+				
 				widget.revalidate();
 			}
 		}
@@ -578,12 +609,20 @@ public class ResourcePacksManager
 		return null;
 	}
 
+	ArrayList<Integer> dontReplaceSpriteIdList = new ArrayList<Integer>();
+
 	void overrideSprites()
 	{
+		if (!dontReplaceSpriteIdList.isEmpty())
+		{
+			dontReplaceSpriteIdList.clear();
+		}
+
 		String currentPackPath = getCurrentPackPath();
 		SpriteOverride.getOverrides().asMap().forEach((key, collection) -> {
 			if (!Files.isDirectory(Paths.get(currentPackPath + File.separator + key.name().toLowerCase())) ||
 				(!config.allowSpellsPrayers() && (key.name().contains("SPELL") || key.equals(SpriteOverride.Folder.PRAYER))) ||
+				(!config.allowHitsplats() && key.equals(SpriteOverride.Folder.HITSPLAT)) ||
 				key == SpriteOverride.Folder.CROSS_SPRITES)
 			{
 				return;
@@ -606,15 +645,22 @@ public class ResourcePacksManager
 
 				if (spritePixels == null)
 				{
+					//flag
+					if (spriteOverride.getSpriteID() < 0) //check only custom sprite ids
+					{
+						dontReplaceSpriteIdList.add(spriteOverride.getSpriteID());
+					}
+
 					continue;
 				}
+
 				if (spriteOverride.getSpriteID() == SpriteID.COMPASS_TEXTURE)
 				{
 					client.setCompass(spritePixels);
 				}
 				else
 				{
-					if (spriteOverride.getSpriteID() < -200 && spriteOverride.getSpriteID() > -210)
+					if (spriteOverride.getSpriteID() < -200 && spriteOverride.getSpriteID() > -211)
 					{
 						client.getSpriteOverrides().remove(spriteOverride.getSpriteID());
 					}
@@ -658,7 +704,7 @@ public class ResourcePacksManager
 	{
 		colorProperties.clear();
 		File colorPropertiesFile = new File(getCurrentPackPath() + "/color.properties");
-		try (InputStream in = new FileInputStream(colorPropertiesFile))
+		try (InputStream in = Files.newInputStream(colorPropertiesFile.toPath()))
 		{
 			colorProperties.load(in);
 		}
@@ -679,18 +725,13 @@ public class ResourcePacksManager
 	{
 		offsetProperties.clear();
 		File offsetPropertiesFile = new File(getCurrentPackPath() + "/offset.properties");
-		try (InputStream in = new FileInputStream(offsetPropertiesFile))
+		try (InputStream in = Files.newInputStream(offsetPropertiesFile.toPath()))
 		{
 			offsetProperties.load(in);
 		}
 		catch (IOException e)
 		{
 			log.debug("Offset properties not found");
-			return;
-		}
-		if (config.allowOverlayColor())
-		{
-			changeOverlayColor();
 		}
 	}
 
@@ -848,7 +889,6 @@ public class ResourcePacksManager
 					{
 						continue;
 					}
-
 					if (override == ComponentID.CHATBOX_TRANSPARENT_BACKGROUND_LINES
 						&& child.getWidth() != widgetOverride.getWidth())
 					{
@@ -873,13 +913,14 @@ public class ResourcePacksManager
 
 					child.setTextColor(color);
 
-					if (alpha == -1 || child.getOpacity() != 0)
+					//may need testing, GE main window hides the borders if an offer is open
+					//using && instead of || fixes it for this instance
+					if (alpha == -1 && child.getOpacity() != 0)
 					{
-						if (child.isHidden())
+						if (child.isHidden() && widget.getType() == WidgetType.RECTANGLE)
 						{
 							child.setHidden(false);
 						}
-
 						continue;
 					}
 					int opacity = 255 - alpha;
@@ -915,7 +956,7 @@ public class ResourcePacksManager
 				}
 				else
 				{
-					if (widget.isHidden())
+					if (widget.isHidden() && widget.getType() == WidgetType.RECTANGLE)
 					{
 						widget.setHidden(false);
 					}
@@ -928,40 +969,62 @@ public class ResourcePacksManager
 	{
 		for (WidgetReplace replace : WidgetReplace.values())
 		{
+			int id = modify ? replace.getNewSpriteId() : replace.getDefaultSpriteId();
 			for (Integer override : replace.getComponentId())
 			{
 				Widget widget = client.getWidget(override);
-				if (widget != null && !widget.isHidden())
+				if (widget == null || widget.isHidden())
+				{
+					continue;
+				}
+
+				if (replace.getChildIndex()[0] != -1)
 				{
 					for (int arrayId : replace.getChildIndex())
 					{
 						Widget child = widget.getChild(arrayId);
-						int id = replace.getSpriteId();
-						if (!modify)
+						if (child == null || child.isHidden())
 						{
-
-							if (override == WidgetReplace.Constants.RESIZABLE_VIEWPORT_CLASSIC_COMPONENT_ID
-								|| override == WidgetReplace.Constants.RESIZABLE_VIEWPORT_MODERN_COMPONENT_ID)
-							{
-								if (widget.getOpacity() == 0)
-								{
-									id = 897;
-								}
-								else
-								{
-									id = 1040;
-								}
-							}
-							else
-							{
-								id = Math.abs(id);
-							}
-						}
-						if (child != null && arrayId != -1)
-						{
-							child.setSpriteId(id);
 							continue;
 						}
+						if (child.getSpriteId() == id || dontReplaceSpriteIdList.contains(id))
+						{
+							continue;
+						}
+						child.setSpriteId(id);
+					}
+				}
+				else
+				{
+					if (dontReplaceSpriteIdList.contains(id))
+					{
+						id = replace.getDefaultSpriteId();
+						if (widget.getSpriteId() != -1 && widget.getSpriteId() == id)
+						{
+							continue;
+						}
+					}
+					else
+					{
+						if(widget.getSpriteId() != -1 && widget.getSpriteId() == id)
+						{
+							continue;
+						}
+					}
+
+					//assigned -1 to resizable inventory backgrounds in WidgetResize
+					if (id == -1)
+					{
+						//check which background spriteId should be assigned based on in-game settings for transparent background
+						if (override == WidgetReplace.Constants.RESIZABLE_VIEWPORT_CLASSIC_COMPONENT_ID ||
+							override == WidgetReplace.Constants.RESIZABLE_VIEWPORT_MODERN_COMPONENT_ID)
+						{
+							id = widget.getOpacity() == 0 ? 897 : 1040;
+						}
+					}
+
+					if (widget.getSpriteId() != -1 || widget.getSpriteId() != id)
+					{
 						widget.setSpriteId(id);
 					}
 				}
@@ -969,6 +1032,39 @@ public class ResourcePacksManager
 		}
 	}
 
+	void recolorChatboxNameAndInput()
+	{
+		Widget chatboxInput = client.getWidget(ComponentID.CHATBOX_INPUT);
+		if (chatboxInput == null)
+		{
+			return;
+		}
+
+		//keyremappingplus lets you change the "Press Enter to Chat" string, so just look for the asterisk now
+		boolean enterToChat = !chatboxInput.getText().endsWith("*");
+		final boolean isChatboxTransparent = client.isResized() && client.getVarbitValue(Varbits.TRANSPARENT_CHATBOX) == 1;
+		Color inputColor = isChatboxTransparent ? config.transparentChatboxInputColor() : config.opaqueChatboxInputColor();
+		Color nameColor = isChatboxTransparent ? config.transparentNameColor() : config.opaqueNameColor();
+
+		String[] chatInput = chatboxInput.getText().split(":", 2);
+		String name = chatInput[0];
+		String input = chatInput[1];
+		int idx = chatboxInput.getText().indexOf(':');
+
+		if (idx != -1)
+		{
+			String newText =
+				ColorUtil.wrapWithColorTag(name + ":", nameColor)
+					+ (enterToChat ? input : ColorUtil.wrapWithColorTag(client.getVarcStrValue(VarClientStr.CHATBOX_TYPED_TEXT) + "*", inputColor));
+
+			chatboxInput.setText(newText);
+		}
+	}
+
+	void resetChatboxNameAndInput()
+	{
+		client.runScript(ScriptID.CHAT_PROMPT_INIT);
+	}
 
 	final String DEFAULT_SPECIAL_ATTACK_TEXT = "Special Attack: ";
 	final String RETRO_SPECIAL_ATTACK_TEXT = "S P E C I A L  A T T A C K";
@@ -1011,7 +1107,6 @@ public class ResourcePacksManager
 			specialAttackText.setTextColor(specialAttackTextColor(config.recolorSpecialAttackText()));
 		}
 	}
-
 
 	public void setSpecialBarTo(boolean modify)
 	{
@@ -1070,7 +1165,12 @@ public class ResourcePacksManager
 				if (child != null)
 				{
 					id = SPECIAL_BAR_BORDER_SPRITES[index].getSpriteID();
-					if (!border && id != -1)
+					if (!border && id != -1 && child.getSpriteId() == Math.abs(id))
+					{
+						break;
+					}
+
+					if (!border && id != -1 || dontReplaceSpriteIdList.contains(id))
 					{
 						id = Math.abs(id);
 					}
@@ -1131,7 +1231,7 @@ public class ResourcePacksManager
 		}
 	}
 
-	public void fixEmoteTabGrid()
+	public void removeEmoteTabGridLines()
 	{
 		Widget widget = client.getWidget(ComponentID.EMOTES_EMOTE_CONTAINER);
 		if (widget != null)
@@ -1144,7 +1244,7 @@ public class ResourcePacksManager
 			for (int index = 0; index < (widget.getChildren().length / 2); index++)
 			{
 				Widget child = widget.getChild(index);
-				if (child != null)
+				if (child != null && child.getType() == WidgetType.RECTANGLE)
 				{
 					child.setType(WidgetType.GRAPHIC);
 				}
@@ -1184,7 +1284,8 @@ public class ResourcePacksManager
 				background.setRotationZ(0);
 				background.setModelZoom(550);
 			}
+			//could add more, depends on if an appropriate model exists : TODO
 		}
 	}
-	
+
 }

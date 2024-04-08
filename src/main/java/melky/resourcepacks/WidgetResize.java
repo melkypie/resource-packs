@@ -10,95 +10,129 @@ import net.runelite.api.widgets.ComponentID;
 public enum WidgetResize
 {
 	//fixed
-	FIXED_VIEWPORT_COMBAT_TAB(ComponentID.FIXED_VIEWPORT_COMBAT_TAB, 6, 0, 6, 0, null, null, null, null, null),
-	FIXED_VIEWPORT_STATS_TAB(ComponentID.FIXED_VIEWPORT_STATS_TAB, 44, 0, 44, 0, null, null, null, null, null),
-	FIXED_VIEWPORT_QUESTS_TAB(ComponentID.FIXED_VIEWPORT_QUESTS_TAB, 77, 0, 77, 0, null, null, null, null, null),
-	FIXED_VIEWPORT_INVENTORY_TAB(ComponentID.FIXED_VIEWPORT_INVENTORY_TAB, 110, 0, 110, 0, null, null, null, null, null),
-	FIXED_VIEWPORT_EQUIPMENT_TAB(ComponentID.FIXED_VIEWPORT_EQUIPMENT_TAB, 143, 0, 143, 0, null, null, null, null, null),
-	FIXED_VIEWPORT_PRAYER_TAB(ComponentID.FIXED_VIEWPORT_PRAYER_TAB, 176, 0, 176, 0, null, null, null, null, null),
-	FIXED_VIEWPORT_MAGIC_TAB(ComponentID.FIXED_VIEWPORT_MAGIC_TAB, 209, 0, 209, 0, null, null, null, null, null),
-	FIXED_VIEWPORT_COMBAT_ICON(ComponentID.FIXED_VIEWPORT_COMBAT_ICON, 10, 0, 10, 0, null, null, null, null, null),
-	FIXED_VIEWPORT_STATS_ICON(ComponentID.FIXED_VIEWPORT_STATS_ICON, 44, 0, 44, 0, null, null, null, null, null),
-	FIXED_VIEWPORT_QUESTS_ICON(ComponentID.FIXED_VIEWPORT_QUESTS_ICON, 77, 0, 77, 0, null, null, null, null, null),
-	FIXED_VIEWPORT_INVENTORY_ICON(ComponentID.FIXED_VIEWPORT_INVENTORY_ICON, 110, 0, 110, 0, null, null, null, null, null),
-	FIXED_VIEWPORT_EQUIPMENT_ICON(ComponentID.FIXED_VIEWPORT_EQUIPMENT_ICON, 143, 0, 143, 0, null, null, null, null, null),
-	FIXED_VIEWPORT_PRAYER_ICON(ComponentID.FIXED_VIEWPORT_PRAYER_ICON, 176, 0, 176, 0, null, null, null, null, null),
-	FIXED_VIEWPORT_MAGIC_ICON(ComponentID.FIXED_VIEWPORT_MAGIC_ICON, 210, 0, 210, 0, null, null, null, null, null),
+	FIXED_VIEWPORT_COMBAT_TAB(ComponentID.FIXED_VIEWPORT_COMBAT_TAB, 6, 0, 6, 0, null, null, null, null, null, true),
+	FIXED_VIEWPORT_STATS_TAB(ComponentID.FIXED_VIEWPORT_STATS_TAB, 44, 0, 44, 0, null, null, null, null, null, true),
+	FIXED_VIEWPORT_QUESTS_TAB(ComponentID.FIXED_VIEWPORT_QUESTS_TAB, 77, 0, 77, 0, null, null, null, null, null, true),
+	FIXED_VIEWPORT_INVENTORY_TAB(ComponentID.FIXED_VIEWPORT_INVENTORY_TAB, 110, 0, 110, 0, null, null, null, null, null, true),
+	FIXED_VIEWPORT_EQUIPMENT_TAB(ComponentID.FIXED_VIEWPORT_EQUIPMENT_TAB, 143, 0, 143, 0, null, null, null, null, null, true),
+	FIXED_VIEWPORT_PRAYER_TAB(ComponentID.FIXED_VIEWPORT_PRAYER_TAB, 176, 0, 176, 0, null, null, null, null, null, true),
+	FIXED_VIEWPORT_MAGIC_TAB(ComponentID.FIXED_VIEWPORT_MAGIC_TAB, 209, 0, 209, 0, null, null, null, null, null, true),
+	FIXED_VIEWPORT_COMBAT_ICON(ComponentID.FIXED_VIEWPORT_COMBAT_ICON, 10, 0, 10, 0, null, null, null, null, null, true),
+	FIXED_VIEWPORT_STATS_ICON(ComponentID.FIXED_VIEWPORT_STATS_ICON, 44, 0, 44, 0, null, null, null, null, null, true),
+	FIXED_VIEWPORT_QUESTS_ICON(ComponentID.FIXED_VIEWPORT_QUESTS_ICON, 77, 0, 77, 0, null, null, null, null, null, true),
+	FIXED_VIEWPORT_INVENTORY_ICON(ComponentID.FIXED_VIEWPORT_INVENTORY_ICON, 110, 0, 110, 0, null, null, null, null, null, true),
+	FIXED_VIEWPORT_EQUIPMENT_ICON(ComponentID.FIXED_VIEWPORT_EQUIPMENT_ICON, 143, 0, 143, 0, null, null, null, null, null, true),
+	FIXED_VIEWPORT_PRAYER_ICON(ComponentID.FIXED_VIEWPORT_PRAYER_ICON, 176, 0, 176, 0, null, null, null, null, null, true),
+	FIXED_VIEWPORT_MAGIC_ICON(ComponentID.FIXED_VIEWPORT_MAGIC_ICON, 210, 0, 210, 0, null, null, null, null, null, true),
 
-	FIXED_VIEWPORT_FRIENDS_CHAT_TAB(ComponentID.FIXED_VIEWPORT_FRIENDS_CHAT_TAB,3, 0, 3, 0, null, null, null, null, null),
-	FIXED_VIEWPORT_IGNORES_TAB(ComponentID.FIXED_VIEWPORT_IGNORES_TAB,74, 0, 74, 0, null, null, null, null, null),
-	FIXED_VIEWPORT_FRIENDS_TAB(ComponentID.FIXED_VIEWPORT_FRIENDS_TAB,41, 0, 41, 0, null, null, null, null, null),
-	FIXED_VIEWPORT_LOGOUT_TAB(ComponentID.FIXED_VIEWPORT_LOGOUT_TAB,107, 0, 107, 0, null, null, null, null, null),
-	FIXED_VIEWPORT_OPTIONS_TAB(ComponentID.FIXED_VIEWPORT_OPTIONS_TAB,140, 0, 140, 0, null, null, null, null, null),
-	FIXED_VIEWPORT_EMOTES_TAB(ComponentID.FIXED_VIEWPORT_EMOTES_TAB,173, 0, 173, 0, null, null, null, null, null),
-	FIXED_VIEWPORT_MUSIC_TAB(ComponentID.FIXED_VIEWPORT_MUSIC_TAB,206, 0, 206, 0, null, null, null, null, null),
-	FIXED_VIEWPORT_FRIENDS_CHAT_ICON(ComponentID.FIXED_VIEWPORT_FRIENDS_CHAT_ICON,7, 0, 7, 0, null, null, null, null, null),
-	FIXED_VIEWPORT_IGNORES_ICON(ComponentID.FIXED_VIEWPORT_IGNORES_ICON,74, 0, 74, 0, null, null, null, null, null),
-	FIXED_VIEWPORT_FRIENDS_ICON(ComponentID.FIXED_VIEWPORT_FRIENDS_ICON,41, 0, 41, 0, null, null, null, null, null),
-	FIXED_VIEWPORT_LOGOUT_ICON(ComponentID.FIXED_VIEWPORT_LOGOUT_ICON,107, 0, 107, 0, null, null, null, null, null),
-	FIXED_VIEWPORT_OPTIONS_ICON(ComponentID.FIXED_VIEWPORT_OPTIONS_ICON,140, 0, 140, 0, null, null, null, null, null),
-	FIXED_VIEWPORT_EMOTES_ICON(ComponentID.FIXED_VIEWPORT_EMOTES_ICON,173, 0, 173, 0, null, null, null, null, null),
-	FIXED_VIEWPORT_MUSIC_ICON(ComponentID.FIXED_VIEWPORT_MUSIC_ICON,207, 0, 207, 0, null, null, null, null, null),
+	FIXED_VIEWPORT_FRIENDS_CHAT_TAB(ComponentID.FIXED_VIEWPORT_FRIENDS_CHAT_TAB, 3, 0, 3, 0, null, null, null, null, null, true),
+	FIXED_VIEWPORT_IGNORES_TAB(ComponentID.FIXED_VIEWPORT_IGNORES_TAB, 74, 0, 74, 0, null, null, null, null, null, true),
+	FIXED_VIEWPORT_FRIENDS_TAB(ComponentID.FIXED_VIEWPORT_FRIENDS_TAB, 41, 0, 41, 0, null, null, null, null, null, true),
+	FIXED_VIEWPORT_LOGOUT_TAB(ComponentID.FIXED_VIEWPORT_LOGOUT_TAB, 107, 0, 107, 0, null, null, null, null, null, true),
+	FIXED_VIEWPORT_OPTIONS_TAB(ComponentID.FIXED_VIEWPORT_OPTIONS_TAB, 140, 0, 140, 0, null, null, null, null, null, true),
+	FIXED_VIEWPORT_EMOTES_TAB(ComponentID.FIXED_VIEWPORT_EMOTES_TAB, 173, 0, 173, 0, null, null, null, null, null, true),
+	FIXED_VIEWPORT_MUSIC_TAB(ComponentID.FIXED_VIEWPORT_MUSIC_TAB, 206, 0, 206, 0, null, null, null, null, null, true),
+	FIXED_VIEWPORT_FRIENDS_CHAT_ICON(ComponentID.FIXED_VIEWPORT_FRIENDS_CHAT_ICON, 7, 0, 7, 0, null, null, null, null, null, true),
+	FIXED_VIEWPORT_IGNORES_ICON(ComponentID.FIXED_VIEWPORT_IGNORES_ICON, 74, 0, 74, 0, null, null, null, null, null, true),
+	FIXED_VIEWPORT_FRIENDS_ICON(ComponentID.FIXED_VIEWPORT_FRIENDS_ICON, 41, 0, 41, 0, null, null, null, null, null, true),
+	FIXED_VIEWPORT_LOGOUT_ICON(ComponentID.FIXED_VIEWPORT_LOGOUT_ICON, 107, 0, 107, 0, null, null, null, null, null, true),
+	FIXED_VIEWPORT_OPTIONS_ICON(ComponentID.FIXED_VIEWPORT_OPTIONS_ICON, 140, 0, 140, 0, null, null, null, null, null, true),
+	FIXED_VIEWPORT_EMOTES_ICON(ComponentID.FIXED_VIEWPORT_EMOTES_ICON, 173, 0, 173, 0, null, null, null, null, null, true),
+	FIXED_VIEWPORT_MUSIC_ICON(ComponentID.FIXED_VIEWPORT_MUSIC_ICON, 207, 0, 207, 0, null, null, null, null, null, true),
 
 	//resizable classic
-	RESIZABLE_VIEWPORT_COMBAT_TAB(ComponentID.RESIZABLE_VIEWPORT_COMBAT_TAB, 0, 0, 0, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_STATS_TAB(ComponentID.RESIZABLE_VIEWPORT_STATS_TAB, 38, 0, 38, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_QUESTS_TAB(ComponentID.RESIZABLE_VIEWPORT_QUESTS_TAB, 71, 0, 71, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_INVENTORY_TAB(ComponentID.RESIZABLE_VIEWPORT_INVENTORY_TAB, 104, 0, 104, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_EQUIPMENT_TAB(ComponentID.RESIZABLE_VIEWPORT_EQUIPMENT_TAB, 137, 0, 137, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_PRAYER_TAB(ComponentID.RESIZABLE_VIEWPORT_PRAYER_TAB, 170, 0, 170, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_MAGIC_TAB(ComponentID.RESIZABLE_VIEWPORT_MAGIC_TAB, 203, 0, 203, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_COMBAT_ICON(ComponentID.RESIZABLE_VIEWPORT_COMBAT_ICON, 4, 0, 4, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_STATS_ICON(ComponentID.RESIZABLE_VIEWPORT_STATS_ICON, 38, 0, 38, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_QUESTS_ICON(ComponentID.RESIZABLE_VIEWPORT_QUESTS_ICON, 71, 0, 71, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_INVENTORY_ICON(ComponentID.RESIZABLE_VIEWPORT_INVENTORY_ICON, 104, 0, 104, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_EQUIPMENT_ICON(ComponentID.RESIZABLE_VIEWPORT_EQUIPMENT_ICON, 137, 0, 137, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_PRAYER_ICON(ComponentID.RESIZABLE_VIEWPORT_PRAYER_ICON, 170, 0, 170, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_MAGIC_ICON(ComponentID.RESIZABLE_VIEWPORT_MAGIC_ICON, 204, 0, 204, 0, null, null, null, null, null),
+	RESIZABLE_VIEWPORT_COMBAT_TAB(ComponentID.RESIZABLE_VIEWPORT_COMBAT_TAB, 0, 0, 0, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_STATS_TAB(ComponentID.RESIZABLE_VIEWPORT_STATS_TAB, 38, 0, 38, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_QUESTS_TAB(ComponentID.RESIZABLE_VIEWPORT_QUESTS_TAB, 71, 0, 71, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_INVENTORY_TAB(ComponentID.RESIZABLE_VIEWPORT_INVENTORY_TAB, 104, 0, 104, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_EQUIPMENT_TAB(ComponentID.RESIZABLE_VIEWPORT_EQUIPMENT_TAB, 137, 0, 137, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_PRAYER_TAB(ComponentID.RESIZABLE_VIEWPORT_PRAYER_TAB, 170, 0, 170, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_MAGIC_TAB(ComponentID.RESIZABLE_VIEWPORT_MAGIC_TAB, 203, 0, 203, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_COMBAT_ICON(ComponentID.RESIZABLE_VIEWPORT_COMBAT_ICON, 4, 0, 4, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_STATS_ICON(ComponentID.RESIZABLE_VIEWPORT_STATS_ICON, 38, 0, 38, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_QUESTS_ICON(ComponentID.RESIZABLE_VIEWPORT_QUESTS_ICON, 71, 0, 71, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_INVENTORY_ICON(ComponentID.RESIZABLE_VIEWPORT_INVENTORY_ICON, 104, 0, 104, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_EQUIPMENT_ICON(ComponentID.RESIZABLE_VIEWPORT_EQUIPMENT_ICON, 137, 0, 137, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_PRAYER_ICON(ComponentID.RESIZABLE_VIEWPORT_PRAYER_ICON, 170, 0, 170, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_MAGIC_ICON(ComponentID.RESIZABLE_VIEWPORT_MAGIC_ICON, 204, 0, 204, 0, null, null, null, null, null, true),
 
-	RESIZABLE_VIEWPORT_FRIENDS_CHAT_TAB(ComponentID.RESIZABLE_VIEWPORT_FRIENDS_CHAT_TAB, 0, 0, 0, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_IGNORES_TAB(ComponentID.RESIZABLE_VIEWPORT_IGNORES_TAB, 71, 0, 71, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_FRIENDS_TAB(ComponentID.RESIZABLE_VIEWPORT_FRIENDS_TAB, 38, 0, 38, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_LOGOUT_TAB(ComponentID.RESIZABLE_VIEWPORT_LOGOUT_TAB, 104, 0, 104, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_OPTIONS_TAB(ComponentID.RESIZABLE_VIEWPORT_OPTIONS_TAB, 137, 0, 137, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_EMOTES_TAB(ComponentID.RESIZABLE_VIEWPORT_EMOTES_TAB, 170, 0, 170, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_MUSIC_TAB(ComponentID.RESIZABLE_VIEWPORT_MUSIC_TAB, 203, 0, 203, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_FRIENDS_CHAT_ICON(ComponentID.RESIZABLE_VIEWPORT_FRIENDS_CHAT_ICON, 4, 0, 4, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_IGNORES_ICON(ComponentID.RESIZABLE_VIEWPORT_IGNORES_ICON, 71, 0, 71, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_FRIENDS_ICON(ComponentID.RESIZABLE_VIEWPORT_FRIENDS_ICON, 38, 0, 38, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_LOGOUT_ICON(ComponentID.RESIZABLE_VIEWPORT_LOGOUT_ICON, 104, 0, 104, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_OPTIONS_ICON(ComponentID.RESIZABLE_VIEWPORT_OPTIONS_ICON, 137, 0, 137, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_EMOTES_ICON(ComponentID.RESIZABLE_VIEWPORT_EMOTES_ICON, 170, 0, 170, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_MUSIC_ICON(ComponentID.RESIZABLE_VIEWPORT_MUSIC_ICON, 204, 0, 204, 0, null, null, null, null, null),
+	RESIZABLE_VIEWPORT_FRIENDS_CHAT_TAB(ComponentID.RESIZABLE_VIEWPORT_FRIENDS_CHAT_TAB, 0, 0, 0, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_IGNORES_TAB(ComponentID.RESIZABLE_VIEWPORT_IGNORES_TAB, 71, 0, 71, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_FRIENDS_TAB(ComponentID.RESIZABLE_VIEWPORT_FRIENDS_TAB, 38, 0, 38, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_LOGOUT_TAB(ComponentID.RESIZABLE_VIEWPORT_LOGOUT_TAB, 104, 0, 104, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_OPTIONS_TAB(ComponentID.RESIZABLE_VIEWPORT_OPTIONS_TAB, 137, 0, 137, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_EMOTES_TAB(ComponentID.RESIZABLE_VIEWPORT_EMOTES_TAB, 170, 0, 170, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_MUSIC_TAB(ComponentID.RESIZABLE_VIEWPORT_MUSIC_TAB, 203, 0, 203, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_FRIENDS_CHAT_ICON(ComponentID.RESIZABLE_VIEWPORT_FRIENDS_CHAT_ICON, 4, 0, 4, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_IGNORES_ICON(ComponentID.RESIZABLE_VIEWPORT_IGNORES_ICON, 71, 0, 71, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_FRIENDS_ICON(ComponentID.RESIZABLE_VIEWPORT_FRIENDS_ICON, 38, 0, 38, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_LOGOUT_ICON(ComponentID.RESIZABLE_VIEWPORT_LOGOUT_ICON, 104, 0, 104, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_OPTIONS_ICON(ComponentID.RESIZABLE_VIEWPORT_OPTIONS_ICON, 137, 0, 137, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_EMOTES_ICON(ComponentID.RESIZABLE_VIEWPORT_EMOTES_ICON, 170, 0, 170, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_MUSIC_ICON(ComponentID.RESIZABLE_VIEWPORT_MUSIC_ICON, 204, 0, 204, 0, null, null, null, null, null, true),
 
 	//resizable modern
-	RESIZABLE_VIEWPORT_BOTTOM_COMBAT_TAB(10747956, 0, 0, 0, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_BOTTOM_STATS_TAB(10747957, 33, 0, 33, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_BOTTOM_QUESTS_TAB(10747958, 66, 0, 66, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_BOTTOM_INVENTORY_TAB(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_INVENTORY_TAB, 99, 0, 99, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_BOTTOM_EQUIPMENT_TAB(10747960, 132, 0, 132, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_BOTTOM_PRAYER_TAB(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_PRAYER_TAB, 165, 0, 165, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_BOTTOM_MAGIC_TAB(10747962, 198, 0, 198, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_BOTTOM_COMBAT_ICON(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_CMB_ICON, 0, 0, 0, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_BOTTOM_STATS_ICON(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_SKILLS_ICON, 33, 0, 33, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_BOTTOM_QUESTS_ICON(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_QUESTS_ICON, 66, 0, 66, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_BOTTOM_INVENTORY_ICON(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_INVENTORY_ICON, 99, 0, 99, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_BOTTOM_EQUIPMENT_ICON(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_EQUIP_ICON, 132, 0, 132, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_BOTTOM_PRAYER_ICON(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_PRAYER_ICON, 165, 0, 165, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_BOTTOM_MAGIC_ICON(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_MAGIC_ICON, 198, 0, 198, 0, null, null, null, null, null),
+	RESIZABLE_VIEWPORT_BOTTOM_COMBAT_TAB(10747956, 0, 0, 0, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_BOTTOM_STATS_TAB(10747957, 33, 0, 33, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_BOTTOM_QUESTS_TAB(10747958, 66, 0, 66, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_BOTTOM_INVENTORY_TAB(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_INVENTORY_TAB, 99, 0, 99, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_BOTTOM_EQUIPMENT_TAB(10747960, 132, 0, 132, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_BOTTOM_PRAYER_TAB(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_PRAYER_TAB, 165, 0, 165, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_BOTTOM_MAGIC_TAB(10747962, 198, 0, 198, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_BOTTOM_COMBAT_ICON(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_CMB_ICON, 0, 0, 0, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_BOTTOM_STATS_ICON(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_SKILLS_ICON, 33, 0, 33, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_BOTTOM_QUESTS_ICON(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_QUESTS_ICON, 66, 0, 66, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_BOTTOM_INVENTORY_ICON(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_INVENTORY_ICON, 99, 0, 99, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_BOTTOM_EQUIPMENT_ICON(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_EQUIP_ICON, 132, 0, 132, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_BOTTOM_PRAYER_ICON(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_PRAYER_ICON, 165, 0, 165, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_BOTTOM_MAGIC_ICON(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_MAGIC_ICON, 198, 0, 198, 0, null, null, null, null, null, true),
 
-	RESIZABLE_VIEWPORT_BOTTOM_FRIENDS_CHAT_TAB(10747942, 99, 0, 99, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_BOTTOM_IGNORES_TAB(1074793, 132, 0, 132, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_BOTTOM_FRIENDS_TAB(1074794, 165, 0, 165, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_BOTTOM_OPTIONS_TAB(1074795, 66, 0, 66, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_BOTTOM_EMOTES_TAB(1074796, 33, 0, 33, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_BOTTOM_MUSIC_TAB(1074797, 0, 0, 0, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_BOTTOM_FRIENDS_CHAT_ICON(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_FC_ICON, 99, 0, 99, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_BOTTOM_IGNORES_ICON(10747949, 132, 0, 132, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_BOTTOM_FRIENDS_ICON(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_FRIEND_ICON, 165, 0, 165, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_BOTTOM_OPTIONS_ICON(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_SETTINGS_ICON, 66, 0, 66, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_BOTTOM_EMOTES_ICON(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_EMOTE_ICON, 33, 0, 33, 0, null, null, null, null, null),
-	RESIZABLE_VIEWPORT_BOTTOM_MUSIC_ICON(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_MUSIC_ICON, 0, 0, 0, 0, null, null, null, null, null),
+	RESIZABLE_VIEWPORT_BOTTOM_FRIENDS_CHAT_TAB(10747942, 99, 0, 99, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_BOTTOM_IGNORES_TAB(1074793, 132, 0, 132, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_BOTTOM_FRIENDS_TAB(1074794, 165, 0, 165, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_BOTTOM_OPTIONS_TAB(1074795, 66, 0, 66, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_BOTTOM_EMOTES_TAB(1074796, 33, 0, 33, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_BOTTOM_MUSIC_TAB(1074797, 0, 0, 0, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_BOTTOM_FRIENDS_CHAT_ICON(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_FC_ICON, 99, 0, 99, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_BOTTOM_IGNORES_ICON(10747949, 132, 0, 132, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_BOTTOM_FRIENDS_ICON(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_FRIEND_ICON, 165, 0, 165, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_BOTTOM_OPTIONS_ICON(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_SETTINGS_ICON, 66, 0, 66, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_BOTTOM_EMOTES_ICON(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_EMOTE_ICON, 33, 0, 33, 0, null, null, null, null, null, true),
+	RESIZABLE_VIEWPORT_BOTTOM_MUSIC_ICON(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_MUSIC_ICON, 0, 0, 0, 0, null, null, null, null, null, true),
+
+	/* TODO : still a bit buggy (doesn't update like it should sometimes when initialized)
+	
+	//minimap classic
+	RESIZABLE_CLASSIC_MINIMAP(10551318, 0, 0, 0, 0, 211, 186, 0, 186, null, 1, 0, true),
+	RESIZABLE_CLASSIC_MINIMAP_CONTAINER(10551391, 0, 0, 0, 0, 211, 207, 211, 207, null, null, null, true),
+	RESIZABLE_CLASSIC_MINIMAP_SPRITE(10551328, 0, 0, 0, 0, 182, 166, 182, 166, null, null, null, true),
+	RESIZABLE_CLASSIC_MINIMAP_VIEWPORT(10551326, 6, 8, 6, 8, null, null, null, null, null, null, null, true),
+	RESIZABLE_CLASSIC_MINIMAP_161_23(10551319, 0, 4, 0, 4, 178, 40, 178, 40, null, true),
+	RESIZABLE_CLASSIC_MINIMAP_161_24(10551320, 0, 44, 0, 44, 166, 56, 166, 56, null, true),
+	RESIZABLE_CLASSIC_MINIMAP_161_25(10551321, 0, 100, 0, 100, 161, 25, 161, 25, null, true),
+	RESIZABLE_CLASSIC_MINIMAP_161_26(10551322, 0, 125, 0, 125, 151, 15, 151, 15, null, true),
+	RESIZABLE_CLASSIC_MINIMAP_161_27(10551323, 0, 140, 0, 140, 141, 15, 141, 15, null, true),
+	RESIZABLE_CLASSIC_MINIMAP_161_28(10551324, 0, 155, 0, 155, 121, 11, 121, 11, null, true),
+	RESIZABLE_CLASSIC_MINIMAP_COMPASS(10551325, 34, 5, 34, 5, null, null, null, null, null, true),
+	RESIZABLE_CLASSIC_MINIMAP_COMPASS_SET_NORTH(10551327, 32, 3, 32, 3, null, null, null, null, null, true),
+
+	//minimap modern
+	RESIZABLE_MODERN_MINIMAP(10747926, 0, 0, 0, 0, 211, 179, 0, 179, null, 1, 0, true),
+	RESIZABLE_MODERN_MINIMAP_CONTAINER(10747996, 0, 0, 0, 0, 211, 207, 211, 207, null, null, null, true),
+	RESIZABLE_MODERN_MINIMAP_SPRITE(10747936, 0, 0, 0, 0, 182, 166, 182, 166, null, null, null, true),
+	RESIZABLE_MODERN_MINIMAP_VIEWPORT(10747934, 6, 8, 6, 8, null, null, null, null, null, null, null, true),
+	RESIZABLE_MODERN_MINIMAP_164_23(10747927, 0, 4, 0, 4, 178, 40, 178, 40, null, true),
+	RESIZABLE_MODERN_MINIMAP_164_24(10747928, 0, 44, 0, 44, 166, 56, 166, 56, null, true),
+	RESIZABLE_MODERN_MINIMAP_164_25(10747929, 0, 100, 0, 100, 161, 25, 161, 25, null, true),
+	RESIZABLE_MODERN_MINIMAP_164_26(10747930, 0, 125, 0, 125, 151, 15, 151, 15, null, true),
+	RESIZABLE_MODERN_MINIMAP_164_27(10747931, 0, 140, 0, 140, 141, 15, 141, 15, null, true),
+	RESIZABLE_MODERN_MINIMAP_164_28(10747932, 0, 155, 0, 155, 121, 11, 121, 11, null, true),
+	RESIZABLE_MODERN_MINIMAP_COMPASS(10747933, 34, 5, 34, 5, null, null, null, null, null, true),
+	RESIZABLE_MODERN_MINIMAP_COMPASS_SET_NORTH(10747935, 32, 3, 32, 3, null, null, null, null, null, true),
+	*/
+
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//Don't modify from file
 
 	//was squished, due to default width and height set to 16x16 instead of 20x18 (fairy ring plug-in)
 	FAIRY_RING_SEARCH_ICON(ComponentID.FAIRY_RING_PANEL_HEADER, null, null, null, null, 20, 18, 20, 18, 8),
@@ -116,7 +150,7 @@ public enum WidgetResize
 	GRAND_EXCHANGE_OFFER_5_BORDER_LEFT(30474251, -13, null, -14, null, null, null, null, null, 7),
 	GRAND_EXCHANGE_OFFER_6_BORDER_LEFT(30474252, -13, null, -14, null, null, null, null, null, 7),
 	GRAND_EXCHANGE_OFFER_7_BORDER_LEFT(30474253, -13, null, -14, null, null, null, null, null, 7),
-	GRAND_EXCHANGE_OFFER_8_BORDER_LEFT(30474254,  -13, null, -14, null, null, null, null, null, 7),
+	GRAND_EXCHANGE_OFFER_8_BORDER_LEFT(30474254, -13, null, -14, null, null, null, null, null, 7),
 
 	GRAND_EXCHANGE_COLLECTION_BOX_1_BORDER_LEFT(26345477, -13, null, -14, null, null, null, null, null, 7),
 	GRAND_EXCHANGE_COLLECTION_BOX_2_BORDER_LEFT(26345478, -13, null, -14, null, null, null, null, null, 7),
@@ -155,7 +189,7 @@ public enum WidgetResize
 	PVP_ARENA_SIDE_PANEL_OPTIONS_BORDER_LEFT(49741824, -13, null, -13, null, null, null, null, null, 2),
 
 	;
-	
+
 	@Component
 	private final Integer componentId;
 	private final Integer modifiedX;
@@ -167,4 +201,31 @@ public enum WidgetResize
 	private final Integer originalWidth;
 	private final Integer originalHeight;
 	private final Integer childIndex;
+
+	private final Integer widthModeOrig;
+	private final Integer widthModeMod;
+
+	//if true, if it should only be changed via the offset.properties file
+	private final boolean modify;
+
+	WidgetResize(Integer componentId,
+				 Integer modifiedX, Integer modifiedY,
+				 Integer originalX, Integer originalY,
+				 Integer modifiedWidth, Integer modifiedHeight,
+				 Integer originalWidth, Integer originalHeight,
+				 Integer childIndex)
+	{
+		this(componentId, modifiedX, modifiedY, originalX, originalY, modifiedWidth, modifiedHeight, originalWidth, originalHeight, childIndex, null, null, false);
+	}
+
+	WidgetResize(Integer componentId,
+				 Integer modifiedX, Integer modifiedY,
+				 Integer originalX, Integer originalY,
+				 Integer modifiedWidth, Integer modifiedHeight,
+				 Integer originalWidth, Integer originalHeight,
+				 Integer childIndex, boolean modify)
+	{
+		this(componentId, modifiedX, modifiedY, originalX, originalY, modifiedWidth, modifiedHeight, originalWidth, originalHeight, childIndex, null, null, modify);
+	}
+
 }

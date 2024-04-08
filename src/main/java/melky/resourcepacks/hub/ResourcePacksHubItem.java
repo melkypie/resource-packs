@@ -46,10 +46,10 @@ public class ResourcePacksHubItem extends JPanel
 
 	static
 	{
-		BufferedImage missingIcon = ImageUtil.getResourceStreamFromClass(ResourcePacksPlugin.class, "/missing.png");//missingicon @TODO
+		BufferedImage missingIcon = ImageUtil.loadImageResource(ResourcePacksPlugin.class, "/missing.png");//missingicon @TODO
 		MISSING_ICON = new ImageIcon(missingIcon);
 
-		BufferedImage helpIcon = ImageUtil.getResourceStreamFromClass(ResourcePacksPlugin.class, "/help.png");
+		BufferedImage helpIcon = ImageUtil.loadImageResource(ResourcePacksPlugin.class, "/help.png");
 		HELP_ICON = new ImageIcon(helpIcon);
 		HELP_ICON_HOVER = new ImageIcon(ImageUtil.alphaOffset(helpIcon, -100));
 	}

@@ -5,7 +5,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.concurrent.ScheduledExecutorService;
 import javax.inject.Inject;
-import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -14,8 +13,9 @@ import melky.resourcepacks.hub.ResourcePacksHubPanel;
 import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
-import net.runelite.api.events.BeforeRender;
 import net.runelite.api.events.GameStateChanged;
+import net.runelite.api.events.PostClientTick;
+import net.runelite.api.events.ScriptCallbackEvent;
 import net.runelite.api.events.ScriptPostFired;
 import net.runelite.client.RuneLite;
 import net.runelite.client.callback.ClientThread;
@@ -156,20 +156,14 @@ public class ResourcePacksPlugin extends Plugin
 	}
 
 	@Subscribe
-	public void onBeforeRender(BeforeRender event)
+	public void onPostClientTick(PostClientTick event)
 	{
-
-		if (client.getGameState() != GameState.LOGGED_IN)
-		{
-			return;
-		}
 		resourcePacksManager.applyWidgetChanges(true);
 
 		resourcePacksManager.replaceWidgetSprites(
-			config.allowCustomSpriteOverrides()
-				&& !resourcePacksManager.getCurrentPackPath().equals("")
+			config.allowCustomSpriteOverrides() &&
+				resourcePacksManager.checkIfResourcePackPathIsNotEmpty()
 		);
-
 	}
 
 	@Subscribe
@@ -185,6 +179,23 @@ public class ResourcePacksPlugin extends Plugin
 				case "colorPack":
 				case "resourcePack":
 					clientThread.invokeLater(resourcePacksManager::updateAllOverrides);
+					break;
+
+				case "allowHitsplats":
+					clientThread.invokeLater(resourcePacksManager::updateAllOverrides);
+					String hitsplatWarning = new ChatMessageBuilder()
+						.append(ChatColorType.NORMAL)
+						.append("[")
+						.append(ChatColorType.HIGHLIGHT)
+						.append("Resource Packs")
+						.append(ChatColorType.NORMAL)
+						.append("] Hitsplat changes will take effect the next time you logout or restart.")
+						.build();
+
+					chatMessageManager.queue(QueuedMessage.builder()
+						.type(ChatMessageType.CONSOLE)
+						.runeLiteFormattedMessage(hitsplatWarning)
+						.build());
 					break;
 
 				case "allowOverlayColor":
@@ -224,14 +235,25 @@ public class ResourcePacksPlugin extends Plugin
 					clientThread.invokeLater(this::toggleSidePanelButton);
 					break;
 
-				case "allowSpecialBarChanges":
 				case "allowCustomSpriteOverrides":
+				case "allowSpecialBarChanges":
 				case "specialBarSelection":
 					clientThread.invokeLater(() -> resourcePacksManager.setSpecialBarTo(
 						(config.allowSpecialBarChanges() && config.allowCustomSpriteOverrides()))
 					);
 					break;
 
+				case "allowChatboxNameRecolor":
+				case "opaqueNameColor":
+				case "opaqueChatboxInputColor":
+				case "transparentNameColor":
+				case "transparentChatboxInputColor":
+					clientThread.invokeLater(resourcePacksManager::resetChatboxNameAndInput);
+					if (config.allowChatboxNameRecolor())
+					{
+						clientThread.invokeLater(resourcePacksManager::recolorChatboxNameAndInput);
+					}
+					break;
 			}
 		}
 		else if (event.getGroup().equals("banktags") && event.getKey().equals("useTabs"))
@@ -242,16 +264,12 @@ public class ResourcePacksPlugin extends Plugin
 			event.getGroup().equals(RuneLiteConfig.GROUP_NAME) && event.getKey().equals(OVERLAY_COLOR_CONFIG))
 		{
 			String warn = new ChatMessageBuilder()
-				.append(ChatColorType.HIGHLIGHT)
-				.append("Warning: ")
 				.append(ChatColorType.NORMAL)
-				.append("Resource pack")
+				.append("[")
 				.append(ChatColorType.HIGHLIGHT)
-				.append(" is overriding the Overlay Color. To disable, uncheck 'Allow overlay color to be changed' in the ")
+				.append("Resource Packs")
 				.append(ChatColorType.NORMAL)
-				.append("Resource packs")
-				.append(ChatColorType.HIGHLIGHT)
-				.append(" config settings.")
+				.append("] Current resource pack is overriding the Overlay Color. Uncheck /Allow overlay color to be changed/ in the config settings to disable this feature.")
 				.build();
 
 			chatMessageManager.queue(QueuedMessage.builder()
@@ -312,7 +330,7 @@ public class ResourcePacksPlugin extends Plugin
 
 		if (event.getScriptId() == 914)
 		{
-			resourcePacksManager.fixEmoteTabGrid();
+			resourcePacksManager.removeEmoteTabGridLines();
 		}
 		if (event.getScriptId() == 3805)
 		{
@@ -325,6 +343,21 @@ public class ResourcePacksPlugin extends Plugin
 		if (event.getScriptId() == 839)
 		{
 			resourcePacksManager.manageBankSeparatorLines(config.allowCustomSpriteOverrides());
+		}
+	}
+
+	@Subscribe(priority = -0.1F)
+	public void onScriptCallbackEvent(ScriptCallbackEvent event)
+	{
+		if (!config.allowChatboxNameRecolor())
+			return;
+
+		if(client.getGameState() == GameState.LOGIN_SCREEN)
+			return;
+
+		if(event.getEventName().equals("setChatboxInput"))
+		{
+			resourcePacksManager.recolorChatboxNameAndInput();
 		}
 	}
 

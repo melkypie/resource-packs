@@ -10,44 +10,48 @@ import net.runelite.api.annotations.Component;
 @RequiredArgsConstructor
 public enum WidgetReplace
 {
-	RESIZABLE_VIEWPORT_CLASSIC(RESIZABLE_VIEWPORT_CLASSIC_COMPONENT_ID, SpriteOverride.RESIZEABLE_MODE_CLASSIC_BACKGROUND.getSpriteID()),
-	RESIZABLE_VIEWPORT_MODERN(RESIZABLE_VIEWPORT_MODERN_COMPONENT_ID, SpriteOverride.RESIZEABLE_MODE_MODERN_BACKGROUND.getSpriteID()),
+	RESIZABLE_VIEWPORT_CLASSIC(RESIZABLE_VIEWPORT_CLASSIC_COMPONENT_ID, -1, -1, SpriteOverride.RESIZEABLE_MODE_CLASSIC_BACKGROUND.getSpriteID()),
+	RESIZABLE_VIEWPORT_MODERN(RESIZABLE_VIEWPORT_MODERN_COMPONENT_ID, -1, -1, SpriteOverride.RESIZEABLE_MODE_MODERN_BACKGROUND.getSpriteID()),
 
-	BANK_BACKGROUND(BANK_BACKGROUND_COMPONENT_ID, new Integer[]{0}, SpriteOverride.BANK_BACKGROUND.getSpriteID()),
+	BANK_BACKGROUND(BANK_BACKGROUND_COMPONENT_ID, 0, 297, SpriteOverride.BANK_BACKGROUND.getSpriteID()),
 
-	BANK_CONTAINER_SEPARATOR_LINE(BANK_CONTAINER_SEPARATOR_LINE_COMPONENT_ID, BANK_CONTAINER_CHILDREN_INDEX, SpriteOverride.BANK_CONTAINER_SEPARATOR_LINE.getSpriteID()),
+	BANK_CONTAINER_SEPARATOR_LINE(BANK_CONTAINER_SEPARATOR_LINE_COMPONENT_ID, BANK_CONTAINER_CHILDREN_INDEX, 897, SpriteOverride.BANK_CONTAINER_SEPARATOR_LINE.getSpriteID()),
 
-	SEED_VAULT_CONTAINER_SEPARATOR_LINE(SEED_VAULT_CONTAINER_SEPARATOR_LINE_COMPONENT_ID, SEED_VAULT_CHILDREN_INDEX, SpriteOverride.BANK_CONTAINER_SEPARATOR_LINE.getSpriteID()),
+	SEED_VAULT_CONTAINER_SEPARATOR_LINE(SEED_VAULT_CONTAINER_SEPARATOR_LINE_COMPONENT_ID, SEED_VAULT_CHILDREN_INDEX, 897, SpriteOverride.BANK_CONTAINER_SEPARATOR_LINE.getSpriteID()),
 
-	EQUIPMENT_SIDE_PANEL_VERTICAL_BAR(EQUIPMENT_VERTICAL_BAR, SpriteOverride.EQUIPMENT_VERTICAL_BAR.getSpriteID()),
-	EQUIPMENT_SIDE_PANEL_HORIZONTAL_BAR(EQUIPMENT_HORIZONTAL_BAR, SpriteOverride.EQUIPMENT_HORIZONTAL_BAR.getSpriteID()),
+	EQUIPMENT_SIDE_PANEL_VERTICAL_BAR(EQUIPMENT_VERTICAL_BAR, -1, 172, SpriteOverride.EQUIPMENT_VERTICAL_BAR.getSpriteID()),
+	EQUIPMENT_SIDE_PANEL_HORIZONTAL_BAR(EQUIPMENT_HORIZONTAL_BAR, -1, 173, SpriteOverride.EQUIPMENT_HORIZONTAL_BAR.getSpriteID()),
+
+	SPELL_FILTER_BACKGROUND(SPELL_FILTER_BACKGROUND_COMPONENT_ID, -1, 897, -210),
 
 	;
 
 	@Component
 	private final int[] componentId;
 	private final Integer[] childIndex;
-	private final int spriteId;
+	private final int defaultSpriteId;
+	private final int newSpriteId;
 
-	WidgetReplace(int componentId, int spriteId)
+	WidgetReplace(int[] componentId, int childIndex, int defaultSpriteId, int newSpriteId)
 	{
-		this(new int[]{componentId}, new Integer[]{-1}, spriteId);
+		this(componentId, new Integer[]{childIndex}, defaultSpriteId, newSpriteId);
 	}
 
-	WidgetReplace(int[] componentId, int spriteId)
+	WidgetReplace(int componentId, Integer[] childIndex, int defaultSpriteId, int newSpriteId)
 	{
-		this(componentId, new Integer[]{-1}, spriteId);
+		this(new int[]{componentId}, childIndex, defaultSpriteId, newSpriteId);
 	}
 
-	WidgetReplace(int componentId, Integer[] childIndex, int spriteId)
+	WidgetReplace(int componentId, int childIndex, int defaultSpriteId, int newSpriteId)
 	{
-		this(new int[]{componentId}, childIndex, spriteId);
+		this(new int[]{componentId}, new Integer[]{childIndex}, defaultSpriteId, newSpriteId);
 	}
+
 
 	static class Constants
 	{
-		static final int RESIZABLE_VIEWPORT_MODERN_COMPONENT_ID = 10551334;
 		static final int RESIZABLE_VIEWPORT_CLASSIC_COMPONENT_ID = 10551334;
+		static final int RESIZABLE_VIEWPORT_MODERN_COMPONENT_ID = 10747974;
 		static final int BANK_BACKGROUND_COMPONENT_ID = 786434;
 		static final int BANK_CONTAINER_SEPARATOR_LINE_COMPONENT_ID = 786445;
 		static final Integer[] BANK_CONTAINER_CHILDREN_INDEX = {
@@ -58,7 +62,7 @@ public enum WidgetReplace
 		static final Integer[] SEED_VAULT_CHILDREN_INDEX = {
 			0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 		};
-		
+
 		//find all occurrences of worn equipment slots, TODO
 		static final int[] EQUIPMENT_VERTICAL_BAR = {
 			25362441, 25362442, 25362443,//side panel
@@ -92,6 +96,7 @@ public enum WidgetReplace
 			42336328, 42336329,//lms_pure
 
 		};
+		static final int SPELL_FILTER_BACKGROUND_COMPONENT_ID = 14287044;
 	}
-	
+
 }
