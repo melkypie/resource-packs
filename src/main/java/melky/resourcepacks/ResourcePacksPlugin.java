@@ -109,7 +109,7 @@ public class ResourcePacksPlugin extends Plugin
 		executor.submit(() -> {
 			resourcePacksManager.refreshPlugins();
 			clientThread.invokeLater(resourcePacksManager::updateAllOverrides);
-			clientThread.invokeLater(resourcePacksManager::refreshMinimap);
+			clientThread.invokeLater(resourcePacksManager::refreshResizableMinimap);
 		});
 
 		resourcePacksHubPanel = injector.getInstance(ResourcePacksHubPanel.class);
@@ -141,7 +141,7 @@ public class ResourcePacksPlugin extends Plugin
 			resourcePacksManager.resetCrossSprites();
 			resourcePacksManager.setSpecialBarTo(false);
 			resourcePacksManager.manageBankSeparatorLines(false);
-			resourcePacksManager.refreshMinimap();
+			resourcePacksManager.refreshResizableMinimap();
 		});
 
 		if (config.allowLoginScreen())
@@ -183,7 +183,7 @@ public class ResourcePacksPlugin extends Plugin
 					clientThread.invokeLater(resourcePacksManager::updateAllOverrides);
 					if(event.getKey().equals("resourcePack"))
 					{
-						clientThread.invokeLater(resourcePacksManager::refreshMinimap);
+						clientThread.invokeLater(resourcePacksManager::refreshResizableMinimap);
 					}
 					break;
 

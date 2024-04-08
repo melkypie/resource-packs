@@ -127,6 +127,9 @@ public enum WidgetResize
 	RESIZABLE_MODERN_MINIMAP_164_28(10747932, 0, 155, 0, 155, 121, 11, 121, 11, null, true),
 	RESIZABLE_MODERN_MINIMAP_COMPASS(10747933, 34, 5, 34, 5, null, null, null, null, null, true),
 	RESIZABLE_MODERN_MINIMAP_COMPASS_SET_NORTH(10747935, 32, 3, 32, 3, null, null, null, null, null, true),
+	RESIZABLE_MODERN_MINIMAP_LOGOUT_OVERLAY(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_LOGOUT_BUTTON_OVERLAY, 183, 2, 2, 2, null, null, null, null, null, true),
+	RESIZABLE_MODERN_MINIMAP_LOGOUT_BUTTON(10747939, 183, 2, 2, 2, null, null, null, null, null, true),
+
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//Don't modify from file

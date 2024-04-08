@@ -1070,9 +1070,32 @@ public class ResourcePacksManager
 		client.runScript(ScriptID.CHAT_PROMPT_INIT);
 	}
 	
-	void refreshMinimap()
+	void refreshResizableMinimap()
 	{
-		client.runScript(902, ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_MINIMAP, 1131);
+		int id = -1;
+		int enum1 = -1;
+		if(!client.isResized())
+			return;
+
+		Widget minimapClassic = client.getWidget(ComponentID.RESIZABLE_VIEWPORT_MINIMAP);
+		Widget minimapModern = client.getWidget(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_MINIMAP);
+		if(minimapClassic == null || minimapClassic.isHidden())
+		{
+			if(minimapModern != null)
+			{
+				id = minimapModern.getId();
+				enum1 = 1131;
+			}
+		} else
+		{
+			id = minimapClassic.getId();
+			enum1 = 1130;
+		}
+
+		if(id != -1 || enum1 != -1)
+		{
+			client.runScript(902, id, enum1);
+		}
 	}
 
 	final String DEFAULT_SPECIAL_ATTACK_TEXT = "Special Attack: ";
