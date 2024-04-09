@@ -987,7 +987,11 @@ public class ResourcePacksManager
 						{
 							continue;
 						}
-						if (child.getSpriteId() == id || dontReplaceSpriteIdList.contains(id))
+						if (dontReplaceSpriteIdList.contains(id))
+						{
+							id = replace.getDefaultSpriteId();
+						}
+						if (widget.getSpriteId() != -1 && widget.getSpriteId() == id)
 						{
 							continue;
 						}
@@ -999,17 +1003,10 @@ public class ResourcePacksManager
 					if (dontReplaceSpriteIdList.contains(id))
 					{
 						id = replace.getDefaultSpriteId();
-						if (widget.getSpriteId() != -1 && widget.getSpriteId() == id)
-						{
-							continue;
-						}
 					}
-					else
+					if (widget.getSpriteId() != -1 && widget.getSpriteId() == id)
 					{
-						if(widget.getSpriteId() != -1 && widget.getSpriteId() == id)
-						{
-							continue;
-						}
+						continue;
 					}
 
 					//assigned -1 to resizable inventory backgrounds in WidgetResize
