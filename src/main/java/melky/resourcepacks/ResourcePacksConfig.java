@@ -225,10 +225,22 @@ public interface ResourcePacksConfig extends Config
 	}
 
 	@ConfigItem(
+		keyName = "specialAttackTextShadowed",
+		name = "Special attack text shadow",
+		description = "Turning this on will give the special bar text a shadow",
+		position = 16,
+		section = styleOptions
+	)
+	default boolean specialAttackTextShadowed()
+	{
+		return false;
+	}
+
+	@ConfigItem(
 		keyName = "recolorSpecialAttackText",
 		name = "Change special bar text colors",
 		description = "Turning this on will change the special bar text colors to the below selected colors",
-		position = 16,
+		position = 17,
 		section = styleOptions
 	)
 	default boolean recolorSpecialAttackText()
@@ -240,7 +252,7 @@ public interface ResourcePacksConfig extends Config
 		keyName = "disableSpecialTextColor",
 		name = "Special attack disabled",
 		description = "Allows you to change the color of the special attack disabled text, left click to reset to default",
-		position = 17,
+		position = 18,
 		section = styleOptions
 	)
 	default Color disableSpecialTextColor()
@@ -252,7 +264,7 @@ public interface ResourcePacksConfig extends Config
 		keyName = "enabledSpecialTextColor",
 		name = "Special attack enabled",
 		description = "Allows you to change the color of the special attack enabled text, left click to reset to default",
-		position = 18,
+		position = 19,
 		section = styleOptions
 	)
 	default Color enabledSpecialTextColor()
@@ -264,7 +276,7 @@ public interface ResourcePacksConfig extends Config
 		keyName = "allowChatboxNameRecolor",
 		name = "Allow chatbox name recoloring",
 		description = "Turning this on will allow changes to the chatbox rsn color",
-		position = 19,
+		position = 20,
 		section = styleOptions
 	)
 	default boolean allowChatboxNameRecolor()
@@ -276,7 +288,7 @@ public interface ResourcePacksConfig extends Config
 		keyName = "opaqueNameColor",
 		name = "Opaque Username",
 		description = "Allows you to change the color of your username below the chat messages, left click to reset to default",
-		position = 20,
+		position = 21,
 		section = styleOptions
 	)
 	default Color opaqueNameColor()
@@ -288,7 +300,7 @@ public interface ResourcePacksConfig extends Config
 		keyName = "opaqueChatboxInputColor",
 		name = "Opaque Input",
 		description = "Allows you to change the color of the opaque chatbox input, left click to reset to default",
-		position = 21,
+		position = 22,
 		section = styleOptions
 	)
 	default Color opaqueChatboxInputColor()
@@ -300,7 +312,7 @@ public interface ResourcePacksConfig extends Config
 		keyName = "transparentNameColor",
 		name = "Transparent Username",
 		description = "Allows you to change the color of your username below the chat messages, left click to reset to default",
-		position = 22,
+		position = 23,
 		section = styleOptions
 	)
 	default Color transparentNameColor() { return new Color(255, 255, 255); }
@@ -310,7 +322,7 @@ public interface ResourcePacksConfig extends Config
 		keyName = "transparentChatboxInputColor",
 		name = "Transparent Input",
 		description = "Allows you to change the color of the transparent chatbox input, left click to reset to default",
-		position = 23,
+		position = 24,
 		section = styleOptions
 	)
 	default Color transparentChatboxInputColor()
@@ -322,7 +334,7 @@ public interface ResourcePacksConfig extends Config
 		keyName = "lampBackground",
 		name = "XP Lamp background",
 		description = "Replace the xp lamp background",
-		position = 24,
+		position = 25,
 		section = styleOptions
 	)
 	default LampBackground lampBackground()
@@ -334,7 +346,7 @@ public interface ResourcePacksConfig extends Config
 	@ConfigSection(
 		name = "Experimental options",
 		description = "Do not touch if you don't know what you are doing",
-		position = 24,
+		position = 25,
 		closedByDefault = true
 	)
 	String experimentalOptions = "experimentalOptions";
@@ -343,7 +355,7 @@ public interface ResourcePacksConfig extends Config
 		keyName = "allowColorPack",
 		name = "Enables color current pack option",
 		description = "This option must be on for Color current pack option to work",
-		position = 25,
+		position = 26,
 		section = experimentalOptions
 	)
 	default boolean allowColorPack()
@@ -356,7 +368,7 @@ public interface ResourcePacksConfig extends Config
 		keyName = "colorPack",
 		name = "Color current pack",
 		description = "Allows you to apply a color overlay over the currently selected resource pack",
-		position = 26,
+		position = 27,
 		section = experimentalOptions
 	)
 	Color colorPack();
@@ -365,7 +377,7 @@ public interface ResourcePacksConfig extends Config
 		keyName = "colorPackOverlay",
 		name = "Allows color current pack to change overlays",
 		description = "This option will only work if color current pack is enabled and a color is assigned",
-		position = 27,
+		position = 28,
 		section = experimentalOptions
 	)
 	default boolean colorPackOverlay()
@@ -378,7 +390,7 @@ public interface ResourcePacksConfig extends Config
 		keyName = "disableInterfaceStylesPrompt",
 		name = "Don't change Interface Styles gameframe option",
 		description = "Turning this option on will disable resource packs changing the Interface Styles gameframe option to default",
-		position = 28
+		position = 29
 	)
 	default boolean disableInterfaceStylesPrompt()
 	{

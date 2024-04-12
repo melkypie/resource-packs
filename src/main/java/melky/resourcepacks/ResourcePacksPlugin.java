@@ -13,6 +13,8 @@ import melky.resourcepacks.hub.ResourcePacksHubPanel;
 import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
+import net.runelite.api.ScriptID;
+import net.runelite.api.VarClientInt;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.PostClientTick;
 import net.runelite.api.events.ScriptCallbackEvent;
@@ -129,6 +131,7 @@ public class ResourcePacksPlugin extends Plugin
 		{
 			clientToolbar.addNavigation(navButton);
 		}
+
 	}
 
 	@Override
@@ -136,15 +139,17 @@ public class ResourcePacksPlugin extends Plugin
 	{
 		clientThread.invokeLater(() ->
 		{
-			resourcePacksManager.applyWidgetChanges(false);
-			resourcePacksManager.replaceWidgetSprites(false);
-			resourcePacksManager.resetOffsets();
+			resourcePacksManager.resetWidgetDimensions(true);
+			resourcePacksManager.resetWidgetSpriteIds();
 			resourcePacksManager.removeGameframe();
 			resourcePacksManager.resetWidgetOverrides();
 			resourcePacksManager.resetCrossSprites();
+			resourcePacksManager.resetChatboxNameAndInput();
+			resourcePacksManager.setSpecialAttackText(false);
 			resourcePacksManager.setSpecialBarTo(false);
 			resourcePacksManager.manageBankSeparatorLines(false);
 			resourcePacksManager.refreshResizableMinimap();
+
 		});
 
 		if (config.allowLoginScreen())
@@ -160,15 +165,25 @@ public class ResourcePacksPlugin extends Plugin
 		clientToolbar.removeNavigation(navButton);
 	}
 
+	boolean updateWidgetSpriteIds = false;
+
 	@Subscribe
 	public void onPostClientTick(PostClientTick event)
 	{
-		resourcePacksManager.applyWidgetChanges(true);
+		resourcePacksManager.applyWidgetDimensions();
 
-		resourcePacksManager.replaceWidgetSprites(
-			config.allowCustomSpriteOverrides() &&
-				resourcePacksManager.checkIfResourcePackPathIsNotEmpty()
-		);
+		if (!resourcePacksManager.checkIfResourcePackPathIsNotEmpty() || !config.allowCustomSpriteOverrides())
+		{
+			if (updateWidgetSpriteIds)
+			{
+				resourcePacksManager.resetWidgetSpriteIds();
+			}
+			updateWidgetSpriteIds = false;
+			return;
+		}
+
+		resourcePacksManager.applyNewWidgetSpriteId();
+		updateWidgetSpriteIds = true;
 	}
 
 	@Subscribe
@@ -183,9 +198,11 @@ public class ResourcePacksPlugin extends Plugin
 				case "colorPackOverlay":
 				case "colorPack":
 				case "resourcePack":
+				case "selectedHubPack": //didn't update properly in some cases
 					clientThread.invokeLater(resourcePacksManager::updateAllOverrides);
-					if(event.getKey().equals("resourcePack"))
+					if (event.getKey().equals("resourcePack") || event.getKey().equals("selectedHubPack"))
 					{
+						updateWidgetSpriteIds = true;
 						clientThread.invokeLater(resourcePacksManager::refreshResizableMinimap);
 					}
 					break;
@@ -245,11 +262,27 @@ public class ResourcePacksPlugin extends Plugin
 					break;
 
 				case "allowCustomSpriteOverrides":
+					updateWidgetSpriteIds = true;
+					if (config.allowSpecialBarChanges())
+					{
+						clientThread.invokeLater(() -> resourcePacksManager.setSpecialBarTo(config.allowCustomSpriteOverrides()));
+					}
+					break;
+
 				case "allowSpecialBarChanges":
 				case "specialBarSelection":
 					clientThread.invokeLater(() -> resourcePacksManager.setSpecialBarTo(
 						(config.allowSpecialBarChanges() && config.allowCustomSpriteOverrides()))
 					);
+					break;
+
+				case "retroSpecialAttackText":
+				case "specialAttackTextShadowed":
+				case "recolorSpecialAttackText":
+				case "disableSpecialTextColor":
+				case "enabledSpecialTextColor":
+					clientThread.invokeLater(resourcePacksManager::resetSpecialAttackText);
+					clientThread.invokeLater(() -> resourcePacksManager.setSpecialAttackText(true));
 					break;
 
 				case "allowChatboxNameRecolor":
@@ -263,6 +296,7 @@ public class ResourcePacksPlugin extends Plugin
 						clientThread.invokeLater(resourcePacksManager::recolorChatboxNameAndInput);
 					}
 					break;
+
 			}
 		}
 		else if (event.getGroup().equals("banktags") && event.getKey().equals("useTabs"))
@@ -272,19 +306,26 @@ public class ResourcePacksPlugin extends Plugin
 		else if (config.allowOverlayColor() && !ignoreOverlayConfig &&
 			event.getGroup().equals(RuneLiteConfig.GROUP_NAME) && event.getKey().equals(OVERLAY_COLOR_CONFIG))
 		{
-			String warn = new ChatMessageBuilder()
-				.append(ChatColorType.NORMAL)
-				.append("[")
-				.append(ChatColorType.HIGHLIGHT)
-				.append("Resource Packs")
-				.append(ChatColorType.NORMAL)
-				.append("] Current resource pack is overriding the Overlay Color. Uncheck /Allow overlay color to be changed/ in the config settings to disable this feature.")
-				.build();
+			if(resourcePacksManager.checkIfResourcePackPathIsNotEmpty())
+			{
+				String warn = new ChatMessageBuilder()
+					.append(ChatColorType.NORMAL)
+					.append("[")
+					.append(ChatColorType.HIGHLIGHT)
+					.append("Resource Packs")
+					.append(ChatColorType.NORMAL)
+					.append("] Current pack will override the Overlay Color changes made. To disable, uncheck ")
+					.append(ChatColorType.HIGHLIGHT)
+					.append("'Allow overlay color to be changed' ")
+					.append(ChatColorType.NORMAL)
+					.append("in the config settings.")
+					.build();
 
-			chatMessageManager.queue(QueuedMessage.builder()
-				.type(ChatMessageType.CONSOLE)
-				.runeLiteFormattedMessage(warn)
-				.build());
+				chatMessageManager.queue(QueuedMessage.builder()
+					.type(ChatMessageType.CONSOLE)
+					.runeLiteFormattedMessage(warn)
+					.build());
+			}
 
 			configManager.setConfiguration(ResourcePacksConfig.GROUP_NAME, ResourcePacksConfig.ORIGINAL_OVERLAY_COLOR,
 				event.getNewValue());
@@ -347,19 +388,30 @@ public class ResourcePacksPlugin extends Plugin
 			}
 		}
 
-		if (event.getScriptId() == 914)
-		{
-			resourcePacksManager.removeEmoteTabGridLines();
-		}
+		//open tab via (keybind || click)
+		boolean setSidebarTabIdScript = (event.getScriptId() == 905 || event.getScriptId() == 914);
+
 		if (event.getScriptId() == 3805)
 		{
 			resourcePacksManager.replaceXPLampBackground();
 		}
-		if (event.getScriptId() == 186 || event.getScriptId() == 188 || event.getScriptId() == 905 || event.getScriptId() == 914)
+
+		//special bar (redraw || updatebar)
+		if (event.getScriptId() == 186 || event.getScriptId() == 188 || setSidebarTabIdScript)
 		{
-			resourcePacksManager.setSpecialBarTo((config.allowSpecialBarChanges() && config.allowCustomSpriteOverrides()));
+			if (client.getVarcIntValue(VarClientInt.INVENTORY_TAB) == 0)
+			{
+				resourcePacksManager.setSpecialAttackText(true);
+				resourcePacksManager.setSpecialBarTo((config.allowSpecialBarChanges() && config.allowCustomSpriteOverrides()));
+			}
 		}
-		if (event.getScriptId() == 839)
+
+		if (setSidebarTabIdScript && client.getVarcIntValue(VarClientInt.INVENTORY_TAB) == 12)
+		{
+			resourcePacksManager.removeEmoteTabGridLines();
+		}
+
+		if (event.getScriptId() == ScriptID.BANKMAIN_SIZE_CHECK)
 		{
 			resourcePacksManager.manageBankSeparatorLines(config.allowCustomSpriteOverrides());
 		}
@@ -369,12 +421,16 @@ public class ResourcePacksPlugin extends Plugin
 	public void onScriptCallbackEvent(ScriptCallbackEvent event)
 	{
 		if (!config.allowChatboxNameRecolor())
+		{
 			return;
+		}
 
-		if(client.getGameState() == GameState.LOGIN_SCREEN)
+		if (client.getGameState() == GameState.LOGIN_SCREEN)
+		{
 			return;
+		}
 
-		if(event.getEventName().equals("setChatboxInput"))
+		if (event.getEventName().equals("setChatboxInput"))
 		{
 			resourcePacksManager.recolorChatboxNameAndInput();
 		}

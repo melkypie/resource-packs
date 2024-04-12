@@ -73,11 +73,12 @@ import okhttp3.Response;
 @Slf4j
 public class ResourcePacksManager
 {
-	@Getter
-	private final Properties colorProperties = new Properties();
+	ArrayList<Integer> dontReplaceSpriteIdList = new ArrayList<Integer>();
 
 	@Getter
 	private final Properties offsetProperties = new Properties();
+	@Getter
+	private final Properties colorProperties = new Properties();
 	private SpritePixels[] defaultCrossSprites;
 
 	@Inject
@@ -302,8 +303,9 @@ public class ResourcePacksManager
 			configManager.setConfiguration(ResourcePacksConfig.GROUP_NAME, "selectedHubPack", "");
 			clientThread.invokeLater(() ->
 			{
-				applyWidgetChanges(false);
-				replaceWidgetSprites(false);
+
+				resetWidgetDimensions(true);
+				resetWidgetSpriteIds();
 				reloadColorProperties();
 				reloadOffsetProperties();
 				resetLoginScreen();
@@ -358,11 +360,22 @@ public class ResourcePacksManager
 
 		removeGameframe();
 		overrideSprites();
+		
+		//reload prop
 		reloadColorProperties();
 		reloadOffsetProperties();
+
+		//recolor
 		applyWidgetOverrides();
-		applyWidgetChanges(false);
-		applyWidgetChanges(true);
+
+		//resize
+		resetWidgetDimensions(false);
+		applyWidgetDimensions();
+
+		//replace
+		resetWidgetSpriteIds();
+		applyNewWidgetSpriteId();
+		
 		resetCrossSprites();
 		changeCrossSprites();
 	}
@@ -378,130 +391,6 @@ public class ResourcePacksManager
 			client.setCompass(compass);
 		}
 	}
-
-	void applyWidgetChanges(boolean modify)
-	{
-		adjustWidgetDimensions(modify);
-		refreshSpecialAttackText(modify);
-		if (!modify)
-		{
-			resetChatboxNameAndInput();
-		}
-	}
-
-	public void resetOffsets()
-	{
-		offsetProperties.clear();
-		for (WidgetResize widgetResize : WidgetResize.values())
-		{
-			Widget widget = client.getWidget(widgetResize.getComponentId());
-
-			if (widget != null)
-			{
-				widget.revalidate();
-			}
-		}
-	}
-
-	void adjustWidgetDimensions(boolean modify)
-	{
-		for (WidgetResize widgetResize : WidgetResize.values())
-		{
-			int xOffset = 0;
-			int yOffset = 0;
-			//for minimap resizing TODO
-			int widthOffset = 0;
-			int heightOffset = 0;
-			if (offsetProperties.containsKey(widgetResize.name().toLowerCase()))
-			{
-				String[] property = offsetProperties.getProperty(widgetResize.name().toLowerCase()).trim().split(",");
-				for (int index = 0; index < property.length; index++)
-				{
-					if (property[index].isEmpty())
-					{
-						continue;
-					}
-
-					String value = property[index].replaceAll("[^\\d-]", "");
-					if (value.startsWith("0") || (value.contains("-") && !value.startsWith("-")))
-					{
-						continue;
-					}
-					if (!Objects.equals(property[index], ""))
-					{
-						if (index == 0)
-						{
-							xOffset = Integer.parseInt(value);
-						}
-						if (index == 1)
-						{
-							yOffset = Integer.parseInt(value);
-						}
-						//for minimap resizing TODO
-						if (index == 2)
-						{
-							widthOffset = Integer.parseInt(value);
-						}
-						//for minimap resizing TODO
-						if (index == 3)
-						{
-							heightOffset = Integer.parseInt(value);
-						}
-					}
-				}
-			}
-			else
-			{
-				if (modify && widgetResize.isModify())
-				{
-					continue;
-				}
-			}
-
-			Widget widget = client.getWidget(widgetResize.getComponentId());
-
-			if (widget != null)
-			{
-				if (widgetResize.getChildIndex() != null)
-				{
-					Widget child = widget.getChild(widgetResize.getChildIndex());
-					if (child != null)
-					{
-						widget = child;
-					}
-				}
-
-				if (widgetResize.getOriginalX() != null)
-				{
-					widget.setOriginalX(modify ? (xOffset != 0 ? widgetResize.getOriginalX() + xOffset : widgetResize.getModifiedX()) : widgetResize.getOriginalX());
-				}
-
-				if (widgetResize.getOriginalY() != null)
-				{
-					widget.setOriginalY(modify ? (yOffset != 0 ? widgetResize.getOriginalY() + yOffset : widgetResize.getModifiedY()) : widgetResize.getOriginalY());
-				}
-
-				if (widgetResize.getOriginalWidth() != null)
-				{
-					widget.setOriginalWidth(modify ? (widthOffset != 0 ? widgetResize.getOriginalWidth() + widthOffset : widgetResize.getModifiedWidth()) : widgetResize.getOriginalWidth());
-				}
-
-				if (widgetResize.getOriginalHeight() != null)
-				{
-					widget.setOriginalHeight(modify ? (heightOffset != 0 ? widgetResize.getOriginalHeight() + heightOffset : widgetResize.getModifiedHeight()) : widgetResize.getOriginalHeight());
-				}
-				
-				//for minimap resizing TODO
-				if (widgetResize.getWidthModeOrig() != null)
-				{
-					widget.setWidthMode(modify ? (widthOffset != 0 ? widgetResize.getWidthModeMod() : widgetResize.getWidthModeOrig()) : widgetResize.getWidthModeOrig());
-				}
-				
-				widget.revalidate();
-			}
-		}
-	}
-
 
 	void restoreSprites()
 	{
@@ -609,15 +498,9 @@ public class ResourcePacksManager
 		return null;
 	}
 
-	ArrayList<Integer> dontReplaceSpriteIdList = new ArrayList<Integer>();
-
 	void overrideSprites()
 	{
-		if (!dontReplaceSpriteIdList.isEmpty())
-		{
-			dontReplaceSpriteIdList.clear();
-		}
-
+		dontReplaceSpriteIdList.clear();
 		String currentPackPath = getCurrentPackPath();
 		SpriteOverride.getOverrides().asMap().forEach((key, collection) -> {
 			if (!Files.isDirectory(Paths.get(currentPackPath + File.separator + key.name().toLowerCase())) ||
@@ -698,41 +581,6 @@ public class ResourcePacksManager
 		loginScreenConfigChanged.setOldValue(null);
 		loginScreenConfigChanged.setNewValue("");
 		eventBus.post(loginScreenConfigChanged);
-	}
-
-	void reloadColorProperties()
-	{
-		colorProperties.clear();
-		File colorPropertiesFile = new File(getCurrentPackPath() + "/color.properties");
-		try (InputStream in = Files.newInputStream(colorPropertiesFile.toPath()))
-		{
-			colorProperties.load(in);
-		}
-		catch (IOException e)
-		{
-			log.debug("Color properties not found");
-			resetOverlayColor();
-			return;
-		}
-		if (config.allowOverlayColor())
-		{
-			changeOverlayColor();
-		}
-		// Add more properties
-	}
-
-	void reloadOffsetProperties()
-	{
-		offsetProperties.clear();
-		File offsetPropertiesFile = new File(getCurrentPackPath() + "/offset.properties");
-		try (InputStream in = Files.newInputStream(offsetPropertiesFile.toPath()))
-		{
-			offsetProperties.load(in);
-		}
-		catch (IOException e)
-		{
-			log.debug("Offset properties not found");
-		}
 	}
 
 	void changeOverlayColor()
@@ -826,6 +674,157 @@ public class ResourcePacksManager
 		g.fillRect(0, 0, w, h);
 		g.dispose();
 		return dyed;
+	}
+
+	void reloadOffsetProperties()
+	{
+		offsetProperties.clear();
+		File file = new File(getCurrentPackPath() + "/offset.properties");
+		try (InputStream in = Files.newInputStream(file.toPath()))
+		{
+			log.debug("Loading: {}", file);
+			offsetProperties.load(in);
+		}
+		catch (IOException e)
+		{
+			log.debug("Unable to load offset properties: ", e);
+		}
+	}
+
+	public void applyWidgetDimensions()
+	{
+		for (WidgetResize widgetResize : WidgetResize.values())
+		{
+			adjustWidgetDimensions(widgetResize, true);
+		}
+	}
+
+	public void resetWidgetDimensions(boolean clear)
+	{
+		if (clear)
+		{
+			offsetProperties.clear();
+		}
+
+		for (WidgetResize widgetResize : WidgetResize.values())
+		{
+			adjustWidgetDimensions(widgetResize, false);
+		}
+	}
+
+	void adjustWidgetDimensions(WidgetResize resize, boolean modify)
+	{
+		int xOffset = 0;
+		int yOffset = 0;
+		int widthOffset = 0;
+		int heightOffset = 0;
+
+		if (offsetProperties.containsKey(resize.name().toLowerCase()))
+		{
+			String[] property = offsetProperties.getProperty(resize.name().toLowerCase()).trim().split(",");
+			for (int index = 0; index < property.length; index++)
+			{
+				if (property[index].isEmpty())
+				{
+					continue;
+				}
+
+				String value = property[index].replaceAll("[^\\d-]", "");
+				if (value.startsWith("0") || (value.contains("-") && !value.startsWith("-")))
+				{
+					continue;
+				}
+				if (!Objects.equals(property[index], ""))
+				{
+					if (index == 0)
+					{
+						xOffset = Integer.parseInt(value);
+					}
+					if (index == 1)
+					{
+						yOffset = Integer.parseInt(value);
+					}
+					if (index == 2)
+					{
+						widthOffset = Integer.parseInt(value);
+					}
+					if (index == 3)
+					{
+						heightOffset = Integer.parseInt(value);
+					}
+				}
+			}
+		}
+		else
+		{
+			if (modify && resize.isFromFileOnly())
+			{
+				return;
+			}
+		}
+
+		Widget widget = client.getWidget(resize.getComponentId());
+
+		if (widget != null)
+		{
+			if (resize.getChildIndex() != null)
+			{
+				Widget child = widget.getChild(resize.getChildIndex());
+				if (child != null)
+				{
+					widget = child;
+				}
+			}
+
+			if (resize.getOriginalX() != null)
+			{
+				widget.setOriginalX(modify ? (xOffset != 0 ? resize.getOriginalX() + xOffset : resize.getModifiedX()) : resize.getOriginalX());
+			}
+
+			if (resize.getOriginalY() != null)
+			{
+				widget.setOriginalY(modify ? (yOffset != 0 ? resize.getOriginalY() + yOffset : resize.getModifiedY()) : resize.getOriginalY());
+			}
+
+			if (resize.getOriginalWidth() != null)
+			{
+				widget.setOriginalWidth(modify ? (widthOffset != 0 ? resize.getOriginalWidth() + widthOffset : resize.getModifiedWidth()) : resize.getOriginalWidth());
+			}
+
+			if (resize.getOriginalHeight() != null)
+			{
+				widget.setOriginalHeight(modify ? (heightOffset != 0 ? resize.getOriginalHeight() + heightOffset : resize.getModifiedHeight()) : resize.getOriginalHeight());
+			}
+
+
+			if (resize.getWidthModeOrig() != null)
+			{
+				widget.setWidthMode(modify ? (widthOffset != 0 ? resize.getWidthModeMod() : resize.getWidthModeOrig()) : resize.getWidthModeOrig());
+			}
+
+			widget.revalidate();
+		}
+	}
+
+	void reloadColorProperties()
+	{
+		colorProperties.clear();
+		File file = new File(getCurrentPackPath() + "/color.properties");
+		try (InputStream in = Files.newInputStream(file.toPath()))
+		{
+			log.debug("Loading: {}", file);
+			colorProperties.load(in);
+		}
+		catch (IOException e)
+		{
+			log.debug("Unable to load color properties: ", e);
+			resetOverlayColor();
+			return;
+		}
+		if (config.allowOverlayColor())
+		{
+			changeOverlayColor();
+		}
 	}
 
 	private void applyWidgetOverrides()
@@ -965,65 +964,77 @@ public class ResourcePacksManager
 		}
 	}
 
-	public void replaceWidgetSprites(boolean modify)
+	public void applyNewWidgetSpriteId()
 	{
 		for (WidgetReplace replace : WidgetReplace.values())
 		{
-			int id = modify ? replace.getNewSpriteId() : replace.getDefaultSpriteId();
-			for (Integer override : replace.getComponentId())
+			setWidgetSpriteId(replace, replace.getNewSpriteId());
+		}
+	}
+
+	public void resetWidgetSpriteIds()
+	{
+		for (WidgetReplace replace : WidgetReplace.values())
+		{
+			setWidgetSpriteId(replace, replace.getDefaultSpriteId());
+		}
+	}
+
+	public void setWidgetSpriteId(WidgetReplace replace, int spriteId)
+	{
+		for (Integer override : replace.getComponentId())
+		{
+			Widget widget = client.getWidget(override);
+			if (widget == null || widget.isHidden())
 			{
-				Widget widget = client.getWidget(override);
-				if (widget == null || widget.isHidden())
+				continue;
+			}
+
+			if (replace.getChildIndex()[0] != -1)
+			{
+				for (int arrayId : replace.getChildIndex())
+				{
+					Widget child = widget.getChild(arrayId);
+					if (child == null || child.isHidden())
+					{
+						continue;
+					}
+					if (dontReplaceSpriteIdList.contains(spriteId))
+					{
+						spriteId = replace.getDefaultSpriteId();
+					}
+					if (widget.getSpriteId() != -1 && widget.getSpriteId() == spriteId)
+					{
+						continue;
+					}
+					child.setSpriteId(spriteId);
+				}
+			}
+			else
+			{
+				if (dontReplaceSpriteIdList.contains(spriteId))
+				{
+					spriteId = replace.getDefaultSpriteId();
+				}
+				if (widget.getSpriteId() != -1 && widget.getSpriteId() == spriteId)
 				{
 					continue;
 				}
 
-				if (replace.getChildIndex()[0] != -1)
+				//assigned -1 to resizeable inventory backgrounds in WidgetResize
+				if (spriteId == -1)
 				{
-					for (int arrayId : replace.getChildIndex())
+					//check which background spriteId should be assigned based on in-game settings for transparent background
+					if (override == WidgetReplace.Constants.RESIZABLE_VIEWPORT_CLASSIC_COMPONENT_ID ||
+						override == WidgetReplace.Constants.RESIZABLE_VIEWPORT_MODERN_COMPONENT_ID)
 					{
-						Widget child = widget.getChild(arrayId);
-						if (child == null || child.isHidden())
-						{
-							continue;
-						}
-						if (dontReplaceSpriteIdList.contains(id))
-						{
-							id = replace.getDefaultSpriteId();
-						}
-						if (widget.getSpriteId() != -1 && widget.getSpriteId() == id)
-						{
-							continue;
-						}
-						child.setSpriteId(id);
+						spriteId = widget.getOpacity() == 0 ? 897 : 1040;
 					}
 				}
-				else
+
+				if (widget.getSpriteId() != -1 || widget.getSpriteId() != spriteId)
 				{
-					if (dontReplaceSpriteIdList.contains(id))
-					{
-						id = replace.getDefaultSpriteId();
-					}
-					if (widget.getSpriteId() != -1 && widget.getSpriteId() == id)
-					{
-						continue;
-					}
-
-					//assigned -1 to resizable inventory backgrounds in WidgetResize
-					if (id == -1)
-					{
-						//check which background spriteId should be assigned based on in-game settings for transparent background
-						if (override == WidgetReplace.Constants.RESIZABLE_VIEWPORT_CLASSIC_COMPONENT_ID ||
-							override == WidgetReplace.Constants.RESIZABLE_VIEWPORT_MODERN_COMPONENT_ID)
-						{
-							id = widget.getOpacity() == 0 ? 897 : 1040;
-						}
-					}
-
-					if (widget.getSpriteId() != -1 || widget.getSpriteId() != id)
-					{
-						widget.setSpriteId(id);
-					}
+					widget.setSpriteId(spriteId);
 				}
 			}
 		}
@@ -1050,7 +1061,7 @@ public class ResourcePacksManager
 		{
 			String newName = ColorUtil.wrapWithColorTag(name + ":", nameColor);
 			boolean enterToChat = (
-				input.equals(" Press Enter to Chat...") ||
+				input.equals(" Press Enter to Chat...") || //idk if this check is actually needed
 				configManager.getConfiguration("keyremappingplus", "promptText").endsWith(input + ColorUtil.CLOSING_COLOR_TAG) ||
 				!input.endsWith("*" + ColorUtil.CLOSING_COLOR_TAG)
 			);
@@ -1066,46 +1077,50 @@ public class ResourcePacksManager
 	{
 		client.runScript(ScriptID.CHAT_PROMPT_INIT);
 	}
-	
+
 	void refreshResizableMinimap()
 	{
 		int id = -1;
-		int enum1 = -1;
+		int value = -1;
 		if (!client.isResized())
 		{
 			return;
 		}
 
+		int CLASSIC = 1130;
+		int MODERN = 1131;
 		Widget minimapClassic = client.getWidget(ComponentID.RESIZABLE_VIEWPORT_MINIMAP);
 		Widget minimapModern = client.getWidget(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_MINIMAP);
-
-		Widget logoutOverlay = client.getWidget(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_LOGOUT_BUTTON_OVERLAY);
 
 		if (minimapClassic == null || minimapClassic.isHidden())
 		{
 			if (minimapModern != null)
 			{
 				id = minimapModern.getId();
-				enum1 = 1131;
+				value = MODERN;
 			}
 		}
 		else
 		{
 			id = minimapClassic.getId();
-			enum1 = 1130;
+			value = CLASSIC;
 		}
 
-		if (id != -1 || enum1 != -1)
+		if (id != -1 || value != -1)
 		{
-			client.runScript(902, id, enum1);
-			if (logoutOverlay != null && !logoutOverlay.isHidden())
+			int TOPLEVEL_VARTRANSMIT = 902;
+			client.runScript(TOPLEVEL_VARTRANSMIT, id, value);
+			if (value == MODERN)
 			{
-				logoutOverlay.revalidate();
+				Widget logoutOverlay = client.getWidget(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_LOGOUT_BUTTON_OVERLAY);
+				if (logoutOverlay != null && !logoutOverlay.isHidden())
+				{
+					logoutOverlay.revalidate();
+				}
 			}
 		}
 	}
 
-	final String DEFAULT_SPECIAL_ATTACK_TEXT = "Special Attack: ";
 	final String RETRO_SPECIAL_ATTACK_TEXT = "S P E C I A L  A T T A C K";
 	final int COMBAT_SPECIAL_BAR_BORDER = 38862885;
 	final int COMBAT_SPECIAL_BAR_EMPTY = 38862886;
@@ -1124,26 +1139,39 @@ public class ResourcePacksManager
 		SpriteOverride.COMBAT_SPECIAL_BORDER_BOTTOM_RIGHT_CORNER,
 	};
 
-	int specialAttackTextColor(boolean modify)
+	void resetSpecialAttackText()
 	{
-		switch (client.getVarpValue(VarPlayer.SPECIAL_ATTACK_ENABLED))
-		{
-			case 1:
-				return (modify ? config.enabledSpecialTextColor().getRGB() : 0xffff00);
-
-			case 0:
-			default:
-				return (modify ? config.disableSpecialTextColor().getRGB() : 10);
-		}
+		int COMBAT_INTERFACE_REDRAW = 186;
+		client.runScript(COMBAT_INTERFACE_REDRAW, COMBAT_SPECIAL_BAR_TEXT);
 	}
 
-	void refreshSpecialAttackText(boolean modify)
+	void setSpecialAttackText(boolean modify)
 	{
+		if (!modify)
+		{
+			resetSpecialAttackText();
+			return;
+		}
+
 		Widget specialAttackText = client.getWidget(COMBAT_SPECIAL_BAR_TEXT);
 		if (specialAttackText != null && !specialAttackText.isHidden())
 		{
-			specialAttackText.setText(((!config.retroSpecialAttackText() || !modify) ? DEFAULT_SPECIAL_ATTACK_TEXT + (client.getVarpValue(VarPlayer.SPECIAL_ATTACK_PERCENT) / 10) + "%" : RETRO_SPECIAL_ATTACK_TEXT));
-			specialAttackText.setTextColor(specialAttackTextColor(config.recolorSpecialAttackText()));
+			if (config.retroSpecialAttackText())
+			{
+				specialAttackText.setText(RETRO_SPECIAL_ATTACK_TEXT);
+			}
+			if (config.recolorSpecialAttackText())
+			{
+				if (client.getVarpValue(VarPlayer.SPECIAL_ATTACK_ENABLED) == 1)
+				{
+					specialAttackText.setTextColor(config.enabledSpecialTextColor().getRGB());
+				}
+				else
+				{
+					specialAttackText.setTextColor(config.disableSpecialTextColor().getRGB());
+				}
+			}
+			specialAttackText.setTextShadowed(config.specialAttackTextShadowed());
 		}
 	}
 

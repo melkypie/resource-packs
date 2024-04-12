@@ -100,9 +100,10 @@ public enum WidgetResize
 	RESIZABLE_VIEWPORT_BOTTOM_EMOTES_ICON(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_EMOTE_ICON, 33, 0, 33, 0, null, null, null, null, null, true),
 	RESIZABLE_VIEWPORT_BOTTOM_MUSIC_ICON(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_MUSIC_ICON, 0, 0, 0, 0, null, null, null, null, null, true),
 
+
 	//minimap classic
 	RESIZABLE_CLASSIC_MINIMAP(10551318, 0, 0, 0, 0, 211, 186, 0, 186, null, 1, 0, true),
-	RESIZABLE_CLASSIC_MINIMAP_CONTAINER(10551391, 0, 0, 0, 0, 211, 207, 211, 207, null, null, null, true),
+	RESIZABLE_CLASSIC_MINIMAP_CONTAINER(ComponentID.RESIZABLE_VIEWPORT_MINIMAP, 0, 0, 0, 0, 211, 207, 211, 207, null, null, null, true),
 	RESIZABLE_CLASSIC_MINIMAP_SPRITE(10551328, 0, 0, 0, 0, 182, 166, 182, 166, null, null, null, true),
 	RESIZABLE_CLASSIC_MINIMAP_VIEWPORT(10551326, 6, 8, 6, 8, null, null, null, null, null, null, null, true),
 	RESIZABLE_CLASSIC_MINIMAP_161_23(10551319, 0, 4, 0, 4, 178, 40, 178, 40, null, true),
@@ -116,7 +117,7 @@ public enum WidgetResize
 
 	//minimap modern
 	RESIZABLE_MODERN_MINIMAP(10747926, 0, 0, 0, 0, 211, 179, 0, 179, null, 1, 0, true),
-	RESIZABLE_MODERN_MINIMAP_CONTAINER(10747996, 0, 0, 0, 0, 211, 207, 211, 207, null, null, null, true),
+	RESIZABLE_MODERN_MINIMAP_CONTAINER(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_MINIMAP, 0, 0, 0, 0, 211, 207, 211, 207, null, null, null, true),
 	RESIZABLE_MODERN_MINIMAP_SPRITE(10747936, 0, 0, 0, 0, 182, 166, 182, 166, null, null, null, true),
 	RESIZABLE_MODERN_MINIMAP_VIEWPORT(10747934, 6, 8, 6, 8, null, null, null, null, null, null, null, true),
 	RESIZABLE_MODERN_MINIMAP_164_23(10747927, 0, 4, 0, 4, 178, 40, 178, 40, null, true),
@@ -203,7 +204,7 @@ public enum WidgetResize
 	private final Integer widthModeMod;
 
 	//if true, if it should only be changed via the offset.properties file
-	private final boolean modify;
+	private final boolean fromFileOnly;
 
 	WidgetResize(Integer componentId,
 				 Integer modifiedX, Integer modifiedY,
