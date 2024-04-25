@@ -44,6 +44,7 @@ import melky.resourcepacks.event.ResourcePacksChanged;
 import melky.resourcepacks.hub.ResourcePackManifest;
 import melky.resourcepacks.hub.ResourcePacksClient;
 import net.runelite.api.Client;
+import net.runelite.api.GameState;
 import net.runelite.api.ScriptID;
 import net.runelite.api.SpriteID;
 import net.runelite.api.SpritePixels;
@@ -360,7 +361,7 @@ public class ResourcePacksManager
 
 		removeGameframe();
 		overrideSprites();
-		
+
 		//reload prop
 		reloadColorProperties();
 		reloadOffsetProperties();
@@ -375,7 +376,7 @@ public class ResourcePacksManager
 		//replace
 		resetWidgetSpriteIds();
 		applyNewWidgetSpriteId();
-		
+
 		resetCrossSprites();
 		changeCrossSprites();
 	}
@@ -1078,45 +1079,31 @@ public class ResourcePacksManager
 		client.runScript(ScriptID.CHAT_PROMPT_INIT);
 	}
 
+	int[] minimapComponents = {
+		//classic
+		10551318, ComponentID.RESIZABLE_VIEWPORT_MINIMAP, 10551328, 10551326, 10551319, 10551320, 10551321, 10551322,
+		10551323, 10551324, 10551325, 10551327,
+
+		//modern
+		10747926, ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_MINIMAP, 10747936, 10747934, 10747927, 10747928, 10747929,
+		10747930, 10747931, 10747932, 10747933, 10747935,
+		ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_MINIMAP_LOGOUT_BUTTON,
+		ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_LOGOUT_BUTTON_OVERLAY
+	};
+
 	void refreshResizableMinimap()
 	{
-		int id = -1;
-		int value = -1;
 		if (!client.isResized())
 		{
 			return;
 		}
 
-		int CLASSIC = 1130;
-		int MODERN = 1131;
-		Widget minimapClassic = client.getWidget(ComponentID.RESIZABLE_VIEWPORT_MINIMAP);
-		Widget minimapModern = client.getWidget(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_MINIMAP);
-
-		if (minimapClassic == null || minimapClassic.isHidden())
+		for (int index = 0; index < minimapComponents.length; index++)
 		{
-			if (minimapModern != null)
+			Widget component = client.getWidget(minimapComponents[index]);
+			if (component != null && !component.isHidden())
 			{
-				id = minimapModern.getId();
-				value = MODERN;
-			}
-		}
-		else
-		{
-			id = minimapClassic.getId();
-			value = CLASSIC;
-		}
-
-		if (id != -1 || value != -1)
-		{
-			int TOPLEVEL_VARTRANSMIT = 902;
-			client.runScript(TOPLEVEL_VARTRANSMIT, id, value);
-			if (value == MODERN)
-			{
-				Widget logoutOverlay = client.getWidget(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_LOGOUT_BUTTON_OVERLAY);
-				if (logoutOverlay != null && !logoutOverlay.isHidden())
-				{
-					logoutOverlay.revalidate();
-				}
+				component.revalidate();
 			}
 		}
 	}

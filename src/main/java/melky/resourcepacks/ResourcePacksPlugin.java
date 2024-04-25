@@ -19,9 +19,6 @@ import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.PostClientTick;
 import net.runelite.api.events.ScriptCallbackEvent;
 import net.runelite.api.events.ScriptPostFired;
-import net.runelite.api.events.WidgetLoaded;
-import net.runelite.api.widgets.ComponentID;
-import net.runelite.api.widgets.WidgetUtil;
 import net.runelite.client.RuneLite;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.chat.ChatColorType;
@@ -114,8 +111,9 @@ public class ResourcePacksPlugin extends Plugin
 		executor.submit(() -> {
 			resourcePacksManager.refreshPlugins();
 			clientThread.invokeLater(resourcePacksManager::updateAllOverrides);
-			clientThread.invokeLater(resourcePacksManager::refreshResizableMinimap);
 		});
+
+		refreshResizableMinimapComponents = true;
 
 		resourcePacksHubPanel = injector.getInstance(ResourcePacksHubPanel.class);
 		final BufferedImage icon = ImageUtil.loadImageResource(getClass(), "/panel.png");
@@ -166,11 +164,21 @@ public class ResourcePacksPlugin extends Plugin
 	}
 
 	boolean updateWidgetSpriteIds = false;
+	boolean refreshResizableMinimapComponents = true;
 
 	@Subscribe
 	public void onPostClientTick(PostClientTick event)
 	{
+		if(client.getGameState() != GameState.LOGGED_IN)
+			return;
+
 		resourcePacksManager.applyWidgetDimensions();
+
+		if(refreshResizableMinimapComponents)
+		{
+			resourcePacksManager.refreshResizableMinimap();
+			refreshResizableMinimapComponents = false;
+		}
 
 		if (!resourcePacksManager.checkIfResourcePackPathIsNotEmpty() || !config.allowCustomSpriteOverrides())
 		{
@@ -185,6 +193,7 @@ public class ResourcePacksPlugin extends Plugin
 		resourcePacksManager.applyNewWidgetSpriteId();
 		updateWidgetSpriteIds = true;
 	}
+
 
 	@Subscribe
 	public void onConfigChanged(ConfigChanged event)
@@ -204,6 +213,7 @@ public class ResourcePacksPlugin extends Plugin
 					{
 						updateWidgetSpriteIds = true;
 						clientThread.invokeLater(resourcePacksManager::refreshResizableMinimap);
+						//add special bar sprites here for update when selecting new pack while tab is focused
 					}
 					break;
 
@@ -366,16 +376,6 @@ public class ResourcePacksPlugin extends Plugin
 			clientThread.invokeLater(resourcePacksManager::updateAllOverrides);
 		}
 	}
-	
-	@Subscribe
-	public void onWidgetLoaded(WidgetLoaded event)
-	{
-		if (event.getGroupId() == WidgetUtil.componentToInterface(ComponentID.RESIZABLE_VIEWPORT_BOTTOM_LINE_LOGOUT_BUTTON_OVERLAY))
-		{
-			//on initial load, make sure everything is aligned
-			clientThread.invokeLater(resourcePacksManager::refreshResizableMinimap);
-		}
-	}
 
 	@Subscribe
 	public void onScriptPostFired(ScriptPostFired event)
@@ -390,6 +390,11 @@ public class ResourcePacksPlugin extends Plugin
 
 		//open tab via (keybind || click)
 		boolean setSidebarTabIdScript = (event.getScriptId() == 905 || event.getScriptId() == 914);
+
+		if(event.getScriptId() == 902)
+		{
+			refreshResizableMinimapComponents = true;
+		}
 
 		if (event.getScriptId() == 3805)
 		{

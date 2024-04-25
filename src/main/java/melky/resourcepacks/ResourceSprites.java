@@ -57,6 +57,9 @@ public enum ResourceSprites implements SpriteOverride
 	BANK_BACKGROUND(-297, "/bank_background.png"),
 	BANK_CONTAINER_SEPARATOR_LINE(-897, "/bank_separator_line.png"),
 
+	FIXED_MODE_HIDE_LEFT_BORDER(-206, "/fixed_mode_hide_left.png"),
+	FIXED_MODE_HIDE_RIGHT_BORDER(-207, "/fixed_mode_hide_right.png"),
+	
 	RESIZABLE_VIEWPORT_CLASSIC_BACKGROUND(-208, "/resizable_classic_background.png"),
 	RESIZABLE_VIEWPORT_MODERN_BACKGROUND(-209, "/resizable_modern_background.png"),
 
