@@ -25,13 +25,15 @@ Hope you enjoy
 
 **If you want to use other packs in fixed mode, you have to make sure to disable the plugin 'Interface Styles' and disable/reenable resource packs for them to work correctly, unless the creators' specify otherwise.**
 
+
 ## Chat
 If you prefer to have the chat and stones behind the buttons underneath transparent like the example above, download the following image and replace `background.png` in the chatbox folder. For the stones behind the buttons, open up `buttons_background_stones.png` in the chatbox folder and make the whole image fully transparent.
 
 #### Background
 ![ChatBackground](https://i.imgur.com/yHgxSTe.png)
 
-#### Correct icon alignment for FIXED MODE
+
+## Correct icon alignment for FIXED MODE
 
 If you plan on using fixed mode **only**, Navigate to the `tab` folder inside of the resource pack.
 
