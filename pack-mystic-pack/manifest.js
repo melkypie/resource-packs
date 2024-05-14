@@ -1,1 +1,0 @@
-{"internalName":"pack-osrs-dark","commit":"cb2d79c60fbe6ca4f948975b998efaf677aa453b","displayName":"OSRS Dark Theme by wlcx","compatibleVersion":"1.4.5","author":"wlcx (iawhd)","tags":["dark","black","night","stealth","grey","mode"],"repo":"https://github.com/melkypie/resource-packs/tree/pack-osrs-dark","hasIcon":true}
