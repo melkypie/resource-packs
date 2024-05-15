@@ -34,6 +34,10 @@ dependencies {
 group = 'melky.resourcepacks'
 version = '1.4.10'
 
+tasks.withType(Checkstyle) {
+    enabled gradle.startParameter.taskNames.contains('checkstyleMain')
+}
+
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
     options.release.set(11)
