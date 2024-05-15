@@ -55,11 +55,11 @@ public class ResourcePacksHubItem extends JPanel
 	}
 
 	ResourcePacksHubItem(ResourcePackManifest newManifest,
-						 Collection<ResourcePackManifest> currentManifests,
-						 boolean installed,
-						 ScheduledExecutorService executor,
-						 ResourcePacksClient resourcePacksClient,
-						 ResourcePacksManager resourcePacksManager)
+		Collection<ResourcePackManifest> currentManifests,
+		boolean installed,
+		ScheduledExecutorService executor,
+		ResourcePacksClient resourcePacksClient,
+		ResourcePacksManager resourcePacksManager)
 	{
 		ResourcePackManifest loaded = null;
 		if (!currentManifests.isEmpty())
@@ -143,7 +143,8 @@ public class ResourcePacksHubItem extends JPanel
 		{
 			addrm.setText("Install");
 			addrm.setBackground(new Color(0x28BE28));
-			addrm.addActionListener(l -> {
+			addrm.addActionListener(l ->
+			{
 				addrm.setText("Installing");
 				addrm.setBackground(new Color(0xC4A800));
 				resourcePacksManager.install(manifest.getInternalName());
@@ -154,7 +155,8 @@ public class ResourcePacksHubItem extends JPanel
 		{
 			addrm.setText("Remove");
 			addrm.setBackground(new Color(0xBE2828));
-			addrm.addActionListener(l -> {
+			addrm.addActionListener(l ->
+			{
 				addrm.setText("Removing");
 				addrm.setBackground(new Color(0xC4A800));
 				resourcePacksManager.remove(manifest.getInternalName());
@@ -164,7 +166,8 @@ public class ResourcePacksHubItem extends JPanel
 		{
 			addrm.setText("Update");
 			addrm.setBackground(new Color(0x1F621F));
-			addrm.addActionListener(l -> {
+			addrm.addActionListener(l ->
+			{
 				addrm.setText("Updating");
 				addrm.setBackground(new Color(0xC4A800));
 				executor.submit(resourcePacksManager::refreshPlugins);

@@ -156,7 +156,8 @@ public class ResourcePacksHubPanel extends PluginPanel
 
 		currentHubPackComboBox = new JComboBox();
 		currentHubPackComboBox.setPrototypeDisplayValue("XXXXXXXXXXX");
-		currentHubPackComboBox.addItemListener(e -> {
+		currentHubPackComboBox.addItemListener(e ->
+		{
 			if (e.getStateChange() == ItemEvent.SELECTED && !ignoreSelected)
 			{
 				if (e.getItem() instanceof ResourcePackManifest)
@@ -285,7 +286,8 @@ public class ResourcePacksHubPanel extends PluginPanel
 				ignoreSelected = true;
 				currentHubPackComboBox.removeAllItems();
 				currentHubPackComboBox.addItem("None");
-				installed.forEach(internal -> {
+				installed.forEach(internal ->
+				{
 					ResourcePackManifest toAddManifest = installedPacks.get(internal);
 					if (((DefaultComboBoxModel) currentHubPackComboBox.getModel()).getIndexOf(toAddManifest) == -1)
 					{

@@ -25,7 +25,6 @@
  */
 package melky.resourcepacks;
 
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableSetMultimap;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

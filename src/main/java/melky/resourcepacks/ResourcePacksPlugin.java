@@ -107,7 +107,8 @@ public class ResourcePacksPlugin extends Plugin
 			setInterfaceStylesGameframeOption();
 		}
 
-		executor.submit(() -> {
+		executor.submit(() ->
+		{
 			resourcePacksManager.refreshPlugins();
 			clientThread.invokeLater(resourcePacksManager::updateAllOverrides);
 		});

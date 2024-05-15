@@ -314,7 +314,8 @@ public class ResourcePacksManager
 			configManager.setConfiguration(ResourcePacksConfig.GROUP_NAME, ResourcePacksConfig.HUB_RESOURCEPACKS, Text.toCSV(packs));
 			configManager.setConfiguration(ResourcePacksConfig.GROUP_NAME, "resourcePack", ResourcePacksConfig.ResourcePack.HUB);
 
-			executor.submit(() -> {
+			executor.submit(() ->
+			{
 				refreshPlugins();
 				setSelectedHubPack(internalName);
 			});
@@ -512,7 +513,8 @@ public class ResourcePacksManager
 	void overrideSprites()
 	{
 		String currentPackPath = getCurrentPackPath();
-		SpriteOverride.getOverrides().asMap().forEach((key, collection) -> {
+		SpriteOverride.getOverrides().asMap().forEach((key, collection) ->
+		{
 			if (!Files.isDirectory(Paths.get(currentPackPath + File.separator + key.name().toLowerCase())) ||
 				(!config.allowSpellsPrayers() && (key.name().contains("SPELL") || key.equals(SpriteOverride.Folder.PRAYER))) ||
 				key == SpriteOverride.Folder.CROSS_SPRITES)
@@ -559,7 +561,8 @@ public class ResourcePacksManager
 	void reloadBankTagSprites()
 	{
 		String currentPackPath = getCurrentPackPath();
-		SpriteOverride.getOverrides().asMap().forEach((key, collection) -> {
+		SpriteOverride.getOverrides().asMap().forEach((key, collection) ->
+		{
 			if (!Files.isDirectory(Paths.get(currentPackPath + File.separator + key.name().toLowerCase())))
 			{
 				return;
@@ -651,7 +654,8 @@ public class ResourcePacksManager
 		System.arraycopy(crossSprites, 0, defaultCrossSprites, 0, defaultCrossSprites.length);
 
 		String currentPackPath = getCurrentPackPath();
-		SpriteOverride.getOverrides().asMap().forEach((key, collection) -> {
+		SpriteOverride.getOverrides().asMap().forEach((key, collection) ->
+		{
 			if (key != SpriteOverride.Folder.CROSS_SPRITES || !Files.isDirectory(Paths.get(currentPackPath + File.separator + key.name().toLowerCase())))
 			{
 				return;
@@ -660,7 +664,8 @@ public class ResourcePacksManager
 			for (SpriteOverride spriteOverride : collection)
 			{
 				SpritePixels spritePixels = getSpritePixels(spriteOverride, currentPackPath);
-				if (spritePixels == null) {
+				if (spritePixels == null)
+				{
 					continue;
 				}
 				crossSprites[spriteOverride.getFrameID()] = spritePixels;
