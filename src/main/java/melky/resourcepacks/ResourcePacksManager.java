@@ -310,7 +310,7 @@ public class ResourcePacksManager
 		Set<String> packs = new HashSet<>(getInstalledResourcePacks());
 		if (packs.add(internalName))
 		{
-			log.debug("Installing: " + internalName);
+			log.debug("Installing: {}", internalName);
 			configManager.setConfiguration(ResourcePacksConfig.GROUP_NAME, ResourcePacksConfig.HUB_RESOURCEPACKS, Text.toCSV(packs));
 			configManager.setConfiguration(ResourcePacksConfig.GROUP_NAME, "resourcePack", ResourcePacksConfig.ResourcePack.HUB);
 
@@ -326,7 +326,7 @@ public class ResourcePacksManager
 		Set<String> packs = new HashSet<>(getInstalledResourcePacks());
 		if (packs.remove(internalName))
 		{
-			log.debug("Removing: " + internalName);
+			log.debug("Removing: {}", internalName);
 			configManager.setConfiguration(ResourcePacksConfig.GROUP_NAME, ResourcePacksConfig.HUB_RESOURCEPACKS, Text.toCSV(packs));
 			if (config.selectedHubPack() != null && config.selectedHubPack().equals(internalName))
 			{
@@ -450,25 +450,25 @@ public class ResourcePacksManager
 		switch (config.resourcePack())
 		{
 			case FIRST:
-				if (config.resourcePackPath().equals(""))
+				if (config.resourcePackPath().isEmpty())
 				{
 					return false;
 				}
 				break;
 			case SECOND:
-				if (config.resourcePack2Path().equals(""))
+				if (config.resourcePack2Path().isEmpty())
 				{
 					return false;
 				}
 				break;
 			case HUB:
-				if (config.selectedHubPack().equals(""))
+				if (config.selectedHubPack().isEmpty())
 				{
 					return false;
 				}
 				break;
 			case THIRD:
-				if (config.resourcePack3Path().equals(""))
+				if (config.resourcePack3Path().isEmpty())
 				{
 					return false;
 				}
@@ -490,7 +490,7 @@ public class ResourcePacksManager
 		File spriteFile = new File(currentPackPath + File.separator + folder + File.separator + name + ".png");
 		if (!spriteFile.exists())
 		{
-			log.debug("Sprite doesn't exist (" + spriteFile.getPath() + "): ");
+			log.debug("Sprite doesn't exist ({}): ", spriteFile.getPath());
 			return null;
 		}
 		try
@@ -504,7 +504,7 @@ public class ResourcePacksManager
 		}
 		catch (RuntimeException | IOException ex)
 		{
-			log.debug("Unable to find image (" + spriteFile.getPath() + "): ");
+			log.debug("Unable to find image ({}): ", spriteFile.getPath());
 		}
 		return null;
 	}

@@ -25,6 +25,7 @@
  */
 package melky.resourcepacks;
 
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableSetMultimap;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -32,7 +33,7 @@ import net.runelite.api.SpriteID;
 
 @Getter
 @RequiredArgsConstructor
-enum SpriteOverride
+public enum SpriteOverride
 {
 	TAB_COMBAT(SpriteID.TAB_COMBAT, Folder.TAB),
 	TAB_STATS(SpriteID.TAB_STATS, Folder.TAB),

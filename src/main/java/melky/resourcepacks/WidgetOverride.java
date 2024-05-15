@@ -4,10 +4,8 @@ import com.google.common.collect.ImmutableMultimap;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import static melky.resourcepacks.WidgetOverride.Script.*;
-
 import net.runelite.api.annotations.Interface;
 import net.runelite.api.widgets.InterfaceID;
-import net.runelite.api.widgets.WidgetID;
 
 @Getter
 @RequiredArgsConstructor

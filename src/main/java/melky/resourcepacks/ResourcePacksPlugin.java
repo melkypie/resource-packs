@@ -127,7 +127,7 @@ public class ResourcePacksPlugin extends Plugin
 	}
 
 	@Override
-	protected void shutDown() throws Exception
+	protected void shutDown()
 	{
 		clientThread.invokeLater(() ->
 		{

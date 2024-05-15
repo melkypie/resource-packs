@@ -83,12 +83,13 @@ public interface ResourcePacksConfig extends Config
 	}
 
 	@ConfigItem(
-			keyName = "hideSidePanelButton",
-			name = "Hide side panel button",
-			description = "Allows you to hide the side panel button to reduce clutter when not changing packs frequently",
-			position = 5
+		keyName = "hideSidePanelButton",
+		name = "Hide side panel button",
+		description = "Allows you to hide the side panel button to reduce clutter when not changing packs frequently",
+		position = 5
 	)
-	default boolean hideSidePanelButton() {
+	default boolean hideSidePanelButton()
+	{
 		return false;
 	}
 
