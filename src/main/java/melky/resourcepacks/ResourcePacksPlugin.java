@@ -1,5 +1,6 @@
 package melky.resourcepacks;
 
+import com.google.common.base.Strings;
 import com.google.inject.Provides;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -26,6 +27,7 @@ import net.runelite.client.config.ConfigManager;
 import net.runelite.client.config.RuneLiteConfig;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.events.ConfigChanged;
+import net.runelite.client.events.ProfileChanged;
 import net.runelite.client.events.SessionClose;
 import net.runelite.client.events.SessionOpen;
 import net.runelite.client.plugins.Plugin;
@@ -236,6 +238,13 @@ public class ResourcePacksPlugin extends Plugin
 	public void onSessionClose(SessionClose event)
 	{
 		executor.submit(resourcePacksManager::refreshPlugins);
+	}
+
+	@Subscribe(priority = Float.MIN_VALUE)
+	public void onProfileChanged(ProfileChanged event)
+	{
+		var key = Strings.isNullOrEmpty(config.selectedHubPack()) ? "None" : config.selectedHubPack();
+		resourcePacksManager.setSelectedHubPack(key);
 	}
 
 	@Subscribe(priority = Float.MIN_VALUE)
