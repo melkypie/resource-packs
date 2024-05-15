@@ -27,7 +27,7 @@ dependencies {
 }
 
 group = 'melky.resourcepacks'
-version = '1.4.9'
+version = '1.4.10'
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
