@@ -5,6 +5,8 @@
 
 Allows you to create your own custom interface styles by not being only restricted to 2005/2006/2010 ones.
 
+## [Contributing](CONTRIBUTING.md)
+
 ## How to use the plugin
 ### Resource packs hub
 1. Add the plugin from RuneLite's [Plugin Hub](https://github.com/runelite/runelite/wiki/Information-about-the-Plugin-Hub)
