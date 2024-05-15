@@ -1,10 +1,18 @@
 plugins {
 	id 'java'
     id 'checkstyle'
+    id 'pmd'
 }
 
 checkstyle {
     toolVersion = "8.5"
+}
+
+pmd {
+    consoleOutput = true
+    toolVersion = "6.44.0"
+    ruleSetFiles = files("config/pmd-ruleset.xml")
+    ruleSets = []
 }
 
 repositories {
@@ -33,6 +41,10 @@ dependencies {
 
 group = 'melky.resourcepacks'
 version = '1.4.10'
+
+tasks.withType(Pmd) {
+    enabled gradle.startParameter.taskNames.contains('pmdMain')
+}
 
 tasks.withType(Checkstyle) {
     enabled gradle.startParameter.taskNames.contains('checkstyleMain')
