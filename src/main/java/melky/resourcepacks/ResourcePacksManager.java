@@ -57,6 +57,7 @@ import net.runelite.client.util.ImageUtil;
 import net.runelite.client.util.Text;
 import net.runelite.http.api.RuneLiteAPI;
 import okhttp3.HttpUrl;
+import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
@@ -91,6 +92,9 @@ public class ResourcePacksManager
 
 	@Inject
 	private EventBus eventBus;
+
+	@Inject
+	private OkHttpClient okHttpClient;
 
 	public void refreshPlugins()
 	{
@@ -173,7 +177,7 @@ public class ResourcePacksManager
 					.addPathSegment(manifest.getCommit() + ".zip")
 					.build();
 
-				try (Response res = RuneLiteAPI.CLIENT.newCall(new Request.Builder().url(url).build()).execute())
+				try (Response res = okHttpClient.newCall(new Request.Builder().url(url).build()).execute())
 				{
 					BufferedInputStream is = new BufferedInputStream(res.body().byteStream());
 					ZipInputStream zipInputStream = new ZipInputStream(is);
@@ -338,6 +342,9 @@ public class ResourcePacksManager
 		{
 			return;
 		}
+
+		log.debug("updating all overrides");
+
 		removeGameframe();
 		overrideSprites();
 		reloadColorProperties();
