@@ -5,7 +5,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.concurrent.ScheduledExecutorService;
 import javax.inject.Inject;
-import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -155,7 +154,7 @@ public class ResourcePacksPlugin extends Plugin
 		resourcePacksManager.adjustWidgetDimensions(true);
 	}
 
-	@Subscribe
+	@Subscribe(priority = Float.MIN_VALUE)
 	public void onConfigChanged(ConfigChanged event)
 	{
 		if (event.getGroup().equals(ResourcePacksConfig.GROUP_NAME))
@@ -214,6 +213,11 @@ public class ResourcePacksPlugin extends Plugin
 			configManager.setConfiguration(ResourcePacksConfig.GROUP_NAME, ResourcePacksConfig.ORIGINAL_OVERLAY_COLOR,
 				event.getNewValue());
 		}
+		else if (shouldReset(event))
+		{
+			// lazy reset to try and be after other plugins
+			clientThread.invokeLater(() -> clientThread.invokeLater(resourcePacksManager::updateAllOverrides));
+		}
 	}
 
 	@Subscribe
@@ -234,7 +238,7 @@ public class ResourcePacksPlugin extends Plugin
 		executor.submit(resourcePacksManager::refreshPlugins);
 	}
 
-	@Subscribe
+	@Subscribe(priority = Float.MIN_VALUE)
 	public void onGameStateChanged(GameStateChanged gameStateChanged)
 	{
 		if (gameStateChanged.getGameState() == GameState.LOGIN_SCREEN)
@@ -262,6 +266,12 @@ public class ResourcePacksPlugin extends Plugin
 		}
 	}
 
+	private static boolean shouldReset(ConfigChanged event)
+	{
+		return event.getGroup().equals("interfaceStyles") ||
+			(event.getGroup().equals("runelite") && "interfacestylesplugin".equals(event.getKey()));
+	}
+
 	private void toggleSidePanelButton()
 	{
 		if (config.hideSidePanelButton())
@@ -274,7 +284,8 @@ public class ResourcePacksPlugin extends Plugin
 		}
 	}
 
-	private void setInterfaceStylesGameframeOption() {
+	private void setInterfaceStylesGameframeOption()
+	{
 		String message = new ChatMessageBuilder()
 			.append(ChatColorType.NORMAL)
 			.append("[")
