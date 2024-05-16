@@ -298,6 +298,7 @@ public class ResourcePacksManager
 				reloadColorProperties();
 				resetLoginScreen();
 				removeGameframe();
+				resetCrossSprites();
 			});
 		}
 	}
