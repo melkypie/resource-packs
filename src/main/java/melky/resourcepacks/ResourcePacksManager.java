@@ -412,7 +412,9 @@ public class ResourcePacksManager
 
 	public void saveClientSprites()
 	{
+		boolean interfaceStylesEnabled = configManager.getConfiguration(ConfigKeys.Runelite.GROUP_NAME, ConfigKeys.Runelite.interfacestylesplugin, Boolean.class);
 		boolean isRs3 = configManager.getConfiguration(ConfigKeys.InterfaceStyles.GROUP_NAME, ConfigKeys.InterfaceStyles.rsCrossSprites, Boolean.class);
+		isRs3 &= interfaceStylesEnabled;
 		if (!clientCrossSprites.isEmpty() && rsCrossSprites == isRs3)
 		{
 			return;
