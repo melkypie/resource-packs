@@ -40,7 +40,7 @@ dependencies {
 }
 
 group = 'melky.resourcepacks'
-version = '1.4.10'
+version = '1.4.11'
 
 tasks.withType(Pmd) {
     enabled gradle.startParameter.taskNames.contains('pmdMain')
