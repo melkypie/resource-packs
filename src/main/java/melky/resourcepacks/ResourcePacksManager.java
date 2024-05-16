@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
@@ -65,9 +66,11 @@ import okhttp3.Response;
 @Slf4j
 public class ResourcePacksManager
 {
+	final List<SpritePixels> clientCrossSprites = new ArrayList<>();
+
 	@Getter
 	private final Properties colorProperties = new Properties();
-	private SpritePixels[] defaultCrossSprites;
+	private boolean rsCrossSprites;
 
 	@Inject
 	private Client client;
@@ -349,9 +352,12 @@ public class ResourcePacksManager
 		removeGameframe();
 		overrideSprites();
 		reloadColorProperties();
+
 		applyWidgetOverrides();
 		adjustWidgetDimensions(false);
 		adjustWidgetDimensions(true);
+
+		saveClientSprites();
 		resetCrossSprites();
 		changeCrossSprites();
 	}
@@ -401,6 +407,38 @@ public class ResourcePacksManager
 			{
 				widget.revalidate();
 			}
+		}
+	}
+
+	public void saveClientSprites()
+	{
+		boolean isRs3 = configManager.getConfiguration(ConfigKeys.InterfaceStyles.GROUP_NAME, ConfigKeys.InterfaceStyles.rsCrossSprites, Boolean.class);
+		if (!clientCrossSprites.isEmpty() && rsCrossSprites == isRs3)
+		{
+			return;
+		}
+
+		clientCrossSprites.clear();
+		rsCrossSprites = isRs3;
+
+		String path = "/cross_sprites/" + (rsCrossSprites ? "rs3" : "osrs") + "/";
+
+		SpritePixels[] crossSprites = client.getCrossSprites();
+		if (crossSprites == null)
+		{
+			return;
+		}
+
+		int frames = crossSprites.length;
+		for (int i = 0; i < frames; i++)
+		{
+			SpritePixels newSprite = loadResourceSprite(path + i + ".png");
+			if (newSprite == null)
+			{
+				continue;
+			}
+
+			clientCrossSprites.add(newSprite);
 		}
 	}
 
@@ -478,6 +516,21 @@ public class ResourcePacksManager
 		return true;
 	}
 
+	public SpritePixels loadResourceSprite(String path)
+	{
+		try
+		{
+			BufferedImage image = ImageUtil.loadImageResource(ResourcePacksManager.class, path);
+			return ImageUtil.getImageSpritePixels(image, client);
+		}
+		catch (RuntimeException e)
+		{
+			log.debug("Unable to find resource ({}): ", path);
+		}
+
+		return null;
+	}
+
 	public SpritePixels getSpritePixels(SpriteOverride spriteOverride, String currentPackPath)
 	{
 		String folder = spriteOverride.getFolder().name().toLowerCase();
@@ -486,7 +539,6 @@ public class ResourcePacksManager
 		{
 			name = name.replaceFirst(folder + "_", "");
 		}
-
 
 		File spriteFile = new File(currentPackPath + File.separator + folder + File.separator + name + ".png");
 		if (!spriteFile.exists())
@@ -640,7 +692,7 @@ public class ResourcePacksManager
 
 	void changeCrossSprites()
 	{
-		if (!config.allowCrossSprites() || Boolean.getBoolean(configManager.getConfiguration("interfaceStyles", "rsCrossSprites")) || defaultCrossSprites != null)
+		if (!config.allowCrossSprites())
 		{
 			return;
 		}
@@ -650,8 +702,6 @@ public class ResourcePacksManager
 		{
 			return;
 		}
-		defaultCrossSprites = new SpritePixels[crossSprites.length];
-		System.arraycopy(crossSprites, 0, defaultCrossSprites, 0, defaultCrossSprites.length);
 
 		String currentPackPath = getCurrentPackPath();
 		SpriteOverride.getOverrides().asMap().forEach((key, collection) ->
@@ -675,19 +725,12 @@ public class ResourcePacksManager
 
 	void resetCrossSprites()
 	{
-		if (defaultCrossSprites == null)
-		{
-			return;
-		}
-
 		SpritePixels[] crossSprites = client.getCrossSprites();
 
-		if (crossSprites != null && defaultCrossSprites.length == crossSprites.length)
+		if (crossSprites != null && clientCrossSprites.size() == crossSprites.length)
 		{
-			System.arraycopy(defaultCrossSprites, 0, crossSprites, 0, defaultCrossSprites.length);
+			System.arraycopy(clientCrossSprites.toArray(new SpritePixels[0]), 0, crossSprites, 0, crossSprites.length);
 		}
-
-		defaultCrossSprites = null;
 	}
 
 	private BufferedImage dye(BufferedImage image, Color color)

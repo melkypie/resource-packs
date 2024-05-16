@@ -138,6 +138,7 @@ public class ResourcePacksPlugin extends Plugin
 			resourcePacksManager.removeGameframe();
 			resourcePacksManager.resetWidgetOverrides();
 			resourcePacksManager.resetCrossSprites();
+			resourcePacksManager.clientCrossSprites.clear();
 		});
 		if (config.allowLoginScreen())
 		{
