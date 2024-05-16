@@ -25,23 +25,18 @@
 
 package melky.resourcepacks;
 
-import lombok.experimental.UtilityClass;
-
-@UtilityClass
-public class ConfigKeys
+public final class ConfigKeys
 {
-	@UtilityClass
-	public class Runelite
+	public static final class Runelite
 	{
-		public final String GROUP_NAME = "runelite";
-		public final String interfacestylesplugin = "interfacestylesplugin";
+		public static final String GROUP_NAME = "runelite";
+		public static final String interfacestylesplugin = "interfacestylesplugin";
 	}
 
-	@UtilityClass
-	public class InterfaceStyles
+	public static final class InterfaceStyles
 	{
-		public final String GROUP_NAME = "interfaceStyles";
-		public final String rsCrossSprites = "rsCrossSprites";
-		public final String gameframe = "gameframe";
+		public static final String GROUP_NAME = "interfaceStyles";
+		public static final String rsCrossSprites = "rsCrossSprites";
+		public static final String gameframe = "gameframe";
 	}
 }
