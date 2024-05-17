@@ -405,11 +405,9 @@ public class ResourcePacksManager
 
 				if (widgetResize.getOriginalHeight() != null)
 				{
-					widget.setOriginalWidth(modify ? widgetResize.getModifiedHeight() : widgetResize.getOriginalHeight());
+					widget.setOriginalHeight(modify ? widgetResize.getModifiedHeight() : widgetResize.getOriginalHeight());
 				}
-			}
-			if (widget != null)
-			{
+
 				widget.revalidate();
 			}
 		}
@@ -550,7 +548,7 @@ public class ResourcePacksManager
 		File spriteFile = new File(currentPackPath + File.separator + folder + File.separator + name + ".png");
 		if (!spriteFile.exists())
 		{
-			log.debug("Sprite doesn't exist ({}): ", spriteFile.getPath());
+//			log.debug("Sprite doesn't exist ({}): ", spriteFile.getPath());
 			return null;
 		}
 		try
@@ -672,6 +670,7 @@ public class ResourcePacksManager
 			resetOverlayColor();
 			return;
 		}
+
 		if (config.allowOverlayColor())
 		{
 			changeOverlayColor();
