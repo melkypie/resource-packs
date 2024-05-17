@@ -82,6 +82,7 @@ public class ResourcePacksPlugin extends Plugin
 
 	private ResourcePacksHubPanel resourcePacksHubPanel;
 	private NavigationButton navButton;
+	private long currentProfile = Long.MIN_VALUE;
 
 	@Provides
 	ResourcePacksConfig provideConfig(ConfigManager configManager)
@@ -129,6 +130,8 @@ public class ResourcePacksPlugin extends Plugin
 		{
 			clientToolbar.addNavigation(navButton);
 		}
+
+		currentProfile = configManager.getProfile().getId();
 	}
 
 	@Override
@@ -163,6 +166,11 @@ public class ResourcePacksPlugin extends Plugin
 	@Subscribe(priority = Float.MIN_VALUE)
 	public void onConfigChanged(ConfigChanged event)
 	{
+		if (currentProfile != configManager.getProfile().getId())
+		{
+			return;
+		}
+
 		if (event.getGroup().equals(ResourcePacksConfig.GROUP_NAME))
 		{
 			switch (event.getKey())
@@ -249,6 +257,7 @@ public class ResourcePacksPlugin extends Plugin
 	{
 		var key = Strings.isNullOrEmpty(config.selectedHubPack()) ? "None" : config.selectedHubPack();
 		resourcePacksManager.setSelectedHubPack(key);
+		currentProfile = configManager.getProfile().getId();
 	}
 
 	@Subscribe(priority = Float.MIN_VALUE)
@@ -259,7 +268,8 @@ public class ResourcePacksPlugin extends Plugin
 			resourcePacksManager.changeCrossSprites();
 		}
 
-		if (client.getGameState() == GameState.LOGGED_IN && configManager.getConfiguration(InterfaceStyles.GROUP_NAME, InterfaceStyles.gameframe, Skin.class) != Skin.DEFAULT &&
+		if (client.getGameState() == GameState.LOGGED_IN &&
+			configManager.getConfiguration(InterfaceStyles.GROUP_NAME, InterfaceStyles.gameframe, Skin.class) != Skin.DEFAULT &&
 			!config.disableInterfaceStylesPrompt())
 		{
 			setInterfaceStylesGameframeOption();
