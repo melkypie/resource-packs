@@ -39,4 +39,9 @@ public final class ConfigKeys
 		public static final String rsCrossSprites = "rsCrossSprites";
 		public static final String gameframe = "gameframe";
 	}
+
+	public static final class LoginScreen
+	{
+		public static final String GROUP_NAME = "loginscreen";
+	}
 }

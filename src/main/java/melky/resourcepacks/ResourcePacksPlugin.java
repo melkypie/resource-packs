@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import javax.swing.SwingUtilities;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import melky.resourcepacks.ConfigKeys.InterfaceStyles;
 import melky.resourcepacks.event.ResourcePacksChanged;
 import melky.resourcepacks.hub.ResourcePacksHubPanel;
 import net.runelite.api.ChatMessageType;
@@ -101,7 +102,8 @@ public class ResourcePacksPlugin extends Plugin
 			NOTICE_FILE.createNewFile();
 		}
 
-		if (client.getGameState() == GameState.LOGGED_IN && !configManager.getConfiguration("interfaceStyles", "gameframe", Skin.DEFAULT.getDeclaringClass()).equals(Skin.DEFAULT) &&
+		if (client.getGameState() == GameState.LOGGED_IN &&
+			configManager.getConfiguration(InterfaceStyles.GROUP_NAME, InterfaceStyles.gameframe, Skin.class) != Skin.DEFAULT &&
 			!config.disableInterfaceStylesPrompt())
 		{
 			setInterfaceStylesGameframeOption();
@@ -257,7 +259,7 @@ public class ResourcePacksPlugin extends Plugin
 			resourcePacksManager.changeCrossSprites();
 		}
 
-		if (client.getGameState() == GameState.LOGGED_IN && !configManager.getConfiguration("interfaceStyles", "gameframe", Skin.DEFAULT.getDeclaringClass()).equals(Skin.DEFAULT) &&
+		if (client.getGameState() == GameState.LOGGED_IN && configManager.getConfiguration(InterfaceStyles.GROUP_NAME, InterfaceStyles.gameframe, Skin.class) != Skin.DEFAULT &&
 			!config.disableInterfaceStylesPrompt())
 		{
 			setInterfaceStylesGameframeOption();
@@ -279,8 +281,8 @@ public class ResourcePacksPlugin extends Plugin
 
 	private static boolean shouldReset(ConfigChanged event)
 	{
-		return event.getGroup().equals("interfaceStyles") ||
-			(event.getGroup().equals("runelite") && "interfacestylesplugin".equals(event.getKey()));
+		return event.getGroup().equals(InterfaceStyles.GROUP_NAME) ||
+			(event.getGroup().equals(ConfigKeys.Runelite.GROUP_NAME) && ConfigKeys.Runelite.interfacestylesplugin.equals(event.getKey()));
 	}
 
 	private void toggleSidePanelButton()
@@ -311,6 +313,6 @@ public class ResourcePacksPlugin extends Plugin
 			.runeLiteFormattedMessage(message)
 			.build());
 
-		configManager.setConfiguration("interfaceStyles", "gameframe", Skin.DEFAULT);
+		configManager.setConfiguration(InterfaceStyles.GROUP_NAME, InterfaceStyles.gameframe, Skin.DEFAULT);
 	}
 }

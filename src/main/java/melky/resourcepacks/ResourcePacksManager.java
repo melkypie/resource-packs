@@ -637,8 +637,18 @@ public class ResourcePacksManager
 	void resetLoginScreen()
 	{
 		ConfigChanged loginScreenConfigChanged = new ConfigChanged();
-		loginScreenConfigChanged.setGroup("loginscreen");
-		loginScreenConfigChanged.setKey("loginScreen");
+		loginScreenConfigChanged.setGroup(ConfigKeys.LoginScreen.GROUP_NAME);
+		loginScreenConfigChanged.setKey("doesn't matter");
+		loginScreenConfigChanged.setOldValue(null);
+		loginScreenConfigChanged.setNewValue("");
+		eventBus.post(loginScreenConfigChanged);
+	}
+
+	void resetInterfaceStyles()
+	{
+		ConfigChanged loginScreenConfigChanged = new ConfigChanged();
+		loginScreenConfigChanged.setGroup(ConfigKeys.InterfaceStyles.GROUP_NAME);
+		loginScreenConfigChanged.setKey("doesn't matter");
 		loginScreenConfigChanged.setOldValue(null);
 		loginScreenConfigChanged.setNewValue("");
 		eventBus.post(loginScreenConfigChanged);
