@@ -20,6 +20,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -103,10 +104,19 @@ public class ResourcePacksManager
 	@Inject
 	private OkHttpClient okHttpClient;
 
+	public void touchFolder()
+	{
+		var currentFolder = getLocalPath().toFile();
+		if (!currentFolder.exists())
+		{
+			currentFolder.mkdirs();
+		}
+	}
+
 	public void refreshPlugins()
 	{
 		HashMap<String, ResourcePackManifest> loadedPacks = new HashMap<>();
-		File[] resourcePackDirectories = ResourcePacksPlugin.RESOURCEPACKS_DIR.listFiles();
+		File[] resourcePackDirectories = getLocalPath().toFile().listFiles();
 		if (resourcePackDirectories != null)
 		{
 			for (File resourcePackDirectory : resourcePackDirectories)
@@ -155,7 +165,7 @@ public class ResourcePacksManager
 				{
 					resourcePacks.add(manifest);
 					ResourcePackManifest loadedResourcePack = loadedPacks.get(manifest.getInternalName());
-					File resourcePackDirectory = new File(ResourcePacksPlugin.RESOURCEPACKS_DIR.toPath() + File.separator + manifest.getInternalName());
+					File resourcePackDirectory = getLocalPath(manifest.getInternalName()).toFile();
 					if (loadedResourcePack == null || !loadedResourcePack.equals(manifest))
 					{
 						needsDownload.add(manifest);
@@ -170,7 +180,7 @@ public class ResourcePacksManager
 			// delete old packs
 			for (File fi : resourcePackDirectoryList)
 			{
-				if (!keep.contains(fi) && !fi.getPath().equals(ResourcePacksPlugin.NOTICE_FILE.getPath()))
+				if (!keep.contains(fi))
 				{
 					MoreFiles.deleteRecursively(fi.toPath(), RecursiveDeleteOption.ALLOW_INSECURE);
 				}
@@ -191,12 +201,11 @@ public class ResourcePacksManager
 					ZipEntry entry;
 					while ((entry = zipInputStream.getNextEntry()) != null)
 					{
-						String filePath = ResourcePacksPlugin.RESOURCEPACKS_DIR.getPath() + File.separator +
-							(entry.getName().replaceAll("resource-packs-" + manifest.getCommit(), manifest.getInternalName()));
+						var filePath = getLocalPath(entry.getName().replaceAll("resource-packs-" + manifest.getCommit(), manifest.getInternalName()));
 						if (!entry.isDirectory())
 						{
 							// if the entry is a file, extracts it
-							BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(filePath));
+							BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(filePath + ""));
 							byte[] bytesIn = new byte[2048];
 							int read;
 							while ((read = zipInputStream.read(bytesIn)) != -1)
@@ -208,14 +217,14 @@ public class ResourcePacksManager
 						else
 						{
 							// if the entry is a directory, make the directory
-							File dir = new File(filePath);
+							File dir = filePath.toFile();
 							dir.mkdir();
 						}
 					}
 					zipInputStream.close();
 					is.close();
 
-					File manifestFile = new File(ResourcePacksPlugin.RESOURCEPACKS_DIR.getPath() + File.separator + manifest.getInternalName() + File.separator + "manifest.js");
+					File manifestFile = getLocalPath(manifest.getInternalName(), "manifest.js").toFile();
 					FileWriter manifestWriter = new FileWriter(manifestFile);
 					RuneLiteAPI.GSON.toJson(manifest, manifestWriter);
 					manifestWriter.close();
@@ -259,7 +268,7 @@ public class ResourcePacksManager
 
 	private ResourcePackManifest getResourcePackManifest(File resourcePackDirectory) throws IOException
 	{
-		File manifest = new File(resourcePackDirectory.getPath() + File.separator + "manifest.js");
+		File manifest = Path.of(resourcePackDirectory.getPath(), "manifest.js").toFile();
 		JsonReader reader = new JsonReader(new FileReader(manifest));
 		ResourcePackManifest packManifest = RuneLiteAPI.GSON.fromJson(reader, ResourcePackManifest.class);
 		reader.close();
@@ -269,7 +278,7 @@ public class ResourcePacksManager
 	public HashMultimap<String, ResourcePackManifest> getCurrentManifests() throws IOException
 	{
 		HashMultimap<String, ResourcePackManifest> currentManifests = HashMultimap.create();
-		File[] directories = ResourcePacksPlugin.RESOURCEPACKS_DIR.listFiles();
+		File[] directories = getLocalPath().toFile().listFiles();
 		if (directories != null)
 		{
 			for (File resourcePackDirectory : directories)
@@ -479,7 +488,7 @@ public class ResourcePacksManager
 				path = config.resourcePack3Path();
 				break;
 			case HUB:
-				path = ResourcePacksPlugin.RESOURCEPACKS_DIR + File.separator + config.selectedHubPack();
+				path = getLocalPath(config.selectedHubPack()) + "";
 				break;
 			case FIRST:
 			default:
@@ -545,7 +554,7 @@ public class ResourcePacksManager
 			name = name.replaceFirst(folder + "_", "");
 		}
 
-		File spriteFile = new File(currentPackPath + File.separator + folder + File.separator + name + ".png");
+		File spriteFile = Path.of(currentPackPath, folder, name + ".png").toFile();
 		if (!spriteFile.exists())
 		{
 //			log.debug("Sprite doesn't exist ({}): ", spriteFile.getPath());
@@ -659,7 +668,7 @@ public class ResourcePacksManager
 	void reloadColorProperties()
 	{
 		colorProperties.clear();
-		File colorPropertiesFile = new File(getCurrentPackPath() + "/color.properties");
+		File colorPropertiesFile = Path.of(getCurrentPackPath(), "color.properties").toFile();
 		try (InputStream in = new FileInputStream(colorPropertiesFile))
 		{
 			colorProperties.load(in);
@@ -833,5 +842,11 @@ public class ResourcePacksManager
 				}
 			}
 		}
+	}
+
+	public Path getLocalPath(String... path)
+	{
+		var p = Path.of(ResourcePacksPlugin.PACKS_BASE_DIR + "", configManager.getProfile().getId() + "");
+		return Path.of(p + "", path);
 	}
 }

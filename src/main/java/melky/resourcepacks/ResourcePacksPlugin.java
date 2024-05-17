@@ -1,9 +1,8 @@
 package melky.resourcepacks;
 
-import com.google.common.base.Strings;
 import com.google.inject.Provides;
 import java.awt.image.BufferedImage;
-import java.io.File;
+import java.nio.file.Path;
 import java.util.concurrent.ScheduledExecutorService;
 import javax.inject.Inject;
 import javax.swing.SwingUtilities;
@@ -45,8 +44,7 @@ import okhttp3.HttpUrl;
 @Slf4j
 public class ResourcePacksPlugin extends Plugin
 {
-	public static final File RESOURCEPACKS_DIR = new File(RuneLite.RUNELITE_DIR.getPath() + File.separator + "resource-packs-repository");
-	public static final File NOTICE_FILE = new File(RESOURCEPACKS_DIR.getPath() + File.separator + "DO_NOT_EDIT_CHANGES_WILL_BE_OVERWRITTEN");
+	public static final Path PACKS_BASE_DIR = Path.of(RuneLite.RUNELITE_DIR.getPath(), "resource-packs-repository");
 	public static final String BRANCH = "github-actions";
 	public static final String OVERLAY_COLOR_CONFIG = "overlayBackgroundColor";
 	public static final HttpUrl GITHUB = HttpUrl.parse("https://github.com/melkypie/resource-packs");
@@ -93,15 +91,19 @@ public class ResourcePacksPlugin extends Plugin
 	@Override
 	protected void startUp() throws Exception
 	{
-		if (!RESOURCEPACKS_DIR.exists())
+		var packsDir = PACKS_BASE_DIR.toFile();
+		if (!packsDir.exists())
 		{
-			RESOURCEPACKS_DIR.mkdirs();
+			packsDir.mkdirs();
 		}
 
-		if (!NOTICE_FILE.exists())
+		var noticeFile = Path.of(PACKS_BASE_DIR + "", "DO_NOT_EDIT_CHANGES_WILL_BE_OVERWRITTEN").toFile();
+		if (!noticeFile.exists())
 		{
-			NOTICE_FILE.createNewFile();
+			noticeFile.createNewFile();
 		}
+
+		resourcePacksManager.touchFolder();
 
 		if (client.getGameState() == GameState.LOGGED_IN &&
 			configManager.getConfiguration(InterfaceStyles.GROUP_NAME, InterfaceStyles.gameframe, Skin.class) != Skin.DEFAULT &&
@@ -261,9 +263,14 @@ public class ResourcePacksPlugin extends Plugin
 	@Subscribe(priority = Float.MIN_VALUE)
 	public void onProfileChanged(ProfileChanged event)
 	{
-		var key = Strings.isNullOrEmpty(config.selectedHubPack()) ? "None" : config.selectedHubPack();
-		resourcePacksManager.setSelectedHubPack(key);
 		currentProfile = configManager.getProfile().getId();
+		resourcePacksManager.touchFolder();
+
+		executor.submit(() ->
+		{
+			resourcePacksManager.refreshPlugins();
+			clientThread.invokeLater(resourcePacksManager::updateAllOverrides);
+		});
 	}
 
 	@Subscribe(priority = Float.MIN_VALUE)
