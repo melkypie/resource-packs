@@ -1,5 +1,6 @@
 package melky.resourcepacks;
 
+import com.google.common.base.Strings;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.io.MoreFiles;
@@ -38,6 +39,9 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
+import melky.resourcepacks.ConfigKeys.InterfaceStyles;
+import melky.resourcepacks.ConfigKeys.Plugins;
+import melky.resourcepacks.ResourcePacksConfig.ResourcePack;
 import static melky.resourcepacks.ResourcePacksPlugin.GITHUB;
 import static melky.resourcepacks.ResourcePacksPlugin.OVERLAY_COLOR_CONFIG;
 import melky.resourcepacks.event.ResourcePacksChanged;
@@ -246,7 +250,7 @@ public class ResourcePacksManager
 			Set<String> packs = new HashSet<>(getInstalledResourcePacks());
 			if (packs.remove(rem.getInternalName()))
 			{
-				configManager.setConfiguration(ResourcePacksConfig.GROUP_NAME, ResourcePacksConfig.HUB_RESOURCEPACKS, Text.toCSV(packs));
+				config.selectedHubPack(Text.toCSV(packs));
 			}
 		}
 
@@ -285,13 +289,13 @@ public class ResourcePacksManager
 	{
 		if (!internalName.equals("None"))
 		{
-			configManager.setConfiguration(ResourcePacksConfig.GROUP_NAME, "resourcePack", ResourcePacksConfig.ResourcePack.HUB);
-			configManager.setConfiguration(ResourcePacksConfig.GROUP_NAME, "selectedHubPack", internalName);
+			config.resourcePack(ResourcePack.HUB);
+			config.selectedHubPack(internalName);
 			clientThread.invokeLater(this::updateAllOverrides);
 		}
 		else
 		{
-			configManager.setConfiguration(ResourcePacksConfig.GROUP_NAME, "selectedHubPack", "");
+			config.selectedHubPack("");
 			clientThread.invokeLater(() ->
 			{
 				adjustWidgetDimensions(false);
@@ -305,7 +309,7 @@ public class ResourcePacksManager
 
 	public List<String> getInstalledResourcePacks()
 	{
-		String resourcePacksString = configManager.getConfiguration(ResourcePacksConfig.GROUP_NAME, ResourcePacksConfig.HUB_RESOURCEPACKS);
+		String resourcePacksString = config.hubPacks();
 		return Text.fromCSV(resourcePacksString == null ? "" : resourcePacksString);
 	}
 
@@ -315,8 +319,8 @@ public class ResourcePacksManager
 		if (packs.add(internalName))
 		{
 			log.debug("Installing: {}", internalName);
-			configManager.setConfiguration(ResourcePacksConfig.GROUP_NAME, ResourcePacksConfig.HUB_RESOURCEPACKS, Text.toCSV(packs));
-			configManager.setConfiguration(ResourcePacksConfig.GROUP_NAME, "resourcePack", ResourcePacksConfig.ResourcePack.HUB);
+			config.hubPacks(Text.toCSV(packs));
+			config.resourcePack(ResourcePack.HUB);
 
 			executor.submit(() ->
 			{
@@ -332,7 +336,7 @@ public class ResourcePacksManager
 		if (packs.remove(internalName))
 		{
 			log.debug("Removing: {}", internalName);
-			configManager.setConfiguration(ResourcePacksConfig.GROUP_NAME, ResourcePacksConfig.HUB_RESOURCEPACKS, Text.toCSV(packs));
+			config.hubPacks(Text.toCSV(packs));
 			if (config.selectedHubPack() != null && config.selectedHubPack().equals(internalName))
 			{
 				setSelectedHubPack("None");
@@ -413,8 +417,8 @@ public class ResourcePacksManager
 
 	public void saveClientSprites()
 	{
-		boolean interfaceStylesEnabled = configManager.getConfiguration(ConfigKeys.Runelite.GROUP_NAME, ConfigKeys.Runelite.interfacestylesplugin, Boolean.class);
-		boolean isRs3 = configManager.getConfiguration(ConfigKeys.InterfaceStyles.GROUP_NAME, ConfigKeys.InterfaceStyles.rsCrossSprites, Boolean.class);
+		boolean interfaceStylesEnabled = configManager.getConfiguration(RuneLiteConfig.GROUP_NAME, Plugins.interfacestylesplugin, Boolean.class);
+		boolean isRs3 = configManager.getConfiguration(InterfaceStyles.GROUP_NAME, InterfaceStyles.rsCrossSprites, Boolean.class);
 		isRs3 &= interfaceStylesEnabled;
 		if (!clientCrossSprites.isEmpty() && rsCrossSprites == isRs3)
 		{
@@ -647,7 +651,7 @@ public class ResourcePacksManager
 	void resetInterfaceStyles()
 	{
 		ConfigChanged loginScreenConfigChanged = new ConfigChanged();
-		loginScreenConfigChanged.setGroup(ConfigKeys.InterfaceStyles.GROUP_NAME);
+		loginScreenConfigChanged.setGroup(InterfaceStyles.GROUP_NAME);
 		loginScreenConfigChanged.setKey("doesn't matter");
 		loginScreenConfigChanged.setOldValue(null);
 		loginScreenConfigChanged.setNewValue("");
@@ -677,11 +681,11 @@ public class ResourcePacksManager
 
 	void changeOverlayColor()
 	{
-		if (configManager.getConfiguration(ResourcePacksConfig.GROUP_NAME, ResourcePacksConfig.ORIGINAL_OVERLAY_COLOR) == null)
+		if (Strings.isNullOrEmpty(config.originalOverlayColor()))
 		{
-			configManager.setConfiguration(ResourcePacksConfig.GROUP_NAME, ResourcePacksConfig.ORIGINAL_OVERLAY_COLOR,
-				configManager.getConfiguration(RuneLiteConfig.GROUP_NAME, OVERLAY_COLOR_CONFIG));
+			config.originalOverlayColor(configManager.getConfiguration(RuneLiteConfig.GROUP_NAME, OVERLAY_COLOR_CONFIG));
 		}
+
 		ResourcePacksPlugin.setIgnoreOverlayConfig(true);
 		Color overlayColor = ColorUtil.fromHex(colorProperties.getProperty("overlay_color"));
 		if (config.allowColorPack() && config.colorPack() != null && config.colorPack().getAlpha() != 0 && config.colorPackOverlay())
@@ -695,10 +699,9 @@ public class ResourcePacksManager
 
 	void resetOverlayColor()
 	{
-		if (configManager.getConfiguration(ResourcePacksConfig.GROUP_NAME, ResourcePacksConfig.ORIGINAL_OVERLAY_COLOR) != null)
+		if (!Strings.isNullOrEmpty(config.originalOverlayColor()))
 		{
-			configManager.setConfiguration(RuneLiteConfig.GROUP_NAME, OVERLAY_COLOR_CONFIG,
-				configManager.getConfiguration(ResourcePacksConfig.GROUP_NAME, ResourcePacksConfig.ORIGINAL_OVERLAY_COLOR));
+			configManager.setConfiguration(RuneLiteConfig.GROUP_NAME, OVERLAY_COLOR_CONFIG, config.originalOverlayColor());
 			configManager.unsetConfiguration(ResourcePacksConfig.GROUP_NAME, ResourcePacksConfig.ORIGINAL_OVERLAY_COLOR);
 		}
 	}

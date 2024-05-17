@@ -47,6 +47,13 @@ public interface ResourcePacksConfig extends Config
 	}
 
 	@ConfigItem(
+		keyName = "resourcePack",
+		name = "",
+		description = ""
+	)
+	void resourcePack(ResourcePack pack);
+
+	@ConfigItem(
 		keyName = "resourcePackPath",
 		name = "Resource pack path 1",
 		description = "Path to the first resource pack which you want to use (without the ending /)",
@@ -183,6 +190,24 @@ public interface ResourcePacksConfig extends Config
 	}
 
 	@ConfigItem(
+		keyName = HUB_RESOURCEPACKS,
+		name = "",
+		description = "",
+		hidden = true
+	)
+	default String hubPacks()
+	{
+		return "";
+	}
+
+	@ConfigItem(
+		keyName = HUB_RESOURCEPACKS,
+		name = "",
+		description = ""
+	)
+	void hubPacks(String packs);
+
+	@ConfigItem(
 		keyName = "selectedHubPack",
 		name = "Selected pack in hub",
 		description = "Internal name of the selected pack from the hub",
@@ -192,4 +217,29 @@ public interface ResourcePacksConfig extends Config
 	{
 		return "";
 	}
+
+	@ConfigItem(
+		keyName = "selectedHubPack",
+		name = "",
+		description = ""
+	)
+	void selectedHubPack(String pack);
+
+	@ConfigItem(
+		keyName = ORIGINAL_OVERLAY_COLOR,
+		name = "",
+		description = "",
+		hidden = true
+	)
+	default String originalOverlayColor()
+	{
+		return "";
+	}
+
+	@ConfigItem(
+		keyName = ORIGINAL_OVERLAY_COLOR,
+		name = "",
+		description = ""
+	)
+	void originalOverlayColor(String color);
 }

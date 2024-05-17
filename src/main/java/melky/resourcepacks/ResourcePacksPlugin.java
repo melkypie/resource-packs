@@ -224,8 +224,7 @@ public class ResourcePacksPlugin extends Plugin
 		else if (config.allowOverlayColor() && !ignoreOverlayConfig &&
 			event.getGroup().equals(RuneLiteConfig.GROUP_NAME) && event.getKey().equals(OVERLAY_COLOR_CONFIG))
 		{
-			configManager.setConfiguration(ResourcePacksConfig.GROUP_NAME, ResourcePacksConfig.ORIGINAL_OVERLAY_COLOR,
-				event.getNewValue());
+			config.originalOverlayColor(event.getNewValue());
 		}
 		else if (shouldReset(event))
 		{
@@ -292,7 +291,7 @@ public class ResourcePacksPlugin extends Plugin
 	private static boolean shouldReset(ConfigChanged event)
 	{
 		return event.getGroup().equals(InterfaceStyles.GROUP_NAME) ||
-			(event.getGroup().equals(ConfigKeys.Runelite.GROUP_NAME) && ConfigKeys.Runelite.interfacestylesplugin.equals(event.getKey()));
+			(event.getGroup().equals(RuneLiteConfig.GROUP_NAME) && ConfigKeys.Plugins.interfacestylesplugin.equals(event.getKey()));
 	}
 
 	private void toggleSidePanelButton()

@@ -27,9 +27,8 @@ package melky.resourcepacks;
 
 public final class ConfigKeys
 {
-	public static final class Runelite
+	public static final class Plugins
 	{
-		public static final String GROUP_NAME = "runelite";
 		public static final String interfacestylesplugin = "interfacestylesplugin";
 	}
 
