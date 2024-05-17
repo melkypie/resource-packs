@@ -156,6 +156,17 @@ public interface ResourcePacksConfig extends Config
 	}
 
 	@ConfigItem(
+		keyName = "displayWarnings",
+		name = "Display Warnings",
+		description = "Display warnings when changing a setting in Runelite that would conflict/be blocked with resource packs",
+		position = 10
+	)
+	default boolean displayWarnings()
+	{
+		return true;
+	}
+
+	@ConfigItem(
 		keyName = "allowColorPack",
 		name = "Enables color current pack option",
 		description = "This option must be on for Color current pack option to work",

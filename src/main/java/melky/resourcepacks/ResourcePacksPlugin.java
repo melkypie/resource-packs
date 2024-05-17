@@ -145,10 +145,12 @@ public class ResourcePacksPlugin extends Plugin
 			resourcePacksManager.resetCrossSprites();
 			resourcePacksManager.clientCrossSprites.clear();
 		});
+
 		if (config.allowLoginScreen())
 		{
 			resourcePacksManager.resetLoginScreen();
 		}
+
 		if (config.allowOverlayColor())
 		{
 			resourcePacksManager.resetOverlayColor();
@@ -225,6 +227,11 @@ public class ResourcePacksPlugin extends Plugin
 			event.getGroup().equals(RuneLiteConfig.GROUP_NAME) && event.getKey().equals(OVERLAY_COLOR_CONFIG))
 		{
 			config.originalOverlayColor(event.getNewValue());
+
+			if (config.displayWarnings())
+			{
+				sendWarning("Your overlay color will be overwritten by your resource pack. You can disable this feature by turning off 'Allow overlay color to be changed'.");
+			}
 		}
 		else if (shouldReset(event))
 		{
@@ -308,20 +315,28 @@ public class ResourcePacksPlugin extends Plugin
 
 	private void setInterfaceStylesGameframeOption()
 	{
+		if (config.displayWarnings())
+		{
+			sendWarning("Your interface styles gameframe option was set to default to fix interfaces being misaligned. You can disable Resource packs changing it to default inside it's config");
+		}
+
+		configManager.setConfiguration(InterfaceStyles.GROUP_NAME, InterfaceStyles.gameframe, Skin.DEFAULT);
+	}
+
+	private void sendWarning(String msg)
+	{
 		String message = new ChatMessageBuilder()
 			.append(ChatColorType.NORMAL)
 			.append("[")
 			.append(ChatColorType.HIGHLIGHT)
 			.append("Resource Packs")
 			.append(ChatColorType.NORMAL)
-			.append("] Your interface styles gameframe option was set to default to fix interfaces being misaligned. You can disable Resource packs changing it to default inside it's config")
+			.append("] " + msg)
 			.build();
 
 		chatMessageManager.queue(QueuedMessage.builder()
 			.type(ChatMessageType.CONSOLE)
 			.runeLiteFormattedMessage(message)
 			.build());
-
-		configManager.setConfiguration(InterfaceStyles.GROUP_NAME, InterfaceStyles.gameframe, Skin.DEFAULT);
 	}
 }
