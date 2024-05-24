@@ -797,9 +797,9 @@ public class ResourcePacksManager
 	public void addPropertyToWidget(WidgetOverride widgetOverride)
 	{
 		int property;
-		if (colorProperties.containsKey(widgetOverride.name().toLowerCase()))
+		if (colorProperties.containsKey(widgetOverride.getPropertyName().toLowerCase()))
 		{
-			String widgetProperty = colorProperties.getProperty(widgetOverride.name().toLowerCase());
+			String widgetProperty = colorProperties.getProperty(widgetOverride.getPropertyName().toLowerCase());
 			if (!widgetProperty.isEmpty())
 			{
 				property = Integer.decode(widgetProperty);

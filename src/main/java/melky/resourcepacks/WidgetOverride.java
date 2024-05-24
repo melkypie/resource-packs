@@ -1,5 +1,6 @@
 package melky.resourcepacks;
 
+import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableMultimap;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -54,13 +55,24 @@ public enum WidgetOverride
 	GE_BORDER_OFFER_PRICE_INNER(GE_OFFERS_SETUP_INIT, 0x5a5245, InterfaceID.GRAND_EXCHANGE, 25, 35),
 	GE_BORDER_OFFER_PRICE_OUTER(GE_OFFERS_SETUP_INIT, 0x383023, InterfaceID.GRAND_EXCHANGE, 25, 36),
 
+	GE_BORDER_OFFER_SELL_OFFER_FULL_INNER(GE_OFFERS_SETUP_INIT, 0x5a5245, InterfaceID.GRAND_EXCHANGE, 15, 0, "GE_BORDER_OFFER_BUY_OFFER_FULL_INNER"),
+	GE_BORDER_OFFER_SELL_OFFER_FULL_OUTER(GE_OFFERS_SETUP_INIT, 0x383023, InterfaceID.GRAND_EXCHANGE, 15, 1, "GE_BORDER_OFFER_BUY_OFFER_FULL_OUTER"),
+	GE_BORDER_OFFER_SELL_OFFER_BOTTOM_INNER(GE_OFFERS_SETUP_INIT, 0x5a5245, InterfaceID.GRAND_EXCHANGE, 15, 2, "GE_BORDER_OFFER_BUY_OFFER_BOTTOM_INNER"),
+	GE_BORDER_OFFER_SELL_OFFER_BOTTOM_OUTER(GE_OFFERS_SETUP_INIT, 0x383023, InterfaceID.GRAND_EXCHANGE, 15, 3, "GE_BORDER_OFFER_OFFER_BOTTOM_OUTER"),
+	GE_BORDER_OFFER_SELL_CHOOSE_ITEM_INNER(GE_OFFERS_SETUP_INIT, 0x5a5245, InterfaceID.GRAND_EXCHANGE, 15, 9, "GE_BORDER_OFFER_CHOOSE_ITEM_INNER"),
+	GE_BORDER_OFFER_SELL_CHOOSE_ITEM_OUTER(GE_OFFERS_SETUP_INIT, 0x383023, InterfaceID.GRAND_EXCHANGE, 15, 10, "GE_BORDER_OFFER_CHOOSE_ITEM_OUTER"),
+	GE_BORDER_OFFER_SELL_QUANTITY_INNER(GE_OFFERS_SETUP_INIT, 0x5a5245, InterfaceID.GRAND_EXCHANGE, 15, 12, "GE_BORDER_OFFER_QUANTITY_INNER"),
+	GE_BORDER_OFFER_SELL_QUANTITY_OUTER(GE_OFFERS_SETUP_INIT, 0x383023, InterfaceID.GRAND_EXCHANGE, 15, 13, "GE_BORDER_OFFER_QUANTITY_OUTER"),
+	GE_BORDER_OFFER_SELL_PRICE_INNER(GE_OFFERS_SETUP_INIT, 0x5a5245, InterfaceID.GRAND_EXCHANGE, 15, 19, "GE_BORDER_OFFER_PRICE_INNER"),
+	GE_BORDER_OFFER_SELL_PRICE_OUTER(GE_OFFERS_SETUP_INIT, 0x383023, InterfaceID.GRAND_EXCHANGE, 15, 20, "GE_BORDER_OFFER_PRICE_OUTER"),
+
 	GE_CHATBOX_BUY_SEARCH_BORDER_INNER(GE_OFFERS_SETUP_INIT, 0x463214, InterfaceID.CHATBOX, 49, -1),
 	GE_CHATBOX_BUY_SEARCH_BORDER_OUTER(GE_OFFERS_SETUP_INIT, 0x463214, InterfaceID.CHATBOX, 48, -1),
 	GE_CHATBOX_BUY_SEARCH_BACKGROUND(GE_OFFERS_SETUP_INIT, 0x463214, InterfaceID.CHATBOX, 47, -1),
 
-	POH_ITEM_SEARCH_BORDER_INNER(3558, 0x463214, InterfaceID.CHATBOX, 49, -1),
-	POH_ITEM_SEARCH_BORDER_OUTER(3558, 0x463214, InterfaceID.CHATBOX, 48, -1),
-	POH_ITEM_SEARCH_BACKGROUND(3558, 0x463214, InterfaceID.CHATBOX, 47, -1),
+	POH_ITEM_SEARCH_BORDER_INNER(3558, 0x463214, InterfaceID.CHATBOX, 49, -1, "GE_CHATBOX_BUY_SEARCH_BORDER_INNER"),
+	POH_ITEM_SEARCH_BORDER_OUTER(3558, 0x463214, InterfaceID.CHATBOX, 48, -1, "GE_CHATBOX_BUY_SEARCH_BORDER_OUTER"),
+	POH_ITEM_SEARCH_BACKGROUND(3558, 0x463214, InterfaceID.CHATBOX, 47, -1, "GE_CHATBOX_BUY_SEARCH_BACKGROUND"),
 
 	KEYBINDS_SMALL_BACKGROUND(KEYBINDS_INIT, 0x2e281d, 121, new int[]{6, 13, 20, 27, 34, 41, 48, 55, 62, 69, 76, 83, 90, 97}, -1),
 	KEYBINDS_SMALL_BORDER(KEYBINDS_INIT, 0x544834, 121, new int[]{7, 14, 21, 28, 35, 42, 49, 56, 63, 70, 77, 84, 91, 98}, -1),
@@ -154,20 +166,32 @@ public enum WidgetOverride
 	private final int[] widgetChildIds;
 	private final int[] widgetArrayIds;
 
+	private final String propertyName;
+
 
 	WidgetOverride(int scriptId, int defaultColor, @Interface int widgetInterfaceId, int[] widetChildIds, int widgetArrayId)
 	{
 		this(scriptId, defaultColor, widgetInterfaceId, widetChildIds, new int[]{widgetArrayId});
 	}
 
-	WidgetOverride(int scriptId, int defaultColor, @Interface int widgetInterfaceId, int widetChildId, int widgetArrayId)
-	{
-		this(scriptId, defaultColor, widgetInterfaceId, widetChildId, new int[]{widgetArrayId});
-	}
-
 	WidgetOverride(int scriptId, int defaultColor, @Interface int widgetInterfaceId, int widetChildId, int[] widgetArrayIds)
 	{
-		this(scriptId, defaultColor, widgetInterfaceId, new int[]{widetChildId}, widgetArrayIds);
+		this(scriptId, defaultColor, widgetInterfaceId, new int[]{widetChildId}, widgetArrayIds, null);
+	}
+
+	WidgetOverride(int scriptId, int defaultColor, @Interface int widgetInterfaceId, int[] widetChildId, int[] widgetArrayIds)
+	{
+		this(scriptId, defaultColor, widgetInterfaceId, widetChildId, widgetArrayIds, null);
+	}
+
+	WidgetOverride(int scriptId, int defaultColor, @Interface int widgetInterfaceId, int widetChildId, int widgetArrayIds)
+	{
+		this(scriptId, defaultColor, widgetInterfaceId, new int[]{widetChildId}, new int[]{widgetArrayIds}, null);
+	}
+
+	WidgetOverride(int scriptId, int defaultColor, @Interface int widgetInterfaceId, int widetChildId, int widgetArrayIds, String propertyName)
+	{
+		this(scriptId, defaultColor, widgetInterfaceId, new int[]{widetChildId}, new int[]{widgetArrayIds}, propertyName);
 	}
 
 	static final ImmutableMultimap<Integer, WidgetOverride> scriptWidgetOverrides;
@@ -182,6 +206,16 @@ public enum WidgetOverride
 		}
 
 		scriptWidgetOverrides = builder.build();
+	}
+
+	public String getPropertyName()
+	{
+		if (Strings.isNullOrEmpty(this.propertyName))
+		{
+			return name();
+		}
+
+		return propertyName;
 	}
 
 
