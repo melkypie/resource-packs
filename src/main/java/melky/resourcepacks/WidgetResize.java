@@ -9,11 +9,6 @@ import net.runelite.api.widgets.ComponentID;
 @RequiredArgsConstructor
 public enum WidgetResize
 {
-
-	RESIZABLE_QUESTS_TAB(ComponentID.RESIZABLE_VIEWPORT_QUESTS_TAB, null, null, null, null, 33, null, 38, null),
-	RESIZABLE_IGNORES_TAB(ComponentID.RESIZABLE_VIEWPORT_IGNORES_TAB, null, null, null, null, 33, null, 38, null),
-	FIXED_QUESTS_TAB(ComponentID.FIXED_VIEWPORT_QUESTS_TAB, null, null, null, null, 33, null, 38, null),
-	FIXED_IGNORES_TAB(ComponentID.FIXED_VIEWPORT_IGNORES_TAB, null, null, null, null, 33, null, 38, null),
 	;
 
 	@Component
