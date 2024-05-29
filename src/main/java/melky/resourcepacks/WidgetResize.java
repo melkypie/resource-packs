@@ -3,7 +3,6 @@ package melky.resourcepacks;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import net.runelite.api.annotations.Component;
-import net.runelite.api.widgets.ComponentID;
 
 @Getter
 @RequiredArgsConstructor

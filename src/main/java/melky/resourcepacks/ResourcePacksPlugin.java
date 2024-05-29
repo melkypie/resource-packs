@@ -115,7 +115,7 @@ public class ResourcePacksPlugin extends Plugin
 		executor.submit(() ->
 		{
 			resourcePacksManager.refreshPlugins();
-			clientThread.invokeLater(resourcePacksManager::updateAllOverrides);
+			queueUpdateAllOverrides();
 		});
 
 		resourcePacksHubPanel = injector.getInstance(ResourcePacksHubPanel.class);
@@ -300,6 +300,20 @@ public class ResourcePacksPlugin extends Plugin
 				resourcePacksManager.addPropertyToWidget(widgetOverride);
 			}
 		}
+	}
+
+	private void queueUpdateAllOverrides()
+	{
+		clientThread.invokeLater(() ->
+		{
+			if (client.getGameState().getState() < GameState.LOGIN_SCREEN.getState())
+			{
+				return false;
+			}
+
+			resourcePacksManager.updateAllOverrides();
+			return true;
+		});
 	}
 
 	private static boolean shouldReset(ConfigChanged event)
