@@ -213,7 +213,13 @@ public class Overrides
 
 		if (map.containsKey(OPACITY))
 		{
-			node = node.withOpactity(((Long) map.get(OPACITY)).intValue());
+			int o = ((Long) map.get(OPACITY)).intValue();
+			if (pack.contains(OverrideKey.append(path, OPACITY)))
+			{
+				o = pack.getLong(OverrideKey.append(path, OPACITY)).intValue();
+			}
+
+			node = node.withOpactity(o);
 			map.remove(OPACITY);
 		}
 
