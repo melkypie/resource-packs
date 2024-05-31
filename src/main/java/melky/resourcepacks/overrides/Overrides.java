@@ -32,7 +32,6 @@ import com.google.common.collect.ListMultimap;
 import java.awt.Color;
 import java.io.IOException;
 import java.util.Collection;
-import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -138,38 +137,38 @@ public class Overrides
 	{
 		var node = parent;
 		var map = table.toMap();
-		var key = parent.getName();
+		var path = parent.getName();
 
-		if (map.containsKey(INTERFACE.getKey()))
+		if (map.containsKey(INTERFACE))
 		{
-			node = node.withInterfaceId(table.getLong(INTERFACE.getKey()).intValue());
-			map.remove(INTERFACE.getKey());
+			node = node.withInterfaceId(table.getLong(INTERFACE).intValue());
+			map.remove(INTERFACE);
 		}
 
-		if (map.containsKey(TYPE.getKey()))
+		if (map.containsKey(TYPE))
 		{
-			node = node.withType(table.getLong(TYPE.getKey()).intValue());
-			map.remove(TYPE.getKey());
+			node = node.withType(table.getLong(TYPE).intValue());
+			map.remove(TYPE);
 		}
 
-		if (map.containsKey(COLOR.getKey()))
+		if (map.containsKey(COLOR))
 		{
-			int c = table.getLong(COLOR.getKey()).intValue();
-			if (pack.contains(COLOR.append(key)))
+			int c = table.getLong(COLOR).intValue();
+			if (pack.contains(OverrideKey.append(path, COLOR)))
 			{
-				c = pack.getLong(COLOR.append(key)).intValue();
+				c = pack.getLong(OverrideKey.append(path, COLOR)).intValue();
 			}
 
-			node = node.withProperties(new EnumMap<>(node.getProperties()));
+			node = node.withProperties(new HashMap<>(node.getProperties()));
 			node.getProperties().put(COLOR, c);
 
-			map.remove(COLOR.getKey());
+			map.remove(COLOR);
 		}
 
-		if (map.containsKey(SCRIPTS.getKey()))
+		if (map.containsKey(SCRIPTS))
 		{
-			var scripts = table.getArrayOrEmpty(SCRIPTS.getKey()).toList();
-			map.remove(SCRIPTS.getKey());
+			var scripts = table.getArrayOrEmpty(SCRIPTS).toList();
+			map.remove(SCRIPTS);
 
 			for (var script : scripts)
 			{
@@ -192,37 +191,37 @@ public class Overrides
 		var node = parent;
 		var path = parent.getName();
 
-		if (map.containsKey(COLOR.getKey()))
+		if (map.containsKey(COLOR))
 		{
-			int c = ((Long) map.get(COLOR.getKey())).intValue();
-			if (pack.contains(COLOR.append(path)))
+			int c = ((Long) map.get(COLOR)).intValue();
+			if (pack.contains(OverrideKey.append(path, COLOR)))
 			{
-				c = pack.getLong(COLOR.append(path)).intValue();
+				c = pack.getLong(OverrideKey.append(path, COLOR)).intValue();
 			}
 
-			node = node.withProperties(new EnumMap<>(node.getProperties()));
+			node = node.withProperties(new HashMap<>(node.getProperties()));
 			node.getProperties().put(COLOR, c);
-			map.remove(COLOR.getKey());
+			map.remove(COLOR);
 		}
 
-		if (map.containsKey(TYPE.getKey()))
+		if (map.containsKey(TYPE))
 		{
-			node = node.withType(((Long) map.get(TYPE.getKey())).intValue());
-			map.remove(TYPE.getKey());
+			node = node.withType(((Long) map.get(TYPE)).intValue());
+			map.remove(TYPE);
 		}
 
-		if (map.containsKey(VARBIT.getKey()))
+		if (map.containsKey(VARBIT))
 		{
-			var obj = map.get(VARBIT.getKey());
+			var obj = map.get(VARBIT);
 			if (obj instanceof Long)
 			{
-				var matcher = Map.entry(((Long) map.get(VARBIT.getKey())).intValue(), ((Long) map.get(VARBIT_VALUE.getKey())).intValue());
+				var matcher = Map.entry(((Long) map.get(VARBIT)).intValue(), ((Long) map.get(VARBIT_VALUE)).intValue());
 				node = node.withVarbits(List.of(matcher));
 			}
 			else if (obj instanceof TomlArray)
 			{
 				var varbits = ((TomlArray) obj).toList();
-				var values = ((TomlArray) map.get(VARBIT_VALUE.getKey())).toList();
+				var values = ((TomlArray) map.get(VARBIT_VALUE)).toList();
 				if (varbits.size() != values.size())
 				{
 					log.error("mis matching varbits size for {}", map);
@@ -236,14 +235,14 @@ public class Overrides
 				node = node.withVarbits(matchers);
 			}
 
-			map.remove(VARBIT.getKey());
-			map.remove(VARBIT_VALUE.getKey());
+			map.remove(VARBIT);
+			map.remove(VARBIT_VALUE);
 		}
 
-		if (map.containsKey(CHILDREN.getKey()))
+		if (map.containsKey(CHILDREN))
 		{
-			var children = (TomlArray) map.get(CHILDREN.getKey());
-			map.remove(CHILDREN.getKey());
+			var children = (TomlArray) map.get(CHILDREN);
+			map.remove(CHILDREN);
 
 			var list = children.toList();
 			for (var child : list)
@@ -254,15 +253,15 @@ public class Overrides
 			}
 
 			// remove dynamic children so we don't walk from empty children
-			map.remove(DYNAMIC_CHILDREN.getKey());
+			map.remove(DYNAMIC_CHILDREN);
 		}
 
 		var tableKeys = map.keySet()
 			.stream()
 			.filter(k -> (map.get(k) instanceof TomlTable || map.get(k) instanceof TomlArray)
-				&& !Objects.equal(k, DYNAMIC_CHILDREN.getKey())
-				&& !Objects.equal(k, CHILDREN.getKey())
-				&& !Objects.equal(k, SCRIPTS.getKey()))
+				&& !Objects.equal(k, DYNAMIC_CHILDREN)
+				&& !Objects.equal(k, CHILDREN)
+				&& !Objects.equal(k, SCRIPTS))
 			.collect(Collectors.toSet());
 
 		for (var key : tableKeys)
@@ -291,9 +290,9 @@ public class Overrides
 			}
 		}
 
-		if (map.containsKey(DYNAMIC_CHILDREN.getKey()))
+		if (map.containsKey(DYNAMIC_CHILDREN))
 		{
-			var children = (TomlArray) map.get(DYNAMIC_CHILDREN.getKey());
+			var children = (TomlArray) map.get(DYNAMIC_CHILDREN);
 			var list = children.toList().stream()
 				.map(l -> ((Long) l).intValue())
 				.collect(Collectors.toList());

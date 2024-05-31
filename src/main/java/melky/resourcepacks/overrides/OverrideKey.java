@@ -26,26 +26,21 @@
 package melky.resourcepacks.overrides;
 
 import com.google.common.base.Strings;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 
-@Getter
-@RequiredArgsConstructor
-public enum OverrideKey
+public final class OverrideKey
 {
-	INTERFACE("interface"),
-	SCRIPTS("scripts"),
-	CHILDREN("children"),
-	DYNAMIC_CHILDREN("dynamicChildren"),
-	OPACITY("opacity"),
-	COLOR("color"),
-	TYPE("type"),
-	VARBIT("varbit"),
-	VARBIT_VALUE("varbitValue");
+	public static final String INTERFACE = "interface";
+	public static final String SCRIPTS = "scripts";
+	public static final String CHILDREN = "children";
+	public static final String DYNAMIC_CHILDREN = "dynamicChildren";
+	public static final String OPACITY = "opacity";
+	public static final String COLOR = "color";
+	public static final String TYPE = "type";
+	public static final String VARBIT = "varbit";
+	public static final String VARBIT_VALUE = "varbitValue";
 
-	private final String key;
 
-	public String append(String path)
+	public static String append(String path, String key)
 	{
 		if (Strings.isNullOrEmpty(path))
 		{

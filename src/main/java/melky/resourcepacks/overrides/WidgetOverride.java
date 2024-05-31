@@ -26,7 +26,7 @@
 package melky.resourcepacks.overrides;
 
 import java.util.ArrayList;
-import java.util.EnumMap;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import lombok.AllArgsConstructor;
@@ -50,7 +50,7 @@ public class WidgetOverride
 
 	List<Map.Entry<Integer, Integer>> varbits = new ArrayList<>();
 	List<Integer> dynamicChildren = new ArrayList<>();
-	EnumMap<OverrideKey, Object> properties = new EnumMap<>(OverrideKey.class);
+	HashMap<String, Object> properties = new HashMap<>();
 
 	public boolean isValid()
 	{
