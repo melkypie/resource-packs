@@ -155,13 +155,13 @@ public class Overrides
 		if (map.containsKey(COLOR.getKey()))
 		{
 			int c = table.getLong(COLOR.getKey()).intValue();
-			if (pack.contains(OverrideKey.COLOR.append(key)))
+			if (pack.contains(COLOR.append(key)))
 			{
-				c = pack.getLong(OverrideKey.COLOR.append(key)).intValue();
+				c = pack.getLong(COLOR.append(key)).intValue();
 			}
 
 			node = node.withProperties(new EnumMap<>(node.getProperties()));
-			node.getProperties().put(OverrideKey.COLOR, c);
+			node.getProperties().put(COLOR, c);
 
 			map.remove(COLOR.getKey());
 		}
@@ -195,13 +195,13 @@ public class Overrides
 		if (map.containsKey(COLOR.getKey()))
 		{
 			int c = ((Long) map.get(COLOR.getKey())).intValue();
-			if (pack.contains(OverrideKey.COLOR.append(path)))
+			if (pack.contains(COLOR.append(path)))
 			{
-				c = pack.getLong(OverrideKey.COLOR.append(path)).intValue();
+				c = pack.getLong(COLOR.append(path)).intValue();
 			}
 
 			node = node.withProperties(new EnumMap<>(node.getProperties()));
-			node.getProperties().put(OverrideKey.COLOR, c);
+			node.getProperties().put(COLOR, c);
 			map.remove(COLOR.getKey());
 		}
 
