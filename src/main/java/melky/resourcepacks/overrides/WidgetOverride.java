@@ -47,6 +47,7 @@ public class WidgetOverride
 	int interfaceId = -1;
 	int childId = -1;
 	int type = -1;
+	int opactity = -1;
 
 	List<Map.Entry<Integer, Integer>> varbits = new ArrayList<>();
 	List<Integer> dynamicChildren = new ArrayList<>();

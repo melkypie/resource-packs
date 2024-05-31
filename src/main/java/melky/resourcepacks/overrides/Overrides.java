@@ -43,6 +43,7 @@ import static melky.resourcepacks.overrides.OverrideKey.CHILDREN;
 import static melky.resourcepacks.overrides.OverrideKey.COLOR;
 import static melky.resourcepacks.overrides.OverrideKey.DYNAMIC_CHILDREN;
 import static melky.resourcepacks.overrides.OverrideKey.INTERFACE;
+import static melky.resourcepacks.overrides.OverrideKey.OPACITY;
 import static melky.resourcepacks.overrides.OverrideKey.SCRIPTS;
 import static melky.resourcepacks.overrides.OverrideKey.TYPE;
 import static melky.resourcepacks.overrides.OverrideKey.VARBIT;
@@ -208,6 +209,12 @@ public class Overrides
 		{
 			node = node.withType(((Long) map.get(TYPE)).intValue());
 			map.remove(TYPE);
+		}
+
+		if (map.containsKey(OPACITY))
+		{
+			node = node.withOpactity(((Long) map.get(OPACITY)).intValue());
+			map.remove(OPACITY);
 		}
 
 		if (map.containsKey(VARBIT))

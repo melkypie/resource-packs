@@ -853,6 +853,11 @@ public class ResourcePacksManager
 					widgetOverride.checkVarbit(client))
 				{
 					arrayWidget.setTextColor(property);
+
+					if (widgetOverride.getOpactity() > -1)
+					{
+						arrayWidget.setOpacity(widgetOverride.getOpactity());
+					}
 				}
 			}
 		}
@@ -863,6 +868,11 @@ public class ResourcePacksManager
 				widgetOverride.checkVarbit(client))
 			{
 				widgetToOverride.setTextColor(property);
+
+				if (widgetOverride.getOpactity() > -1)
+				{
+					widgetToOverride.setOpacity(widgetOverride.getOpactity());
+				}
 			}
 		}
 	}
