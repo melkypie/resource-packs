@@ -28,10 +28,10 @@ package melky.resourcepacks.overrides;
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
+import java.util.Map;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Value;
 import lombok.With;
 import net.runelite.api.Client;
 
@@ -41,13 +41,6 @@ import net.runelite.api.Client;
 @AllArgsConstructor
 public class WidgetOverride
 {
-	@Value
-	public static class VarbitMatcher
-	{
-		int varbit;
-		int value;
-	}
-
 	String name;
 
 	int script = -1;
@@ -55,7 +48,7 @@ public class WidgetOverride
 	int childId = -1;
 	int type = -1;
 
-	List<VarbitMatcher> varbits = new ArrayList<>();
+	List<Map.Entry<Integer, Integer>> varbits = new ArrayList<>();
 	List<Integer> dynamicChildren = new ArrayList<>();
 	EnumMap<OverrideKey, Object> properties = new EnumMap<>(OverrideKey.class);
 
@@ -76,7 +69,7 @@ public class WidgetOverride
 
 		for (var matcher : varbits)
 		{
-			if (client.getVarbitValue(matcher.getVarbit()) != matcher.getValue())
+			if (client.getVarbitValue(matcher.getKey()) != matcher.getValue())
 			{
 				return false;
 			}

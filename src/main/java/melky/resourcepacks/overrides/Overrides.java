@@ -216,7 +216,7 @@ public class Overrides
 			var obj = map.get(VARBIT.getKey());
 			if (obj instanceof Long)
 			{
-				var matcher = new WidgetOverride.VarbitMatcher(((Long) map.get(VARBIT.getKey())).intValue(), ((Long) map.get(VARBIT_VALUE.getKey())).intValue());
+				var matcher = Map.entry(((Long) map.get(VARBIT.getKey())).intValue(), ((Long) map.get(VARBIT_VALUE.getKey())).intValue());
 				node = node.withVarbits(List.of(matcher));
 			}
 			else if (obj instanceof TomlArray)
@@ -231,7 +231,7 @@ public class Overrides
 
 				var matchers = IntStream.range(0, varbits.size())
 					.boxed()
-					.map(i -> new WidgetOverride.VarbitMatcher(((Long) varbits.get(i)).intValue(), ((Long) values.get(i)).intValue()))
+					.map(i -> Map.entry(((Long) varbits.get(i)).intValue(), ((Long) values.get(i)).intValue()))
 					.collect(Collectors.toList());
 				node = node.withVarbits(matchers);
 			}
