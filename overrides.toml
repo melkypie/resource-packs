@@ -1,0 +1,228 @@
+# [overlay]
+# color=0x9C463D32
+
+# [account_management.separator]
+# color=0x5d5848
+
+# [achievement_diary.entry.border]
+# color=0xff9933
+# opacity=150
+
+# [achievement_diary.progress.background]
+# color=0x000000
+# opacity=150
+
+# [bank.menu.border.inner]
+# color=0x2e2b23
+# opacity=0
+
+# [bank.menu.border.outer]
+# color=0x726451
+# opacity=0
+
+# [bank.separator]
+# color=0x2e2b23
+
+# [channel_tab.separator]
+# color=0x5d5848
+
+# [chatbox.separator]
+# color=0x807660
+# opacity=200
+
+# [choose_spell.background]
+# color=0x000000
+# opacity=0
+
+# [choose_spell.border.inner]
+# color=0x726451
+# opacity=0
+
+# [choose_spell.border.outer]
+# color=0x2e2b23
+# opacity=0
+
+# [friends_chat.border.inner]
+# color=0x474745
+# opacity=0
+
+# [friends_chat.border.outer]
+# color=0x0e0e0c
+# opacity=0
+
+# [friends_chat.header.border.inner]
+# color=0x474745
+# opacity=0
+
+# [friends_chat.header.border.outer]
+# color=0x0e0e0c
+# opacity=0
+
+# [friends_list.header.border.inner]
+# color=0x474745
+# opacity=0
+
+# [friends_list.header.border.outer]
+# color=0x0e0e0c
+# opacity=0
+
+# [ge.offer.border.inner]
+# color=0x5a5245
+# opacity=0
+
+# [ge.offer.border.outer]
+# color=0x383023
+# opacity=0
+
+# [ge.slot.border.inner]
+# color=0x5a5245
+# opacity=0
+
+# [ge.slot.border.outer]
+# color=0x383023
+# opacity=0
+
+# [grouping_tab.border.inner]
+# color=0xff981f
+# opacity=150
+
+# [grouping_tab.border.outer]
+# color=0x191900
+# opacity=0
+
+# [ignore_list.header.border.inner]
+# color=0x474745
+# opacity=0
+
+# [ignore_list.header.border.outer]
+# color=0x0e0e0c
+# opacity=0
+
+# [item_search.background]
+# color=0x463214
+# opacity=200
+
+# [item_search.border.inner]
+# color=0x463214
+# opacity=150
+
+# [item_search.border.outer]
+# color=0x463214
+# opacity=0
+
+# [kept_on_death.border.inner]
+# color=0x0e0e0c
+# opacity=0
+
+# [kept_on_death.border.outer]
+# color=0x474745
+# opacity=0
+
+# [make_all.background]
+# color=0x89785e
+# opacity=0
+
+# [make_all.quantity]
+# color=0x89785e
+# opacity=0
+
+# [quest_list.background]
+# color=0x000000
+# opacity=212
+
+# [quest_tab.separator]
+# color=0x5d5848
+
+# [settings.body.border.inner]
+# color=0x474745
+# opacity=0
+
+# [settings.body.border.outer]
+# color=0x0e0e0c
+# opacity=0
+
+# [settings.menu.border.inner]
+# color=0x474745
+# opacity=0
+
+# [settings.menu.border.outer]
+# color=0x0e0e0c
+# opacity=0
+
+# [settings.sidebar.border.inner]
+# color=0x474745
+# opacity=0
+
+# [settings.sidebar.border.outer]
+# color=0x0e0e0c
+# opacity=0
+
+# [settings_tab.dropdown.border.inner]
+# color=0x474745
+# opacity=0
+
+# [settings_tab.dropdown.border.outer]
+# color=0x0e0e0c
+# opacity=0
+
+# [settings_tab.menu.border.inner]
+# color=0x474745
+# opacity=0
+
+# [settings_tab.menu.border.outer]
+# color=0x0e0e0c
+# opacity=0
+
+# [settings_tab.separator]
+# color=0x5d5848
+
+# [world_map.dropdown.border.inner]
+# color=0x474745
+# opacity=0
+
+# [world_map.dropdown.border.outer]
+# color=0x0e0e0c
+# opacity=0
+
+# [world_map.key.border.inner]
+# color=0x474745
+# opacity=0
+
+# [world_map.key.border.outer]
+# color=0x0e0e0c
+# opacity=0
+
+# [world_map.location_menu.border.inner]
+# color=0x474745
+# opacity=0
+
+# [world_map.location_menu.border.outer]
+# color=0x0e0e0c
+# opacity=0
+
+# [world_map.search.border.inner]
+# color=0x474745
+# opacity=0
+
+# [world_map.search.border.outer]
+# color=0x0e0e0c
+# opacity=0
+
+# [world_switcher.background]
+# color=0x000000
+
+# [world_switcher.border.bottom]
+# color=0x73654a
+# opacity=50
+
+# [world_switcher.border.top]
+# color=0x73654a
+# opacity=50
+
+# [xp_tracker.border.inner]
+# color=0x5a5245
+# opacity=0
+
+# [xp_tracker.border.outer]
+# color=0x383023
+# opacity=0
