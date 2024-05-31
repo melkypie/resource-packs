@@ -18,7 +18,7 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -38,7 +38,6 @@ import java.util.zip.ZipInputStream;
 import javax.imageio.ImageIO;
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import melky.resourcepacks.ConfigKeys.InterfaceStyles;
 import melky.resourcepacks.ConfigKeys.Plugins;
@@ -48,6 +47,9 @@ import static melky.resourcepacks.ResourcePacksPlugin.OVERLAY_COLOR_CONFIG;
 import melky.resourcepacks.event.ResourcePacksChanged;
 import melky.resourcepacks.hub.ResourcePackManifest;
 import melky.resourcepacks.hub.ResourcePacksClient;
+import melky.resourcepacks.overrides.OverrideKey;
+import melky.resourcepacks.overrides.Overrides;
+import melky.resourcepacks.overrides.WidgetOverride;
 import net.runelite.api.Client;
 import net.runelite.api.SpriteID;
 import net.runelite.api.SpritePixels;
@@ -58,7 +60,6 @@ import net.runelite.client.config.RuneLiteConfig;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.events.ConfigChanged;
 import net.runelite.client.game.SpriteManager;
-import net.runelite.client.util.ColorUtil;
 import net.runelite.client.util.ImageUtil;
 import net.runelite.client.util.Text;
 import net.runelite.http.api.RuneLiteAPI;
@@ -72,9 +73,6 @@ import okhttp3.Response;
 public class ResourcePacksManager
 {
 	final List<SpritePixels> clientCrossSprites = new ArrayList<>();
-
-	@Getter
-	private final Properties colorProperties = new Properties();
 	private boolean rsCrossSprites;
 
 	@Inject
@@ -103,6 +101,9 @@ public class ResourcePacksManager
 
 	@Inject
 	private OkHttpClient okHttpClient;
+
+	@Inject
+	private Overrides overrides;
 
 	public void touchFolder()
 	{
@@ -308,7 +309,7 @@ public class ResourcePacksManager
 			clientThread.invokeLater(() ->
 			{
 				adjustWidgetDimensions(false);
-				reloadColorProperties();
+				overrides.clear();
 				resetLoginScreen();
 				removeGameframe();
 				resetCrossSprites();
@@ -365,7 +366,7 @@ public class ResourcePacksManager
 
 		removeGameframe();
 		overrideSprites();
-		reloadColorProperties();
+		reloadWidgetOverrides();
 
 		applyWidgetOverrides();
 		adjustWidgetDimensions(false);
@@ -665,18 +666,52 @@ public class ResourcePacksManager
 		eventBus.post(loginScreenConfigChanged);
 	}
 
-	void reloadColorProperties()
+	void reloadWidgetOverrides()
 	{
-		colorProperties.clear();
-		File colorPropertiesFile = Path.of(getCurrentPackPath(), "color.properties").toFile();
-		try (InputStream in = new FileInputStream(colorPropertiesFile))
+		try
 		{
-			colorProperties.load(in);
+			File overridesFile = Path.of(getCurrentPackPath(), "overrides.toml").toFile();
+			if (overridesFile.exists())
+			{
+				var data = com.google.common.io.Files.asCharSource(overridesFile, Charset.defaultCharset()).read();
+				overrides.buildOverrides(data);
+			}
+			else
+			{
+				log.debug("overrides.toml not found, trying color.properties");
+				var backwardsMap = new Properties();
+				var properties = new Properties();
+
+				File propertiesFile = Path.of(getCurrentPackPath(), "color.properties").toFile();
+				try (var is = new FileInputStream(propertiesFile);
+					 var is2 = ResourcePacksManager.class.getResourceAsStream("/overrides/backwards-map.properties"))
+				{
+					properties.load(is);
+					backwardsMap.load(is2);
+				}
+
+				var lines = new ArrayList<String>();
+				for (var entry : backwardsMap.entrySet())
+				{
+					if (properties.containsKey(entry.getValue()))
+					{
+						lines.add("[" + entry.getKey() + "]");
+						lines.add("color=" + properties.get(entry.getValue()));
+					}
+				}
+
+				log.debug("built {}", String.join("\n", lines));
+				overrides.buildOverrides(String.join("\n", lines));
+			}
 		}
 		catch (IOException e)
 		{
-			log.debug("Color properties not found");
+			log.debug("error loading color overrides", e);
+
+
+			overrides.buildOverrides("");
 			resetOverlayColor();
+
 			return;
 		}
 
@@ -684,7 +719,6 @@ public class ResourcePacksManager
 		{
 			changeOverlayColor();
 		}
-		// Add more properties
 	}
 
 	void changeOverlayColor()
@@ -695,7 +729,7 @@ public class ResourcePacksManager
 		}
 
 		ResourcePacksPlugin.setIgnoreOverlayConfig(true);
-		Color overlayColor = ColorUtil.fromHex(colorProperties.getProperty("overlay_color"));
+		Color overlayColor = overrides.getOverlayColor();
 		if (config.allowColorPack() && config.colorPack() != null && config.colorPack().getAlpha() != 0 && config.colorPackOverlay())
 		{
 			overlayColor = config.colorPack();
@@ -773,12 +807,12 @@ public class ResourcePacksManager
 
 	private void applyWidgetOverrides()
 	{
-		if (colorProperties.isEmpty())
+		if (overrides.isEmpty())
 		{
 			return;
 		}
 
-		for (WidgetOverride widgetOverride : WidgetOverride.values())
+		for (WidgetOverride widgetOverride : overrides.values())
 		{
 			addPropertyToWidget(widgetOverride);
 		}
@@ -786,60 +820,50 @@ public class ResourcePacksManager
 
 	public void resetWidgetOverrides()
 	{
-		colorProperties.clear();
+		overrides.buildOverrides("");
 
-		for (WidgetOverride widgetOverride : WidgetOverride.values())
+		for (WidgetOverride widgetOverride : overrides.values())
 		{
 			addPropertyToWidget(widgetOverride);
 		}
+
+		overrides.clear();
 	}
 
 	public void addPropertyToWidget(WidgetOverride widgetOverride)
 	{
-		int property;
-		if (colorProperties.containsKey(widgetOverride.getPropertyName().toLowerCase()))
+		int property = (Integer) widgetOverride.getProperties().get(OverrideKey.COLOR);
+
+		Widget widgetToOverride = client.getWidget(widgetOverride.getInterfaceId(), widgetOverride.getChildId());
+		if (widgetToOverride == null)
 		{
-			String widgetProperty = colorProperties.getProperty(widgetOverride.getPropertyName().toLowerCase());
-			if (!widgetProperty.isEmpty())
+			return;
+		}
+
+		if (!widgetOverride.getDynamicChildren().isEmpty())
+		{
+			for (var arrayId : widgetOverride.getDynamicChildren())
 			{
-				property = Integer.decode(widgetProperty);
-			}
-			else
-			{
-				property = widgetOverride.getDefaultColor();
+				Widget arrayWidget = widgetToOverride.getChild(arrayId);
+				if (arrayWidget == null || arrayWidget.getTextColor() == -1 || arrayWidget.getTextColor() == property)
+				{
+					continue;
+				}
+
+				if ((widgetOverride.getType() == -1 || arrayWidget.getType() == widgetOverride.getType()) &&
+					widgetOverride.checkVarbit(client))
+				{
+					arrayWidget.setTextColor(property);
+				}
 			}
 		}
 		else
 		{
-			property = widgetOverride.getDefaultColor();
-		}
-
-		for (Integer childId : widgetOverride.getWidgetChildIds())
-		{
-			Widget widgetToOverride = client.getWidget(widgetOverride.getWidgetInterfaceId(), childId);
-			if (widgetToOverride == null)
+			if ((widgetToOverride.getTextColor() != -1 || widgetToOverride.getTextColor() != property) &&
+				(widgetOverride.getType() == -1 || widgetToOverride.getType() == widgetOverride.getType()) &&
+				widgetOverride.checkVarbit(client))
 			{
-				continue;
-			}
-
-			if (widgetOverride.getWidgetArrayIds()[0] != -1)
-			{
-				for (int arrayId : widgetOverride.getWidgetArrayIds())
-				{
-					Widget arrayWidget = widgetToOverride.getChild(arrayId);
-					if (arrayWidget == null || arrayWidget.getTextColor() == -1 || arrayWidget.getTextColor() == property)
-					{
-						continue;
-					}
-					arrayWidget.setTextColor(property);
-				}
-			}
-			else
-			{
-				if (widgetToOverride.getTextColor() != -1 || widgetToOverride.getTextColor() != property)
-				{
-					widgetToOverride.setTextColor(property);
-				}
+				widgetToOverride.setTextColor(property);
 			}
 		}
 	}

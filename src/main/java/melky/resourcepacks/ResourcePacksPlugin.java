@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import melky.resourcepacks.ConfigKeys.InterfaceStyles;
 import melky.resourcepacks.event.ResourcePacksChanged;
 import melky.resourcepacks.hub.ResourcePacksHubPanel;
+import melky.resourcepacks.overrides.Overrides;
 import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
@@ -77,6 +78,9 @@ public class ResourcePacksPlugin extends Plugin
 
 	@Inject
 	private ScheduledExecutorService executor;
+
+	@Inject
+	private Overrides overrides;
 
 	private ResourcePacksHubPanel resourcePacksHubPanel;
 	private NavigationButton navButton;
@@ -293,9 +297,9 @@ public class ResourcePacksPlugin extends Plugin
 	@Subscribe
 	public void onScriptPostFired(ScriptPostFired event)
 	{
-		if (!resourcePacksManager.getColorProperties().isEmpty() && WidgetOverride.scriptWidgetOverrides.containsKey(event.getScriptId()))
+		if (!overrides.isEmpty() && overrides.contains(event.getScriptId()))
 		{
-			for (WidgetOverride widgetOverride : WidgetOverride.scriptWidgetOverrides.get(event.getScriptId()))
+			for (var widgetOverride : overrides.get(event.getScriptId()))
 			{
 				resourcePacksManager.addPropertyToWidget(widgetOverride);
 			}

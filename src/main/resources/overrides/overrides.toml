@@ -1,0 +1,519 @@
+[account_management]
+interface=109
+
+[account_management.separator]
+children=[1, 3, 4, 5]
+scripts=[2497]
+color=0x5d5848
+
+########################################
+
+[achievement_diary]
+interface=259
+scripts=[2199]
+
+[achievement_diary.border]
+color=0xff9933
+children=[2]
+dynamicChildren=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+
+[achievement_diary.progress.background]
+color=0x000000
+children=[2]
+dynamicChildren=[15, 27, 39, 51, 63, 75, 87, 99, 111, 123, 135, 147]
+
+########################################
+
+[bank]
+interface=12
+
+[bank.separator]
+color=0x2e2b23
+scripts=[274]
+children=[12]
+
+[bank.menu]
+scripts=[3276]
+
+[bank.menu.border.inner]
+color=0x2e2b23
+children=[50, 57]
+dynamicChildren=[14, 2]
+
+[bank.menu.border.outer]
+color=0x726451
+children=[50, 57]
+dynamicChildren=[13, 1]
+
+########################################
+
+[channel_tab]
+interface=707
+
+[channel_tab.separator]
+scripts=[4471]
+color=0x5d5848
+children=[2]
+
+########################################
+
+[chatbox]
+interface=162
+
+[chatbox.separator]
+scripts=[923]
+color=0x807660
+children=[54]
+dynamicChildren=[0]
+
+########################################
+
+[choose_spell]
+interface=201
+scripts=[2098]
+
+[choose_spell.background]
+color=0x000000
+children=[3]
+
+[choose_spell.border.inner]
+color=0x726451
+children=[4]
+
+[choose_spell.border.outer]
+color=0x2e2b23
+children=[5]
+
+########################################
+
+[friends_chat]
+interface=7
+scripts=[1658]
+
+[friends_chat.border.inner]
+color=0x474745
+children=[5]
+dynamicChildren=[1]
+
+[friends_chat.border.outer]
+color=0xe0e0c
+children=[5]
+dynamicChildren=[0]
+
+[friends_chat.header.border.inner]
+color=0x474745
+children=[6]
+dynamicChildren=[1]
+
+[friends_chat.header.border.outer]
+color=0xe0e0c
+children=[6]
+dynamicChildren=[0]
+
+########################################
+
+[friends_list]
+interface=429
+scripts=[125]
+
+[friends_list.header]
+children=[6]
+
+[friends_list.header.border.inner]
+color=0x474745
+dynamicChildren=[1]
+
+[friends_list.header.border.outer]
+color=0xe0e0c
+dynamicChildren=[1]
+
+########################################
+
+[ge]
+interface=465
+
+[ge.slot]
+scripts=[803]
+children=[7, 8, 9, 10, 11, 12, 13, 14]
+
+[ge.slot.border.inner]
+color=0x5a5245
+dynamicChildren=[0, 1]
+
+[ge.slot.border.outer]
+color=0x383023
+dynamicChildren=[3, 4]
+
+[ge.offer]
+scripts=[773]
+children=[25]
+
+[ge.offer.border.inner]
+color=0x5a5245
+dynamicChildren=[16, 18, 25, 28, 35]
+
+[ge.offer.border.outer]
+color=0x383023
+dynamicChildren=[17, 19, 26, 29, 36]
+
+########################################
+
+[grouping_tab]
+interface=76
+scripts=[435]
+
+[grouping_tab.border.inner]
+color=0xff981f
+children=[10, 15]
+
+[grouping_tab.border.outer]
+color=0x191900
+children=[9, 14]
+
+########################################
+
+[ignore_list]
+interface=432
+
+[ignore_list.header]
+children=[6]
+scripts=[129]
+
+[ignore_list.header.border.inner]
+color=0x474745
+dynamicChildren=[1]
+
+[ignore_list.header.border.outer]
+color=0xe0e0c
+dynamicChildren=[0]
+
+########################################
+
+[item_search]
+interface=162
+scripts=[773, 3558]
+
+[item_search.background]
+children=[47]
+color=0x463214
+opacity=200
+
+[item_search.border.outer]
+children=[48]
+color=0x463214
+opacity=0
+
+[item_search.border.inner]
+children=[49]
+color=0x463214
+opacity=150
+
+########################################
+
+[kept_on_death]
+interface=4
+
+[kept_on_death.border]
+scripts=[974]
+children=[4, 5, 12]
+
+[kept_on_death.border.inner]
+dynamicChildren=[0, 4]
+color=0xe0e0c
+
+[kept_on_death.border.outer]
+dynamicChildren=[1, 5]
+color=0x474745
+
+########################################
+
+[make_all]
+interface=270
+
+[make_all.background]
+color=0x89785e
+scripts=[2044, 2049]
+children=[14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+dynamicChildren=[29]
+
+[make_all.quantity]
+color=0x89785e
+scripts=[2058]
+children=[7, 8, 9, 10, 11, 12]
+dynamicChildren=[0]
+
+########################################
+
+[quest_tab]
+interface=629
+
+[quest_tab.separator]
+scripts=[2800]
+color=0x5d5848
+children=[2]
+
+########################################
+
+[settings]
+interface=134
+
+[settings.body.border]
+scripts=[3836]
+children=[14]
+
+[settings.body.border.inner]
+color=0x474745
+dynamicChildren=[1]
+
+[settings.body.border.outer]
+color=0xe0e0c
+dynamicChildren=[0]
+
+[settings.sidebar]
+scripts=[3836]
+children=[15]
+
+[settings.sidebar.border.inner]
+color=0x474745
+dynamicChildren=[1]
+
+[settings.sidebar.border.outer]
+color=0xe0e0c
+dynamicChildren=[0]
+
+[settings.menu.border]
+scripts=[3835]
+children=[18]
+type=3
+
+[settings.menu.border.inner]
+color=0x474745
+skip=1
+
+[settings.menu.border.outer]
+color=0xe0e0c
+skip=1
+
+[[settings.menu.border.inner.page.more]]
+varbit=[9656, 9665]
+varbitValue=[0, 0]
+dynamicChildren=[27, 43, 58]
+
+[[settings.menu.border.outer.page.more]]
+varbit=[9656, 9665]
+varbitValue=[0, 0]
+dynamicChildren=[26, 42, 57]
+
+[[settings.menu.border.inner.page.more]]
+varbit=[9656, 9665]
+varbitValue=[1, 0]
+dynamicChildren=[80, 97]
+
+[[settings.menu.border.outer.page.more]]
+varbit=[9656, 9665]
+varbitValue=[1, 0]
+dynamicChildren=[79, 96]
+
+[[settings.menu.border.inner.page.more]]
+varbit=[9656, 9665]
+varbitValue=[2, 0]
+dynamicChildren=[10, 47]
+
+[[settings.menu.border.outer.page.more]]
+varbit=[9656, 9665]
+varbitValue=[2, 0]
+dynamicChildren=[9, 46]
+
+[[settings.menu.border.inner.page.more]]
+varbit=[9656, 9665]
+varbitValue=[3, 0]
+dynamicChildren=[14, 23, 52, 64, 73, 82, 91, 100, 109, 118, 127, 136, 145, 154, 163, 172, 181]
+
+[[settings.menu.border.outer.page.more]]
+varbit=[9656, 9665]
+varbitValue=[3, 0]
+dynamicChildren=[13, 22, 51, 63, 72, 81, 90,  99, 108, 117, 126, 135, 144, 153, 162, 171, 180]
+
+[[settings.menu.border.inner.page.more]]
+varbit=[9656, 9665]
+varbitValue=[6, 0]
+dynamicChildren=[6, 57, 66, 75, 104, 188, 197]
+
+[[settings.menu.border.outer.page.more]]
+varbit=[9656, 9665]
+varbitValue=[6, 0]
+dynamicChildren=[5, 56, 65, 74, 103, 187, 196]
+
+[[settings.menu.border.inner.page.more]]
+varbit=[9656, 9665]
+varbitValue=[7, 0]
+dynamicChildren=[104, 116]
+
+[[settings.menu.border.outer.page.more]]
+varbit=[9656, 9665]
+varbitValue=[7, 0]
+dynamicChildren=[103, 115]
+
+
+
+
+[[settings.menu.border.inner.page.less]]
+varbit=[9656, 9665]
+varbitValue=[0, 1]
+dynamicChildren=[25, 38, 51]
+
+[[settings.menu.border.outer.page.less]]
+varbit=[9656, 9665]
+varbitValue=[0, 1]
+dynamicChildren=[24, 37, 50]
+
+[[settings.menu.border.inner.page.less]]
+varbit=[9656, 9665]
+varbitValue=[1, 1]
+dynamicChildren=[80, 94]
+
+[[settings.menu.border.outer.page.less]]
+varbit=[9656, 9665]
+varbitValue=[1, 1]
+dynamicChildren=[79, 93]
+
+[[settings.menu.border.inner.page.less]]
+varbit=[9656, 9665]
+varbitValue=[2, 1]
+dynamicChildren=[9, 38]
+
+[[settings.menu.border.outer.page.less]]
+varbit=[9656, 9665]
+varbitValue=[2, 1]
+dynamicChildren=[8, 37]
+
+[[settings.menu.border.inner.page.less]]
+varbit=[9656, 9665]
+varbitValue=[3, 1]
+dynamicChildren=[12, 20, 43, 54,63,72,81,90,99,108,117,126,135,144,153,162,171]
+
+[[settings.menu.border.outer.page.less]]
+varbit=[9656, 9665]
+varbitValue=[3, 1]
+dynamicChildren=[11, 19, 42, 53,62,71,80,89,98,107,116,125,134,143,152,161,170]
+
+[[settings.menu.border.inner.page.less]]
+varbit=[9656, 9665]
+varbitValue=[6, 1]
+dynamicChildren=[6, 46, 54, 62, 85, 156, 164]
+
+[[settings.menu.border.outer.page.less]]
+varbit=[9656, 9665]
+varbitValue=[6, 1]
+dynamicChildren=[5, 45, 53, 61, 84, 155, 163]
+
+[[settings.menu.border.inner.page.less]]
+varbit=[9656, 9665]
+varbitValue=[7, 1]
+dynamicChildren=[99, 109]
+
+[[settings.menu.border.outer.page.less]]
+varbit=[9656, 9665]
+varbitValue=[7, 1]
+dynamicChildren=[98, 108]
+
+########################################
+
+[settings_tab]
+interface=116
+
+[settings_tab.menu.border]
+scripts=[3916]
+children=[6, 7, 27]
+
+[settings_tab.menu.border.inner]
+color=0x474745
+dynamicChildren=[2]
+
+[settings_tab.menu.border.outer]
+color=0xe0e0c
+dynamicChildren=[1]
+
+[settings_tab.dropdown.border]
+scripts=[715]
+children=[36]
+
+[settings_tab.dropdown.border.inner]
+color=0x474745
+dynamicChildren=[1]
+
+[settings_tab.dropdown.border.outer]
+color=0xe0e0c
+dynamicChildren=[0]
+
+[settings_tab.separator]
+color=0x5d5848
+children=[59, 60, 61, 62]
+
+########################################
+
+[world_switcher]
+interface=69
+scripts=[747]
+
+[world_switcher.border.top]
+color=0x73654a
+children=[8]
+
+[world_switcher.border.bottom]
+color=0x73654a
+children=[9]
+
+[world_switcher.background]
+color=0x000000
+children=[7]
+
+########################################
+
+[world_map]
+interface=595
+scripts=[1707]
+
+[world_map.search.border.inner]
+color=0x474745
+children=[25]
+dynamicChildren=[3]
+
+[world_map.search.border.outer]
+color=0xe0e0c
+children=[25]
+dynamicChildren=[2]
+
+[world_map.location_menu.border.inner]
+color=0x474745
+children=[26]
+dynamicChildren=[2]
+
+[world_map.location_menu.border.outer]
+color=0xe0e0c
+children=[26]
+dynamicChildren=[1]
+
+[world_map.dropdown.border.inner]
+color=0x474745
+children=[33]
+dynamicChildren=[1]
+
+[world_map.dropdown.border.outer]
+color=0xe0e0c
+children=[33]
+dynamicChildren=[0]
+
+########################################
+
+[xp_tracker]
+interface=122
+scripts=[997]
+
+[xp_tracker.border.inner]
+color=0x5a5245
+children=[8, 13]
+
+[xp_tracker.border.outer]
+color=0x383023
+children=[7, 12]

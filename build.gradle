@@ -26,6 +26,9 @@ repositories {
 def runeLiteVersion = 'latest.release'
 
 dependencies {
+    implementation 'org.tomlj:tomlj:1.1.1'
+    testImplementation 'org.tomlj:tomlj:1.1.1'
+
 	compileOnly group: 'net.runelite', name:'client', version: runeLiteVersion
 
 	compileOnly 'org.projectlombok:lombok:1.18.30'
@@ -35,6 +38,7 @@ dependencies {
     testCompileOnly 'org.projectlombok:lombok:1.18.30'
 
 	testImplementation 'junit:junit:4.12'
+    testImplementation 'org.mockito:mockito-core:5.1.1'
     testImplementation group: 'net.runelite', name:'client', version: runeLiteVersion
     testImplementation group: 'net.runelite', name:'jshell', version: runeLiteVersion
 }
