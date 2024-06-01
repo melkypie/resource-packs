@@ -201,7 +201,7 @@ public class ResourcePacksPluginTest
 						}
 					}
 				}
-				else if (!file.getName().contains(".properties") && !file.getName().contains(".md") && !file.getName().equals("icon.png"))
+				else if (!file.getName().contains(".properties") && !file.getName().contains(".toml") && !file.getName().contains(".md") && !file.getName().equals("icon.png"))
 				{
 					errorMessages.add("\u001B[31mFound a file " + file.getName() + " in folder " + dirName + " that is not a sprite, icon, properties or markdown file\u001B[0m");
 				}
