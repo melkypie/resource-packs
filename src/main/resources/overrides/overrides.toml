@@ -522,27 +522,6 @@ children=[59, 60, 61, 62]
 
 ########################################
 
-[world_switcher]
-interface=69
-scripts=[747]
-
-[world_switcher.border.top]
-color=0x73654a
-children=[8]
-opacity=50
-
-[world_switcher.border.bottom]
-color=0x73654a
-children=[9]
-opacity=50
-
-[world_switcher.background]
-color=0x000000
-children=[7]
-opactiy=150
-
-########################################
-
 [world_map]
 interface=595
 scripts=[1707]
@@ -595,6 +574,28 @@ color=0xe0e0c
 children=[33]
 opacity=0
 dynamicChildren=[0]
+
+########################################
+
+[world_switcher]
+interface=69
+scripts=[747]
+
+[world_switcher.border.top]
+color=0x73654a
+children=[8]
+opacity=50
+
+[world_switcher.border.bottom]
+color=0x73654a
+children=[9]
+opacity=50
+
+[world_switcher.background]
+color=0x000000
+children=[7]
+opactiy=150
+
 
 ########################################
 

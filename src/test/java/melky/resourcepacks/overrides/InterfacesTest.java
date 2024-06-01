@@ -27,6 +27,7 @@ package melky.resourcepacks.overrides;
 
 import java.awt.Color;
 import java.io.IOException;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
@@ -93,17 +94,30 @@ public class InterfacesTest
 
 			var keys = toml.dottedKeySet()
 				.stream()
-				.filter(k -> k.contains("color"))
+				.filter(k -> k.contains("color") || k.contains("opacity"))
 				.sorted()
 				.collect(Collectors.toList());
 
 			var sb = new StringBuilder();
 
+			var last = "";
+
 			for (var k : keys)
 			{
-				var s = k.replaceAll(".color", "");
-				sb.append(String.format("[%s]\n", s));
-				sb.append(String.format("color=0x%06x\n\n", new Color(toml.getLong(k).intValue()).getRGB() & 16777215));
+				var s = k.replaceAll(".color|.opacity", "");
+				if (!Objects.equals(s, last))
+				{
+					sb.append(String.format("\n# [%s]\n", s));
+					last = s;
+				}
+
+				if (k.endsWith(".color"))
+				{
+					sb.append(String.format("# color=0x%06x\n", new Color(toml.getLong(k).intValue()).getRGB() & 16777215));
+				} else if (k.endsWith(".opacity"))
+				{
+					sb.append(String.format("# opacity=%d\n", toml.getLong(k).intValue()));
+				}
 			}
 
 			log.info("{}", sb + "");
