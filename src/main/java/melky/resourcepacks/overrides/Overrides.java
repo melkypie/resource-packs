@@ -192,6 +192,12 @@ public class Overrides
 		var node = parent;
 		var path = parent.getName();
 
+		if (map.containsKey(INTERFACE))
+		{
+			node = node.withInterfaceId(((Long)map.get(INTERFACE)).intValue());
+			map.remove(INTERFACE);
+		}
+
 		if (map.containsKey(COLOR))
 		{
 			int c = ((Long) map.get(COLOR)).intValue();
