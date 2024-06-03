@@ -166,8 +166,6 @@ dynamicChildren=[1]
 
 ########################################
 
-# Add offer pulsing 811 [0-4]
-
 [ge]
 interface=465
 
