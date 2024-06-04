@@ -544,6 +544,39 @@ children=[59, 60, 61, 62]
 
 ########################################
 
+[skill_guide]
+interface=860
+
+[skill_guide.body]
+children=[9]
+scripts=[1903]
+
+[skill_guide.body.border.inner]
+dynamicChildren=[1]
+color=0x474745
+opacity=0
+
+[skill_guide.body.border.outer]
+dynamicChildren=[0]
+color=0xe0e0c
+opacity=0
+
+[skill_guide.tab.border]
+scripts=[1903]
+color=0x726451
+opacity=0
+type=3
+
+[skill_guide.tab.border.panel]
+children=[6]
+dynamicChildren=[0]
+
+[skill_guide.tab.border.tab]
+children=[7]
+dynamicChildren=[0, 9, 18, 27, 36, 45, 54, 63, 72, 81, 90, 99, 108, 117]
+
+########################################
+
 [world_map]
 interface=595
 scripts=[1707]
