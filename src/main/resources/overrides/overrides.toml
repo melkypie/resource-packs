@@ -368,7 +368,7 @@ opacity=0
 dynamicChildren=[0]
 
 [settings.menu.border]
-scripts=[3835]
+scripts=[3835, 3849]
 children=[18]
 type=3
 
