@@ -49,6 +49,10 @@ dynamicChildren=[14]
 children=[57]
 dynamicChildren=[2]
 
+[bank.menu.border.inner.incinerator]
+children=[47]
+dynamicChildren=[172]
+
 [bank.menu.border.outer]
 color=0x726451
 opacity=0
@@ -60,6 +64,10 @@ dynamicChildren=[13]
 [bank.menu.border.outer.fillers]
 children=[57]
 dynamicChildren=[1]
+
+[bank.menu.border.outer.incinerator]
+children=[47]
+dynamicChildren=[171]
 
 ########################################
 
