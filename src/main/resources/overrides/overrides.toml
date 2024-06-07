@@ -380,6 +380,25 @@ opacity=150
 
 ########################################
 
+[jewellery_box]
+interface=590
+
+[jewellery_box.border]
+children=[2, 3, 4, 5, 6, 7]
+scripts=[1686]
+
+[jewellery_box.border.inner]
+dynamicChildren=[2]
+color=0x474745
+opacity=0
+
+[jewellery_box.border.outer]
+dynamicChildren=[1]
+color=0xe0e0c
+opacity=0
+
+########################################
+
 [kept_on_death]
 interface=4
 
