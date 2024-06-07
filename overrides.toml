@@ -23,6 +23,14 @@
 # [bank.separator]
 # color=0x2e2b23
 
+# [bonds_pouch.border.inner]
+# color=0x2e2b23
+# opacity=0
+
+# [bonds_pouch.border.outer]
+# color=0x726451
+# opacity=0
+
 # [channel_tab.separator]
 # color=0x5d5848
 
@@ -65,6 +73,9 @@
 # [friends_list.header.border.outer]
 # color=0x0e0e0c
 # opacity=0
+
+# [ge.inventory.glow]
+# color=0xffff00
 
 # [ge.offer.border.inner]
 # color=0x5a5245
@@ -175,6 +186,18 @@
 
 # [settings_tab.separator]
 # color=0x5d5848
+
+# [skill_guide.body.border.inner]
+# color=0x474745
+# opacity=0
+
+# [skill_guide.body.border.outer]
+# color=0x0e0e0c
+# opacity=0
+
+# [skill_guide.tab.border]
+# color=0x726451
+# opacity=0
 
 # [world_map.dropdown.border.inner]
 # color=0x474745
