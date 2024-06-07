@@ -418,6 +418,40 @@ opacity=0
 
 ########################################
 
+[lectern]
+interface=403
+
+[lectern.border]
+scripts=[3586]
+type=3
+
+[lectern.border.inner]
+color=0xe0e0c
+opacity=0
+
+[lectern.border.outer]
+color=0x474745
+opacity=0
+
+[lectern.border.inner.tablets]
+children=[15]
+dynamicChildren=[1]
+
+[lectern.border.outer.tablets]
+children=[15]
+dynamicChildren=[0]
+
+[lectern.border.inner.ingredients]
+children=[11]
+dynamicChildren=[1, 10, 13]
+
+[lectern.border.outer.ingredients]
+children=[11]
+dynamicChildren=[0, 9, 12]
+
+
+########################################
+
 [make_all]
 interface=270
 
