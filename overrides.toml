@@ -12,6 +12,14 @@
 # color=0x000000
 # opacity=150
 
+# [bank.inventory.rune_pouch.border.inner]
+# color=0x5a5245
+# opacity=0
+
+# [bank.inventory.rune_pouch.border.outer]
+# color=0x383023
+# opacity=0
+
 # [bank.menu.border.inner]
 # color=0x2e2b23
 # opacity=0
@@ -143,6 +151,14 @@
 
 # [quest_tab.separator]
 # color=0x5d5848
+
+# [rune_pouch.border.inner]
+# color=0xebd7cc
+# opacity=100
+
+# [rune_pouch.border.outer]
+# color=0xff981f
+# opacity=100
 
 # [settings.body.border.inner]
 # color=0x474745
