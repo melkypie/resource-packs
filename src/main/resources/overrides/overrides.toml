@@ -489,6 +489,24 @@ color=0x191900
 
 ########################################
 
+[portal_nexus]
+interface=17
+
+[portal_nexus.border]
+color=0x000000
+opacity=0
+
+[portal_nexus.border.teleport]
+children=[9]
+scripts=[2672]
+
+[portal_nexus.border.configure]
+interface=19
+children=[16, 19]
+scripts=[2272]
+
+########################################
+
 [quest_list]
 interface=399
 
