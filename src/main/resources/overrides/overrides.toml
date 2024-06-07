@@ -201,6 +201,25 @@ opacity=0
 
 ########################################
 
+[costumes]
+interface=675
+
+[costumes.border]
+children=[3]
+scripts=[3534]
+
+[costumes.border.inner]
+color=0x474745
+opacity=0
+dynamicChildren=[1]
+
+[costumes.border.outer]
+color=0xe0e0c
+opacity=0
+dynamicChildren=[0]
+
+########################################
+
 [friends_chat]
 interface=7
 scripts=[1658]
@@ -396,6 +415,24 @@ scripts=[2058]
 children=[7, 8, 9, 10, 11, 12]
 dynamicChildren=[0]
 opacity=0
+
+########################################
+
+[pet_house]
+interface=211
+
+[pet_house.border]
+scripts=[644]
+
+[pet_house.border.inner]
+children=[5]
+opacity=150
+color=0xff981f
+
+[pet_house.border.outer]
+children=[4]
+opacity=0
+color=0x191900
 
 ########################################
 
