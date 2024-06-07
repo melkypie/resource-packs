@@ -489,6 +489,27 @@ color=0x191900
 
 ########################################
 
+[poh]
+interface=-1
+
+[poh.build_room]
+interface=212
+
+[poh.build_room.border]
+scripts=[648]
+color=0x333300
+opacity=0
+type=3
+
+[poh.build_room.border.body]
+children=[3]
+
+[poh.build_room.border.row]
+children=[5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 28, 30, 32, 34, 38, 43, 46, 48, 50, 52, 54, 57, 60, 62, 63]
+dynamicChildren=[0]
+
+########################################
+
 [portal_nexus]
 interface=17
 
