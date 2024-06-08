@@ -201,6 +201,93 @@ opacity=0
 
 ########################################
 
+[colosseum]
+interface=865
+
+[colosseum.info]
+scripts=[4931, 4947, 4938]
+children=[32, 36]
+
+[colosseum.info.background]
+dynamicChildren=[0]
+color=0x000000
+opacity=200
+
+[colosseum.info.border.inner]
+color=0x474745
+opacity=0
+dynamicCihldren=[2]
+
+[colosseum.info.border.outer]
+color=0xe0e0c
+opacity=0
+dynamicCihldren=[1]
+
+[colosseum.modifiers]
+scripts=[4931, 4937, 4938]
+
+[colosseum.modifiers.border]
+color=0x726451
+opacity=0
+children=[15, 16, 17]
+dynamicChildren=[0]
+
+[colosseum.modifiers.selected]
+color=0x9d6a76
+opacity=0
+
+[colosseum.modifiers.selected.1]
+children=[15]
+varbit=9788
+varbitValue=1
+dynamicChildren=[0]
+
+[colosseum.modifiers.selected.2]
+children=[16]
+varbit=9788
+varbitValue=2
+dynamicChildren=[0]
+
+[colosseum.modifiers.selected.3]
+children=[17]
+varbit=9788
+varbitValue=3
+dynamicChildren=[0]
+
+[colosseum.tab.border]
+scripts=[4931, 4947, 4938]
+color=0x726451
+opacity=0
+
+[colosseum.tab.border.top]
+children=[25]
+dynamicChildren=[0, 9, 18]
+
+[colosseum.tab.border.body]
+children=[24]
+dynamicChildren=[0]
+
+[colosseum.wave]
+scripts=[4931]
+children=[7, 13]
+
+[colosseum.wave.background]
+color=0x000000
+opacity=200
+dynamicChildren=[0]
+
+[colosseum.wave.border.inner]
+color=0x474745
+opacity=0
+dynamicCihldren=[2]
+
+[colosseum.wave.border.outer]
+color=0xe0e0c
+opacity=0
+dynamicCihldren=[1]
+
+########################################
+
 [costumes]
 interface=675
 
