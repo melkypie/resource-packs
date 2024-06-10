@@ -103,7 +103,7 @@ public class Overrides
 				walkChildren(new WidgetOverride().withName(key), table, pack);
 			}
 		}
-		catch (IOException e)
+		catch (IOException | ClassCastException e)
 		{
 			log.error("error loading overrides", e);
 		}
