@@ -1288,6 +1288,34 @@ dynamicChildren=[0, 9, 18, 27, 36, 45, 54, 63, 72, 81, 90, 99, 108, 117]
 
 ########################################
 
+[soul_wars]
+interface=442
+
+[soul_wars.separator]
+scripts=[4123]
+
+[soul_wars.separator.top]
+color=0x383023
+
+[soul_wars.separator.top.values]
+children=[7, 9]
+
+[soul_wars.separator.top.accent]
+children=[8, 11]
+color=0x5d5848
+
+[soul_wars.separator.bottom]
+color=0x383023
+
+[soul_wars.separator.bottom.values]
+children=[10]
+
+[soul_wars.separator.bottom.accent]
+children=[12]
+color=0x5d5848
+
+########################################
+
 [toa]
 interface=772
 
