@@ -157,7 +157,11 @@ public class Overrides
 			int c = table.getLong(COLOR).intValue();
 			if (pack.contains(OverrideKey.append(path, COLOR)))
 			{
-				c = pack.getLong(OverrideKey.append(path, COLOR)).intValue();
+				var v = pack.get(OverrideKey.append(path, COLOR));
+				if (v instanceof Long)
+				{
+					c = ((Long)v).intValue();
+				}
 			}
 
 			node = node.withProperties(new HashMap<>(node.getProperties()));
@@ -203,7 +207,11 @@ public class Overrides
 			int c = ((Long) map.get(COLOR)).intValue();
 			if (pack.contains(OverrideKey.append(path, COLOR)))
 			{
-				c = pack.getLong(OverrideKey.append(path, COLOR)).intValue();
+				var v = pack.get(OverrideKey.append(path, COLOR));
+				if (v instanceof Long)
+				{
+					c = ((Long)v).intValue();
+				}
 			}
 
 			node = node.withProperties(new HashMap<>(node.getProperties()));
