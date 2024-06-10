@@ -288,6 +288,24 @@ dynamicCihldren=[1]
 
 ########################################
 
+[collection_log]
+interface=621
+
+[collection_log.border]
+color=0x585040
+scripts=[2730]
+
+[collection_log.border.body]
+children=[38]
+
+[collection_log.border.header]
+children=[21]
+
+[collection_log.border.list]
+children=[30]
+
+########################################
+
 [costumes]
 interface=675
 
