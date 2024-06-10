@@ -878,6 +878,57 @@ dynamicChildren=[1, 10, 13]
 children=[11]
 dynamicChildren=[0, 9, 12]
 
+########################################
+
+[looting_bag]
+interface=-1
+
+[looting_bag.border.inner]
+color=0x5a5245
+opacity=0
+type=3
+
+[looting_bag.border.outer]
+color=0x383023
+opacity=0
+type=3
+
+[[looting_bag.border.inner.inventory]]
+interface=81
+children=[3]
+dynamicChildren=[1]
+scripts=[497]
+
+[[looting_bag.border.outer.inventory]]
+interface=81
+children=[3]
+dynamicChildren=[0]
+scripts=[497]
+
+[[looting_bag.border.inner.inventory]]
+interface=15
+children=[9]
+dynamicChildren=[1]
+scripts=[3744]
+
+[[looting_bag.border.outer.inventory]]
+interface=15
+children=[9]
+dynamicChildren=[0]
+scripts=[3744]
+
+# Leagues looting bag I think
+#[[looting_bag.border.inner.inventory]]
+#interface=15
+#children=[9]
+#dynamicChildren=[1]
+#scripts=[3706]
+#
+#[[looting_bag.border.outer.inventory]]
+#interface=15
+#children=[9]
+#dynamicChildren=[0]
+#scripts=[3706]
 
 ########################################
 
