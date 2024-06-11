@@ -43,6 +43,7 @@ import static melky.resourcepacks.overrides.OverrideKey.CHILDREN;
 import static melky.resourcepacks.overrides.OverrideKey.COLOR;
 import static melky.resourcepacks.overrides.OverrideKey.DYNAMIC_CHILDREN;
 import static melky.resourcepacks.overrides.OverrideKey.INTERFACE;
+import static melky.resourcepacks.overrides.OverrideKey.NEW_TYPE;
 import static melky.resourcepacks.overrides.OverrideKey.OPACITY;
 import static melky.resourcepacks.overrides.OverrideKey.SCRIPTS;
 import static melky.resourcepacks.overrides.OverrideKey.TYPE;
@@ -149,23 +150,31 @@ public class Overrides
 		if (map.containsKey(TYPE))
 		{
 			node = node.withType(table.getLong(TYPE).intValue());
+			if (map.containsKey(NEW_TYPE))
+			{
+				node = node.withNewType(table.getLong(NEW_TYPE).intValue());
+				map.remove(NEW_TYPE);
+			}
+
 			map.remove(TYPE);
 		}
 
 		if (map.containsKey(COLOR))
 		{
 			int c = table.getLong(COLOR).intValue();
+			node = node.withColor(c);
 			if (pack.contains(OverrideKey.append(path, COLOR)))
 			{
 				var v = pack.get(OverrideKey.append(path, COLOR));
 				if (v instanceof Long)
 				{
-					c = ((Long)v).intValue();
+					node = node.withNewColor(((Long) v).intValue());
 				}
 			}
-
-			node = node.withProperties(new HashMap<>(node.getProperties()));
-			node.getProperties().put(COLOR, c);
+			else
+			{
+				node = node.withNewColor(c);
+			}
 
 			map.remove(COLOR);
 		}
@@ -198,42 +207,55 @@ public class Overrides
 
 		if (map.containsKey(INTERFACE))
 		{
-			node = node.withInterfaceId(((Long)map.get(INTERFACE)).intValue());
+			node = node.withInterfaceId(((Long) map.get(INTERFACE)).intValue());
 			map.remove(INTERFACE);
 		}
 
 		if (map.containsKey(COLOR))
 		{
 			int c = ((Long) map.get(COLOR)).intValue();
+			node = node.withColor(c);
 			if (pack.contains(OverrideKey.append(path, COLOR)))
 			{
 				var v = pack.get(OverrideKey.append(path, COLOR));
 				if (v instanceof Long)
 				{
-					c = ((Long)v).intValue();
+					node = node.withNewColor(((Long) v).intValue());
 				}
 			}
+			else
+			{
+				node = node.withNewColor(c);
+			}
 
-			node = node.withProperties(new HashMap<>(node.getProperties()));
-			node.getProperties().put(COLOR, c);
 			map.remove(COLOR);
 		}
 
 		if (map.containsKey(TYPE))
 		{
 			node = node.withType(((Long) map.get(TYPE)).intValue());
+			if (map.containsKey(NEW_TYPE))
+			{
+				node = node.withNewType(((Long) map.get(NEW_TYPE)).intValue());
+				map.remove(NEW_TYPE);
+			}
+
 			map.remove(TYPE);
 		}
 
 		if (map.containsKey(OPACITY))
 		{
 			int o = ((Long) map.get(OPACITY)).intValue();
+			node = node.withOpacity(o);
 			if (pack.contains(OverrideKey.append(path, OPACITY)))
 			{
-				o = pack.getLong(OverrideKey.append(path, OPACITY)).intValue();
+				node = node.withNewOpacity(pack.getLong(OverrideKey.append(path, OPACITY)).intValue());
+			}
+			else
+			{
+				node = node.withNewOpacity(o);
 			}
 
-			node = node.withOpactity(o);
 			map.remove(OPACITY);
 		}
 

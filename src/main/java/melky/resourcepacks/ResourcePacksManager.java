@@ -47,7 +47,6 @@ import static melky.resourcepacks.ResourcePacksPlugin.OVERLAY_COLOR_CONFIG;
 import melky.resourcepacks.event.ResourcePacksChanged;
 import melky.resourcepacks.hub.ResourcePackManifest;
 import melky.resourcepacks.hub.ResourcePacksClient;
-import melky.resourcepacks.overrides.OverrideKey;
 import melky.resourcepacks.overrides.Overrides;
 import melky.resourcepacks.overrides.WidgetOverride;
 import net.runelite.api.Client;
@@ -309,10 +308,11 @@ public class ResourcePacksManager
 			clientThread.invokeLater(() ->
 			{
 				adjustWidgetDimensions(false);
-				overrides.clear();
+				resetWidgetOverrides();
 				resetLoginScreen();
 				removeGameframe();
 				resetCrossSprites();
+				resetOverlayColor();
 			});
 		}
 	}
@@ -813,25 +813,26 @@ public class ResourcePacksManager
 
 		for (WidgetOverride widgetOverride : overrides.values())
 		{
-			addPropertyToWidget(widgetOverride);
+			addPropertyToWidget(widgetOverride, false);
 		}
 	}
 
 	public void resetWidgetOverrides()
 	{
-		overrides.buildOverrides("");
+		log.debug("resetting widget overrides");
 
 		for (WidgetOverride widgetOverride : overrides.values())
 		{
-			addPropertyToWidget(widgetOverride);
+			addPropertyToWidget(widgetOverride, true);
 		}
 
 		overrides.clear();
 	}
 
-	public void addPropertyToWidget(WidgetOverride widgetOverride)
+	public void addPropertyToWidget(WidgetOverride widgetOverride, boolean reset)
 	{
-		int property = (Integer) widgetOverride.getProperties().get(OverrideKey.COLOR);
+		int oldColor = widgetOverride.getColor();
+		int newColor = widgetOverride.getNewColor();
 
 		Widget widgetToOverride = client.getWidget(widgetOverride.getInterfaceId(), widgetOverride.getChildId());
 		if (widgetToOverride == null)
@@ -844,35 +845,65 @@ public class ResourcePacksManager
 			for (var arrayId : widgetOverride.getDynamicChildren())
 			{
 				Widget arrayWidget = widgetToOverride.getChild(arrayId);
-				if (arrayWidget == null || arrayWidget.getTextColor() == -1 || arrayWidget.getTextColor() == property)
+				if (arrayWidget == null)
 				{
 					continue;
 				}
 
-				if ((widgetOverride.getType() == -1 || arrayWidget.getType() == widgetOverride.getType()) &&
-					widgetOverride.checkVarbit(client))
-				{
-					arrayWidget.setTextColor(property);
-
-					if (widgetOverride.getOpactity() > -1)
-					{
-						arrayWidget.setOpacity(widgetOverride.getOpactity());
-					}
-				}
+				applyWidgetProperties(arrayWidget, widgetOverride, reset);
 			}
 		}
 		else
 		{
-			if ((widgetToOverride.getTextColor() != -1 || widgetToOverride.getTextColor() != property) &&
-				(widgetOverride.getType() == -1 || widgetToOverride.getType() == widgetOverride.getType()) &&
-				widgetOverride.checkVarbit(client))
-			{
-				widgetToOverride.setTextColor(property);
+			applyWidgetProperties(widgetToOverride, widgetOverride, reset);
+		}
+	}
 
-				if (widgetOverride.getOpactity() > -1)
-				{
-					widgetToOverride.setOpacity(widgetOverride.getOpactity());
-				}
+	private void applyWidgetProperties(Widget widget, WidgetOverride widgetOverride, boolean reset)
+	{
+		if (widget == null || widget.getTextColor() == -1)
+		{
+			return;
+		}
+
+		int oldColor = widgetOverride.getColor();
+		int newColor = widgetOverride.getNewColor();
+
+		if (reset)
+		{
+			widget.setTextColor(oldColor);
+
+			if (widget.getType() == widgetOverride.getNewType())
+			{
+				widget.setType(widgetOverride.getType());
+			}
+
+			if (widgetOverride.getOpacity() > -1)
+			{
+				widget.setOpacity(widgetOverride.getOpacity());
+			}
+
+			return;
+		}
+
+		if (widget.getTextColor() == newColor || !widgetOverride.checkVarbit(client))
+		{
+			return;
+		}
+
+		widget.setTextColor(widgetOverride.getNewColor());
+
+		if (widgetOverride.getNewOpacity() > -1)
+		{
+			widget.setOpacity(widgetOverride.getNewOpacity());
+		}
+
+		if (widgetOverride.getNewType() > -1)
+		{
+			widget.setType(widgetOverride.getNewType());
+			if (widgetOverride.getNewType() == 3)
+			{
+				widget.setFilled(true);
 			}
 		}
 	}

@@ -36,6 +36,7 @@ public final class OverrideKey
 	public static final String OPACITY = "opacity";
 	public static final String COLOR = "color";
 	public static final String TYPE = "type";
+	public static final String NEW_TYPE = "newType";
 	public static final String VARBIT = "varbit";
 	public static final String VARBIT_VALUE = "varbitValue";
 

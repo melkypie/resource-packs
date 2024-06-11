@@ -26,7 +26,6 @@
 package melky.resourcepacks.overrides;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import lombok.AllArgsConstructor;
@@ -46,19 +45,25 @@ public class WidgetOverride
 	int script = -1;
 	int interfaceId = -1;
 	int childId = -1;
+
 	int type = -1;
-	int opactity = -1;
+	int newType = -1;
+
+	int opacity = -1;
+	int newOpacity = -1;
+
+	int color = -1;
+	int newColor = -1;
 
 	List<Map.Entry<Integer, Integer>> varbits = new ArrayList<>();
 	List<Integer> dynamicChildren = new ArrayList<>();
-	HashMap<String, Object> properties = new HashMap<>();
 
 	public boolean isValid()
 	{
 		return script > -1 &&
 			interfaceId > -1 &&
 			childId > -1 &&
-			!properties.isEmpty();
+			color > -1;
 	}
 
 	public boolean checkVarbit(final Client client)

@@ -301,7 +301,7 @@ public class ResourcePacksPlugin extends Plugin
 		{
 			for (var widgetOverride : overrides.get(event.getScriptId()))
 			{
-				resourcePacksManager.addPropertyToWidget(widgetOverride);
+				resourcePacksManager.addPropertyToWidget(widgetOverride, false);
 			}
 		}
 	}
