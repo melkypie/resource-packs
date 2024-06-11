@@ -1008,6 +1008,63 @@ scripts=[2272]
 
 ########################################
 
+[pvp_arena]
+interface=-1
+
+[pvp_arena.duel_options]
+interface=755
+scripts=[6164]
+
+[pvp_arena.duel_options.separator]
+children=[2, 3]
+color=0x6b6b69
+opacity=100
+type=3
+
+[pvp_arena.confirm_options]
+interface=756
+scripts=[6193]
+
+[pvp_arena.confirm_options.separator]
+children=[2, 4, 6]
+color=0xe0e0c
+opacity=100
+type=3
+
+[pvp_arena.confirm_options.separator.accent]
+children=[3, 5, 7]
+color=0x6b6b69
+opacity=100
+type=3
+
+[pvp_arena.recruitment]
+interface=767
+scripts=[6220, 6231]
+
+[pvp_arena.recruitment.border.inner]
+color=0x474745
+opacity=0
+children=[5, 8, 13, 15, 68]
+dynamicChildren=[1]
+
+#[[pvp_arena.recruitment.border.inner.box]]
+#interface=762
+#children=7
+#dynamicChildren=[1]
+
+[pvp_arena.recruitment.border.outer]
+color=0xe0e0c
+opacity=0
+children=[5, 8, 13, 15, 68]
+dynamicChildren=[0]
+
+#[[pvp_arena.recruitment.border.outer.box]]
+#interface=762
+#children=7
+#dynamicChildren=[0]
+
+########################################
+
 [quest_list]
 interface=399
 
