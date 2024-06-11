@@ -147,6 +147,33 @@ dynamicChildren=[0]
 
 ########################################
 
+[bounty_hunter]
+interface=90
+
+[bounty_hunter.overlay]
+scripts=[3141]
+
+[bounty_hunter.overlay.background]
+children=[11]
+type=5
+newType=3
+color=0x494034
+opacity=150
+
+[bounty_hunter.overlay.border]
+children=[7]
+type=3
+
+[bounty_hunter.overlay.border.inner]
+color=0x5a5245
+dynamicChildren=[1]
+
+[bounty_hunter.overlay.border.outer]
+color=0x383023
+dynamicChildren=[0]
+
+########################################
+
 [channel_tab]
 interface=707
 
@@ -1582,6 +1609,32 @@ children=[10]
 [soul_wars.separator.bottom.accent]
 children=[12]
 color=0x5d5848
+
+########################################
+
+[spell_tooltip]
+interface=218
+
+[spell_tooltip.background]
+scripts=[2622]
+color=0x000000
+opacity=40
+children=[202]
+dynamicChildren=[0]
+
+[spell_tooltip.border]
+scripts=[2622]
+children=[202]
+
+[spell_tooltip.border.inner]
+color=0x2e2b23
+opacity=0
+dynamicChildren=[1]
+
+[spell_tooltip.border.outer]
+color=0x726451
+opacity=0
+dynamicChildren=[0]
 
 ########################################
 
