@@ -1025,6 +1025,120 @@ type=3
 interface=756
 scripts=[6193]
 
+[pvp_arena.supplies]
+interface=758
+scripts=[6292]
+
+[pvp_arena.supplies.separator]
+children=[8]
+color=0x5d5848
+
+[pvp_arena.supplies.stats]
+scripts=[6297]
+
+[pvp_arena.supplies.kit]
+scripts=[6310]
+
+[pvp_arena.supplies.stats.border.inner]
+color=0x5a5245
+opacity=0
+
+[pvp_arena.supplies.stats.border.outer]
+color=0x383023
+opacity=0
+
+[pvp_arena.supplies.stats.border.inner.build]
+children=[106]
+dynamicChildren=[11]
+
+[pvp_arena.supplies.stats.border.outer.build]
+children=[106]
+dynamicChildren=[10]
+
+[[pvp_arena.supplies.stats.border.inner.stats]]
+children=[108]
+dynamicChildren=[1]
+
+[[pvp_arena.supplies.stats.border.outer.stats]]
+children=[108]
+dynamicChildren=[0]
+
+[[pvp_arena.supplies.stats.border.inner.stats]]
+children=[110]
+
+[[pvp_arena.supplies.stats.border.inner.stats]]
+children=[112, 113]
+dynamicChildren=[2, 6, 10]
+
+[[pvp_arena.supplies.stats.border.outer.stats]]
+children=[112, 113]
+dynamicChildren=[3, 7, 10]
+
+[[pvp_arena.supplies.stats.border.outer.stats]]
+children=[111]
+
+[pvp_arena.supplies.kit.equipment.border.inner]
+color=0x5a5245
+opacity=0
+children=[12, 44, 76]
+dynamicChildren=[1]
+
+[pvp_arena.supplies.kit.equipment.border.outer]
+color=0x383023
+opacity=0
+children=[12, 44, 76]
+dynamicChildren=[0]
+
+[pvp_arena.supplies.kit.inventory.border.inner]
+color=0xe0e0c
+opacity=0
+children=[29, 61, 93]
+dynamicChildren=[57]
+
+[pvp_arena.supplies.kit.inventory.border.outer]
+color=0x474745
+opacity=0
+children=[29, 61, 93]
+dynamicChildren=[56]
+
+[pvp_arena.supplies.kit.list.border.inner]
+color=0x5a5245
+opacity=0
+children=[30, 62, 94]
+dynamicChildren=[1]
+
+[pvp_arena.supplies.kit.list.border.outer]
+color=0x383023
+opacity=0
+children=[30, 62, 94]
+dynamicChildren=[0]
+
+[pvp_arena.supplies.kit.menu.border.inner]
+color=0x474745
+opacity=0
+children=[10, 42, 74]
+dynamicChildren=[2]
+
+[pvp_arena.supplies.kit.menu.border.outer]
+color=0xe0e0c
+opacity=0
+children=[10, 42, 74]
+dynamicChildren=[1]
+
+[pvp_arena.supplies.kit.dropdown.border.inner]
+scripts=[6305]
+color=0x5a5245
+opacity=0
+children=[38, 70, 102]
+dynamicChildren=[5]
+
+[pvp_arena.supplies.kit.dropdown.border.outer]
+scripts=[6305]
+color=0x383023
+opacity=0
+children=[38, 70, 102]
+dynamicChildren=[4]
+
 [pvp_arena.confirm_options.separator]
 children=[2, 4, 6]
 color=0xe0e0c
