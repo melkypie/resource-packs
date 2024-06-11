@@ -935,6 +935,22 @@ scripts=[3744]
 [lms]
 interface=-1
 
+[lms.settings]
+interface=476
+scripts=[6538]
+
+[lms.settings.border.inner]
+color=0x5a5245
+opacity=0
+children=[3]
+dynamicChildren=[1]
+
+[lms.settings.border.outer]
+color=0x383023
+opacity=0
+children=[3]
+dynamicChildren=[0]
+
 [lms.shop]
 interface=645
 scripts=[3083]
