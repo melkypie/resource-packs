@@ -831,9 +831,6 @@ public class ResourcePacksManager
 
 	public void addPropertyToWidget(WidgetOverride widgetOverride, boolean reset)
 	{
-		int oldColor = widgetOverride.getColor();
-		int newColor = widgetOverride.getNewColor();
-
 		Widget widgetToOverride = client.getWidget(widgetOverride.getInterfaceId(), widgetOverride.getChildId());
 		if (widgetToOverride == null)
 		{
@@ -886,7 +883,8 @@ public class ResourcePacksManager
 			return;
 		}
 
-		if (widget.getTextColor() == newColor || !widgetOverride.checkVarbit(client))
+		if (widget.getTextColor() == newColor || !widgetOverride.checkVarbit(client) ||
+			(widgetOverride.getType() > -1 && (widget.getType() != widgetOverride.getType() && widgetOverride.getNewType() != widget.getType())))
 		{
 			return;
 		}
@@ -900,6 +898,7 @@ public class ResourcePacksManager
 
 		if (widgetOverride.getNewType() > -1)
 		{
+			log.debug("{} overriding widget type {} to {}", widget.getId(), widget.getType(), widgetOverride.getNewType());
 			widget.setType(widgetOverride.getNewType());
 			if (widgetOverride.getNewType() == 3)
 			{
