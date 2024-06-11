@@ -932,6 +932,43 @@ scripts=[3744]
 
 ########################################
 
+[lms]
+interface=-1
+
+[lms.shop]
+interface=645
+scripts=[3083]
+
+[lms.shop.border.inner]
+color=0x474745
+opacity=0
+children=[2]
+dynamicChildren=[1]
+
+[lms.shop.border.outer]
+color=0xe0e0c
+opacity=0
+children=[2]
+dynamicChildren=[0]
+
+[lms.shop.separator]
+color=0xe0e0c
+opacity=0
+
+[lms.shop.separator.accent]
+color=0x474745
+opacity=0
+
+[lms.shop.separator.value]
+children=[3]
+dynamicChildren=[12, 30, 84, 182, 208, 230, 268]
+
+[lms.shop.separator.value.accent]
+children=[3]
+dynamicChildren=[13, 31, 85, 1823, 2089, 231, 269]
+
+########################################
+
 [make_all]
 interface=270
 
