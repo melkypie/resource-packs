@@ -26,6 +26,9 @@
 package melky.resourcepacks.overrides;
 
 import java.awt.Color;
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -99,6 +102,9 @@ public class InterfacesTest
 				.collect(Collectors.toList());
 
 			var sb = new StringBuilder();
+			sb.append("# overlay color is in ARGB hex format\n")
+				.append("# [overlay]\n")
+				.append("# color=0x9C463D32\n");
 
 			var last = "";
 
@@ -121,6 +127,10 @@ public class InterfacesTest
 			}
 
 			log.info("{}", sb + "");
+
+			Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+			var selection = new StringSelection((sb + ""));
+			clipboard.setContents(selection, null);
 		}
 		catch (IOException e)
 		{
