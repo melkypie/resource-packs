@@ -232,7 +232,7 @@ opacity=0
 interface=701
 
 [clan_chat.border]
-scripts=4396
+scripts=[4396]
 children=[5]
 
 [clan_chat.border.inner]
@@ -244,7 +244,6 @@ dynamicChildren=[1]
 color=0xe0e0c
 opactiy=0
 dynamicChildren=[1]
-
 
 ########################################
 
@@ -759,6 +758,42 @@ dynamicChildren=[1]
 [friends_chat]
 interface=7
 scripts=[1658]
+
+[friends_chat.setup]
+interface=94
+scripts=[1663]
+
+[friends_chat.setup.border.inner]
+color=0x5a5245
+opacity=0
+
+[friends_chat.setup.border.inner.body]
+children=[21]
+dynamicChildren=[1]
+
+[friends_chat.setup.border.inner.split]
+children=[23]
+dynamicChildren=[1]
+
+[friends_chat.setup.border.inner.header]
+children=[24]
+dynamicChildren=[1]
+
+[friends_chat.setup.border.outer.body]
+children=[21]
+dynamicChildren=[0]
+
+[friends_chat.setup.border.outer.split]
+children=[23]
+dynamicChildren=[0]
+
+[friends_chat.setup.border.outer.header]
+children=[24]
+dynamicChildren=[0]
+
+[friends_chat.setup.border.outer]
+color=0x383023
+opacity=0
 
 [friends_chat.border.inner]
 color=0x474745
