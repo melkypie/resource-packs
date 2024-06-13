@@ -1,5 +1,57 @@
 ## Change log
 
+### 1.16.0
+- Use a toml format for overrides
+- Add opacity support
+- Add support for changing types
+- Update stale sprite id's
+- Add the following overrides:
+  - friends chat setup
+  - chat channel border
+  - cox party
+  - cox overlay
+  - bh overlay
+  - lms kda overlay
+  - lms settings
+  - lms shop
+  - pvp arena kits
+  - pvp arena
+  - soul wars shop
+  - looting bag
+  - combat achievements
+  - collection log
+  - tob party menu
+  - toa party menu
+  - cox party menu
+  - forestry shop
+  - forestry kit
+  - colosseum popup
+  - poh build room
+  - portal nexus
+  - lectern popup
+  - jewellery box
+  - costumes popup
+  - rune pouch
+  - bonds pouch
+  - incinerator popup
+  - skill guide
+  - world_switcher_beta_flag
+  - ge inventory glow
+  - filled ge offers
+
+### 1.15.2
+- Update GE child id's
+- Add sprites
+- Support overrides that use the same id's
+
+### 1.15.0
+- Use profile specific folders for packs
+
+### 1.14.11
+- Fix changing profiles
+- Reset cross sprites properly
+- Fix original height
+
 ### 1.4.9
 - Fix FlatLaf compatibility
 
