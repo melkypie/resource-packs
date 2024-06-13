@@ -525,9 +525,40 @@ type=3
 dynamicChildren=[1]
 
 [cox.party]
-interface=513
-scripts=[1514]
+interface=500
+scripts=[1539]
+
+[cox.party.border.inner]
+color=0x474745
+opacity=0
+
+[cox.party.border.outer]
+color=0xe0e0c
+opacity=0
+
+[cox.party.border.inner.body]
 children=[3]
+dynamicChildren=[1]
+
+[cox.party.border.outer.body]
+children=[3]
+dynamicChildren=[0]
+
+[cox.party.border.inner.header]
+children=[6]
+dynamicChildren=[1]
+
+[cox.party.border.outer.header]
+children=[6]
+dynamicChildren=[0]
+
+[cox.party.border.inner.info]
+children=[12]
+dynamicChildren=[1]
+
+[cox.party.border.outer.info]
+children=[12]
+dynamicChildren=[0]
 
 [cox.parties.border.inner]
 color=0x474745
@@ -819,9 +850,22 @@ opacity=150
 children=[10, 15]
 
 [grouping_tab.border.outer]
-color=0x191900
+color=0x3c222c
 opacity=0
 children=[9, 14]
+
+[grouping_tab.dropdown]
+scripts=[433]
+
+[grouping_tab.dropdown.border.inner]
+children=[21]
+opacity=150
+color=0x726451
+
+[grouping_tab.dropdown.border.outer]
+children=[20]
+opacity=0
+color=0x2e2b23
 
 ########################################
 
