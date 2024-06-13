@@ -228,6 +228,26 @@ opacity=0
 
 ########################################
 
+[clan_chat]
+interface=701
+
+[clan_chat.border]
+scripts=4396
+children=[5]
+
+[clan_chat.border.inner]
+color=0x474745
+opactiy=0
+dynamicChildren=[1]
+
+[clan_chat.border.outer]
+color=0xe0e0c
+opactiy=0
+dynamicChildren=[1]
+
+
+########################################
+
 [colosseum]
 interface=865
 
@@ -1146,6 +1166,25 @@ scripts=[2058]
 children=[7, 8, 9, 10, 11, 12]
 dynamicChildren=[0]
 opacity=0
+
+########################################
+
+[other_clan]
+interface=702
+
+[other_clan.border]
+children=[5]
+scripts=[4396]
+
+[other_clan.border.inner]
+color=0x474745
+opacity=0
+dynamicChildren=[1]
+
+[other_clan.border.outer]
+color=0xe0e0c
+opacity=0
+dynamicChildren=[0]
 
 ########################################
 
