@@ -59,6 +59,11 @@ tasks.withType(JavaCompile) {
     options.release.set(11)
 }
 
+tasks.withType(Jar) {
+    exclude 'org/tomlj/TomlCommand.class'
+    exclude 'org/antlr/v4/runtime/misc/TestRig.class'
+}
+
 test {
     systemProperty('spriteFolder', System.getProperty('spriteFolder'))
     systemProperty('packFolder', System.getProperty('packFolder'))
