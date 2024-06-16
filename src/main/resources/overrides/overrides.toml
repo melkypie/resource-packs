@@ -1875,10 +1875,6 @@ dynamicChildren=[1]
 children=[77]
 dynamicChildren=[0]
 
-[toa.invocations.border.outer.body]
-children=[49]
-dynamicChildren=[0]
-
 [toa.applicants.border.inner]
 color=0x474745
 opacity=0
