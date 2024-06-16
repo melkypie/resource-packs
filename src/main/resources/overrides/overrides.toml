@@ -872,10 +872,12 @@ children=[25]
 dynamicChildren=[17, 19, 26, 29, 36]
 
 [ge.offer.border.inner.filled]
+scripts=[820]
 children=[15]
 dynamicChildren=[0, 2, 9, 12, 19]
 
 [ge.offer.border.outer.filled]
+scripts=[820]
 children=[15]
 dynamicChildren=[1, 3, 10, 13, 20]
 
