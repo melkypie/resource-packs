@@ -62,6 +62,9 @@ tasks.withType(JavaCompile) {
 tasks.withType(Jar) {
     exclude 'org/tomlj/TomlCommand.class'
     exclude 'org/antlr/v4/runtime/misc/TestRig.class'
+    exclude { FileTreeElement details ->
+        details.file.path.contains("checkerframework") && details.file.name != "Nullable.class"
+    }
 }
 
 test {
