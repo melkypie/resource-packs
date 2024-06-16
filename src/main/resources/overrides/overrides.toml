@@ -836,7 +836,7 @@ dynamicChildren=[1]
 [friends_list.header.border.outer]
 color=0xe0e0c
 opacity=0
-dynamicChildren=[1]
+dynamicChildren=[0]
 
 ########################################
 
