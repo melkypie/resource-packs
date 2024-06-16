@@ -1413,7 +1413,7 @@ dynamicChildren=[2, 6, 10]
 
 [[pvp_arena.supplies.stats.border.outer.stats]]
 children=[112, 113]
-dynamicChildren=[3, 7, 10]
+dynamicChildren=[3, 7, 11]
 
 [[pvp_arena.supplies.stats.border.outer.stats]]
 children=[111]
