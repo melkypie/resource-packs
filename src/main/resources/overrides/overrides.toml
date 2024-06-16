@@ -2113,6 +2113,20 @@ color=0x000000
 children=[7]
 opactiy=150
 
+[world_switcher.window.border]
+interface=821
+children=[9]
+scripts=[891]
+
+[world_switcher.window.border.inner]
+color=0x474745
+opacity=0
+dynamicChildren=[1]
+
+[world_switcher.window.border.outer]
+color=0xe0e0c
+opacity=0
+dynamicChildren=[0]
 
 ########################################
 
