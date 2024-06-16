@@ -1030,11 +1030,11 @@ dynamicChildren=[0]
 
 [lectern.border.inner.ingredients]
 children=[11]
-dynamicChildren=[1, 10, 13]
+dynamicChildren=[0, 9, 12, 15]
 
 [lectern.border.outer.ingredients]
 children=[11]
-dynamicChildren=[0, 9, 12]
+dynamicChildren=[1, 10, 13, 16]
 
 ########################################
 
