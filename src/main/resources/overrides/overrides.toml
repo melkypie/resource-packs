@@ -1186,6 +1186,72 @@ dynamicChildren=[12, 30, 84, 182, 208, 230, 268]
 children=[3]
 dynamicChildren=[13, 31, 85, 1823, 2089, 231, 269]
 
+[lms.supplies]
+interface=646
+scripts=[6520]
+
+[lms.supplies.border.inner]
+color=0x474745
+opacity=0
+type=3
+
+[lms.supplies.border.outer]
+color=0xe0e0c
+opacity=0
+type=3
+
+[lms.supplies.border.inner.equipped]
+children=[10, 40, 70]
+dynamicChildren=[1]
+
+[lms.supplies.border.outer.equipped]
+children=[10, 40, 70]
+dynamicChildren=[0]
+
+[lms.supplies.border.inner.inventory]
+children=[27, 57, 87]
+dynamicChildren=[57]
+
+[lms.supplies.border.outer.inventory]
+children=[27, 57, 87]
+dynamicChildren=[56]
+
+[lms.supplies.border.inner.list]
+children=[28, 58, 88]
+dynamicChildren=[1]
+
+[lms.supplies.border.outer.list]
+children=[28, 58, 88]
+dynamicChildren=[0]
+
+[lms.supplies.dropdown.border.inner]
+scripts=[6522]
+color=0x383023
+type=3
+children=[34, 64, 94]
+dynamicChildren=[5]
+
+[lms.supplies.dropdown.border.outer]
+scripts=[6522]
+color=0x5a5245
+type=3
+children=[34, 64, 94]
+dynamicChildren=[4]
+
+[lms.supplies.menu.border.inner]
+color=0xe0e0c
+opacity=0
+type=3
+children=[8, 38, 68]
+dynamicChildren=[2]
+
+[lms.supplies.menu.border.outer]
+color=0x474745
+opacity=0
+type=3
+children=[8, 38, 68]
+dynamicChildren=[1]
+
 ########################################
 
 [make_all]
