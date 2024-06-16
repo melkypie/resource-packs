@@ -358,6 +358,14 @@ public class Overrides
 			log.debug("adding override {}", node);
 			widgetOverrides.put(node.getScript(), node);
 		}
+		else
+		{
+			if (node.getNewColor() > -1 && node.getInterfaceId() > -1 &&
+				node.getChildId() > -1 && node.getScript() == -1)
+			{
+				log.debug("skipping override {}, no scriptid", node);
+			}
+		}
 
 		return parent;
 	}
