@@ -263,12 +263,12 @@ opacity=200
 [colosseum.info.border.inner]
 color=0x474745
 opacity=0
-dynamicCihldren=[2]
+dynamicChildren=[2]
 
 [colosseum.info.border.outer]
 color=0xe0e0c
 opacity=0
-dynamicCihldren=[1]
+dynamicChildren=[1]
 
 [colosseum.modifiers]
 scripts=[4931, 4937, 4938]
@@ -326,12 +326,12 @@ dynamicChildren=[0]
 [colosseum.wave.border.inner]
 color=0x474745
 opacity=0
-dynamicCihldren=[2]
+dynamicChildren=[2]
 
 [colosseum.wave.border.outer]
 color=0xe0e0c
 opacity=0
-dynamicCihldren=[1]
+dynamicChildren=[1]
 
 ########################################
 
