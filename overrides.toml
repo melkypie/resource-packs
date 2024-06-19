@@ -6,7 +6,7 @@ color=0x000000
 
 [achievement_diary.entry.border]
 color=0x1c1c1c
-# opacity=150
+opacity=255
 
 [achievement_diary.progress.background]
 color=0
@@ -752,11 +752,11 @@ color=0x000000
 # opacity=50
 
 [xp_tracker.border.inner]
-color=0x1b3c4b
+color=0x002c2b
 # opacity=0
 
 [xp_tracker.border.outer]
-color=0x301934
+color=0x001f1f
 # opacity=0
 
 [ge.inventory.glow]
