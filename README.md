@@ -1,6 +1,6 @@
 # 2006 by Glocc
 
-![icon](https://i.imgur.com/lpK1zLx.png)
+![icon](https://i.imgur.com/eKf628t.png)
 
 [Download Locally](https://github.com/melkypie/resource-packs/archive/refs/heads/pack-2006.zip)
 
