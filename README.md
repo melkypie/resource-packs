@@ -4,6 +4,9 @@
 
 [Download Locally](https://github.com/melkypie/resource-packs/archive/refs/heads/pack-2006.zip)
 
+[How to use resource packs locally](https://github.com/melkypie/resource-packs/wiki/Using-a-custom-pack-%28not-from-the-hub%29)
+
+## Description
 This pack was created to recreate the gameframe of late 2006, when hunter was released. With the limitations of resource packs currently, it's not possible to have the same exact appearance as the original. I spent a lot of time searching old references and trying to fit the old interface style with the current so it looks as close to the original style as possible.
 Hope you enjoy
 
@@ -29,19 +32,27 @@ Hope you enjoy
 
 
 ## Chat
-If you prefer to have the chat and stones behind the buttons underneath transparent like the example above, download the following image and replace `background.png` in the chatbox folder. For the stones behind the buttons, open up `buttons_background_stones.png` in the chatbox folder and make the whole image fully transparent.
+If you prefer to have the chat and stones behind the buttons underneath transparent like the example above, navigate to the `chatbox` folder and open the `Alternative` folder. Drag and drop the files into the `chatbox` folder to replace the default ones.
 
-#### Background
-![ChatBackground](https://i.imgur.com/yHgxSTe.png)
+Disable and re-enable the resource packs plugin, and if you've done it correctly your chatbox in-game should have changed.
 
+Before:
+
+![Chatbox](https://i.imgur.com/9CsrhMm.png)
+
+After
+
+![Chatbox](https://i.imgur.com/GaQz2Gf.png)
+
+**If you replace these files, fixed mode will not work correctly, use the hub option for default chatbox if you'd like.**
 
 ## Correct icon alignment for FIXED MODE
 
 If you plan on using fixed mode **only**, Navigate to the `tab` folder inside of the resource pack.
 
-Open the `Alternatives` folder, drag and drop all the icons into the `tab` folder to replace them. 
+Open the `Alternatives` folder, drag and drop all the icons into the `tab` folder to replace the default ones. 
 
-Disable and reenable the resource pack plugin, and if you've done it correctly your tab icons in-game should be correctly aligned.
+Disable and reenable the resource packs plugin, and if you've done it correctly your tab icons in-game should be correctly aligned.
 
 Before:
 
