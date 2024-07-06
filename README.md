@@ -15,7 +15,7 @@ Hope you enjoy
 ![ResizeableMode](https://i.imgur.com/joegUH6.png)
 
 ## Fixed mode
-![FixedMode](https://i.imgur.com/um8U0JA.png)
+![FixedMode](https://i.imgur.com/BOn4ksP.png)
 
 **In order to correctly use in fixed mode theres a couple steps required:**
 1. Go to Runelite's plugins and enable "Interface Styles", open the settings and set 'gameframe' to 2006.
