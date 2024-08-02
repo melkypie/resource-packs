@@ -175,12 +175,19 @@ dynamicChildren=[0]
 ########################################
 
 [channel_tab]
-interface=707
+interface=-1
 
 [channel_tab.separator]
-scripts=[4471]
 color=0x5d5848
 children=[2]
+
+[channel_tab.separator.regular]
+scripts=[4471]
+interface=707
+
+[channel_tab.separator.gim]
+scripts=[4472]
+interface=727
 
 ########################################
 
