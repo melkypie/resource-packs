@@ -86,6 +86,24 @@ dynamicChildren=[1]
 children=[47]
 dynamicChildren=[171]
 
+[bank.popup]
+interface=289
+
+[bank.popup.border]
+scripts=[4212]
+
+[bank.popup.border.inner]
+children=[5]
+dynamicChildren=[1]
+color=0x474745
+opacity=0
+
+[bank.popup.border.outer]
+children=[5]
+dynamicChildren=[0]
+color=0xe0e0c
+opacity=0
+
 ########################################
 
 [bonds_pouch]
