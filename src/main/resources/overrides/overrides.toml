@@ -1548,6 +1548,17 @@ children=[2]
 
 ########################################
 
+[report]
+interface=875
+
+[report.button.hover]
+scripts=[2044]
+color=0x89785e
+children=[5, 6, 13, 21]
+dynamicChildren=[0]
+
+########################################
+
 [rune_pouch]
 interface=190
 
