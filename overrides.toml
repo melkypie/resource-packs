@@ -29,6 +29,14 @@
 # color=0x726451
 # opacity=0
 
+# [bank.popup.border.inner]
+# color=0x474745
+# opacity=0
+
+# [bank.popup.border.outer]
+# color=0x0e0e0c
+# opacity=0
+
 # [bank.separator]
 # color=0x2e2b23
 
@@ -55,6 +63,11 @@
 
 # [chatbox.separator]
 # color=0x807660
+
+# [chatbox.separator.opaque]
+# opacity=0
+
+# [chatbox.separator.transparent]
 # opacity=200
 
 # [choose_spell.background]
@@ -413,6 +426,28 @@
 # color=0x0e0e0c
 # opacity=0
 
+# [lms.supplies.border.inner]
+# color=0x474745
+# opacity=0
+
+# [lms.supplies.border.outer]
+# color=0x0e0e0c
+# opacity=0
+
+# [lms.supplies.dropdown.border.inner]
+# color=0x383023
+
+# [lms.supplies.dropdown.border.outer]
+# color=0x5a5245
+
+# [lms.supplies.menu.border.inner]
+# color=0x0e0e0c
+# opacity=0
+
+# [lms.supplies.menu.border.outer]
+# color=0x474745
+# opacity=0
+
 # [looting_bag.border.inner]
 # color=0x5a5245
 # opacity=0
@@ -530,6 +565,9 @@
 
 # [quest_tab.separator]
 # color=0x5d5848
+
+# [report.button.hover]
+# color=0x89785e
 
 # [rune_pouch.border.inner]
 # color=0xebd7cc
@@ -744,6 +782,14 @@
 # [world_switcher.border.top]
 # color=0x73654a
 # opacity=50
+
+# [world_switcher.window.border.inner]
+# color=0x474745
+# opacity=0
+
+# [world_switcher.window.border.outer]
+# color=0x0e0e0c
+# opacity=0
 
 # [xp_tracker.border.inner]
 # color=0x5a5245
