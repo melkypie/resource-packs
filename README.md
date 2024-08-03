@@ -1,6 +1,6 @@
 # 2006 by Glocc
 
-![icon](https://i.imgur.com/eKf628t.png)
+![icon](https://i.imgur.com/Pa4HLYY.png)
 
 [Download Locally](https://github.com/melkypie/resource-packs/archive/refs/heads/pack-2006.zip)
 
@@ -11,8 +11,8 @@ This pack was created to recreate the gameframe of late 2006, when hunter was re
 Hope you enjoy
 
 ## Resizeable mode
-![ResizeableMode](https://i.imgur.com/8sR8SQk.png)
-![ResizeableMode](https://i.imgur.com/joegUH6.png)
+![ResizeableMode](https://i.imgur.com/9cBb1PZ.png)
+![ResizeableMode](https://i.imgur.com/SO4JlKM.png)
 
 ## Fixed mode
 ![FixedMode](https://i.imgur.com/BOn4ksP.png)
