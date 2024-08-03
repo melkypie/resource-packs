@@ -2,7 +2,7 @@
 
 ![icon](https://i.ibb.co/vdf66SG/icon.png)
 
-Deluxe Theme in a dark setting, to check Varietyz out you may visit ![discord](https://discord.gg/RQ9H9naf7E)
+Deluxe Theme in a dark setting, to check Varietyz out you may visit [discord](https://discord.gg/RQ9H9naf7E)
 
 ## Fixed mode
 ![FixedMode](https://i.ibb.co/1zXkjdq/fixed.png)
