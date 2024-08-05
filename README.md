@@ -11,11 +11,11 @@ This pack was created to recreate the gameframe of late 2006, when hunter was re
 Hope you enjoy
 
 ## Resizeable mode
-![ResizeableMode](https://i.imgur.com/9cBb1PZ.png)
-![ResizeableMode](https://i.imgur.com/SO4JlKM.png)
+![ResizeableMode](https://i.imgur.com/opPwR8W.png)
+![ResizeableMode](https://i.imgur.com/gQ4IA08.png)
 
 ## Fixed mode
-![FixedMode](https://i.imgur.com/BOn4ksP.png)
+![FixedMode](https://i.imgur.com/x2EZflY.png)
 
 **In order to correctly use in fixed mode theres a couple steps required:**
 1. Go to Runelite's plugins and enable "Interface Styles", open the settings and set 'gameframe' to 2006.
@@ -32,17 +32,17 @@ Hope you enjoy
 
 
 ## Chat
-If you prefer to have the chat and stones behind the buttons underneath transparent like the example above, navigate to the `chatbox` folder and open the `Alternative` folder. Drag and drop the files into the `chatbox` folder to replace the default ones.
+If you prefer to have the chat and stones behind the buttons underneath transparent like the example above, navigate to the `chatbox` folder and open the `Alternative` folder. Drag and drop `background.png` and `buttons_background_stones.png` into the `chatbox` folder to replace the default ones.
 
 Disable and re-enable the resource packs plugin, and if you've done it correctly your chatbox in-game should have changed.
 
 Before:
 
-![Chatbox](https://i.imgur.com/9CsrhMm.png)
+![Chatbox](https://i.imgur.com/QqMRUbf.png)
 
 After
 
-![Chatbox](https://i.imgur.com/GaQz2Gf.png)
+![Chatbox](https://i.imgur.com/XRDTAD8.png)
 
 **If you replace these files, fixed mode will not work correctly, use the hub option for default chatbox if you'd like.**
 
@@ -56,8 +56,8 @@ Disable and reenable the resource packs plugin, and if you've done it correctly 
 
 Before:
 
-![Inventory](https://i.imgur.com/uFJq8uJ.png)
+![Inventory](https://i.imgur.com/ZxOylsq.png)
 
 After:
 
-![Inventory](https://i.imgur.com/6WlxDBj.png)
+![Inventory](https://i.imgur.com/mQdSuvI.png)
