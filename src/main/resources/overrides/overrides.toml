@@ -1887,7 +1887,7 @@ dynamicChildren=[1]
 [spell_tooltip.border.outer]
 color=0x726451
 opacity=0
-dynamicChildren=[0]
+dynamicChildren=[2]
 
 ########################################
 
