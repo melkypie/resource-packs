@@ -17,9 +17,12 @@ jobs:
       with:
         repository: 'raiyni/resource-packs-manifest-updater'
         ref: 'master'
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '20.16.0'
     - name: Install neccessary packages
       run: npm install
     - name: Run the manifest updater
-      uses: ./
+      run: node index.js
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
