@@ -13,9 +13,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
       with:
-        repository: 'melkypie/resource-packs-manifest-updater'
+        repository: 'raiyni/resource-packs-manifest-updater'
         ref: 'master'
     - name: Install neccessary packages
       run: npm install
