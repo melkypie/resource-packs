@@ -14,8 +14,8 @@ This pack was created to recreate the gameframe of late 2006, when hunter was re
 
 
 # Resizeable mode
-![ResizeableMode](https://i.imgur.com/JkeVWWi.png)
-![ResizeableMode](https://i.imgur.com/bFxwQMv.png)
+![ResizeableMode](https://i.imgur.com/dYrtV30.png)
+![ResizeableMode](https://i.imgur.com/GT10jqh.png)
 
 ## Resizable chatbox
 If you prefer to have the chat and stones behind the buttons underneath transparent like the example above, navigate to the `chatbox` folder and open the `Alternative` folder. Drag and drop `background.png` and `buttons_background_stones.png` into the `chatbox` folder to replace the default ones.
@@ -24,17 +24,17 @@ Disable and re-enable the resource packs plugin, and if you've done it correctly
 
 Before:
 
-![Chatbox](https://i.imgur.com/BtvXVCq.png)
+![Chatbox](https://i.imgur.com/AElxl5Q.png)
 
 After
 
-![Chatbox](https://i.imgur.com/OTTlC6C.png)
+![Chatbox](https://i.imgur.com/RhlQ8M8.png)
 
 **If you replace these files, fixed mode will not work correctly, use the hub option for default chatbox if you'd like.**
 
 
 # Fixed mode
-![FixedMode](https://i.imgur.com/4QeYz7N.png)
+![FixedMode](https://i.imgur.com/CHlj2az.png)
 
 **In order to correctly use in fixed mode theres a couple steps required:**
 1. Go to Runelite's plugins and enable "Interface Styles", open the settings and set 'gameframe' to 2006.
