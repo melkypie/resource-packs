@@ -2,7 +2,7 @@
 
 ![icon](https://github.com/user-attachments/assets/03e7e850-4d35-423b-82a9-2d5210b6095c)
 
-A Cherry BLossom inspired dark theme
+A Cherry Blossom inspired dark theme
 
 ## Resizeable mode
 ![ResizeableMode](https://github.com/user-attachments/assets/22633e8b-2748-4ed3-88bf-9a02a93998fd)
