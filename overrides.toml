@@ -10,7 +10,7 @@
  opacity=150
 
  [achievement_diary.progress.background]
- color=0x000000
+ color=0x532727
  opacity=150
 
  [bank.inventory.rune_pouch.border.inner]
@@ -34,7 +34,7 @@
  opacity=0
 
  [bank.popup.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [bank.separator]
@@ -62,7 +62,7 @@
  color=0x691f39
 
  [chatbox.separator]
- color=0x2e0513
+ color=0xae6d66
 
  [chatbox.separator.opaque]
  opacity=0
@@ -71,7 +71,7 @@
  opacity=200
 
  [choose_spell.background]
- color=0x000000
+ color=0x532727
  opacity=0
 
  [choose_spell.border.inner]
@@ -86,13 +86,13 @@
  color=0x2e0513
 
  [clan_chat.border.outer]
- color=0x0e0e0c
+ color=0x411e17
 
  [collection_log.border]
  color=0x691f39
 
  [colosseum.info.background]
- color=0x000000
+ color=0x532727
  opacity=200
 
  [colosseum.info.border.inner]
@@ -100,7 +100,7 @@
  opacity=0
 
  [colosseum.info.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [colosseum.modifiers.border]
@@ -116,7 +116,7 @@
  opacity=0
 
  [colosseum.wave.background]
- color=0x000000
+ color=0x532727
  opacity=200
 
  [colosseum.wave.border.inner]
@@ -124,7 +124,7 @@
  opacity=0
 
  [colosseum.wave.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [combat_achievements.boss.border.inner]
@@ -136,7 +136,7 @@
  opacity=0
 
  [combat_achievements.overview.border]
- color=0x000000
+ color=0x532727
  opacity=150
 
  [combat_achievements.progress.border.inner]
@@ -144,7 +144,7 @@
  opacity=0
 
  [combat_achievements.progress.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [combat_achievements.rewards.body.border.inner]
@@ -160,7 +160,7 @@
  opacity=0
 
  [combat_achievements.rewards.section.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [combat_achievements.tasks.dropdown.border.inner]
@@ -168,7 +168,7 @@
  opacity=0
 
  [combat_achievements.tasks.dropdown.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [combat_achievements.tasks.menu.border.inner]
@@ -176,7 +176,7 @@
  opacity=0
 
  [combat_achievements.tasks.menu.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [costumes.border.inner]
@@ -184,7 +184,7 @@
  opacity=0
 
  [costumes.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [cox.overlay.background]
@@ -204,7 +204,7 @@
  opacity=0
 
  [cox.parties.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [cox.party.border.inner]
@@ -212,11 +212,11 @@
  opacity=0
 
  [cox.party.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [forestry_kit.body.background]
- color=0x000000
+ color=0x532727
  opacity=200
 
  [forestry_kit.body.border.inner]
@@ -224,11 +224,11 @@
  opacity=0
 
  [forestry_kit.body.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [forestry_kit.info.background]
- color=0x000000
+ color=0x532727
  opacity=200
 
  [forestry_kit.info.border.inner]
@@ -236,11 +236,11 @@
  opacity=0
 
  [forestry_kit.info.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [forestry_shop.body.background]
- color=0x000000
+ color=0x532727
  opacity=200
 
  [forestry_shop.body.border.inner]
@@ -248,7 +248,7 @@
  opacity=0
 
  [forestry_shop.body.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [forestry_shop.dropdown.border.inner]
@@ -256,11 +256,11 @@
  opacity=0
 
  [forestry_shop.dropdown.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [forestry_shop.info.background]
- color=0x000000
+ color=0x532727
  opacity=200
 
  [forestry_shop.info.border.inner]
@@ -268,7 +268,7 @@
  opacity=0
 
  [forestry_shop.info.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [forestry_shop.menu.border.inner]
@@ -276,7 +276,7 @@
  opacity=0
 
  [forestry_shop.menu.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [friends_chat.border.inner]
@@ -284,7 +284,7 @@
  opacity=0
 
  [friends_chat.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [friends_chat.header.border.inner]
@@ -292,7 +292,7 @@
  opacity=0
 
  [friends_chat.header.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [friends_chat.setup.border.inner]
@@ -308,7 +308,7 @@
  opacity=0
 
  [friends_list.header.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [ge.inventory.glow]
@@ -351,7 +351,7 @@
  opacity=0
 
  [ignore_list.header.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [item_search.background]
@@ -371,11 +371,11 @@
  opacity=0
 
  [jewellery_box.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [kept_on_death.border.inner]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [kept_on_death.border.outer]
@@ -383,7 +383,7 @@
  opacity=0
 
  [lectern.border.inner]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [lectern.border.outer]
@@ -415,7 +415,7 @@
  opacity=0
 
  [lms.shop.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [lms.shop.separator.accent]
@@ -423,7 +423,7 @@
  opacity=0
 
  [lms.shop.separator]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [lms.supplies.border.inner]
@@ -431,7 +431,7 @@
  opacity=0
 
  [lms.supplies.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [lms.supplies.dropdown.border.inner]
@@ -441,7 +441,7 @@
  color= 0x2e0513
 
  [lms.supplies.menu.border.inner]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [lms.supplies.menu.border.outer]
@@ -469,7 +469,7 @@
  opacity=0
 
  [other_clan.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [pet_house.border.inner]
@@ -485,7 +485,7 @@
  opacity=0
 
  [portal_nexus.border]
- color=0x000000
+ color=0x532727
  opacity=0
 
  [pvp_arena.confirm_options.separator.accent]
@@ -493,7 +493,7 @@
  opacity=100
 
  [pvp_arena.confirm_options.separator]
- color=0x0e0e0c
+ color=0x411e17
  opacity=100
 
  [pvp_arena.duel_options.separator]
@@ -505,7 +505,7 @@
  opacity=0
 
  [pvp_arena.recruitment.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [pvp_arena.supplies.kit.dropdown.border.inner]
@@ -525,7 +525,7 @@
  opacity=0
 
  [pvp_arena.supplies.kit.inventory.border.inner]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [pvp_arena.supplies.kit.inventory.border.outer]
@@ -545,7 +545,7 @@
  opacity=0
 
  [pvp_arena.supplies.kit.menu.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [pvp_arena.supplies.separator]
@@ -560,7 +560,7 @@
  opacity=0
 
  [quest_list.background]
- color=0x000000
+ color=0x532727
  opacity=212
 
  [quest_tab.separator]
@@ -582,7 +582,7 @@
  opacity=0
 
  [settings.body.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [settings.menu.border.inner]
@@ -590,7 +590,7 @@
  opacity=0
 
  [settings.menu.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [settings.sidebar.border.inner]
@@ -598,7 +598,7 @@
  opacity=0
 
  [settings.sidebar.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [settings_tab.dropdown.border.inner]
@@ -606,7 +606,7 @@
  opacity=0
 
  [settings_tab.dropdown.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [settings_tab.menu.border.inner]
@@ -614,7 +614,7 @@
  opacity=0
 
  [settings_tab.menu.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [settings_tab.separator]
@@ -625,7 +625,7 @@
  opacity=0
 
  [skill_guide.body.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [skill_guide.tab.border]
@@ -645,7 +645,7 @@
  color=0x2e0513
 
  [spell_tooltip.background]
- color=0x000000
+ color=0x532727
  opacity=40
 
  [spell_tooltip.border.inner]
@@ -661,7 +661,7 @@
  opacity=0
 
  [toa.applicants.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [toa.invocations.border.inner]
@@ -669,7 +669,7 @@
  opacity=0
 
  [toa.invocations.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [toa.members.border.inner]
@@ -677,7 +677,7 @@
  opacity=0
 
  [toa.members.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [toa.parties.border.inner]
@@ -685,7 +685,7 @@
  opacity=0
 
  [toa.parties.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [toa.separator.bottom.accent]
@@ -705,7 +705,7 @@
  opacity=0
 
  [toa.summary.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [tob.applicants.border.inner]
@@ -713,7 +713,7 @@
  opacity=0
 
  [tob.applicants.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [tob.parties.border.inner]
@@ -721,7 +721,7 @@
  opacity=0
 
  [tob.parties.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [tob.party.border.inner]
@@ -737,7 +737,7 @@
  opacity=0
 
  [tob.party.header.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [world_map.dropdown.border.inner]
@@ -745,7 +745,7 @@
  opacity=0
 
  [world_map.dropdown.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [world_map.key.border.inner]
@@ -753,7 +753,7 @@
  opacity=0
 
  [world_map.key.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [world_map.location_menu.border.inner]
@@ -761,7 +761,7 @@
  opacity=0
 
  [world_map.location_menu.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [world_map.search.border.inner]
@@ -769,11 +769,11 @@
  opacity=0
 
  [world_map.search.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [world_switcher.background]
- color=0x000000
+ color=0x532727
 
  [world_switcher.border.bottom]
  color=0x691f39
@@ -788,7 +788,7 @@
  opacity=0
 
  [world_switcher.window.border.outer]
- color=0x0e0e0c
+ color=0x411e17
  opacity=0
 
  [xp_tracker.border.inner]
