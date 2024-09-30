@@ -28,7 +28,7 @@ Access the configuration panel from the plugin and adjust to your liking/needs!
 
 If all done correctly, it should display as so:
 
-![endproduct](https://github.com/user-attachments/assets/cd5cdcb9-933c-43bb-afeb-bc2eaccd2526)
+![image](https://github.com/user-attachments/assets/4d47e1f5-dd25-4f80-b3b3-958a6d9e0787)
 
 
 ## Fixed mode
