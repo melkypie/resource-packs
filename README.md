@@ -24,7 +24,7 @@ Disable the 'Regeneration Meter' and enable the 'LITE Regen Meter' Plugin!
 
 Access the configuration panel from the plugin and adjust to your liking/needs!
 
-![setup](https://github.com/user-attachments/assets/8981dad2-749a-43bc-b821-02f7c9eff13b)
+![setupconfig](https://github.com/user-attachments/assets/ebfcb89e-b1a5-4957-a8f0-78dc1de8c8e2)
 
 If all done correctly, it should display as so:
 
