@@ -9,7 +9,7 @@ When you experience a visual bug with the orbs, as the example below:
 
 ![visualbug](https://github.com/user-attachments/assets/31d547aa-5f21-4af2-abfd-6f9a5cf6458e)
 
-Make sure to head to the Plugin Hub and look for 'LITE Regen Meter'
+Make sure to head to the Plugin Hub and look for '[LITE Regen Meter](https://runelite.net/plugin-hub/show/lite-regen-meter)'
 
 ![pluginhub](https://github.com/user-attachments/assets/d18b1263-7236-4893-a7f2-bdbc6f94814a)
 Hit install.
