@@ -9,7 +9,7 @@ When you experience a visual bug with the orbs, as the example below:
 
 ![visualbug](https://github.com/user-attachments/assets/31d547aa-5f21-4af2-abfd-6f9a5cf6458e)
 
-Make sure to head to the Plugin Hub and look for 'LITE Regen Meter'
+Make sure to head to the Plugin Hub and look for '[LITE Regen Meter](https://runelite.net/plugin-hub/show/lite-regen-meter)'
 
 ![pluginhub](https://github.com/user-attachments/assets/d18b1263-7236-4893-a7f2-bdbc6f94814a)
 Hit install.
@@ -24,11 +24,11 @@ Disable the 'Regeneration Meter' and enable the 'LITE Regen Meter' Plugin!
 
 Access the configuration panel from the plugin and adjust to your liking/needs!
 
-![setup](https://github.com/user-attachments/assets/8981dad2-749a-43bc-b821-02f7c9eff13b)
+![setupconfig](https://github.com/user-attachments/assets/ebfcb89e-b1a5-4957-a8f0-78dc1de8c8e2)
 
 If all done correctly, it should display as so:
 
-![endproduct](https://github.com/user-attachments/assets/cd5cdcb9-933c-43bb-afeb-bc2eaccd2526)
+![image](https://github.com/user-attachments/assets/4d47e1f5-dd25-4f80-b3b3-958a6d9e0787)
 
 
 ## Fixed mode
