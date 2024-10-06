@@ -1,5 +1,5 @@
 # Resource packs 
-[![Active Installs](http://img.shields.io/endpoint?url=https://i.pluginhub.info/shields/installs/plugin/resource-packs)](https://runelite.net/plugin-hub/melky) [![Plugin Rank](http://img.shields.io/endpoint?url=https://i.pluginhub.info/shields/rank/plugin/resource-packs)](https://runelite.net/plugin-hub)
+[![Active Installs](http://img.shields.io/endpoint?url=https://api.runelite.net/pluginhub/shields/installs/plugin/resource-packs)](https://runelite.net/plugin-hub/melky) [![Plugin Rank](http://img.shields.io/endpoint?url=https://api.runelite.net/pluginhub/shields/rank/plugin/resource-packs)](https://runelite.net/plugin-hub)
 
 [![Discord](https://user-images.githubusercontent.com/5113962/116616080-e2a0ee80-a944-11eb-8c1f-b838233b29d5.png)](https://discord.com/invite/DsDhUz4NNN)
 
