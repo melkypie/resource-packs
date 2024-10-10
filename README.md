@@ -5,6 +5,9 @@
 RuneLITE Theme: A OSRS game UI overhaul by Smoke, to get in touch with the artist, you may visit [discord](https://discord.gg/varietyz)
 
 ## Regeneration Meters FIX (Plugin)
+[![](https://img.shields.io/endpoint?url=https://api.runelite.net/pluginhub/shields/rank/plugin/lite-regen-meter)](https://runelite.net/plugin-hub/show/lite-regen-meter)
+[![](https://img.shields.io/endpoint?url=https://api.runelite.net/pluginhub/shields/installs/plugin/lite-regen-meter)](https://runelite.net/plugin-hub/show/lite-regen-meter)
+
 When you experience a visual bug with the orbs, as the example below:
 
 ![visualbug](https://github.com/user-attachments/assets/31d547aa-5f21-4af2-abfd-6f9a5cf6458e)
