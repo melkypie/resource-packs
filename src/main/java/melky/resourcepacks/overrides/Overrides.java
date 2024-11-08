@@ -37,6 +37,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import javax.inject.Inject;
 import javax.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
 import static melky.resourcepacks.overrides.OverrideKey.CHILDREN;
@@ -61,6 +62,19 @@ public class Overrides
 	private final ListMultimap<Integer, WidgetOverride> widgetOverrides = ArrayListMultimap.create();
 	private final Map<String, Object> properties = new HashMap<>();
 
+	private final String sourcePath;
+
+	@Inject
+	public Overrides()
+	{
+		this("/overrides/overrides.toml");
+	}
+
+	protected Overrides(String path)
+	{
+		this.sourcePath = path;
+	}
+
 	public Collection<WidgetOverride> values()
 	{
 		return widgetOverrides.values();
@@ -81,11 +95,11 @@ public class Overrides
 		return widgetOverrides.containsKey(scriptId);
 	}
 
-	public void buildOverrides(final String packOverrides)
+	public Overrides buildOverrides(final String packOverrides)
 	{
 		clear();
 
-		try (var stream = Overrides.class.getResourceAsStream("/overrides/overrides.toml"))
+		try (var stream = Overrides.class.getResourceAsStream(sourcePath))
 		{
 			assert stream != null;
 
@@ -108,6 +122,8 @@ public class Overrides
 		{
 			log.error("error loading overrides", e);
 		}
+
+		return this;
 	}
 
 	public void clear()
@@ -135,72 +151,7 @@ public class Overrides
 	}
 
 	@VisibleForTesting
-	protected WidgetOverride walkChildren(WidgetOverride parent, TomlTable table, TomlTable pack)
-	{
-		var node = parent;
-		var map = table.toMap();
-		var path = parent.getName();
-
-		if (map.containsKey(INTERFACE))
-		{
-			node = node.withInterfaceId(table.getLong(INTERFACE).intValue());
-			map.remove(INTERFACE);
-		}
-
-		if (map.containsKey(TYPE))
-		{
-			node = node.withType(table.getLong(TYPE).intValue());
-			if (map.containsKey(NEW_TYPE))
-			{
-				node = node.withNewType(table.getLong(NEW_TYPE).intValue());
-				map.remove(NEW_TYPE);
-			}
-
-			map.remove(TYPE);
-		}
-
-		if (map.containsKey(COLOR))
-		{
-			int c = table.getLong(COLOR).intValue();
-			node = node.withColor(c);
-			if (pack.contains(OverrideKey.append(path, COLOR)))
-			{
-				var v = pack.get(OverrideKey.append(path, COLOR));
-				if (v instanceof Long)
-				{
-					node = node.withNewColor(((Long) v).intValue());
-				}
-			}
-			else
-			{
-				node = node.withNewColor(c);
-			}
-
-			map.remove(COLOR);
-		}
-
-		if (map.containsKey(SCRIPTS))
-		{
-			var scripts = table.getArrayOrEmpty(SCRIPTS).toList();
-			map.remove(SCRIPTS);
-
-			for (var script : scripts)
-			{
-				var clonedMap = new HashMap<>(map);
-				var n2 = node.withScript(((Long) script).intValue());
-				walkChildren(n2, clonedMap, pack);
-			}
-		}
-		else
-		{
-			walkChildren(node, map, pack);
-		}
-
-		return node;
-	}
-
-	@VisibleForTesting
-	protected WidgetOverride walkChildren(WidgetOverride parent, Map<String, Object> map, TomlTable pack)
+	protected WidgetOverride overrideProperties(WidgetOverride parent, Map<String, Object> map, TomlTable pack)
 	{
 		var node = parent;
 		var path = parent.getName();
@@ -214,7 +165,7 @@ public class Overrides
 		if (map.containsKey(COLOR))
 		{
 			int c = ((Long) map.get(COLOR)).intValue();
-			node = node.withColor(c);
+
 			if (pack.contains(OverrideKey.append(path, COLOR)))
 			{
 				var v = pack.get(OverrideKey.append(path, COLOR));
@@ -225,8 +176,13 @@ public class Overrides
 			}
 			else
 			{
-				node = node.withNewColor(c);
+				if (node.getColor() == node.getNewColor())
+				{
+					node = node.withNewColor(c);
+				}
 			}
+
+			node = node.withColor(c);
 
 			map.remove(COLOR);
 		}
@@ -258,6 +214,46 @@ public class Overrides
 
 			map.remove(OPACITY);
 		}
+
+		return node;
+	}
+
+	@VisibleForTesting
+	protected WidgetOverride walkChildren(WidgetOverride parent, TomlTable table, TomlTable pack)
+	{
+		var node = parent;
+		var map = table.toMap();
+		var path = parent.getName();
+
+		node = overrideProperties(node, map, pack);
+
+		if (map.containsKey(SCRIPTS))
+		{
+			var scripts = table.getArrayOrEmpty(SCRIPTS).toList();
+			map.remove(SCRIPTS);
+
+			for (var script : scripts)
+			{
+				var clonedMap = new HashMap<>(map);
+				var n2 = node.withScript(((Long) script).intValue());
+				walkChildren(n2, clonedMap, pack);
+			}
+		}
+		else
+		{
+			walkChildren(node, map, pack);
+		}
+
+		return node;
+	}
+
+	@VisibleForTesting
+	protected WidgetOverride walkChildren(WidgetOverride parent, Map<String, Object> map, TomlTable pack)
+	{
+		var node = parent;
+		var path = parent.getName();
+
+		node = overrideProperties(node, map, pack);
 
 		if (map.containsKey(VARBIT))
 		{
