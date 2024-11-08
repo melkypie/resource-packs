@@ -22,11 +22,31 @@
 # opacity=0
 
 # [bank.menu.border.inner]
-# color=0x2e2b23
+# color=0x474745
+# opacity=0
+
+# [bank.menu.border.inner.dropdown]
+# opacity=0
+
+# [bank.menu.border.inner.fillers]
+# color=0x726451
+# opacity=0
+
+# [bank.menu.border.inner.tab]
 # opacity=0
 
 # [bank.menu.border.outer]
-# color=0x726451
+# color=0x0e0e0c
+# opacity=0
+
+# [bank.menu.border.outer.dropdown]
+# opacity=0
+
+# [bank.menu.border.outer.fillers]
+# color=0x2e2b23
+# opacity=0
+
+# [bank.menu.border.outer.tab]
 # opacity=0
 
 # [bank.popup.border.inner]
@@ -418,12 +438,12 @@
 # color=0x0e0e0c
 # opacity=0
 
-# [lms.shop.separator.accent]
-# color=0x474745
-# opacity=0
-
 # [lms.shop.separator]
 # color=0x0e0e0c
+# opacity=0
+
+# [lms.shop.separator.accent]
+# color=0x474745
 # opacity=0
 
 # [lms.supplies.border.inner]
@@ -488,12 +508,12 @@
 # color=0x000000
 # opacity=0
 
-# [pvp_arena.confirm_options.separator.accent]
-# color=0x6b6b69
-# opacity=100
-
 # [pvp_arena.confirm_options.separator]
 # color=0x0e0e0c
+# opacity=100
+
+# [pvp_arena.confirm_options.separator.accent]
+# color=0x6b6b69
 # opacity=100
 
 # [pvp_arena.duel_options.separator]
@@ -632,17 +652,17 @@
 # color=0x726451
 # opacity=0
 
-# [soul_wars.separator.bottom.accent]
-# color=0x5d5848
-
 # [soul_wars.separator.bottom]
 # color=0x383023
 
-# [soul_wars.separator.top.accent]
+# [soul_wars.separator.bottom.accent]
 # color=0x5d5848
 
 # [soul_wars.separator.top]
 # color=0x383023
+
+# [soul_wars.separator.top.accent]
+# color=0x5d5848
 
 # [spell_tooltip.background]
 # color=0x000000
@@ -688,17 +708,17 @@
 # color=0x0e0e0c
 # opacity=0
 
-# [toa.separator.bottom.accent]
-# color=0x5d5848
-
 # [toa.separator.bottom]
 # color=0x383023
 
-# [toa.separator.top.accent]
+# [toa.separator.bottom.accent]
 # color=0x5d5848
 
 # [toa.separator.top]
 # color=0x383023
+
+# [toa.separator.top.accent]
+# color=0x5d5848
 
 # [toa.summary.border.inner]
 # color=0x474745
