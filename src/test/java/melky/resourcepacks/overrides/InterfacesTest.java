@@ -25,17 +25,13 @@
 
 package melky.resourcepacks.overrides;
 
-import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Multimap;
-import com.google.common.collect.MultimapBuilder;
 import com.google.common.collect.TreeMultimap;
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.io.IOException;
-import java.util.Objects;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
@@ -119,9 +115,10 @@ public class InterfacesTest
 				if (k.endsWith(".color"))
 				{
 					tables.put(s, String.format("# color=0x%06x", new Color(toml.getLong(k).intValue()).getRGB() & 16777215));
-				} else if (k.endsWith(".opacity"))
+				}
+				else if (k.endsWith(".opacity"))
 				{
-					tables.put(s,String.format("# opacity=%d", toml.getLong(k).intValue()));
+					tables.put(s, String.format("# opacity=%d", toml.getLong(k).intValue()));
 				}
 			}
 
