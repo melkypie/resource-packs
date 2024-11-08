@@ -223,7 +223,6 @@ public class Overrides
 	{
 		var node = parent;
 		var map = table.toMap();
-		var path = parent.getName();
 
 		node = overrideProperties(node, map, pack);
 
@@ -251,8 +250,6 @@ public class Overrides
 	protected WidgetOverride walkChildren(WidgetOverride parent, Map<String, Object> map, TomlTable pack)
 	{
 		var node = parent;
-		var path = parent.getName();
-
 		node = overrideProperties(node, map, pack);
 
 		if (map.containsKey(VARBIT))
