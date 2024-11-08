@@ -55,15 +55,22 @@ children=[12]
 scripts=[3276]
 
 [bank.menu.border.inner]
-color=0x2e2b23
+color=0x474745
 opacity=0
 
 [bank.menu.border.inner.tab]
-children=[50]
-dynamicChildren=[14]
+scripts=[5771]
+children=[59]
+dynamicChildren=[2]
+
+[bank.menu.border.inner.dropdown]
+scripts=[5772]
+children=[136]
+dynamicChildren=[1]
 
 [bank.menu.border.inner.fillers]
-children=[57]
+children=[65]
+color=0x726451
 dynamicChildren=[2]
 
 [bank.menu.border.inner.incinerator]
@@ -71,15 +78,22 @@ children=[47]
 dynamicChildren=[172]
 
 [bank.menu.border.outer]
-color=0x726451
+color=0xe0e0c
 opacity=0
 
 [bank.menu.border.outer.tab]
-children=[50]
-dynamicChildren=[13]
+scripts=[5771]
+children=[59]
+dynamicChildren=[1]
+
+[bank.menu.border.outer.dropdown]
+scripts=[5772]
+children=[136]
+dynamicChildren=[0]
 
 [bank.menu.border.outer.fillers]
-children=[57]
+children=[65]
+color=0x2e2b23
 dynamicChildren=[1]
 
 [bank.menu.border.outer.incinerator]
