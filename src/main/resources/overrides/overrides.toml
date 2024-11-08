@@ -2157,7 +2157,7 @@ dynamicChildren=[0]
 
 [world_map]
 interface=595
-scripts=[1707]
+scripts=[1733]
 
 [world_map.key]
 children=[14, 16, 17]
