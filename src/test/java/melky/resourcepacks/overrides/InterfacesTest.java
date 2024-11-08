@@ -25,6 +25,11 @@
 
 package melky.resourcepacks.overrides;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.ListMultimap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.MultimapBuilder;
+import com.google.common.collect.TreeMultimap;
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
@@ -106,24 +111,25 @@ public class InterfacesTest
 				.append("# [overlay]\n")
 				.append("# color=0x9C463D32\n");
 
-			var last = "";
+			Multimap<String, String> tables = TreeMultimap.create();
 
 			for (var k : keys)
 			{
 				var s = k.replaceAll(".color|.opacity", "");
-				if (!Objects.equals(s, last))
-				{
-					sb.append(String.format("\n# [%s]\n", s));
-					last = s;
-				}
-
 				if (k.endsWith(".color"))
 				{
-					sb.append(String.format("# color=0x%06x\n", new Color(toml.getLong(k).intValue()).getRGB() & 16777215));
+					tables.put(s, String.format("# color=0x%06x", new Color(toml.getLong(k).intValue()).getRGB() & 16777215));
 				} else if (k.endsWith(".opacity"))
 				{
-					sb.append(String.format("# opacity=%d\n", toml.getLong(k).intValue()));
+					tables.put(s,String.format("# opacity=%d", toml.getLong(k).intValue()));
 				}
+			}
+
+			for (var k : tables.keySet())
+			{
+				sb.append(String.format("\n# [%s]\n", k));
+				sb.append(String.join("\n", tables.get(k)));
+				sb.append("\n");
 			}
 
 			log.info("{}", sb + "");
