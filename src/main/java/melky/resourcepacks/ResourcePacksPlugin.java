@@ -85,6 +85,7 @@ public class ResourcePacksPlugin extends Plugin
 	private ResourcePacksHubPanel resourcePacksHubPanel;
 	private NavigationButton navButton;
 	private long currentProfile = Long.MIN_VALUE;
+	private GameState lastGameState;
 
 	@Provides
 	ResourcePacksConfig provideConfig(ConfigManager configManager)
@@ -283,6 +284,11 @@ public class ResourcePacksPlugin extends Plugin
 		if (gameStateChanged.getGameState() == GameState.LOGIN_SCREEN)
 		{
 			resourcePacksManager.changeCrossSprites();
+
+			if (lastGameState == GameState.STARTING)
+			{
+				queueUpdateAllOverrides();
+			}
 		}
 
 		if (client.getGameState() == GameState.LOGGED_IN &&
@@ -292,6 +298,8 @@ public class ResourcePacksPlugin extends Plugin
 			setInterfaceStylesGameframeOption();
 			clientThread.invokeLater(resourcePacksManager::updateAllOverrides);
 		}
+
+		lastGameState = gameStateChanged.getGameState();
 	}
 
 	@Subscribe
