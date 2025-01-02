@@ -1,0 +1,35 @@
+name: pr
+
+on:
+  pull_request:
+    branches:
+      - sample-vanilla
+
+jobs:
+  checkstyle:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout master
+        uses: actions/checkout@v4
+        with:
+          repository: melkypie/resource-packs
+          path: master
+
+      - name: Checkout sample
+        uses: actions/checkout@v4
+        with:
+          repository: melkypie/resource-packs
+          ref: sample-vanilla
+          path: vanilla
+
+      - name: Checkout pack
+        uses: actions/checkout@v4
+        with:
+          path: pack
+
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v3
+
+      - name: Check unused sprites
+        run: |
+          ./gradlew test --tests 'melky.resourcepacks.ResourcePacksPluginTest.checkUnneededFiles'
