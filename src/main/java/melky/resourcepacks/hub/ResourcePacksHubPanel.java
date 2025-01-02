@@ -289,6 +289,12 @@ public class ResourcePacksHubPanel extends PluginPanel
 				installed.forEach(internal ->
 				{
 					ResourcePackManifest toAddManifest = installedPacks.get(internal);
+					if (toAddManifest == null)
+					{
+						log.warn("pack missing from manifest: {}", internal);
+						return;
+					}
+
 					if (((DefaultComboBoxModel) currentHubPackComboBox.getModel()).getIndexOf(toAddManifest) == -1)
 					{
 						currentHubPackComboBox.addItem(toAddManifest);
