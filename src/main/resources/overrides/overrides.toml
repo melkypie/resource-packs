@@ -388,13 +388,13 @@ color=0x585040
 scripts=[2730]
 
 [collection_log.border.body]
-children=[38]
+children=[39]
 
 [collection_log.border.header]
-children=[21]
+children=[22]
 
 [collection_log.border.list]
-children=[30]
+children=[31]
 
 ########################################
 
