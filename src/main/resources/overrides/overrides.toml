@@ -1818,9 +1818,10 @@ opacity=0
 dynamicChildren=[0]
 
 [settings_tab.separator]
-scripts=[3916]
+scripts=[3917]
 color=0x5d5848
-children=[59, 60, 61, 62]
+children=[69]
+dynamicChildren=[0, 1]
 
 ########################################
 
