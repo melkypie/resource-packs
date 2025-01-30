@@ -996,17 +996,17 @@ interface=162
 scripts=[773, 3558]
 
 [item_search.background]
-children=[47]
+children=[48]
 color=0x463214
 opacity=200
 
 [item_search.border.outer]
-children=[48]
+children=[49]
 color=0x463214
 opacity=0
 
 [item_search.border.inner]
-children=[49]
+children=[50]
 color=0x463214
 opacity=150
 
