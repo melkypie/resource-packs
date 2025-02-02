@@ -58,6 +58,8 @@ public class WidgetOverride
 	List<Map.Entry<Integer, Integer>> varbits = new ArrayList<>();
 	List<Integer> dynamicChildren = new ArrayList<>();
 
+	boolean allChildren = false;
+
 	public boolean isValid()
 	{
 		return script > -1 &&

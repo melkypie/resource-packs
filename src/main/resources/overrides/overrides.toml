@@ -32,6 +32,15 @@ interface=12
 [bank.inventory]
 interface=15
 
+[bank.inventory.locked]
+interface=15
+children=[2]
+dynamicChildren=true
+scripts=[296]
+color=0xff0000
+opacity=0
+type=3
+
 [bank.inventory.rune_pouch]
 children=[23]
 scripts=[4880]

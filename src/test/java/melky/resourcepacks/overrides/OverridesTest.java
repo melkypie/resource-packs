@@ -102,4 +102,34 @@ public class OverridesTest
 		assertEquals(0x9D6A76, fillers.get(0).getNewColor());
 		assertEquals(0x2e2b23, fillers.get(0).getColor());
 	}
+
+	@Test
+	public void allDynamicChildren() throws IOException
+	{
+		Overrides defaultValues = new Overrides("/overrides/sources/base.toml").buildOverrides("");
+		Overrides overrides = new Overrides("/overrides/sources/base.toml");
+
+		String text = Resources.toString(Resources.getResource("overrides/tests/all-children.toml"), StandardCharsets.UTF_8);
+		overrides.buildOverrides(text);
+
+		var list = overrides.get(123);
+		var defaultList = defaultValues.get(123);
+
+		assertFalse("override list is empty", list.isEmpty());
+		assertFalse("default list is empty", defaultList.isEmpty());
+
+
+		var fillers = list.stream().filter(w -> w.getChildId() == 2).collect(Collectors.toList());
+		var defaultFillers = defaultList.stream().filter(w -> w.getChildId() == 2).collect(Collectors.toList());
+
+		assertEquals(1, fillers.size());
+		assertEquals(1, defaultFillers.size());
+
+		assertNotEquals(fillers.get(0), defaultFillers.get(0));
+
+		log.info("{}", fillers.get(0));
+
+		assertEquals(true, fillers.get(0).isAllChildren());
+		assertEquals(0, fillers.get(0).getDynamicChildren().size());
+	}
 }

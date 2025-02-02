@@ -850,6 +850,18 @@ public class ResourcePacksManager
 				applyWidgetProperties(arrayWidget, widgetOverride, reset);
 			}
 		}
+		else if (widgetOverride.isAllChildren())
+		{
+			for (var widget : widgetToOverride.getDynamicChildren())
+			{
+				if (widget == null)
+				{
+					continue;
+				}
+
+				applyWidgetProperties(widget, widgetOverride, reset);
+			}
+		}
 		else
 		{
 			applyWidgetProperties(widgetToOverride, widgetOverride, reset);
@@ -882,6 +894,10 @@ public class ResourcePacksManager
 
 			return;
 		}
+
+		// w = 3
+		// o = 3
+		// n = -1
 
 		if (widget.getTextColor() == newColor || !widgetOverride.checkVarbit(client) ||
 			(widgetOverride.getType() > -1 && (widget.getType() != widgetOverride.getType() && widgetOverride.getNewType() != widget.getType())))

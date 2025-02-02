@@ -1,6 +1,12 @@
 [bank]
 interface=12
 
+[bank.locked]
+children=[2]
+scripts=[123]
+color=0xFF0000
+dynamicChildren=true
+
 [bank.menu]
 scripts=[1]
 
