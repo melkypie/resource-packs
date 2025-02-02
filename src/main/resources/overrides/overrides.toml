@@ -66,12 +66,12 @@ dynamicChildren=[2]
 
 [bank.menu.border.inner.dropdown]
 scripts=[5772]
-children=[136]
+children=[137]
 opacity=0
 dynamicChildren=[1]
 
 [bank.menu.border.inner.fillers]
-children=[65]
+children=[66]
 color=0x726451
 opacity=0
 dynamicChildren=[2]
@@ -92,12 +92,12 @@ dynamicChildren=[1]
 
 [bank.menu.border.outer.dropdown]
 scripts=[5772]
-children=[136]
+children=[137]
 opacity=0
 dynamicChildren=[0]
 
 [bank.menu.border.outer.fillers]
-children=[65]
+children=[66]
 color=0x2e2b23
 opacity=0
 dynamicChildren=[1]
