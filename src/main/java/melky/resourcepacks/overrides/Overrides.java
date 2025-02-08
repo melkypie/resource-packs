@@ -335,13 +335,16 @@ public class Overrides
 		if (map.containsKey(DYNAMIC_CHILDREN))
 		{
 			var obj = map.get(DYNAMIC_CHILDREN);
-			if (obj instanceof TomlArray) {
+			if (obj instanceof TomlArray)
+			{
 				var children = (TomlArray) obj;
-					var list = children.toList().stream()
+				var list = children.toList().stream()
 					.map(l -> ((Long) l).intValue())
 					.collect(Collectors.toList());
 				node = node.withDynamicChildren(list);
-			} else if (obj instanceof Boolean) {
+			}
+			else if (obj instanceof Boolean)
+			{
 				node = node.withAllChildren((boolean) obj);
 			}
 		}
