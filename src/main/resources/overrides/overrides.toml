@@ -394,7 +394,7 @@ interface=621
 
 [collection_log.border]
 color=0x585040
-scripts=[2730]
+scripts=[4082]
 
 [collection_log.border.body]
 children=[39]
