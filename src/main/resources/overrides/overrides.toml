@@ -3,7 +3,7 @@ interface=109
 
 [account_management.separator]
 children=[19]
-scripts=[2497]
+scripts=[3269]
 dynamicChildren=[0, 1]
 color=0x5d5848
 
@@ -229,13 +229,13 @@ interface=-1
 color=0x5d5848
 
 [channel_tab.separator.regular]
-scripts=[4471]
+scripts=[4473]
 interface=707
 children=[6]
 dynamicChildren=[0, 1]
 
 [channel_tab.separator.gim]
-scripts=[4472]
+scripts=[4473]
 interface=727
 children=[7]
 dynamicChildren=[0, 1]
