@@ -2,8 +2,9 @@
 interface=109
 
 [account_management.separator]
-children=[2, 3, 4, 5]
+children=[19]
 scripts=[2497]
+dynamicChildren=[0, 1]
 color=0x5d5848
 
 ########################################
@@ -15,7 +16,7 @@ scripts=[2199]
 [achievement_diary.entry.border]
 color=0xff9933
 children=[2]
-dynamicChildren=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+dynamicChildren=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 opacity=150
 
 [achievement_diary.progress.background]
@@ -226,15 +227,18 @@ interface=-1
 
 [channel_tab.separator]
 color=0x5d5848
-children=[2]
 
 [channel_tab.separator.regular]
 scripts=[4471]
 interface=707
+children=[6]
+dynamicChildren=[0, 1]
 
 [channel_tab.separator.gim]
 scripts=[4472]
 interface=727
+children=[7]
+dynamicChildren=[0, 1]
 
 ########################################
 
@@ -1591,7 +1595,8 @@ interface=629
 [quest_tab.separator]
 scripts=[2800]
 color=0x5d5848
-children=[2]
+children=[35]
+dynamicChildren=[0, 1]
 
 ########################################
 
