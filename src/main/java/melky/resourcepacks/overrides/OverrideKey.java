@@ -39,6 +39,8 @@ public final class OverrideKey
 	public static final String NEW_TYPE = "newType";
 	public static final String VARBIT = "varbit";
 	public static final String VARBIT_VALUE = "varbitValue";
+	public static final String ACTIVE_WIDGET = "activeWidget";
+	public static final String EXPLICIT = "explicit";
 
 
 	public static String append(String path, String key)

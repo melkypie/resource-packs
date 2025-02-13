@@ -895,14 +895,23 @@ public class ResourcePacksManager
 			return;
 		}
 
-		// w = 3
-		// o = 3
-		// n = -1
-
-		if (widget.getTextColor() == newColor || !widgetOverride.checkVarbit(client) ||
-			(widgetOverride.getType() > -1 && (widget.getType() != widgetOverride.getType() && widgetOverride.getNewType() != widget.getType())))
+		if (widget.getTextColor() == newColor ||
+			!widgetOverride.checkVarbit(client) ||
+			typeCompare(widgetOverride, widget) ||
+			explicitCompare(widgetOverride, widget))
 		{
 			return;
+		}
+
+		if (widgetOverride.isActiveWidget())
+		{
+			var w = client.getScriptActiveWidget();
+			if (w == null || w.getId() != widget.getId() || w.getTextColor() != widgetOverride.getColor())
+			{
+				return;
+			}
+
+			widget = w;
 		}
 
 		widget.setTextColor(widgetOverride.getNewColor());
@@ -921,6 +930,19 @@ public class ResourcePacksManager
 				widget.setFilled(true);
 			}
 		}
+	}
+
+	private static boolean typeCompare(WidgetOverride widgetOverride, Widget widget)
+	{
+		return widgetOverride.getType() > -1 && (widget.getType() != widgetOverride.getType() && widgetOverride.getNewType() != widget.getType());
+	}
+
+	private static boolean explicitCompare(WidgetOverride widgetOverride, Widget widget)
+	{
+		return widgetOverride.isExplicit() &&
+			(widget.getTextColor() != widgetOverride.getColor() ||
+				(widgetOverride.getType() > -1 && widget.getType() != widgetOverride.getType())
+			);
 	}
 
 	public Path getLocalPath(String... path)

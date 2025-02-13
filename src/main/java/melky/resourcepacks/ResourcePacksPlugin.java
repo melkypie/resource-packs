@@ -1,6 +1,7 @@
 package melky.resourcepacks;
 
 import com.google.inject.Provides;
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.nio.file.Path;
 import java.util.concurrent.ScheduledExecutorService;
@@ -18,6 +19,8 @@ import net.runelite.api.GameState;
 import net.runelite.api.events.BeforeRender;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.ScriptPostFired;
+import net.runelite.api.events.ScriptPreFired;
+import net.runelite.api.widgets.WidgetUtil;
 import net.runelite.client.RuneLite;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.chat.ChatColorType;
@@ -36,6 +39,7 @@ import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.plugins.interfacestyles.Skin;
 import net.runelite.client.ui.ClientToolbar;
 import net.runelite.client.ui.NavigationButton;
+import net.runelite.client.util.ColorUtil;
 import net.runelite.client.util.ImageUtil;
 import okhttp3.HttpUrl;
 
@@ -305,8 +309,13 @@ public class ResourcePacksPlugin extends Plugin
 	@Subscribe
 	public void onScriptPostFired(ScriptPostFired event)
 	{
+		if (event.getScriptId() == 85) {
+			log.debug("widget {}", ColorUtil.toHexColor(new Color(client.getScriptActiveWidget().getTextColor())));
+		}
+
 		if (!overrides.isEmpty() && overrides.contains(event.getScriptId()))
 		{
+
 			for (var widgetOverride : overrides.get(event.getScriptId()))
 			{
 				resourcePacksManager.addPropertyToWidget(widgetOverride, false);

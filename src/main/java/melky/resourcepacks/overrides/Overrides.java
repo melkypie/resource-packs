@@ -40,9 +40,11 @@ import java.util.stream.IntStream;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
+import static melky.resourcepacks.overrides.OverrideKey.ACTIVE_WIDGET;
 import static melky.resourcepacks.overrides.OverrideKey.CHILDREN;
 import static melky.resourcepacks.overrides.OverrideKey.COLOR;
 import static melky.resourcepacks.overrides.OverrideKey.DYNAMIC_CHILDREN;
+import static melky.resourcepacks.overrides.OverrideKey.EXPLICIT;
 import static melky.resourcepacks.overrides.OverrideKey.INTERFACE;
 import static melky.resourcepacks.overrides.OverrideKey.NEW_TYPE;
 import static melky.resourcepacks.overrides.OverrideKey.OPACITY;
@@ -213,6 +215,18 @@ public class Overrides
 			}
 
 			map.remove(OPACITY);
+		}
+
+		if (map.containsKey(EXPLICIT))
+		{
+			node = node.withExplicit(true);
+			map.remove(EXPLICIT);
+		}
+
+		if (map.containsKey(ACTIVE_WIDGET))
+		{
+			node = node.withActiveWidget(true);
+			map.remove(ACTIVE_WIDGET);
 		}
 
 		return node;

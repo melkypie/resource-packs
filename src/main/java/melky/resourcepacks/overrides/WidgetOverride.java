@@ -59,6 +59,8 @@ public class WidgetOverride
 	List<Integer> dynamicChildren = new ArrayList<>();
 
 	boolean allChildren = false;
+	boolean activeWidget = false;
+	boolean explicit = false;
 
 	public boolean isValid()
 	{
