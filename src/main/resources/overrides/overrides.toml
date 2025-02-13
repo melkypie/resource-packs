@@ -871,6 +871,38 @@ color=0xe0e0c
 opacity=0
 dynamicChildren=[1]
 
+[forestry_shop.reward.hovered]
+children=[33]
+scripts=[85]
+opacity=0
+color=0xb8a182
+activeWidget=true
+
+[[forestry_shop.reward.unselected]]
+children=[33]
+scripts=[85]
+opacity=0
+color=0x726451
+activeWidget=true
+
+[[forestry_shop.reward.unselected]]
+children=[33]
+scripts=[7145, 7146]
+opacity=0
+color=0x726451
+dynamicChildren=true
+explicit=true
+type=3
+
+[forestry_shop.reward.selected]
+children=[33]
+scripts=[7145, 7146]
+opacity=0
+color=0xff981f
+dynamicChildren=true
+explicit=true
+type=3
+
 ########################################
 
 [friends_chat]
