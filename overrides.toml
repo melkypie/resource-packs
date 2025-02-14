@@ -303,6 +303,18 @@
 # color=0x0e0e0c
 # opacity=0
 
+# [forestry_shop.reward.hovered]
+# color=0xb8a182
+# opacity=0
+
+# [forestry_shop.reward.selected]
+# color=0xff981f
+# opacity=0
+
+# [forestry_shop.reward.unselected]
+# color=0x726451
+# opacity=0
+
 # [friends_chat.border.inner]
 # color=0x474745
 # opacity=0
