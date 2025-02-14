@@ -10,7 +10,7 @@ permissions:
 
 env:
   tag: ${{ github.ref }}
-  file-name: sample-vanilla-${{ tag }}.zip
+  file-name: sample-vanilla-${{ github.ref }}.zip
 
 jobs:
   release:
