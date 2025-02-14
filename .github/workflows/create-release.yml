@@ -1,35 +1,35 @@
 name: Create Sample Release
 
 on:
-	push:
+  push:
     tags:
-			- v*
+      - v*
 
 permissions:
-	contents: write
+  contents: write
 
 jobs:
-	release:
+  release:
     name: Release pushed tag
     runs-on: ubuntu-latest
     steps:
-			- name: Generate changelog
-				id: changelog
-				uses: metcalfc/changelog-generator@v4.3.1
-				with:
-					myToken: ${{ secrets.ACCESS_TOKEN }}
+      - name: Generate changelog
+        id: changelog
+        uses: metcalfc/changelog-generator@v4.3.1
+        with:
+          myToken: ${{ secrets.ACCESS_TOKEN }}
 
-			- name: Echo log
-				run: echo "${{ steps.changelog.outputs.changelog }}" > out.md
+      - name: Echo log
+        run: echo "${{ steps.changelog.outputs.changelog }}" > out.md
 
-			- name: Cat log
-				run: cat out.md
+      - name: Cat log
+        run: cat out.md
 
-			- name: Upload sample
-				uses: ncipollo/release-action@v1
-				with:
-					name: Sample/Resource packs ${{ github.ref_name }}
-					repo_token: ${{ secrets.ACCESS_TOKEN }}
-					overwrite: true
-					allowUpdates: true
-					body: ${{ steps.changelog.outputs.changelog }}
+      - name: Upload sample
+        uses: ncipollo/release-action@v1
+        with:
+          name: Sample/Resource packs ${{ github.ref_name }}
+          repo_token: ${{ secrets.ACCESS_TOKEN }}
+          overwrite: true
+          allowUpdates: true
+          body: ${{ steps.changelog.outputs.changelog }}
