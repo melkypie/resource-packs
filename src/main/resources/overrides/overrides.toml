@@ -749,34 +749,34 @@ scripts=[85]
 opacity=0
 activeWidget=true
 
-[[deposit_lock.locked]]
+[deposit_lock.locked]
 color=0xff0000
+opacity=0
+
+[[deposit_lock.locked]]
 children=[8]
 scripts=[85]
-opacity=0
 activeWidget=true
 
 [[deposit_lock.locked]]
-color=0xff0000
 children=[8]
 explicit=true
 dynamicChildren=true
-opacity=0
 type=3
 
-[[deposit_lock.unlocked]]
+[deposit_lock.unlocked]
 color=0x9f9f9f
+opacity=0
+
+[[deposit_lock.unlocked]]
 children=[8]
 explicit=true
 dynamicChildren=true
-opacity=0
 type=3
 
 [[deposit_lock.unlocked]]
-color=0x9f9f9f
 children=[8]
 scripts=[85]
-opacity=0
 activeWidget=true
 
 ########################################
@@ -906,21 +906,21 @@ opacity=0
 color=0xb8a182
 activeWidget=true
 
+[forestry_shop.reward.unselected]
+opacity=0
+color=0x726451
+type=3
+
 [[forestry_shop.reward.unselected]]
 children=[33]
 scripts=[85]
-opacity=0
-color=0x726451
 activeWidget=true
 
 [[forestry_shop.reward.unselected]]
 children=[33]
 scripts=[7145, 7146]
-opacity=0
-color=0x726451
 dynamicChildren=true
 explicit=true
-type=3
 
 [forestry_shop.reward.selected]
 children=[33]
