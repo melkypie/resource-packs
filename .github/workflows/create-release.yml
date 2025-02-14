@@ -17,17 +17,6 @@ jobs:
     name: Release pushed tag
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          repository: melkypie/resource-packs
-          ref: sample-vanilla
-          path: sample-vanilla
-
-      - uses: montudor/action-zip@v1
-        with:
-          args: zip -qq -r ${{ file-name }} sample-vanilla
-
       - name: Upload sample
         uses: ncipollo/release-action@v1
         env:
@@ -37,5 +26,4 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           overwrite: true
           allowUpdates: true
-          file: ${{ sample-vanilla }}
           generateReleaseNotes: true
