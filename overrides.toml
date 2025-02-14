@@ -13,6 +13,10 @@
 # color=0x000000
 # opacity=150
 
+# [bank.inventory.locked]
+# color=0xff0000
+# opacity=0
+
 # [bank.inventory.rune_pouch.border.inner]
 # color=0x5a5245
 # opacity=0
