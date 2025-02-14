@@ -239,6 +239,42 @@
 # color=0x0e0e0c
 # opacity=0
 
+# [deposit_box.inventory.border.inner]
+# color=0x5a5245
+# opacity=0
+
+# [deposit_box.inventory.border.outer]
+# color=0x383013
+# opacity=0
+
+# [deposit_box.inventory.locked]
+# color=0xff0000
+# opacity=0
+
+# [deposit_lock.border.inner]
+# color=0x474745
+# opacity=0
+
+# [deposit_lock.border.outer]
+# color=0x0e0e0c
+# opacity=0
+
+# [deposit_lock.hovered.locked]
+# color=0xff7070
+# opacity=0
+
+# [deposit_lock.hovered.unlocked]
+# color=0xffffff
+# opacity=0
+
+# [deposit_lock.locked]
+# color=0xff0000
+# opacity=0
+
+# [deposit_lock.unlocked]
+# color=0x9f9f9f
+# opacity=0
+
 # [forestry_kit.body.background]
 # color=0x000000
 # opacity=200
