@@ -13,6 +13,9 @@ jobs:
     name: Release pushed tag
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Generate changelog
         id: changelog
         uses: metcalfc/changelog-generator@v4.3.1
