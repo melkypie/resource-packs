@@ -8,10 +8,6 @@ on:
 permissions:
   contents: write
 
-env:
-  tag: ${{ github.ref }}
-  file-name: sample-vanilla-${{ github.ref }}.zip
-
 jobs:
   release:
     name: Release pushed tag
@@ -22,7 +18,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         with:
-          name: Sample/Resource packs ${{ tag }}
+          name: Sample/Resource packs ${{ github.ref }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           overwrite: true
           allowUpdates: true
