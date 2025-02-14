@@ -19,11 +19,11 @@ jobs:
         with:
             myToken: ${{ secrets.ACCESS_TOKEN }}
 
-	- name: Echo log
-		run: echo "${{ steps.changelog.outputs.changelog }}" > out.md
+		- name: Echo log
+			run: echo "${{ steps.changelog.outputs.changelog }}" > out.md
 
-	- name: Cat log
-		run: cat out.md
+		- name: Cat log
+			run: cat out.md
 
       - name: Upload sample
         uses: ncipollo/release-action@v1
