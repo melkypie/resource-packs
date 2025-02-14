@@ -2,7 +2,7 @@ name: Create Sample Release
 
 on:
 	push:
-    	tags:
+    tags:
 			- v*
 
 permissions:
