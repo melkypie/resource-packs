@@ -6,17 +6,58 @@ import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.client.RuneLite;
 import net.runelite.client.externalplugins.ExternalPluginManager;
+import org.junit.AfterClass;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TestWatcher;
+import org.junit.runner.Description;
+
 
 @Slf4j
 public class ResourcePacksPluginTest
 {
 	private static final int EOF = -1;
+
+	private static StringBuilder builder = new StringBuilder();
+
+	@AfterClass
+	public static void afterClass() throws IOException
+	{
+		String basePath = System.getProperty("user.dir");
+
+		log.info("logging {}", builder.toString());
+
+		PrintWriter logFile = new PrintWriter(basePath + '/' + "out.txt", "UTF-8");
+		logFile.write(builder.toString());
+		logFile.close();
+	}
+
+	@Rule
+	public TestWatcher watcher = new TestWatcher()
+	{
+
+		@Override
+		protected void failed(Throwable e, Description description)
+		{
+			if (e != null)
+			{
+				builder.append(e.getMessage());
+				builder.append("\n");
+			}
+		}
+
+		@Override
+		protected void succeeded(Description description)
+		{
+		}
+	};
 
 	public static void main(String[] args) throws Exception
 	{
@@ -33,7 +74,6 @@ public class ResourcePacksPluginTest
 	 *
 	 * @throws IOException
 	 */
-	@Test
 	public void moveImages() throws IOException
 	{
 		String spriteFolder = System.getProperty("spriteFolder");
@@ -96,9 +136,59 @@ public class ResourcePacksPluginTest
 		List<String> errorMessages = loopDirectory(packFolderFile.listFiles(), packFolderFile.getName(), spriteFolder, false);
 		for (String error : errorMessages)
 		{
-			log.info(error);
+			log.error(error);
 		}
-		assert errorMessages.size() == 0;
+
+		if (!errorMessages.isEmpty())
+		{
+			throw new IllegalArgumentException(String.join("\n", errorMessages));
+		}
+	}
+
+	@Test
+	public void checkPackProperties() throws IOException
+	{
+		String packFolder = System.getProperty("packFolder");
+		if (Strings.isNullOrEmpty(packFolder))
+		{
+			throw new RuntimeException("spriteFolder and packFolder need to be defined");
+		}
+
+		File propertiesFile = new File(packFolder, "/pack.properties");
+		if (!propertiesFile.exists())
+		{
+			throw new IllegalArgumentException("Pack does not contain a pack.properties file");
+		}
+
+		Properties properties = new Properties();
+		properties.load(new FileInputStream(propertiesFile));
+
+		List<String> errorMessages = new ArrayList<>();
+
+		if (Strings.isNullOrEmpty(properties.getProperty("displayName")))
+		{
+			errorMessages.add("pack.properties does not contain a displayName property");
+		}
+
+		if (Strings.isNullOrEmpty(properties.getProperty("author")))
+		{
+			errorMessages.add("pack.properties does not contain a author property");
+		}
+
+		if (!properties.containsKey("tags"))
+		{
+			errorMessages.add("pack.properties does not contain a tags property");
+		}
+
+		for (String error : errorMessages)
+		{
+			log.error(error);
+		}
+
+		if (!errorMessages.isEmpty())
+		{
+			throw new IllegalArgumentException(String.join("\n", errorMessages));
+		}
 	}
 
 	private File createOrRetrieve(final String target) throws IOException
