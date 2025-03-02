@@ -28,6 +28,10 @@ jobs:
         with:
           myToken: ${{ secrets.ACCESS_TOKEN }}
 
+      - name: Removing unnecessary files
+        run: |
+          rm -rf .github
+
       - name: Upload sample
         uses: ncipollo/release-action@v1
         with:
