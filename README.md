@@ -17,7 +17,7 @@ Refer to the official resource-packs instructions -
 ![FixedMode](https://i.imgur.com/u1RLta7.png)
 
 ### Resizeable Classic Layout
-![ResizeableMode](https://i.imgur.com/qJKANg9.png)
+![ResizeableMode](https://i.imgur.com/K7bGLIr.png)
 
 ## Resizeable Modern Layout
 ![ResizeableMode](https://imgur.com/euH7AqO.png)
