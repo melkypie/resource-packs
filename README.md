@@ -1,10 +1,10 @@
 # Jad's Baddies Resource Pack for RuneLite
 
-![icon](https://i.imgur.com/PvjRLZ3.png)
+![icon](https://i.imgur.com/TYSfic5.png)
 
 ## Description
 
-Transform your RuneLite with Jad's Baddies: a dark, TzHaar-inspired UI reskin. Find us in Clan Chat: Jad's Baddies.
+Transform your RuneLite with Jad's Baddies: a dark, TzHaar-inspired UI reskin. Find us in Clan Chat: Jads Baddies.
 
 ## Usage 
 
@@ -14,13 +14,28 @@ Refer to the official resource-packs instructions -
 ## Screenshots
 
 ### Fixed Classic Layout
-![FixedMode](https://i.imgur.com/u1RLta7.png)
+![Fixed Classic Layout](https://i.imgur.com/tmODg74.png)
 
 ### Resizeable Classic Layout
-![ResizeableMode](https://i.imgur.com/K7bGLIr.png)
+![Resizeable Classic Layout](https://i.imgur.com/vvKBM2a.png)
 
-## Resizeable Modern Layout
-![ResizeableMode](https://imgur.com/euH7AqO.png)
+### Resizeable Modern Layout
+![Resizeable Modern Layout](https://i.imgur.com/79Oiqub.png)
+
+#### Combat Options
+![Combat Options](https://i.imgur.com/h2FtSWt.png)
+
+#### Skills
+![Skills](https://i.imgur.com/PzZbWNC.png)
+
+#### Bank
+![Bank](https://i.imgur.com/PzcShWD.png)
+
+#### Grand Exchange
+![Grand Exchange](https://i.imgur.com/GivKqqm.png)
+
+#### Grand Exchange Offer
+![Grand Exchange Offer](https://i.imgur.com/4tA3COf.png)
 
 ## Credits
 * melkypie - creating the resource pack plugin
