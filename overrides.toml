@@ -2,16 +2,16 @@
 # [overlay]
 # color=0x9C463D32
 
-# [account_management.separator]
-# color=0x5d5848
+[account_management.separator]
+color=0xac3a00
 
 [achievement_diary.entry.border]
 color=0xac3a00
 opacity=0
 
-# [achievement_diary.progress.background]
-# color=0x000000
-# opacity=150
+[achievement_diary.progress.background]
+color=0xac3a00
+opacity=0
 
 # [bank.inventory.locked]
 # color=0xff0000
@@ -32,9 +32,9 @@ opacity=0
 # [bank.menu.border.inner.dropdown]
 # opacity=0
 
-# [bank.menu.border.inner.fillers]
-# color=0x726451
-# opacity=0
+[bank.menu.border.inner.fillers]
+color=0x727272
+opacity=0
 
 # [bank.menu.border.inner.tab]
 # opacity=0
@@ -82,14 +82,14 @@ opacity=0
 # [bounty_hunter.overlay.border.outer]
 # color=0x383023
 
-# [channel_tab.separator]
-# color=0x5d5848
+[channel_tab.separator]
+color=0x7c2a00
 
-# [chatbox.separator]
-# color=0x807660
+[chatbox.separator]
+color=0x727272
 
-# [chatbox.separator.opaque]
-# opacity=0
+[chatbox.separator.opaque]
+opacity=0
 
 # [chatbox.separator.transparent]
 # opacity=200
@@ -106,11 +106,11 @@ opacity=0
 color=0xac3a00
 opacity=0
 
-# [clan_chat.border.inner]
-# color=0x474745
+[clan_chat.border.inner]
+color=0x0e0e0e
 
-# [clan_chat.border.outer]
-# color=0x0e0e0c
+[clan_chat.border.outer]
+color=0x0e0e0e
 
 # [collection_log.border]
 # color=0x585040
@@ -161,14 +161,14 @@ opacity=0
 
 [combat_achievements.overview.border]
 color=0x272727
-opacity=150
+opacity=0
 
 [combat_achievements.progress.border.inner]
 color=0x272727
 opacity=0
 
 [combat_achievements.progress.border.outer]
-color=272727
+color=0x272727
 opacity=0
 
 [combat_achievements.rewards.body.border.inner]
@@ -351,60 +351,60 @@ opacity=0
 # color=0x726451
 # opacity=0
 
-# [friends_chat.border.inner]
-# color=0x474745
-# opacity=0
+[friends_chat.border.inner]
+color=0x0e0e0e
+opacity=0
 
-# [friends_chat.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[friends_chat.border.outer]
+color=0x0e0e0e
+opacity=0
 
-# [friends_chat.header.border.inner]
-# color=0x474745
-# opacity=0
+[friends_chat.header.border.inner]
+color=0xac3a00
+opacity=0
 
 # [friends_chat.header.border.outer]
 # color=0x0e0e0c
 # opacity=0
 
-# [friends_chat.setup.border.inner]
-# color=0x5a5245
-# opacity=0
+[friends_chat.setup.border.inner]
+color=0x7c2a00
+opacity=0
 
 # [friends_chat.setup.border.outer]
 # color=0x383023
 # opacity=0
 
 # [friends_list.header.border.inner]
-# color=0x474745
+# color=0x7c2a00
 # opacity=0
 
 # [friends_list.header.border.outer]
 # color=0x0e0e0c
 # opacity=0
 
-# [ge.inventory.glow]
-# color=0xffff00
+[ge.inventory.glow]
+color=0xff5a00
 
-# [ge.offer.border.inner]
-# color=0x5a5245
-# opacity=0
+[ge.offer.border.inner]
+color=0x2b2b2b
+opacity=0
 
-# [ge.offer.border.outer]
-# color=0x383023
-# opacity=0
+[ge.offer.border.outer]
+color=0x2b2b2b
+opacity=0
 
-# [ge.slot.border.inner]
-# color=0x5a5245
-# opacity=0
+[ge.slot.border.inner]
+color=0x2b2b2b
+opacity=0
 
-# [ge.slot.border.outer]
-# color=0x383023
-# opacity=0
+[ge.slot.border.outer]
+color=0x2b2b2b
+opacity=0
 
-# [grouping_tab.border.inner]
-# color=0xff981f
-# opacity=150
+[grouping_tab.border.inner]
+color=0x7c2a00
+opacity=150
 
 # [grouping_tab.border.outer]
 # color=0x3c222c
@@ -689,8 +689,8 @@ color=0x7f7f7f
 # color=0x0e0e0c
 # opacity=0
 
-# [settings_tab.separator]
-# color=0x5d5848
+[settings_tab.separator]
+color=0x7c2a00
 
 [skill_guide.body.border.inner]
 color=0x5f5f5f

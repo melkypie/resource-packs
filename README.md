@@ -31,11 +31,20 @@ Refer to the official resource-packs instructions -
 #### Bank
 ![Bank](https://i.imgur.com/PzcShWD.png)
 
+#### Bank Pin
+![Bank Pin](https://i.imgur.com/duuRnxJ.png)
+
 #### Grand Exchange
 ![Grand Exchange](https://i.imgur.com/GivKqqm.png)
 
 #### Grand Exchange Offer
 ![Grand Exchange Offer](https://i.imgur.com/4tA3COf.png)
+
+#### Login Screen
+![Login Screen](https://i.imgur.com/SajUqsq.png)
+
+#### Welcome Screen
+![Welcome Screen](https://i.imgur.com/yCjTZhQ.png)
 
 ## Credits
 * melkypie - creating the resource pack plugin
