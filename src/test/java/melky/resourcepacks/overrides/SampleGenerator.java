@@ -36,15 +36,34 @@ import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.io.File;
 import java.io.IOException;
+import java.util.Collection;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.tomlj.Toml;
+import org.tomlj.TomlArray;
 import org.tomlj.TomlParseResult;
+import org.tomlj.TomlTable;
 
 @Slf4j
 public class SampleGenerator
 {
+	public void addKeys(final TomlTable table, Collection<String> keys, Multimap<String, String> values, String path)
+	{
+		for (var k : keys)
+		{
+			var s = k.replaceAll("\\.?color|\\.?opacity", "");
+			if (k.endsWith("color"))
+			{
+				values.put(path + s, String.format("# color=0x%06x", new Color(table.getLong(k).intValue()).getRGB() & 16777215));
+			}
+			else if (k.endsWith("opacity"))
+			{
+				values.put(path + s, String.format("# opacity=%d", table.getLong(k).intValue()));
+			}
+		}
+	}
+
 	@Test
 	public void createSample()
 	{
@@ -61,6 +80,12 @@ public class SampleGenerator
 				.sorted()
 				.collect(Collectors.toList());
 
+			var lists = toml.dottedKeySet()
+				.stream()
+				.filter(k -> !(k.contains("scripts") || k.contains("dynamicChildren") || k.contains("children")) && toml.isArray(k))
+				.sorted()
+				.collect(Collectors.toList());
+
 			var sb = new StringBuilder();
 			sb.append("# remove comments (#) on lines to see changes affected\n")
 				.append("# overlay color is in ARGB hex format\n")
@@ -68,17 +93,20 @@ public class SampleGenerator
 				.append("# color=0x9C463D32\n");
 
 			Multimap<String, String> tables = TreeMultimap.create();
+			addKeys(toml, keys, tables, "");
 
-			for (var k : keys)
+			for (var l : lists)
 			{
-				var s = k.replaceAll(".color|.opacity", "");
-				if (k.endsWith(".color"))
+				TomlArray a = toml.getArray(l);
+				assert a != null;
+
+				for (var o : a.toList())
 				{
-					tables.put(s, String.format("# color=0x%06x", new Color(toml.getLong(k).intValue()).getRGB() & 16777215));
-				}
-				else if (k.endsWith(".opacity"))
-				{
-					tables.put(s, String.format("# opacity=%d", toml.getLong(k).intValue()));
+					if (o instanceof TomlTable)
+					{
+						var t = (TomlTable) o;
+						addKeys(t, t.keySet(), tables, l);
+					}
 				}
 			}
 
@@ -95,7 +123,8 @@ public class SampleGenerator
 			var selection = new StringSelection((sb + ""));
 			clipboard.setContents(selection, null);
 
-			if (!Strings.isNullOrEmpty(System.getProperty("sampleOutput"))) {
+			if (!Strings.isNullOrEmpty(System.getProperty("sampleOutput")))
+			{
 				File file = new File(System.getProperty("sampleOutput"));
 				Files.write(sb + "", file, Charsets.UTF_8);
 			}
@@ -122,23 +151,32 @@ public class SampleGenerator
 				.sorted()
 				.collect(Collectors.toList());
 
+			var lists = toml.dottedKeySet()
+				.stream()
+				.filter(k -> !(k.contains("scripts") || k.contains("dynamicChildren") || k.contains("children")) && toml.isArray(k))
+				.sorted()
+				.collect(Collectors.toList());
+
 			var sb = new StringBuilder();
 			sb.append("# remove comments (#) on lines to see changes affected\n")
 				.append("# overlay color is in ARGB hex format\n")
 				.append("# overlay.color=0x9C463D32\n\n");
 
 			Multimap<String, String> tables = TreeMultimap.create();
+			addKeys(toml, keys, tables, "");
 
-			for (var k : keys)
+			for (var l : lists)
 			{
-				var s = k.replaceAll(".color|.opacity", "");
-				if (k.endsWith(".color"))
+				TomlArray a = toml.getArray(l);
+				assert a != null;
+
+				for (var o : a.toList())
 				{
-					tables.put(s, String.format("color=0x%06x", new Color(toml.getLong(k).intValue()).getRGB() & 16777215));
-				}
-				else if (k.endsWith(".opacity"))
-				{
-					tables.put(s, String.format("opacity=%d", toml.getLong(k).intValue()));
+					if (o instanceof TomlTable)
+					{
+						var t = (TomlTable) o;
+						addKeys(t, t.keySet(), tables, l);
+					}
 				}
 			}
 
@@ -157,7 +195,8 @@ public class SampleGenerator
 			var selection = new StringSelection((sb + ""));
 			clipboard.setContents(selection, null);
 
-			if (!Strings.isNullOrEmpty(System.getProperty("sampleMinifiedOutput"))) {
+			if (!Strings.isNullOrEmpty(System.getProperty("sampleMinifiedOutput")))
+			{
 				File file = new File(System.getProperty("sampleMinifiedOutput"));
 				Files.write(sb + "", file, Charsets.UTF_8);
 			}
