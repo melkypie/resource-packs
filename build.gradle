@@ -67,4 +67,6 @@ tasks.withType(Jar) {
 test {
     systemProperty('spriteFolder', System.getProperty('spriteFolder'))
     systemProperty('packFolder', System.getProperty('packFolder'))
+    systemProperty('sampleOutput', System.getProperty('sampleOutput'))
+    systemProperty('sampleMinifiedOutput', System.getProperty('sampleMinifiedOutput'))
 }
