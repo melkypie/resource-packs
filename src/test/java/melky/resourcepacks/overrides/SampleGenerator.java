@@ -184,7 +184,7 @@ public class SampleGenerator
 			{
 				sb.append(tables.get(k)
 					.stream()
-					.map(s -> String.format("# %s.%s", k, s))
+					.map(s -> String.format("# %s.%s", k, s.replace("# ", "")))
 					.collect(Collectors.joining("\n")));
 				sb.append("\n\n");
 			}
