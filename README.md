@@ -13,4 +13,11 @@ Lets dive in and take a look at some examples of this project.
 ## Fixed mode
 <img src="Screenshots/FixedMode.png" width="400" float="left" align="left">
 
+## Resizeable mode
+
+### Modern
+<img src="Screenshots/ResizeableModern.png" width="400" float="left" align="left">
+
+### Classic
+<img src="Screenshots/ResizeableClassic.png" width="400" float="left" align="left">
 
