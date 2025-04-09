@@ -1,15 +1,12 @@
 # ElvUI theme by "the" Beardedrasta
 
-<img src="icon.png" width="150" float="right" align="right">
+<img src="https://i.ibb.co/1G21ffZ6/icon.png" alt="icon" border="1">
 
 > **ElvUi: A simple yet elegant User Interface mastercrafted by Bearededrasta, do your eyes a favor and keep it simple.**
 
 <br>
 <br>
 
-
-Classic
-<img src="Screenshots/ResizeableClassic.png" width="400" float="left" align="left">
 
 Lets dive in and take a look at some examples of this project.
 
@@ -20,9 +17,9 @@ Lets dive in and take a look at some examples of this project.
 
 ## Resizeable mode
 
-Modern
-<img src="Screenshots/ResizeableModern.png" width="400" float="left" align="left">
+### Modern
+<img src="https://i.ibb.co/p6LDDrRJ/Resizable-Modern.png" alt="Resizable-Modern" border="1">
 
-<img src="https://i.ibb.co/1G21ffZ6/icon.png" alt="icon" border="0"></a>
-
+### Classic
+<img src="https://i.ibb.co/TDjgrfMZ/Resizable-Classic.png" alt="Resizable-Classic" border="1">
 
