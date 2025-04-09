@@ -23,6 +23,6 @@ Lets dive in and take a look at some examples of this project.
 Modern
 <img src="Screenshots/ResizeableModern.png" width="400" float="left" align="left">
 
-<a href="https://imgbb.com/"><img src="https://i.ibb.co/1G21ffZ6/icon.png" alt="icon" border="0"></a>
+<img src="https://i.ibb.co/1G21ffZ6/icon.png" alt="icon" border="0"></a>
 
 
