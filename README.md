@@ -7,6 +7,6 @@
 Lets dive in and take a look at some examples of this project.
 
 ## Fixed mode
-<img src="Screenshots/FixedMode.png" width="300" float="left" align="left">
+<img src="Screenshots/FixedMode.png" width="400" float="left" align="left">
 
 
