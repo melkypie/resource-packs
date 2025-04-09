@@ -11,7 +11,7 @@
 Lets dive in and take a look at some examples of this project.
 
 ## Fixed mode
-<img src="Screenshots/FixedMode.png" width="400" align="left">
+<img src="https://i.ibb.co/DP6xH634/Fixed-Mode.png" alt="Fixed-Mode" border="0">
 
 <br>
 
