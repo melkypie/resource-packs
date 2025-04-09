@@ -16,6 +16,7 @@
 You can find it by opening the Plaugin Hub and search for '[RHUD](https://runelite.net/plugin-hub/show/rasta-hud)
 
 ![RHUDPlugin](https://i.ibb.co/JMCwSKF/RHUD.png)
+![RHUDExample](https://i.ibb.co/vvdhFZWc/RHUD-Example.png)
 
 
 Lets dive in and take a look at some examples of this project.
