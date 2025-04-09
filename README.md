@@ -8,6 +8,9 @@
 <br>
 
 
+Classic
+<img src="Screenshots/ResizeableClassic.png" width="400" float="left" align="left">
+
 Lets dive in and take a look at some examples of this project.
 
 ## Fixed mode
@@ -20,6 +23,4 @@ Lets dive in and take a look at some examples of this project.
 Modern
 <img src="Screenshots/ResizeableModern.png" width="400" float="left" align="left">
 
-Classic
-<img src="Screenshots/ResizeableClassic.png" width="400" float="left" align="left">
 
