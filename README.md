@@ -15,6 +15,11 @@ Lets dive in and take a look at some examples of this project.
 
 <br>
 
+## Login Screen
+![LoginScreen](https://i.ibb.co/JWwwhbp5/Login.png)
+
+## Welcome Screen
+
 ## Resizeable mode
 
 ### Modern
