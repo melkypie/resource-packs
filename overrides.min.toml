@@ -286,6 +286,12 @@
 
 # ge.inventory.glow.color=0xffff00
 
+# ge.modify.border.inner.color=0x5a5245
+# ge.modify.border.inner.opacity=0
+
+# ge.modify.border.outer.color=0x383023
+# ge.modify.border.outer.opacity=0
+
 # ge.offer.border.inner.color=0x5a5245
 # ge.offer.border.inner.opacity=0
 
