@@ -1044,11 +1044,11 @@ color=0x383023
 opacity=0
 
 [ge.offer.border.inner.empty]
-children=[25]
+children=[26]
 dynamicChildren=[16, 18, 25, 28, 35]
 
 [ge.offer.border.outer.empty]
-children=[25]
+children=[26]
 dynamicChildren=[17, 19, 26, 29, 36]
 
 [ge.offer.border.inner.filled]
@@ -1074,6 +1074,24 @@ dynamicChildren=[0, 1]
 color=0x383023
 opacity=0
 dynamicChildren=[3, 4]
+
+[ge.modify]
+interface=916
+scripts=[4211]
+
+[ge.modify.border.inner]
+color=0x5a5245
+children=[5]
+dynamicChildren=[0]
+color=0x474745
+opacity=0
+
+[ge.modify.border.outer]
+color=0x383023
+children=[5]
+dynamicChildren=[1]
+color=0xe0e0c
+opacity=0
 
 ########################################
 
