@@ -1083,14 +1083,12 @@ scripts=[4211]
 color=0x5a5245
 children=[5]
 dynamicChildren=[0]
-color=0x474745
 opacity=0
 
 [ge.modify.border.outer]
 color=0x383023
 children=[5]
 dynamicChildren=[1]
-color=0xe0e0c
 opacity=0
 
 ########################################
