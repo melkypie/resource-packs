@@ -45,10 +45,10 @@ color=0xBC002423
 # opacity=150
 
 [bounty_hunter.overlay.border.inner]
-color=0x1b3c4b
+color=0x002c2b
 
 [bounty_hunter.overlay.border.outer]
-color=0x301934
+color=0x001f1f
 
 [channel_tab.separator]
 color=0x000000
@@ -62,12 +62,12 @@ color=0x002423
 # opacity=0
 
 [choose_spell.border.inner]
-color=0x002423
+color=0x000000
 # opacity=0
 
 [choose_spell.border.outer]
-color=0x000000
-# opacity=0 
+color=0x002423
+opacity=255
 
 [clan_chat.border.inner]
 color=0x1b1a18
@@ -709,11 +709,11 @@ color=0x000000
 # opacity=0
 
 [world_map.key.border.inner]
-color=0x000000
+color=0x1a1a18
 opacity=0
 
 [world_map.key.border.outer]
-color=0x1a1a18
+color=0x000000
 opacity=0
 
 [world_map.dropdown.border.inner]
@@ -794,3 +794,59 @@ opacity=255
 [lms.supplies.menu.border.outer]
 color=0x000000
 opacity=0 
+
+[deposit_box.inventory.border.inner]
+color=0x1b1a18
+opacity=255
+
+[deposit_box.inventory.border.outer]
+color=0x000000
+opacity=0
+
+[deposit_box.inventory.locked]
+color=0x111222
+opacity=255
+
+[deposit_lock.border.inner]
+color=0x1b1a18
+opacity=255
+
+[deposit_lock.border.outer]
+color=0x1b1a18
+opacity=255
+
+[deposit_lock.hovered.locked]
+color=0x8B0000
+opacity=0
+
+[deposit_lock.hovered.unlocked]
+color=0x959595
+opacity=0
+
+[deposit_lock.locked]
+color=0x006767
+opacity=0
+
+[deposit_lock.unlocked]
+color=0x1a1a18
+opacity=0
+
+[forestry_shop.reward.hovered]
+color=0xb8a182
+opacity=0
+
+[forestry_shop.reward.selected]
+color=0xff981f
+opacity=0
+
+[forestry_shop.reward.unselected]
+color=0x726451
+opacity=0
+
+[bank.inventory.locked]
+color=0x111222
+opacity=255
+
+[ge.modify.border]
+color=0x1b1a18
+opacity=255
