@@ -847,3 +847,7 @@ opacity=0
 [bank.inventory.locked]
 color=0x111222
 opacity=255
+
+[ge.modify.border]
+color=0x1b1a18
+opacity=255
