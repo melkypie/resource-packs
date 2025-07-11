@@ -64,5 +64,6 @@ jobs:
         id: check-files
         if: always()
         run: |
-          ./check.sh
+          ./scripts/errors.sh
+          ./scripts/warnings.sh
 

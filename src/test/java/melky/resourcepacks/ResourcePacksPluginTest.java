@@ -25,18 +25,26 @@ public class ResourcePacksPluginTest
 {
 	private static final int EOF = -1;
 
-	private static StringBuilder builder = new StringBuilder();
+
+	private static final List<String> errors = new ArrayList<>();
+	private static final List<String> warnings = new ArrayList<>();
 
 	@AfterClass
 	public static void afterClass() throws IOException
 	{
 		String basePath = System.getProperty("user.dir");
 
-		log.info("logging {}", builder.toString());
+		log.info("logging {}", errors);
 
-		PrintWriter logFile = new PrintWriter(basePath + '/' + "out.txt", "UTF-8");
-		logFile.write(builder.toString());
-		logFile.close();
+		PrintWriter errorFile = new PrintWriter(basePath + '/' + "errors.txt", "UTF-8");
+		errorFile.write(String.join("\n", errors));
+		errorFile.close();
+
+		log.info("logging {}", warnings);
+
+		PrintWriter warningsFile = new PrintWriter(basePath + '/' + "warnings.txt", "UTF-8");
+		warningsFile.write(String.join("\n", warnings));
+		warningsFile.close();
 	}
 
 	@Rule
@@ -48,8 +56,7 @@ public class ResourcePacksPluginTest
 		{
 			if (e != null)
 			{
-				builder.append(e.getMessage());
-				builder.append("\n");
+				errors.add(e.getMessage());
 			}
 		}
 
@@ -133,12 +140,7 @@ public class ResourcePacksPluginTest
 		}
 
 		File packFolderFile = new File(packFolder);
-		List<String> errorMessages = loopDirectory(packFolderFile.listFiles(), packFolderFile.getName(), spriteFolder, false);
-		for (String error : errorMessages)
-		{
-			log.error(error);
-		}
-
+		var errorMessages = loopDirectory(packFolderFile.listFiles(), packFolderFile.getName(), spriteFolder, false);
 		if (!errorMessages.isEmpty())
 		{
 			throw new IllegalArgumentException(String.join("\n", errorMessages));
@@ -178,11 +180,6 @@ public class ResourcePacksPluginTest
 		if (!properties.containsKey("tags"))
 		{
 			errorMessages.add("pack.properties does not contain a tags property");
-		}
-
-		for (String error : errorMessages)
-		{
-			log.error(error);
 		}
 
 		if (!errorMessages.isEmpty())
@@ -235,14 +232,14 @@ public class ResourcePacksPluginTest
 
 		if (directory == null)
 		{
-			errorMessages.add("\u001B[31mDirectory " + dirName + " is not needed as it is empty\u001B[0m");
+			warn("\u001B[31mDirectory " + dirName + " is not needed as it is empty\u001B[0m");
 			return errorMessages;
 		}
 		for (File file : directory)
 		{
 			if (file.isDirectory())
 			{
-				errorMessages.addAll(loopDirectory(file.listFiles(), file.getName(), spriteDir, delete));
+				loopDirectory(file.listFiles(), file.getName(), spriteDir, delete);
 			}
 			else
 			{
@@ -276,7 +273,7 @@ public class ResourcePacksPluginTest
 						}
 						if (fileContentEquals(file, originalSprite) && !delete)
 						{
-							errorMessages.add("\u001B[31mFile " + file.getName() + " (" + override.getSpriteID() + ") in folder " + dirName + " is the same as the vanilla sprite\u001B[0m");
+							warn("\u001B[31mFile " + file.getName() + " (" + override.getSpriteID() + ") in folder " + dirName + " is the same as the vanilla sprite\u001B[0m");
 						}
 					}
 					catch (IllegalArgumentException e)
@@ -287,7 +284,7 @@ public class ResourcePacksPluginTest
 						}
 						else
 						{
-							errorMessages.add("\u001B[31mFile " + file.getName() + " in folder " + dirName + " is redundant\u001B[0m");
+							warn("\u001B[31mFile " + file.getName() + " in folder " + dirName + " is redundant\u001B[0m");
 						}
 					}
 				}
@@ -298,5 +295,11 @@ public class ResourcePacksPluginTest
 			}
 		}
 		return errorMessages;
+	}
+
+	private void warn(String msg)
+	{
+		log.warn(msg);
+		warnings.add(msg);
 	}
 }
