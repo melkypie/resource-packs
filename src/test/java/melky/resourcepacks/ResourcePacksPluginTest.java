@@ -232,7 +232,7 @@ public class ResourcePacksPluginTest
 
 		if (directory == null)
 		{
-			warn("\u001B[31mDirectory " + dirName + " is not needed as it is empty\u001B[0m");
+			warn("\u001B[33mDirectory " + dirName + " is not needed as it is empty\u001B[0m");
 			return errorMessages;
 		}
 		for (File file : directory)
@@ -273,7 +273,7 @@ public class ResourcePacksPluginTest
 						}
 						if (fileContentEquals(file, originalSprite) && !delete)
 						{
-							warn("\u001B[31mFile " + file.getName() + " (" + override.getSpriteID() + ") in folder " + dirName + " is the same as the vanilla sprite\u001B[0m");
+							warn("\u001B[33mFile " + file.getName() + " (" + override.getSpriteID() + ") in folder " + dirName + " is the same as the vanilla sprite\u001B[0m");
 						}
 					}
 					catch (IllegalArgumentException e)
@@ -284,7 +284,7 @@ public class ResourcePacksPluginTest
 						}
 						else
 						{
-							warn("\u001B[31mFile " + file.getName() + " in folder " + dirName + " is redundant\u001B[0m");
+							warn("\u001B[33mFile " + file.getName() + " in folder " + dirName + " is redundant\u001B[0m");
 						}
 					}
 				}
