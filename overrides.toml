@@ -2,10 +2,10 @@
 color=0x781A1A1A
 
 [account_management.separator]
-color=0x3e3e3e
+color=0x4d4d4d
 
 [achievement_diary.entry.border]
-color=0x3f3f3f
+color=0x4d4d4d
 # opacity=150
 
 [achievement_diary.progress.background]
@@ -17,7 +17,7 @@ color=0x171717
 # opacity=0
 
 [bank.inventory.rune_pouch.border.outer]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [bank.menu.border.inner]
@@ -25,20 +25,20 @@ color=0x171717
 # opacity=0
 
 [bank.menu.border.outer]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [bank.popup.border.inner]
 color=0x171717
 
 [bank.popup.border.outer]
-color=0x474745
+color=0x4d4d4d
 
 [bank.separator]
 color=0x171717
 
 [bank.inventory.locked]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [bonds_pouch.border.inner]
@@ -46,7 +46,7 @@ color=0x171717
 # opacity=0
 
 [bonds_pouch.border.outer]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [bounty_hunter.overlay.background]
@@ -57,10 +57,10 @@ color=0x781A1A1A
 color=0x171717
 
 [bounty_hunter.overlay.border.outer]
-color=0x474745
+color=0x4d4d4d
 
 [channel_tab.separator]
-color=0x474745
+color=0x4d4d4d
 
 [chatbox.separator]
 color=0x777777
@@ -71,7 +71,7 @@ color=0x000000
 # opacity=0
 
 [choose_spell.border.inner]
-color=0x3f3f3f
+color=0x4d4d4d
 # opacity=0
 
 [choose_spell.border.outer]
@@ -79,17 +79,17 @@ color=0x000000
 # opacity=0
 
 [clan_chat.border.inner]
-color=0x474745
+color=0x4d4d4d
 
 [clan_chat.border.outer]
-color=0x474745
+color=0x4d4d4d
 
 [colosseum.info.background]
 color=0x000000
 # opacity=200
 
 [colosseum.info.border.inner]
-color=0x3f3f3f
+color=0x4d4d4d
 # opacity=0
 
 [colosseum.info.border.outer]
@@ -97,7 +97,7 @@ color=0x000000
 # opacity=0
 
 [colosseum.modifiers.border]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [colosseum.modifiers.selected]
@@ -113,7 +113,7 @@ color=0x000000
 # opacity=200
 
 [colosseum.wave.border.inner]
-color=0x3f3f3f
+color=0x4d4d4d
 # opacity=0
 
 [colosseum.wave.border.outer]
@@ -128,11 +128,11 @@ color=0x171717
 # opacity=0
 
 [combat_achievements.progress.border.outer]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [combat_achievements.tasks.menu.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [combat_achievements.tasks.menu.border.outer]
@@ -140,7 +140,7 @@ color=0xe0e0c
 # opacity=0
 
 [combat_achievements.tasks.dropdown.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [combat_achievements.tasks.dropdown.border.outer]
@@ -148,7 +148,7 @@ color=0xe0e0c
 # opacity=0
 
 [combat_achievements.rewards.body.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [combat_achievements.rewards.body.border.outer]
@@ -156,7 +156,7 @@ color=0xe0e0c
 # opacity=0
 
 [combat_achievements.rewards.section.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [combat_achievements.rewards.section.border.outer]
@@ -164,7 +164,7 @@ color=0x171717
 # opacity=0
 
 [combat_achievements.boss.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [combat_achievements.boss.border.outer]
@@ -172,7 +172,7 @@ color=0xe0e0c
 # opacity=0
 
 [combat_achievements.overview.border]
-color=0x474745
+color=0x4d4d4d
 # opacity=150
 
 [costumes.border.inner]
@@ -180,7 +180,7 @@ color=0x171717
 # opacity=0
 
 [costumes.border.outer]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [cox.overlay.background]
@@ -188,7 +188,7 @@ color=0x781A1A1A
 # opacity=0
 
 [cox.overlay.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [cox.overlay.border.outer]
@@ -196,7 +196,7 @@ color=0xe0e0c
 # opacity=0
 
 [cox.party.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [cox.party.border.outer]
@@ -204,7 +204,7 @@ color=0x171717
 # opacity=0
 
 [cox.parties.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [cox.parties.border.outer]
@@ -212,7 +212,7 @@ color=0x171717
 # opacity=0
 
 [deposit_box.inventory.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [deposit_box.inventory.border.outer]
@@ -224,7 +224,7 @@ color=0x000000
 # opacity=200
 
 [forestry_kit.body.border.inner]
-color=0x3f3f3f
+color=0x4d4d4d
 # opacity=0
 
 [forestry_kit.body.border.outer]
@@ -236,7 +236,7 @@ color=0x000000
 # opacity=200
 
 [forestry_kit.info.border.inner]
-color=0x3f3f3f
+color=0x4d4d4d
 # opacity=0
 
 [forestry_kit.info.border.outer]
@@ -248,7 +248,7 @@ color=0x000000
 # opacity=200
 
 [forestry_shop.body.border.inner]
-color=0x3f3f3f
+color=0x4d4d4d
 # opacity=0
 
 [forestry_shop.body.border.outer]
@@ -256,7 +256,7 @@ color=0x000000
 # opacity=0
 
 [forestry_shop.dropdown.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [forestry_shop.dropdown.border.outer]
@@ -268,7 +268,7 @@ color=0x000000
 # opacity=200
 
 [forestry_shop.info.border.inner]
-color=0x3f3f3f
+color=0x4d4d4d
 # opacity=0
 
 [forestry_shop.info.border.outer]
@@ -276,7 +276,7 @@ color=0x000000
 # opacity=0
 
 [forestry_shop.menu.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [forestry_shop.menu.border.outer]
@@ -284,7 +284,7 @@ color=0x171717
 # opacity=0
 
 [friends_chat.border.inner]
-color=0x3f3f3f
+color=0x4d4d4d
 # opacity=0
 
 [friends_chat.border.outer]
@@ -292,7 +292,7 @@ color=0xe0e0c
 # opacity=0
 
 [friends_chat.setup.border.inner]
-color=0x3f3f3f
+color=0x4d4d4d
 # opacity=0
 
 [friends_chat.setup.border.outer]
@@ -300,7 +300,7 @@ color=0xe0e0c
 # opacity=0
 
 [friends_chat.header.border.inner]
-color=0x3f3f3f
+color=0x4d4d4d
 # opacity=0
 
 [friends_chat.header.border.outer]
@@ -308,7 +308,7 @@ color=0xe0e0c
 # opacity=0
 
 [friends_list.header.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [friends_list.header.border.outer]
@@ -316,7 +316,7 @@ color=0xe0e0c
 # opacity=0
 
 [ge.offer.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [ge.offer.border.outer]
@@ -324,7 +324,7 @@ color=0x171717
 # opacity=0
 
 [ge.slot.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [ge.slot.border.outer]
@@ -332,7 +332,7 @@ color=0x171717
 # opacity=0
 
 [grouping_tab.border.inner]
-color=0x3f3f3f
+color=0x4d4d4d
 # opacity=150
 
 [grouping_tab.border.outer]
@@ -340,7 +340,7 @@ color=0x111111
 # opacity=0
 
 [grouping_tab.dropdown.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=150
 
 [grouping_tab.dropdown.border.outer]
@@ -348,39 +348,39 @@ color=0xe0e0c
 # opacity=0
 
 [ignore_list.header.border.inner]
-color=0x3f3f3f
+color=0x4d4d4d
 # opacity=0
 
 [ignore_list.header.border.outer]
-color=0x3f3f3f
+color=0x4d4d4d
 # opacity=0
 
 [item_search.background]
-color=0x3f3f3f
+color=0x4d4d4d
 # opacity=200
 
 [item_search.border.inner]
-color=0x3f3f3f
+color=0x4d4d4d
 # opacity=150
 
 [item_search.border.outer]
-color=0x3f3f3f
+color=0x4d4d4d
 # opacity=0
 
 [jewellery_box.border.inner]
-color=0x3f3f3f
+color=0x4d4d4d
 # opacity=0
 
 [jewellery_box.border.outer]
-color=0x3f3f3f
+color=0x4d4d4d
 # opacity=0
 
 [lectern.border.inner]
-color=0x3f3f3f
+color=0x4d4d4d
 # opacity=0
 
 [lectern.border.outer]
-color=0x3f3f3f
+color=0x4d4d4d
 # opacity=0
 
 [kept_on_death.border.inner]
@@ -388,11 +388,11 @@ color=0xe0e0c
 # opacity=0
 
 [kept_on_death.border.outer]
-color=0x3f3f3f
+color=0x4d4d4d
 # opacity=0
 
 [looting_bag.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [looting_bag.border.outer]
@@ -404,7 +404,7 @@ color=0x781A1A1A
 # opacity=100
 
 [lms.kda.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [lms.kda.border.outer]
@@ -412,7 +412,7 @@ color=0xe0e0c
 # opacity=0
 
 [lms.settings.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [lms.settings.border.outer]
@@ -420,7 +420,7 @@ color=0xe0e0c
 # opacity=0
 
 [lms.shop.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [lms.shop.border.outer]
@@ -428,7 +428,7 @@ color=0xe0e0c
 # opacity=0
 
 [lms.shop.separator]
-color=0x3f3f3f
+color=0x4d4d4d
 # opacity=0
 
 # [lms.shop.separator.accent]
@@ -436,19 +436,19 @@ color=0x3f3f3f
 # opacity=0
 
 [lms.supplies.border.inner]
-color=0x474745
+color=0x4d4d4d
 
 [lms.supplies.border.outer]
 color=0xe0e0c
 
 [lms.supplies.menu.border.inner]
-color=0x474745
+color=0x4d4d4d
 
 [lms.supplies.menu.border.outer]
 color=0xe0e0c
 
 [lms.supplies.dropdown.border.inner]
-color=0x474745
+color=0x4d4d4d
 
 [lms.supplies.dropdown.border.outer]
 color=0xe0e0c
@@ -462,35 +462,35 @@ color=0x696969
 # opacity=0
 
 [other_clan.border.inner]
-color=0x3f3f3f
+color=0x4d4d4d
 # opacity=0
 
 [other_clan.border.outer]
-color=0x3f3f3f
+color=0x4d4d4d
 # opacity=0
 
 [pet_house.border.inner]
-color=0x3f3f3f
+color=0x4d4d4d
 # opacity=150
 
 [pet_house.border.outer]
-color=0x3f3f3f
+color=0x4d4d4d
 # opacity=0
 
 [poh.build_room.border]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [portal_nexus.border]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [pvp_arena.duel_options.separator]
-color=0x474745
+color=0x4d4d4d
 # opacity=100
 
 [pvp_arena.confirm_options.separator]
-color=0x3f3f3f
+color=0x4d4d4d
 # opacity=100
 
 # [pvp_arena.confirm_options.separator.accent]
@@ -498,7 +498,7 @@ color=0x3f3f3f
 # opacity=100
 
 [pvp_arena.recruitment.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [pvp_arena.recruitment.border.outer]
@@ -506,10 +506,10 @@ color=0xe0e0c
 # opacity=0
 
 [pvp_arena.supplies.separator]
-color=0x3f3f3f
+color=0x4d4d4d
 
 [pvp_arena.supplies.stats.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [pvp_arena.supplies.stats.border.outer]
@@ -517,7 +517,7 @@ color=0xe0e0c
 # opacity=0
 
 [pvp_arena.supplies.kit.equipment.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [pvp_arena.supplies.kit.equipment.border.outer]
@@ -525,7 +525,7 @@ color=0xe0e0c
 # opacity=0
 
 [pvp_arena.supplies.kit.list.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [pvp_arena.supplies.kit.list.border.outer]
@@ -533,7 +533,7 @@ color=0xe0e0c
 # opacity=0
 
 [pvp_arena.supplies.kit.inventory.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [pvp_arena.supplies.kit.inventory.border.outer]
@@ -541,7 +541,7 @@ color=0xe0e0c
 # opacity=0
 
 [pvp_arena.supplies.kit.menu.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [pvp_arena.supplies.kit.menu.border.outer]
@@ -549,7 +549,7 @@ color=0xe0e0c
 # opacity=0
 
 [pvp_arena.supplies.kit.dropdown.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [pvp_arena.supplies.kit.dropdown.border.outer]
@@ -561,7 +561,7 @@ color=0x000000
 # opacity=212
 
 [quest_tab.separator]
-color=0x3f3f3f
+color=0x4d4d4d
 
 # [report.button.hover]
 # color=0
@@ -571,11 +571,11 @@ color=0x171717
 # opacity=100
 
 [rune_pouch.border.outer]
-color=0x474745
+color=0x4d4d4d
 # opacity=100
 
 [settings_tab.dropdown.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [settings_tab.dropdown.border.outer]
@@ -583,7 +583,7 @@ color=0xe0e0c
 # opacity=0
 
 [settings_tab.menu.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [settings_tab.menu.border.outer]
@@ -591,10 +591,10 @@ color=0xe0e0c
 # opacity=0
 
 [settings_tab.separator]
-color=0x474745
+color=0x4d4d4d
 
 [settings.body.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [settings.body.border.outer]
@@ -602,7 +602,7 @@ color=0x171717
 # opacity=0
 
 [settings.menu.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [settings.menu.border.outer]
@@ -610,7 +610,7 @@ color=0x171717
 # opacity=0
 
 [settings.sidebar.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [settings.sidebar.border.outer]
@@ -618,7 +618,7 @@ color=0x171717
 # opacity=0
 
 [skill_guide.body.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [skill_guide.body.border.outer]
@@ -626,17 +626,17 @@ color=0x171717
 # opacity=0
 
 [skill_guide.tab.border]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [soul_wars.separator.bottom]
-color=0x3f3f3f
+color=0x4d4d4d
 
 # [soul_wars.separator.bottom.accent]
 # color=0
 
 [soul_wars.separator.top]
-color=0x3f3f3f
+color=0x4d4d4d
 
 # [soul_wars.separator.top.accent]
 # color=0
@@ -646,7 +646,7 @@ color=0x3f3f3f
 # opacity=40
 
 [spell_tooltip.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [spell_tooltip.border.outer]
@@ -654,7 +654,7 @@ color=0xe0e0c
 # opacity=0
 
 [toa.applicants.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [toa.applicants.border.outer]
@@ -662,7 +662,7 @@ color=0x171717
 # opacity=0
 
 [toa.invocations.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [toa.invocations.border.outer]
@@ -670,7 +670,7 @@ color=0x171717
 # opacity=0
 
 [toa.members.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [toa.members.border.outer]
@@ -678,7 +678,7 @@ color=0x171717
 # opacity=0
 
 [toa.parties.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [toa.parties.border.outer]
@@ -686,7 +686,7 @@ color=0x171717
 # opacity=0
 
 [toa.summary.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [toa.summary.border.outer]
@@ -694,19 +694,19 @@ color=0x171717
 # opacity=0
 
 [toa.separator.bottom]
-color=0x3f3f3f
+color=0x4d4d4d
 
 # [toa.separator.bottom.accent]
 # color=0
 
 [toa.separator.top]
-color=0x3f3f3f
+color=0x4d4d4d
 
 # [toa.separator.top.accent]
 # color=0
 
 [tob.applicants.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [tob.applicants.border.outer]
@@ -714,7 +714,7 @@ color=0x171717
 # opacity=0
 
 [tob.parties.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [tob.parties.border.outer]
@@ -722,7 +722,7 @@ color=0x171717
 # opacity=0
 
 [tob.party.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [tob.party.border.outer]
@@ -730,7 +730,7 @@ color=0x171717
 # opacity=0
 
 [tob.party.header.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [tob.party.header.border.outer]
@@ -738,7 +738,7 @@ color=0x171717
 # opacity=0
 
 [world_map.key.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [world_map.key.border.outer]
@@ -746,7 +746,7 @@ color=0xe0e0c
 # opacity=0
 
 [world_map.dropdown.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [world_map.dropdown.border.outer]
@@ -754,7 +754,7 @@ color=0xe0e0c
 # opacity=0
 
 [world_map.location_menu.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [world_map.location_menu.border.outer]
@@ -762,7 +762,7 @@ color=0xe0e0c
 # opacity=0
 
 [world_map.search.border.inner]
-color=0x474745
+color=0x4d4d4d
 # opacity=0
 
 [world_map.search.border.outer]
@@ -773,15 +773,15 @@ color=0xe0e0c
 color=0x000000
 
 [world_switcher.border.bottom]
-color=0x3f3f3f
+color=0x4d4d4d
 # opacity=50
 
 [world_switcher.border.top]
-color=0x3f3f3f
+color=0x4d4d4d
 # opacity=50
 
 [world_switcher.window.border.inner]
-color=0x474745
+color=0x4d4d4d
 
 [world_switcher.window.border.outer]
 color=0x171717
