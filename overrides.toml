@@ -124,11 +124,11 @@ color=0x000000
 color=0x171717
 
 [combat_achievements.progress.border.inner]
-color=0x171717
+color=0x4d4d4d
 # opacity=0
 
 [combat_achievements.progress.border.outer]
-color=0x4d4d4d
+color=0x171717
 # opacity=0
 
 [combat_achievements.tasks.menu.border.inner]
