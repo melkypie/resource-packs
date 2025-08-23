@@ -76,7 +76,7 @@ dynamicChildren=[2]
 
 [bank.menu.border.inner.dropdown]
 scripts=[5772]
-children=[137]
+children=[138]
 opacity=0
 dynamicChildren=[1]
 
@@ -102,7 +102,7 @@ dynamicChildren=[1]
 
 [bank.menu.border.outer.dropdown]
 scripts=[5772]
-children=[137]
+children=[138]
 opacity=0
 dynamicChildren=[0]
 
