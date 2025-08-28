@@ -26,8 +26,10 @@ import net.runelite.client.chat.ChatMessageManager;
 import net.runelite.client.chat.QueuedMessage;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.config.RuneLiteConfig;
+import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.events.ConfigChanged;
+import net.runelite.client.events.PluginMessage;
 import net.runelite.client.events.ProfileChanged;
 import net.runelite.client.events.SessionClose;
 import net.runelite.client.events.SessionOpen;
@@ -81,6 +83,9 @@ public class ResourcePacksPlugin extends Plugin
 
 	@Inject
 	private Overrides overrides;
+
+	@Inject
+	private EventBus eventBus;
 
 	private ResourcePacksHubPanel resourcePacksHubPanel;
 	private NavigationButton navButton;
@@ -311,6 +316,20 @@ public class ResourcePacksPlugin extends Plugin
 			{
 				resourcePacksManager.addPropertyToWidget(widgetOverride, false);
 			}
+		}
+	}
+
+	@Subscribe
+	public void onPluginMessage(PluginMessage event)
+	{
+		if (!"resource-packs".equals(event.getNamespace()))
+		{
+			return;
+		}
+
+		if (event.getName().equals("export"))
+		{
+			eventBus.post(new PluginMessage("resource-packs", "values", overrides.export()));
 		}
 	}
 

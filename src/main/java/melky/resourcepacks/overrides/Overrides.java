@@ -35,6 +35,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import javax.inject.Inject;
@@ -52,6 +53,8 @@ import static melky.resourcepacks.overrides.OverrideKey.SCRIPTS;
 import static melky.resourcepacks.overrides.OverrideKey.TYPE;
 import static melky.resourcepacks.overrides.OverrideKey.VARBIT;
 import static melky.resourcepacks.overrides.OverrideKey.VARBIT_VALUE;
+import net.runelite.client.eventbus.EventBus;
+import net.runelite.client.events.PluginMessage;
 import org.tomlj.Toml;
 import org.tomlj.TomlArray;
 import org.tomlj.TomlParseResult;
@@ -66,10 +69,13 @@ public class Overrides
 
 	private final String sourcePath;
 
+	private EventBus eventBus;
+
 	@Inject
-	public Overrides()
+	public Overrides(EventBus eventBus)
 	{
 		this("/overrides/overrides.toml");
+		this.eventBus = eventBus;
 	}
 
 	protected Overrides(String path)
@@ -119,6 +125,8 @@ public class Overrides
 
 				walkChildren(new WidgetOverride().withName(key), table, pack);
 			}
+
+			eventBus.post(new PluginMessage("resource-packs", "pack-loaded"));
 		}
 		catch (IOException | ClassCastException e)
 		{
@@ -383,5 +391,33 @@ public class Overrides
 		}
 
 		return parent;
+	}
+
+	public Map<String, Object> export()
+	{
+		Map<String, Object> map = new TreeMap<>();
+		for (var w : values())
+		{
+			if (w.getNewOpacity() != -1)
+			{
+				map.put(w.getName() + ".opacity", w.getNewOpacity());
+			}
+
+			if (w.getNewColor() != -1)
+			{
+				map.put(w.getName() + ".color", w.getNewOpacity());
+			}
+			else if (w.getColor() != -1)
+			{
+				map.put(w.getName() + ".color", w.getColor());
+			}
+		}
+
+		if (properties.containsKey("overlay.color"))
+		{
+			map.put("overlay.color", properties.get("overlay.color"));
+		}
+
+		return map;
 	}
 }

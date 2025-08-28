@@ -47,7 +47,7 @@ public class InterfacesTest
 	@Before
 	public void beforeEach()
 	{
-		overrides = new Overrides();
+		overrides = new Overrides("/overrides/overrides.toml");
 	}
 
 	@Test
