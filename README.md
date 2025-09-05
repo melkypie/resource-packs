@@ -1,6 +1,6 @@
 # LofiScape (by kitea)
 
-![icon](https://i.imgur.com/0rcg83I.png)
+![icon](https://i.imgur.com/aQvJsqH.png)
 
 LofiScape is a darker resource pack with bright accents meant to capture the lofi anime vibe. It features classic lofi elements such as city skylines, an anime girl, cats, music notes, headphones, and more. It is mostly intended for use during casual skilling but may be utilized for pvm content as well.
 

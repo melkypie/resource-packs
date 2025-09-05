@@ -1,10 +1,3 @@
-# overlay color is in ARGB hex format; overlay opacity ranges from 0-255
-# delete the # before every line you want changed (leave this top info with a # to keep it invisible)
-# Example:
-# [overlay]
-# color=type "0x" then paste the rest of the hex code after
-# opacity="0" is full transparency and "255" is full opacity
-
  [account_management.separator]
  color=0x00000
 
