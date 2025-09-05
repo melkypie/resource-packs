@@ -1,4 +1,4 @@
-# Studio Ghibli Resource Pack by nwn7
+# Studio Ghibli Resource Pack by kitea
 A fully customized pixel resource pack with a Studio Ghibli theme.
 
 
