@@ -304,6 +304,11 @@ color=0xe0e0c
 opactiy=0
 dynamicChildren=[1]
 
+[clan_chat.border.rectangle]
+color=0x170801
+opactiy=166
+children=[4]
+
 ########################################
 
 [colosseum]
