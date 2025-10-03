@@ -670,12 +670,10 @@
 # color=0x89785e
 
 # [rune_pouch.border.inner]
-# color=0xebd7cc
-# opacity=100
+# color=0x5a5245
 
 # [rune_pouch.border.outer]
-# color=0xff981f
-# opacity=100
+# color=0x383023
 
 # [settings.body.border.inner]
 # color=0x474745
