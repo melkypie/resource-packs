@@ -14,6 +14,14 @@
 # color=0x000000
 # opacity=150
 
+# [bank.incinerator.border.inner]
+# color=0x474745
+# opacity=0
+
+# [bank.incinerator.border.outer]
+# color=0x0e0e0c
+# opacity=0
+
 # [bank.inventory.locked]
 # color=0xff0000
 # opacity=0
