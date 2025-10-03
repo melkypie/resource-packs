@@ -120,6 +120,12 @@ dynamicChildren=[1]
 color=0x474745
 opacity=0
 
+[bank.popup.border.outer]
+children=[5]
+dynamicChildren=[0]
+color=0xe0e0c
+opacity=0
+
 [bank.incinerator]
 children=[50]
 
