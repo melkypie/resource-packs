@@ -10,6 +10,12 @@
 # achievement_diary.progress.background.color=0x000000
 # achievement_diary.progress.background.opacity=150
 
+# bank.incinerator.border.inner.color=0x474745
+# bank.incinerator.border.inner.opacity=0
+
+# bank.incinerator.border.outer.color=0x0e0e0c
+# bank.incinerator.border.outer.opacity=0
+
 # bank.inventory.locked.color=0xff0000
 # bank.inventory.locked.opacity=0
 
@@ -18,6 +24,12 @@
 
 # bank.inventory.rune_pouch.border.outer.color=0x383023
 # bank.inventory.rune_pouch.border.outer.opacity=0
+
+# bank.inventory.rune_pouch.loadout.border.inner.color=0x474745
+# bank.inventory.rune_pouch.loadout.border.inner.opacity=0
+
+# bank.inventory.rune_pouch.loadout.border.outer.color=0x0e0e0c
+# bank.inventory.rune_pouch.loadout.border.outer.opacity=0
 
 # bank.menu.border.inner.color=0x474745
 # bank.menu.border.inner.opacity=0
@@ -80,6 +92,8 @@
 # clan_chat.border.inner.color=0x474745
 
 # clan_chat.border.outer.color=0x0e0e0c
+
+# clan_chat.border.rectangle.color=0x170801
 
 # collection_log.border.color=0x585040
 
@@ -482,11 +496,9 @@
 
 # report.button.hover.color=0x89785e
 
-# rune_pouch.border.inner.color=0xebd7cc
-# rune_pouch.border.inner.opacity=100
+# rune_pouch.border.inner.color=0x5a5245
 
-# rune_pouch.border.outer.color=0xff981f
-# rune_pouch.border.outer.opacity=100
+# rune_pouch.border.outer.color=0x383023
 
 # settings.body.border.inner.color=0x474745
 # settings.body.border.inner.opacity=0
