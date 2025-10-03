@@ -1759,15 +1759,25 @@ interface=190
 [rune_pouch.border]
 scripts=[453]
 
-[rune_pouch.border.inner]
-color=0xebd7cc
-opacity=100
-children=[6, 10]
+[[rune_pouch.border.inner]]
+color=0x5a5245
+children=[4]
+dynamicChildren=[12]
 
-[rune_pouch.border.outer]
-color=0xff981f
-opacity=100
-children=[5, 9]
+[[rune_pouch.border.inner]]
+color=0x5a5245
+children=[7]
+dynamicChildren=[29]
+
+[[rune_pouch.border.outer]]
+color=0x383023
+children=[4]
+dynamicChildren=[13]
+
+[[rune_pouch.border.outer]]
+color=0x383023
+children=[7]
+dynamicChildren=[28]
 
 ########################################
 
