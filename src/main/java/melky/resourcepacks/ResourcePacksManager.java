@@ -841,6 +841,13 @@ public class ResourcePacksManager
 		{
 			for (var arrayId : widgetOverride.getDynamicChildren())
 			{
+				if (arrayId < 0)
+				{
+					var tmp = widgetToOverride.getDynamicChildren().length - (arrayId * -1);
+					log.debug("rewriting index {} to {} for {}", arrayId, tmp, widgetOverride);
+					arrayId = tmp;
+				}
+
 				Widget arrayWidget = widgetToOverride.getChild(arrayId);
 				if (arrayWidget == null)
 				{
