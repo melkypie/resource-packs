@@ -56,6 +56,19 @@ color=0x383023
 opacity=0
 dynamicChildren=[0]
 
+[bank.inventory.rune_pouch.loadout]
+children=[35, 39, 42, 45, 47, 49, 51, 53, 55, 57]
+
+[bank.inventory.rune_pouch.loadout.border.inner]
+dynamicChildren=[2]
+color=0x474745
+opacity=0
+
+[bank.inventory.rune_pouch.loadout.border.outer]
+dynamicChildren=[1]
+color=0xe0e0c
+opacity=0
+
 [bank.separator]
 color=0x2e2b23
 scripts=[274]
