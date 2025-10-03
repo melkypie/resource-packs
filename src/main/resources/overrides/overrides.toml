@@ -1202,12 +1202,12 @@ scripts=[974]
 children=[4, 5, 12]
 
 [kept_on_death.border.inner]
-dynamicChildren=[0, 4]
+dynamicChildren=[0, 2, 4]
 color=0xe0e0c
 opacity=0
 
 [kept_on_death.border.outer]
-dynamicChildren=[1, 5]
+dynamicChildren=[1, 3, 5]
 color=0x474745
 opacity=0
 
