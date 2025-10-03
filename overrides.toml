@@ -129,6 +129,9 @@
 # [clan_chat.border.outer]
 # color=0x0e0e0c
 
+# [clan_chat.border.rectangle]
+# color=0x170801
+
 # [collection_log.border]
 # color=0x585040
 
