@@ -54,7 +54,7 @@ color=0x423740
 color=0x000000
 
 [chatbox.separator]
-color=0x8a8d99
+color=0xaaabb9
 # opacity=0
 
 [choose_spell.background]
@@ -114,7 +114,7 @@ color=0x000000
 opacity=0
 
 [collection_log.border]
-color=0x000000
+color=0x2a202a
 
 [combat_achievements.progress.border.inner]
 color=0x000000
@@ -301,27 +301,27 @@ color=0x2a202c
 # opacity=0
 
 [ge.offer.border.inner]
-color=0x2a202c
+color=0x2e232e
 opacity=255
 
 [ge.offer.border.outer]
-color=0x2a202c
+color=0x2e232e
 opacity=255
 
 [ge.slot.border.inner]
-color=0x2a202c
+color=0x2e232e
 opacity=255
 
 [ge.slot.border.outer]
-color=0x2a202c
+color=0x2e232e
 opacity=255
 
 [grouping_tab.border.inner]
-color=0x2a202c
+color=0x2e232e
 opacity=255
 
 [grouping_tab.border.outer]
-color=0x2a202c
+color=0x000000
 # opacity=0
 
 [grouping_tab.dropdown.border.inner]
@@ -329,7 +329,7 @@ color=0x2a202c
 opacity=255
 
 [grouping_tab.dropdown.border.outer]
-color=0x2a202c
+color=0x000000
 # opacity=0
 
 [ignore_list.header.border.inner]
@@ -353,35 +353,35 @@ color=0x8a8d99
 # opacity=0
 
 [jewellery_box.border.inner]
-color=0x2a202c
+color=0x2e232e
 opacity=255
 
 [jewellery_box.border.outer]
-color=0x2a202c
+color=0x2e232e
 opacity=255
 
 [lectern.border.inner]
-color=0x2a202c
+color=0x2e232e
 opacity=255
 
 [lectern.border.outer]
-color=0x2a202c
+color=0x2e232e
 opacity=255
 
 [kept_on_death.border.inner]
-color=0x2a202c
+color=0x2b212d
 # opacity=0
 
 [kept_on_death.border.outer]
-color=0x2a202c
+color=0x2b212d
 opacity=255
 
 [looting_bag.border.inner]
-color=0x2a202c
+color=0x2b212d
 opacity=255
 
 [looting_bag.border.outer]
-color=0x2a202c
+color=0x2b212d
 # opacity=0
 
 [lms.kda.background]
@@ -540,19 +540,19 @@ color=0x2a202c
 opacity=255
 
 [settings_tab.dropdown.border.inner]
-color=0x2a202c
+color=0x453741
 opacity=255
 
 [settings_tab.dropdown.border.outer]
-color=0x2a202c
+color=0x010001
 # opacity=0
 
 [settings_tab.menu.border.inner]
-color=0x2a202c
+color=0x453741
 opacity=255
 
 [settings_tab.menu.border.outer]
-color=0x2a202c
+color=0x010001
 # opacity=0
 
 [settings_tab.separator]
@@ -599,11 +599,11 @@ color=0x2a202c
 opacity=255
 
 [soul_wars.separator.bottom.accent]
-color=0x2a202c
+color=0x2b212d
 opacity=255
 
 [soul_wars.separator.top]
-color=0x2a202c
+color=0x2b212d
 opacity=255
 
 [soul_wars.separator.top.accent]
@@ -622,90 +622,90 @@ color=0x000000
 opacity=0
 
 [toa.applicants.border.inner]
-color=0x261d26
+color=0x271d26
 opacity=255
 
 [toa.applicants.border.outer]
-color=0x261d26
+color=0x271d26
 # opacity=0
 
 [toa.invocations.border.inner]
-color=0x261d26
+color=0x271d26
 opacity=255
 
 [toa.invocations.border.outer]
-color=0x261d26
+color=0x271d26
 # opacity=0
 
 [toa.members.border.inner]
-color=0x261d26
+color=0x271d26
 opacity=255
 
 [toa.members.border.outer]
-color=0x261d26
+color=0x271d26
 # opacity=0
 
 [toa.parties.border.inner]
-color=0x000000
+color=0x271d26
 # opacity=0
 
 [toa.parties.border.outer]
-color=0x000000
+color=0x271d26
 # opacity=0
 
 [toa.summary.border.inner]
-color=0x261d26
+color=0x271d26
 opacity=255
 
 [toa.summary.border.outer]
-color=0x261d26
+color=0x271d26
 # opacity=0
 
 [toa.separator.bottom]
-color=0x261d26
+color=0x271d26
 opacity=255
 
 [toa.separator.bottom.accent]
-color=0x261d26
+color=0x271d26
 opacity=255
 
 [toa.separator.top]
-color=0x000000
+color=0x271d26
 opacity=255
 
 [toa.separator.top.accent]
-color=0x261d26
+color=0x271d26
 
 [tob.applicants.border.inner]
-color=0x18171a
+color=0x271d26
 # opacity=0
 
 [tob.applicants.border.outer]
-color=0x000000
+color=0x271d26
 # opacity=0
 
 [tob.parties.border.inner]
-color=0x18171a
+color=0x271d26
 opacity=255
 
 [tob.parties.border.outer]
-color=0x000000
+color=0x271d26
 # opacity=0
 
 [tob.party.border.inner]
-color=0x18171a
+color=0x271d26
 opacity=255
 
 [tob.party.border.outer]
-color=0x000000
+color=0x271d26
 # opacity=0
 
 [tob.party.header.border.inner]
-color=0x18171a
+color=0x271d26
 opacity=255
 
 [tob.party.header.border.outer]
-color=0x000000
+color=0x271d26
 # opacity=0
 
 [world_map.key.border.inner]
