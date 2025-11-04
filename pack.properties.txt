@@ -1,0 +1,4 @@
+displayName=MineScape
+compatibleVersion=1.4.8
+author=QuicklyV2
+tags=Minecraft,creative,square,funny
