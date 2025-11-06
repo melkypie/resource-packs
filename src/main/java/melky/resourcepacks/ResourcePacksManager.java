@@ -50,8 +50,8 @@ import melky.resourcepacks.hub.ResourcePacksClient;
 import melky.resourcepacks.overrides.Overrides;
 import melky.resourcepacks.overrides.WidgetOverride;
 import net.runelite.api.Client;
-import net.runelite.api.SpriteID;
 import net.runelite.api.SpritePixels;
+import net.runelite.api.gameval.SpriteID;
 import net.runelite.api.widgets.Widget;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.config.ConfigManager;
@@ -381,7 +381,7 @@ public class ResourcePacksManager
 	{
 		restoreSprites();
 
-		BufferedImage compassImage = spriteManager.getSprite(SpriteID.COMPASS_TEXTURE, 0);
+		BufferedImage compassImage = spriteManager.getSprite(SpriteID.COMPASS, 0);
 
 		if (compassImage != null)
 		{
@@ -609,7 +609,7 @@ public class ResourcePacksManager
 					continue;
 				}
 
-				if (spriteOverride.getSpriteID() == SpriteID.COMPASS_TEXTURE)
+				if (spriteOverride.getSpriteID() == SpriteID.COMPASS)
 				{
 					client.setCompass(spritePixels);
 				}
