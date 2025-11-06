@@ -501,8 +501,8 @@ public enum SpriteOverride
 	STATS_NEW_TILE_LEFT(SpriteID.Miscgraphics2._2, Folder.STATS),
 	STATS_NEW_TILE_RIGHT_WITH_SLASH(SpriteID.Miscgraphics2._3, Folder.STATS),
 	STATS_NEW_TILE_LEFT_BLACK(SpriteID.Miscgraphics2._4, Folder.STATS),
-	STATS_NEW_TILE_MIDDLE_BLACK(SpriteID.Miscgraphics2._5, Folder.STATS),
-	STATS_NEW_TILE_RIGHT_BLACK(SpriteID.Miscgraphics2._6, Folder.STATS),
+	STATS_NEW_TILE_MIDDLE_BLACK(SpriteID.Miscgraphics2._6, Folder.STATS),
+	STATS_NEW_TILE_RIGHT_BLACK(SpriteID.Miscgraphics2._5, Folder.STATS),
 
 	STATS_TILE_HALF_LEFT(SpriteID.Miscgraphics.STATS_TILE_HALF_LEFT, Folder.STATS),
 	STATS_TILE_HALF_RIGHT_WITH_SLASH(SpriteID.Miscgraphics.STATS_TILE_HALF_RIGHT_WITH_SLASH, Folder.STATS),
