@@ -34,7 +34,7 @@ import net.runelite.api.gameval.SpriteID;
 @RequiredArgsConstructor
 public enum SpriteOverride
 {
-	TAB_COMBAT(SpriteID.SideIcons.COMBAT, Folder.TAB),
+	TAB_COMBAT(SpriteID.SideiconsInterface.COMBAT, Folder.TAB),
 	TAB_STATS(SpriteID.SideIcons.STATS, Folder.TAB),
 	TAB_QUESTS(SpriteID.SideiconsInterface.QUESTS, Folder.TAB),
 	TAB_QUESTS_PURPLE_KOUREND(SpriteID.SideiconsInterface.KOUREND, Folder.TAB),
