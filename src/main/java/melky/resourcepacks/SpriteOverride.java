@@ -257,6 +257,7 @@ public enum SpriteOverride
 	SKILL_FARMING(SpriteID.Staticons2.FARMING, Folder.SKILL),
 	SKILL_HUNTER(SpriteID.Staticons2.HUNTER, Folder.SKILL),
 	SKILL_CONSTRUCTION(SpriteID.Staticons2.CONSTRUCTION, Folder.SKILL),
+	SKILL_SAILING(SpriteID.Staticons2.SAILING, Folder.SKILL),
 	SKILL_TOTAL(SpriteID.Staticons2.TOTAL, Folder.SKILL),
 
 	COMPASS(SpriteID.COMPASS, Folder.OTHER),
