@@ -13,11 +13,11 @@ If using the Customizable XP drops plugin and displaying icons, an icon override
 
 ## Screenshots
 
-![2025-05-30_16-04-47](https://github.com/user-attachments/assets/3007089b-5ea4-4384-8433-aebaff3d7330)
+<img width="2286" height="1368" alt="2025-11-07_13-23-18" src="https://github.com/user-attachments/assets/eb9d0065-5cd1-435a-b4c2-876c829516e7" />
 
-![2025-05-30_16-34-07](https://github.com/user-attachments/assets/df9b739a-9c91-4ab6-a26b-4c7a211b65da)
+<img width="2286" height="1368" alt="2025-11-07_13-25-26" src="https://github.com/user-attachments/assets/b403fde1-9b62-4a11-899d-281d6e0d13d7" />
 
-![2025-05-30_16-35-54](https://github.com/user-attachments/assets/5cb0ed54-3eed-4aad-a260-320d74e13bbc)
+<img width="2286" height="1368" alt="2025-11-07_13-27-18" src="https://github.com/user-attachments/assets/a42051c8-7566-46a0-b182-3ee722828299" />
 
 ## Additional visuals
 
