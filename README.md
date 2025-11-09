@@ -1,9 +1,11 @@
-# Studio Ghibli Resource Pack by nwn7
+# GhibliScape (by kitea)
+
+![icon](https://i.imgur.com/B7xzxgF.png)
+
 A fully customized pixel resource pack with a Studio Ghibli theme.
 
+## Resizable Mode
+![ResizableMode](https://i.imgur.com/fzL8RdZ.png)
 
-##Resizable Mode
-![ResizableMode](https://imgur.com/fzL8RdZ)
-
-##Fixed Mode
-![FixedMode](https://imgur.com/iHI1UEN)
+## Fixed Mode
+![FixedMode](https://i.imgur.com/iHI1UEN.png)
