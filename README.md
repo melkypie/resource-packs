@@ -8,8 +8,8 @@ Created all elements using Krita and ibisPaint X by me.
 
 For additional photo previews from this pack, view those at this link https://imgur.com/a/kRfd6dI.
 
-## Resizeable mode
-![ResizeableMode](https://i.imgur.com/vtmuqtb.png)
-
 ## Fixed mode
-![FixedMode](https://i.imgur.com/SO3ev31.png)
+![FixedMode](https://i.imgur.com/pZdl1At.png)
+
+## Resizable mode
+![ResizeableMode](https://i.imgur.com/vtmuqtb.png)
