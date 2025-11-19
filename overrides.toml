@@ -132,8 +132,8 @@ color=0x000000
 # [clan_chat.border.rectangle]
 # color=0x170801
 
-# [collection_log.border]
-# color=0x585040
+[collection_log.border]
+color=0x14141c
 
 # [colosseum.info.background]
 # color=0x000000
@@ -742,9 +742,9 @@ color=0x000000
 # [soul_wars.separator.top.accent]
 # color=0x5d5848
 
-[spell_tooltip.background]
-color=0x000000
-opacity=0
+# [spell_tooltip.background]
+# color=0x000000
+# opacity=40
 
 [spell_tooltip.border.inner]
 color=0x14141c

@@ -1,4 +1,4 @@
-# VGAscape-dark
+# VGAscape-dark (by gonekittywild)
 
 <img width="224" height="147" alt="icon" src="https://github.com/user-attachments/assets/186f7dcd-4b9c-4d13-b19b-ec3e32bfa4e4" />
 
