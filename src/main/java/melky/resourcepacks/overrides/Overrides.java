@@ -74,13 +74,15 @@ public class Overrides
 	@Inject
 	public Overrides(EventBus eventBus)
 	{
-		this("/overrides/overrides.toml");
+		this("/overrides/overrides.toml", eventBus);
 		this.eventBus = eventBus;
 	}
 
-	protected Overrides(String path)
+	@VisibleForTesting
+	protected Overrides(String path, EventBus eventBus)
 	{
 		this.sourcePath = path;
+		this.eventBus = eventBus;
 	}
 
 	public Collection<WidgetOverride> values()

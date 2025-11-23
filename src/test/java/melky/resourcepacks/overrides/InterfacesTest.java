@@ -25,29 +25,41 @@
 
 package melky.resourcepacks.overrides;
 
-import com.google.common.collect.Multimap;
-import com.google.common.collect.TreeMultimap;
-import java.awt.Color;
-import java.awt.Toolkit;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.StringSelection;
+import com.google.inject.Guice;
+import com.google.inject.testing.fieldbinder.Bind;
+import com.google.inject.testing.fieldbinder.BoundFieldModule;
 import java.io.IOException;
-import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
+import net.runelite.client.eventbus.EventBus;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.tomlj.Toml;
 import org.tomlj.TomlParseResult;
 
 @Slf4j
+@RunWith(MockitoJUnitRunner.Silent.class)
 public class InterfacesTest
 {
+
+	@Mock
+	@Bind
+	private EventBus eventBus;
+
+	@Before
+	public void before()
+	{
+		Guice.createInjector(BoundFieldModule.of(this)).injectMembers(this);
+	}
+
 	Overrides overrides;
 
 	@Before
 	public void beforeEach()
 	{
-		overrides = new Overrides("/overrides/overrides.toml");
+		overrides = new Overrides("/overrides/overrides.toml", eventBus);
 	}
 
 	@Test

@@ -26,25 +26,43 @@
 package melky.resourcepacks.overrides;
 
 import com.google.common.io.Resources;
+import com.google.inject.Guice;
+import com.google.inject.testing.fieldbinder.Bind;
+import com.google.inject.testing.fieldbinder.BoundFieldModule;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
+import net.runelite.client.eventbus.EventBus;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 
 @Slf4j
+@RunWith(MockitoJUnitRunner.Silent.class)
 public class OverridesTest
 {
+
+	@Mock
+	@Bind
+	private EventBus eventBus;
+
+	@Before
+	public void before()
+	{
+		Guice.createInjector(BoundFieldModule.of(this)).injectMembers(this);
+	}
 
 	@Test
 	public void parentColor() throws IOException
 	{
-		Overrides defaultValues = new Overrides("/overrides/sources/base.toml").buildOverrides("");
-		Overrides overrides = new Overrides("/overrides/sources/base.toml");
+		Overrides defaultValues = new Overrides("/overrides/sources/base.toml", eventBus).buildOverrides("");
+		Overrides overrides = new Overrides("/overrides/sources/base.toml", eventBus);
 
 		String text = Resources.toString(Resources.getResource("overrides/tests/parent-color.toml"), StandardCharsets.UTF_8);
 		overrides.buildOverrides(text);
@@ -72,8 +90,8 @@ public class OverridesTest
 	@Test
 	public void nestedColor() throws IOException
 	{
-		Overrides defaultValues = new Overrides("/overrides/sources/base.toml").buildOverrides("");
-		Overrides overrides = new Overrides("/overrides/sources/base.toml");
+		Overrides defaultValues = new Overrides("/overrides/sources/base.toml", eventBus).buildOverrides("");
+		Overrides overrides = new Overrides("/overrides/sources/base.toml", eventBus);
 
 		String text = Resources.toString(Resources.getResource("overrides/tests/nested-color.toml"), StandardCharsets.UTF_8);
 		overrides.buildOverrides(text);
@@ -106,8 +124,8 @@ public class OverridesTest
 	@Test
 	public void allDynamicChildren() throws IOException
 	{
-		Overrides defaultValues = new Overrides("/overrides/sources/base.toml").buildOverrides("");
-		Overrides overrides = new Overrides("/overrides/sources/base.toml");
+		Overrides defaultValues = new Overrides("/overrides/sources/base.toml", eventBus).buildOverrides("");
+		Overrides overrides = new Overrides("/overrides/sources/base.toml", eventBus);
 
 		String text = Resources.toString(Resources.getResource("overrides/tests/all-children.toml"), StandardCharsets.UTF_8);
 		overrides.buildOverrides(text);
@@ -131,5 +149,32 @@ public class OverridesTest
 
 		assertEquals(true, fillers.get(0).isAllChildren());
 		assertEquals(0, fillers.get(0).getDynamicChildren().size());
+	}
+
+	@Test
+	public void nestedChildren() throws IOException
+	{
+		Overrides defaultValues = new Overrides("/overrides/sources/base.toml", eventBus).buildOverrides("");
+		Overrides overrides = new Overrides("/overrides/sources/base.toml", eventBus);
+
+		String text = Resources.toString(Resources.getResource("overrides/tests/nested-children.toml"), StandardCharsets.UTF_8);
+		overrides.buildOverrides(text);
+
+		var list = overrides.get(8870);
+		var defaultList = defaultValues.get(8870);
+
+		assertFalse("override list is empty", list.isEmpty());
+		assertFalse("default list is empty", defaultList.isEmpty());
+
+
+		var fillers = list.stream().filter(w -> w.getChildId() == 9).collect(Collectors.toList());
+		var defaultFillers = defaultList.stream().filter(w -> w.getChildId() == 9).collect(Collectors.toList());
+
+		assertEquals(1, fillers.size());
+		assertEquals(1, defaultFillers.size());
+
+		assertNotEquals(fillers.get(0), defaultFillers.get(0));
+
+		assertEquals(0x000000, fillers.get(0).getNewColor());
 	}
 }
