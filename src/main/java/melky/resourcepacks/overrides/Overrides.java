@@ -68,14 +68,12 @@ public class Overrides
 	private final Map<String, Object> properties = new HashMap<>();
 
 	private final String sourcePath;
-
-	private EventBus eventBus;
+	private final EventBus eventBus;
 
 	@Inject
 	public Overrides(EventBus eventBus)
 	{
 		this("/overrides/overrides.toml", eventBus);
-		this.eventBus = eventBus;
 	}
 
 	@VisibleForTesting
