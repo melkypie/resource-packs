@@ -1802,6 +1802,76 @@ dynamicChildren=[28]
 
 ########################################
 
+[sailing]
+
+[sailing.tab]
+interface=937
+scripts=[8717,8722]
+
+[sailing.tab.separator]
+children=[36]
+dynamicChildren=[0, 1]
+color=0x5d5848
+
+[sailing.tab.background]
+children=[8, 13, 23]
+dynamicChildren=[0]
+color=0x595046
+opacity=0
+
+[sailing.tab.border]
+children=[8, 13, 23]
+
+[sailing.tab.border.inner]
+dynamicChildren=[2]
+color=0x474745
+opacity=0
+
+[sailing.tab.border.outer]
+dynamicChildren=[1]
+color=0xe0e0c
+opacity=0
+
+[sailing.tab.facilities.divider]
+children=[31]
+
+[sailing.tab.facilities.divider.outer]
+dynamicChildren=[0]
+color=0x474745
+opacity=0
+
+[sailing.tab.facilities.divider.inner]
+dynamicChildren=[1]
+color=0xe0e0c
+opacity=0
+
+[sailing.tab.facilities.row]
+children=[27]
+color=0x4e453a
+opacity=0
+type=3
+dynamicChildren=true
+explicit=true
+
+[sailing.tab.stats.header]
+children=[15]
+color=0x968776
+opacity=0
+type=3
+dynamicChildren=true
+explicit=true
+
+[sailing.tab.stats.row]
+children=[15]
+color=0x4e453a
+opacity=0
+type=3
+dynamicChildren=true
+explicit=true
+
+
+########################################
+
 [settings]
 interface=134
 
