@@ -64,6 +64,7 @@ public class WidgetTrackerModule implements PluginLifecycleComponent
 		return developerMode && config.developerTools();
 	}
 
+	@Override
 	public void startUp()
 	{
 		final BufferedImage icon2 = ImageUtil.loadImageResource(getClass(), "/help.png");
@@ -78,6 +79,7 @@ public class WidgetTrackerModule implements PluginLifecycleComponent
 		eventBus.register(widgetTrackerPanel);
 	}
 
+	@Override
 	public void shutDown()
 	{
 		clientToolbar.removeNavigation(button);
