@@ -253,4 +253,16 @@ public interface ResourcePacksConfig extends Config
 		description = ""
 	)
 	void originalOverlayColor(String color);
+
+	@ConfigItem(
+		keyName = "developerTools",
+		name = "Enable Creator Tools",
+		description = "Enables tools that help pack creators",
+		position = 99,
+		section = experimentalOptions
+	)
+	default boolean developerTools()
+	{
+		return false;
+	}
 }

@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2025, Ron Young <https://github.com/raiyni>
- * Copyright (c) 2025, LlemonDuck
  * All rights reserved.
  *
  *  Redistribution and use in source and binary forms, with or without
@@ -24,48 +23,13 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package melky.resourcepacks.module;
+package melky.resourcepacks.features.widgettracker.event;
 
-import com.google.common.collect.ImmutableSet;
-import com.google.inject.AbstractModule;
-import com.google.inject.Provides;
-import com.google.inject.Singleton;
-import java.util.Set;
-import lombok.extern.slf4j.Slf4j;
-import melky.resourcepacks.ResourcePacksConfig;
-import melky.resourcepacks.features.widgettracker.WidgetSelector;
-import melky.resourcepacks.features.widgettracker.WidgetTracker;
-import melky.resourcepacks.features.widgettracker.WidgetTrackerModule;
-import net.runelite.client.config.ConfigManager;
+import lombok.Value;
+import melky.resourcepacks.features.widgettracker.WidgetState;
 
-@Slf4j
-public class ResourcePacksModule extends AbstractModule
+@Value
+public class WidgetUntracked
 {
-	@Override
-	protected void configure()
-	{
-		bind(ComponentManager.class);
-	}
-
-	@Provides
-	Set<PluginLifecycleComponent> lifecycleComponents(
-		WidgetTrackerModule widgetTrackerModule,
-		WidgetSelector widgetSelector,
-		WidgetTracker widgetTracker
-	)
-	{
-		return ImmutableSet.of(
-			widgetTrackerModule,
-			widgetSelector,
-			widgetTracker
-		);
-	}
-
-	@Provides
-	@Singleton
-	ResourcePacksConfig provideConfig(ConfigManager configManager)
-	{
-		return configManager.getConfig(ResourcePacksConfig.class);
-	}
-
+	WidgetState widget;
 }

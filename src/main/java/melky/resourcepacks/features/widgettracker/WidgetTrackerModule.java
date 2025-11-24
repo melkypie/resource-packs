@@ -1,6 +1,5 @@
 /*
  * Copyright (c) 2025, Ron Young <https://github.com/raiyni>
- * Copyright (c) 2025, LlemonDuck
  * All rights reserved.
  *
  *  Redistribution and use in source and binary forms, with or without
@@ -24,48 +23,65 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package melky.resourcepacks.module;
+package melky.resourcepacks.features.widgettracker;
 
-import com.google.common.collect.ImmutableSet;
-import com.google.inject.AbstractModule;
-import com.google.inject.Provides;
-import com.google.inject.Singleton;
-import java.util.Set;
+import com.google.inject.Injector;
+import java.awt.image.BufferedImage;
+import javax.inject.Inject;
+import javax.inject.Named;
+import javax.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
 import melky.resourcepacks.ResourcePacksConfig;
-import melky.resourcepacks.features.widgettracker.WidgetSelector;
-import melky.resourcepacks.features.widgettracker.WidgetTracker;
-import melky.resourcepacks.features.widgettracker.WidgetTrackerModule;
-import net.runelite.client.config.ConfigManager;
+import melky.resourcepacks.module.PluginLifecycleComponent;
+import net.runelite.client.eventbus.EventBus;
+import net.runelite.client.ui.ClientToolbar;
+import net.runelite.client.ui.NavigationButton;
+import net.runelite.client.util.ImageUtil;
 
 @Slf4j
-public class ResourcePacksModule extends AbstractModule
+@Singleton
+public class WidgetTrackerModule implements PluginLifecycleComponent
 {
+	@Inject
+	private ClientToolbar clientToolbar;
+
+	@Inject
+	private Injector injector;
+
+	@Inject
+	private EventBus eventBus;
+
+	@Inject
+	@Named("developerMode")
+	private boolean developerMode;
+
+	private NavigationButton button;
+	private WidgetTrackerPanel widgetTrackerPanel;
+
 	@Override
-	protected void configure()
+	public boolean isEnabled(ResourcePacksConfig config)
 	{
-		bind(ComponentManager.class);
+		return developerMode && config.developerTools();
 	}
 
-	@Provides
-	Set<PluginLifecycleComponent> lifecycleComponents(
-		WidgetTrackerModule widgetTrackerModule,
-		WidgetSelector widgetSelector,
-		WidgetTracker widgetTracker
-	)
+	public void startUp()
 	{
-		return ImmutableSet.of(
-			widgetTrackerModule,
-			widgetSelector,
-			widgetTracker
-		);
+		final BufferedImage icon2 = ImageUtil.loadImageResource(getClass(), "/help.png");
+		widgetTrackerPanel = injector.getInstance(WidgetTrackerPanel.class);
+		button = NavigationButton.builder()
+			.tooltip("Debug Panel")
+			.icon(icon2)
+			.panel(widgetTrackerPanel)
+			.build();
+
+		clientToolbar.addNavigation(button);
+		eventBus.register(widgetTrackerPanel);
 	}
 
-	@Provides
-	@Singleton
-	ResourcePacksConfig provideConfig(ConfigManager configManager)
+	public void shutDown()
 	{
-		return configManager.getConfig(ResourcePacksConfig.class);
+		clientToolbar.removeNavigation(button);
+		eventBus.unregister(widgetTrackerPanel);
+		widgetTrackerPanel = null;
 	}
-
 }
