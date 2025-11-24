@@ -111,7 +111,8 @@ public class WidgetSelector implements PluginLifecycleComponent
 	{
 		overlayManager.add(overlay);
 
-		clientThread.invokeLater(() -> {
+		clientThread.invokeLater(() ->
+		{
 			if (client.getGameState() != GameState.LOGGED_IN)
 			{
 				return false;

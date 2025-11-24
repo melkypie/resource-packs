@@ -30,7 +30,6 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.util.List;
 import javax.inject.Inject;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -42,14 +41,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.JTree;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeCellRenderer;
-import javax.swing.tree.DefaultTreeModel;
-import javax.swing.tree.TreeCellRenderer;
-import javax.swing.tree.TreePath;
 import lombok.extern.slf4j.Slf4j;
 import melky.resourcepacks.features.widgettracker.event.WidgetChanged;
 import melky.resourcepacks.features.widgettracker.event.WidgetSelected;
@@ -77,7 +70,6 @@ public class WidgetTrackerPanel extends PluginPanel
 	private JPanel changesContainer;
 
 	private WidgetState previewWidget = null;
-
 
 
 	@Inject
@@ -190,25 +182,25 @@ public class WidgetTrackerPanel extends PluginPanel
 
 	private JPanel createChangesPanel()
 	{
-			JPanel changesPanel = new JPanel(new BorderLayout());
-			changesPanel.setBackground(ColorScheme.DARK_GRAY_COLOR);
+		JPanel changesPanel = new JPanel(new BorderLayout());
+		changesPanel.setBackground(ColorScheme.DARK_GRAY_COLOR);
 
-			JLabel titleLabel = new JLabel("Widget Changes:");
-			titleLabel.setForeground(Color.WHITE);
-			titleLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 5, 0));
+		JLabel titleLabel = new JLabel("Widget Changes:");
+		titleLabel.setForeground(Color.WHITE);
+		titleLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 5, 0));
 
-			changesContainer = new JPanel();
-			changesContainer.setLayout(new BoxLayout(changesContainer, BoxLayout.Y_AXIS));
-			changesContainer.setBackground(ColorScheme.DARKER_GRAY_COLOR);
+		changesContainer = new JPanel();
+		changesContainer.setLayout(new BoxLayout(changesContainer, BoxLayout.Y_AXIS));
+		changesContainer.setBackground(ColorScheme.DARKER_GRAY_COLOR);
 
-			JScrollPane scrollPane = new JScrollPane(changesContainer);
-			scrollPane.setBackground(ColorScheme.DARK_GRAY_COLOR);
-			scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		JScrollPane scrollPane = new JScrollPane(changesContainer);
+		scrollPane.setBackground(ColorScheme.DARK_GRAY_COLOR);
+		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
-			changesPanel.add(titleLabel, BorderLayout.NORTH);
-			changesPanel.add(scrollPane, BorderLayout.CENTER);
+		changesPanel.add(titleLabel, BorderLayout.NORTH);
+		changesPanel.add(scrollPane, BorderLayout.CENTER);
 
-			return changesPanel;
+		return changesPanel;
 	}
 
 	private JPanel createControlsPanel()
@@ -266,7 +258,8 @@ public class WidgetTrackerPanel extends PluginPanel
 	@Subscribe
 	public void onWidgetChanged(WidgetChanged event)
 	{
-		SwingUtilities.invokeLater(() -> {
+		SwingUtilities.invokeLater(() ->
+		{
 			JPanel changePanel = createChangePanel(event);
 			changesContainer.add(changePanel);
 			changesContainer.revalidate();

@@ -25,13 +25,9 @@
 
 package melky.resourcepacks.features.widgettracker;
 
-import java.awt.Color;
-import java.util.ArrayList;
-import java.util.List;
 import lombok.Data;
 import net.runelite.api.widgets.Widget;
 import net.runelite.api.widgets.WidgetUtil;
-import net.runelite.client.util.ColorUtil;
 
 @Data
 public class WidgetState
@@ -80,7 +76,7 @@ public class WidgetState
 			return false;
 		}
 
-		if (current == null  || isEmpty())
+		if (current == null || isEmpty())
 		{
 			return true;
 		}

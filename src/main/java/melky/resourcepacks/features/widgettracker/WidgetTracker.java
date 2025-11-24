@@ -39,7 +39,6 @@ import melky.resourcepacks.features.widgettracker.event.WidgetUntracked;
 import melky.resourcepacks.module.PluginLifecycleComponent;
 import net.runelite.api.Client;
 import net.runelite.api.events.ScriptPostFired;
-import net.runelite.api.widgets.Widget;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
 
@@ -80,7 +79,7 @@ public class WidgetTracker implements PluginLifecycleComponent
 	public void onWidgetTracked(WidgetTracked event)
 	{
 		var w = event.getWidget();
-		if (trackedWidgets.contains(w.getId(),w.getIndex()))
+		if (trackedWidgets.contains(w.getId(), w.getIndex()))
 		{
 			return;
 		}
@@ -137,7 +136,7 @@ public class WidgetTracker implements PluginLifecycleComponent
 
 				eventBus.post(change);
 
-				log.debug("Saving ({}, {}) = {}", r, i , newState);
+				log.debug("Saving ({}, {}) = {}", r, i, newState);
 				trackedWidgets.put(r, i, newState);
 			}
 		}
