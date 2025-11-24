@@ -41,6 +41,11 @@ dependencies {
     testImplementation 'org.mockito:mockito-core:5.1.1'
     testImplementation group: 'net.runelite', name: 'client', version: runeLiteVersion
     testImplementation group: 'net.runelite', name: 'jshell', version: runeLiteVersion
+
+    // mocking and test injection used by runelite client
+    testImplementation group: "com.google.inject.extensions", name: "guice-testlib", version: "4.1.0", {
+        exclude group: "com.google.inject", module: "guice" // already provided by runelite client
+    }
 }
 
 group = 'melky.resourcepacks'
