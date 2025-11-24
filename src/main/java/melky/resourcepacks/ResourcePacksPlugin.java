@@ -1,6 +1,6 @@
 package melky.resourcepacks;
 
-import com.google.inject.Provides;
+import com.google.inject.Binder;
 import java.awt.image.BufferedImage;
 import java.nio.file.Path;
 import java.util.concurrent.ScheduledExecutorService;
@@ -11,6 +11,8 @@ import lombok.extern.slf4j.Slf4j;
 import melky.resourcepacks.ConfigKeys.InterfaceStyles;
 import melky.resourcepacks.event.ResourcePacksChanged;
 import melky.resourcepacks.hub.ResourcePacksHubPanel;
+import melky.resourcepacks.module.ComponentManager;
+import melky.resourcepacks.module.ResourcePacksModule;
 import melky.resourcepacks.overrides.Overrides;
 import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
@@ -87,20 +89,25 @@ public class ResourcePacksPlugin extends Plugin
 	@Inject
 	private EventBus eventBus;
 
+	@Inject
+	private ComponentManager componentManager;
+
 	private ResourcePacksHubPanel resourcePacksHubPanel;
 	private NavigationButton navButton;
 	private long currentProfile = Long.MIN_VALUE;
 	private GameState lastGameState;
 
-	@Provides
-	ResourcePacksConfig provideConfig(ConfigManager configManager)
+	@Override
+	public void configure(Binder binder)
 	{
-		return configManager.getConfig(ResourcePacksConfig.class);
+		binder.install(new ResourcePacksModule());
 	}
 
 	@Override
 	protected void startUp() throws Exception
 	{
+		componentManager.onPluginStart();
+
 		var packsDir = PACKS_BASE_DIR.toFile();
 		if (!packsDir.exists())
 		{
@@ -149,6 +156,8 @@ public class ResourcePacksPlugin extends Plugin
 	@Override
 	protected void shutDown()
 	{
+		componentManager.onPluginStop();
+
 		clientThread.invokeLater(() ->
 		{
 			resourcePacksManager.adjustWidgetDimensions(false);
