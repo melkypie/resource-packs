@@ -675,6 +675,131 @@
 # [rune_pouch.border.outer]
 # color=0x383023
 
+# [sailing.boats.other.border.inner]
+# color=0x726451
+# opacity=0
+
+# [sailing.boats.other.border.outer]
+# color=0x2e2b23
+# opacity=0
+
+# [sailing.boats.other.row.background]
+# color=0xffffff
+
+# [sailing.boats.other.row.border]
+# color=0x726451
+
+# [sailing.boats.recent.background]
+# color=0xffffff
+
+# [sailing.boats.recent.border.inner]
+# color=0x726451
+# opacity=0
+
+# [sailing.boats.recent.border.outer]
+# color=0x2e2b23
+# opacity=0
+
+# [sailing.cargo.background]
+# color=0xffffff
+# opacity=230
+
+# [sailing.cargo.border.inner]
+# color=0x474745
+
+# [sailing.cargo.border.outer]
+# color=0x0e0e0c
+
+# [sailing.customize.body.border]
+# color=0x726451
+# opacity=0
+
+# [sailing.customize.highlight]
+# color=0xff981f
+# opacity=70
+
+# [sailing.customize.row.border]
+# color=0x726451
+
+# [sailing.customize.scroll.border.inner]
+# color=0x726451
+# opacity=0
+
+# [sailing.customize.scroll.border.outer]
+# color=0x2e2b23
+# opacity=0
+
+# [sailing.customize.tab.border]
+# color=0x726451
+# opacity=0
+
+# [sailing.customize.upgrade.border.inner]
+# color=0x474745
+# opacity=0
+
+# [sailing.customize.upgrade.border.outer]
+# color=0x0e0e0c
+# opacity=0
+
+# [sailing.customize.upgrade.item.background]
+# color=0x000000
+# opacity=150
+
+# [sailing.log.border]
+# color=0x000001
+# opacity=0
+
+# [sailing.log.dropdown.border.inner]
+# color=0x474745
+# opacity=0
+
+# [sailing.log.dropdown.border.outer]
+# color=0x0e0e0c
+# opacity=0
+
+# [sailing.log.menu.border.inner]
+# color=0x474745
+# opacity=0
+
+# [sailing.log.menu.border.outer]
+# color=0x0e0e0c
+# opacity=0
+
+# [sailing.tab.background]
+# color=0x595046
+# opacity=0
+
+# [sailing.tab.border.inner]
+# color=0x474745
+# opacity=0
+
+# [sailing.tab.border.outer]
+# color=0x0e0e0c
+# opacity=0
+
+# [sailing.tab.facilities.divider.inner]
+# color=0x0e0e0c
+# opacity=0
+
+# [sailing.tab.facilities.divider.outer]
+# color=0x474745
+# opacity=0
+
+# [sailing.tab.facilities.row]
+# color=0x4e453a
+# opacity=0
+
+# [sailing.tab.separator]
+# color=0x5d5848
+
+# [sailing.tab.stats.header]
+# color=0x968776
+# opacity=0
+
+# [sailing.tab.stats.row]
+# color=0x4e453a
+# opacity=0
+
 # [settings.body.border.inner]
 # color=0x474745
 # opacity=0
