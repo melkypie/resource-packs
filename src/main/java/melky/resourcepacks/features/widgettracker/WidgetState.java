@@ -58,6 +58,14 @@ public class WidgetState
 		this.hidden = widget.isHidden();
 	}
 
+	public WidgetState(int id, int index)
+	{
+		this.id = id;
+		this.index = index;
+
+		empty = true;
+	}
+
 	public String getName()
 	{
 		String name = WidgetUtil.componentToInterface(id) + "." + WidgetUtil.componentToId(id);

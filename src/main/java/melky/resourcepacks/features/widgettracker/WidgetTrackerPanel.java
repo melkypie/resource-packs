@@ -54,6 +54,7 @@ import melky.resourcepacks.features.widgettracker.event.WidgetSelected;
 import melky.resourcepacks.features.widgettracker.event.WidgetTracked;
 import melky.resourcepacks.features.widgettracker.event.WidgetUntracked;
 import net.runelite.api.widgets.Widget;
+import net.runelite.api.widgets.WidgetUtil;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.ui.ColorScheme;
@@ -100,6 +101,66 @@ public class WidgetTrackerPanel extends PluginPanel
 
 		JPanel controlsPanel = createControlsPanel();
 		add(controlsPanel, BorderLayout.SOUTH);
+	}
+
+	private JPanel createManualTrackPanel()
+	{
+		JPanel panel = new JPanel();
+		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+		panel.setBackground(ColorScheme.DARK_GRAY_COLOR);
+		panel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
+
+		JTextField interfaceIdField = new JTextField();
+		JTextField childIdField = new JTextField();
+		JTextField childIndexField = new JTextField();
+
+		panel.add(createLabeledField("Interface ID:", interfaceIdField));
+		panel.add(createLabeledField("Child ID:", childIdField));
+		panel.add(createLabeledField("Child Index:", childIndexField));
+
+		JButton trackButton = new JButton("Track Widget");
+		trackButton.setFocusPainted(false);
+		trackButton.addActionListener(e ->
+		{
+			try
+			{
+				int interfaceId = Integer.parseInt(interfaceIdField.getText());
+				int childId = Integer.parseInt(childIdField.getText());
+				int childIndex = Integer.parseInt(childIndexField.getText());
+
+				WidgetState state = new WidgetState(WidgetUtil.packComponentId(interfaceId, childId), childIndex);
+				eventBus.post(new WidgetTracked(state));
+
+				interfaceIdField.setText("");
+				childIdField.setText("");
+				childIndexField.setText("");
+			}
+			catch (NumberFormatException ex)
+			{
+				log.warn("Invalid input for manual widget tracking");
+			}
+		});
+
+		panel.add(Box.createRigidArea(new Dimension(0, 5)));
+		panel.add(trackButton);
+
+		return panel;
+	}
+
+	private JPanel createLabeledField(String label, JTextField field)
+	{
+		JPanel panel = new JPanel(new BorderLayout());
+		panel.setBackground(ColorScheme.DARK_GRAY_COLOR);
+
+		JLabel jLabel = new JLabel(label);
+		jLabel.setForeground(Color.WHITE);
+		jLabel.setPreferredSize(new Dimension(80, 20));
+
+		panel.add(jLabel, BorderLayout.WEST);
+		panel.add(field, BorderLayout.CENTER);
+		panel.setMaximumSize(new Dimension(Integer.MAX_VALUE, 25));
+
+		return panel;
 	}
 
 	private JPanel createHeaderPanel()
@@ -150,15 +211,17 @@ public class WidgetTrackerPanel extends PluginPanel
 		selectedWidgetInfo.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 		headerPanel.add(buttonPanel);
+
+		headerPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+		headerPanel.add(createManualTrackPanel());
+
 		headerPanel.add(Box.createRigidArea(new Dimension(0, 5)));
 		headerPanel.add(selectedWidgetInfo);
 
 		headerPanel.add(Box.createRigidArea(new Dimension(0, 10)));
-
 		headerPanel.add(createTrackedPanel());
 
 		headerPanel.add(Box.createRigidArea(new Dimension(0, 10)));
-
 		return headerPanel;
 	}
 
