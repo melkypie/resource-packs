@@ -46,6 +46,7 @@ import net.runelite.api.MenuAction;
 import net.runelite.api.MenuEntry;
 import net.runelite.api.events.MenuEntryAdded;
 import net.runelite.api.events.MenuOptionClicked;
+import net.runelite.api.events.PostMenuSort;
 import net.runelite.api.gameval.InterfaceID;
 import net.runelite.api.gameval.SpriteID;
 import net.runelite.api.widgets.JavaScriptCallback;
@@ -233,7 +234,8 @@ public class WidgetSelector implements PluginLifecycleComponent
 			return;
 		}
 
-		MenuEntry[] menuEntries = client.getMenuEntries();
+		var menu = client.getMenu();
+		MenuEntry[] menuEntries = menu.getMenuEntries();
 
 		for (int i = 0; i < menuEntries.length; i++)
 		{
@@ -253,11 +255,31 @@ public class WidgetSelector implements PluginLifecycleComponent
 
 			if (!allowedType(target.getType()))
 			{
-				client.setMenuEntries(Arrays.copyOf(client.getMenuEntries(), client.getMenuEntries().length - 1));
+				menu.setMenuEntries(Arrays.copyOf(menu.getMenuEntries(), menu.getMenuEntries().length - 1));
 				continue;
 			}
 
-			Color color = colorForWidget(i, menuEntries.length);
+
+			entry.setTarget(name);
+		}
+	}
+
+	@Subscribe
+	private void onPostMenuSort(PostMenuSort event)
+	{
+		if (!pickerSelected)
+		{
+			return;
+		}
+
+		var menu = client.getMenu();
+		var length = client.getMenu().getMenuEntries().length;
+		for (int i = 0; i < length; i++)
+		{
+			var entry = menu.getMenuEntries()[i];
+			var name = entry.getTarget();
+			Color color = colorForWidget(i, length);
+
 
 			entry.setTarget(ColorUtil.wrapWithColorTag(name, color));
 		}
