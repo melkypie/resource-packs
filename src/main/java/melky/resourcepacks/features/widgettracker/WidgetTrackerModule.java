@@ -56,7 +56,9 @@ public class WidgetTrackerModule implements PluginLifecycleComponent
 	private boolean developerMode;
 
 	private NavigationButton button;
+	private NavigationButton button2;
 	private WidgetTrackerPanel widgetTrackerPanel;
+	private ScriptWatcherPanel scriptWatcherPanel;
 
 	@Override
 	public boolean isEnabled(ResourcePacksConfig config)
@@ -75,15 +77,29 @@ public class WidgetTrackerModule implements PluginLifecycleComponent
 			.panel(widgetTrackerPanel)
 			.build();
 
+		final BufferedImage icon3 = ImageUtil.loadImageResource(getClass(), "/net/runelite/client/plugins/config/mdi_alert.png");
+		scriptWatcherPanel = injector.getInstance(ScriptWatcherPanel.class);
+		button2 = NavigationButton.builder()
+			.tooltip("Script Panel")
+			.icon(icon3)
+			.panel(scriptWatcherPanel)
+			.build();
+
 		clientToolbar.addNavigation(button);
+		clientToolbar.addNavigation(button2);
+
 		eventBus.register(widgetTrackerPanel);
+		eventBus.register(scriptWatcherPanel);
 	}
 
 	@Override
 	public void shutDown()
 	{
 		clientToolbar.removeNavigation(button);
+		clientToolbar.removeNavigation(button2);
 		eventBus.unregister(widgetTrackerPanel);
+		eventBus.unregister(scriptWatcherPanel);
 		widgetTrackerPanel = null;
+		scriptWatcherPanel = null;
 	}
 }
