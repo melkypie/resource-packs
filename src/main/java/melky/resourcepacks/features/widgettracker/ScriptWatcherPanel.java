@@ -45,7 +45,6 @@ import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.events.ScriptPostFired;
 import net.runelite.api.widgets.Widget;
-import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.ui.ColorScheme;
 import net.runelite.client.ui.PluginPanel;
@@ -55,17 +54,17 @@ import net.runelite.client.util.ColorUtil;
 public class ScriptWatcherPanel extends PluginPanel
 {
 	private final Client client;
-	private final EventBus eventBus;
 
 	private final Multimap<Integer, ScriptWatcher> scriptWatchers = ArrayListMultimap.create();
 	private final JPanel watchersContainer = new JPanel();
 
 	@Inject
-	public ScriptWatcherPanel(Client client, EventBus eventBus)
+	public ScriptWatcherPanel(
+		Client client
+	)
 	{
 		super(false);
 		this.client = client;
-		this.eventBus = eventBus;
 
 		setLayout(new BorderLayout());
 		setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
