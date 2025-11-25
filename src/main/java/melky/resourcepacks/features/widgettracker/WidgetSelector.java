@@ -235,11 +235,8 @@ public class WidgetSelector implements PluginLifecycleComponent
 		}
 
 		var menu = client.getMenu();
-		MenuEntry[] menuEntries = menu.getMenuEntries();
-
-		for (int i = 0; i < menuEntries.length; i++)
+		for (MenuEntry entry : menu.getMenuEntries())
 		{
-			MenuEntry entry = menuEntries[i];
 			if (entry.getType() != MenuAction.WIDGET_TARGET_ON_WIDGET)
 			{
 				continue;
