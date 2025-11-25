@@ -25,11 +25,14 @@
 
 package melky.resourcepacks.features.widgettracker;
 
+import com.google.common.primitives.Ints;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import javax.inject.Inject;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -41,9 +44,11 @@ import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 import lombok.extern.slf4j.Slf4j;
+import melky.resourcepacks.features.widgettracker.event.ScriptIgnored;
 import melky.resourcepacks.features.widgettracker.event.WidgetChanged;
 import melky.resourcepacks.features.widgettracker.event.WidgetSelected;
 import melky.resourcepacks.features.widgettracker.event.WidgetTracked;
@@ -210,6 +215,10 @@ public class WidgetTrackerPanel extends PluginPanel
 		controlsPanel.setBackground(ColorScheme.DARK_GRAY_COLOR);
 		controlsPanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
 
+		JPanel buttonPanel = new JPanel();
+		buttonPanel.setLayout(new FlowLayout());
+		buttonPanel.setBackground(ColorScheme.DARK_GRAY_COLOR);
+
 		JButton clearChangesButton = new JButton("Clear");
 		clearChangesButton.setBackground(ColorScheme.DARKER_GRAY_COLOR);
 		clearChangesButton.setForeground(Color.WHITE);
@@ -217,8 +226,30 @@ public class WidgetTrackerPanel extends PluginPanel
 		clearChangesButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 		clearChangesButton.addActionListener(e -> SwingUtil.fastRemoveAll(changesContainer));
 
+		JTextField ignoreScriptField = new JTextField();
+		ignoreScriptField.addKeyListener(new KeyAdapter()
+		{
+			@Override
+			public void keyPressed(KeyEvent e)
+			{
+				if (e.getKeyCode() == KeyEvent.VK_ENTER)
+				{
+					Integer value = Ints.tryParse(ignoreScriptField.getText());
+					if (value != null)
+					{
+						eventBus.post(new ScriptIgnored(value));
+						ignoreScriptField.setText("");
+					}
+				}
+			}
+
+		});
+
+		buttonPanel.add(clearChangesButton);
+		buttonPanel.add(ignoreScriptField);
+
 		controlsPanel.add(Box.createRigidArea(new Dimension(0, 5)));
-		controlsPanel.add(clearChangesButton);
+		controlsPanel.add(buttonPanel);
 
 		return controlsPanel;
 	}

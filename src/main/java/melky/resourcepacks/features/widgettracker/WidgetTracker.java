@@ -26,13 +26,14 @@
 package melky.resourcepacks.features.widgettracker;
 
 import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Table;
+import java.util.HashSet;
 import java.util.Set;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
 import melky.resourcepacks.ResourcePacksConfig;
+import melky.resourcepacks.features.widgettracker.event.ScriptIgnored;
 import melky.resourcepacks.features.widgettracker.event.WidgetChanged;
 import melky.resourcepacks.features.widgettracker.event.WidgetTracked;
 import melky.resourcepacks.features.widgettracker.event.WidgetUntracked;
@@ -57,7 +58,7 @@ public class WidgetTracker implements PluginLifecycleComponent
 
 	private final Table<Integer, Integer, WidgetState> trackedWidgets = HashBasedTable.create();
 
-	private final Set<Integer> blacklist = ImmutableSet.of(
+	private final Set<Integer> blacklist = new HashSet<>(Set.of(
 		2512,
 		3174,
 		1004,
@@ -66,8 +67,11 @@ public class WidgetTracker implements PluginLifecycleComponent
 		5939,
 		2100,
 		4730,
-		4671
-	);
+		4671,
+		1972,
+		6388,
+		98
+	));
 
 	@Override
 	public boolean isEnabled(ResourcePacksConfig config)
@@ -97,6 +101,13 @@ public class WidgetTracker implements PluginLifecycleComponent
 
 		var w = event.getWidget();
 		trackedWidgets.remove(w.getId(), w.getIndex());
+	}
+
+	@Subscribe
+	public void onScriptIgnored(ScriptIgnored event)
+	{
+		log.debug("Igoring script: {}", event.getScriptId());
+		blacklist.add(event.getScriptId());
 	}
 
 	@Subscribe
