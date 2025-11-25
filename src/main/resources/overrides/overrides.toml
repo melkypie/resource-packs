@@ -2048,6 +2048,51 @@ type=3
 dynamicChildren=true
 explicit=true
 
+[sailing.log]
+interface=935
+
+[[sailing.log.border]]
+scripts=[9099]
+color=0x1
+type=3
+opacity=0
+children=[11, 29, 36, 40, 45]
+
+[[sailing.log.border]]
+scripts=[9099]
+color=0x1
+type=9
+opacity=0
+children=[41]
+dynamicChildren=[14]
+
+[sailing.log.menu.border.inner]
+color=0x474745
+opacity=0
+scripts=[9099]
+children=[31, 33, 48, 50]
+dynamicChildren=[2]
+
+[sailing.log.menu.border.outer]
+color=0xe0e0c
+opacity=0
+scripts=[9099]
+children=[31, 33, 48, 50]
+dynamicChildren=[1]
+
+[sailing.log.dropdown.border]
+scripts=[8697, 8679, 8696, 8682]
+children=[42]
+
+[sailing.log.dropdown.border.inner]
+color=0x474745
+opacity=0
+dynamicChildren=[1]
+
+[sailing.log.dropdown.border.outer]
+color=0xe0e0c
+opacity=0
+dynamicChildren=[0]
 
 ########################################
 
