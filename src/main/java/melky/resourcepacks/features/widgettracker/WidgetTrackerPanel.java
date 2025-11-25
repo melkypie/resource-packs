@@ -224,7 +224,7 @@ public class WidgetTrackerPanel extends PluginPanel
 		clearChangesButton.setForeground(Color.WHITE);
 		clearChangesButton.setFocusPainted(false);
 		clearChangesButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-		clearChangesButton.addActionListener(e -> SwingUtil.fastRemoveAll(changesContainer));
+		clearChangesButton.addActionListener(e -> changesContainer.removeAll());
 
 		JTextField ignoreScriptField = new JTextField();
 		ignoreScriptField.addKeyListener(new KeyAdapter()

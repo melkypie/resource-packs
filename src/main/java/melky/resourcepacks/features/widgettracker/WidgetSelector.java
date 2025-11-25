@@ -190,11 +190,13 @@ public class WidgetSelector implements PluginLifecycleComponent
 			y = 4;
 		}
 
+		y += 150;
+
 		picker = parent.createChild(-1, WidgetType.GRAPHIC);
 
 		log.info("Picker is {}.{} [{}]", WidgetUtil.componentToInterface(picker.getId()), WidgetUtil.componentToId(picker.getId()), picker.getIndex());
 
-		picker.setSpriteId(SpriteID.OptionsIcons.MOBILE_FINGER_ON_INTERFACE);
+		picker.setSpriteId(SpriteID.ICON_CABBAGE);
 		picker.setOriginalWidth(15);
 		picker.setOriginalHeight(17);
 		picker.setOriginalX(x);
