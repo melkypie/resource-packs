@@ -1979,7 +1979,7 @@ interface=939
 [sailing.customize.body.border]
 color=0x726451
 opacity=0
-scripts=[9068]
+scripts=[9068, 8821]
 children=[10]
 dynamicChildren=[0]
 
@@ -2025,7 +2025,7 @@ explicit=true
 
 [sailing.customize.upgrade]
 children=[15]
-scripts=[8821]
+scripts=[8821, 8825]
 
 [sailing.customize.upgrade.border.outer]
 color=0xe0e0c
