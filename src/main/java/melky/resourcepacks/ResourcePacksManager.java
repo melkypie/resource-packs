@@ -952,7 +952,8 @@ public class ResourcePacksManager
 	{
 		return widgetOverride.isExplicit() &&
 			(widget.getTextColor() != widgetOverride.getColor() ||
-				(widgetOverride.getType() > -1 && widget.getType() != widgetOverride.getType())
+				(widgetOverride.getType() > -1 && widget.getType() != widgetOverride.getType()) ||
+				(widgetOverride.getOpacity() > -1 && widget.getOpacity() != widgetOverride.getOpacity())
 			);
 	}
 
