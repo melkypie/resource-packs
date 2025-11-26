@@ -1870,7 +1870,7 @@ children=[16]
 
 [sailing.tab]
 interface=937
-scripts=[8732, 8722, 8717]
+scripts=[8732, 8722, 8717, 8763]
 
 [sailing.tab.separator]
 children=[36]
@@ -1878,13 +1878,13 @@ dynamicChildren=[0, 1]
 color=0x5d5848
 
 [sailing.tab.background]
-children=[8, 13, 23]
+children=[8, 13, 18, 23]
 dynamicChildren=[0]
 color=0x595046
 opacity=0
 
 [sailing.tab.border]
-children=[8, 13, 23]
+children=[8, 13, 18, 23]
 
 [sailing.tab.border.inner]
 dynamicChildren=[2]
@@ -1916,6 +1916,45 @@ opacity=0
 type=3
 dynamicChildren=true
 explicit=true
+
+[sailing.tab.crew.background]
+children=[11]
+dynamicChildren=true
+explicit=true
+color=0x4e453a
+opacity=0
+
+[sailing.tab.crew.background.alternate]
+children=[11]
+dynamicChildren=true
+explicit=true
+color=0x595046
+opacity=0
+
+[sailing.tab.assign.background]
+scripts=[8763, 8735]
+children=[21]
+dynamicChildren=true
+type=3
+explicit=true
+color=0x4e453a
+
+[sailing.tab.assign.background.alternate]
+scripts=[8763, 8761, 8735]
+children=[21]
+dynamicChildren=true
+type=3
+explicit=true
+color=0x595046
+
+[sailing.tab.assign.background.hovered]
+scripts=[8735, 8761]
+children=[21]
+dynamicChildren=true
+explicit=true
+type=3
+color=0x968776
+
 
 [sailing.tab.stats.header]
 children=[15]
@@ -2158,7 +2197,7 @@ type=3
 children=[4]
 dynamicChildren=[1]
 
-[sailing.trials.row.odd.background]
+[sailing.trials.row.background]
 color=0xffffff
 opacity=230
 type=3
@@ -2166,7 +2205,7 @@ children=[5]
 dynamicChildren=true
 explicit=true
 
-[sailing.trials.row.even.background]
+[sailing.trials.row.background.alternate]
 color=0xffffff
 opacity=210
 type=3
