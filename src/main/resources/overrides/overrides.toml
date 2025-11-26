@@ -1494,6 +1494,34 @@ opacity=0
 
 ########################################
 
+[notification]
+interface=660
+scripts=[8488]
+
+[notification.border.inner]
+color=0xe0e0c
+
+[notification.border.inner.title]
+children=[6]
+dynamicChildren=[0]
+
+[notification.border.inner.body]
+children=[7]
+dynamicChildren=[0]
+
+[notification.border.outer]
+color=0x474745
+
+[notification.border.outer.title]
+children=[6]
+dynamicChildren=[1]
+
+[notification.border.outer.body]
+children=[7]
+dynamicChildren=[1]
+
+########################################
+
 [other_clan]
 interface=702
 
