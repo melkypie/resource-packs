@@ -31,6 +31,7 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.inject.Inject;
 import javax.inject.Singleton;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import melky.resourcepacks.ResourcePacksConfig;
 import melky.resourcepacks.features.widgettracker.event.ScriptIgnored;
@@ -56,6 +57,7 @@ public class WidgetTracker implements PluginLifecycleComponent
 	@Inject
 	private EventBus eventBus;
 
+	@Getter
 	private final Table<Integer, Integer, WidgetState> trackedWidgets = HashBasedTable.create();
 
 	private final Set<Integer> blacklist = new HashSet<>(Set.of(

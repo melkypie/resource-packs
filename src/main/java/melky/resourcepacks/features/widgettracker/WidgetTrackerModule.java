@@ -43,6 +43,9 @@ import net.runelite.client.util.ImageUtil;
 public class WidgetTrackerModule implements PluginLifecycleComponent
 {
 	@Inject
+	private WidgetTracker widgetTracker;
+
+	@Inject
 	private ClientToolbar clientToolbar;
 
 	@Inject
@@ -95,6 +98,8 @@ public class WidgetTrackerModule implements PluginLifecycleComponent
 	@Override
 	public void shutDown()
 	{
+		widgetTracker.getTrackedWidgets().clear();
+
 		clientToolbar.removeNavigation(button);
 		clientToolbar.removeNavigation(button2);
 		eventBus.unregister(widgetTrackerPanel);
