@@ -564,6 +564,12 @@
 # color=0x89785e
 # opacity=0
 
+# [notification.border.inner]
+# color=0x0e0e0c
+
+# [notification.border.outer]
+# color=0x474745
+
 # [other_clan.border.inner]
 # color=0x474745
 # opacity=0
