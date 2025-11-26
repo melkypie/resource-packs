@@ -921,7 +921,11 @@ public class ResourcePacksManager
 			widget = w;
 		}
 
-		widget.setTextColor(widgetOverride.getNewColor());
+
+		if (widgetOverride.getColor() != widgetOverride.getNewColor())
+		{
+			widget.setTextColor(widgetOverride.getNewColor());
+		}
 
 		if (widgetOverride.getNewOpacity() > -1)
 		{
