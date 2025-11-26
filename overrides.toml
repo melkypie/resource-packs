@@ -813,6 +813,15 @@
 # color=0x0e0e0c
 # opacity=0
 
+# [sailing.tab.assign.background]
+# color=0x4e453a
+
+# [sailing.tab.assign.background.alternate]
+# color=0x595046
+
+# [sailing.tab.assign.background.hovered]
+# color=0x968776
+
 # [sailing.tab.background]
 # color=0x595046
 # opacity=0
