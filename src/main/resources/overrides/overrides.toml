@@ -1954,14 +1954,14 @@ children=[21]
 color=0x2e2b23
 opacity=0
 type=3
-dynamicChildren=[17, 18]
+dynamicChildren=true
 explicit=true
 
 [sailing.boats.recent.border.inner]
 color=0x726451
 opacity=0
 type=3
-dynamicChildren=[18, 19]
+dynamicChildren=true
 explicit=true
 
 [sailing.boats.other.row]
