@@ -712,6 +712,44 @@
 # [sailing.cargo.border.outer]
 # color=0x0e0e0c
 
+# [sailing.crew.current.background]
+# color=0xffffff
+
+# [sailing.crew.current.border.inner]
+# color=0x474745
+# opacity=0
+
+# [sailing.crew.current.border.outer]
+# color=0x0e0e0c
+# opacity=0
+
+# [sailing.crew.help.border.inner]
+# color=0x474745
+# opacity=0
+
+# [sailing.crew.help.border.outer]
+# color=0x0e0e0c
+# opacity=0
+
+# [sailing.crew.recruits.background]
+# color=0xffffff
+
+# [sailing.crew.recruits.border.inner]
+# color=0x474745
+# opacity=0
+
+# [sailing.crew.recruits.border.outer]
+# color=0x0e0e0c
+# opacity=0
+
+# [sailing.crew.stats.border.inner]
+# color=0x474745
+# opacity=0
+
+# [sailing.crew.stats.border.outer]
+# color=0x0e0e0c
+# opacity=0
+
 # [sailing.customize.body.border]
 # color=0x726451
 # opacity=0
