@@ -2228,17 +2228,17 @@ children=[5]
 dynamicChildren=true
 explicit=true
 
-[sailing.trials.rank.border.inner]
-children=[4]
-color=0xffffff
-opacity=0
-dynamicChildren=[5]
-
-[sailing.trials.rank.border.outer]
-children=[4]
-color=0x0e0e0c
-opacity=0
-dynamicChildren=[4]
+#[sailing.trials.rank.border.inner]
+#children=[4]
+#color=0xffffff
+#opacity=0
+#dynamicChildren=[5]
+#
+#[sailing.trials.rank.border.outer]
+#children=[4]
+#color=0x0e0e0c
+#opacity=0
+#dynamicChildren=[4]
 
 [sailing.crew]
 interface=938
