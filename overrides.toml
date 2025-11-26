@@ -684,8 +684,8 @@ color=0x4d4d4d
 # color=0x474745
 # opacity=0
 
-# [sailing.tab.facilities.row]
-# color=0x4e453a
+ [sailing.tab.facilities.row]
+ color=0x111111
 # opacity=0
 
  [sailing.tab.separator]
