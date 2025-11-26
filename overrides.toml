@@ -825,6 +825,14 @@
 # color=0x0e0e0c
 # opacity=0
 
+# [sailing.tab.crew.background]
+# color=0x4e453a
+# opacity=0
+
+# [sailing.tab.crew.background.alternate]
+# color=0x595046
+# opacity=0
+
 # [sailing.tab.facilities.divider.inner]
 # color=0x0e0e0c
 # opacity=0
