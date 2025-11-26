@@ -1870,7 +1870,7 @@ children=[16]
 
 [sailing.tab]
 interface=937
-scripts=[8732, 8722, 8717, 8763]
+scripts=[8732, 8722, 8717, 8763, 9034]
 
 [sailing.tab.separator]
 children=[36]
