@@ -865,6 +865,22 @@
 # color=0x4e453a
 # opacity=0
 
+# [sailing.trials.border.inner]
+# color=0x474745
+# opacity=0
+
+# [sailing.trials.border.outer]
+# color=0x0e0e0c
+# opacity=0
+
+# [sailing.trials.row.background]
+# color=0xffffff
+# opacity=230
+
+# [sailing.trials.row.background.alternate]
+# color=0xffffff
+# opacity=210
+
 # [settings.body.border.inner]
 # color=0x474745
 # opacity=0
