@@ -856,16 +856,16 @@ dynamicChildren=[0]
 interface=819
 
 [forestry_shop.body]
-scripts=[7146]
+scripts=[7146, 8488]
 
 [forestry_shop.dropdown]
-scripts=[7156]
+scripts=[7156, 8488]
 
 [forestry_shop.info]
-scripts=[7146]
+scripts=[7146, 8488]
 
 [forestry_shop.menu]
-scripts=[7146]
+scripts=[7146, 8488]
 
 [forestry_shop.body.background]
 children=[12]
@@ -873,42 +873,42 @@ color=0x000000
 opacity=200
 
 [forestry_shop.body.border.inner]
-children=[32]
+children=[33]
 color=0x474745
 opacity=0
 dynamicChildren=[1]
 
 [forestry_shop.body.border.outer]
-children=[32]
+children=[33]
 color=0xe0e0c
 opacity=0
 dynamicChildren=[0]
 
 [forestry_shop.dropdown.border.inner]
-children=[35]
+children=[ 36]
 color=0x474745
 opacity=0
 dynamicChildren=[1]
 
 [forestry_shop.dropdown.border.outer]
-children=[35]
+children=[ 36]
 color=0xe0e0c
 opacity=0
 dynamicChildren=[0]
 
 [forestry_shop.info.background]
-children=[20]
+children=[ 26]
 color=0x000000
 opacity=200
 
 [forestry_shop.info.border.inner]
-children=[29]
+children=[30]
 color=0x474745
 opacity=0
 dynamicChildren=[1]
 
 [forestry_shop.info.border.outer]
-children=[29]
+children=[30]
 color=0xe0e0c
 opacity=0
 dynamicChildren=[0]
@@ -926,32 +926,31 @@ opacity=0
 dynamicChildren=[1]
 
 [forestry_shop.reward.hovered]
-children=[33]
+children=[34]
 scripts=[85]
 opacity=0
 color=0xb8a182
 activeWidget=true
 
-
-[[forestry_shop.reward.unselected]]
-children=[33]
-scripts=[85]
-activeWidget=true
-opacity=0
-color=0x726451
-type=3
-
-[[forestry_shop.reward.unselected]]
-children=[33]
-scripts=[7145, 7146]
-dynamicChildren=true
-explicit=true
-opacity=0
-color=0x726451
-type=3
+#[[forestry_shop.reward.unselected]]
+#children=[34]
+#scripts=[85]
+#activeWidget=true
+#opacity=0
+#color=0x726451
+#type=3
+#
+#[[forestry_shop.reward.unselected]]
+#children=[34]
+#scripts=[7145, 7146]
+#dynamicChildren=true
+#explicit=true
+#opacity=0
+#color=0x726451
+#type=3
 
 [forestry_shop.reward.selected]
-children=[33]
+children=[34]
 scripts=[7145, 7146]
 opacity=0
 color=0xff981f
