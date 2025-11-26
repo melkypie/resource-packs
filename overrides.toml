@@ -758,6 +758,14 @@
 # color=0xff981f
 # opacity=70
 
+# [sailing.customize.popup.border.inner]
+# color=0x726451
+# opacity=0
+
+# [sailing.customize.popup.border.outer]
+# color=0x2e2b23
+# opacity=0
+
 # [sailing.customize.row.border]
 # color=0x726451
 
