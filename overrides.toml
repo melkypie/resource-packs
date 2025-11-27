@@ -1,5 +1,5 @@
 [overlay]
-color=0x9C382a36
+color=0x36fd0482
 
 [account_management.separator]
 color=0xfd0482
@@ -595,7 +595,7 @@ opacity=0
 
 [sailing.log.dropdown.border.outer]
 color=0xfd0482
-opacity=0
+opacity=100
 
 [sailing.log.menu.border.inner]
 color=0xfd0482
@@ -603,7 +603,7 @@ opacity=0
 
 [sailing.log.menu.border.outer]
 color=0xfd0482
-opacity=0
+opacity=100
 
 [sailing.tab.assign.background]
 color=0xfd0482
