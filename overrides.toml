@@ -1,5 +1,5 @@
 [overlay]
-color=0x9C382a36
+color=0x36fd0482
 
 [account_management.separator]
 color=0xfd0482
@@ -12,11 +12,27 @@ opacity=255
 color=0
 opacity=255
 
+[bank.incinerator.border.inner]
+color=0xfd0482
+opacity=0
+
+[bank.incinerator.border.outer]
+color=0xfd0482
+opacity=0
+
 [bank.inventory.rune_pouch.border.inner]
 color=0xfd0482
 opacity=255
 
 [bank.inventory.rune_pouch.border.outer]
+color=0xfd0482
+opacity=0
+
+[bank.inventory.rune_pouch.loadout.border.inner]
+color=0xfd0482
+opacity=0
+
+[bank.inventory.rune_pouch.loadout.border.outer]
 color=0xfd0482
 opacity=0
 
@@ -77,9 +93,15 @@ opacity=255
 color=0xfd0482
 opacity=255
 
+[clan_chat.border.rectangle]
+color=0xfd0482
+
+[collection_log.border]
+color=0xfd0482
+
 [colosseum.info.background]
 color=0x000000
-# opacity=200
+opacity=200
 
 [colosseum.info.border.inner]
 color=0xfd0482
@@ -87,15 +109,15 @@ opacity=60
 
 [colosseum.info.border.outer]
 color=0xfd0482
-# opacity=0
+opacity=0
 
 [colosseum.modifiers.border]
 color=0xfd0482
-# opacity=0
+opacity=0
 
 [colosseum.modifiers.selected]
 color=0x000000
-# opacity=0
+opacity=0
 
 [colosseum.tab.border]
 color=0xfd0482
@@ -103,7 +125,7 @@ opacity=255
 
 [colosseum.wave.background]
 color=0x000000
-# opacity=60
+opacity=60
 
 [colosseum.wave.border.inner]
 color=0xfd0482
@@ -118,7 +140,7 @@ color=0xfd0482
 
 [combat_achievements.progress.border.inner]
 color=0xfd0482
-# opacity=0
+opacity=0
 
 [combat_achievements.progress.border.outer]
 color=0xfd0482
@@ -130,7 +152,7 @@ opacity=255
 
 [combat_achievements.tasks.menu.border.outer]
 color=0xfd0482
-# opacity=0
+opacity=0
 
 [combat_achievements.tasks.dropdown.border.inner]
 color=0xfd0482
@@ -138,7 +160,7 @@ opacity=0
 
 [combat_achievements.tasks.dropdown.border.outer]
 color=0xfd0482
-# opacity=0
+opacity=0
 
 [combat_achievements.rewards.body.border.inner]
 color=0xfd0482
@@ -154,11 +176,11 @@ opacity=255
 
 [combat_achievements.rewards.section.border.outer]
 color=0xfd0482
-# opacity=0
+opacity=0
 
 [combat_achievements.boss.border.inner]
 color=0xfd0482
-# opacity=0
+opacity=0
 
 [combat_achievements.boss.border.outer]
 color=0xfd0482
@@ -166,11 +188,11 @@ opacity=255
 
 [combat_achievements.overview.border]
 color=0xfd0482
-# opacity=0
+opacity=0
 
 [costumes.border.inner]
 color=0xfd0482
-# opacity=0
+opacity=0
 
 [costumes.border.outer]
 color=0xfd0482
@@ -182,7 +204,7 @@ opacity=60
 
 [cox.overlay.border.inner]
 color=0xfd0482
-# opacity=0
+opacity=0
 
 [cox.overlay.border.outer]
 color=0xfd0482
@@ -194,7 +216,7 @@ opacity=255
 
 [cox.party.border.outer]
 color=0xfd0482
-# opacity=0
+opacity=0
 
 [cox.parties.border.inner]
 color=0xfd0482
@@ -202,7 +224,7 @@ opacity=0
 
 [cox.parties.border.outer]
 color=0xfd0482
-# opacity=0
+opacity=0
 
 [forestry_kit.body.border.inner]
 color=0xfd0482
@@ -210,7 +232,7 @@ opacity=0
 
 [forestry_kit.body.border.outer]
 color=0xfd0482
-# opacity=0
+opacity=0
 
 [forestry_kit.info.border.inner]
 color=0xfd0482
@@ -218,43 +240,43 @@ opacity=0
 
 [forestry_kit.info.border.outer]
 color=0xfd0482
-# opacity=0
+opacity=0
 
 [forestry_shop.body.border.inner]
 color=0xfd0482
-# opacity=0
+opacity=0
 
 [forestry_shop.body.border.outer]
 color=0xfd0482
-# opacity=0
+opacity=0
 
 [forestry_shop.dropdown.border.inner]
 color=0xfd0482
-# opacity=0
+opacity=0
 
 [forestry_shop.dropdown.border.outer]
 color=0xfd0482
-# opacity=0
+opacity=0
 
 [forestry_shop.info.background]
 color=0xfd0482
-# opacity=200
+opacity=200
 
 [forestry_shop.info.border.inner]
 color=0xfd0482
-# opacity=0
+opacity=0
 
 [forestry_shop.info.border.outer]
 color=0xfd0482
-# opacity=0
+opacity=0
 
 [forestry_shop.menu.border.inner]
 color=0xfd0482
-# opacity=0
+opacity=0
 
 [forestry_shop.menu.border.outer]
 color=0xfd0482
-# opacity=0
+opacity=0
 
 [friends_chat.border.inner]
 color=0xfd0482
@@ -282,11 +304,11 @@ opacity=0
 
 [friends_list.header.border.inner]
 color=0xfd0482
-# opacity=0
+opacity=0
 
 [friends_list.header.border.outer]
 color=0xfd0482
-# opacity=0
+opacity=0
 
 [ge.offer.border.inner]
 color=0xfd0482
@@ -310,7 +332,7 @@ opacity=255
 
 [grouping_tab.border.outer]
 color=0xfd0482
-# opacity=0
+opacity=0
 
 [grouping_tab.dropdown.border.inner]
 color=0xfd0482
@@ -318,15 +340,15 @@ opacity=0
 
 [grouping_tab.dropdown.border.outer]
 color=0xfd0482
-# opacity=0
+opacity=0
 
 [ignore_list.header.border.inner]
 color=0xfd0482
-# opacity=0
+opacity=0
 
 [ignore_list.header.border.outer]
 color=0xfd0482
-# opacity=0
+opacity=0
 
 [item_search.background]
 color=0x8a8d99
@@ -338,7 +360,7 @@ opacity=150
 
 [item_search.border.outer]
 color=0xfd0482
-# opacity=0
+opacity=0
 
 [jewellery_box.border.inner]
 color=0xfd0482
@@ -358,7 +380,7 @@ opacity=0
 
 [kept_on_death.border.inner]
 color=0xfd0482
-# opacity=0
+opacity=0
 
 [kept_on_death.border.outer]
 color=0xfd0482
@@ -370,15 +392,15 @@ opacity=0
 
 [looting_bag.border.outer]
 color=0xfd0482
-# opacity=0
+opacity=0
 
 [lms.kda.border.inner]
 color=0xfd0482
-# opacity=0
+opacity=0
 
 [lms.kda.border.outer]
 color=0xfd0482
-# opacity=0
+opacity=0
 
 [lms.settings.border.inner]
 color=0xfd0482
@@ -386,7 +408,7 @@ opacity=0
 
 [lms.settings.border.outer]
 color=0xfd0482
-# opacity=0
+opacity=0
 
 [lms.shop.border.inner]
 color=0xfd0482
@@ -394,7 +416,7 @@ opacity=0
 
 [lms.shop.border.outer]
 color=0xfd0482
-# opacity=0
+opacity=0
 
 [lms.shop.separator]
 color=0xfd0482
@@ -406,7 +428,7 @@ opacity=0
 
 [make_all.quantity]
 color=0xfd0482
-# opacity=0
+opacity=0
 
 [other_clan.border.inner]
 color=0xfd0482
@@ -430,11 +452,11 @@ opacity=0
 
 [portal_nexus.border]
 color=0xfd0482
-# opacity=0
+opacity=0
 
 [quest_list.background]
 color=0x000000
-# opacity=212
+opacity=212
 
 [quest_tab.separator]
 color=0xfd0482
@@ -447,13 +469,217 @@ opacity=0
 color=0xfd0482
 opacity=0
 
+[sailing.boats.other.border.inner]
+color=0xfd0482
+opacity=0
+
+[sailing.boats.other.border.outer]
+color=0xfd0482
+opacity=0
+
+[sailing.boats.other.row.background]
+color=0xfd0482
+
+[sailing.boats.other.row.border]
+color=0xfd0482
+
+[sailing.boats.recent.background]
+color=0xfd0482
+
+[sailing.boats.recent.border.inner]
+color=0xfd0482
+opacity=0
+
+[sailing.boats.recent.border.outer]
+color=0xfd0482
+opacity=0
+
+[sailing.cargo.background]
+color=0xfd0482
+opacity=230
+
+[sailing.cargo.border.inner]
+color=0xfd0482
+
+[sailing.cargo.border.outer]
+color=0xfd0482
+
+[sailing.crew.current.background]
+color=0xfd0482
+
+[sailing.crew.current.border.inner]
+color=0xfd0482
+opacity=0
+
+[sailing.crew.current.border.outer]
+color=0xfd0482
+opacity=0
+
+[sailing.crew.help.border.inner]
+color=0xfd0482
+opacity=0
+
+[sailing.crew.help.border.outer]
+color=0xfd0482
+opacity=0
+
+[sailing.crew.recruits.background]
+color=0xfd0482
+
+[sailing.crew.recruits.border.inner]
+color=0xfd0482
+opacity=0
+
+[sailing.crew.recruits.border.outer]
+color=0xfd0482
+opacity=0
+
+[sailing.crew.stats.border.inner]
+color=0xfd0482
+opacity=0
+
+[sailing.crew.stats.border.outer]
+color=0xfd0482
+opacity=0
+
+[sailing.customize.body.border]
+color=0xfd0482
+opacity=0
+
+[sailing.customize.highlight]
+color=0xfd0482
+opacity=70
+
+[sailing.customize.popup.border.inner]
+color=0xfd0482
+opacity=0
+
+[sailing.customize.popup.border.outer]
+color=0xfd0482
+opacity=0
+
+[sailing.customize.row.border]
+color=0xfd0482
+
+[sailing.customize.scroll.border.inner]
+color=0xfd0482
+opacity=0
+
+[sailing.customize.scroll.border.outer]
+color=0xfd0482
+opacity=0
+
+[sailing.customize.tab.border]
+color=0xfd0482
+opacity=0
+
+[sailing.customize.upgrade.border.inner]
+color=0xfd0482
+opacity=0
+
+[sailing.customize.upgrade.border.outer]
+color=0xfd0482
+opacity=0
+
+[sailing.customize.upgrade.item.background]
+color=0x000000
+opacity=150
+
+[sailing.log.border]
+color=0xfd0482
+opacity=0
+
+[sailing.log.dropdown.border.inner]
+color=0xfd0482
+opacity=0
+
+[sailing.log.dropdown.border.outer]
+color=0xfd0482
+opacity=100
+
+[sailing.log.menu.border.inner]
+color=0xfd0482
+opacity=0
+
+[sailing.log.menu.border.outer]
+color=0xfd0482
+opacity=100
+
+[sailing.tab.assign.background]
+color=0xfd0482
+
+[sailing.tab.assign.background.alternate]
+color=0xfd0482
+
+[sailing.tab.assign.background.hovered]
+color=0xfd0482
+
+[sailing.tab.background]
+color=0xfd0482
+opacity=200
+
+[sailing.tab.border.inner]
+color=0xfd0482
+opacity=0
+
+[sailing.tab.border.outer]
+color=0xfd0482
+opacity=0
+
+[sailing.tab.crew.background]
+color=0xfd0482
+opacity=200
+
+[sailing.tab.crew.background.alternate]
+color=0xfd0482
+opacity=0
+
+[sailing.tab.facilities.divider.inner]
+color=0xfd0482
+opacity=100
+
+[sailing.tab.facilities.divider.outer]
+color=0xfd0482
+opacity=200
+
+[sailing.tab.facilities.row]
+color=0xfd0482
+opacity=200
+
+[sailing.tab.separator]
+color=0xfd0482
+
+[sailing.tab.stats.header]
+color=0x000000
+opacity=200
+
+[sailing.tab.stats.row]
+color=0xfd0482
+opacity=200
+
+[sailing.trials.border.inner]
+color=0xfd0482
+opacity=0
+
+[sailing.trials.border.outer]
+color=0xfd0482
+opacity=0
+
+[sailing.trials.row.background]
+color=0xfd0482
+opacity=230
+
+[sailing.trials.row.background.alternate]
+color=0x000000
+opacity=210
+
 [settings_tab.dropdown.border.inner]
 color=0xfd0482
 opacity=0
 
 [settings_tab.dropdown.border.outer]
 color=0xfd0482
-# opacity=0
+opacity=0
 
 [settings_tab.menu.border.inner]
 color=0xfd0482
@@ -461,7 +687,7 @@ opacity=0
 
 [settings_tab.menu.border.outer]
 color=0xfd0482
-# opacity=0
+opacity=0
 
 [settings_tab.separator]
 color=0xfd0482
