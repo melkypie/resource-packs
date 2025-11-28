@@ -1,5 +1,5 @@
-# remove comments (#) on lines to see changes affected
-# overlay color is in ARGB hex format
+remove comments (#) on lines to see changes affected
+overlay color is in ARGB hex format
 [overlay]
 color=0x9C482f17
 
@@ -14,421 +14,421 @@ opacity=0
 color=0xb68e69
 opacity=0
 
-# [bank.incinerator.border.inner]
-# color=0x474745
-# opacity=0
+[bank.incinerator.border.inner]
+color=0x493018
+opacity=0
 
-# [bank.incinerator.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[bank.incinerator.border.outer]
+color=0x28180c
+opacity=0
 
-# [bank.inventory.locked]
-# color=0xff0000
-# opacity=0
+[bank.inventory.locked]
+color=0xff0000
+opacity=0
 
-# [bank.inventory.rune_pouch.border.inner]
-# color=0x5a5245
-# opacity=0
+[bank.inventory.rune_pouch.border.inner]
+color=0x5a5245
+opacity=0
 
-# [bank.inventory.rune_pouch.border.outer]
-# color=0x383023
-# opacity=0
+[bank.inventory.rune_pouch.border.outer]
+color=0x383023
+opacity=0
 
-# [bank.inventory.rune_pouch.loadout.border.inner]
-# color=0x474745
-# opacity=0
+[bank.inventory.rune_pouch.loadout.border.inner]
+color=0x493018
+opacity=0
 
-# [bank.inventory.rune_pouch.loadout.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[bank.inventory.rune_pouch.loadout.border.outer]
+color=0x28180c
+opacity=0
 
-# [bank.menu.border.inner]
-# color=0x474745
-# opacity=0
+[bank.menu.border.inner]
+color=0x493018
+opacity=0
 
-# [bank.menu.border.inner.dropdown]
-# opacity=0
+[bank.menu.border.inner.dropdown]
+opacity=0
 
-# [bank.menu.border.inner.fillers]
-# color=0x726451
-# opacity=0
+[bank.menu.border.inner.fillers]
+color=0x726451
+opacity=0
 
-# [bank.menu.border.inner.tab]
-# opacity=0
+[bank.menu.border.inner.tab]
+opacity=0
 
-# [bank.menu.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[bank.menu.border.outer]
+color=0x28180c
+opacity=0
 
-# [bank.menu.border.outer.dropdown]
-# opacity=0
+[bank.menu.border.outer.dropdown]
+opacity=0
 
-# [bank.menu.border.outer.fillers]
-# color=0x2e2b23
-# opacity=0
+[bank.menu.border.outer.fillers]
+color=0x2e2b23
+opacity=0
 
-# [bank.menu.border.outer.tab]
-# opacity=0
+[bank.menu.border.outer.tab]
+opacity=0
 
-# [bank.popup.border.inner]
-# color=0x474745
-# opacity=0
+[bank.popup.border.inner]
+color=0x493018
+opacity=0
 
-# [bank.popup.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[bank.popup.border.outer]
+color=0x28180c
+opacity=0
 
 [bank.separator]
 color=0x24242c
 
-# [bonds_pouch.border.inner]
-# color=0x2e2b23
-# opacity=0
+[bonds_pouch.border.inner]
+color=0x2e2b23
+opacity=0
 
-# [bonds_pouch.border.outer]
-# color=0x726451
-# opacity=0
+[bonds_pouch.border.outer]
+color=0x726451
+opacity=0
 
-# [bounty_hunter.overlay.background]
-# color=0x494034
-# opacity=150
+[bounty_hunter.overlay.background]
+color=0x494034
+opacity=150
 
-# [bounty_hunter.overlay.border.inner]
-# color=0x5a5245
+[bounty_hunter.overlay.border.inner]
+color=0x5a5245
 
-# [bounty_hunter.overlay.border.outer]
-# color=0x383023
+[bounty_hunter.overlay.border.outer]
+color=0x383023
 
 [channel_tab.separator]
 color=0x482f17
 
-# [chatbox.separator]
-# color=0x807660
+[chatbox.separator]
+color=0x807660
 
-# [chatbox.separator.opaque]
-# opacity=0
+[chatbox.separator.opaque]
+opacity=0
 
-# [chatbox.separator.transparent]
-# opacity=200
+[chatbox.separator.transparent]
+opacity=200
 
-# [choose_spell.background]
-# color=0x000000
-# opacity=0
+[choose_spell.background]
+color=0x000000
+opacity=0
 
-# [choose_spell.border.inner]
-# color=0x726451
-# opacity=0
+[choose_spell.border.inner]
+color=0x726451
+opacity=0
 
-# [choose_spell.border.outer]
-# color=0x2e2b23
-# opacity=0
+[choose_spell.border.outer]
+color=0x2e2b23
+opacity=0
 
-# [clan_chat.border.inner]
-# color=0x474745
+[clan_chat.border.inner]
+color=0x493018
 
-# [clan_chat.border.outer]
-# color=0x0e0e0c
+[clan_chat.border.outer]
+color=0x28180c
 
-# [clan_chat.border.rectangle]
-# color=0x170801
+[clan_chat.border.rectangle]
+color=0x170801
 
-# [collection_log.border]
-# color=0x585040
+[collection_log.border]
+color=0x382414
 
-# [colosseum.info.background]
-# color=0x000000
-# opacity=200
+[colosseum.info.background]
+color=0x000000
+opacity=200
 
-# [colosseum.info.border.inner]
-# color=0x474745
-# opacity=0
+[colosseum.info.border.inner]
+color=0x493018
+opacity=0
 
-# [colosseum.info.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[colosseum.info.border.outer]
+color=0x28180c
+opacity=0
 
-# [colosseum.modifiers.border]
-# color=0x726451
-# opacity=0
+[colosseum.modifiers.border]
+color=0x726451
+opacity=0
 
-# [colosseum.modifiers.selected]
-# color=0x9d6a76
-# opacity=0
+[colosseum.modifiers.selected]
+color=0x9d6a76
+opacity=0
 
-# [colosseum.tab.border]
-# color=0x726451
-# opacity=0
+[colosseum.tab.border]
+color=0x726451
+opacity=0
 
-# [colosseum.wave.background]
-# color=0x000000
-# opacity=200
+[colosseum.wave.background]
+color=0x000000
+opacity=200
 
-# [colosseum.wave.border.inner]
-# color=0x474745
-# opacity=0
+[colosseum.wave.border.inner]
+color=0x493018
+opacity=0
 
-# [colosseum.wave.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[colosseum.wave.border.outer]
+color=0x28180c
+opacity=0
 
 [combat_achievements.boss.border.inner]
 color=0x493018
 opacity=0
 
-# [combat_achievements.boss.border.outer]
-# color=0x303030
-# opacity=0
+[combat_achievements.boss.border.outer]
+color=0x303030
+opacity=0
 
-# [combat_achievements.overview.border]
-# color=0x000000
-# opacity=150
+[combat_achievements.overview.border]
+color=0x000000
+opacity=150
 
-# [combat_achievements.progress.border.inner]
-# color=0x474745
-# opacity=0
+[combat_achievements.progress.border.inner]
+color=0x493018
+opacity=0
 
-# [combat_achievements.progress.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[combat_achievements.progress.border.outer]
+color=0x28180c
+opacity=0
 
 [combat_achievements.rewards.body.border.inner]
 color=0x493018
 opacity=0
 
-# [combat_achievements.rewards.body.border.outer]
-# color=0x303030
-# opacity=0
+[combat_achievements.rewards.body.border.outer]
+color=0x303030
+opacity=0
 
-# [combat_achievements.rewards.section.border.inner]
-# color=0x474745
-# opacity=0
+[combat_achievements.rewards.section.border.inner]
+color=0x493018
+opacity=0
 
-# [combat_achievements.rewards.section.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[combat_achievements.rewards.section.border.outer]
+color=0x28180c
+opacity=0
 
-# [combat_achievements.tasks.dropdown.border.inner]
-# color=0x474745
-# opacity=0
+[combat_achievements.tasks.dropdown.border.inner]
+color=0x493018
+opacity=0
 
-# [combat_achievements.tasks.dropdown.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[combat_achievements.tasks.dropdown.border.outer]
+color=0x28180c
+opacity=0
 
-# [combat_achievements.tasks.menu.border.inner]
-# color=0x474745
-# opacity=0
+[combat_achievements.tasks.menu.border.inner]
+color=0x493018
+opacity=0
 
-# [combat_achievements.tasks.menu.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[combat_achievements.tasks.menu.border.outer]
+color=0x28180c
+opacity=0
 
-# [costumes.border.inner]
-# color=0x474745
-# opacity=0
+[costumes.border.inner]
+color=0x493018
+opacity=0
 
-# [costumes.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[costumes.border.outer]
+color=0x28180c
+opacity=0
 
-# [cox.overlay.background]
-# color=0x4e4c4a
-# opacity=0
+[cox.overlay.background]
+color=0x4e4c4a
+opacity=0
 
-# [cox.overlay.border.inner]
-# color=0x5a5245
-# opacity=0
+[cox.overlay.border.inner]
+color=0x5a5245
+opacity=0
 
-# [cox.overlay.border.outer]
-# color=0x383023
-# opacity=0
+[cox.overlay.border.outer]
+color=0x383023
+opacity=0
 
-# [cox.parties.border.inner]
-# color=0x474745
-# opacity=0
+[cox.parties.border.inner]
+color=0x493018
+opacity=0
 
-# [cox.parties.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[cox.parties.border.outer]
+color=0x28180c
+opacity=0
 
-# [cox.party.border.inner]
-# color=0x474745
-# opacity=0
+[cox.party.border.inner]
+color=0x493018
+opacity=0
 
-# [cox.party.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[cox.party.border.outer]
+color=0x28180c
+opacity=0
 
-# [deposit_box.inventory.border.inner]
-# color=0x5a5245
-# opacity=0
+[deposit_box.inventory.border.inner]
+color=0x5a5245
+opacity=0
 
-# [deposit_box.inventory.border.outer]
-# color=0x383013
-# opacity=0
+[deposit_box.inventory.border.outer]
+color=0x383013
+opacity=0
 
-# [deposit_box.inventory.locked]
-# color=0xff0000
-# opacity=0
+[deposit_box.inventory.locked]
+color=0xff0000
+opacity=0
 
-# [deposit_lock.border.inner]
-# color=0x474745
-# opacity=0
+[deposit_lock.border.inner]
+color=0x493018
+opacity=0
 
-# [deposit_lock.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[deposit_lock.border.outer]
+color=0x28180c
+opacity=0
 
-# [deposit_lock.hovered.locked]
-# color=0xff7070
-# opacity=0
+[deposit_lock.hovered.locked]
+color=0xff7070
+opacity=0
 
-# [deposit_lock.hovered.unlocked]
-# color=0xffffff
-# opacity=0
+[deposit_lock.hovered.unlocked]
+color=0xffffff
+opacity=0
 
-# [deposit_lock.locked]
-# color=0xff0000
-# opacity=0
+[deposit_lock.locked]
+color=0xff0000
+opacity=0
 
-# [deposit_lock.unlocked]
-# color=0x9f9f9f
-# opacity=0
+[deposit_lock.unlocked]
+color=0x9f9f9f
+opacity=0
 
-# [forestry_kit.body.background]
-# color=0x000000
-# opacity=200
+[forestry_kit.body.background]
+color=0x000000
+opacity=200
 
-# [forestry_kit.body.border.inner]
-# color=0x474745
-# opacity=0
+[forestry_kit.body.border.inner]
+color=0x493018
+opacity=0
 
-# [forestry_kit.body.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[forestry_kit.body.border.outer]
+color=0x28180c
+opacity=0
 
-# [forestry_kit.info.background]
-# color=0x000000
-# opacity=200
+[forestry_kit.info.background]
+color=0x000000
+opacity=200
 
-# [forestry_kit.info.border.inner]
-# color=0x474745
-# opacity=0
+[forestry_kit.info.border.inner]
+color=0x493018
+opacity=0
 
-# [forestry_kit.info.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[forestry_kit.info.border.outer]
+color=0x28180c
+opacity=0
 
-# [forestry_shop.body.background]
-# color=0x000000
-# opacity=200
+[forestry_shop.body.background]
+color=0x000000
+opacity=200
 
-# [forestry_shop.body.border.inner]
-# color=0x474745
-# opacity=0
+[forestry_shop.body.border.inner]
+color=0x493018
+opacity=0
 
-# [forestry_shop.body.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[forestry_shop.body.border.outer]
+color=0x28180c
+opacity=0
 
-# [forestry_shop.dropdown.border.inner]
-# color=0x474745
-# opacity=0
+[forestry_shop.dropdown.border.inner]
+color=0x493018
+opacity=0
 
-# [forestry_shop.dropdown.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[forestry_shop.dropdown.border.outer]
+color=0x28180c
+opacity=0
 
-# [forestry_shop.info.background]
-# color=0x000000
-# opacity=200
+[forestry_shop.info.background]
+color=0x000000
+opacity=200
 
-# [forestry_shop.info.border.inner]
-# color=0x474745
-# opacity=0
+[forestry_shop.info.border.inner]
+color=0x493018
+opacity=0
 
-# [forestry_shop.info.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[forestry_shop.info.border.outer]
+color=0x28180c
+opacity=0
 
-# [forestry_shop.menu.border.inner]
-# color=0x474745
-# opacity=0
+[forestry_shop.menu.border.inner]
+color=0x493018
+opacity=0
 
-# [forestry_shop.menu.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[forestry_shop.menu.border.outer]
+color=0x28180c
+opacity=0
 
-# [forestry_shop.reward.hovered]
-# color=0xb8a182
-# opacity=0
+[forestry_shop.reward.hovered]
+color=0xb8a182
+opacity=0
 
-# [forestry_shop.reward.selected]
-# color=0xff981f
-# opacity=0
+[forestry_shop.reward.selected]
+color=0xff981f
+opacity=0
 
-# [forestry_shop.reward.unselected]
-# color=0x726451
-# opacity=0
+[forestry_shop.reward.unselected]
+color=0x726451
+opacity=0
 
-# [friends_chat.border.inner]
-# color=0x474745
-# opacity=0
+[friends_chat.border.inner]
+color=0x493018
+opacity=0
 
-# [friends_chat.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[friends_chat.border.outer]
+color=0x28180c
+opacity=0
 
-# [friends_chat.header.border.inner]
-# color=0x474745
-# opacity=0
+[friends_chat.header.border.inner]
+color=0x493018
+opacity=0
 
-# [friends_chat.header.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[friends_chat.header.border.outer]
+color=0x28180c
+opacity=0
 
-# [friends_chat.setup.border.inner]
-# color=0x5a5245
-# opacity=0
+[friends_chat.setup.border.inner]
+color=0x5a5245
+opacity=0
 
-# [friends_chat.setup.border.outer]
-# color=0x383023
-# opacity=0
+[friends_chat.setup.border.outer]
+color=0x383023
+opacity=0
 
-# [friends_list.header.border.inner]
-# color=0x474745
-# opacity=0
+[friends_list.header.border.inner]
+color=0x493018
+opacity=0
 
-# [friends_list.header.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[friends_list.header.border.outer]
+color=0x28180c
+opacity=0
 
-# [ge.inventory.glow]
-# color=0xffff00
+[ge.inventory.glow]
+color=0xffff00
 
-# [ge.modify.border.inner]
-# color=0x5a5245
-# opacity=0
+[ge.modify.border.inner]
+color=0x5a5245
+opacity=0
 
-# [ge.modify.border.outer]
-# color=0x383023
-# opacity=0
+[ge.modify.border.outer]
+color=0x383023
+opacity=0
 
-# [ge.offer.border.inner]
-# color=0x5a5245
-# opacity=0
+[ge.offer.border.inner]
+color=0x5a5245
+opacity=0
 
-# [ge.offer.border.outer]
-# color=0x383023
-# opacity=0
+[ge.offer.border.outer]
+color=0x383023
+opacity=0
 
-# [ge.slot.border.inner]
-# color=0x5a5245
-# opacity=0
+[ge.slot.border.inner]
+color=0x5a5245
+opacity=0
 
-# [ge.slot.border.outer]
-# color=0x383023
-# opacity=0
+[ge.slot.border.outer]
+color=0x383023
+opacity=0
 
 [grouping_tab.border.inner]
 color=0xb68e69
@@ -446,234 +446,405 @@ opacity=0
 color=0x482f17
 opacity=0
 
-# [ignore_list.header.border.inner]
-# color=0x474745
-# opacity=0
+[ignore_list.header.border.inner]
+color=0x493018
+opacity=0
 
-# [ignore_list.header.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[ignore_list.header.border.outer]
+color=0x28180c
+opacity=0
 
-# [item_search.background]
-# color=0x463214
-# opacity=200
+[item_search.background]
+color=0x463214
+opacity=200
 
-# [item_search.border.inner]
-# color=0x463214
-# opacity=150
+[item_search.border.inner]
+color=0x463214
+opacity=150
 
-# [item_search.border.outer]
-# color=0x463214
-# opacity=0
+[item_search.border.outer]
+color=0x463214
+opacity=0
 
-# [jewellery_box.border.inner]
-# color=0x474745
-# opacity=0
+[jewellery_box.border.inner]
+color=0x493018
+opacity=0
 
-# [jewellery_box.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[jewellery_box.border.outer]
+color=0x28180c
+opacity=0
 
-# [kept_on_death.border.inner]
-# color=0x0e0e0c
-# opacity=0
+[kept_on_death.border.inner]
+color=0x28180c
+opacity=0
 
-# [kept_on_death.border.outer]
-# color=0x474745
-# opacity=0
+[kept_on_death.border.outer]
+color=0x6d4528
+opacity=0
 
-# [lectern.border.inner]
-# color=0x0e0e0c
-# opacity=0
+[lectern.border.inner]
+color=0x28180c
+opacity=0
 
-# [lectern.border.outer]
-# color=0x474745
-# opacity=0
+[lectern.border.outer]
+color=0x493018
+opacity=0
 
-# [lms.kda.background]
-# color=0x4e4c4a
-# opacity=100
+[lms.kda.background]
+color=0x4e4c4a
+opacity=100
 
-# [lms.kda.border.inner]
-# color=0x383023
-# opacity=0
+[lms.kda.border.inner]
+color=0x383023
+opacity=0
 
-# [lms.kda.border.outer]
-# color=0x5a5245
-# opacity=0
+[lms.kda.border.outer]
+color=0x5a5245
+opacity=0
 
-# [lms.settings.border.inner]
-# color=0x5a5245
-# opacity=0
+[lms.settings.border.inner]
+color=0x5a5245
+opacity=0
 
-# [lms.settings.border.outer]
-# color=0x383023
-# opacity=0
+[lms.settings.border.outer]
+color=0x383023
+opacity=0
 
-# [lms.shop.border.inner]
-# color=0x474745
-# opacity=0
+[lms.shop.border.inner]
+color=0x493018
+opacity=0
 
-# [lms.shop.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[lms.shop.border.outer]
+color=0x28180c
+opacity=0
 
-# [lms.shop.separator]
-# color=0x0e0e0c
-# opacity=0
+[lms.shop.separator]
+color=0x28180c
+opacity=0
 
-# [lms.shop.separator.accent]
-# color=0x474745
-# opacity=0
+[lms.shop.separator.accent]
+color=0x493018
+opacity=0
 
-# [lms.supplies.border.inner]
-# color=0x474745
-# opacity=0
+[lms.supplies.border.inner]
+color=0x493018
+opacity=0
 
-# [lms.supplies.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[lms.supplies.border.outer]
+color=0x28180c
+opacity=0
 
-# [lms.supplies.dropdown.border.inner]
-# color=0x383023
+[lms.supplies.dropdown.border.inner]
+color=0x383023
 
-# [lms.supplies.dropdown.border.outer]
-# color=0x5a5245
+[lms.supplies.dropdown.border.outer]
+color=0x5a5245
 
-# [lms.supplies.menu.border.inner]
-# color=0x0e0e0c
-# opacity=0
+[lms.supplies.menu.border.inner]
+color=0x28180c
+opacity=0
 
-# [lms.supplies.menu.border.outer]
-# color=0x474745
-# opacity=0
+[lms.supplies.menu.border.outer]
+color=0x493018
+opacity=0
 
-# [looting_bag.border.inner]
-# color=0x5a5245
-# opacity=0
+[looting_bag.border.inner]
+color=0x5a5245
+opacity=0
 
-# [looting_bag.border.outer]
-# color=0x383023
-# opacity=0
+[looting_bag.border.outer]
+color=0x383023
+opacity=0
 
-# [make_all.background]
-# color=0x89785e
-# opacity=0
+[make_all.background]
+color=0x89785e
+opacity=0
 
-# [make_all.quantity]
-# color=0x89785e
-# opacity=0
+[make_all.quantity]
+color=0x89785e
+opacity=0
 
-# [other_clan.border.inner]
-# color=0x474745
-# opacity=0
+[other_clan.border.inner]
+color=0x493018
+opacity=0
 
-# [other_clan.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[other_clan.border.outer]
+color=0x28180c
+opacity=0
 
-# [pet_house.border.inner]
-# color=0xff981f
-# opacity=150
+[pet_house.border.inner]
+color=0xff981f
+opacity=150
 
-# [pet_house.border.outer]
-# color=0x191900
-# opacity=0
+[pet_house.border.outer]
+color=0x191900
+opacity=0
 
-# [poh.build_room.border]
-# color=0x333300
-# opacity=0
+[poh.build_room.border]
+color=0x333300
+opacity=0
 
-# [portal_nexus.border]
-# color=0x000000
-# opacity=0
+[portal_nexus.border]
+color=0x000000
+opacity=0
 
-# [pvp_arena.confirm_options.separator]
-# color=0x0e0e0c
-# opacity=100
+[pvp_arena.confirm_options.separator]
+color=0x28180c
+opacity=100
 
-# [pvp_arena.confirm_options.separator.accent]
-# color=0x6b6b69
-# opacity=100
+[pvp_arena.confirm_options.separator.accent]
+color=0x6d4528
+opacity=100
 
-# [pvp_arena.duel_options.separator]
-# color=0x6b6b69
-# opacity=100
+[pvp_arena.duel_options.separator]
+color=0x6d4528
+opacity=100
 
-# [pvp_arena.recruitment.border.inner]
-# color=0x474745
-# opacity=0
+[pvp_arena.recruitment.border.inner]
+color=0x493018
+opacity=0
 
-# [pvp_arena.recruitment.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[pvp_arena.recruitment.border.outer]
+color=0x28180c
+opacity=0
 
-# [pvp_arena.supplies.kit.dropdown.border.inner]
-# color=0x5a5245
-# opacity=0
+[pvp_arena.supplies.kit.dropdown.border.inner]
+color=0x5a5245
+opacity=0
 
-# [pvp_arena.supplies.kit.dropdown.border.outer]
-# color=0x383023
-# opacity=0
+[pvp_arena.supplies.kit.dropdown.border.outer]
+color=0x383023
+opacity=0
 
-# [pvp_arena.supplies.kit.equipment.border.inner]
-# color=0x5a5245
-# opacity=0
+[pvp_arena.supplies.kit.equipment.border.inner]
+color=0x5a5245
+opacity=0
 
-# [pvp_arena.supplies.kit.equipment.border.outer]
-# color=0x383023
-# opacity=0
+[pvp_arena.supplies.kit.equipment.border.outer]
+color=0x383023
+opacity=0
 
-# [pvp_arena.supplies.kit.inventory.border.inner]
-# color=0x0e0e0c
-# opacity=0
+[pvp_arena.supplies.kit.inventory.border.inner]
+color=0x28180c
+opacity=0
 
-# [pvp_arena.supplies.kit.inventory.border.outer]
-# color=0x474745
-# opacity=0
+[pvp_arena.supplies.kit.inventory.border.outer]
+color=0x493018
+opacity=0
 
-# [pvp_arena.supplies.kit.list.border.inner]
-# color=0x5a5245
-# opacity=0
+[pvp_arena.supplies.kit.list.border.inner]
+color=0x5a5245
+opacity=0
 
-# [pvp_arena.supplies.kit.list.border.outer]
-# color=0x383023
-# opacity=0
+[pvp_arena.supplies.kit.list.border.outer]
+color=0x383023
+opacity=0
 
-# [pvp_arena.supplies.kit.menu.border.inner]
-# color=0x474745
-# opacity=0
+[pvp_arena.supplies.kit.menu.border.inner]
+color=0x493018
+opacity=0
 
-# [pvp_arena.supplies.kit.menu.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[pvp_arena.supplies.kit.menu.border.outer]
+color=0x28180c
+opacity=0
 
 [pvp_arena.supplies.separator]
 color=0x493018
 
-# [pvp_arena.supplies.stats.border.inner]
-# color=0x5a5245
-# opacity=0
+[pvp_arena.supplies.stats.border.inner]
+color=0x5a5245
+opacity=0
 
-# [pvp_arena.supplies.stats.border.outer]
-# color=0x383023
-# opacity=0
+[pvp_arena.supplies.stats.border.outer]
+color=0x383023
+opacity=0
 
-# [quest_list.background]
-# color=0x000000
-# opacity=212
+[quest_list.background]
+color=0x000000
+opacity=212
 
 [quest_tab.separator]
 color=0x482f17
 
-# [report.button.hover]
-# color=0x89785e
+[report.button.hover]
+color=0x89785e
 
-# [rune_pouch.border.inner]
-# color=0xb68e69
+[rune_pouch.border.inner]
+color=0xb68e69
 
-# [rune_pouch.border.outer]
-# color=0x493018
+[rune_pouch.border.outer]
+color=0x493018
+
+[sailing.boats.other.border.inner]
+color=0x726451
+opacity=0
+
+[sailing.boats.other.border.outer]
+color=0x2e2b23
+opacity=0
+
+[sailing.boats.other.row.background]
+color=0xffffff
+
+[sailing.boats.other.row.border]
+color=0x726451
+
+[sailing.boats.recent.background]
+color=0xffffff
+
+[sailing.boats.recent.border.inner]
+color=0x726451
+opacity=0
+
+[sailing.boats.recent.border.outer]
+color=0x2e2b23
+opacity=0
+
+[sailing.cargo.background]
+color=0xffffff
+opacity=230
+
+[sailing.cargo.border.inner]
+color=0x493018
+
+[sailing.cargo.border.outer]
+color=0x28180c
+
+[sailing.crew.current.background]
+color=0xffffff
+
+[sailing.crew.current.border.inner]
+color=0x6d4528
+opacity=0
+
+[sailing.crew.current.border.outer]
+color=0x0e0e0c
+opacity=0
+
+[sailing.crew.help.border.inner]
+color=0x6d4528
+opacity=0
+
+[sailing.crew.help.border.outer]
+color=0x0e0e0c
+opacity=0
+
+[sailing.crew.recruits.background]
+color=0xffffff
+
+[sailing.crew.recruits.border.inner]
+color=0x6d4528
+opacity=0
+
+[sailing.crew.recruits.border.outer]
+color=0x0e0e0c
+opacity=0
+
+[sailing.crew.stats.border.inner]
+color=0x6d4528
+opacity=0
+
+[sailing.crew.stats.border.outer]
+color=0x0e0e0c
+opacity=0
+
+[sailing.customize.body.border]
+color=0x726451
+opacity=0
+
+[sailing.customize.highlight]
+color=0xff981f
+opacity=70
+
+[sailing.customize.row.border]
+color=0x726451
+
+[sailing.customize.scroll.border.inner]
+color=0x726451
+opacity=0
+
+[sailing.customize.scroll.border.outer]
+color=0x2e2b23
+opacity=0
+
+[sailing.customize.tab.border]
+color=0x726451
+opacity=0
+
+[sailing.customize.upgrade.border.inner]
+color=0x493018
+opacity=0
+
+[sailing.customize.upgrade.border.outer]
+color=0x28180c
+opacity=0
+
+[sailing.customize.upgrade.item.background]
+color=0x000000
+opacity=150
+
+[sailing.log.border]
+color=0x482f17
+opacity=0
+
+[sailing.log.dropdown.border.inner]
+color=0x493018
+opacity=0
+
+[sailing.log.dropdown.border.outer]
+color=0x28180c
+opacity=0
+
+[sailing.log.menu.border.inner]
+color=0x493018
+opacity=0
+
+[sailing.log.menu.border.outer]
+color=0x28180c
+opacity=0
+
+[sailing.tab.background]
+color=0x8e5d3c
+opacity=0
+
+[sailing.tab.border.inner]
+color=0x493018
+opacity=0
+
+[sailing.tab.border.outer]
+color=0x28180c
+opacity=0
+
+[sailing.tab.crew.background]
+color=0x8e5d3c
+opacity=0
+
+[sailing.tab.crew.background.alternate]
+color=0x6d4528
+opacity=0
+
+[sailing.tab.facilities.divider.inner]
+color=0x28180c
+opacity=0
+
+[sailing.tab.facilities.divider.outer]
+color=0x493018
+opacity=0
+
+[sailing.tab.facilities.row]
+color=0x6d4528
+opacity=0
+
+[sailing.tab.separator]
+color=0x482f17
+
+[sailing.tab.stats.header]
+color=0xb68e69
+opacity=0
+
+[sailing.tab.stats.row]
+color=0x6d4528
+opacity=0
 
 [settings.body.border.inner]
 color=0xb68e69
@@ -718,26 +889,26 @@ opacity=0
 [settings_tab.separator]
 color=0x482f17
 
-# [skill_guide.body.border.inner]
-# color=0x474745
-# opacity=0
+[skill_guide.body.border.inner]
+color=0x493018
+opacity=0
 
-# [skill_guide.body.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[skill_guide.body.border.outer]
+color=0x28180c
+opacity=0
 
-# [skill_guide.tab.border]
-# color=0x726451
-# opacity=0
+[skill_guide.tab.border]
+color=0x726451
+opacity=0
 
-# [soul_wars.separator.bottom]
-# color=0x383023
+[soul_wars.separator.bottom]
+color=0x383023
 
 [soul_wars.separator.bottom.accent]
 color=0x493018
 
-# [soul_wars.separator.top]
-# color=0x383023
+[soul_wars.separator.top]
+color=0x383023
 
 [soul_wars.separator.top.accent]
 color=0x493018
@@ -754,97 +925,97 @@ opacity=0
 color=0xb68e69
 opacity=0
 
-# [toa.applicants.border.inner]
-# color=0x474745
-# opacity=0
+[toa.applicants.border.inner]
+color=0x493018
+opacity=0
 
-# [toa.applicants.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[toa.applicants.border.outer]
+color=0x28180c
+opacity=0
 
-# [toa.invocations.border.inner]
-# color=0x474745
-# opacity=0
+[toa.invocations.border.inner]
+color=0x493018
+opacity=0
 
-# [toa.invocations.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[toa.invocations.border.outer]
+color=0x28180c
+opacity=0
 
-# [toa.members.border.inner]
-# color=0x474745
-# opacity=0
+[toa.members.border.inner]
+color=0x493018
+opacity=0
 
-# [toa.members.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[toa.members.border.outer]
+color=0x28180c
+opacity=0
 
-# [toa.parties.border.inner]
-# color=0x474745
-# opacity=0
+[toa.parties.border.inner]
+color=0x493018
+opacity=0
 
-# [toa.parties.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[toa.parties.border.outer]
+color=0x28180c
+opacity=0
 
-# [toa.separator.bottom]
-# color=0x383023
+[toa.separator.bottom]
+color=0x383023
 
 [toa.separator.bottom.accent]
 color=0x493018
 
-# [toa.separator.top]
-# color=0x383023
+[toa.separator.top]
+color=0x383023
 
 [toa.separator.top.accent]
 color=0x493018
 
-# [toa.summary.border.inner]
-# color=0x474745
-# opacity=0
+[toa.summary.border.inner]
+color=0x493018
+opacity=0
 
-# [toa.summary.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[toa.summary.border.outer]
+color=0x28180c
+opacity=0
 
-# [tob.applicants.border.inner]
-# color=0x0f0f0d
-# opacity=0
+[tob.applicants.border.inner]
+color=0x0f0f0d
+opacity=0
 
-# [tob.applicants.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[tob.applicants.border.outer]
+color=0x28180c
+opacity=0
 
-# [tob.parties.border.inner]
-# color=0x474745
-# opacity=0
+[tob.parties.border.inner]
+color=0x493018
+opacity=0
 
-# [tob.parties.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[tob.parties.border.outer]
+color=0x28180c
+opacity=0
 
-# [tob.party.border.inner]
-# color=0x474745
-# opacity=0
+[tob.party.border.inner]
+color=0x493018
+opacity=0
 
-# [tob.party.border.outer]
-# color=0x0f0f0d
-# opacity=0
+[tob.party.border.outer]
+color=0x0f0f0d
+opacity=0
 
-# [tob.party.header.border.inner]
-# color=0x474745
-# opacity=0
+[tob.party.header.border.inner]
+color=0x493018
+opacity=0
 
-# [tob.party.header.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[tob.party.header.border.outer]
+color=0x28180c
+opacity=0
 
-# [world_map.dropdown.border.inner]
-# color=0x474745
-# opacity=0
+[world_map.dropdown.border.inner]
+color=0x493018
+opacity=0
 
-# [world_map.dropdown.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[world_map.dropdown.border.outer]
+color=0x28180c
+opacity=0
 
 [world_map.key.border.inner]
 color=0xb68e69
@@ -854,24 +1025,24 @@ opacity=0
 color=0x482f17
 opacity=0
 
-# [world_map.location_menu.border.inner]
-# color=0x474745
-# opacity=0
+[world_map.location_menu.border.inner]
+color=0x493018
+opacity=0
 
-# [world_map.location_menu.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[world_map.location_menu.border.outer]
+color=0x28180c
+opacity=0
 
-# [world_map.search.border.inner]
-# color=0x474745
-# opacity=0
+[world_map.search.border.inner]
+color=0x493018
+opacity=0
 
-# [world_map.search.border.outer]
-# color=0x0e0e0c
-# opacity=0
+[world_map.search.border.outer]
+color=0x28180c
+opacity=0
 
-# [world_switcher.background]
-# color=0x000000
+[world_switcher.background]
+color=0x000000
 
 [world_switcher.border.bottom]
 color=0x482f17
