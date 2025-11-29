@@ -1,3 +1,6 @@
+  [overlay]
+ color=0x70000000
+
  [account_management.separator]
  color=0x00000
 
@@ -9,6 +12,14 @@
  color=0x191818
  opacity=255
 
+ [bank.incinerator.border.inner]
+ color=0x000000
+ opacity=150
+
+ [bank.incinerator.border.outer]
+ color=0xf98e6e
+ opacity=100
+
  [bank.inventory.locked]
  color=0x2f2d2d
  opacity=0
@@ -18,6 +29,14 @@
  opacity=150
 
  [bank.inventory.rune_pouch.border.outer]
+ color=0xf98e6e
+ opacity=100
+
+ [bank.inventory.rune_pouch.loadout.border.inner]
+ color=0x000000
+ opacity=150
+
+ [bank.inventory.rune_pouch.loadout.border.outer]
  color=0xf98e6e
  opacity=100
 
@@ -81,11 +100,11 @@
  [channel_tab.separator]
  color=0x000000
 
-[chatbox.separator]
-color=0x6D6E7C
+ [chatbox.separator]
+ color=0x6D6E7C
 
-[chatbox.separator.opaque]
-opacity=10
+ [chatbox.separator.opaque]
+ opacity=10
 
  [chatbox.separator.transparent]
  opacity=200
@@ -106,6 +125,9 @@ opacity=10
  color=0x000000
 
  [clan_chat.border.outer]
+ color=0xf98e6e
+
+ [clan_chat.border.rectangle]
  color=0xf98e6e
 
  [collection_log.border]
@@ -343,10 +365,6 @@ opacity=10
  color=0x000000
  opacity=0
 
- [forestry_shop.reward.unselected]
- color=0x191818
- opacity=0
-
  [friends_chat.border.inner]
  color=0x000000
  opacity=150
@@ -540,6 +558,12 @@ opacity=10
  color=0xf98e6e
  opacity=150
 
+ [notification.border.inner]
+ color=0x000000
+
+ [notification.border.outer]
+ color=0xf98e6e
+
  [other_clan.border.inner]
  color=0x000000
  opacity=150
@@ -652,6 +676,210 @@ opacity=10
  [rune_pouch.border.outer]
  color=0xf98e6e
  opacity=100
+
+ [sailing.boats.other.border.inner]
+ color=0x000000
+ opacity=150
+
+ [sailing.boats.other.border.outer]
+ color=0xf98e6e
+ opacity=100
+
+ [sailing.boats.other.row.background]
+ color=0x222222
+
+ [sailing.boats.other.row.border]
+ color=0xf98e6e
+
+ [sailing.boats.recent.background]
+ color=0x222222
+
+ [sailing.boats.recent.border.inner]
+ color=0x000000
+ opacity=150
+
+ [sailing.boats.recent.border.outer]
+ color=0xf98e6e
+ opacity=100
+
+ [sailing.cargo.background]
+ color=0x222222
+ opacity=0
+
+ [sailing.cargo.border.inner]
+ color=0x000000
+
+ [sailing.cargo.border.outer]
+ color=0xf98e6e
+
+ [sailing.crew.current.background]
+ color=0x222222
+
+ [sailing.crew.current.border.inner]
+ color=0x000000
+ opacity=150
+
+ [sailing.crew.current.border.outer]
+ color=0xf98e6e
+ opacity=100
+
+ [sailing.crew.help.border.inner]
+ color=0x000000
+ opacity=150
+
+ [sailing.crew.help.border.outer]
+ color=0xf98e6e
+ opacity=100
+
+ [sailing.crew.recruits.background]
+ color=0x222222
+
+ [sailing.crew.recruits.border.inner]
+ color=0x000000
+ opacity=150
+
+ [sailing.crew.recruits.border.outer]
+ color=0xf98e6e
+ opacity=100
+
+ [sailing.crew.stats.border.inner]
+ color=0x000000
+ opacity=150
+
+ [sailing.crew.stats.border.outer]
+ color=0xf98e6e
+ opacity=100
+
+ [sailing.customize.body.border]
+ color=0xf98e6e
+ opacity=50
+
+ [sailing.customize.highlight]
+ color=0xf98e6e
+ opacity=100
+
+ [sailing.customize.popup.border.inner]
+ color=0x000000
+ opacity=150
+
+ [sailing.customize.popup.border.outer]
+ color=0xf98e6e
+ opacity=100
+
+ [sailing.customize.row.border]
+ color=0xf98e6e
+
+ [sailing.customize.scroll.border.inner]
+ color=0x000000
+ opacity=150
+
+ [sailing.customize.scroll.border.outer]
+ color=0xf98e6e
+ opacity=100
+
+ [sailing.customize.tab.border]
+ color=0xf98e6e
+ opacity=100
+
+ [sailing.customize.upgrade.border.inner]
+ color=0x000000
+ opacity=150
+
+ [sailing.customize.upgrade.border.outer]
+ color=0xf98e6e
+ opacity=100
+
+ [sailing.customize.upgrade.item.background]
+ color=0x222222
+ opacity=0
+
+ [sailing.log.border]
+ color=0xf98e6e
+ opacity=100
+
+ [sailing.log.dropdown.border.inner]
+ color=0x000000
+ opacity=150
+
+ [sailing.log.dropdown.border.outer]
+ color=0xf98e6e
+ opacity=100
+
+ [sailing.log.menu.border.inner]
+ color=0x000000
+ opacity=150
+
+ [sailing.log.menu.border.outer]
+ color=0xf98e6e
+ opacity=100
+
+ [sailing.tab.assign.background]
+ color=0x222222
+
+ [sailing.tab.assign.background.alternate]
+ color=0x333333
+
+ [sailing.tab.assign.background.hovered]
+ color=0x444444
+
+ [sailing.tab.background]
+ color=0x222222
+ opacity=0
+
+ [sailing.tab.border.inner]
+ color=0x000000
+ opacity=150
+
+ [sailing.tab.border.outer]
+ color=0xf98e6e
+ opacity=100
+
+ [sailing.tab.crew.background]
+ color=0x222222
+ opacity=0
+
+ [sailing.tab.crew.background.alternate]
+ color=0x333333
+ opacity=0
+
+ [sailing.tab.facilities.divider.inner]
+ color=0x000000
+ opacity=150
+
+ [sailing.tab.facilities.divider.outer]
+ color=0xf98e6e
+ opacity=100
+
+ [sailing.tab.facilities.row]
+ color=0x444444
+ opacity=150
+
+ [sailing.tab.separator]
+ color=0xf98e6e
+
+ [sailing.tab.stats.header]
+ color=0xf98e6e
+ opacity=150
+
+ [sailing.tab.stats.row]
+ color=0x444444
+ opacity=150
+
+ [sailing.trials.border.inner]
+ color=0x000000
+ opacity=150
+
+ [sailing.trials.border.outer]
+ color=0xf98e6e
+ opacity=100
+
+ [sailing.trials.row.background]
+ color=0x222222
+ opacity=0
+
+ [sailing.trials.row.background.alternate]
+ color=0x333333
+ opacity=0
 
  [settings.body.border.inner]
  color=0x000000
