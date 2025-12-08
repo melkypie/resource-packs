@@ -45,8 +45,8 @@ import melky.resourcepacks.ResourcePacksConfig.ResourcePack;
 import static melky.resourcepacks.ResourcePacksPlugin.GITHUB;
 import static melky.resourcepacks.ResourcePacksPlugin.OVERLAY_COLOR_CONFIG;
 import melky.resourcepacks.event.ResourcePacksChanged;
-import melky.resourcepacks.hub.ResourcePackManifest;
-import melky.resourcepacks.hub.ResourcePacksClient;
+import melky.resourcepacks.features.hub.HubManifest;
+import melky.resourcepacks.features.hub.HubClient;
 import melky.resourcepacks.overrides.Overrides;
 import melky.resourcepacks.overrides.WidgetOverride;
 import net.runelite.api.Client;
@@ -90,7 +90,7 @@ public class ResourcePacksManager
 	private ScheduledExecutorService executor;
 
 	@Inject
-	private ResourcePacksClient resourcePacksClient;
+	private HubClient hubClient;
 
 	@Inject
 	private ClientThread clientThread;
@@ -115,7 +115,7 @@ public class ResourcePacksManager
 
 	public void refreshPlugins()
 	{
-		HashMap<String, ResourcePackManifest> loadedPacks = new HashMap<>();
+		HashMap<String, HubManifest> loadedPacks = new HashMap<>();
 		File[] resourcePackDirectories = getLocalPath().toFile().listFiles();
 		if (resourcePackDirectories != null)
 		{
@@ -125,7 +125,7 @@ public class ResourcePacksManager
 				{
 					try
 					{
-						ResourcePackManifest man = getResourcePackManifest(resourcePackDirectory);
+						HubManifest man = getResourcePackManifest(resourcePackDirectory);
 						if (man != null)
 						{
 							loadedPacks.put(man.getInternalName(), man);
@@ -144,15 +144,15 @@ public class ResourcePacksManager
 			return;
 		}
 
-		Set<ResourcePackManifest> resourcePacks = new HashSet<>();
-		List<ResourcePackManifest> manifestList;
+		Set<HubManifest> resourcePacks = new HashSet<>();
+		List<HubManifest> manifestList;
 		try
 		{
-			manifestList = resourcePacksClient.downloadManifest();
-			Map<String, ResourcePackManifest> manifests = manifestList
-				.stream().collect(ImmutableMap.toImmutableMap(ResourcePackManifest::getInternalName, Function.identity()));
+			manifestList = hubClient.downloadManifest();
+			Map<String, HubManifest> manifests = manifestList
+				.stream().collect(ImmutableMap.toImmutableMap(HubManifest::getInternalName, Function.identity()));
 
-			Set<ResourcePackManifest> needsDownload = new HashSet<>();
+			Set<HubManifest> needsDownload = new HashSet<>();
 			Set<File> keep = new HashSet<>();
 			assert resourcePackDirectories != null;
 			List<File> resourcePackDirectoryList = Arrays.asList(resourcePackDirectories);
@@ -160,11 +160,11 @@ public class ResourcePacksManager
 			// Check for changed commits and packs that need to be downloaded
 			for (String name : installedIDs)
 			{
-				ResourcePackManifest manifest = manifests.get(name);
+				HubManifest manifest = manifests.get(name);
 				if (manifest != null)
 				{
 					resourcePacks.add(manifest);
-					ResourcePackManifest loadedResourcePack = loadedPacks.get(manifest.getInternalName());
+					HubManifest loadedResourcePack = loadedPacks.get(manifest.getInternalName());
 					File resourcePackDirectory = getLocalPath(manifest.getInternalName()).toFile();
 					if (loadedResourcePack == null || !loadedResourcePack.equals(manifest))
 					{
@@ -187,7 +187,7 @@ public class ResourcePacksManager
 			}
 
 			// Download packs that need updates/install
-			for (ResourcePackManifest manifest : needsDownload)
+			for (HubManifest manifest : needsDownload)
 			{
 				HttpUrl url = GITHUB.newBuilder()
 					.addPathSegment("archive")
@@ -246,14 +246,14 @@ public class ResourcePacksManager
 			log.error("Unable to download resource packs", e);
 			return;
 		}
-		for (ResourcePackManifest ex : resourcePacks)
+		for (HubManifest ex : resourcePacks)
 		{
 			loadedPacks.remove(ex.getInternalName());
 		}
 
 		// list of installed packs that aren't in the manifest
-		Collection<ResourcePackManifest> remove = loadedPacks.values();
-		for (ResourcePackManifest rem : remove)
+		Collection<HubManifest> remove = loadedPacks.values();
+		for (HubManifest rem : remove)
 		{
 			log.info("Removing pack \"{}\"", rem.getInternalName());
 			Set<String> packs = new HashSet<>(getInstalledResourcePacks());
@@ -266,18 +266,18 @@ public class ResourcePacksManager
 		eventBus.post(new ResourcePacksChanged(manifestList));
 	}
 
-	private ResourcePackManifest getResourcePackManifest(File resourcePackDirectory) throws IOException
+	private HubManifest getResourcePackManifest(File resourcePackDirectory) throws IOException
 	{
 		File manifest = Path.of(resourcePackDirectory.getPath(), "manifest.js").toFile();
 		JsonReader reader = new JsonReader(new FileReader(manifest));
-		ResourcePackManifest packManifest = RuneLiteAPI.GSON.fromJson(reader, ResourcePackManifest.class);
+		HubManifest packManifest = RuneLiteAPI.GSON.fromJson(reader, HubManifest.class);
 		reader.close();
 		return packManifest;
 	}
 
-	public HashMultimap<String, ResourcePackManifest> getCurrentManifests() throws IOException
+	public HashMultimap<String, HubManifest> getCurrentManifests() throws IOException
 	{
-		HashMultimap<String, ResourcePackManifest> currentManifests = HashMultimap.create();
+		HashMultimap<String, HubManifest> currentManifests = HashMultimap.create();
 		File[] directories = getLocalPath().toFile().listFiles();
 		if (directories != null)
 		{
@@ -287,8 +287,8 @@ public class ResourcePacksManager
 				{
 					continue;
 				}
-				ResourcePackManifest resourcePackManifest = getResourcePackManifest(resourcePackDirectory);
-				currentManifests.put(resourcePackManifest.getInternalName(), resourcePackManifest);
+				HubManifest hubManifest = getResourcePackManifest(resourcePackDirectory);
+				currentManifests.put(hubManifest.getInternalName(), hubManifest);
 			}
 		}
 		return currentManifests;

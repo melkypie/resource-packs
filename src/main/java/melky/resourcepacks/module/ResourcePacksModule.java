@@ -31,8 +31,10 @@ import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.google.inject.Singleton;
 import java.util.Set;
+import javax.inject.Named;
 import lombok.extern.slf4j.Slf4j;
 import melky.resourcepacks.ResourcePacksConfig;
+import melky.resourcepacks.features.hub.HubModule;
 import melky.resourcepacks.features.widgettracker.WidgetSelector;
 import melky.resourcepacks.features.widgettracker.WidgetTracker;
 import melky.resourcepacks.features.widgettracker.WidgetTrackerModule;
@@ -49,16 +51,24 @@ public class ResourcePacksModule extends AbstractModule
 
 	@Provides
 	Set<PluginLifecycleComponent> lifecycleComponents(
+		@Named("developerMode") boolean developerMode,
+
 		WidgetTrackerModule widgetTrackerModule,
 		WidgetSelector widgetSelector,
-		WidgetTracker widgetTracker
+		WidgetTracker widgetTracker,
+		HubModule hubModule
 	)
 	{
-		return ImmutableSet.of(
-			widgetTrackerModule,
-			widgetSelector,
-			widgetTracker
-		);
+		var builder = new ImmutableSet.Builder<PluginLifecycleComponent>();
+
+		if (developerMode)
+		{
+			builder.add(widgetTrackerModule, widgetSelector, widgetTracker);
+		}
+
+		builder.add(hubModule);
+
+		return builder.build();
 	}
 
 	@Provides

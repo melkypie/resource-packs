@@ -1,4 +1,29 @@
-package melky.resourcepacks.hub;
+/*
+ * Copyright (c) 2025, Ron Young <https://github.com/raiyni>
+ * All rights reserved.
+ *
+ *  Redistribution and use in source and binary forms, with or without
+ *  modification, are permitted provided that the following conditions are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice, this
+ *     list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ *     this list of conditions and the following disclaimer in the documentation
+ *     and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+package melky.resourcepacks.features.hub;
 
 import com.google.common.base.Splitter;
 import com.google.common.collect.HashMultimap;
@@ -53,12 +78,12 @@ import net.runelite.client.util.Text;
 
 @Slf4j
 @Singleton
-public class ResourcePacksHubPanel extends PluginPanel
+public class HubPanel extends PluginPanel
 {
 	public static final Pattern SPACES = Pattern.compile(" +");
 	public static final Splitter SPLITTER = Splitter.on(" ").trimResults().omitEmptyStrings();
 	private final ResourcePacksManager resourcePacksManager;
-	private final ResourcePacksClient resourcePacksClient;
+	private final HubClient hubClient;
 	private final ScheduledExecutorService executor;
 	private final ResourcePacksConfig config;
 
@@ -69,7 +94,7 @@ public class ResourcePacksHubPanel extends PluginPanel
 	private static final ImageIcon DISCORD_ICON;
 	private static final int BOTTOM_LINE_HEIGHT = 24;
 	private static final int DISCORD_ICON_SIZE = 18;
-	private List<ResourcePacksHubItem> packs = null;
+	private List<HubItem> packs = null;
 	private boolean ignoreSelected = false;
 
 	static
@@ -79,15 +104,15 @@ public class ResourcePacksHubPanel extends PluginPanel
 	}
 
 	@Inject
-	ResourcePacksHubPanel(
+	HubPanel(
 		ResourcePacksManager resourcePacksManager,
-		ResourcePacksClient resourcePacksClient,
+		HubClient hubClient,
 		ScheduledExecutorService executor,
 		ResourcePacksConfig config)
 	{
 		super(false);
 		this.resourcePacksManager = resourcePacksManager;
-		this.resourcePacksClient = resourcePacksClient;
+		this.hubClient = hubClient;
 		this.executor = executor;
 		this.config = config;
 
@@ -160,10 +185,10 @@ public class ResourcePacksHubPanel extends PluginPanel
 		{
 			if (e.getStateChange() == ItemEvent.SELECTED && !ignoreSelected)
 			{
-				if (e.getItem() instanceof ResourcePackManifest)
+				if (e.getItem() instanceof HubManifest)
 				{
-					ResourcePackManifest resourcePackManifest = (ResourcePackManifest) e.getItem();
-					resourcePacksManager.setSelectedHubPack(resourcePackManifest.getInternalName());
+					HubManifest hubManifest = (HubManifest) e.getItem();
+					resourcePacksManager.setSelectedHubPack(hubManifest.getInternalName());
 				}
 				else
 				{
@@ -236,11 +261,11 @@ public class ResourcePacksHubPanel extends PluginPanel
 
 		executor.submit(() ->
 		{
-			List<ResourcePackManifest> manifest;
+			List<HubManifest> manifest;
 			try
 			{
 
-				manifest = resourcePacksClient.downloadManifest();
+				manifest = hubClient.downloadManifest();
 			}
 			catch (IOException e)
 			{
@@ -261,20 +286,20 @@ public class ResourcePacksHubPanel extends PluginPanel
 		});
 	}
 
-	public void reloadResourcePackList(List<ResourcePackManifest> manifest)
+	public void reloadResourcePackList(List<HubManifest> manifest)
 	{
-		Map<String, ResourcePackManifest> downloadedManifests = manifest.stream()
-			.collect(ImmutableMap.toImmutableMap(ResourcePackManifest::getInternalName, Function.identity()));
+		Map<String, HubManifest> downloadedManifests = manifest.stream()
+			.collect(ImmutableMap.toImmutableMap(HubManifest::getInternalName, Function.identity()));
 
 		try
 		{
-			HashMultimap<String, ResourcePackManifest> currentManifests = resourcePacksManager.getCurrentManifests();
+			HashMultimap<String, HubManifest> currentManifests = resourcePacksManager.getCurrentManifests();
 			Set<String> installed = new HashSet<>(resourcePacksManager.getInstalledResourcePacks());
-			HashMap<String, ResourcePackManifest> installedPacks = new HashMap<>();
+			HashMap<String, HubManifest> installedPacks = new HashMap<>();
 
 			for (String pack : installed)
 			{
-				ResourcePackManifest packManifest = downloadedManifests.get(pack);
+				HubManifest packManifest = downloadedManifests.get(pack);
 				if (packManifest != null)
 				{
 					installedPacks.put(pack, packManifest);
@@ -288,7 +313,7 @@ public class ResourcePacksHubPanel extends PluginPanel
 				currentHubPackComboBox.addItem("None");
 				installed.forEach(internal ->
 				{
-					ResourcePackManifest toAddManifest = installedPacks.get(internal);
+					HubManifest toAddManifest = installedPacks.get(internal);
 					if (toAddManifest == null)
 					{
 						log.warn("pack missing from manifest: {}", internal);
@@ -305,10 +330,10 @@ public class ResourcePacksHubPanel extends PluginPanel
 					}
 				});
 				ignoreSelected = false;
-				List<ResourcePacksHubItem> list = new ArrayList<>();
+				List<HubItem> list = new ArrayList<>();
 				for (String id : downloadedManifests.keySet())
 				{
-					ResourcePacksHubItem resourcePacksHubItem = new ResourcePacksHubItem(downloadedManifests.get(id), currentManifests.get(id), installed.contains(id), executor, resourcePacksClient, resourcePacksManager);
+					HubItem resourcePacksHubItem = new HubItem(downloadedManifests.get(id), currentManifests.get(id), installed.contains(id), executor, hubClient, resourcePacksManager);
 					list.add(resourcePacksHubItem);
 				}
 				packs = list;
@@ -333,7 +358,7 @@ public class ResourcePacksHubPanel extends PluginPanel
 
 		mainPanel.removeAll();
 
-		Stream<ResourcePacksHubItem> stream = packs.stream();
+		Stream<HubItem> stream = packs.stream();
 
 		String search = searchBar.getText();
 		boolean isSearching = search != null && !search.trim().isEmpty();
@@ -346,7 +371,7 @@ public class ResourcePacksHubPanel extends PluginPanel
 		else
 		{
 			stream = stream
-				.sorted(Comparator.comparing(ResourcePacksHubItem::isInstalled).thenComparing(p -> p.manifest.getDisplayName()));
+				.sorted(Comparator.comparing(HubItem::isInstalled).thenComparing(p -> p.manifest.getDisplayName()));
 		}
 
 		stream.forEach(mainPanel::add);

@@ -1,16 +1,12 @@
 package melky.resourcepacks;
 
 import com.google.inject.Binder;
-import java.awt.image.BufferedImage;
 import java.nio.file.Path;
 import java.util.concurrent.ScheduledExecutorService;
 import javax.inject.Inject;
-import javax.swing.SwingUtilities;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import melky.resourcepacks.ConfigKeys.InterfaceStyles;
-import melky.resourcepacks.event.ResourcePacksChanged;
-import melky.resourcepacks.hub.ResourcePacksHubPanel;
 import melky.resourcepacks.module.ComponentManager;
 import melky.resourcepacks.module.ResourcePacksModule;
 import melky.resourcepacks.overrides.Overrides;
@@ -39,8 +35,6 @@ import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.plugins.interfacestyles.Skin;
 import net.runelite.client.ui.ClientToolbar;
-import net.runelite.client.ui.NavigationButton;
-import net.runelite.client.util.ImageUtil;
 import okhttp3.HttpUrl;
 
 @PluginDescriptor(
@@ -92,8 +86,6 @@ public class ResourcePacksPlugin extends Plugin
 	@Inject
 	private ComponentManager componentManager;
 
-	private ResourcePacksHubPanel resourcePacksHubPanel;
-	private NavigationButton navButton;
 	private long currentProfile = Long.MIN_VALUE;
 	private GameState lastGameState;
 
@@ -135,21 +127,6 @@ public class ResourcePacksPlugin extends Plugin
 			queueUpdateAllOverrides();
 		});
 
-		resourcePacksHubPanel = injector.getInstance(ResourcePacksHubPanel.class);
-		final BufferedImage icon = ImageUtil.loadImageResource(getClass(), "/panel.png");
-
-		navButton = NavigationButton.builder()
-			.tooltip("Resource packs hub")
-			.icon(icon)
-			.priority(10)
-			.panel(resourcePacksHubPanel)
-			.build();
-
-		if (!config.hideSidePanelButton())
-		{
-			clientToolbar.addNavigation(navButton);
-		}
-
 		currentProfile = configManager.getProfile().getId();
 	}
 
@@ -176,8 +153,6 @@ public class ResourcePacksPlugin extends Plugin
 		{
 			resourcePacksManager.resetOverlayColor();
 		}
-
-		clientToolbar.removeNavigation(navButton);
 	}
 
 	@Subscribe
@@ -235,9 +210,6 @@ public class ResourcePacksPlugin extends Plugin
 						resourcePacksManager.resetLoginScreen();
 					}
 					break;
-				case "hideSidePanelButton":
-					clientThread.invokeLater(this::toggleSidePanelButton);
-					break;
 			}
 		}
 		else if (event.getGroup().equals("banktags") && event.getKey().equals("useTabs"))
@@ -261,11 +233,6 @@ public class ResourcePacksPlugin extends Plugin
 		}
 	}
 
-	@Subscribe
-	public void onResourcePacksChanged(ResourcePacksChanged packsChanged)
-	{
-		SwingUtilities.invokeLater(() -> resourcePacksHubPanel.reloadResourcePackList(packsChanged.getNewManifest()));
-	}
 
 	@Subscribe
 	public void onSessionOpen(SessionOpen event)
@@ -360,18 +327,6 @@ public class ResourcePacksPlugin extends Plugin
 	{
 		return event.getGroup().equals(InterfaceStyles.GROUP_NAME) ||
 			(event.getGroup().equals(RuneLiteConfig.GROUP_NAME) && ConfigKeys.Plugins.interfacestylesplugin.equals(event.getKey()));
-	}
-
-	private void toggleSidePanelButton()
-	{
-		if (config.hideSidePanelButton())
-		{
-			clientToolbar.removeNavigation(navButton);
-		}
-		else
-		{
-			clientToolbar.addNavigation(navButton);
-		}
 	}
 
 	private void setInterfaceStylesGameframeOption()

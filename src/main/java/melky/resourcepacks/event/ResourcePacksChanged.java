@@ -2,10 +2,10 @@ package melky.resourcepacks.event;
 
 import java.util.List;
 import lombok.Value;
-import melky.resourcepacks.hub.ResourcePackManifest;
+import melky.resourcepacks.features.hub.HubManifest;
 
 @Value
 public class ResourcePacksChanged
 {
-	List<ResourcePackManifest> newManifest;
+	List<HubManifest> newManifest;
 }
