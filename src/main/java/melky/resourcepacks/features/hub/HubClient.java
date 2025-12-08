@@ -35,6 +35,7 @@ import javax.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 import static melky.resourcepacks.ResourcePacksPlugin.BRANCH;
 import static melky.resourcepacks.ResourcePacksPlugin.RAW_GITHUB;
+import melky.resourcepacks.model.HubManifest;
 import net.runelite.http.api.RuneLiteAPI;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;

@@ -67,6 +67,7 @@ import javax.swing.event.DocumentListener;
 import lombok.extern.slf4j.Slf4j;
 import melky.resourcepacks.ResourcePacksConfig;
 import melky.resourcepacks.ResourcePacksManager;
+import melky.resourcepacks.model.HubManifest;
 import net.runelite.client.plugins.discord.DiscordPlugin;
 import net.runelite.client.ui.ColorScheme;
 import net.runelite.client.ui.DynamicGridLayout;

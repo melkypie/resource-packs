@@ -45,7 +45,7 @@ import melky.resourcepacks.ResourcePacksConfig.ResourcePack;
 import static melky.resourcepacks.ResourcePacksPlugin.GITHUB;
 import static melky.resourcepacks.ResourcePacksPlugin.OVERLAY_COLOR_CONFIG;
 import melky.resourcepacks.event.ResourcePacksChanged;
-import melky.resourcepacks.features.hub.HubManifest;
+import melky.resourcepacks.model.HubManifest;
 import melky.resourcepacks.features.hub.HubClient;
 import melky.resourcepacks.overrides.Overrides;
 import melky.resourcepacks.overrides.WidgetOverride;

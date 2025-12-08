@@ -45,6 +45,7 @@ import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import melky.resourcepacks.ResourcePacksManager;
 import melky.resourcepacks.ResourcePacksPlugin;
+import melky.resourcepacks.model.HubManifest;
 import net.runelite.client.ui.ColorScheme;
 import net.runelite.client.ui.FontManager;
 import net.runelite.client.util.ImageUtil;

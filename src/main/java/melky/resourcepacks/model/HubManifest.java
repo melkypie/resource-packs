@@ -23,7 +23,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package melky.resourcepacks.features.hub;
+package melky.resourcepacks.model;
 
 import java.net.URL;
 import javax.annotation.Nullable;
