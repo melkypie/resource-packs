@@ -1,4 +1,29 @@
-package melky.resourcepacks.hub;
+/*
+ * Copyright (c) 2025, Ron Young <https://github.com/raiyni>
+ * All rights reserved.
+ *
+ *  Redistribution and use in source and binary forms, with or without
+ *  modification, are permitted provided that the following conditions are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice, this
+ *     list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ *     this list of conditions and the following disclaimer in the documentation
+ *     and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+package melky.resourcepacks.features.hub;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
@@ -27,7 +52,7 @@ import net.runelite.client.util.LinkBrowser;
 import net.runelite.client.util.SwingUtil;
 
 @Slf4j
-public class ResourcePacksHubItem extends JPanel
+public class HubItem extends JPanel
 {
 	private static final ImageIcon MISSING_ICON;
 	private static final ImageIcon HELP_ICON;
@@ -37,7 +62,7 @@ public class ResourcePacksHubItem extends JPanel
 	private static final int BOTTOM_LINE_HEIGHT = 16;
 
 
-	public final ResourcePackManifest manifest;
+	public final HubManifest manifest;
 	public final List<String> keywords = new ArrayList<>();
 
 	@Getter
@@ -54,14 +79,14 @@ public class ResourcePacksHubItem extends JPanel
 		HELP_ICON_HOVER = new ImageIcon(ImageUtil.alphaOffset(helpIcon, -100));
 	}
 
-	ResourcePacksHubItem(ResourcePackManifest newManifest,
-		Collection<ResourcePackManifest> currentManifests,
+	HubItem(HubManifest newManifest,
+		Collection<HubManifest> currentManifests,
 		boolean installed,
 		ScheduledExecutorService executor,
-		ResourcePacksClient resourcePacksClient,
+		HubClient hubClient,
 		ResourcePacksManager resourcePacksManager)
 	{
-		ResourcePackManifest loaded = null;
+		HubManifest loaded = null;
 		if (!currentManifests.isEmpty())
 		{
 			loaded = currentManifests.iterator().next();
@@ -72,7 +97,7 @@ public class ResourcePacksHubItem extends JPanel
 
 		if (manifest != null)
 		{
-			Collections.addAll(keywords, ResourcePacksHubPanel.SPACES.split(manifest.getDisplayName().toLowerCase()));
+			Collections.addAll(keywords, HubPanel.SPACES.split(manifest.getDisplayName().toLowerCase()));
 			Collections.addAll(keywords, manifest.getAuthor().toLowerCase());
 
 			if (manifest.getTags() != null)
@@ -109,7 +134,7 @@ public class ResourcePacksHubItem extends JPanel
 			{
 				try
 				{
-					BufferedImage img = resourcePacksClient.downloadIcon(manifest);
+					BufferedImage img = hubClient.downloadIcon(manifest);
 
 					SwingUtilities.invokeLater(() -> icon.setIcon(new ImageIcon(img)));
 				}
