@@ -2077,7 +2077,7 @@ public enum SpriteOverride
 	}
 
 
-	enum Folder
+	public enum Folder
 	{
 		BUTTON,
 		CHATBOX,
