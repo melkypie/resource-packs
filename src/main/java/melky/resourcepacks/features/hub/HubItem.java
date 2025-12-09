@@ -43,7 +43,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.border.LineBorder;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
-import melky.resourcepacks.ResourcePacksManager;
+import melky.resourcepacks.features.packs.PacksManager;
 import melky.resourcepacks.ResourcePacksPlugin;
 import melky.resourcepacks.model.HubManifest;
 import net.runelite.client.ui.ColorScheme;
@@ -85,7 +85,7 @@ public class HubItem extends JPanel
 		boolean installed,
 		ScheduledExecutorService executor,
 		HubClient hubClient,
-		ResourcePacksManager resourcePacksManager)
+		PacksManager packsManager)
 	{
 		HubManifest loaded = null;
 		if (!currentManifests.isEmpty())
@@ -141,7 +141,7 @@ public class HubItem extends JPanel
 				}
 				catch (IOException e)
 				{
-					log.info("Cannot download icon for pack \"{}\"", manifest.getInternalName(), e);
+					log.error("Cannot download icon for pack \"{}\"", manifest.getInternalName(), e);
 				}
 			});
 		}
@@ -173,7 +173,7 @@ public class HubItem extends JPanel
 			{
 				addrm.setText("Installing");
 				addrm.setBackground(new Color(0xC4A800));
-				resourcePacksManager.install(manifest.getInternalName());
+				packsManager.install(manifest.getInternalName());
 
 			});
 		}
@@ -185,7 +185,7 @@ public class HubItem extends JPanel
 			{
 				addrm.setText("Removing");
 				addrm.setBackground(new Color(0xC4A800));
-				resourcePacksManager.remove(manifest.getInternalName());
+				packsManager.remove(manifest.getInternalName());
 			});
 		}
 		else
@@ -196,7 +196,7 @@ public class HubItem extends JPanel
 			{
 				addrm.setText("Updating");
 				addrm.setBackground(new Color(0xC4A800));
-				executor.submit(resourcePacksManager::refreshPlugins);
+				executor.submit(packsManager::refreshPacks);
 			});
 		}
 		addrm.setBorder(new LineBorder(addrm.getBackground().darker()));

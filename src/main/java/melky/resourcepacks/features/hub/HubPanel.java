@@ -66,7 +66,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import lombok.extern.slf4j.Slf4j;
 import melky.resourcepacks.ResourcePacksConfig;
-import melky.resourcepacks.ResourcePacksManager;
+import melky.resourcepacks.features.packs.PacksManager;
 import melky.resourcepacks.model.HubManifest;
 import net.runelite.client.plugins.discord.DiscordPlugin;
 import net.runelite.client.ui.ColorScheme;
@@ -78,12 +78,11 @@ import net.runelite.client.util.LinkBrowser;
 import net.runelite.client.util.Text;
 
 @Slf4j
-@Singleton
 public class HubPanel extends PluginPanel
 {
 	public static final Pattern SPACES = Pattern.compile(" +");
 	public static final Splitter SPLITTER = Splitter.on(" ").trimResults().omitEmptyStrings();
-	private final ResourcePacksManager resourcePacksManager;
+	private final PacksManager packsManager;
 	private final HubClient hubClient;
 	private final ScheduledExecutorService executor;
 	private final ResourcePacksConfig config;
@@ -106,13 +105,13 @@ public class HubPanel extends PluginPanel
 
 	@Inject
 	HubPanel(
-		ResourcePacksManager resourcePacksManager,
+		PacksManager packsManager,
 		HubClient hubClient,
 		ScheduledExecutorService executor,
 		ResourcePacksConfig config)
 	{
 		super(false);
-		this.resourcePacksManager = resourcePacksManager;
+		this.packsManager = packsManager;
 		this.hubClient = hubClient;
 		this.executor = executor;
 		this.config = config;
@@ -189,11 +188,11 @@ public class HubPanel extends PluginPanel
 				if (e.getItem() instanceof HubManifest)
 				{
 					HubManifest hubManifest = (HubManifest) e.getItem();
-					resourcePacksManager.setSelectedHubPack(hubManifest.getInternalName());
+					packsManager.setSelectedHubPack(hubManifest.getInternalName());
 				}
 				else
 				{
-					resourcePacksManager.setSelectedHubPack("None");
+					packsManager.setSelectedHubPack("None");
 				}
 			}
 		});
@@ -294,8 +293,8 @@ public class HubPanel extends PluginPanel
 
 		try
 		{
-			HashMultimap<String, HubManifest> currentManifests = resourcePacksManager.getCurrentManifests();
-			Set<String> installed = new HashSet<>(resourcePacksManager.getInstalledResourcePacks());
+			HashMultimap<String, HubManifest> currentManifests = packsManager.getCurrentManifests();
+			Set<String> installed = new HashSet<>(packsManager.getInstalledResourcePacks());
 			HashMap<String, HubManifest> installedPacks = new HashMap<>();
 
 			for (String pack : installed)
@@ -334,7 +333,7 @@ public class HubPanel extends PluginPanel
 				List<HubItem> list = new ArrayList<>();
 				for (String id : downloadedManifests.keySet())
 				{
-					HubItem resourcePacksHubItem = new HubItem(downloadedManifests.get(id), currentManifests.get(id), installed.contains(id), executor, hubClient, resourcePacksManager);
+					HubItem resourcePacksHubItem = new HubItem(downloadedManifests.get(id), currentManifests.get(id), installed.contains(id), executor, hubClient, packsManager);
 					list.add(resourcePacksHubItem);
 				}
 				packs = list;

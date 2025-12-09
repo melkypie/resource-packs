@@ -32,10 +32,10 @@ import java.io.IOException;
 import java.util.List;
 import javax.imageio.ImageIO;
 import javax.inject.Inject;
+import javax.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
-import static melky.resourcepacks.ResourcePacksPlugin.BRANCH;
-import static melky.resourcepacks.ResourcePacksPlugin.RAW_GITHUB;
 import melky.resourcepacks.model.HubManifest;
+import melky.resourcepacks.module.PluginLifecycleComponent;
 import net.runelite.http.api.RuneLiteAPI;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
@@ -43,15 +43,19 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 @Slf4j
-public class HubClient
+@Singleton
+public class HubClient implements PluginLifecycleComponent
 {
+	public static final HttpUrl RAW_GITHUB = HttpUrl.parse("https://raw.githubusercontent.com/melkypie/resource-packs");
+	public static final HttpUrl API_GITHUB = HttpUrl.parse("https://api.github.com/repos/melkypie/resource-packs");
+	public static final String BRANCH = "github-actions";
 
-	private final OkHttpClient cachingClient;
+	private final OkHttpClient okHttpClient;
 
 	@Inject
-	public HubClient(OkHttpClient cachingClient)
+	public HubClient(OkHttpClient okHttpClient)
 	{
-		this.cachingClient = cachingClient;
+		this.okHttpClient = okHttpClient;
 	}
 
 	public List<HubManifest> downloadManifest() throws IOException
@@ -62,7 +66,7 @@ public class HubClient
 			.addPathSegment("manifest.js")
 			.build();
 
-		try (Response res = cachingClient.newCall(new Request.Builder().url(manifest).build()).execute())
+		try (Response res = okHttpClient.newCall(new Request.Builder().url(manifest).build()).execute())
 		{
 			if (res.code() != 200)
 			{
@@ -91,7 +95,7 @@ public class HubClient
 			.addPathSegment("icon.png")
 			.build();
 
-		try (Response res = cachingClient.newCall(new Request.Builder().url(url).build()).execute())
+		try (Response res = okHttpClient.newCall(new Request.Builder().url(url).build()).execute())
 		{
 			byte[] bytes = res.body().bytes();
 			// We don't stream so the lock doesn't block the edt trying to load something at the same time
