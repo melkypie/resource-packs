@@ -78,7 +78,7 @@ public class SpritesOverride extends OverrideAction
 	@Override
 	public void shutDown()
 	{
-		reset();
+		clientThread.invokeLater(this::reset);
 	}
 
 	@Subscribe
@@ -122,7 +122,7 @@ public class SpritesOverride extends OverrideAction
 
 		for (SpriteOverride spriteOverride : SpriteOverride.values())
 		{
-			if (shouldOverride(spriteOverride))
+			if (!shouldOverride(spriteOverride))
 			{
 				continue;
 			}
