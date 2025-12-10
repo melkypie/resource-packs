@@ -27,6 +27,7 @@ package melky.resourcepacks.features.overrides;
 
 import com.google.common.base.Strings;
 import javax.inject.Inject;
+import javax.inject.Singleton;
 import melky.resourcepacks.ConfigKeys;
 import melky.resourcepacks.ResourcePacksConfig;
 import melky.resourcepacks.SpriteOverride;
@@ -40,6 +41,7 @@ import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.events.ConfigChanged;
 
+@Singleton
 public class LoginScreenOverride extends OverrideAction
 {
 	@Inject
