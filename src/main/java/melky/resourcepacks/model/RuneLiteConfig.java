@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024, Ron Young <https://github.com/raiyni>
+ * Copyright (c) 2025, Ron Young <https://github.com/raiyni>
  * All rights reserved.
  *
  *  Redistribution and use in source and binary forms, with or without
@@ -23,33 +23,10 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package melky.resourcepacks.overrides;
+package melky.resourcepacks.model;
 
-import com.google.common.base.Strings;
 
-public final class OverrideKey
+public interface RuneLiteConfig
 {
-	public static final String INTERFACE = "interface";
-	public static final String SCRIPTS = "scripts";
-	public static final String CHILDREN = "children";
-	public static final String DYNAMIC_CHILDREN = "dynamicChildren";
-	public static final String OPACITY = "opacity";
-	public static final String COLOR = "color";
-	public static final String TYPE = "type";
-	public static final String NEW_TYPE = "newType";
-	public static final String VARBIT = "varbit";
-	public static final String VARBIT_VALUE = "varbitValue";
-	public static final String ACTIVE_WIDGET = "activeWidget";
-	public static final String EXPLICIT = "explicit";
-
-
-	public static String append(String path, String key)
-	{
-		if (Strings.isNullOrEmpty(path))
-		{
-			return key;
-		}
-
-		return path + "." + key;
-	}
+	String OVERLAY_COLOR_CONFIG = "overlayBackgroundColor";
 }

@@ -30,6 +30,8 @@ import com.google.inject.testing.fieldbinder.Bind;
 import com.google.inject.testing.fieldbinder.BoundFieldModule;
 import java.io.IOException;
 import lombok.extern.slf4j.Slf4j;
+import melky.resourcepacks.features.overrides.Overrides;
+import melky.resourcepacks.features.overrides.model.WidgetOverride;
 import net.runelite.client.eventbus.EventBus;
 import org.junit.Before;
 import org.junit.Test;

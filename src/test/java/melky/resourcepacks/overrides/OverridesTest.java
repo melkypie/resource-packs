@@ -33,6 +33,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
+import melky.resourcepacks.features.overrides.Overrides;
 import net.runelite.client.eventbus.EventBus;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;

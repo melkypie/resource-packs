@@ -39,6 +39,7 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
+import melky.resourcepacks.features.overrides.Overrides;
 import org.junit.Test;
 import org.tomlj.Toml;
 import org.tomlj.TomlArray;

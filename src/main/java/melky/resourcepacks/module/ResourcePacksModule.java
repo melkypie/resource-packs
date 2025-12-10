@@ -34,7 +34,15 @@ import java.util.Set;
 import javax.inject.Named;
 import lombok.extern.slf4j.Slf4j;
 import melky.resourcepacks.ResourcePacksConfig;
-import melky.resourcepacks.features.hub.HubModule;
+import melky.resourcepacks.features.hub.HubClient;
+import melky.resourcepacks.features.hub.HubPanelModule;
+import melky.resourcepacks.features.overrides.CrossSpriteOverride;
+import melky.resourcepacks.features.overrides.CustomSpritesOverride;
+import melky.resourcepacks.features.overrides.LoginScreenOverride;
+import melky.resourcepacks.features.overrides.SpritesOverride;
+import melky.resourcepacks.features.overrides.WidgetDimensionOverride;
+import melky.resourcepacks.features.overrides.WidgetPropertiesOverride;
+import melky.resourcepacks.features.packs.PacksManager;
 import melky.resourcepacks.features.widgettracker.WidgetSelector;
 import melky.resourcepacks.features.widgettracker.WidgetTracker;
 import melky.resourcepacks.features.widgettracker.WidgetTrackerModule;
@@ -56,7 +64,15 @@ public class ResourcePacksModule extends AbstractModule
 		WidgetTrackerModule widgetTrackerModule,
 		WidgetSelector widgetSelector,
 		WidgetTracker widgetTracker,
-		HubModule hubModule
+		HubClient hubClient,
+		HubPanelModule hubPanelModule,
+		PacksManager packsManager,
+		CrossSpriteOverride crossSpriteOverride,
+		LoginScreenOverride loginScreenOverride,
+		WidgetDimensionOverride widgetDimensionOverride,
+		CustomSpritesOverride customSpritesOverride,
+		SpritesOverride spritesOverride,
+		WidgetPropertiesOverride widgetPropertiesOverride
 	)
 	{
 		var builder = new ImmutableSet.Builder<PluginLifecycleComponent>();
@@ -66,7 +82,15 @@ public class ResourcePacksModule extends AbstractModule
 			builder.add(widgetTrackerModule, widgetSelector, widgetTracker);
 		}
 
-		builder.add(hubModule);
+		builder.add(hubClient);
+		builder.add(hubPanelModule);
+		builder.add(packsManager);
+		builder.add(crossSpriteOverride);
+		builder.add(loginScreenOverride);
+		builder.add(widgetDimensionOverride);
+		builder.add(customSpritesOverride);
+		builder.add(spritesOverride);
+		builder.add(widgetPropertiesOverride);
 
 		return builder.build();
 	}

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024, Ron Young <https://github.com/raiyni>
+ * Copyright (c) 2025, Ron Young <https://github.com/raiyni>
  * All rights reserved.
  *
  *  Redistribution and use in source and binary forms, with or without
@@ -23,7 +23,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package melky.resourcepacks.overrides;
+package melky.resourcepacks.features.overrides;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Objects;
@@ -41,18 +41,20 @@ import java.util.stream.IntStream;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
-import static melky.resourcepacks.overrides.OverrideKey.ACTIVE_WIDGET;
-import static melky.resourcepacks.overrides.OverrideKey.CHILDREN;
-import static melky.resourcepacks.overrides.OverrideKey.COLOR;
-import static melky.resourcepacks.overrides.OverrideKey.DYNAMIC_CHILDREN;
-import static melky.resourcepacks.overrides.OverrideKey.EXPLICIT;
-import static melky.resourcepacks.overrides.OverrideKey.INTERFACE;
-import static melky.resourcepacks.overrides.OverrideKey.NEW_TYPE;
-import static melky.resourcepacks.overrides.OverrideKey.OPACITY;
-import static melky.resourcepacks.overrides.OverrideKey.SCRIPTS;
-import static melky.resourcepacks.overrides.OverrideKey.TYPE;
-import static melky.resourcepacks.overrides.OverrideKey.VARBIT;
-import static melky.resourcepacks.overrides.OverrideKey.VARBIT_VALUE;
+import melky.resourcepacks.features.overrides.model.OverrideKey;
+import static melky.resourcepacks.features.overrides.model.OverrideKey.ACTIVE_WIDGET;
+import static melky.resourcepacks.features.overrides.model.OverrideKey.CHILDREN;
+import static melky.resourcepacks.features.overrides.model.OverrideKey.COLOR;
+import static melky.resourcepacks.features.overrides.model.OverrideKey.DYNAMIC_CHILDREN;
+import static melky.resourcepacks.features.overrides.model.OverrideKey.EXPLICIT;
+import static melky.resourcepacks.features.overrides.model.OverrideKey.INTERFACE;
+import static melky.resourcepacks.features.overrides.model.OverrideKey.NEW_TYPE;
+import static melky.resourcepacks.features.overrides.model.OverrideKey.OPACITY;
+import static melky.resourcepacks.features.overrides.model.OverrideKey.SCRIPTS;
+import static melky.resourcepacks.features.overrides.model.OverrideKey.TYPE;
+import static melky.resourcepacks.features.overrides.model.OverrideKey.VARBIT;
+import static melky.resourcepacks.features.overrides.model.OverrideKey.VARBIT_VALUE;
+import melky.resourcepacks.features.overrides.model.WidgetOverride;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.events.PluginMessage;
 import org.tomlj.Toml;

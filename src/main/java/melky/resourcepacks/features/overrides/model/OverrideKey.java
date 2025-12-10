@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024, Ron Young <https://github.com/raiyni>
+ * Copyright (c) 2025, Ron Young <https://github.com/raiyni>
  * All rights reserved.
  *
  *  Redistribution and use in source and binary forms, with or without
@@ -23,68 +23,33 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package melky.resourcepacks.overrides;
+package melky.resourcepacks.features.overrides.model;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.With;
-import net.runelite.api.Client;
+import com.google.common.base.Strings;
 
-@Data
-@With
-@NoArgsConstructor
-@AllArgsConstructor
-public class WidgetOverride
+public final class OverrideKey
 {
-	String name;
+	public static final String INTERFACE = "interface";
+	public static final String SCRIPTS = "scripts";
+	public static final String CHILDREN = "children";
+	public static final String DYNAMIC_CHILDREN = "dynamicChildren";
+	public static final String OPACITY = "opacity";
+	public static final String COLOR = "color";
+	public static final String TYPE = "type";
+	public static final String NEW_TYPE = "newType";
+	public static final String VARBIT = "varbit";
+	public static final String VARBIT_VALUE = "varbitValue";
+	public static final String ACTIVE_WIDGET = "activeWidget";
+	public static final String EXPLICIT = "explicit";
 
-	int script = -1;
-	int interfaceId = -1;
-	int childId = -1;
 
-	int type = -1;
-	int newType = -1;
-
-	int opacity = -1;
-	int newOpacity = -1;
-
-	int color = -1;
-	int newColor = -1;
-
-	List<Map.Entry<Integer, Integer>> varbits = new ArrayList<>();
-	List<Integer> dynamicChildren = new ArrayList<>();
-
-	boolean allChildren = false;
-	boolean activeWidget = false;
-	boolean explicit = false;
-
-	public boolean isValid()
+	public static String append(String path, String key)
 	{
-		return script > -1 &&
-			interfaceId > -1 &&
-			childId > -1 &&
-			color > -1;
-	}
-
-	public boolean checkVarbit(final Client client)
-	{
-		if (varbits.isEmpty())
+		if (Strings.isNullOrEmpty(path))
 		{
-			return true;
+			return key;
 		}
 
-		for (var matcher : varbits)
-		{
-			if (client.getVarbitValue(matcher.getKey()) != matcher.getValue())
-			{
-				return false;
-			}
-		}
-
-		return true;
+		return path + "." + key;
 	}
 }
