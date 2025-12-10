@@ -79,7 +79,7 @@ public class Overrides
 	}
 
 	@VisibleForTesting
-	protected Overrides(String path, EventBus eventBus)
+	public Overrides(String path, EventBus eventBus)
 	{
 		this.sourcePath = path;
 		this.eventBus = eventBus;
@@ -243,7 +243,7 @@ public class Overrides
 	}
 
 	@VisibleForTesting
-	protected WidgetOverride walkChildren(WidgetOverride parent, TomlTable table, TomlTable pack)
+	public WidgetOverride walkChildren(WidgetOverride parent, TomlTable table, TomlTable pack)
 	{
 		var node = parent;
 		var map = table.toMap();
