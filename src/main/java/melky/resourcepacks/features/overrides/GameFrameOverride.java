@@ -145,11 +145,6 @@ public class GameFrameOverride extends OverrideAction
 		client.setCompass(spritePixels);
 	}
 
-	private boolean shouldOverride(SpriteOverride spriteOverride)
-	{
-		return (spriteOverride == SpriteOverride.COMPASS);
-	}
-
 	private void setInterfaceStylesGameframeOption()
 	{
 		if (config.displayWarnings())
