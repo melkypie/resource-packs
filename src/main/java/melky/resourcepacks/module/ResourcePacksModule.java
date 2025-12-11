@@ -38,6 +38,7 @@ import melky.resourcepacks.features.hub.HubClient;
 import melky.resourcepacks.features.hub.HubPanelModule;
 import melky.resourcepacks.features.overrides.CrossSpriteOverride;
 import melky.resourcepacks.features.overrides.CustomSpritesOverride;
+import melky.resourcepacks.features.overrides.GameFrameOverride;
 import melky.resourcepacks.features.overrides.LoginScreenOverride;
 import melky.resourcepacks.features.overrides.OverlayColorOverride;
 import melky.resourcepacks.features.overrides.Overrides;
@@ -76,7 +77,8 @@ public class ResourcePacksModule extends AbstractModule
 		SpritesOverride spritesOverride,
 		WidgetPropertiesOverride widgetPropertiesOverride,
 		Overrides overrides,
-		OverlayColorOverride overlayColorOverride
+		OverlayColorOverride overlayColorOverride,
+		GameFrameOverride gameFrameOverride
 	)
 	{
 		var builder = new ImmutableSet.Builder<PluginLifecycleComponent>();
@@ -86,17 +88,18 @@ public class ResourcePacksModule extends AbstractModule
 			builder.add(widgetTrackerModule, widgetSelector, widgetTracker);
 		}
 
-		builder.add(overrides);
-		builder.add(hubClient);
-		builder.add(hubPanelModule);
-		builder.add(packsManager);
-		builder.add(crossSpriteOverride);
-		builder.add(loginScreenOverride);
-		builder.add(widgetDimensionOverride);
-		builder.add(customSpritesOverride);
-		builder.add(spritesOverride);
-		builder.add(widgetPropertiesOverride);
-		builder.add(overlayColorOverride);
+		builder.add(overrides)
+			.add(hubClient)
+			.add(hubPanelModule)
+			.add(packsManager)
+			.add(crossSpriteOverride)
+			.add(loginScreenOverride)
+			.add(widgetDimensionOverride)
+			.add(customSpritesOverride)
+			.add(spritesOverride)
+			.add(widgetPropertiesOverride)
+			.add(overlayColorOverride)
+			.add(gameFrameOverride);
 
 		return builder.build();
 	}

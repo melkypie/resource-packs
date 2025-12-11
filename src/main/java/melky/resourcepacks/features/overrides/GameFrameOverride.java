@@ -136,27 +136,13 @@ public class GameFrameOverride extends OverrideAction
 	public void apply()
 	{
 		String currentPackPath = packsManager.getCurrentPackPath();
-		SpriteOverride.getOverrides().asMap().forEach((key, collection) ->
+		SpritePixels spritePixels = packsManager.getSpritePixels(SpriteOverride.COMPASS, currentPackPath);
+		if (spritePixels == null)
 		{
-			for (SpriteOverride spriteOverride : collection)
-			{
-				if (!shouldOverride(spriteOverride))
-				{
-					continue;
-				}
+			return;
+		}
 
-				SpritePixels spritePixels = packsManager.getSpritePixels(spriteOverride, currentPackPath);
-				if (spritePixels == null)
-				{
-					continue;
-				}
-
-				if (spriteOverride.getSpriteID() == SpriteID.COMPASS)
-				{
-					client.setCompass(spritePixels);
-				}
-			}
-		});
+		client.setCompass(spritePixels);
 	}
 
 	private boolean shouldOverride(SpriteOverride spriteOverride)
