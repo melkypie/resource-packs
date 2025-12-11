@@ -38,9 +38,10 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import javax.inject.Inject;
 import javax.inject.Singleton;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import melky.resourcepacks.features.overrides.model.OverrideAction;
 import melky.resourcepacks.features.overrides.model.OverrideKey;
 import static melky.resourcepacks.features.overrides.model.OverrideKey.ACTIVE_WIDGET;
 import static melky.resourcepacks.features.overrides.model.OverrideKey.CHILDREN;
@@ -55,8 +56,6 @@ import static melky.resourcepacks.features.overrides.model.OverrideKey.TYPE;
 import static melky.resourcepacks.features.overrides.model.OverrideKey.VARBIT;
 import static melky.resourcepacks.features.overrides.model.OverrideKey.VARBIT_VALUE;
 import melky.resourcepacks.features.overrides.model.WidgetOverride;
-import net.runelite.client.eventbus.EventBus;
-import net.runelite.client.events.PluginMessage;
 import org.tomlj.Toml;
 import org.tomlj.TomlArray;
 import org.tomlj.TomlParseResult;
@@ -64,25 +63,17 @@ import org.tomlj.TomlTable;
 
 @Slf4j
 @Singleton
-public class Overrides
+@RequiredArgsConstructor
+public class Overrides extends OverrideAction
 {
 	private final ListMultimap<Integer, WidgetOverride> widgetOverrides = ArrayListMultimap.create();
 	private final Map<String, Object> properties = new HashMap<>();
 
 	private final String sourcePath;
-	private final EventBus eventBus;
 
-	@Inject
-	public Overrides(EventBus eventBus)
+	public Overrides()
 	{
-		this("/overrides/overrides.toml", eventBus);
-	}
-
-	@VisibleForTesting
-	public Overrides(String path, EventBus eventBus)
-	{
-		this.sourcePath = path;
-		this.eventBus = eventBus;
+		this("/overrides/overrides.toml");
 	}
 
 	public Collection<WidgetOverride> values()
@@ -114,10 +105,10 @@ public class Overrides
 			assert stream != null;
 
 			TomlParseResult toml = Toml.parse(stream);
-			toml.errors().forEach(error -> log.error(error.toString()));
+			toml.errors().forEach(error -> log.error("Source parse error: {}", error.toString()));
 
 			TomlParseResult pack = Toml.parse(packOverrides);
-			pack.errors().forEach(error -> log.error(error.toString()));
+			pack.errors().forEach(error -> log.error("Overrides parse error: {}", error.toString()));
 
 			loadProperties(toml, pack);
 			var keys = toml.keySet();
@@ -127,8 +118,6 @@ public class Overrides
 
 				walkChildren(new WidgetOverride().withName(key), table, pack);
 			}
-
-			eventBus.post(new PluginMessage("resource-packs", "pack-loaded"));
 		}
 		catch (IOException | ClassCastException e)
 		{
