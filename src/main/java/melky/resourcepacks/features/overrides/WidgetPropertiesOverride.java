@@ -44,7 +44,6 @@ import net.runelite.api.Client;
 import net.runelite.api.events.ScriptPostFired;
 import net.runelite.api.widgets.Widget;
 import net.runelite.client.callback.ClientThread;
-import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.events.PluginMessage;
@@ -55,12 +54,6 @@ public class WidgetPropertiesOverride extends OverrideAction
 {
 	@Inject
 	private Client client;
-
-	@Inject
-	private ResourcePacksConfig config;
-
-	@Inject
-	private ConfigManager configManager;
 
 	@Inject
 	private ClientThread clientThread;
@@ -138,7 +131,6 @@ public class WidgetPropertiesOverride extends OverrideAction
 			addPropertyToWidget(widgetOverride, false);
 		}
 	}
-
 
 	public void addPropertyToWidget(WidgetOverride widgetOverride, boolean reset)
 	{

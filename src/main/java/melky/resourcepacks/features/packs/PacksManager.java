@@ -59,16 +59,16 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
-import melky.resourcepacks.model.ConfigKeys;
-import melky.resourcepacks.model.ConfigKeys.InterfaceStyles;
 import melky.resourcepacks.ResourcePacksConfig;
 import melky.resourcepacks.ResourcePacksConfig.ResourcePack;
-import melky.resourcepacks.model.SpriteOverride;
 import melky.resourcepacks.event.ResourcePacksChanged;
 import melky.resourcepacks.event.UpdateAllOverrides;
 import melky.resourcepacks.features.hub.HubClient;
 import melky.resourcepacks.features.overrides.Overrides;
+import melky.resourcepacks.model.ConfigKeys;
+import melky.resourcepacks.model.ConfigKeys.InterfaceStyles;
 import melky.resourcepacks.model.HubManifest;
+import melky.resourcepacks.model.SpriteOverride;
 import melky.resourcepacks.module.PluginLifecycleComponent;
 import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
@@ -90,8 +90,6 @@ import net.runelite.client.events.PluginMessage;
 import net.runelite.client.events.ProfileChanged;
 import net.runelite.client.events.SessionClose;
 import net.runelite.client.events.SessionOpen;
-import net.runelite.client.game.SpriteManager;
-import net.runelite.client.ui.ClientToolbar;
 import net.runelite.client.util.ImageUtil;
 import net.runelite.client.util.Text;
 import net.runelite.http.api.RuneLiteAPI;
@@ -117,9 +115,6 @@ public class PacksManager implements PluginLifecycleComponent
 	private ConfigManager configManager;
 
 	@Inject
-	private SpriteManager spriteManager;
-
-	@Inject
 	private ScheduledExecutorService executor;
 
 	@Inject
@@ -136,9 +131,6 @@ public class PacksManager implements PluginLifecycleComponent
 
 	@Inject
 	private ChatMessageManager chatMessageManager;
-
-	@Inject
-	private ClientToolbar clientToolbar;
 
 	@Inject
 	private Overrides overrides;
@@ -175,18 +167,6 @@ public class PacksManager implements PluginLifecycleComponent
 		executor.submit(this::refreshPacks);
 
 		currentProfile = configManager.getProfile().getId();
-	}
-
-	@Override
-	public void shutDown()
-	{
-
-		clientThread.invokeLater(() ->
-		{
-//			adjustWidgetDimensions(false);
-//			removeGameframe();
-//			resetWidgetOverrides();
-		});
 	}
 
 	public void touchFolder()

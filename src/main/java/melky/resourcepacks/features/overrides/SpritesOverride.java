@@ -31,16 +31,15 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
 import melky.resourcepacks.ResourcePacksConfig;
-import melky.resourcepacks.model.SpriteOverride;
 import melky.resourcepacks.event.UpdateAllOverrides;
 import melky.resourcepacks.features.overrides.model.OverrideAction;
 import melky.resourcepacks.features.packs.PacksManager;
+import melky.resourcepacks.model.SpriteOverride;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
 import net.runelite.api.SpritePixels;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.client.callback.ClientThread;
-import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 
 @Slf4j
@@ -49,9 +48,6 @@ public class SpritesOverride extends OverrideAction
 {
 	@Inject
 	private Client client;
-
-	@Inject
-	private ConfigManager configManager;
 
 	@Inject
 	private ClientThread clientThread;

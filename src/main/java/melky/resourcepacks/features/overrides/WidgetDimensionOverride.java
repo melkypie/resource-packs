@@ -28,15 +28,13 @@ package melky.resourcepacks.features.overrides;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import melky.resourcepacks.ResourcePacksConfig;
-import melky.resourcepacks.model.WidgetResize;
 import melky.resourcepacks.event.UpdateAllOverrides;
 import melky.resourcepacks.features.overrides.model.OverrideAction;
-import melky.resourcepacks.features.packs.PacksManager;
+import melky.resourcepacks.model.WidgetResize;
 import net.runelite.api.Client;
 import net.runelite.api.events.BeforeRender;
 import net.runelite.api.widgets.Widget;
 import net.runelite.client.callback.ClientThread;
-import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 
 @Singleton
@@ -46,19 +44,7 @@ public class WidgetDimensionOverride extends OverrideAction
 	private Client client;
 
 	@Inject
-	private ResourcePacksConfig config;
-
-	@Inject
-	private ConfigManager configManager;
-
-	@Inject
 	private ClientThread clientThread;
-
-	@Inject
-	private PacksManager packsManager;
-
-	@Inject
-	private Overrides overrides;
 
 	@Override
 	public boolean isEnabled(ResourcePacksConfig config)

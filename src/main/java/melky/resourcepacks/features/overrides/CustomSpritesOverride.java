@@ -31,11 +31,11 @@ import java.nio.file.Path;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import melky.resourcepacks.ResourcePacksConfig;
-import melky.resourcepacks.model.SpriteOverride;
-import melky.resourcepacks.model.TabSprites;
 import melky.resourcepacks.event.UpdateAllOverrides;
 import melky.resourcepacks.features.overrides.model.OverrideAction;
 import melky.resourcepacks.features.packs.PacksManager;
+import melky.resourcepacks.model.SpriteOverride;
+import melky.resourcepacks.model.TabSprites;
 import net.runelite.api.Client;
 import net.runelite.api.SpritePixels;
 import net.runelite.client.callback.ClientThread;
@@ -54,12 +54,6 @@ public class CustomSpritesOverride extends OverrideAction
 
 	@Inject
 	private ClientThread clientThread;
-
-	@Inject
-	private Overrides overrides;
-
-	@Inject
-	private ResourcePacksConfig config;
 
 	@Override
 	public boolean isEnabled(ResourcePacksConfig config)

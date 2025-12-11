@@ -27,12 +27,12 @@ package melky.resourcepacks.features.overrides;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import melky.resourcepacks.model.ConfigKeys;
 import melky.resourcepacks.ResourcePacksConfig;
-import melky.resourcepacks.model.SpriteOverride;
 import melky.resourcepacks.event.UpdateAllOverrides;
 import melky.resourcepacks.features.overrides.model.OverrideAction;
 import melky.resourcepacks.features.packs.PacksManager;
+import melky.resourcepacks.model.ConfigKeys;
+import melky.resourcepacks.model.SpriteOverride;
 import net.runelite.api.Client;
 import net.runelite.api.SpritePixels;
 import net.runelite.client.callback.ClientThread;
@@ -45,9 +45,6 @@ public class LoginScreenOverride extends OverrideAction
 {
 	@Inject
 	private EventBus eventBus;
-
-	@Inject
-	private ResourcePacksConfig config;
 
 	@Inject
 	private ClientThread clientThread;
