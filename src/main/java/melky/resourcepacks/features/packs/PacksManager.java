@@ -64,7 +64,6 @@ import melky.resourcepacks.ConfigKeys.InterfaceStyles;
 import melky.resourcepacks.ResourcePacksConfig;
 import melky.resourcepacks.ResourcePacksConfig.ResourcePack;
 import melky.resourcepacks.SpriteOverride;
-import melky.resourcepacks.event.HubPackSelected;
 import melky.resourcepacks.event.ResourcePacksChanged;
 import melky.resourcepacks.event.UpdateAllOverrides;
 import melky.resourcepacks.features.hub.HubClient;
@@ -136,14 +135,13 @@ public class PacksManager implements PluginLifecycleComponent
 	private OkHttpClient okHttpClient;
 
 	@Inject
-	private Overrides overrides;
-
-
-	@Inject
 	private ChatMessageManager chatMessageManager;
 
 	@Inject
 	private ClientToolbar clientToolbar;
+
+	@Inject
+	private Overrides overrides;
 
 	@Getter
 	private long currentProfile = Long.MIN_VALUE;
@@ -174,11 +172,7 @@ public class PacksManager implements PluginLifecycleComponent
 		touchFolder();
 
 
-		executor.submit(() ->
-		{
-			refreshPacks();
-			queueUpdateAllOverrides();
-		});
+		executor.submit(this::refreshPacks);
 
 		currentProfile = configManager.getProfile().getId();
 	}
@@ -392,18 +386,19 @@ public class PacksManager implements PluginLifecycleComponent
 
 	public void setSelectedHubPack(String internalName)
 	{
-
-		if (!internalName.equals("None"))
+		clientThread.invokeLater(() ->
 		{
-			config.resourcePack(ResourcePack.HUB);
-			config.selectedHubPack(internalName);
-		}
-		else
-		{
-			config.selectedHubPack("");
-		}
-
-		eventBus.post(HubPackSelected.of(config.selectedHubPack()));
+			if (!internalName.equals("None"))
+			{
+				config.resourcePack(ResourcePack.HUB);
+				config.selectedHubPack(internalName);
+				this.updateAllOverrides();
+			}
+			else
+			{
+				config.selectedHubPack("");
+			}
+		});
 	}
 
 	public List<String> getInstalledResourcePacks()
@@ -580,6 +575,7 @@ public class PacksManager implements PluginLifecycleComponent
 				case "colorPackOverlay":
 				case "colorPack":
 				case "resourcePack":
+				case "allowOverlayColor":
 					clientThread.invokeLater(this::updateAllOverrides);
 					break;
 			}
@@ -660,6 +656,20 @@ public class PacksManager implements PluginLifecycleComponent
 	}
 
 
+	@Subscribe(priority = Float.MIN_VALUE)
+	public void onProfileChanged(ProfileChanged event)
+	{
+		currentProfile = configManager.getProfile().getId();
+		touchFolder();
+
+		executor.submit(() ->
+		{
+			refreshPacks();
+			clientThread.invokeLater(this::updateAllOverrides);
+		});
+	}
+
+
 	@Subscribe
 	public void onPluginMessage(PluginMessage event)
 	{
@@ -672,19 +682,5 @@ public class PacksManager implements PluginLifecycleComponent
 		{
 			eventBus.post(new PluginMessage("resource-packs", "values", overrides.export()));
 		}
-	}
-
-
-	@Subscribe(priority = Float.MIN_VALUE)
-	public void onProfileChanged(ProfileChanged event)
-	{
-		currentProfile = configManager.getProfile().getId();
-		touchFolder();
-
-		executor.submit(() ->
-		{
-			refreshPacks();
-			clientThread.invokeLater(this::updateAllOverrides);
-		});
 	}
 }
