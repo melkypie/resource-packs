@@ -38,6 +38,7 @@ import net.runelite.client.eventbus.EventBus;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -49,10 +50,6 @@ import org.mockito.junit.MockitoJUnitRunner;
 public class OverridesTest
 {
 
-	@Mock
-	@Bind
-	private EventBus eventBus;
-
 	@Before
 	public void before()
 	{
@@ -62,8 +59,8 @@ public class OverridesTest
 	@Test
 	public void parentColor() throws IOException
 	{
-		Overrides defaultValues = new Overrides("/overrides/sources/base.toml", eventBus).buildOverrides("");
-		Overrides overrides = new Overrides("/overrides/sources/base.toml", eventBus);
+		Overrides defaultValues = new Overrides("/overrides/sources/base.toml").buildOverrides("");
+		Overrides overrides = new Overrides("/overrides/sources/base.toml");
 
 		String text = Resources.toString(Resources.getResource("overrides/tests/parent-color.toml"), StandardCharsets.UTF_8);
 		overrides.buildOverrides(text);
@@ -91,8 +88,8 @@ public class OverridesTest
 	@Test
 	public void nestedColor() throws IOException
 	{
-		Overrides defaultValues = new Overrides("/overrides/sources/base.toml", eventBus).buildOverrides("");
-		Overrides overrides = new Overrides("/overrides/sources/base.toml", eventBus);
+		Overrides defaultValues = new Overrides("/overrides/sources/base.toml").buildOverrides("");
+		Overrides overrides = new Overrides("/overrides/sources/base.toml");
 
 		String text = Resources.toString(Resources.getResource("overrides/tests/nested-color.toml"), StandardCharsets.UTF_8);
 		overrides.buildOverrides(text);
@@ -125,8 +122,8 @@ public class OverridesTest
 	@Test
 	public void allDynamicChildren() throws IOException
 	{
-		Overrides defaultValues = new Overrides("/overrides/sources/base.toml", eventBus).buildOverrides("");
-		Overrides overrides = new Overrides("/overrides/sources/base.toml", eventBus);
+		Overrides defaultValues = new Overrides("/overrides/sources/base.toml").buildOverrides("");
+		Overrides overrides = new Overrides("/overrides/sources/base.toml");
 
 		String text = Resources.toString(Resources.getResource("overrides/tests/all-children.toml"), StandardCharsets.UTF_8);
 		overrides.buildOverrides(text);
@@ -148,15 +145,15 @@ public class OverridesTest
 
 		log.info("{}", fillers.get(0));
 
-		assertEquals(true, fillers.get(0).isAllChildren());
+		assertTrue(fillers.get(0).isAllChildren());
 		assertEquals(0, fillers.get(0).getDynamicChildren().size());
 	}
 
 	@Test
 	public void nestedChildren() throws IOException
 	{
-		Overrides defaultValues = new Overrides("/overrides/sources/base.toml", eventBus).buildOverrides("");
-		Overrides overrides = new Overrides("/overrides/sources/base.toml", eventBus);
+		Overrides defaultValues = new Overrides("/overrides/sources/base.toml").buildOverrides("");
+		Overrides overrides = new Overrides("/overrides/sources/base.toml");
 
 		String text = Resources.toString(Resources.getResource("overrides/tests/nested-children.toml"), StandardCharsets.UTF_8);
 		overrides.buildOverrides(text);

@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -36,13 +37,13 @@ public class ResourcePacksPluginTest
 
 		log.info("logging {}", errors);
 
-		PrintWriter errorFile = new PrintWriter(basePath + '/' + "errors.txt", "UTF-8");
+		PrintWriter errorFile = new PrintWriter(basePath + '/' + "errors.txt", StandardCharsets.UTF_8);
 		errorFile.write(String.join("\n", errors));
 		errorFile.close();
 
 		log.info("logging {}", warnings);
 
-		PrintWriter warningsFile = new PrintWriter(basePath + '/' + "warnings.txt", "UTF-8");
+		PrintWriter warningsFile = new PrintWriter(basePath + '/' + "warnings.txt", StandardCharsets.UTF_8);
 		warningsFile.write(String.join("\n", warnings));
 		warningsFile.close();
 	}

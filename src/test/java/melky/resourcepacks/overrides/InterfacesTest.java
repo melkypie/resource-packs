@@ -46,10 +46,6 @@ import org.tomlj.TomlParseResult;
 public class InterfacesTest
 {
 
-	@Mock
-	@Bind
-	private EventBus eventBus;
-
 	@Before
 	public void before()
 	{
@@ -61,7 +57,7 @@ public class InterfacesTest
 	@Before
 	public void beforeEach()
 	{
-		overrides = new Overrides("/overrides/overrides.toml", eventBus);
+		overrides = new Overrides("/overrides/overrides.toml");
 	}
 
 	@Test
