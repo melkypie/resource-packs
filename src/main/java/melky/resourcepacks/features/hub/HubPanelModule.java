@@ -25,7 +25,7 @@
 
 package melky.resourcepacks.features.hub;
 
-import com.google.inject.Injector;
+import com.google.inject.Provider;
 import java.awt.image.BufferedImage;
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -47,7 +47,7 @@ public class HubPanelModule implements PluginLifecycleComponent
 	private ClientToolbar clientToolbar;
 
 	@Inject
-	private Injector injector;
+	private Provider<HubPanel> hubPanelProvider;
 
 	private HubPanel hubPanel;
 	private NavigationButton navigationButton;
@@ -61,7 +61,7 @@ public class HubPanelModule implements PluginLifecycleComponent
 	@Override
 	public void startUp()
 	{
-		this.hubPanel = injector.getInstance(HubPanel.class);
+		this.hubPanel = hubPanelProvider.get();
 		final BufferedImage icon = ImageUtil.loadImageResource(getClass(), "/panel.png");
 
 		navigationButton = NavigationButton.builder()
