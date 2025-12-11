@@ -30,10 +30,11 @@ import java.awt.Color;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import melky.resourcepacks.ResourcePacksConfig;
-import melky.resourcepacks.event.HubPackSelected;
+import melky.resourcepacks.event.UpdateAllOverrides;
 import melky.resourcepacks.features.overrides.model.OverrideAction;
 import melky.resourcepacks.features.packs.PacksManager;
 import static melky.resourcepacks.model.RuneLiteConfig.OVERLAY_COLOR_CONFIG;
+import net.runelite.client.callback.ClientThread;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.config.RuneLiteConfig;
 import net.runelite.client.eventbus.Subscribe;
@@ -54,34 +55,31 @@ public class OverlayColorOverride extends OverrideAction
 	@Inject
 	private PacksManager packsManager;
 
+	@Inject
+	private ClientThread clientThread;
+
 	private boolean ignoreOverlayConfig;
 
 	@Override
 	public boolean isEnabled(ResourcePacksConfig config)
 	{
-		return config.allowOverlayColor();
+		return config.allowOverlayColor() && !packsManager.isPackPathEmpty();
 	}
 
 	@Override
 	public void startUp()
 	{
-		apply();
+		clientThread.invokeLater(() ->
+		{
+			reset();
+			apply();
+		});
 	}
 
 	@Override
 	public void shutDown()
 	{
-		reset();
-	}
-
-
-	@Subscribe
-	public void onHubPackSelected(HubPackSelected event)
-	{
-		if (Strings.isNullOrEmpty(config.selectedHubPack()))
-		{
-			this.reset();
-		}
+		clientThread.invokeLater(this::reset);
 	}
 
 	@Subscribe(priority = Float.MIN_VALUE)
@@ -92,21 +90,7 @@ public class OverlayColorOverride extends OverrideAction
 			return;
 		}
 
-		if (event.getGroup().equals(ResourcePacksConfig.GROUP_NAME))
-		{
-			if (event.getKey().equals("allowOverlayColor"))
-			{
-				if (config.allowOverlayColor())
-				{
-					packsManager.updateAllOverrides();
-				}
-				else
-				{
-					reset();
-				}
-			}
-		}
-		else if (config.allowOverlayColor() && !ignoreOverlayConfig &&
+		if (config.allowOverlayColor() && !ignoreOverlayConfig &&
 			event.getGroup().equals(RuneLiteConfig.GROUP_NAME) && event.getKey().equals(OVERLAY_COLOR_CONFIG))
 		{
 			config.originalOverlayColor(event.getNewValue());
@@ -116,6 +100,12 @@ public class OverlayColorOverride extends OverrideAction
 				packsManager.sendWarning("Your overlay color will be overwritten by your resource pack. You can disable this feature by turning off 'Allow overlay color to be changed'.");
 			}
 		}
+	}
+
+	@Subscribe
+	public void onUpdateAllOverrides(UpdateAllOverrides events)
+	{
+		startUp();
 	}
 
 	@Override

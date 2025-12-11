@@ -25,14 +25,13 @@
 
 package melky.resourcepacks.features.overrides;
 
-import com.google.common.base.Strings;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import javax.inject.Inject;
 import javax.inject.Singleton;
+import lombok.extern.slf4j.Slf4j;
 import melky.resourcepacks.ResourcePacksConfig;
 import melky.resourcepacks.SpriteOverride;
-import melky.resourcepacks.event.HubPackSelected;
 import melky.resourcepacks.event.UpdateAllOverrides;
 import melky.resourcepacks.features.overrides.model.OverrideAction;
 import melky.resourcepacks.features.packs.PacksManager;
@@ -43,8 +42,8 @@ import net.runelite.api.events.GameStateChanged;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
-import net.runelite.client.events.ConfigChanged;
 
+@Slf4j
 @Singleton
 public class SpritesOverride extends OverrideAction
 {
@@ -66,13 +65,17 @@ public class SpritesOverride extends OverrideAction
 	@Override
 	public boolean isEnabled(ResourcePacksConfig config)
 	{
-		return true;
+		return !packsManager.isPackPathEmpty();
 	}
 
 	@Override
 	public void startUp()
 	{
-		clientThread.invokeLater(this::apply);
+		clientThread.invokeLater(() ->
+		{
+			reset();
+			apply();
+		});
 	}
 
 	@Override
@@ -84,26 +87,7 @@ public class SpritesOverride extends OverrideAction
 	@Subscribe
 	public void onUpdateAllOverrides(UpdateAllOverrides event)
 	{
-		reset();
-		apply();
-	}
-
-	@Subscribe
-	public void onHubPackSelected(HubPackSelected event)
-	{
-		if (Strings.isNullOrEmpty(config.selectedHubPack()))
-		{
-			clientThread.invokeLater(this::reset);
-		}
-	}
-
-	@Subscribe(priority = Float.MIN_VALUE)
-	public void onConfigChanged(ConfigChanged event)
-	{
-		if (packsManager.getCurrentProfile() != configManager.getProfile().getId())
-		{
-			return;
-		}
+		startUp();
 	}
 
 	@Subscribe
@@ -134,6 +118,8 @@ public class SpritesOverride extends OverrideAction
 	@Override
 	public void apply()
 	{
+		log.debug("applying sprite overrides");
+
 		String currentPackPath = packsManager.getCurrentPackPath();
 		SpriteOverride.getOverrides().asMap().forEach((key, collection) ->
 		{

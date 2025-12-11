@@ -25,10 +25,8 @@
 
 package melky.resourcepacks.features.overrides;
 
-import com.google.common.base.Strings;
-import java.io.File;
 import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -36,7 +34,6 @@ import javax.inject.Singleton;
 import melky.resourcepacks.ConfigKeys;
 import melky.resourcepacks.ResourcePacksConfig;
 import melky.resourcepacks.SpriteOverride;
-import melky.resourcepacks.event.HubPackSelected;
 import melky.resourcepacks.event.UpdateAllOverrides;
 import melky.resourcepacks.features.overrides.model.OverrideAction;
 import melky.resourcepacks.features.packs.PacksManager;
@@ -48,7 +45,6 @@ import net.runelite.client.callback.ClientThread;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.config.RuneLiteConfig;
 import net.runelite.client.eventbus.Subscribe;
-import net.runelite.client.events.ConfigChanged;
 
 @Singleton
 public class CrossSpriteOverride extends OverrideAction
@@ -71,13 +67,18 @@ public class CrossSpriteOverride extends OverrideAction
 	@Override
 	public boolean isEnabled(ResourcePacksConfig config)
 	{
-		return config.allowCrossSprites() && !Strings.isNullOrEmpty(config.selectedHubPack());
+		return config.allowCrossSprites() && !packsManager.isPackPathEmpty();
 	}
 
 	@Override
 	public void startUp()
 	{
-		clientThread.invokeLater(this::apply);
+		clientThread.invokeLater(() ->
+		{
+			save();
+			reset();
+			apply();
+		});
 	}
 
 	@Override
@@ -90,24 +91,7 @@ public class CrossSpriteOverride extends OverrideAction
 	@Subscribe
 	public void onUpdateAllOverrides(UpdateAllOverrides event)
 	{
-		save();
-		reset();
-		apply();
-	}
-
-	@Subscribe
-	public void onHubPackSelected(HubPackSelected event)
-	{
-		// todo: maybe reset
-	}
-
-	@Subscribe(priority = Float.MIN_VALUE)
-	public void onConfigChanged(ConfigChanged event)
-	{
-		if (packsManager.getCurrentProfile() != configManager.getProfile().getId())
-		{
-			return;
-		}
+		startUp();
 	}
 
 	@Subscribe
@@ -178,7 +162,8 @@ public class CrossSpriteOverride extends OverrideAction
 		String currentPackPath = packsManager.getCurrentPackPath();
 		SpriteOverride.getOverrides().asMap().forEach((key, collection) ->
 		{
-			if (key != SpriteOverride.Folder.CROSS_SPRITES || !Files.isDirectory(Paths.get(currentPackPath + File.separator + key.name().toLowerCase())))
+			if (key != SpriteOverride.Folder.CROSS_SPRITES ||
+				!Files.isDirectory(Path.of(currentPackPath, key.name().toLowerCase())))
 			{
 				return;
 			}
@@ -190,6 +175,7 @@ public class CrossSpriteOverride extends OverrideAction
 				{
 					continue;
 				}
+
 				crossSprites[spriteOverride.getFrameID()] = spritePixels;
 			}
 		});

@@ -25,7 +25,6 @@
 
 package melky.resourcepacks.features.overrides;
 
-import com.google.common.base.Strings;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -37,7 +36,6 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
 import melky.resourcepacks.ResourcePacksConfig;
-import melky.resourcepacks.event.HubPackSelected;
 import melky.resourcepacks.event.UpdateAllOverrides;
 import melky.resourcepacks.features.overrides.model.OverrideAction;
 import melky.resourcepacks.features.overrides.model.WidgetOverride;
@@ -47,7 +45,9 @@ import net.runelite.api.events.ScriptPostFired;
 import net.runelite.api.widgets.Widget;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.config.ConfigManager;
+import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
+import net.runelite.client.events.PluginMessage;
 
 @Slf4j
 @Singleton
@@ -71,15 +71,21 @@ public class WidgetPropertiesOverride extends OverrideAction
 	@Inject
 	private Overrides overrides;
 
+	@Inject
+	private EventBus eventBus;
+
 	@Override
 	public boolean isEnabled(ResourcePacksConfig config)
 	{
-		return !overrides.isEmpty();
+		return !packsManager.isPackPathEmpty();
 	}
 
 	@Override
 	public void startUp()
 	{
+		reload();
+
+		clientThread.invokeLater(this::apply);
 	}
 
 	@Override
@@ -91,19 +97,7 @@ public class WidgetPropertiesOverride extends OverrideAction
 	@Subscribe
 	public void onUpdateAllOverrides(UpdateAllOverrides event)
 	{
-		reload();
-		apply();
-	}
-
-	@Subscribe
-	public void onHubPackSelected(HubPackSelected event)
-	{
-		// todo: maybe reset
-
-		if (Strings.isNullOrEmpty(config.selectedHubPack()))
-		{
-			clientThread.invokeLater(this::reset);
-		}
+		startUp();
 	}
 
 	@Subscribe
@@ -296,6 +290,8 @@ public class WidgetPropertiesOverride extends OverrideAction
 				log.debug("built {}", String.join("\n", lines));
 				overrides.buildOverrides(String.join("\n", lines));
 			}
+
+			eventBus.post(new PluginMessage("resource-packs", "pack-loaded"));
 		}
 		catch (IOException e)
 		{

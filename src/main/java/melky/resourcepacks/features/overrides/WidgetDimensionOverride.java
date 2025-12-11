@@ -25,12 +25,10 @@
 
 package melky.resourcepacks.features.overrides;
 
-import com.google.common.base.Strings;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import melky.resourcepacks.ResourcePacksConfig;
 import melky.resourcepacks.WidgetResize;
-import melky.resourcepacks.event.HubPackSelected;
 import melky.resourcepacks.event.UpdateAllOverrides;
 import melky.resourcepacks.features.overrides.model.OverrideAction;
 import melky.resourcepacks.features.packs.PacksManager;
@@ -65,7 +63,7 @@ public class WidgetDimensionOverride extends OverrideAction
 	@Override
 	public boolean isEnabled(ResourcePacksConfig config)
 	{
-		return !overrides.isEmpty();
+		return false;
 	}
 
 	@Override
@@ -84,17 +82,6 @@ public class WidgetDimensionOverride extends OverrideAction
 	{
 		reset();
 		apply();
-	}
-
-	@Subscribe
-	public void onHubPackSelected(HubPackSelected event)
-	{
-		// todo: maybe reset
-
-		if (Strings.isNullOrEmpty(config.selectedHubPack()))
-		{
-			clientThread.invokeLater(this::reset);
-		}
 	}
 
 	@Override

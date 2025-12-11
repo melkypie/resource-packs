@@ -25,13 +25,12 @@
 
 package melky.resourcepacks.features.overrides;
 
-import com.google.common.base.Strings;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import melky.resourcepacks.ConfigKeys;
 import melky.resourcepacks.ResourcePacksConfig;
 import melky.resourcepacks.SpriteOverride;
-import melky.resourcepacks.event.HubPackSelected;
+import melky.resourcepacks.event.UpdateAllOverrides;
 import melky.resourcepacks.features.overrides.model.OverrideAction;
 import melky.resourcepacks.features.packs.PacksManager;
 import net.runelite.api.Client;
@@ -62,7 +61,7 @@ public class LoginScreenOverride extends OverrideAction
 	@Override
 	public boolean isEnabled(ResourcePacksConfig config)
 	{
-		return config.allowLoginScreen();
+		return config.allowLoginScreen() && !packsManager.isPackPathEmpty();
 	}
 
 	@Override
@@ -78,33 +77,9 @@ public class LoginScreenOverride extends OverrideAction
 	}
 
 	@Subscribe
-	public void onHubPackSelected(HubPackSelected event)
+	public void onUpdateAllOverrides(UpdateAllOverrides event)
 	{
-		if (Strings.isNullOrEmpty(config.selectedHubPack()))
-		{
-			clientThread.invokeLater(this::reset);
-		}
-	}
-
-	@Subscribe(priority = Float.MIN_VALUE)
-	public void onConfigChanged(ConfigChanged event)
-	{
-		if (!packsManager.isActiveProfile())
-		{
-			return;
-		}
-
-		if (event.getGroup().equals(ResourcePacksConfig.GROUP_NAME) && event.getKey().equals("allowLoginScreen"))
-		{
-			if (config.allowLoginScreen())
-			{
-				clientThread.invokeLater(packsManager::updateAllOverrides);
-			}
-			else
-			{
-				reset();
-			}
-		}
+		startUp();
 	}
 
 	@Override

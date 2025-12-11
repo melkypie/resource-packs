@@ -25,7 +25,6 @@
 
 package melky.resourcepacks.features.overrides;
 
-import com.google.common.base.Strings;
 import java.awt.image.BufferedImage;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -34,7 +33,6 @@ import javax.inject.Singleton;
 import melky.resourcepacks.ResourcePacksConfig;
 import melky.resourcepacks.SpriteOverride;
 import melky.resourcepacks.TabSprites;
-import melky.resourcepacks.event.HubPackSelected;
 import melky.resourcepacks.event.UpdateAllOverrides;
 import melky.resourcepacks.features.overrides.model.OverrideAction;
 import melky.resourcepacks.features.packs.PacksManager;
@@ -66,12 +64,17 @@ public class CustomSpritesOverride extends OverrideAction
 	@Override
 	public boolean isEnabled(ResourcePacksConfig config)
 	{
-		return !overrides.isEmpty();
+		return !packsManager.isPackPathEmpty();
 	}
 
 	@Override
 	public void startUp()
 	{
+		clientThread.invokeLater(() ->
+		{
+			reset();
+			apply();
+		});
 	}
 
 	@Override
@@ -83,19 +86,7 @@ public class CustomSpritesOverride extends OverrideAction
 	@Subscribe
 	public void onUpdateAllOverrides(UpdateAllOverrides event)
 	{
-		reset();
-		apply();
-	}
-
-	@Subscribe
-	public void onHubPackSelected(HubPackSelected event)
-	{
-		// todo: maybe reset
-
-		if (Strings.isNullOrEmpty(config.selectedHubPack()))
-		{
-			clientThread.invokeLater(this::reset);
-		}
+		startUp();
 	}
 
 	@Subscribe(priority = Float.MIN_VALUE)

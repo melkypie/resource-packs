@@ -25,14 +25,12 @@
 
 package melky.resourcepacks.features.overrides;
 
-import com.google.common.base.Strings;
 import java.awt.image.BufferedImage;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import melky.resourcepacks.ConfigKeys;
 import melky.resourcepacks.ResourcePacksConfig;
 import melky.resourcepacks.SpriteOverride;
-import melky.resourcepacks.event.HubPackSelected;
 import melky.resourcepacks.event.UpdateAllOverrides;
 import melky.resourcepacks.features.overrides.model.OverrideAction;
 import melky.resourcepacks.features.packs.PacksManager;
@@ -44,7 +42,6 @@ import net.runelite.api.gameval.SpriteID;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
-import net.runelite.client.events.ConfigChanged;
 import net.runelite.client.game.SpriteManager;
 import net.runelite.client.plugins.interfacestyles.Skin;
 import net.runelite.client.util.ImageUtil;
@@ -73,7 +70,7 @@ public class GameFrameOverride extends OverrideAction
 	@Override
 	public boolean isEnabled(ResourcePacksConfig config)
 	{
-		return config.allowCrossSprites() && !Strings.isNullOrEmpty(config.selectedHubPack());
+		return config.allowCrossSprites() && !packsManager.isPackPathEmpty();
 	}
 
 	@Override
@@ -92,29 +89,17 @@ public class GameFrameOverride extends OverrideAction
 	@Override
 	public void shutDown()
 	{
-		reset();
+		clientThread.invokeLater(this::reset);
 	}
 
 	@Subscribe
 	public void onUpdateAllOverrides(UpdateAllOverrides event)
 	{
-		reset();
-		apply();
-	}
-
-	@Subscribe
-	public void onHubPackSelected(HubPackSelected event)
-	{
-		if (Strings.isNullOrEmpty(config.selectedHubPack()))
+		clientThread.invokeLater(() ->
 		{
-			clientThread.invokeLater(this::reset);
-		}
-	}
-
-	@Subscribe(priority = Float.MIN_VALUE)
-	public void onConfigChanged(ConfigChanged event)
-	{
-
+			reset();
+			apply();
+		});
 	}
 
 	@Subscribe
@@ -131,7 +116,7 @@ public class GameFrameOverride extends OverrideAction
 		{
 			setInterfaceStylesGameframeOption();
 
-			// todo: post update all maybe
+			clientThread.invokeLater(packsManager::updateAllOverrides);
 		}
 	}
 
