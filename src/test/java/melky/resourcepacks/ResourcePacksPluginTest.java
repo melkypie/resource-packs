@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import lombok.extern.slf4j.Slf4j;
+import melky.resourcepacks.model.SpriteOverride;
 import net.runelite.client.RuneLite;
 import net.runelite.client.externalplugins.ExternalPluginManager;
 import org.junit.AfterClass;

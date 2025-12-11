@@ -36,6 +36,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
+import melky.resourcepacks.model.SpriteOverride;
 import org.junit.AfterClass;
 import org.junit.Test;
 

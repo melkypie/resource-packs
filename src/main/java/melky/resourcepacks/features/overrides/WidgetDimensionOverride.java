@@ -28,7 +28,7 @@ package melky.resourcepacks.features.overrides;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import melky.resourcepacks.ResourcePacksConfig;
-import melky.resourcepacks.WidgetResize;
+import melky.resourcepacks.model.WidgetResize;
 import melky.resourcepacks.event.UpdateAllOverrides;
 import melky.resourcepacks.features.overrides.model.OverrideAction;
 import melky.resourcepacks.features.packs.PacksManager;

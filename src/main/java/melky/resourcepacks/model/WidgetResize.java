@@ -1,16 +1,15 @@
 /*
- * Copyright (c) 2018, Tomas Slusny <slusnucky@gmail.com>
- * Copyright (c) 2018, Ron Young <https://github.com/raiyni>
+ * Copyright (c) 2025, Ron Young <https://github.com/raiyni>
  * All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions are met:
+ *  Redistribution and use in source and binary forms, with or without
+ *  modification, are permitted provided that the following conditions are met:
  *
  * 1. Redistributions of source code must retain the above copyright notice, this
- *    list of conditions and the following disclaimer.
+ *     list of conditions and the following disclaimer.
  * 2. Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
+ *     this list of conditions and the following disclaimer in the documentation
+ *     and/or other materials provided with the distribution.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
@@ -23,24 +22,27 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package melky.resourcepacks;
+
+package melky.resourcepacks.model;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import net.runelite.client.game.SpriteOverride;
+import net.runelite.api.annotations.Component;
 
+@Getter
 @RequiredArgsConstructor
-public enum TabSprites implements SpriteOverride
+public enum WidgetResize
 {
-	TAB_BACKGROUND(-201, "/tag-tab.png"),
-	TAB_BACKGROUND_ACTIVE(-202, "/tag-tab-active.png"),
-	UP_ARROW(-203, "/up-arrow.png"),
-	DOWN_ARROW(-204, "/down-arrow.png"),
-	NEW_TAB(-205, "/new-tab.png");
+	;
 
-	@Getter
-	private final int spriteId;
-
-	@Getter
-	private final String fileName;
+	@Component
+	private final int component;
+	private final Integer modifiedX;
+	private final Integer modifiedY;
+	private final Integer originalX;
+	private final Integer originalY;
+	private final Integer modifiedWidth;
+	private final Integer modifiedHeight;
+	private final Integer originalWidth;
+	private final Integer originalHeight;
 }
