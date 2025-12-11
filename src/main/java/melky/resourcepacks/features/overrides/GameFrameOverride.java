@@ -70,7 +70,7 @@ public class GameFrameOverride extends OverrideAction
 	@Override
 	public boolean isEnabled(ResourcePacksConfig config)
 	{
-		return config.allowCrossSprites() && !packsManager.isPackPathEmpty();
+		return !packsManager.isPackPathEmpty();
 	}
 
 	@Override
