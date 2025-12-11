@@ -48,7 +48,6 @@ import java.util.function.Function;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 import javax.inject.Inject;
-import javax.inject.Singleton;
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
