@@ -125,6 +125,11 @@ public class CustomSpritesOverride extends OverrideAction
 				if (spriteOverride.getSpriteID() < -200)
 				{
 					SpritePixels spritePixels = packsManager.getSpritePixels(spriteOverride, currentPackPath);
+					if (spritePixels == null)
+					{
+						continue;
+					}
+
 					client.getSpriteOverrides().remove(spriteOverride.getSpriteID());
 					client.getSpriteOverrides().put(spriteOverride.getSpriteID(), spritePixels);
 				}
