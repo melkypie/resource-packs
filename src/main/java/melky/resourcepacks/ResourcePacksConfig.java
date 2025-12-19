@@ -28,6 +28,13 @@ public interface ResourcePacksConfig extends Config
 	)
 	String resourcePackPaths = "resourcePackPaths";
 
+	@ConfigSection(name = "Configurable Overrides",
+		description = "Overrides able to be toggled",
+		position = 8,
+		closedByDefault = true
+	)
+	String configurableOverrides = "configurableOverrides";
+
 	@ConfigSection(name = "Experimental options",
 		description = "Do not touch if you don't know what you are doing",
 		position = 9,
@@ -104,7 +111,8 @@ public interface ResourcePacksConfig extends Config
 		keyName = "allowLoginScreen",
 		name = "Allow login screen to be changed",
 		description = "Gives permissions for resource packs to change your login screen",
-		position = 6
+		position = 6,
+		section = configurableOverrides
 	)
 	default boolean allowLoginScreen()
 	{
@@ -115,7 +123,8 @@ public interface ResourcePacksConfig extends Config
 		keyName = "allowOverlayColor",
 		name = "Allow overlay color to be changed",
 		description = "Gives permissions for resource packs to change your overlays color",
-		position = 7
+		position = 7,
+		section = configurableOverrides
 	)
 	default boolean allowOverlayColor()
 	{
@@ -126,7 +135,8 @@ public interface ResourcePacksConfig extends Config
 		keyName = "allowSpellsPrayers",
 		name = "Allow spells/prayers to be changed",
 		description = "Gives permissions for resource packs to change your spells and prayers icons",
-		position = 8
+		position = 8,
+		section = configurableOverrides
 	)
 	default boolean allowSpellsPrayers()
 	{
@@ -137,7 +147,8 @@ public interface ResourcePacksConfig extends Config
 		keyName = "allowCrossSprites",
 		name = "Allow mouse click sprite to be changed",
 		description = "Allows the cross/mouse click sprites to be changed (This won't work if you have cross sprites enabled in Interface styles)",
-		position = 9
+		position = 9,
+		section = configurableOverrides
 	)
 	default boolean allowCrossSprites()
 	{
@@ -148,7 +159,8 @@ public interface ResourcePacksConfig extends Config
 		keyName = "disableInterfaceStylesPrompt",
 		name = "Don't change Interface Styles gameframe option",
 		description = "Turning this option on will disable resource packs changing the Interface Styles gameframe option to default",
-		position = 10
+		position = 10,
+		section = configurableOverrides
 	)
 	default boolean disableInterfaceStylesPrompt()
 	{
@@ -159,7 +171,8 @@ public interface ResourcePacksConfig extends Config
 		keyName = "displayWarnings",
 		name = "Display Warnings",
 		description = "Display warnings when changing a setting in Runelite that would conflict/be blocked with resource packs",
-		position = 10
+		position = 10,
+		section = configurableOverrides
 	)
 	default boolean displayWarnings()
 	{
