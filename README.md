@@ -1,6 +1,6 @@
 # Screwed Purple
 - By Watlingj
-- 
+
 This pack was made with a combination of oldschool & RS3 sprites
 
 
