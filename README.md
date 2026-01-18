@@ -5,7 +5,7 @@
 An improved version of Runelite's 2005 interface. 
 
 ## Interface
-![2005Interface](https://imgur.com/a/OYw8N5E)
+![2005Interface](https://imgur.com/a/M6K9TUO)
 
 ## Prerequisites:
 1. Enable the "Interface Styles" plugin in Runelite and set the "Gameframe" option to 2005.
