@@ -5,7 +5,7 @@
 An improved version of Runelite's 2005 interface. 
 
 ## Interface
-![2005Interface](https://imgur.com/a/M6K9TUO)
+![2005 Interface](https://github.com/user-attachments/assets/05c687ce-e764-4df5-bef1-f2eddc3406f8)
 
 
 ## Prerequisites:
