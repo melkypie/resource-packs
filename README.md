@@ -5,7 +5,7 @@
 An improved version of Runelite's 2005 interface. 
 
 ## Interface
-![2005 Interface](https://github.com/debuffed/resource-packs/assets/104665265/4fdeb6b8-b078-4db3-9f67-9658f7e8e058)
+![2005Interface](https://imgur.com/a/M6K9TUO)
 
 
 ## Prerequisites:
