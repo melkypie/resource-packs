@@ -407,27 +407,27 @@ opacity=0
 color=0xffff00
 
 [ge.modify.border.inner]
-color=0x5a5245
+color=0x9a6d49
 opacity=0
 
 [ge.modify.border.outer]
-color=0x383023
+color=0x6d4528
 opacity=0
 
 [ge.offer.border.inner]
-color=0x5a5245
+color=0x9a6d49
 opacity=0
 
 [ge.offer.border.outer]
-color=0x383023
+color=0x6d4528
 opacity=0
 
 [ge.slot.border.inner]
-color=0x5a5245
+color=0x9a6d49
 opacity=0
 
 [ge.slot.border.outer]
-color=0x383023
+color=0x6d4528
 opacity=0
 
 [grouping_tab.border.inner]
