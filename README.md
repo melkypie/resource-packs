@@ -25,4 +25,4 @@ An improved version of Runelite's 2005 interface.
 Optional: Delete the `account_management` icon in the tab folder to use the standard OSRS one. Then disable and re-enable the `Resource Packs` plugin to apply the changes.
 
 #
-Thank you to Viizva for their help with this project!
+Made by Demonseance, with help from Viizva. 
