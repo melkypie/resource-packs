@@ -1,6 +1,6 @@
 # Mystic by Drunken Monk
 
-![icon](https://imgur.com/aUpugyT)
+![icon](https://imgur.com/HMYv1qE)
 
 Mystic is a full custom pixel art resprite of spells, prayers, icons, UI, and more! Feel free to shoot me a message on Discord (@drunkenmonk.) with any issues or suggestions for the pack.
 
