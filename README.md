@@ -5,7 +5,7 @@
 An improved version of Runelite's 2005 interface. 
 
 ## Interface
-![2005 Interface](https://i.imgur.com/IHXWIvJ.png)
+![2005 Interface](https://i.imgur.com/YAPad4I.png)
 
 
 ## Setup
@@ -25,4 +25,5 @@ An improved version of Runelite's 2005 interface.
 Optional: Delete the `account_management` icon in the tab folder to use the standard OSRS one. Then disable and re-enable the `Resource Packs` plugin to apply the changes.
 
 #
-Made by Demonseance, with help from Viizva. 
+Made by Demonseance.  
+Contributions by Viizva and Nichy.
