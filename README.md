@@ -5,7 +5,7 @@
 An improved version of Runelite's 2005 interface. 
 
 ## Interface
-![2005 Interface](https://i.imgur.com/YAPad4I.png)
+![2005 Interface](https://i.imgur.com/JGAhosa.png)
 
 
 ## Setup
