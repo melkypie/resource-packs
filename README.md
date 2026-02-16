@@ -19,10 +19,10 @@ An overhauled version of RuneLite’s 2005 interface, designed to recreate the o
 
 3. Disable and then re-enable the `Resource packs` plugin to apply the changes.
 
-## File path to make changes:
-"C:\Users\YourUsername\.runelite\resource-packs-repository"
+## File Path to Make Changes
+`C:\Users\YourUsername\.runelite\resource-packs-repository`
 
-Optional: Delete the `account_management` icon in the tab folder to use the standard OSRS one. Then disable and re-enable the `Resource Packs` plugin to apply the changes.
+**Optional:** Delete the `account_management` icon in the tab folder to use the standard OSRS one. Then disable and re-enable the `Resource Packs` plugin to apply the changes.
 
 #
 Made by Demonseance.  
