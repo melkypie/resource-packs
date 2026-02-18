@@ -190,6 +190,16 @@ public class WidgetPropertiesOverride extends OverrideAction
 
 		if (reset)
 		{
+			if (widgetOverride.isExplicit() && widgetOverride.isAllChildren())
+			{
+				if (newColor == widget.getTextColor())
+				{
+					widget.setTextColor(oldColor);
+				}
+
+				return;
+			}
+
 			widget.setTextColor(oldColor);
 
 			if (widget.getType() == widgetOverride.getNewType())
