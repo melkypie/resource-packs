@@ -140,7 +140,7 @@ color=0xe0e0c
 opacity=0
 
 [bank.incinerator]
-children=[50]
+children=[49]
 
 [bank.incinerator.border]
 scripts=[285]
