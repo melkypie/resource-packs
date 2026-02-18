@@ -2347,7 +2347,7 @@ interface=134
 
 [settings.body.border]
 scripts=[3836]
-children=[14]
+children=[15]
 
 [settings.body.border.inner]
 color=0x474745
@@ -2361,7 +2361,7 @@ dynamicChildren=[0]
 
 [settings.sidebar]
 scripts=[3836]
-children=[15]
+children=[16]
 
 [settings.sidebar.border.inner]
 color=0x474745
@@ -2374,142 +2374,21 @@ opacity=0
 dynamicChildren=[0]
 
 [settings.menu.border]
-scripts=[3835, 3849]
-children=[18]
+scripts=[3835, 3849, 3962]
+children=[19]
 type=3
 
 [settings.menu.border.inner]
 color=0x474745
 opacity=0
-skip=1
+dynamicChildren=true
+explicit=true
 
 [settings.menu.border.outer]
 color=0xe0e0c
 opacity=0
-skip=1
-
-[[settings.menu.border.inner.page.more]]
-varbit=[9656, 9665]
-varbitValue=[0, 0]
-dynamicChildren=[27, 43, 58]
-
-[[settings.menu.border.outer.page.more]]
-varbit=[9656, 9665]
-varbitValue=[0, 0]
-dynamicChildren=[26, 42, 57]
-
-[[settings.menu.border.inner.page.more]]
-varbit=[9656, 9665]
-varbitValue=[1, 0]
-dynamicChildren=[80, 97]
-
-[[settings.menu.border.outer.page.more]]
-varbit=[9656, 9665]
-varbitValue=[1, 0]
-dynamicChildren=[79, 96]
-
-[[settings.menu.border.inner.page.more]]
-varbit=[9656, 9665]
-varbitValue=[2, 0]
-dynamicChildren=[10, 47]
-
-[[settings.menu.border.outer.page.more]]
-varbit=[9656, 9665]
-varbitValue=[2, 0]
-dynamicChildren=[9, 46]
-
-[[settings.menu.border.inner.page.more]]
-varbit=[9656, 9665]
-varbitValue=[3, 0]
-dynamicChildren=[14, 23, 52, 64, 73, 82, 91, 100, 109, 118, 127, 136, 145, 154, 163, 172, 181]
-
-[[settings.menu.border.outer.page.more]]
-varbit=[9656, 9665]
-varbitValue=[3, 0]
-dynamicChildren=[13, 22, 51, 63, 72, 81, 90,  99, 108, 117, 126, 135, 144, 153, 162, 171, 180]
-
-[[settings.menu.border.inner.page.more]]
-varbit=[9656, 9665]
-varbitValue=[6, 0]
-dynamicChildren=[6, 57, 66, 75, 104, 188, 197]
-
-[[settings.menu.border.outer.page.more]]
-varbit=[9656, 9665]
-varbitValue=[6, 0]
-dynamicChildren=[5, 56, 65, 74, 103, 187, 196]
-
-[[settings.menu.border.inner.page.more]]
-varbit=[9656, 9665]
-varbitValue=[7, 0]
-dynamicChildren=[104, 116]
-
-[[settings.menu.border.outer.page.more]]
-varbit=[9656, 9665]
-varbitValue=[7, 0]
-dynamicChildren=[103, 115]
-
-
-
-
-[[settings.menu.border.inner.page.less]]
-varbit=[9656, 9665]
-varbitValue=[0, 1]
-dynamicChildren=[25, 38, 51]
-
-[[settings.menu.border.outer.page.less]]
-varbit=[9656, 9665]
-varbitValue=[0, 1]
-dynamicChildren=[24, 37, 50]
-
-[[settings.menu.border.inner.page.less]]
-varbit=[9656, 9665]
-varbitValue=[1, 1]
-dynamicChildren=[80, 94]
-
-[[settings.menu.border.outer.page.less]]
-varbit=[9656, 9665]
-varbitValue=[1, 1]
-dynamicChildren=[79, 93]
-
-[[settings.menu.border.inner.page.less]]
-varbit=[9656, 9665]
-varbitValue=[2, 1]
-dynamicChildren=[9, 38]
-
-[[settings.menu.border.outer.page.less]]
-varbit=[9656, 9665]
-varbitValue=[2, 1]
-dynamicChildren=[8, 37]
-
-[[settings.menu.border.inner.page.less]]
-varbit=[9656, 9665]
-varbitValue=[3, 1]
-dynamicChildren=[12, 20, 43, 54,63,72,81,90,99,108,117,126,135,144,153,162,171]
-
-[[settings.menu.border.outer.page.less]]
-varbit=[9656, 9665]
-varbitValue=[3, 1]
-dynamicChildren=[11, 19, 42, 53,62,71,80,89,98,107,116,125,134,143,152,161,170]
-
-[[settings.menu.border.inner.page.less]]
-varbit=[9656, 9665]
-varbitValue=[6, 1]
-dynamicChildren=[6, 46, 54, 62, 85, 156, 164]
-
-[[settings.menu.border.outer.page.less]]
-varbit=[9656, 9665]
-varbitValue=[6, 1]
-dynamicChildren=[5, 45, 53, 61, 84, 155, 163]
-
-[[settings.menu.border.inner.page.less]]
-varbit=[9656, 9665]
-varbitValue=[7, 1]
-dynamicChildren=[99, 109]
-
-[[settings.menu.border.outer.page.less]]
-varbit=[9656, 9665]
-varbitValue=[7, 1]
-dynamicChildren=[98, 108]
+dynamicChildren=true
+explicit=true
 
 ########################################
 
