@@ -247,12 +247,18 @@ public class PacksManager implements PluginLifecycleComponent
 				}
 			}
 
+
 			// delete old packs
 			for (File fi : resourcePackDirectoryList)
 			{
 				if (!keep.contains(fi))
 				{
-					MoreFiles.deleteRecursively(fi.toPath(), RecursiveDeleteOption.ALLOW_INSECURE);
+					try {
+						MoreFiles.deleteRecursively(fi.toPath(), RecursiveDeleteOption.ALLOW_INSECURE);
+					} catch (IOException e)
+					{
+						log.error("failed to delete pack", e);
+					}
 				}
 			}
 
