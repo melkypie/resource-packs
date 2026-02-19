@@ -19,16 +19,16 @@ Recreation of the 2006 interface from one of Runescape's iconic years. The 2006 
 
 ![Resourcepackssettings](https://i.imgur.com/vr0vLG2.png)
 
-3. Enable the `Interface Styles` plugin in RuneLite and set the `Gameframe` option to `2005`.
+3. Enable the `Interface Styles` plugin in RuneLite and set the `Gameframe` option to `2006`.
 
-![InterfaceStyleSetting](https://i.imgur.com/qTPfJyM.png)
+![InterfaceStyleSetting](https://i.imgur.com/mHwPuST.png)
 
-4. Open the `Resource packs hub` in the side panel of RuneLite, search for `2006 Overhaul`, and install it.
+4. Open the `Resource packs hub` in the side panel of RuneLite, search for `2006 Revive`, and install it.
 
 ⚠️ If icons and tabs are misaligned double-check that your `Interface Styles` and `Resource packs` settings match those shown above then disable and re-enable the `Resource packs` plugin.
 
 ## Credits
 * Jagex for the original assets
 * melkypie for creating the Resource pack plugin
-* Deamonseance for creating the chatbox and various feedback
+* Demonseance for creating the chatbox and various feedback
 * Glocc for creating some assets
