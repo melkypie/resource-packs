@@ -32,9 +32,9 @@ An overhauled version of RuneLite’s 2005 interface, designed to recreate the o
 ## Manual Installation
 Manual installation allows you to customise the pack to your preferences.
 
-![Download](https://github.com/melkypie/resource-packs/archive/refs/heads/pack-2005-overhaul.zip)
+[Download](https://github.com/melkypie/resource-packs/archive/refs/heads/pack-2005-overhaul.zip)
 
-![Instructions](https://github.com/melkypie/resource-packs/wiki/Using-a-custom-pack-%28not-from-the-hub%29)
+[Instructions](https://github.com/melkypie/resource-packs/wiki/Using-a-custom-pack-%28not-from-the-hub%29)
 
 ## Credits
 * Jagex for the original assets
