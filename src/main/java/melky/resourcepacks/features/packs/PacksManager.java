@@ -253,9 +253,11 @@ public class PacksManager implements PluginLifecycleComponent
 			{
 				if (!keep.contains(fi))
 				{
-					try {
+					try
+					{
 						MoreFiles.deleteRecursively(fi.toPath(), RecursiveDeleteOption.ALLOW_INSECURE);
-					} catch (IOException e)
+					}
+					catch (IOException e)
 					{
 						log.error("failed to delete pack", e);
 					}
