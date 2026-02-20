@@ -1,8 +1,7 @@
 # 2006 Revive
 **Created by Viizva**
 
-
-### Up to date as of February 19, 2026
+**Up to date as of February 19, 2026**
 
 ![icon](https://i.imgur.com/Dx4ndO8.png)
 
