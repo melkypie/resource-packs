@@ -1,5 +1,4 @@
 # 2006 Revive
-### Created by Viizva
 
 **Up to date as of February 19, 2026**
 
@@ -9,8 +8,10 @@ Accurate recreation of the 2006 interface from one of Runescape's iconic years. 
 
 If there are any issues and/or suggestions feel free to message me on discord @Viizva
 
+**Created by Viizva**
+
 ## Interface
-![2006 Interface](https://i.imgur.com/zLR0Ykh.png)
+![2006 Interface](https://i.imgur.com/zGXhpam.png)
 
 ## Installation
 
