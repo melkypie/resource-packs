@@ -37,7 +37,7 @@
 
 <br/>
 
-<p align="center">⚠️ If icons and tabs are misaligned double-check that your `Interface Styles` and `Resource packs` settings match those shown above then disable and re-enable the `Resource packs` plugin.</p>
+<p align="center">⚠️ If icons and tabs are misaligned check that Interface Styles and Resource packs settings match those shown above then disable and enable the Resource packs plugin</p>
 
 ## Credits
 * Jagex for the original assets
