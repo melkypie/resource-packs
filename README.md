@@ -12,7 +12,7 @@
 <p align="center">- Icons positioned correctly as they were in 2006</p>
 <p align="center">- Kept up to date with changes published by JaGex</p>
 
-<br/><br/>
+<br/>
 
 <p align="center">If there are any issues and/or suggestions feel free to message me on discord @Viizva</p>
 
