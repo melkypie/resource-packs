@@ -37,7 +37,7 @@
 
 <br/>
 
-<p align="center">⚠️ If icons are misaligned check that Interface Styles and Resource packs settings match those shown above then disable and enable the Resource packs plugin</p>
+⚠️ If icons are misaligned check that Interface Styles and Resource packs settings match those shown above then disable and enable the Resource packs plugin
 
 ## Credits
 * Jagex for the original assets
