@@ -1,13 +1,23 @@
 # 2006 Revive
-
-![icon](https://i.imgur.com/OeciKSn.png)
-
-Recreation of the 2006 interface from one of Runescape's iconic years. The 2006 time period combines the modern icons with the classic stone look a perfect mixture of past and future similar to OSRS.
-
 **Created by Viizva**
+\
+**Up to date as of February 19, 2026**
+
+<p align="center"><img src="https://i.imgur.com/Dx4ndO8.png"></p>
+
+<p align="center">Accurate recreation of the 2006 interface from one of Runescape's iconic years. The 2006 time period combines the modern icons with the classic stone look a perfect mixture of past and future similar to OSRS.</p>
+
+<p align="center">- Accurate chatbox borders from 2006</p>
+<p align="center">- Modern icons recreated in 2006 aesthetic</p>
+<p align="center">- Icons positioned correctly as they were in 2006</p>
+<p align="center">- Kept up to date with changes published by JaGex</p>
+
+<br/>
+
+<p align="center">If there are any issues and/or suggestions feel free to message me on discord @Viizva</p>
 
 ## Interface
-![2006 Interface](https://i.imgur.com/uRI5UP3.png)
+![2006 Interface](https://i.imgur.com/zGXhpam.png)
 
 ## Installation
 
@@ -25,7 +35,9 @@ Recreation of the 2006 interface from one of Runescape's iconic years. The 2006 
 
 4. Open the `Resource packs hub` in the side panel of RuneLite, search for `2006 Revive`, and install it.
 
-⚠️ If icons and tabs are misaligned double-check that your `Interface Styles` and `Resource packs` settings match those shown above then disable and re-enable the `Resource packs` plugin.
+<br/>
+
+⚠️ If icons are misaligned check that Interface Styles and Resource packs settings match those shown above then disable and enable the Resource packs plugin
 
 ## Credits
 * Jagex for the original assets
