@@ -4,10 +4,10 @@
 
 ![icon](https://i.imgur.com/Dx4ndO8.png)
 
-Recreation of the 2006 interface from one of Runescape's iconic years. The 2006 time period combines the modern icons with the classic stone look a perfect mixture of past and future similar to OSRS.
+Accurate recreation of the 2006 interface from one of Runescape's iconic years. The 2006 time period combines the modern icons with the classic stone look a perfect mixture of past and future similar to OSRS.
 
 **Created by Viizva**
-**If there are any issues and/or suggestions feel free to message me on discord @Viizva**
+If there are any issues and/or suggestions feel free to message me on discord @Viizva
 
 ## Interface
 ![2006 Interface](https://i.imgur.com/zLR0Ykh.png)
