@@ -1,13 +1,16 @@
 # 2006 Revive
 
-![icon](https://i.imgur.com/OeciKSn.png)
+**Up to date as of February 19, 2026**
+
+![icon](https://i.imgur.com/Dx4ndO8.png)
 
 Recreation of the 2006 interface from one of Runescape's iconic years. The 2006 time period combines the modern icons with the classic stone look a perfect mixture of past and future similar to OSRS.
 
 **Created by Viizva**
+**If there are any issues and/or suggestions feel free to message me on discord @Viizva**
 
 ## Interface
-![2006 Interface](https://i.imgur.com/uRI5UP3.png)
+![2006 Interface](https://i.imgur.com/zLR0Ykh.png)
 
 ## Installation
 
