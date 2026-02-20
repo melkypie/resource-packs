@@ -1,4 +1,5 @@
 # 2006 Revive
+### Created by Viizva
 
 **Up to date as of February 19, 2026**
 
@@ -6,7 +7,6 @@
 
 Accurate recreation of the 2006 interface from one of Runescape's iconic years. The 2006 time period combines the modern icons with the classic stone look a perfect mixture of past and future similar to OSRS.
 
-**Created by Viizva**
 If there are any issues and/or suggestions feel free to message me on discord @Viizva
 
 ## Interface
