@@ -7,11 +7,14 @@
 
 <p align="center">Accurate recreation of the 2006 interface from one of Runescape's iconic years. The 2006 time period combines the modern icons with the classic stone look a perfect mixture of past and future similar to OSRS.</p>
 
-<div><p align="center">- Accurate chatbox borders from 2006
-- Modern icons recreated in 2006 aesthetic
-- Icons positioned correctly as they were in 2006
-- Kept up to date with changes published by JaGex</p></div>
+\
 
+<p align="center">- Accurate chatbox borders from 2006</p>
+<p align="center">- Modern icons recreated in 2006 aesthetic</p>
+<p align="center">- Icons positioned correctly as they were in 2006</p>
+<p align="center">- Kept up to date with changes published by JaGex</p>
+
+\
 
 <p align="center">If there are any issues and/or suggestions feel free to message me on discord @Viizva</p>
 
