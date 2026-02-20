@@ -17,7 +17,7 @@
 <p align="center">If there are any issues and/or suggestions feel free to message me on discord @Viizva</p>
 
 ## Interface
-![2006 Interface](https://i.imgur.com/4Ubd0KD.png)
+![2006 Interface](https://i.imgur.com/3OuKDHH.png)
 
 ## Installation
 
@@ -40,6 +40,6 @@
 ⚠️ If icons are misaligned check that Interface Styles and Resource packs settings match those shown above then disable and enable the Resource packs plugin
 
 ## Credits
-* Jagex for the original assets
+* JaGex for the original assets
 * melkypie for creating the Resource pack plugin
-* Demonseance for creating the chatbox and various feedback
+* Demonseance for feedback and input
