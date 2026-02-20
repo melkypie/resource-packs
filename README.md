@@ -17,7 +17,7 @@
 <p align="center">If there are any issues and/or suggestions feel free to message me on discord @Viizva</p>
 
 ## Interface
-![2006 Interface](https://i.imgur.com/zGXhpam.png)
+![2006 Interface](https://i.imgur.com/4Ubd0KD.png)
 
 ## Installation
 
