@@ -4,4 +4,4 @@ The Good Crew theme was developed specifically for the Good Crew clan, however t
 <img src="https://i.imgur.com/ZYm3x6V.png" width="765"><br/> <img src="i.https://imgur.com/d2cl37y.png"><br/>
 
 
-<img src="https://i.imgur.com/q7ZIBeX.png" width="765"><br/>
+<img src="https://i.imgur.com/q7ZIBeX.png"><br/>
