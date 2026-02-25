@@ -7,7 +7,7 @@ An overhauled version of RuneLite’s 2005 interface, designed to recreate the o
 **Created by Demonseance**
 
 ## Interface
-![2005 Interface](https://i.imgur.com/JGAhosa.png)
+![2005 Interface](https://i.imgur.com/ftDwrYV.png)
 
 ## Installation
 
