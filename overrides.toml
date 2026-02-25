@@ -756,7 +756,7 @@ color=0x171717
 # opacity=0
 
 [ge.inventory.glow]
-color=0x00beb8
+color=0x013fcb
 # opacity=0
 
 [world_switcher.window.border.inner]
