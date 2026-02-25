@@ -1,0 +1,8 @@
+[chatbox.separator]
+color=0x000000
+
+[chatbox.separator.opaque]
+opacity=0
+
+[chatbox.separator.transparent]
+opacity=0
