@@ -7,7 +7,7 @@ An overhauled version of RuneLite’s 2005 interface, designed to recreate the o
 **Created by Demonseance**
 
 ## Interface
-![2005 Interface](https://i.imgur.com/JGAhosa.png)
+![2005 Interface](https://i.imgur.com/ftDwrYV.png)
 
 ## Installation
 
@@ -25,7 +25,7 @@ An overhauled version of RuneLite’s 2005 interface, designed to recreate the o
 
 4. Open the `Resource packs hub` in the side panel of RuneLite, search for `2005 Overhaul`, and install it.
 
-![Sidepanel](https://i.imgur.com/4Bt20AA.png)
+![Sidepanel](https://i.imgur.com/Af2RN1A.png)
 
 > ⚠️ If icons and tabs are misaligned, double-check that your `Interface Styles` and `Resource packs` settings match those shown above, then disable and re-enable the `Resource packs` plugin.
 
