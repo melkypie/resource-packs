@@ -5,8 +5,8 @@ color=0x75111111
 color=0x333333
 
 [achievement_diary.entry.border]
-color=0x151515
-# opacity=150
+color=0xffffff
+opacity=210
 
 [achievement_diary.progress.background]
 color=0x111111
