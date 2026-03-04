@@ -91,7 +91,6 @@ import net.runelite.api.SpritePixels;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.eventbus.Subscribe;
-import net.runelite.client.game.SpriteManager;
 import net.runelite.client.util.ImageUtil;
 
 @Slf4j
@@ -140,9 +139,6 @@ public class SpritesOverride extends OverrideAction
 
 	@Inject
 	private ResourcePacksConfig config;
-
-	@Inject
-	private SpriteManager spriteManager;
 
 	@Override
 	public boolean isEnabled(ResourcePacksConfig config)
