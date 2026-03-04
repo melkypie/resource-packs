@@ -34,6 +34,7 @@ import java.util.Set;
 import javax.inject.Named;
 import lombok.extern.slf4j.Slf4j;
 import melky.resourcepacks.ResourcePacksConfig;
+import melky.resourcepacks.features.creators.declutter.ShowSkillGlow;
 import melky.resourcepacks.features.hub.HubClient;
 import melky.resourcepacks.features.hub.HubPanelModule;
 import melky.resourcepacks.features.overrides.CrossSpriteOverride;
@@ -78,7 +79,8 @@ public class ResourcePacksModule extends AbstractModule
 		WidgetPropertiesOverride widgetPropertiesOverride,
 		Overrides overrides,
 		OverlayColorOverride overlayColorOverride,
-		GameFrameOverride gameFrameOverride
+		GameFrameOverride gameFrameOverride,
+		ShowSkillGlow showSkillGlow
 	)
 	{
 		var builder = new ImmutableSet.Builder<PluginLifecycleComponent>();
@@ -99,7 +101,8 @@ public class ResourcePacksModule extends AbstractModule
 			.add(spritesOverride)
 			.add(widgetPropertiesOverride)
 			.add(overlayColorOverride)
-			.add(gameFrameOverride);
+			.add(gameFrameOverride)
+			.add(showSkillGlow);
 
 		return builder.build();
 	}

@@ -278,4 +278,16 @@ public interface ResourcePacksConfig extends Config
 	{
 		return false;
 	}
+
+	@ConfigItem(
+		keyName = "showSkillGlow",
+		name = "Enable Skill Glow",
+		description = "Enables skill glow for creators. Requires Creator tools.",
+		position = 100,
+		section = experimentalOptions
+	)
+	default boolean showSkillGlow()
+	{
+		return false;
+	}
 }
