@@ -5,11 +5,11 @@
 A light, earth-tone resource pack for OSRS! Dress up OSRS in a retro look inspired by old PC games.
 This pack replaces most of the UI barring some deeper-nested icons seen in options and account management menus.
 
-**Only features bare-bones fixed mode support!**
-
 For best results, enable integer scaling in the Stretched Mode plugin to avoid unsightly pixel scaling.
 Magic icons, prayer icons and cross-sprites can be toggled on or off in the sidebar.
 If using the Customizable XP drops plugin and displaying icons, an icon override of 25 with font size 16 works best.
+
+Now in [dark mode](https://github.com/GCWild/pack-vgascape-dark), too!
 
 ## Screenshots
 
