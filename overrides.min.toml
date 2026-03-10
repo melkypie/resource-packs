@@ -415,6 +415,12 @@
 # make_all.quantity.color=0x89785e
 # make_all.quantity.opacity=0
 
+# music_player.playlist.border.inner.color=0x474745
+# music_player.playlist.border.inner.opacity=0
+
+# music_player.playlist.border.outer.color=0x0e0e0c
+# music_player.playlist.border.outer.opacity=0
+
 # notification.border.inner.color=0x0e0e0c
 
 # notification.border.outer.color=0x474745

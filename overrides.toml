@@ -560,6 +560,14 @@
 # color=0x89785e
 # opacity=0
 
+# [music_player.playlist.border.inner]
+# color=0x474745
+# opacity=0
+
+# [music_player.playlist.border.outer]
+# color=0x0e0e0c
+# opacity=0
+
 # [notification.border.inner]
 # color=0x0e0e0c
 
