@@ -72,7 +72,7 @@ opacity=0
 [bank.separator]
 color=0x2e2b23
 scripts=[274]
-children=[12]
+children=[11, 21, 33, 38, 45]
 
 [bank.menu]
 scripts=[3276]
