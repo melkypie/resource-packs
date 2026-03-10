@@ -1493,6 +1493,55 @@ opacity=0
 
 ########################################
 
+[music_player]
+interface=239
+
+[music_player.playlist.border.inner]
+color=0x474745
+opacity=0
+
+[music_player.playlist.border.outer]
+color=0xe0e0c
+opacity=0
+
+[music_player.playlist.border.inner.menu]
+scripts=[3270]
+children=[18]
+dynamicChildren=[2]
+
+[music_player.playlist.border.outer.menu]
+scripts=[3270]
+children=[18]
+dynamicChildren=[1]
+
+[music_player.playlist.border.inner.dropdown]
+scripts=[9296]
+children=[20]
+dynamicChildren=[1]
+
+[music_player.playlist.border.outer.dropdown]
+scripts=[9296]
+children=[20]
+dynamicChildren=[0]
+
+########################################
+
+[make_all.background]
+color=0x89785e
+scripts=[2044, 2049]
+children=[14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+dynamicChildren=[29]
+opacity=0
+
+[make_all.quantity]
+color=0x89785e
+scripts=[2058]
+children=[7, 8, 9, 10, 11, 12]
+dynamicChildren=[0]
+opacity=0
+
+########################################
+
 [notification]
 interface=660
 scripts=[8488]
