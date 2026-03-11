@@ -415,6 +415,12 @@
 # make_all.quantity.color=0x89785e
 # make_all.quantity.opacity=0
 
+# minigame_teleports.border.inner.color=0x474745
+# minigame_teleports.border.inner.opacity=0
+
+# minigame_teleports.border.outer.color=0x0e0e0c
+# minigame_teleports.border.outer.opacity=0
+
 # music_player.playlist.border.inner.color=0x474745
 # music_player.playlist.border.inner.opacity=0
 
@@ -694,6 +700,12 @@
 
 # skill_guide.body.border.outer.color=0x0e0e0c
 # skill_guide.body.border.outer.opacity=0
+
+# skill_guide.right.border.inner.color=0x474745
+# skill_guide.right.border.inner.opacity=0
+
+# skill_guide.right.border.outer.color=0x0e0e0c
+# skill_guide.right.border.outer.opacity=0
 
 # skill_guide.tab.border.color=0x726451
 # skill_guide.tab.border.opacity=0
