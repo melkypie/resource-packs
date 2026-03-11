@@ -2551,12 +2551,12 @@ interface=218
 scripts=[2622]
 color=0x000000
 opacity=40
-children=[205]
+children=[206]
 dynamicChildren=[0]
 
 [spell_tooltip.border]
 scripts=[2622]
-children=[205]
+children=[206]
 
 [spell_tooltip.border.inner]
 color=0x2e2b23
