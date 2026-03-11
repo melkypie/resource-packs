@@ -725,13 +725,13 @@ interface=192
 
 [deposit_box.inventory.border.inner]
 color=0x5a5245
-children=[27]
+children=[28]
 opacity=0
 scripts=[6010]
 
 [deposit_box.inventory.border.outer]
 color=0x383013
-children=[26]
+children=[27]
 opacity=0
 scripts=[6010]
 
