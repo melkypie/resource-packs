@@ -534,6 +534,26 @@ opacity=0
 
 ########################################
 
+[minigame_teleports.border.inner]
+color=0x1e1e1e
+opacity=0
+
+[minigame_teleports.border.outer]
+color=0x505050
+opacity=0
+
+########################################
+
+[music_player.playlist.border.inner]
+color=0x505050
+opacity=0
+
+[music_player.playlist.border.outer]
+color=0x1e1e1e
+opacity=0
+
+########################################
+
 [notification.border.inner]
 color=0x303030
 
@@ -936,11 +956,19 @@ color=0x505050
 ########################################
 
 [skill_guide.body.border.inner]
-color=0x505050
+color=0x1e1e1e
 opacity=0
 
 [skill_guide.body.border.outer]
+color=0x505050
+opacity=0
+
+[skill_guide.right.border.inner]
 color=0x1e1e1e
+opacity=0
+
+[skill_guide.right.border.outer]
+color=0x505050
 opacity=0
 
 [skill_guide.tab.border]
