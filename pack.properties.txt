@@ -1,0 +1,4 @@
+displayName=DarkTransluscent
+compatibleVersion=1.10.3
+author=Rooxe
+tags=dark,OLED,Transluscent,NoFill,Border,Pixel
