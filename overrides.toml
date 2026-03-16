@@ -1050,3 +1050,11 @@ opacity=0
 [sailing.customize.popup.border.outer]
 color=0x19181a
 opacity=0
+
+[music_player.playlist.border.inner]
+color=0x19181a
+opacity=0
+
+[music_player.playlist.border.outer]
+color=0x000000
+opacity=0
