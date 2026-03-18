@@ -1,7 +1,7 @@
 # 2012 Interface
 ## Latest version: v4.9 (7-7-2022)
 
-*If you have any questions or find any issues, please message Discord **@Shredit#6109** or **@Leyline#5438***
+*If you have any questions or find any issues, please message Discord **shredit** or **leyline***
 
 ```diff
 ! This plugin can be installed automatically by using the in-game resource packs hub. Manually installing this pack however, will also allow you to customise your preferences such as the different prayer styles included in the pack. If you prefer using the vanilla spell/prayer icons, you can select so in the resource packs plugin settings.
@@ -38,6 +38,36 @@
 ```diff
 - When you get poisoned or venomed, your HP icon will reset to vanilla sprites due to a conflict with the "Poison" plugin, to fix this. Simply turn off "Change HP Orb Icon" tab from the plugin.
 ```
+
+## v5.0 (18-3-2026)
+### Added
+- Added the **total level** background sprites (changed with sailing)
+- Added new stat tabs (fixes regressed stat sprites)
+- Added **sailing** sprite (modified version based on the HD sprite by `Maximax`)
+- Added **HDOS** sprites
+  - Created new sidebar arrow and dock/undock button sprites in `hdos/`
+  - Added **minigame teleport**
+  - Added **monster examine**
+  - Added **varlamore teleport**
+  - Added **teleport boat** variants
+- **World switcher** icons: seasonal, special, speedrunning
+- Created new misc icons:
+  - "Upgrade now!"
+  - Arrows (bond pouch)
+  - Various Welcome screen sprites
+### Changed
+- Improved **minimap orbs**
+  - *Prayer now aligns better with the prayer plugin that causes it to flash*
+  - Added flashing variant
+  - Improved contrast on orb icons
+- Changed some borders to be more faithful to the old style (less thick)
+### Fixed
+- Thanks to `J3` for cleaning up some **misaligned sprites**!
+  - About 14 sprites have been adjusted slightly
+  - Added a cleaner version for the minimap in fixed mode, which can be found in `hdos/fixed_mode_noborder/`
+    - *For now, it was decided to ship this as an optional addition, rather than a replacement patch*
+- **Tabs**
+  - Fixed the position of 7 tab sprites (such as prayer, combat options and inventory)
 
 ## v4.9 (7-7-2022)
 ![!image](https://i.imgur.com/cyr6y0I.gif)
@@ -337,6 +367,8 @@ Melkypie - Plugin author
 
 Shredit - Author
 
-Leyline - Co-Author
+Leyline - Co-Author and creator of HDOS sprites
 
 Zweeper - Providing base for (unselected) bank tab
+
+J3 - Minor fixes
