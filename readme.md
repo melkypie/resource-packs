@@ -39,6 +39,16 @@
 - When you get poisoned or venomed, your HP icon will reset to vanilla sprites due to a conflict with the "Poison" plugin, to fix this. Simply turn off "Change HP Orb Icon" tab from the plugin.
 ```
 
+## v5.1 (20-3-2026)
+### Added
+- Added missing sprite intended for v5.0
+  - Added dock/undock sprite
+### Changed
+- Default prayers now use Oldschool sprites instead, so that they are more faithful to 2012
+  - *If you would like to re-enable them, simply rename `prayer_beta` to `prayer`*
+- Adjusted the sidebar arrow sprite slightly
+- Improved the hitpoints heart sprite outline slightly (less thick)
+
 ## v5.0 (18-3-2026)
 ### Added
 - Added the **total level** background sprites (changed with sailing)
