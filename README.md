@@ -1,6 +1,6 @@
 # 2006
 
-![icon](https://i.imgur.com/8RsGzXC.png)
+![icon](https://i.imgur.com/VtwxnZm.png)
 
 [Download Locally](https://github.com/melkypie/resource-packs/archive/refs/heads/pack-2006.zip)
 
@@ -14,8 +14,8 @@ This pack was created to recreate the gameframe of late 2006, when hunter was re
 
 
 # Resizeable mode
-![ResizeableMode](https://i.imgur.com/HHMBTUD.png)
-![ResizeableMode](https://i.imgur.com/PzTtLcq.png)
+![ResizeableMode](https://i.imgur.com/YGpdEQi.png)
+![ResizeableMode](https://i.imgur.com/mN6itkH.png)
 
 ## Resizable chatbox
 
@@ -31,7 +31,7 @@ Disable and re-enable the resource packs plugin, and if you've done it correctly
 
 
 # Fixed mode
-![FixedMode](https://i.imgur.com/sbgKsb3.png)
+![FixedMode](https://i.imgur.com/aCD8AIc.png)
 
 **In order to correctly use in fixed mode theres a couple steps required:**
 1. Go to Runelite's plugins and enable "Interface Styles", open the settings and set 'gameframe' to 2006.
