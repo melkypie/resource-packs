@@ -1,6 +1,6 @@
 # 2006
 
-![icon](https://i.imgur.com/VtwxnZm.png)
+![icon](https://i.imgur.com/ChBK6DT.png)
 
 [Download Locally](https://github.com/melkypie/resource-packs/archive/refs/heads/pack-2006.zip)
 
