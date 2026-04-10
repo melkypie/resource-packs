@@ -34,5 +34,5 @@ J3 - Minor fixes
 
 jin - Maintenance from 10/4/26
 
-#Previous patch notes copied verbatim here:
+# Previous patch notes copied verbatim here:
 https://pastebin.com/SG41GXTn
