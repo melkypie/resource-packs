@@ -1,15 +1,17 @@
 # 2012 Resource Pack
-## Latest version: v1.0.0 (10-4-2026)
+## Latest version: v1.0.1 (12-4-2026)
 
-*If you have any questions or find any issues, please message me on discord **jin**
+This pack was forked from the 2012 Interface pack originally by **Shredit and Leyline** to be maintained and kept alive for people who want to enjoy it in Runelite.
+
+*If you have any questions or find any issues, please message me in the resource packs discord, **jin***.
 
 ## Previews
 ### Fixed:
-![!image](https://i.imgur.com/IEZbhN4.png)
+![!image](https://i.postimg.cc/NM8xnFZX/Rune-Lite-vd-Cut-Q0d4Y.png)
 ### Resizable:
-![!image](https://i.imgur.com/fmMulqF.png)
+![!image](https://i.postimg.cc/QMrnt2gt/Rune-Lite-m97X9P5f-XX.png)
 ### Resizable (modern):
-![!image](https://i.imgur.com/1c1gL3e.png)
+![!image](https://i.postimg.cc/13917VT4/Rune-Lite-dxtd-QK4Acm.png)
 
 # Customizable XP drops settings
 *This plugin can be found in the RuneLite plugin hub.*
@@ -34,5 +36,5 @@ J3 - Minor fixes
 
 jin - Maintenance from 10/4/26
 
-# Previous patch notes copied verbatim here:
+## Previous patch notes copied verbatim here:
 https://pastebin.com/SG41GXTn
