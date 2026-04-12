@@ -1,9 +1,9 @@
 # 2012 Resource Pack
-## Latest version: v1.0.0 (10-4-2026)
+## Latest version: v1.0.1 (12-4-2026)
 
 This pack was forked from the 2012 Interface pack originally by **Shredit and Leyline** to be maintained and kept alive for people who want to enjoy it in Runelite.
 
-*If you have any questions or find any issues, please message me in the resource packs discord, **jin**.
+*If you have any questions or find any issues, please message me in the resource packs discord, **jin***.
 
 ## Previews
 ### Fixed:
