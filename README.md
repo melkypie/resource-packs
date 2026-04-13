@@ -38,3 +38,5 @@ Tweaked (when pressed the button is brighter):
 Thanks to iawhd for making [OSRS-Dark theme](https://github.com/melkypie/resource-packs/tree/pack-osrs-dark), which this one is heavily based on. Also thanks to Smob for coming with the idea to tweak some things in the pack.  
 
 I'll try to keep this as up to date with the plugin as possible. If there are any issues or missing sprites/textures, please contact me on Discord: Noedel#0001.
+
+This was updated to fit better with newer osrs updates on 13/04/2026, such as the new background for skilling icons, and fixing the collection log popups. 
