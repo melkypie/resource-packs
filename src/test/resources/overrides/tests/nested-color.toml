@@ -1,0 +1,11 @@
+[bank.nested.border.inner]
+color=0x643A4B
+
+[bank.nested.border.outer]
+color=0x9D6A76
+
+#[bank.menu.border.inner.tab]
+#color=0x222
+#
+#[bank.menu.border.outer.tab]
+#color=0x222
