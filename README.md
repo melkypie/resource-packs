@@ -16,6 +16,8 @@ In turn, [Runelite itself has been confirmed as fully compliant by Jagex](https:
 ![Resizable Mode](https://i.imgur.com/NJKECCL.png)
 
 ## Changelog
+    Release 1.10.4
+        * Added small changes to fix the background colour of the skilling tab, and to fix the collection log notification border to work with 1.10.4
 	Release 1.4.5
         * Updated to work with '[Resource Packs](https://github.com/melkypie/resource-packs)' 1.4.5.
         * This is a huge release covering everything I've missed from the last 2 years of updates.
