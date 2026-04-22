@@ -562,6 +562,22 @@ opacity=0
 color=0x522731
 opacity=0
 
+[minigame_teleports.border.inner]
+color=0x522731
+opacity=0
+
+[minigame_teleports.border.outer]
+color=0x000000
+opacity=0
+
+[music_player.playlist.border.inner]
+color=0x522731
+opacity=0
+
+[music_player.playlist.border.outer]
+color=0x000000
+opacity=0
+
 [notification.border.inner]
 color=0x522731
 
