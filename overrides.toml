@@ -558,6 +558,22 @@ opacity=50
 color=0x3D3A33
 opacity=50
 
+[minigame_teleports.border.inner]
+color=0x697948
+opacity=0
+
+[minigame_teleports.border.outer]
+color=0x24261B
+opacity=0
+
+[music_player.playlist.border.inner]
+color=0x697948
+opacity=0
+
+[music_player.playlist.border.outer]
+color=0x24261B
+opacity=0
+
 [notification.border.inner]
 color=0x697948
 
