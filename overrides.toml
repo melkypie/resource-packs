@@ -1095,10 +1095,11 @@ color=0x060401
 # color=0x0e0e0c
 # opacity=0
 
-# [xp_tracker.border.inner]
-# color=0x5a5245
-# opacity=0
+[xp_tracker.border.inner]
+color=0x252525
+# opacity=50
 
-# [xp_tracker.border.outer]
-# color=0x383023
-# opacity=0
+[xp_tracker.border.outer]
+color=0x101010
+# opacity=50
+
