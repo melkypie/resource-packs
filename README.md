@@ -10,7 +10,7 @@
 # Description
 This pack was created to recreate the gameframe of 2005. With the limitations of resource packs currently, it's not possible to have the same exact appearance as the original for resizable mode. I spent a lot of time searching old references and trying to fit the old interface style with the current so it looks as close to the original as possible.
 
-**If you're looking for 2005 Fixed Mode, check out my other pack** [FixedMode](https://github.com/melkypie/resource-packs/tree/pack-2005-fixed-mode)
+**If you're looking for 2005 Fixed Mode, check out my other pack** [Here](https://github.com/melkypie/resource-packs/tree/pack-2005-fixed-mode)
 
 
 # Features
