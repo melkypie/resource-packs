@@ -1,8 +1,8 @@
-# 2006
+# 2006 Fixed Mode
 
-![icon](https://i.imgur.com/BtdP3cz.png)
+![icon](https://i.imgur.com/u6qxunE.png)
 
-[Download Locally]()
+[Download Locally](https://github.com/melkypie/resource-packs/archive/refs/heads/pack-2006-fixed-mode.zip)
 
 [How to use resource packs locally](https://github.com/melkypie/resource-packs/wiki/Using-a-custom-pack-%28not-from-the-hub%29)
 
