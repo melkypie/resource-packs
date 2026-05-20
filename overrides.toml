@@ -143,38 +143,38 @@ color=0x32414c
 
 [colosseum.info.background]
 color=0x0b1d2a
-opacity=200
+opacity=0
 
 [colosseum.info.border.inner]
-color=0x000000
+color=0x32414c
 opacity=0
 
 [colosseum.info.border.outer]
-color=0x32414c
-opacity=0
-
-#[colosseum.modifiers.border]
-#color=0xff0000
-#opacity=0
-
-#[colosseum.modifiers.selected]
-#color=0xff0000
-#opacity=0
-
-#[colosseum.tab.border]
-#color=0xff0000
-#opacity=0
-
-[colosseum.wave.background]
-color=0x0b1d2a
-opacity=200
-
-[colosseum.wave.border.inner]
 color=0x000000
 opacity=0
 
-[colosseum.wave.border.outer]
+[colosseum.modifiers.border]
 color=0x32414c
+opacity=0
+
+[colosseum.modifiers.selected]
+color=0x73a2ba#4b98bf#597c8e
+opacity=0
+
+[colosseum.tab.border]
+color=0x536975
+opacity=0
+
+[colosseum.wave.background]
+color=0x0b1d2a
+opacity=0
+
+[colosseum.wave.border.inner]
+color=0x32414c
+opacity=0
+
+[colosseum.wave.border.outer]
+color=0x000000
 opacity=0
 
 [combat_achievements.boss.border.inner]
