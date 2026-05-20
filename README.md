@@ -1,6 +1,6 @@
 # 2006
 
-![icon](https://i.imgur.com/ChBK6DT.png)
+![icon](https://i.imgur.com/1i55Dbl.png)
 
 [Download Locally](https://github.com/melkypie/resource-packs/archive/refs/heads/pack-2006.zip)
 
@@ -10,7 +10,7 @@
 # Description
 This pack was created to recreate the gameframe of late 2006, when hunter was released. With the limitations of resource packs currently, it's not possible to have the same exact appearance as the original for resizable mode. I spent a lot of time searching old references and trying to fit the old interface style with the current so it looks as close to the original style as possible.
 
-**If you're looking for 2006 Fixed Mode, check out my other pack** [FixedMode](Coming Soon)
+**If you're looking for 2006 Fixed Mode, check out my other pack** [Here](https://github.com/melkypie/resource-packs/tree/pack-2006-fixed-mode)
 
 
 # Features
