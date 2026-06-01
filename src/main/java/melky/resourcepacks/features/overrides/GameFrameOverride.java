@@ -120,7 +120,8 @@ public class GameFrameOverride extends OverrideAction
 		{
 			setInterfaceStylesGameframeOption();
 
-			clientThread.invokeLater(packsManager::updateAllOverrides);
+			// todo: fix
+//			clientThread.invokeLater(packsManager::updateAllOverrides);
 		}
 	}
 
