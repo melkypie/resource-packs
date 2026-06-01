@@ -91,11 +91,6 @@ public class ResourcePacksModule extends AbstractModule
 	{
 		var builder = new ImmutableSet.Builder<PluginLifecycleComponent>();
 
-		if (developerMode)
-		{
-			builder.add(widgetTrackerModule, widgetSelector, widgetTracker);
-		}
-
 		builder
 			.add(packVars)
 			.add(hubClient)
@@ -113,6 +108,11 @@ public class ResourcePacksModule extends AbstractModule
 			.add(showSkillGlow)
 			.add(gameFrameOverride)
 			.add(packReader);
+
+		if (developerMode)
+		{
+			builder.add(widgetTrackerModule, widgetSelector, widgetTracker);
+		}
 
 		return builder.build();
 	}
