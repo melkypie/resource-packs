@@ -25,6 +25,6 @@
 
 package melky.resourcepacks.event;
 
-public class UpdateAllOverrides
+public class ReloadPack
 {
 }

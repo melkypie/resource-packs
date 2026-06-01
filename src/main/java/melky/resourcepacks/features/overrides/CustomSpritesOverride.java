@@ -31,7 +31,7 @@ import java.nio.file.Path;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import melky.resourcepacks.ResourcePacksConfig;
-import melky.resourcepacks.event.UpdateAllOverrides;
+import melky.resourcepacks.event.ReloadPack;
 import melky.resourcepacks.features.overrides.model.OverrideAction;
 import melky.resourcepacks.features.packs.PacksManager;
 import melky.resourcepacks.features.packs.PacksService;
@@ -82,7 +82,7 @@ public class CustomSpritesOverride extends OverrideAction
 	}
 
 	@Subscribe
-	public void onUpdateAllOverrides(UpdateAllOverrides event)
+	public void onReloadPack(ReloadPack event)
 	{
 		startUp();
 	}

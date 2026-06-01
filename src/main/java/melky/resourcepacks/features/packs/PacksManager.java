@@ -61,6 +61,7 @@ import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import melky.resourcepacks.ResourcePacksConfig;
 import melky.resourcepacks.ResourcePacksConfig.ResourcePack;
+import melky.resourcepacks.event.ReloadPack;
 import melky.resourcepacks.event.ResourcePacksChanged;
 import melky.resourcepacks.event.UpdateAllOverrides;
 import melky.resourcepacks.features.hub.HubClient;

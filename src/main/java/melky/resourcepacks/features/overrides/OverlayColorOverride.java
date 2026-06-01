@@ -30,7 +30,8 @@ import java.awt.Color;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import melky.resourcepacks.ResourcePacksConfig;
-import melky.resourcepacks.event.UpdateAllOverrides;
+import melky.resourcepacks.event.PackParsed;
+import melky.resourcepacks.event.ReloadPack;
 import melky.resourcepacks.features.overrides.model.OverrideAction;
 import melky.resourcepacks.features.packs.PacksService;
 import static melky.resourcepacks.model.runelite.ConfigKeys.RuneLiteConfig.OVERLAY_COLOR_CONFIG;
@@ -100,7 +101,7 @@ public class OverlayColorOverride extends OverrideAction
 	}
 
 	@Subscribe
-	public void onUpdateAllOverrides(UpdateAllOverrides events)
+	public void onReloadPack(ReloadPack event)
 	{
 		startUp();
 	}
