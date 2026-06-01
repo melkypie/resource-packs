@@ -22,24 +22,9 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package melky.resourcepacks.model;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import net.runelite.client.game.SpriteOverride;
+package melky.resourcepacks.event;
 
-@RequiredArgsConstructor
-public enum TabSprites implements SpriteOverride
+public class ReloadPack
 {
-	TAB_BACKGROUND(-201, "/tag-tab.png"),
-	TAB_BACKGROUND_ACTIVE(-202, "/tag-tab-active.png"),
-	UP_ARROW(-203, "/up-arrow.png"),
-	DOWN_ARROW(-204, "/down-arrow.png"),
-	NEW_TAB(-205, "/new-tab.png");
-
-	@Getter
-	private final int spriteId;
-
-	@Getter
-	private final String fileName;
 }

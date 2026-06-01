@@ -29,11 +29,13 @@ import com.google.common.base.Strings;
 import java.awt.Color;
 import javax.inject.Inject;
 import javax.inject.Singleton;
+import lombok.Setter;
 import melky.resourcepacks.ResourcePacksConfig;
-import melky.resourcepacks.event.UpdateAllOverrides;
+import melky.resourcepacks.event.PackParsed;
+import melky.resourcepacks.event.ReloadPack;
 import melky.resourcepacks.features.overrides.model.OverrideAction;
-import melky.resourcepacks.features.packs.PacksManager;
-import static melky.resourcepacks.model.RuneLiteConfig.OVERLAY_COLOR_CONFIG;
+import melky.resourcepacks.features.packs.PacksService;
+import static melky.resourcepacks.model.runelite.ConfigKeys.RuneLiteConfig.OVERLAY_COLOR_CONFIG;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.config.RuneLiteConfig;
@@ -50,20 +52,20 @@ public class OverlayColorOverride extends OverrideAction
 	private ResourcePacksConfig config;
 
 	@Inject
-	private Overrides overrides;
-
-	@Inject
-	private PacksManager packsManager;
+	private PacksService packsService;
 
 	@Inject
 	private ClientThread clientThread;
 
 	private boolean ignoreOverlayConfig;
 
+	@Setter
+	private Color overlayColor;
+
 	@Override
 	public boolean isEnabled(ResourcePacksConfig config)
 	{
-		return config.allowOverlayColor() && !packsManager.isPackPathEmpty();
+		return config.allowOverlayColor() && !packsService.isPackPathEmpty();
 	}
 
 	@Override
@@ -82,28 +84,51 @@ public class OverlayColorOverride extends OverrideAction
 		clientThread.invokeLater(this::reset);
 	}
 
+	@Subscribe
+	public void onPackParsed(PackParsed event)
+	{
+
+		var pack = event.getPack();
+		var source = pack.getSources();
+		var overrides = pack.getOverrides();
+
+		if (pack.getSources() == null || pack.getOverrides() == null)
+		{
+			return;
+		}
+		if (source.contains("overlay.color"))
+		{
+			this.overlayColor = new Color(source.getLong("overlay.color").intValue(), true);
+		}
+		if (overrides.contains("overlay.color"))
+		{
+			this.overlayColor = new Color(overrides.getLong("overlay.color").intValue(), true);
+		}
+	}
+
 	@Subscribe(priority = Float.MIN_VALUE)
 	public void onConfigChanged(ConfigChanged event)
 	{
-		if (!packsManager.isActiveProfile())
+		if (!packsService.isActiveProfile())
 		{
 			return;
 		}
 
 		if (config.allowOverlayColor() && !ignoreOverlayConfig &&
-			event.getGroup().equals(RuneLiteConfig.GROUP_NAME) && event.getKey().equals(OVERLAY_COLOR_CONFIG))
+			event.getGroup().equals(RuneLiteConfig.GROUP_NAME) &&
+			event.getKey().equals(OVERLAY_COLOR_CONFIG))
 		{
 			config.originalOverlayColor(event.getNewValue());
 
 			if (config.displayWarnings())
 			{
-				packsManager.sendWarning("Your overlay color will be overwritten by your resource pack. You can disable this feature by turning off 'Allow overlay color to be changed'.");
+				packsService.sendWarning("Your overlay color will be overwritten by your resource pack. You can disable this feature by turning off 'Allow overlay color to be changed'.");
 			}
 		}
 	}
 
 	@Subscribe
-	public void onUpdateAllOverrides(UpdateAllOverrides events)
+	public void onReloadPack(ReloadPack event)
 	{
 		startUp();
 	}
@@ -111,13 +136,18 @@ public class OverlayColorOverride extends OverrideAction
 	@Override
 	public void apply()
 	{
+		if (this.overlayColor == null)
+		{
+			return;
+		}
+
 		if (Strings.isNullOrEmpty(config.originalOverlayColor()))
 		{
 			config.originalOverlayColor(configManager.getConfiguration(RuneLiteConfig.GROUP_NAME, OVERLAY_COLOR_CONFIG));
 		}
 
 		ignoreOverlayConfig = true;
-		Color overlayColor = overrides.getOverlayColor();
+		Color overlayColor = this.overlayColor;
 		if (config.allowColorPack() && config.colorPack() != null && config.colorPack().getAlpha() != 0 && config.colorPackOverlay())
 		{
 			overlayColor = config.colorPack();
@@ -135,5 +165,7 @@ public class OverlayColorOverride extends OverrideAction
 			configManager.setConfiguration(RuneLiteConfig.GROUP_NAME, OVERLAY_COLOR_CONFIG, config.originalOverlayColor());
 			configManager.unsetConfiguration(ResourcePacksConfig.GROUP_NAME, ResourcePacksConfig.ORIGINAL_OVERLAY_COLOR);
 		}
+
+		this.overlayColor = null;
 	}
 }

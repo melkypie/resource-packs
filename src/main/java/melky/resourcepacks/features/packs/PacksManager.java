@@ -25,7 +25,6 @@
 
 package melky.resourcepacks.features.packs;
 
-import com.google.common.base.Strings;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.io.MoreFiles;
@@ -61,14 +60,13 @@ import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import melky.resourcepacks.ResourcePacksConfig;
 import melky.resourcepacks.ResourcePacksConfig.ResourcePack;
+import melky.resourcepacks.event.ReloadPack;
 import melky.resourcepacks.event.ResourcePacksChanged;
-import melky.resourcepacks.event.UpdateAllOverrides;
 import melky.resourcepacks.features.hub.HubClient;
-import melky.resourcepacks.features.overrides.Overrides;
-import melky.resourcepacks.model.ConfigKeys;
-import melky.resourcepacks.model.ConfigKeys.InterfaceStyles;
 import melky.resourcepacks.model.HubManifest;
 import melky.resourcepacks.model.SpriteOverride;
+import melky.resourcepacks.model.runelite.ConfigKeys;
+import melky.resourcepacks.model.runelite.ConfigKeys.InterfaceStyles;
 import melky.resourcepacks.module.PluginLifecycleComponent;
 import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
@@ -86,7 +84,6 @@ import net.runelite.client.config.RuneLiteConfig;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.events.ConfigChanged;
-import net.runelite.client.events.PluginMessage;
 import net.runelite.client.events.ProfileChanged;
 import net.runelite.client.events.SessionClose;
 import net.runelite.client.events.SessionOpen;
@@ -131,9 +128,6 @@ public class PacksManager implements PluginLifecycleComponent
 
 	@Inject
 	private ChatMessageManager chatMessageManager;
-
-	@Inject
-	private Overrides overrides;
 
 	@Getter
 	private long currentProfile = Long.MIN_VALUE;
@@ -247,7 +241,6 @@ public class PacksManager implements PluginLifecycleComponent
 				}
 			}
 
-
 			// delete old packs
 			for (File fi : resourcePackDirectoryList)
 			{
@@ -309,7 +302,7 @@ public class PacksManager implements PluginLifecycleComponent
 					// In case of total resource folder nuke
 					if (config.selectedHubPack().equals(manifest.getInternalName()))
 					{
-						clientThread.invokeLater(this::updateAllOverrides);
+						clientThread.invokeLater(this::reloadPack);
 					}
 				}
 				catch (IOException e)
@@ -380,7 +373,7 @@ public class PacksManager implements PluginLifecycleComponent
 			{
 				config.resourcePack(ResourcePack.HUB);
 				config.selectedHubPack(internalName);
-				this.updateAllOverrides();
+				eventBus.post(new ReloadPack());
 			}
 			else
 			{
@@ -427,57 +420,6 @@ public class PacksManager implements PluginLifecycleComponent
 		}
 	}
 
-	// todo: post this as event
-	public void updateAllOverrides()
-	{
-		if (isPackPathEmpty())
-		{
-			return;
-		}
-
-		log.debug("updating all overrides");
-		eventBus.post(new UpdateAllOverrides());
-	}
-
-
-	public String getCurrentPackPath()
-	{
-		String path;
-		switch (config.resourcePack())
-		{
-			case SECOND:
-				path = config.resourcePack2Path();
-				break;
-			case THIRD:
-				path = config.resourcePack3Path();
-				break;
-			case HUB:
-				path = getLocalPath(config.selectedHubPack()) + "";
-				break;
-			case FIRST:
-			default:
-				path = config.resourcePackPath();
-				break;
-		}
-		return path;
-	}
-
-	public boolean isPackPathEmpty()
-	{
-		switch (config.resourcePack())
-		{
-			case FIRST:
-				return Strings.isNullOrEmpty(config.resourcePackPath());
-			case SECOND:
-				return Strings.isNullOrEmpty(config.resourcePack2Path());
-			case HUB:
-				return Strings.isNullOrEmpty(config.selectedHubPack());
-			case THIRD:
-				return Strings.isNullOrEmpty(config.resourcePack3Path());
-		}
-
-		return true;
-	}
 
 	public SpritePixels loadResourceSprite(String path)
 	{
@@ -564,14 +506,14 @@ public class PacksManager implements PluginLifecycleComponent
 				case "colorPack":
 				case "resourcePack":
 				case "allowOverlayColor":
-					clientThread.invokeLater(this::updateAllOverrides);
+					clientThread.invokeLater(this::reloadPack);
 					break;
 			}
 		}
 		else if (shouldReset(event))
 		{
 			// lazy reset to try and be after other plugins
-			clientThread.invokeLater(() -> clientThread.invokeLater(this::updateAllOverrides));
+			clientThread.invokeLater(() -> clientThread.invokeLater(this::reloadPack));
 		}
 	}
 
@@ -606,8 +548,12 @@ public class PacksManager implements PluginLifecycleComponent
 			.build());
 	}
 
+	private void reloadPack()
+	{
+		eventBus.post(new ReloadPack());
+	}
 
-	private void queueUpdateAllOverrides()
+	private void queueReloadPack()
 	{
 		clientThread.invokeLater(() ->
 		{
@@ -616,7 +562,7 @@ public class PacksManager implements PluginLifecycleComponent
 				return false;
 			}
 
-			updateAllOverrides();
+			reloadPack();
 			return true;
 		});
 	}
@@ -624,7 +570,7 @@ public class PacksManager implements PluginLifecycleComponent
 	private static boolean shouldReset(ConfigChanged event)
 	{
 		return event.getGroup().equals(InterfaceStyles.GROUP_NAME) ||
-			(event.getGroup().equals(RuneLiteConfig.GROUP_NAME) && ConfigKeys.Plugins.interfacestylesplugin.equals(event.getKey()));
+			(event.getGroup().equals(RuneLiteConfig.GROUP_NAME) && ConfigKeys.Plugins.INTERFACESTYLESPLUGIN.equals(event.getKey()));
 	}
 
 
@@ -635,7 +581,7 @@ public class PacksManager implements PluginLifecycleComponent
 		{
 			if (lastGameState == GameState.STARTING)
 			{
-				queueUpdateAllOverrides();
+				queueReloadPack();
 			}
 		}
 
@@ -653,22 +599,9 @@ public class PacksManager implements PluginLifecycleComponent
 		executor.submit(() ->
 		{
 			refreshPacks();
-			clientThread.invokeLater(this::updateAllOverrides);
+
+			reloadPack();
 		});
 	}
 
-
-	@Subscribe
-	public void onPluginMessage(PluginMessage event)
-	{
-		if (!"resource-packs".equals(event.getNamespace()))
-		{
-			return;
-		}
-
-		if (event.getName().equals("export"))
-		{
-			eventBus.post(new PluginMessage("resource-packs", "values", overrides.export()));
-		}
-	}
 }

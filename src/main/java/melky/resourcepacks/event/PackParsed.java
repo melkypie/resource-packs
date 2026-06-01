@@ -23,10 +23,13 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package melky.resourcepacks.model;
+package melky.resourcepacks.event;
 
+import lombok.Value;
+import melky.resourcepacks.model.Pack;
 
-public interface RuneLiteConfig
+@Value
+public class PackParsed
 {
-	String OVERLAY_COLOR_CONFIG = "overlayBackgroundColor";
+	Pack pack;
 }

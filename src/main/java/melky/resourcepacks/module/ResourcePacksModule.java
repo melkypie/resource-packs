@@ -37,16 +37,19 @@ import melky.resourcepacks.ResourcePacksConfig;
 import melky.resourcepacks.features.creators.declutter.ShowSkillGlow;
 import melky.resourcepacks.features.hub.HubClient;
 import melky.resourcepacks.features.hub.HubPanelModule;
+import melky.resourcepacks.features.overrides.ChatColorOverride;
 import melky.resourcepacks.features.overrides.CrossSpriteOverride;
 import melky.resourcepacks.features.overrides.CustomSpritesOverride;
 import melky.resourcepacks.features.overrides.GameFrameOverride;
 import melky.resourcepacks.features.overrides.LoginScreenOverride;
 import melky.resourcepacks.features.overrides.OverlayColorOverride;
-import melky.resourcepacks.features.overrides.Overrides;
 import melky.resourcepacks.features.overrides.SpritesOverride;
 import melky.resourcepacks.features.overrides.WidgetDimensionOverride;
 import melky.resourcepacks.features.overrides.WidgetPropertiesOverride;
+import melky.resourcepacks.features.packs.PackReader;
+import melky.resourcepacks.features.packs.PackVars;
 import melky.resourcepacks.features.packs.PacksManager;
+import melky.resourcepacks.features.packs.PacksService;
 import melky.resourcepacks.features.widgettracker.WidgetSelector;
 import melky.resourcepacks.features.widgettracker.WidgetTracker;
 import melky.resourcepacks.features.widgettracker.WidgetTrackerModule;
@@ -65,35 +68,35 @@ public class ResourcePacksModule extends AbstractModule
 	Set<PluginLifecycleComponent> lifecycleComponents(
 		@Named("developerMode") boolean developerMode,
 
+		PackVars packVars,
 		WidgetTrackerModule widgetTrackerModule,
 		WidgetSelector widgetSelector,
 		WidgetTracker widgetTracker,
 		HubClient hubClient,
 		HubPanelModule hubPanelModule,
 		PacksManager packsManager,
+		PacksService packsService,
 		CrossSpriteOverride crossSpriteOverride,
 		LoginScreenOverride loginScreenOverride,
 		WidgetDimensionOverride widgetDimensionOverride,
 		CustomSpritesOverride customSpritesOverride,
 		SpritesOverride spritesOverride,
 		WidgetPropertiesOverride widgetPropertiesOverride,
-		Overrides overrides,
 		OverlayColorOverride overlayColorOverride,
+		ChatColorOverride chatColorOverride,
 		GameFrameOverride gameFrameOverride,
-		ShowSkillGlow showSkillGlow
+		ShowSkillGlow showSkillGlow,
+		PackReader packReader
 	)
 	{
 		var builder = new ImmutableSet.Builder<PluginLifecycleComponent>();
 
-		if (developerMode)
-		{
-			builder.add(widgetTrackerModule, widgetSelector, widgetTracker);
-		}
-
-		builder.add(overrides)
+		builder
+			.add(packVars)
 			.add(hubClient)
 			.add(hubPanelModule)
 			.add(packsManager)
+			.add(packsService)
 			.add(crossSpriteOverride)
 			.add(loginScreenOverride)
 			.add(widgetDimensionOverride)
@@ -101,8 +104,15 @@ public class ResourcePacksModule extends AbstractModule
 			.add(spritesOverride)
 			.add(widgetPropertiesOverride)
 			.add(overlayColorOverride)
+			.add(chatColorOverride)
+			.add(showSkillGlow)
 			.add(gameFrameOverride)
-			.add(showSkillGlow);
+			.add(packReader);
+
+		if (developerMode)
+		{
+			builder.add(widgetTrackerModule, widgetSelector, widgetTracker);
+		}
 
 		return builder.build();
 	}

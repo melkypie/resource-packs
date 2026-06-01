@@ -29,11 +29,12 @@ import java.awt.image.BufferedImage;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import melky.resourcepacks.ResourcePacksConfig;
-import melky.resourcepacks.event.UpdateAllOverrides;
+import melky.resourcepacks.event.ReloadPack;
 import melky.resourcepacks.features.overrides.model.OverrideAction;
 import melky.resourcepacks.features.packs.PacksManager;
-import melky.resourcepacks.model.ConfigKeys;
+import melky.resourcepacks.features.packs.PacksService;
 import melky.resourcepacks.model.SpriteOverride;
+import melky.resourcepacks.model.runelite.ConfigKeys;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
 import net.runelite.api.SpritePixels;
@@ -62,6 +63,9 @@ public class GameFrameOverride extends OverrideAction
 	private PacksManager packsManager;
 
 	@Inject
+	private PacksService packsService;
+
+	@Inject
 	private ResourcePacksConfig config;
 
 	@Inject
@@ -70,14 +74,14 @@ public class GameFrameOverride extends OverrideAction
 	@Override
 	public boolean isEnabled(ResourcePacksConfig config)
 	{
-		return !packsManager.isPackPathEmpty();
+		return !packsService.isPackPathEmpty();
 	}
 
 	@Override
 	public void startUp()
 	{
 		if (client.getGameState() == GameState.LOGGED_IN &&
-			configManager.getConfiguration(ConfigKeys.InterfaceStyles.GROUP_NAME, ConfigKeys.InterfaceStyles.gameframe, Skin.class) != Skin.DEFAULT &&
+			configManager.getConfiguration(ConfigKeys.InterfaceStyles.GROUP_NAME, ConfigKeys.InterfaceStyles.GAMEFRAME, Skin.class) != Skin.DEFAULT &&
 			!config.disableInterfaceStylesPrompt())
 		{
 			setInterfaceStylesGameframeOption();
@@ -93,7 +97,7 @@ public class GameFrameOverride extends OverrideAction
 	}
 
 	@Subscribe
-	public void onUpdateAllOverrides(UpdateAllOverrides event)
+	public void onReloadPack(ReloadPack event)
 	{
 		clientThread.invokeLater(() ->
 		{
@@ -111,12 +115,13 @@ public class GameFrameOverride extends OverrideAction
 		}
 
 		if (client.getGameState() == GameState.LOGGED_IN &&
-			configManager.getConfiguration(ConfigKeys.InterfaceStyles.GROUP_NAME, ConfigKeys.InterfaceStyles.gameframe, Skin.class) != Skin.DEFAULT &&
+			configManager.getConfiguration(ConfigKeys.InterfaceStyles.GROUP_NAME, ConfigKeys.InterfaceStyles.GAMEFRAME, Skin.class) != Skin.DEFAULT &&
 			!config.disableInterfaceStylesPrompt())
 		{
 			setInterfaceStylesGameframeOption();
 
-			clientThread.invokeLater(packsManager::updateAllOverrides);
+			// todo: fix
+//			clientThread.invokeLater(packsManager::updateAllOverrides);
 		}
 	}
 
@@ -135,7 +140,7 @@ public class GameFrameOverride extends OverrideAction
 	@Override
 	public void apply()
 	{
-		String currentPackPath = packsManager.getCurrentPackPath();
+		String currentPackPath = packsService.getCurrentPackPath();
 		SpritePixels spritePixels = packsManager.getSpritePixels(SpriteOverride.COMPASS, currentPackPath);
 		if (spritePixels == null)
 		{
@@ -152,6 +157,6 @@ public class GameFrameOverride extends OverrideAction
 			packsManager.sendWarning("Your interface styles gameframe option was set to default to fix interfaces being misaligned. You can disable Resource packs changing it to default inside it's config");
 		}
 
-		configManager.setConfiguration(ConfigKeys.InterfaceStyles.GROUP_NAME, ConfigKeys.InterfaceStyles.gameframe, Skin.DEFAULT);
+		configManager.setConfiguration(ConfigKeys.InterfaceStyles.GROUP_NAME, ConfigKeys.InterfaceStyles.GAMEFRAME, Skin.DEFAULT);
 	}
 }

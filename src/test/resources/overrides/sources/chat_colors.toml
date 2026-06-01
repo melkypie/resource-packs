@@ -1,0 +1,87 @@
+# chat_colors requires Allow chat colors to be enabled in settings
+# missing values will use the user's settings
+# remove comments (#) on lines to see changes affected
+
+[opaque]
+# public_chat=
+# public_chat_highlight=
+# private_message_sent=
+# private_message_sent_highlight=
+# private_message_received=
+# private_message_received_highlight=
+# friends_chat_info=
+# clan_chat_info_highlight=
+# clan_chat_message=
+# clan_chat_message_highlight=
+# clan_info=
+# clan_info_highlight=
+# clan_message=
+# clan_message_highlight=
+# clan_guest_info=
+# clan_guest_info_highlight=
+# clan_guest_message=
+# clan_chat_guest_message_highlight=
+# autochat_message=
+# autochat_message_highlight=
+# trade_chat_message=
+# trade_chat_message_highlight=
+# server_message=
+# server_message_highlight=
+# game_message=
+# game_message_highlight=
+# examine=
+# examine_highlight=
+# filtered=
+# filtered_highlight=
+# username=
+# private_usernames=
+# clan_channel_name=
+# clan_chat_channel_name=
+# clan_chat_guest_channel_name=
+# clan_usernames=
+# clan_chat_usernames=
+# clan_chat_guest_usernames=
+# public_friend_usernames=
+# player_username=
+
+[transparent]
+# public_chat=
+# public_chat_highlight=
+# private_message_sent=
+# private_message_sent_highlight=
+# private_message_received=
+# private_message_received_highlight=
+# friends_chat_info=
+# clan_chat_info_highlight=
+# clan_chat_message=
+# clan_chat_message_highlight=
+# clan_info=
+# clan_info_highlight=
+# clan_message=
+# clan_message_highlight=
+# clan_guest_info=
+# clan_guest_info_highlight=
+# clan_guest_message=
+# clan_chat_guest_message_highlight=
+# autochat_message=
+# autochat_message_highlight=
+# trade_chat_message=
+# trade_chat_message_highlight=
+# server_message=
+# server_message_highlight=
+# game_message=
+# game_message_highlight=
+# examine=
+# examine_highlight=
+# filtered=
+# filtered_highlight=
+# username=
+# private_usernames=
+# clan_channel_name=
+# clan_chat_channel_name=
+# clan_chat_guest_channel_name=
+# clan_usernames=
+# clan_chat_usernames=
+# clan_chat_guest_usernames=
+# public_friend_usernames=
+# player_username=

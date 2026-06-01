@@ -32,11 +32,12 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import melky.resourcepacks.ResourcePacksConfig;
-import melky.resourcepacks.event.UpdateAllOverrides;
+import melky.resourcepacks.event.ReloadPack;
 import melky.resourcepacks.features.overrides.model.OverrideAction;
 import melky.resourcepacks.features.packs.PacksManager;
-import melky.resourcepacks.model.ConfigKeys;
+import melky.resourcepacks.features.packs.PacksService;
 import melky.resourcepacks.model.SpriteOverride;
+import melky.resourcepacks.model.runelite.ConfigKeys;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
 import net.runelite.api.SpritePixels;
@@ -61,13 +62,16 @@ public class CrossSpriteOverride extends OverrideAction
 	@Inject
 	private PacksManager packsManager;
 
+	@Inject
+	private PacksService packsService;
+
 	final List<SpritePixels> clientCrossSprites = new ArrayList<>();
 	private boolean rsCrossSprites;
 
 	@Override
 	public boolean isEnabled(ResourcePacksConfig config)
 	{
-		return config.allowCrossSprites() && !packsManager.isPackPathEmpty();
+		return config.allowCrossSprites() && !packsService.isPackPathEmpty();
 	}
 
 	@Override
@@ -89,7 +93,7 @@ public class CrossSpriteOverride extends OverrideAction
 	}
 
 	@Subscribe
-	public void onUpdateAllOverrides(UpdateAllOverrides event)
+	public void onReloadPack(ReloadPack event)
 	{
 		startUp();
 	}
@@ -106,8 +110,8 @@ public class CrossSpriteOverride extends OverrideAction
 	@Override
 	public void save()
 	{
-		boolean interfaceStylesEnabled = configManager.getConfiguration(RuneLiteConfig.GROUP_NAME, ConfigKeys.Plugins.interfacestylesplugin, Boolean.class);
-		boolean isRs3 = configManager.getConfiguration(ConfigKeys.InterfaceStyles.GROUP_NAME, ConfigKeys.InterfaceStyles.rsCrossSprites, Boolean.class);
+		boolean interfaceStylesEnabled = configManager.getConfiguration(RuneLiteConfig.GROUP_NAME, ConfigKeys.Plugins.INTERFACESTYLESPLUGIN, Boolean.class);
+		boolean isRs3 = configManager.getConfiguration(ConfigKeys.InterfaceStyles.GROUP_NAME, ConfigKeys.InterfaceStyles.RS_CROSS_SPRITES, Boolean.class);
 		isRs3 &= interfaceStylesEnabled;
 		if (!clientCrossSprites.isEmpty() && rsCrossSprites == isRs3)
 		{
@@ -159,7 +163,7 @@ public class CrossSpriteOverride extends OverrideAction
 			return;
 		}
 
-		String currentPackPath = packsManager.getCurrentPackPath();
+		String currentPackPath = packsService.getCurrentPackPath();
 		SpriteOverride.getOverrides().asMap().forEach((key, collection) ->
 		{
 			if (key != SpriteOverride.Folder.CROSS_SPRITES ||

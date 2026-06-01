@@ -1,0 +1,21 @@
+# Basic literal values
+blue=0x0000ff
+red=0xff0000
+
+# Basic substitution
+border="${blue}"
+
+# Recursive substitution
+border_outer="${border}"
+
+# Undefined reference - left as-is
+undefined_ref="${nonexistent}"
+
+# Circular references (before any section header so they stay top-level)
+a="${b}"
+b="${a}"
+
+# Section-based vars
+[color]
+green=0x00ff00
+background="${green}"

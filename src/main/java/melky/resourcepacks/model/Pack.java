@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2025, Ron Young <https://github.com/raiyni>
+ * Copyright (c) 2026, Ron Young <https://github.com/raiyni>
  * All rights reserved.
  *
  *  Redistribution and use in source and binary forms, with or without
@@ -23,8 +23,19 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package melky.resourcepacks.event;
+package melky.resourcepacks.model;
 
-public class UpdateAllOverrides
+import java.util.Map;
+import lombok.Builder;
+import lombok.Value;
+import org.tomlj.TomlTable;
+
+@Value
+@Builder
+public class Pack
 {
+	Map<Object, Object> vars;
+	TomlTable sources;
+	TomlTable overrides;
+	TomlTable chatColors;
 }

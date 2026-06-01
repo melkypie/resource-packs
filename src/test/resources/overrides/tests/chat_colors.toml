@@ -1,0 +1,9 @@
+[opaque]
+public_chat=0x123
+public_chat_highlight=0xabc
+
+
+[transparent]
+public_chat="${black}"
+public_chat_highlight="${red}"
+player_username="${badKey}"

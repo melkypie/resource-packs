@@ -1,0 +1,7 @@
+[opaque]
+public_chat="${border_inner}"
+public_chat_highlight="${fillers_inner}"
+
+[transparent]
+public_chat="${border_outer}"
+public_chat_highlight="${fillers_outer}"

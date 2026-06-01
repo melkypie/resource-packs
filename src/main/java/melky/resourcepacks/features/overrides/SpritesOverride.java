@@ -33,9 +33,10 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
 import melky.resourcepacks.ResourcePacksConfig;
-import melky.resourcepacks.event.UpdateAllOverrides;
+import melky.resourcepacks.event.ReloadPack;
 import melky.resourcepacks.features.overrides.model.OverrideAction;
 import melky.resourcepacks.features.packs.PacksManager;
+import melky.resourcepacks.features.packs.PacksService;
 import melky.resourcepacks.model.SpriteOverride;
 import static melky.resourcepacks.model.SpriteOverride.SKILL_AGILITY;
 import static melky.resourcepacks.model.SpriteOverride.SKILL_AGILITY_GLOW;
@@ -138,12 +139,15 @@ public class SpritesOverride extends OverrideAction
 	private PacksManager packsManager;
 
 	@Inject
+	private PacksService packsService;
+
+	@Inject
 	private ResourcePacksConfig config;
 
 	@Override
 	public boolean isEnabled(ResourcePacksConfig config)
 	{
-		return !packsManager.isPackPathEmpty();
+		return !packsService.isPackPathEmpty();
 	}
 
 	@Override
@@ -163,7 +167,7 @@ public class SpritesOverride extends OverrideAction
 	}
 
 	@Subscribe
-	public void onUpdateAllOverrides(UpdateAllOverrides event)
+	public void onReloadPack(ReloadPack event)
 	{
 		startUp();
 	}
@@ -198,7 +202,7 @@ public class SpritesOverride extends OverrideAction
 	{
 		log.debug("applying sprite overrides");
 
-		String currentPackPath = packsManager.getCurrentPackPath();
+		String currentPackPath = packsService.getCurrentPackPath();
 		SpriteOverride.getOverrides().asMap().forEach((key, collection) ->
 		{
 			if (!Files.isDirectory(Path.of(currentPackPath, key.name().toLowerCase())) ||
