@@ -37,6 +37,7 @@ import melky.resourcepacks.ResourcePacksConfig;
 import melky.resourcepacks.features.creators.declutter.ShowSkillGlow;
 import melky.resourcepacks.features.hub.HubClient;
 import melky.resourcepacks.features.hub.HubPanelModule;
+import melky.resourcepacks.features.overrides.ChatColorOverride;
 import melky.resourcepacks.features.overrides.CrossSpriteOverride;
 import melky.resourcepacks.features.overrides.CustomSpritesOverride;
 import melky.resourcepacks.features.overrides.GameFrameOverride;
@@ -79,6 +80,7 @@ public class ResourcePacksModule extends AbstractModule
 		SpritesOverride spritesOverride,
 		WidgetPropertiesOverride widgetPropertiesOverride,
 		OverlayColorOverride overlayColorOverride,
+		ChatColorOverride chatColorOverride,
 		GameFrameOverride gameFrameOverride,
 		ShowSkillGlow showSkillGlow,
 		PackReader packReader
@@ -103,6 +105,8 @@ public class ResourcePacksModule extends AbstractModule
 			.add(spritesOverride)
 			.add(widgetPropertiesOverride)
 			.add(overlayColorOverride)
+			.add(chatColorOverride)
+			.add(showSkillGlow)
 			.add(gameFrameOverride)
 			.add(packReader);
 

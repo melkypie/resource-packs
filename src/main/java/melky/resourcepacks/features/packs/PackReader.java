@@ -98,6 +98,7 @@ public class PackReader implements PluginLifecycleComponent
 		var pack = Pack.builder()
 			.sources(parseString(sourcesContent))
 			.overrides(parseString(getOverrides()))
+			.chatColors(parseString(getChatColors()))
 			.build();
 
 		eventBus.post(new PackParsed(pack));
@@ -130,6 +131,26 @@ public class PackReader implements PluginLifecycleComponent
 		toml.errors().forEach(error -> log.error("parse error: {}", error.toString()));
 
 		return toml;
+	}
+
+	protected String getChatColors()
+	{
+		try
+		{
+			var overridesFile = packsService.getPath("chat_colors.toml");
+			if (Files.exists(overridesFile))
+			{
+				return Files.readString(overridesFile);
+			}
+
+			return "";
+		}
+		catch (IOException e)
+		{
+			log.debug("error loading chat color overrides", e);
+		}
+
+		return null;
 	}
 
 	protected String getOverrides()

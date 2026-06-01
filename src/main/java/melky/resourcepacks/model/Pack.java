@@ -36,4 +36,5 @@ public class Pack
 {
 	TomlTable sources;
 	TomlTable overrides;
+	TomlTable chatColors;
 }

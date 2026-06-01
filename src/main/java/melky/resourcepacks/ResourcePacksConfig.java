@@ -30,8 +30,7 @@ public interface ResourcePacksConfig extends Config
 
 	@ConfigSection(name = "Configurable Overrides",
 		description = "Overrides able to be toggled",
-		position = 8,
-		closedByDefault = true
+		position = 8
 	)
 	String configurableOverrides = "configurableOverrides";
 
@@ -111,7 +110,6 @@ public interface ResourcePacksConfig extends Config
 		keyName = "allowLoginScreen",
 		name = "Allow login screen to be changed",
 		description = "Gives permissions for resource packs to change your login screen",
-		position = 6,
 		section = configurableOverrides
 	)
 	default boolean allowLoginScreen()
@@ -123,7 +121,6 @@ public interface ResourcePacksConfig extends Config
 		keyName = "allowOverlayColor",
 		name = "Allow overlay color to be changed",
 		description = "Gives permissions for resource packs to change your overlays color",
-		position = 7,
 		section = configurableOverrides
 	)
 	default boolean allowOverlayColor()
@@ -135,7 +132,6 @@ public interface ResourcePacksConfig extends Config
 		keyName = "allowSpellsPrayers",
 		name = "Allow spells/prayers to be changed",
 		description = "Gives permissions for resource packs to change your spells and prayers icons",
-		position = 8,
 		section = configurableOverrides
 	)
 	default boolean allowSpellsPrayers()
@@ -147,12 +143,22 @@ public interface ResourcePacksConfig extends Config
 		keyName = "allowCrossSprites",
 		name = "Allow mouse click sprite to be changed",
 		description = "Allows the cross/mouse click sprites to be changed (This won't work if you have cross sprites enabled in Interface styles)",
-		position = 9,
 		section = configurableOverrides
 	)
 	default boolean allowCrossSprites()
 	{
 		return true;
+	}
+
+	@ConfigItem(
+		keyName = "allowChatColor",
+		name = "Allow chat colors to be changed",
+		description = "Gives permissions for resource packs to change your chat colors",
+		section = configurableOverrides
+	)
+	default boolean allowChatColors()
+	{
+		return false;
 	}
 
 	@ConfigItem(
@@ -171,7 +177,7 @@ public interface ResourcePacksConfig extends Config
 		keyName = "displayWarnings",
 		name = "Display Warnings",
 		description = "Display warnings when changing a setting in Runelite that would conflict/be blocked with resource packs",
-		position = 10,
+		position = -2,
 		section = configurableOverrides
 	)
 	default boolean displayWarnings()
@@ -275,18 +281,6 @@ public interface ResourcePacksConfig extends Config
 		section = experimentalOptions
 	)
 	default boolean developerTools()
-	{
-		return false;
-	}
-
-	@ConfigItem(
-		keyName = "showSkillGlow",
-		name = "Enable Skill Glow",
-		description = "Enables skill glow for creators. Requires Creator tools.",
-		position = 100,
-		section = experimentalOptions
-	)
-	default boolean showSkillGlow()
 	{
 		return false;
 	}
