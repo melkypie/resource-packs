@@ -26,13 +26,17 @@
 package melky.resourcepacks.features.packs;
 
 import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Strings;
+import com.google.common.collect.ImmutableMap;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Properties;
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -59,6 +63,9 @@ public class PackReader implements PluginLifecycleComponent
 
 	@Inject
 	private EventBus eventBus;
+
+	@Inject
+	private PackVars packVars;
 
 	@Setter
 	@Getter
@@ -93,12 +100,18 @@ public class PackReader implements PluginLifecycleComponent
 			return this;
 		}
 
+		Map<Object, Object> idVars = packVars.getVars();
+		TomlParseResult defaultVars = loadVars(loadResourceAsString(getDefaultVarsFile()));
+		TomlParseResult userVars = loadVars(packsService.getPath("vars.toml"));
+
+		VarResolver tokenizer = new VarResolver(idVars, defaultVars, userVars);
 		String sourcesContent = loadResourceAsString(getSourceFile());
 
 		var pack = Pack.builder()
-			.sources(parseString(sourcesContent))
-			.overrides(parseString(getOverrides()))
-			.chatColors(parseString(getChatColors()))
+			.vars(userVars != null ? ImmutableMap.copyOf(userVars.toMap()) : Map.of())
+			.sources(parseString(tokenizer.resolveContent(sourcesContent)))
+			.overrides(parseString(tokenizer.resolveContent(getOverrides())))
+			.chatColors(parseString(tokenizer.resolveContent(getChatColors())))
 			.build();
 
 		eventBus.post(new PackParsed(pack));
@@ -131,6 +144,25 @@ public class PackReader implements PluginLifecycleComponent
 		toml.errors().forEach(error -> log.error("parse error: {}", error.toString()));
 
 		return toml;
+	}
+
+	protected TomlParseResult loadVars(Path path)
+	{
+		if (!Files.exists(path))
+		{
+			return Toml.parse("");
+		}
+
+		try
+		{
+			return loadVars(Files.readString(path));
+		}
+		catch (IOException e)
+		{
+			log.debug("error loading vars", e);
+		}
+
+		return Toml.parse("");
 	}
 
 	protected String getChatColors()
@@ -194,5 +226,19 @@ public class PackReader implements PluginLifecycleComponent
 		}
 
 		return null;
+	}
+
+	@VisibleForTesting
+	public TomlParseResult loadVars(String data)
+	{
+		if (Strings.isNullOrEmpty(data))
+		{
+			return Toml.parse("");
+		}
+
+		TomlParseResult toml = Toml.parse(data);
+		toml.errors().forEach(error -> log.error("Vars parse error: {}", error.toString()));
+
+		return toml;
 	}
 }

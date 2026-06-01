@@ -43,11 +43,13 @@ import melky.resourcepacks.features.overrides.CustomSpritesOverride;
 import melky.resourcepacks.features.overrides.GameFrameOverride;
 import melky.resourcepacks.features.overrides.LoginScreenOverride;
 import melky.resourcepacks.features.overrides.OverlayColorOverride;
-import melky.resourcepacks.features.overrides.Overrides;
 import melky.resourcepacks.features.overrides.SpritesOverride;
 import melky.resourcepacks.features.overrides.WidgetDimensionOverride;
 import melky.resourcepacks.features.overrides.WidgetPropertiesOverride;
+import melky.resourcepacks.features.packs.PackReader;
+import melky.resourcepacks.features.packs.PackVars;
 import melky.resourcepacks.features.packs.PacksManager;
+import melky.resourcepacks.features.packs.PacksService;
 import melky.resourcepacks.features.widgettracker.WidgetSelector;
 import melky.resourcepacks.features.widgettracker.WidgetTracker;
 import melky.resourcepacks.features.widgettracker.WidgetTrackerModule;
@@ -66,6 +68,7 @@ public class ResourcePacksModule extends AbstractModule
 	Set<PluginLifecycleComponent> lifecycleComponents(
 		@Named("developerMode") boolean developerMode,
 
+		PackVars packVars,
 		WidgetTrackerModule widgetTrackerModule,
 		WidgetSelector widgetSelector,
 		WidgetTracker widgetTracker,
@@ -93,7 +96,8 @@ public class ResourcePacksModule extends AbstractModule
 			builder.add(widgetTrackerModule, widgetSelector, widgetTracker);
 		}
 
-		builder.add(overrides)
+		builder
+			.add(packVars)
 			.add(hubClient)
 			.add(hubPanelModule)
 			.add(packsManager)
