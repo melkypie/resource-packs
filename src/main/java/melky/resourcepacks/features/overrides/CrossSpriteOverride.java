@@ -37,6 +37,7 @@ import melky.resourcepacks.features.overrides.model.OverrideAction;
 import melky.resourcepacks.features.packs.PacksManager;
 import melky.resourcepacks.features.packs.PacksService;
 import melky.resourcepacks.model.SpriteOverride;
+import melky.resourcepacks.model.runelite.ConfigKeys;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
 import net.runelite.api.SpritePixels;
@@ -109,8 +110,8 @@ public class CrossSpriteOverride extends OverrideAction
 	@Override
 	public void save()
 	{
-		boolean interfaceStylesEnabled = configManager.getConfiguration(RuneLiteConfig.GROUP_NAME, ConfigKeys.Plugins.interfacestylesplugin, Boolean.class);
-		boolean isRs3 = configManager.getConfiguration(ConfigKeys.InterfaceStyles.GROUP_NAME, ConfigKeys.InterfaceStyles.rsCrossSprites, Boolean.class);
+		boolean interfaceStylesEnabled = configManager.getConfiguration(RuneLiteConfig.GROUP_NAME, ConfigKeys.Plugins.INTERFACESTYLESPLUGIN, Boolean.class);
+		boolean isRs3 = configManager.getConfiguration(ConfigKeys.InterfaceStyles.GROUP_NAME, ConfigKeys.InterfaceStyles.RS_CROSS_SPRITES, Boolean.class);
 		isRs3 &= interfaceStylesEnabled;
 		if (!clientCrossSprites.isEmpty() && rsCrossSprites == isRs3)
 		{

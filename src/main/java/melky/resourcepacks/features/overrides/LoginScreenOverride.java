@@ -33,6 +33,7 @@ import melky.resourcepacks.features.overrides.model.OverrideAction;
 import melky.resourcepacks.features.packs.PacksManager;
 import melky.resourcepacks.features.packs.PacksService;
 import melky.resourcepacks.model.SpriteOverride;
+import melky.resourcepacks.model.runelite.ConfigKeys;
 import net.runelite.api.Client;
 import net.runelite.api.SpritePixels;
 import net.runelite.client.callback.ClientThread;

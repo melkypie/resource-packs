@@ -89,7 +89,8 @@ public class OverlayColorOverride extends OverrideAction
 		}
 
 		if (config.allowOverlayColor() && !ignoreOverlayConfig &&
-			event.getGroup().equals(RuneLiteConfig.GROUP_NAME) && event.getKey().equals(OVERLAY_COLOR_CONFIG))
+			event.getGroup().equals(RuneLiteConfig.GROUP_NAME) &&
+			event.getKey().equals(OVERLAY_COLOR_CONFIG))
 		{
 			config.originalOverlayColor(event.getNewValue());
 

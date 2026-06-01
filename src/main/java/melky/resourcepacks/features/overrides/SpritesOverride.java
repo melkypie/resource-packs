@@ -36,6 +36,7 @@ import melky.resourcepacks.ResourcePacksConfig;
 import melky.resourcepacks.event.ReloadPack;
 import melky.resourcepacks.features.overrides.model.OverrideAction;
 import melky.resourcepacks.features.packs.PacksManager;
+import melky.resourcepacks.features.packs.PacksService;
 import melky.resourcepacks.model.SpriteOverride;
 import static melky.resourcepacks.model.SpriteOverride.SKILL_AGILITY;
 import static melky.resourcepacks.model.SpriteOverride.SKILL_AGILITY_GLOW;
