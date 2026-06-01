@@ -71,6 +71,7 @@ public class ResourcePacksModule extends AbstractModule
 		HubClient hubClient,
 		HubPanelModule hubPanelModule,
 		PacksManager packsManager,
+		PacksService packsService,
 		CrossSpriteOverride crossSpriteOverride,
 		LoginScreenOverride loginScreenOverride,
 		WidgetDimensionOverride widgetDimensionOverride,
@@ -94,6 +95,7 @@ public class ResourcePacksModule extends AbstractModule
 			.add(hubClient)
 			.add(hubPanelModule)
 			.add(packsManager)
+			.add(packsService)
 			.add(crossSpriteOverride)
 			.add(loginScreenOverride)
 			.add(widgetDimensionOverride)

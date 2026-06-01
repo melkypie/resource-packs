@@ -138,12 +138,15 @@ public class SpritesOverride extends OverrideAction
 	private PacksManager packsManager;
 
 	@Inject
+	private PacksService packsService;
+
+	@Inject
 	private ResourcePacksConfig config;
 
 	@Override
 	public boolean isEnabled(ResourcePacksConfig config)
 	{
-		return !packsManager.isPackPathEmpty();
+		return !packsService.isPackPathEmpty();
 	}
 
 	@Override
@@ -198,7 +201,7 @@ public class SpritesOverride extends OverrideAction
 	{
 		log.debug("applying sprite overrides");
 
-		String currentPackPath = packsManager.getCurrentPackPath();
+		String currentPackPath = packsService.getCurrentPackPath();
 		SpriteOverride.getOverrides().asMap().forEach((key, collection) ->
 		{
 			if (!Files.isDirectory(Path.of(currentPackPath, key.name().toLowerCase())) ||

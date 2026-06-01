@@ -39,7 +39,7 @@ import melky.resourcepacks.ResourcePacksConfig;
 import melky.resourcepacks.event.UpdateAllOverrides;
 import melky.resourcepacks.features.overrides.model.OverrideAction;
 import melky.resourcepacks.features.overrides.model.WidgetOverride;
-import melky.resourcepacks.features.packs.PacksManager;
+import melky.resourcepacks.features.packs.PacksService;
 import net.runelite.api.Client;
 import net.runelite.api.events.ScriptPostFired;
 import net.runelite.api.widgets.Widget;
@@ -59,10 +59,7 @@ public class WidgetPropertiesOverride extends OverrideAction
 	private ClientThread clientThread;
 
 	@Inject
-	private PacksManager packsManager;
-
-	@Inject
-	private Overrides overrides;
+	private PacksService packsService;
 
 	@Inject
 	private EventBus eventBus;
@@ -70,7 +67,7 @@ public class WidgetPropertiesOverride extends OverrideAction
 	@Override
 	public boolean isEnabled(ResourcePacksConfig config)
 	{
-		return !packsManager.isPackPathEmpty();
+		return !packsService.isPackPathEmpty();
 	}
 
 	@Override

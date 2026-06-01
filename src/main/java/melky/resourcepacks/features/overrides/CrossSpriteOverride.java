@@ -35,7 +35,7 @@ import melky.resourcepacks.ResourcePacksConfig;
 import melky.resourcepacks.event.UpdateAllOverrides;
 import melky.resourcepacks.features.overrides.model.OverrideAction;
 import melky.resourcepacks.features.packs.PacksManager;
-import melky.resourcepacks.model.ConfigKeys;
+import melky.resourcepacks.features.packs.PacksService;
 import melky.resourcepacks.model.SpriteOverride;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
@@ -61,13 +61,16 @@ public class CrossSpriteOverride extends OverrideAction
 	@Inject
 	private PacksManager packsManager;
 
+	@Inject
+	private PacksService packsService;
+
 	final List<SpritePixels> clientCrossSprites = new ArrayList<>();
 	private boolean rsCrossSprites;
 
 	@Override
 	public boolean isEnabled(ResourcePacksConfig config)
 	{
-		return config.allowCrossSprites() && !packsManager.isPackPathEmpty();
+		return config.allowCrossSprites() && !packsService.isPackPathEmpty();
 	}
 
 	@Override
@@ -159,7 +162,7 @@ public class CrossSpriteOverride extends OverrideAction
 			return;
 		}
 
-		String currentPackPath = packsManager.getCurrentPackPath();
+		String currentPackPath = packsService.getCurrentPackPath();
 		SpriteOverride.getOverrides().asMap().forEach((key, collection) ->
 		{
 			if (key != SpriteOverride.Folder.CROSS_SPRITES ||

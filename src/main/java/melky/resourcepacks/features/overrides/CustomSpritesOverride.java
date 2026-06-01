@@ -34,6 +34,7 @@ import melky.resourcepacks.ResourcePacksConfig;
 import melky.resourcepacks.event.UpdateAllOverrides;
 import melky.resourcepacks.features.overrides.model.OverrideAction;
 import melky.resourcepacks.features.packs.PacksManager;
+import melky.resourcepacks.features.packs.PacksService;
 import melky.resourcepacks.model.SpriteOverride;
 import melky.resourcepacks.model.TabSprites;
 import net.runelite.api.Client;
@@ -50,6 +51,9 @@ public class CustomSpritesOverride extends OverrideAction
 	private PacksManager packsManager;
 
 	@Inject
+	private PacksService packsService;
+
+	@Inject
 	private Client client;
 
 	@Inject
@@ -58,7 +62,7 @@ public class CustomSpritesOverride extends OverrideAction
 	@Override
 	public boolean isEnabled(ResourcePacksConfig config)
 	{
-		return !packsManager.isPackPathEmpty();
+		return !packsService.isPackPathEmpty();
 	}
 
 	@Override
@@ -112,7 +116,7 @@ public class CustomSpritesOverride extends OverrideAction
 	@Override
 	public void apply()
 	{
-		String currentPackPath = packsManager.getCurrentPackPath();
+		String currentPackPath = packsService.getCurrentPackPath();
 		SpriteOverride.getOverrides().asMap().forEach((key, collection) ->
 		{
 			if (!Files.isDirectory(Path.of(currentPackPath, key.name().toLowerCase())))

@@ -31,7 +31,7 @@ import melky.resourcepacks.ResourcePacksConfig;
 import melky.resourcepacks.event.UpdateAllOverrides;
 import melky.resourcepacks.features.overrides.model.OverrideAction;
 import melky.resourcepacks.features.packs.PacksManager;
-import melky.resourcepacks.model.ConfigKeys;
+import melky.resourcepacks.features.packs.PacksService;
 import melky.resourcepacks.model.SpriteOverride;
 import net.runelite.api.Client;
 import net.runelite.api.SpritePixels;
@@ -53,12 +53,15 @@ public class LoginScreenOverride extends OverrideAction
 	private PacksManager packsManager;
 
 	@Inject
+	private PacksService packsService;
+
+	@Inject
 	private Client client;
 
 	@Override
 	public boolean isEnabled(ResourcePacksConfig config)
 	{
-		return config.allowLoginScreen() && !packsManager.isPackPathEmpty();
+		return config.allowLoginScreen() && !packsService.isPackPathEmpty();
 	}
 
 	@Override
@@ -82,7 +85,7 @@ public class LoginScreenOverride extends OverrideAction
 	@Override
 	public void apply()
 	{
-		SpritePixels spritePixels = packsManager.getSpritePixels(SpriteOverride.LOGIN_SCREEN_BACKGROUND, packsManager.getCurrentPackPath());
+		SpritePixels spritePixels = packsManager.getSpritePixels(SpriteOverride.LOGIN_SCREEN_BACKGROUND, packsService.getCurrentPackPath());
 		if (spritePixels != null)
 		{
 			client.setLoginScreen(spritePixels);

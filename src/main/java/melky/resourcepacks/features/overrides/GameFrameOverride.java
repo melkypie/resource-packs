@@ -32,7 +32,7 @@ import melky.resourcepacks.ResourcePacksConfig;
 import melky.resourcepacks.event.UpdateAllOverrides;
 import melky.resourcepacks.features.overrides.model.OverrideAction;
 import melky.resourcepacks.features.packs.PacksManager;
-import melky.resourcepacks.model.ConfigKeys;
+import melky.resourcepacks.features.packs.PacksService;
 import melky.resourcepacks.model.SpriteOverride;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
@@ -62,6 +62,9 @@ public class GameFrameOverride extends OverrideAction
 	private PacksManager packsManager;
 
 	@Inject
+	private PacksService packsService;
+
+	@Inject
 	private ResourcePacksConfig config;
 
 	@Inject
@@ -70,7 +73,7 @@ public class GameFrameOverride extends OverrideAction
 	@Override
 	public boolean isEnabled(ResourcePacksConfig config)
 	{
-		return !packsManager.isPackPathEmpty();
+		return !packsService.isPackPathEmpty();
 	}
 
 	@Override
@@ -135,7 +138,7 @@ public class GameFrameOverride extends OverrideAction
 	@Override
 	public void apply()
 	{
-		String currentPackPath = packsManager.getCurrentPackPath();
+		String currentPackPath = packsService.getCurrentPackPath();
 		SpritePixels spritePixels = packsManager.getSpritePixels(SpriteOverride.COMPASS, currentPackPath);
 		if (spritePixels == null)
 		{

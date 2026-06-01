@@ -32,8 +32,8 @@ import javax.inject.Singleton;
 import melky.resourcepacks.ResourcePacksConfig;
 import melky.resourcepacks.event.UpdateAllOverrides;
 import melky.resourcepacks.features.overrides.model.OverrideAction;
-import melky.resourcepacks.features.packs.PacksManager;
-import static melky.resourcepacks.model.RuneLiteConfig.OVERLAY_COLOR_CONFIG;
+import melky.resourcepacks.features.packs.PacksService;
+import static melky.resourcepacks.model.runelite.ConfigKeys.RuneLiteConfig.OVERLAY_COLOR_CONFIG;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.config.RuneLiteConfig;
@@ -50,10 +50,7 @@ public class OverlayColorOverride extends OverrideAction
 	private ResourcePacksConfig config;
 
 	@Inject
-	private Overrides overrides;
-
-	@Inject
-	private PacksManager packsManager;
+	private PacksService packsService;
 
 	@Inject
 	private ClientThread clientThread;
@@ -63,7 +60,7 @@ public class OverlayColorOverride extends OverrideAction
 	@Override
 	public boolean isEnabled(ResourcePacksConfig config)
 	{
-		return config.allowOverlayColor() && !packsManager.isPackPathEmpty();
+		return config.allowOverlayColor() && !packsService.isPackPathEmpty();
 	}
 
 	@Override
@@ -85,7 +82,7 @@ public class OverlayColorOverride extends OverrideAction
 	@Subscribe(priority = Float.MIN_VALUE)
 	public void onConfigChanged(ConfigChanged event)
 	{
-		if (!packsManager.isActiveProfile())
+		if (!packsService.isActiveProfile())
 		{
 			return;
 		}
@@ -97,7 +94,7 @@ public class OverlayColorOverride extends OverrideAction
 
 			if (config.displayWarnings())
 			{
-				packsManager.sendWarning("Your overlay color will be overwritten by your resource pack. You can disable this feature by turning off 'Allow overlay color to be changed'.");
+				packsService.sendWarning("Your overlay color will be overwritten by your resource pack. You can disable this feature by turning off 'Allow overlay color to be changed'.");
 			}
 		}
 	}
