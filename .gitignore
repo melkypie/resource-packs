@@ -8,3 +8,6 @@ nbactions.xml
 nb-configuration.xml
 nbproject/
 *.txt
+plans/
+.kilo/
+tools/

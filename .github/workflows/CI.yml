@@ -22,3 +22,6 @@ jobs:
     - name: PMD
       run: |
         ./gradlew pmdMain
+    - name: Test
+      run: |
+        ./gradlew test
