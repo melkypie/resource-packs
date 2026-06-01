@@ -29,6 +29,7 @@ import com.google.common.base.Strings;
 import java.awt.Color;
 import javax.inject.Inject;
 import javax.inject.Singleton;
+import lombok.Setter;
 import melky.resourcepacks.ResourcePacksConfig;
 import melky.resourcepacks.event.PackParsed;
 import melky.resourcepacks.event.ReloadPack;
@@ -58,6 +59,9 @@ public class OverlayColorOverride extends OverrideAction
 
 	private boolean ignoreOverlayConfig;
 
+	@Setter
+	private Color overlayColor;
+
 	@Override
 	public boolean isEnabled(ResourcePacksConfig config)
 	{
@@ -78,6 +82,28 @@ public class OverlayColorOverride extends OverrideAction
 	public void shutDown()
 	{
 		clientThread.invokeLater(this::reset);
+	}
+
+	@Subscribe
+	public void onPackParsed(PackParsed event)
+	{
+
+		var pack = event.getPack();
+		var source = pack.getSources();
+		var overrides = pack.getOverrides();
+
+		if (pack.getSources() == null || pack.getOverrides() == null)
+		{
+			return;
+		}
+		if (source.contains("overlay.color"))
+		{
+			this.overlayColor = new Color(source.getLong("overlay.color").intValue(), true);
+		}
+		if (overrides.contains("overlay.color"))
+		{
+			this.overlayColor = new Color(overrides.getLong("overlay.color").intValue(), true);
+		}
 	}
 
 	@Subscribe(priority = Float.MIN_VALUE)
@@ -110,13 +136,18 @@ public class OverlayColorOverride extends OverrideAction
 	@Override
 	public void apply()
 	{
+		if (this.overlayColor == null)
+		{
+			return;
+		}
+
 		if (Strings.isNullOrEmpty(config.originalOverlayColor()))
 		{
 			config.originalOverlayColor(configManager.getConfiguration(RuneLiteConfig.GROUP_NAME, OVERLAY_COLOR_CONFIG));
 		}
 
 		ignoreOverlayConfig = true;
-		Color overlayColor = overrides.getOverlayColor();
+		Color overlayColor = this.overlayColor;
 		if (config.allowColorPack() && config.colorPack() != null && config.colorPack().getAlpha() != 0 && config.colorPackOverlay())
 		{
 			overlayColor = config.colorPack();
@@ -134,5 +165,7 @@ public class OverlayColorOverride extends OverrideAction
 			configManager.setConfiguration(RuneLiteConfig.GROUP_NAME, OVERLAY_COLOR_CONFIG, config.originalOverlayColor());
 			configManager.unsetConfiguration(ResourcePacksConfig.GROUP_NAME, ResourcePacksConfig.ORIGINAL_OVERLAY_COLOR);
 		}
+
+		this.overlayColor = null;
 	}
 }

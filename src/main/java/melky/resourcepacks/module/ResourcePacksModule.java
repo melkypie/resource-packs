@@ -78,10 +78,10 @@ public class ResourcePacksModule extends AbstractModule
 		CustomSpritesOverride customSpritesOverride,
 		SpritesOverride spritesOverride,
 		WidgetPropertiesOverride widgetPropertiesOverride,
-		Overrides overrides,
 		OverlayColorOverride overlayColorOverride,
 		GameFrameOverride gameFrameOverride,
-		ShowSkillGlow showSkillGlow
+		ShowSkillGlow showSkillGlow,
+		PackReader packReader
 	)
 	{
 		var builder = new ImmutableSet.Builder<PluginLifecycleComponent>();
@@ -104,7 +104,7 @@ public class ResourcePacksModule extends AbstractModule
 			.add(widgetPropertiesOverride)
 			.add(overlayColorOverride)
 			.add(gameFrameOverride)
-			.add(showSkillGlow);
+			.add(packReader);
 
 		return builder.build();
 	}

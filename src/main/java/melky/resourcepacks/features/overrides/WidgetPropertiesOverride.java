@@ -25,20 +25,36 @@
 
 package melky.resourcepacks.features.overrides;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Properties;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Objects;
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import javax.inject.Inject;
 import javax.inject.Singleton;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import melky.resourcepacks.ResourcePacksConfig;
 import melky.resourcepacks.event.PackParsed;
 import melky.resourcepacks.event.ReloadPack;
 import melky.resourcepacks.features.overrides.model.OverrideAction;
+import melky.resourcepacks.features.overrides.model.OverrideKey;
+import static melky.resourcepacks.features.overrides.model.OverrideKey.ACTIVE_WIDGET;
+import static melky.resourcepacks.features.overrides.model.OverrideKey.CHILDREN;
+import static melky.resourcepacks.features.overrides.model.OverrideKey.COLOR;
+import static melky.resourcepacks.features.overrides.model.OverrideKey.DYNAMIC_CHILDREN;
+import static melky.resourcepacks.features.overrides.model.OverrideKey.EXPLICIT;
+import static melky.resourcepacks.features.overrides.model.OverrideKey.INTERFACE;
+import static melky.resourcepacks.features.overrides.model.OverrideKey.NEW_TYPE;
+import static melky.resourcepacks.features.overrides.model.OverrideKey.OPACITY;
+import static melky.resourcepacks.features.overrides.model.OverrideKey.SCRIPTS;
+import static melky.resourcepacks.features.overrides.model.OverrideKey.TYPE;
+import static melky.resourcepacks.features.overrides.model.OverrideKey.VARBIT;
+import static melky.resourcepacks.features.overrides.model.OverrideKey.VARBIT_VALUE;
 import melky.resourcepacks.features.overrides.model.WidgetOverride;
 import melky.resourcepacks.features.packs.PacksService;
 import net.runelite.api.Client;
@@ -47,12 +63,17 @@ import net.runelite.api.widgets.Widget;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
-import net.runelite.client.events.PluginMessage;
+import org.tomlj.TomlArray;
+import org.tomlj.TomlTable;
 
 @Slf4j
 @Singleton
 public class WidgetPropertiesOverride extends OverrideAction
 {
+	@Getter
+	@VisibleForTesting
+	private final Multimap<Integer, WidgetOverride> overrides = ArrayListMultimap.create();
+
 	@Inject
 	private Client client;
 
@@ -74,8 +95,6 @@ public class WidgetPropertiesOverride extends OverrideAction
 	@Override
 	public void startUp()
 	{
-		reload();
-
 		clientThread.invokeLater(this::apply);
 	}
 
@@ -94,7 +113,7 @@ public class WidgetPropertiesOverride extends OverrideAction
 	@Subscribe
 	public void onScriptPostFired(ScriptPostFired event)
 	{
-		if (!overrides.isEmpty() && overrides.contains(event.getScriptId()))
+		if (!overrides.isEmpty() && overrides.containsKey(event.getScriptId()))
 		{
 			for (var widgetOverride : overrides.get(event.getScriptId()))
 			{
@@ -127,6 +146,23 @@ public class WidgetPropertiesOverride extends OverrideAction
 		for (WidgetOverride widgetOverride : overrides.values())
 		{
 			addPropertyToWidget(widgetOverride, false);
+		}
+	}
+
+	@Subscribe
+	public void onPackParsed(PackParsed event)
+	{
+		var pack = event.getPack();
+		if (pack.getSources() == null || pack.getOverrides() == null)
+		{
+			return;
+		}
+
+		var keys = pack.getSources().keySet();
+		for (var key : keys)
+		{
+			var table = pack.getSources().getTableOrEmpty(key);
+			walkChildren(new WidgetOverride().withName(key), table, pack.getOverrides());
 		}
 	}
 
@@ -188,16 +224,6 @@ public class WidgetPropertiesOverride extends OverrideAction
 
 		if (reset)
 		{
-			if (widgetOverride.isExplicit() && widgetOverride.isAllChildren())
-			{
-				if (newColor == widget.getTextColor())
-				{
-					widget.setTextColor(oldColor);
-				}
-
-				return;
-			}
-
 			widget.setTextColor(oldColor);
 
 			if (widget.getType() == widgetOverride.getNewType())
@@ -254,53 +280,237 @@ public class WidgetPropertiesOverride extends OverrideAction
 		}
 	}
 
-	void reload()
+	@VisibleForTesting
+	protected WidgetOverride overrideProperties(WidgetOverride parent, Map<String, Object> source, TomlTable override)
 	{
-		try
+		var node = parent;
+		var path = parent.getName();
+
+		if (source.containsKey(INTERFACE))
 		{
-			File overridesFile = Path.of(packsManager.getCurrentPackPath(), "overrides.toml").toFile();
-			if (overridesFile.exists())
+			node = node.withInterfaceId(((Long) source.get(INTERFACE)).intValue());
+			source.remove(INTERFACE);
+		}
+
+		if (source.containsKey(COLOR))
+		{
+			int c = ((Long) source.get(COLOR)).intValue();
+
+			if (override.contains(OverrideKey.append(path, COLOR)))
 			{
-				var data = com.google.common.io.Files.asCharSource(overridesFile, Charset.defaultCharset()).read();
-				overrides.buildOverrides(data);
+				var v = override.get(OverrideKey.append(path, COLOR));
+				if (v instanceof Long)
+				{
+					node = node.withNewColor(((Long) v).intValue());
+				}
 			}
 			else
 			{
-				log.debug("overrides.toml not found, trying color.properties");
-				var backwardsMap = new Properties();
-				var properties = new Properties();
-
-				File propertiesFile = Path.of(packsManager.getCurrentPackPath(), "color.properties").toFile();
-				try (var is = new FileInputStream(propertiesFile); var is2 = PacksManager.class.getResourceAsStream("/overrides/backwards-map.properties"))
+				if (node.getColor() == node.getNewColor())
 				{
-					properties.load(is);
-					backwardsMap.load(is2);
+					node = node.withNewColor(c);
 				}
-
-				var lines = new ArrayList<String>();
-				for (var entry : backwardsMap.entrySet())
-				{
-					if (properties.containsKey(entry.getValue()))
-					{
-						lines.add("[" + entry.getKey() + "]");
-						lines.add("color=" + properties.get(entry.getValue()));
-					}
-				}
-
-				log.debug("built {}", String.join("\n", lines));
-				overrides.buildOverrides(String.join("\n", lines));
 			}
 
-			eventBus.post(new PluginMessage("resource-packs", "pack-loaded"));
+			node = node.withColor(c);
+
+			source.remove(COLOR);
 		}
-		catch (IOException e)
+
+		if (source.containsKey(TYPE))
 		{
-			log.debug("error loading color overrides", e);
+			node = node.withType(((Long) source.get(TYPE)).intValue());
+			if (source.containsKey(NEW_TYPE))
+			{
+				node = node.withNewType(((Long) source.get(NEW_TYPE)).intValue());
+				source.remove(NEW_TYPE);
+			}
 
-
-			overrides.buildOverrides("");
-//			resetOverlayColor();
+			source.remove(TYPE);
 		}
+
+		if (source.containsKey(OPACITY))
+		{
+			int o = ((Long) source.get(OPACITY)).intValue();
+			node = node.withOpacity(o);
+			if (override.contains(OverrideKey.append(path, OPACITY)))
+			{
+				node = node.withNewOpacity(override.getLong(OverrideKey.append(path, OPACITY)).intValue());
+			}
+			else
+			{
+				node = node.withNewOpacity(o);
+			}
+
+			source.remove(OPACITY);
+		}
+
+		if (source.containsKey(EXPLICIT))
+		{
+			node = node.withExplicit(true);
+			source.remove(EXPLICIT);
+		}
+
+		if (source.containsKey(ACTIVE_WIDGET))
+		{
+			node = node.withActiveWidget(true);
+			source.remove(ACTIVE_WIDGET);
+		}
+
+		return node;
+	}
+
+	@VisibleForTesting
+	public WidgetOverride walkChildren(WidgetOverride parent, TomlTable source, TomlTable override)
+	{
+		var node = parent;
+		var map = source.toMap();
+
+		node = overrideProperties(node, map, override);
+
+		if (map.containsKey(SCRIPTS))
+		{
+			var scripts = source.getArrayOrEmpty(SCRIPTS).toList();
+			map.remove(SCRIPTS);
+
+			for (var script : scripts)
+			{
+				var clonedMap = new HashMap<>(map);
+				var n2 = node.withScript(((Long) script).intValue());
+				walkChildren(n2, clonedMap, override);
+			}
+		}
+		else
+		{
+			walkChildren(node, map, override);
+		}
+
+		return node;
+	}
+
+	@VisibleForTesting
+	protected WidgetOverride walkChildren(WidgetOverride parent, Map<String, Object> source, TomlTable override)
+	{
+		var node = parent;
+		node = overrideProperties(node, source, override);
+
+		if (source.containsKey(VARBIT))
+		{
+			var obj = source.get(VARBIT);
+			if (obj instanceof Long)
+			{
+				var matcher = Map.entry(((Long) source.get(VARBIT)).intValue(), ((Long) source.get(VARBIT_VALUE)).intValue());
+				node = node.withVarbits(List.of(matcher));
+			}
+			else if (obj instanceof TomlArray)
+			{
+				var varbits = ((TomlArray) obj).toList();
+				var values = ((TomlArray) source.get(VARBIT_VALUE)).toList();
+				if (varbits.size() != values.size())
+				{
+					log.error("mis matching varbits size for {}", source);
+					return parent;
+				}
+
+				var matchers = IntStream.range(0, varbits.size())
+					.boxed()
+					.map(i -> Map.entry(((Long) varbits.get(i)).intValue(), ((Long) values.get(i)).intValue()))
+					.collect(Collectors.toList());
+				node = node.withVarbits(matchers);
+			}
+
+			source.remove(VARBIT);
+			source.remove(VARBIT_VALUE);
+		}
+
+		if (source.containsKey(CHILDREN))
+		{
+			var children = (TomlArray) source.get(CHILDREN);
+			source.remove(CHILDREN);
+
+			var list = children.toList();
+			for (var child : list)
+			{
+				var n2 = node.withChildId(((Long) child).intValue());
+				var clonedMap = new HashMap<>(source);
+				walkChildren(n2, clonedMap, override);
+			}
+
+			// remove dynamic children so we don't walk from empty children
+			source.remove(DYNAMIC_CHILDREN);
+		}
+
+		var tableKeys = source.keySet()
+			.stream()
+			.filter(k -> (source.get(k) instanceof TomlTable || source.get(k) instanceof TomlArray)
+				&& !Objects.equal(k, DYNAMIC_CHILDREN)
+				&& !Objects.equal(k, CHILDREN)
+				&& !Objects.equal(k, SCRIPTS))
+			.collect(Collectors.toSet());
+
+		for (var key : tableKeys)
+		{
+			var obj = source.get(key);
+			if (obj instanceof TomlTable)
+			{
+				var table = (TomlTable) obj;
+				source.remove(key);
+
+				walkChildren(node.withName(node.getName() + "." + key), table, override);
+			}
+			else if (obj instanceof TomlArray)
+			{
+				var array = (TomlArray) obj;
+				source.remove(key);
+
+				if (array.get(0) instanceof TomlTable)
+				{
+					var list = array.toList();
+					for (var table : list)
+					{
+						walkChildren(node.withName(node.getName() + "." + key), (TomlTable) table, override);
+					}
+				}
+			}
+		}
+
+		if (source.containsKey(DYNAMIC_CHILDREN))
+		{
+			var obj = source.get(DYNAMIC_CHILDREN);
+			if (obj instanceof TomlArray)
+			{
+				var children = (TomlArray) obj;
+				var list = children.toList().stream()
+					.map(l -> ((Long) l).intValue())
+					.collect(Collectors.toList());
+				node = node.withDynamicChildren(list);
+			}
+			else if (obj instanceof Boolean)
+			{
+				node = node.withAllChildren((boolean) obj);
+			}
+		}
+
+		if (source.containsKey("skip"))
+		{
+			return parent;
+		}
+
+		if (node.isValid())
+		{
+			log.debug("adding override {}", node);
+			overrides.put(node.getScript(), node);
+		}
+		else
+		{
+			if (node.getNewColor() > -1 && node.getInterfaceId() > -1 &&
+				node.getChildId() > -1 && node.getScript() == -1)
+			{
+				log.debug("skipping override {}, no scriptid", node);
+			}
+		}
+
+		return parent;
 	}
 
 	private static boolean typeCompare(WidgetOverride widgetOverride, Widget widget)
