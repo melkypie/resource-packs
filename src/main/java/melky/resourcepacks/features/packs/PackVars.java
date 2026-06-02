@@ -31,7 +31,6 @@ import java.util.Map;
 import javax.inject.Singleton;
 import lombok.Getter;
 import melky.resourcepacks.module.PluginLifecycleComponent;
-import net.runelite.api.gameval.InterfaceID;
 
 @Singleton
 public final class PackVars implements PluginLifecycleComponent

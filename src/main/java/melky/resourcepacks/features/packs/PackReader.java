@@ -200,8 +200,7 @@ public class PackReader implements PluginLifecycleComponent
 			var properties = new Properties();
 
 			File propertiesFile = packsService.getPath("color.properties").toFile();
-			try (var is = new FileInputStream(propertiesFile);
-			     var is2 = PacksManager.class.getResourceAsStream("/overrides/backwards-map.properties"))
+			try (var is = new FileInputStream(propertiesFile); var is2 = PacksManager.class.getResourceAsStream("/overrides/backwards-map.properties"))
 			{
 				properties.load(is);
 				backwardsMap.load(is2);
