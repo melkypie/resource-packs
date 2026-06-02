@@ -1,0 +1,132 @@
+# Resource Pack Variables
+#
+# Variables define reusable color and opacity values that can be referenced
+# from overrides.toml using the template syntax:
+#
+#   color="${color.<name>}"
+#   opacity="${opacity.<name>}"
+#
+# Colors are hex values in 0xRRGGBB format (e.g. 0xff0000 = red).
+# Opacity is a number from 0 (opaque) to 255 (transparent).
+#
+# You can also add your own variables here and reference them in overrides.toml.
+# ex.
+# vars.toml:
+# 	some-name: 0xff
+#
+# overrides.toml:
+#	bank.menu.border.inner.color="${some-name}"
+#
+# Variables can also reference other variables, so ex. you can define a theme
+# section that groups related values:
+#
+#   [theme.my-theme1]
+#   background=0x000000
+#   text=0xffffff
+#
+#   [color]
+#   dark="${theme.my-theme1.background}"
+#   light="${theme.my-theme1.text}"
+#
+# See the sample development pack for an example of usage: https://github.com/melkypie/resource-packs/tree/pack-development
+# It is not available in the client but it can be downloaded for local usage.
+#
+# The comments above each value in the default vars are where each value is possibly used,
+# so you can have an idea of where to look in-game for changes. The comment lines can be deleted
+# if you so choose, as they do not provide any functionality to the pack.
+
+[color]
+# achievement_diary, choose_spell, colosseum, combat_achievements, forestry_kit, forestry_shop, portal_nexus, quest_list, sailing, spell_tooltip, world_switcher
+background=0x000000
+# deposit_lock, sailing
+background_2=0xffffff
+# sailing
+background_3=0x4e453a
+# item_search
+background_4=0x463214
+# make_all, report
+background_5=0x89785e
+# cox, lms
+background_6=0x4e4c4a
+# bounty_hunter
+background_7=0x494034
+# sailing
+background_alternate=0x595046
+# sailing
+background_hovered=0x968776
+# bank, bonds_pouch, choose_spell, colosseum, grouping_tab, sailing, skill_guide, spell_tooltip
+border=0x726451
+# sailing
+border_2=0x000001
+# achievement_diary
+border_3=0xff9933
+# poh
+border_4=0x333300
+# collection_log
+border_5=0x585040
+# world_switcher
+border_bottom=0x73654a
+# bank, clan_chat, colosseum, combat_achievements, costumes, cox, deposit_lock, forestry_kit, forestry_shop, friends_chat, friends_list, ignore_list, jewellery_box, kept_on_death, lectern, lms, minigame_teleports, music_player, notification, other_clan, pvp_arena, sailing, settings, settings_tab, skill_guide, toa, tob, world_map, world_switcher
+border_inner=0x474745
+# bank, bounty_hunter, cox, deposit_box, friends_chat, ge, lms, looting_bag, pvp_arena, rune_pouch, xp_tracker
+border_inner_2=0x5a5245
+# forestry_shop, grouping_tab, pet_house, sailing
+border_inner_3=0xff981f
+# tob
+border_inner_4=0x0f0f0d
+# bank, clan_chat, colosseum, combat_achievements, costumes, cox, deposit_lock, forestry_kit, forestry_shop, friends_chat, friends_list, ignore_list, jewellery_box, kept_on_death, lectern, lms, minigame_teleports, music_player, notification, other_clan, pvp_arena, sailing, settings, settings_tab, skill_guide, toa, tob, world_map, world_switcher
+border_outer=0x0e0e0c
+# bank, bounty_hunter, cox, friends_chat, ge, lms, looting_bag, pvp_arena, rune_pouch, soul_wars, toa, xp_tracker
+border_outer_2=0x383023
+# bank, bonds_pouch, choose_spell, grouping_tab, sailing, spell_tooltip
+border_outer_3=0x2e2b23
+# combat_achievements
+border_outer_4=0x303030
+# pet_house
+border_outer_5=0x191900
+# deposit_box
+border_outer_6=0x383013
+# grouping_tab
+border_outer_7=0x3c222c
+# ge
+glow=0xffff00
+# forestry_shop
+hovered=0xb8a182
+# bank, deposit_box, deposit_lock
+locked=0xff0000
+# deposit_lock
+locked_2=0xff7070
+# clan_chat
+rectangle=0x170801
+# colosseum
+selected=0x9d6a76
+# account_management, channel_tab, combat_achievements, pvp_arena, quest_tab, sailing, settings_tab, soul_wars, toa
+separator=0x5d5848
+# pvp_arena
+separator_2=0x6b6b69
+# chatbox
+separator_3=0x807660
+# deposit_lock
+unlocked=0x9f9f9f
+
+[opacity]
+# lms, pvp_arena
+dimmed=100
+# sailing
+dimmed_2=70
+# world_switcher
+mostly_opaque=50
+# spell_tooltip
+mostly_opaque_2=40
+# sailing
+mostly_transparent=230
+# sailing
+mostly_transparent_2=210
+# quest_list
+mostly_transparent_3=212
+# bank, bonds_pouch, chatbox, choose_spell, colosseum, combat_achievements, costumes, cox, deposit_box, deposit_lock, forestry_kit, forestry_shop, friends_chat, friends_list, ge, grouping_tab, ignore_list, item_search, jewellery_box, kept_on_death, lectern, lms, looting_bag, make_all, minigame_teleports, music_player, other_clan, pet_house, poh, portal_nexus, pvp_arena, sailing, settings, settings_tab, skill_guide, spell_tooltip, toa, tob, world_map, world_switcher, xp_tracker
+opaque=0
+# chatbox, colosseum, forestry_kit, forestry_shop, item_search
+semi_transparent=200
+# achievement_diary, bounty_hunter, combat_achievements, grouping_tab, item_search, pet_house, sailing
+translucent=150
