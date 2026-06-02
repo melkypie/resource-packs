@@ -23,7 +23,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package melky.resourcepacks.features.creators.declutter;
+package melky.resourcepacks.features.creators.skillglow;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
