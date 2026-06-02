@@ -26,7 +26,6 @@
 package melky.resourcepacks.features.overrides;
 
 import com.google.common.annotations.VisibleForTesting;
-import com.google.gson.Gson;
 import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
@@ -49,8 +48,6 @@ import org.tomlj.TomlTable;
 @Slf4j
 public class ChatColorOverride extends OverrideAction
 {
-	private static final String SAVED_KEY = "chatColors_saved";
-
 	@Inject
 	private ResourcePacksConfig config;
 
@@ -59,9 +56,6 @@ public class ChatColorOverride extends OverrideAction
 
 	@Inject
 	private PacksService packsService;
-
-	@Inject
-	private Gson gson;
 
 	@Getter
 	@VisibleForTesting

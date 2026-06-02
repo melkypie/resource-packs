@@ -75,7 +75,7 @@ public class PackReader implements PluginLifecycleComponent
 	@Setter
 	private String defaultVarsFile = "/overrides/vars.toml";
 
-	@Inject
+	@Override
 	public boolean isEnabled(ResourcePacksConfig config)
 	{
 		return !packsService.isPackPathEmpty();

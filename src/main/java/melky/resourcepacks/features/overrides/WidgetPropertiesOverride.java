@@ -61,7 +61,6 @@ import net.runelite.api.Client;
 import net.runelite.api.events.ScriptPostFired;
 import net.runelite.api.widgets.Widget;
 import net.runelite.client.callback.ClientThread;
-import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
 import org.tomlj.TomlArray;
 import org.tomlj.TomlTable;
@@ -82,9 +81,6 @@ public class WidgetPropertiesOverride extends OverrideAction
 
 	@Inject
 	private PacksService packsService;
-
-	@Inject
-	private EventBus eventBus;
 
 	@Override
 	public boolean isEnabled(ResourcePacksConfig config)
