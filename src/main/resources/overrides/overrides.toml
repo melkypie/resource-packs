@@ -1,3 +1,6 @@
+# Interface IDs, child IDs, colors, and opacities will be extracted to PackVars.java and vars.toml on commit.
+# Do not edit vars.toml or PackVars.java manually — they are auto-generated.
+
 [account_management]
 interface=109
 
