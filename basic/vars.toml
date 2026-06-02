@@ -1,0 +1,86 @@
+# Resource Pack Variables
+#
+# Variables define reusable color and opacity values that can be referenced
+# from overrides.toml using the template syntax:
+#
+#   color="${color.<name>}"
+#   opacity="${opacity.<name>}"
+#
+# Colors are hex values in 0xRRGGBB format (e.g. 0xff0000 = red).
+# Opacity is a number from 0 (opaque) to 255 (transparent).
+#
+# You can also add your own variables here and reference them in overrides.toml.
+# ex.
+# vars.toml:
+# 	some-name: 0xff
+#
+# overrides.toml:
+#	bank.menu.border.inner.color="${some-name}"
+#
+# Variables can also reference other variables, so ex. you can define a theme
+# section that groups related values:
+#
+#   [theme.my-theme1]
+#   background=0x000000
+#   text=0xffffff
+#
+#   [color]
+#   dark="${theme.my-theme1.background}"
+#   light="${theme.my-theme1.text}"
+#
+# See the sample development pack for an example of usage: https://github.com/melkypie/resource-packs/tree/pack-development
+# It is not available in the client but it can be downloaded for local usage.
+#
+# The comments above each value in the default vars are where each value is possibly used,
+# so you can have an idea of where to look in-game for changes. The comment lines can be deleted
+# if you so choose, as they do not provide any functionality to the pack.
+
+[color]
+background=0x1a1c2c
+background_2=0xf4f4e8
+background_3=0x5d6b3e
+background_4=0x3b2716
+background_5=0xa38b6e
+background_6=0x564d48
+background_7=0x3e3849
+background_alternate=0x6b5d4f
+background_hovered=0xc9a87c
+border=0x8b6f5e
+border_2=0x2c2137
+border_3=0xef8d32
+border_4=0x445522
+border_5=0x6e6150
+border_bottom=0x7f6e5b
+border_inner=0x5c5a6e
+border_inner_2=0x6a5f53
+border_inner_3=0xf0a030
+border_inner_4=0x1f1e2a
+border_outer=0x18162b
+border_outer_2=0x453a30
+border_outer_3=0x37403a
+border_outer_4=0x3a3a50
+border_outer_5=0x2e3a1b
+border_outer_6=0x473f22
+border_outer_7=0x4a2d42
+glow=0xffee55
+hovered=0xc4a882
+locked=0xe63946
+locked_2=0xff8585
+rectangle=0x241a0e
+selected=0xa96b8a
+separator=0x6a6458
+separator_2=0x787a72
+separator_3=0x8e8560
+unlocked=0xa8b0a0
+
+[opacity]
+dimmed=100
+dimmed_2=70
+mostly_opaque=50
+mostly_opaque_2=40
+mostly_transparent=230
+mostly_transparent_2=210
+mostly_transparent_3=212
+opaque=0
+semi_transparent=200
+translucent=150
