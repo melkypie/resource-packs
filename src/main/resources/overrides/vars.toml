@@ -96,6 +96,7 @@ hovered=0xb8a182
 locked=0xff0000
 # deposit_lock
 locked_2=0xff7070
+overlay=0x9c463d32
 # clan_chat
 rectangle=0x170801
 # colosseum
