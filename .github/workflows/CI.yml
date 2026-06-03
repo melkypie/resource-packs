@@ -9,7 +9,7 @@ on:
       - master
 
 jobs:
-  checkstyle:
+  Checks:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
