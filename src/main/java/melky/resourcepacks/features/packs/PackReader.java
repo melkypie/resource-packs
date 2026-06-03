@@ -104,14 +104,15 @@ public class PackReader implements PluginLifecycleComponent
 		TomlParseResult defaultVars = loadVars(loadResourceAsString(getDefaultVarsFile()));
 		TomlParseResult userVars = loadVars(packsService.getPath("vars.toml"));
 
-		VarResolver tokenizer = new VarResolver(idVars, defaultVars, userVars);
+		VarResolver defaultResolver = new VarResolver(idVars, defaultVars, null);
+		VarResolver fullResolver = new VarResolver(idVars, defaultVars, userVars);
 		String sourcesContent = loadResourceAsString(getSourceFile());
 
 		var pack = Pack.builder()
 			.vars(userVars != null ? ImmutableMap.copyOf(userVars.toMap()) : Map.of())
-			.sources(parseString(tokenizer.resolveContent(sourcesContent)))
-			.overrides(parseString(tokenizer.resolveContent(getOverrides())))
-			.chatColors(parseString(tokenizer.resolveContent(getChatColors())))
+			.sources(parseString(defaultResolver.resolveContent(sourcesContent)))
+			.overrides(parseString(fullResolver.resolveContent(getOverrides())))
+			.chatColors(parseString(fullResolver.resolveContent(getChatColors())))
 			.build();
 
 		eventBus.post(new PackParsed(pack));
