@@ -290,7 +290,15 @@ public class WidgetPropertiesOverride extends OverrideAction
 
 		if (source.containsKey(COLOR))
 		{
-			int c = ((Long) source.get(COLOR)).intValue();
+			var colorVal = source.get(COLOR);
+			if (!(colorVal instanceof Long))
+			{
+				log.warn("Skipping non-integer {} key: {}", COLOR, colorVal);
+				source.remove(COLOR);
+				return node;
+			}
+
+			int c = ((Long) colorVal).intValue();
 
 			if (override.contains(OverrideKey.append(path, COLOR)))
 			{
@@ -327,7 +335,15 @@ public class WidgetPropertiesOverride extends OverrideAction
 
 		if (source.containsKey(OPACITY))
 		{
-			int o = ((Long) source.get(OPACITY)).intValue();
+			var opacityVal = source.get(OPACITY);
+			if (!(opacityVal instanceof Long))
+			{
+				log.warn("Skipping non-integer {} key: {}", OPACITY, opacityVal);
+				source.remove(OPACITY);
+				return node;
+			}
+
+			int o = ((Long) opacityVal).intValue();
 			node = node.withOpacity(o);
 			if (override.contains(OverrideKey.append(path, OPACITY)))
 			{
