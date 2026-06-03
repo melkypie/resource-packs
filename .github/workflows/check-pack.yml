@@ -47,18 +47,16 @@ jobs:
       - name: Extract latest vanilla sprites
         run: unzip -jq *-sprites.zip -d sprites/
 
-      - name: Setup Java
-        uses: actions/setup-java@v4
+      - name: Download validation tool
+        uses: dsaltares/fetch-gh-release-asset@1.1.0
         with:
-          java-version: 11
-          distribution: temurin
-
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
+          repo: 'melkypie/resource-packs-tools'
+          file: 'validation-v.*\.jar'
+          regex: true
+          target: "./"
 
       - name: Check pack for errors
-        run: |
-          ./gradlew test -DspriteFolder="sprites" -DpackFolder="pack" --tests "melky.resourcepacks.ResourcePacksPluginTest" --rerun-tasks
+        run: java -DspriteFolder="sprites" -DpackFolder="pack" -jar validation-v*.jar
 
       - name: Read errors
         id: check-files
