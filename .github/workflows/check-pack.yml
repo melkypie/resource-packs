@@ -44,13 +44,14 @@ jobs:
           file: '.*-sprites\.zip'
           regex: true
           target: "./"
+
       - name: Extract latest vanilla sprites
         run: unzip -jq *-sprites.zip -d sprites/
 
       - name: Download validation tool
         uses: dsaltares/fetch-gh-release-asset@1.1.0
         with:
-          repo: 'melkypie/resource-packs-tools'
+          repo: 'raiyni/resource-packs-tools'
           file: 'validation-v.*\.jar'
           regex: true
           target: "./"
