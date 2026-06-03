@@ -29,6 +29,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 import org.tomlj.Toml;
@@ -221,5 +222,80 @@ public class VarResolverTest
 			defaultParsed.getTableOrEmpty("section").get("color"));
 		assertEquals("user should override to 0xBBBBBB", 0xBBBBBBL,
 			userParsed.getTableOrEmpty("section").get("color"));
+	}
+
+	@Test
+	public void resolveContent_userVarsDottedNames_resolvesFromTomlTable()
+	{
+		String userVarsToml = "[color]\nborder_outer_3=0x123456\n[opacity]\nopaque=255";
+		TomlParseResult userVarsParsed = Toml.parse(userVarsToml);
+		assertTrue("should have no parse errors", userVarsParsed.errors().isEmpty());
+
+		VarResolver resolver = new VarResolver(null, null, userVarsParsed);
+
+		String overrides = "[section]\ncolor=\"${color.border_outer_3}\"\nopacity=\"${opacity.opaque}\"";
+		String resolved = resolver.resolveContent(overrides);
+
+		TomlParseResult parsed = Toml.parse(resolved);
+		assertTrue("should have no parse errors, got: " + parsed.errors(), parsed.errors().isEmpty());
+
+		var section = parsed.getTableOrEmpty("section");
+		assertEquals("dotted var color.border_outer_3 should resolve to Long", 0x123456L, section.get("color"));
+		assertEquals("dotted var opacity.opaque should resolve to Long", 255L, section.get("opacity"));
+	}
+
+	@Test
+	public void resolve_arrayInline_substitutesValue()
+	{
+		VarResolver resolver = new VarResolver(Map.of("MY_VAR", "701"));
+		assertEquals("[701]", resolver.resolve("[\"${MY_VAR}\"]"));
+	}
+
+	@Test
+	public void resolveContent_arrayWithVar_substitutesValue()
+	{
+		Map<String, String> vars = Map.of("MY_VAR", "701");
+
+		String overrides = "[section]\nchildren=[\"${MY_VAR}\"]";
+
+		VarResolver resolver = new VarResolver(vars);
+		String resolved = resolver.resolveContent(overrides);
+
+		assertEquals("children=[701]", resolved.split("\n", -1)[1]);
+
+		TomlParseResult parsed = Toml.parse(resolved);
+		assertTrue("should have no parse errors, got: " + parsed.errors(), parsed.errors().isEmpty());
+
+		var children = parsed.getTableOrEmpty("section").getArray("children");
+		assertNotNull("children should not be null", children);
+		assertEquals("array var should resolve to Long", 701L, children.getLong(0));
+	}
+
+	@Test
+	public void resolveContent_defaultAndUserVars_sourcesUseDefaultOnly()
+	{
+		String defaultVarsToml = "theme=0xAAAAAA";
+		TomlParseResult defaultVars = Toml.parse(defaultVarsToml);
+
+		String userVarsToml = "theme=0xBBBBBB";
+		TomlParseResult userVars = Toml.parse(userVarsToml);
+
+		VarResolver defaultResolver = new VarResolver(null, defaultVars, null);
+		VarResolver fullResolver = new VarResolver(null, defaultVars, userVars);
+
+		String content = "[section]\ncolor=\"${theme}\"";
+
+		String sourcesResolved = defaultResolver.resolveContent(content);
+		String overridesResolved = fullResolver.resolveContent(content);
+
+		TomlParseResult sourcesParsed = Toml.parse(sourcesResolved);
+		assertTrue("sources should have no parse errors", sourcesParsed.errors().isEmpty());
+		assertEquals("sources should use default var", 0xAAAAAAL,
+			sourcesParsed.getTableOrEmpty("section").get("color"));
+
+		TomlParseResult overridesParsed = Toml.parse(overridesResolved);
+		assertTrue("overrides should have no parse errors", overridesParsed.errors().isEmpty());
+		assertEquals("overrides should use user var", 0xBBBBBBL,
+			overridesParsed.getTableOrEmpty("section").get("color"));
 	}
 }

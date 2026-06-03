@@ -34,12 +34,16 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import lombok.extern.slf4j.Slf4j;
 import org.tomlj.TomlTable;
 
 @Slf4j
 public class VarResolver
 {
+	private static final Pattern QUOTED_VAR_PATTERN = Pattern.compile("\"\\$\\{([\\w.]+)}\"");
+
 	private final Map<String, String> vars;
 
 	@VisibleForTesting
@@ -73,19 +77,14 @@ public class VarResolver
 
 		if (defaultVars != null)
 		{
-			putAll(merged, new HashMap<>(defaultVars.toMap()));
+			flattenAndPutAll(merged, defaultVars, "");
 		}
 
 		this.vars = merged;
 
 		if (userVars != null)
 		{
-			for (String key : userVars.keySet())
-			{
-				String value = String.valueOf(userVars.get(key));
-				String resolved = resolveValue(value);
-				merged.put(key, resolved);
-			}
+			flattenAndPutAll(merged, userVars, "");
 		}
 	}
 
@@ -96,36 +95,34 @@ public class VarResolver
 			return input;
 		}
 
-		if (!input.startsWith("\"${") || !input.endsWith("}\""))
+		Matcher matcher = QUOTED_VAR_PATTERN.matcher(input);
+		if (!matcher.find())
 		{
 			return input;
 		}
 
-		String varName = input.substring(3, input.length() - 2);
-		if (varName.isEmpty())
+		matcher.reset();
+		StringBuffer sb = new StringBuffer();
+		while (matcher.find())
 		{
-			return input;
+			String name = matcher.group(1);
+			String value = vars.get(name);
+			if (value == null)
+			{
+				log.warn("Undefined variable reference: {}", name);
+				matcher.appendReplacement(sb, Matcher.quoteReplacement(matcher.group(0)));
+			}
+			else
+			{
+				Set<String> visiting = new HashSet<>();
+				visiting.add(name);
+				String deeplyResolved = resolveValueRecursive(value, visiting);
+				visiting.remove(name);
+				matcher.appendReplacement(sb, Matcher.quoteReplacement(deeplyResolved));
+			}
 		}
-
-		String resolved = vars.get(varName);
-		if (resolved == null)
-		{
-			log.warn("Undefined variable reference: {}", varName);
-			return input;
-		}
-
-		Set<String> visiting = new HashSet<>();
-
-		visiting.add(varName);
-		String deeplyResolved = resolveValueRecursive(resolved, visiting);
-		visiting.remove(varName);
-
-		if (Strings.isNullOrEmpty(deeplyResolved))
-		{
-			return "\"\"";
-		}
-
-		return deeplyResolved;
+		matcher.appendTail(sb);
+		return sb.toString();
 	}
 
 	public String resolveContent(String input)
@@ -143,7 +140,7 @@ public class VarResolver
 			line = line.stripTrailing();
 
 			int eqIdx = line.indexOf('=');
-			if (eqIdx < 0)
+			if (eqIdx < 0 || line.trim().startsWith("#"))
 			{
 				result.add(line);
 				continue;
@@ -151,6 +148,7 @@ public class VarResolver
 
 			String value = line.substring(eqIdx + 1);
 			String resolved = resolve(value);
+			log.debug("resolved {} to {}", value, resolved);
 			if (resolved.equals(value))
 			{
 				result.add(line);
@@ -203,6 +201,24 @@ public class VarResolver
 		String deeplyResolved = resolveValueRecursive(resolved, visiting);
 		visiting.remove(varName);
 		return deeplyResolved;
+	}
+
+	private void flattenAndPutAll(Map<String, String> target, TomlTable table, String prefix)
+	{
+		for (String key : table.keySet())
+		{
+			String fullKey = prefix.isEmpty() ? key : prefix + "." + key;
+			Object value = table.get(key);
+			if (value instanceof TomlTable)
+			{
+				flattenAndPutAll(target, (TomlTable) value, fullKey);
+			}
+			else
+			{
+				String resolved = resolveValue(String.valueOf(value));
+				target.put(fullKey, resolved);
+			}
+		}
 	}
 
 	private static void putAll(Map<String, String> target, Map<Object, Object> source)
