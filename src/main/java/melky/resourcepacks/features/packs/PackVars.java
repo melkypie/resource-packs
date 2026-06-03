@@ -251,7 +251,7 @@ public final class PackVars implements PluginLifecycleComponent
 			.put("GROUPING_PLAYERLIST_CONTAINER_RECT1", InterfaceID.Grouping.PLAYERLIST_CONTAINER_RECT1 & 0xFFFF)
 			.put("GROUPING_PLAYERLIST_CONTAINER_RECT2", InterfaceID.Grouping.PLAYERLIST_CONTAINER_RECT2 & 0xFFFF)
 			.put("IGNORE_SORTAREA", InterfaceID.Ignore.SORTAREA & 0xFFFF)
-			.put("MAGIC_SPELLBOOK_FILTERMENU", InterfaceID.MagicSpellbook.FILTERMENU & 0xFFFF)
+			.put("MAGIC_SPELLBOOK_TOOLTIP", InterfaceID.MagicSpellbook.TOOLTIP & 0xFFFF)
 			.put("MINIGAMES_MINIGAME_1", InterfaceID.Minigames.MINIGAME_1 & 0xFFFF)
 			.put("MINIGAMES_MINIGAME_10", InterfaceID.Minigames.MINIGAME_10 & 0xFFFF)
 			.put("MINIGAMES_MINIGAME_11", InterfaceID.Minigames.MINIGAME_11 & 0xFFFF)
