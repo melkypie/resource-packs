@@ -57,7 +57,7 @@ jobs:
           target: "./"
 
       - name: Check pack for errors
-        run: java -DspriteFolder="sprites" -DpackFolder="pack" -cp validation-v*.jar melky.resourcepacks.PackCheck
+        run: java -DspriteFolder="sprites" -DpackFolder="pack" -cp validation-v*.jar melky.resourcepacks.validation.PackCheck
 
       - name: Read errors
         id: check-files
