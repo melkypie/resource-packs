@@ -74,7 +74,8 @@ public class ChatColorOverride extends OverrideAction
 	@Override
 	public boolean isEnabled(ResourcePacksConfig config)
 	{
-		return config.allowChatColors() && !packsService.isPackPathEmpty();
+//		return config.allowChatColors() && !packsService.isPackPathEmpty();
+		return false;
 	}
 
 	@Override

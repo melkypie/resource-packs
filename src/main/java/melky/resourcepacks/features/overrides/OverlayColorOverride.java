@@ -30,6 +30,7 @@ import java.awt.Color;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import melky.resourcepacks.ResourcePacksConfig;
 import melky.resourcepacks.event.PackParsed;
 import melky.resourcepacks.event.ReloadPack;
@@ -42,6 +43,7 @@ import net.runelite.client.config.RuneLiteConfig;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.events.ConfigChanged;
 
+@Slf4j
 @Singleton
 public class OverlayColorOverride extends OverrideAction
 {
@@ -73,8 +75,10 @@ public class OverlayColorOverride extends OverrideAction
 	{
 		clientThread.invokeLater(() ->
 		{
+			ignoreOverlayConfig = true;
 			reset();
 			apply();
+			ignoreOverlayConfig = false;
 		});
 	}
 
@@ -82,12 +86,12 @@ public class OverlayColorOverride extends OverrideAction
 	public void shutDown()
 	{
 		clientThread.invokeLater(this::reset);
+		this.overlayColor = null;
 	}
 
 	@Subscribe
 	public void onPackParsed(PackParsed event)
 	{
-
 		var pack = event.getPack();
 		var source = pack.getSources();
 		var overrides = pack.getOverrides();
@@ -96,6 +100,8 @@ public class OverlayColorOverride extends OverrideAction
 		{
 			return;
 		}
+
+		this.overlayColor = null;
 		if (source.contains("overlay.color"))
 		{
 			this.overlayColor = new Color(source.getLong("overlay.color").intValue(), true);
@@ -118,12 +124,17 @@ public class OverlayColorOverride extends OverrideAction
 			event.getGroup().equals(RuneLiteConfig.GROUP_NAME) &&
 			event.getKey().equals(OVERLAY_COLOR_CONFIG))
 		{
+			ignoreOverlayConfig = true;
+
 			config.originalOverlayColor(event.getNewValue());
+			configManager.setConfiguration(RuneLiteConfig.GROUP_NAME, OVERLAY_COLOR_CONFIG, event.getOldValue());
 
 			if (config.displayWarnings())
 			{
 				packsService.sendWarning("Your overlay color will be overwritten by your resource pack. You can disable this feature by turning off 'Allow overlay color to be changed'.");
 			}
+
+			ignoreOverlayConfig = false;
 		}
 	}
 
@@ -165,7 +176,5 @@ public class OverlayColorOverride extends OverrideAction
 			configManager.setConfiguration(RuneLiteConfig.GROUP_NAME, OVERLAY_COLOR_CONFIG, config.originalOverlayColor());
 			configManager.unsetConfiguration(ResourcePacksConfig.GROUP_NAME, ResourcePacksConfig.ORIGINAL_OVERLAY_COLOR);
 		}
-
-		this.overlayColor = null;
 	}
 }
