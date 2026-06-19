@@ -49,7 +49,7 @@ dependencies {
 }
 
 group = 'melky.resourcepacks'
-version = '2.0.0'
+version = '2.0.1'
 
 tasks.register('shadowJar', Jar) {
     dependsOn configurations.testRuntimeClasspath
