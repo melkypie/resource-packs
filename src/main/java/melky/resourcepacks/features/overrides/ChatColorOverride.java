@@ -57,6 +57,9 @@ public class ChatColorOverride extends OverrideAction
 	@Inject
 	private PacksService packsService;
 
+	private static final long WARNING_THROTTLE_MS = 5000;
+	private long lastWarningSent;
+
 	@Getter
 	@VisibleForTesting
 	private Map<String, Color> savedColors = new HashMap<>();
@@ -216,8 +219,9 @@ public class ChatColorOverride extends OverrideAction
 
 		if (config.allowChatColors() && event.getGroup().equals(CHAT_COLOR_CONFIG))
 		{
-			if (config.displayWarnings())
+			if (config.displayWarnings() && System.currentTimeMillis() - lastWarningSent >= WARNING_THROTTLE_MS)
 			{
+				lastWarningSent = System.currentTimeMillis();
 				packsService.sendWarning("Your chat colors will be overwritten by your resource pack. You can disable this feature by turning off 'Allow chat colors to be changed'.");
 			}
 
