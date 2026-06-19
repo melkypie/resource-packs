@@ -100,6 +100,13 @@ public class PackReader implements PluginLifecycleComponent
 			return this;
 		}
 
+		Path packDir = Path.of(packsService.getCurrentPackPath());
+		if (!Files.exists(packDir))
+		{
+			log.warn("pack directory does not exist: {}", packDir);
+			return this;
+		}
+
 		Map<Object, Object> idVars = packVars.getVars();
 		TomlParseResult defaultVars = loadVars(loadResourceAsString(getDefaultVarsFile()));
 		TomlParseResult userVars = loadVars(packsService.getPath("vars.toml"));
