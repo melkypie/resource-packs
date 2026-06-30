@@ -144,6 +144,8 @@ public class SpritesOverride extends OverrideAction
 	@Inject
 	private ResourcePacksConfig config;
 
+	int loginState = -1;
+
 	@Override
 	public boolean isEnabled(ResourcePacksConfig config)
 	{
@@ -175,9 +177,27 @@ public class SpritesOverride extends OverrideAction
 	@Subscribe
 	public void onGameStateChanged(GameStateChanged gameStateChanged)
 	{
-		if (gameStateChanged.getGameState() == GameState.LOGIN_SCREEN)
+		var gs = gameStateChanged.getGameState();
+		if (gs == GameState.LOGIN_SCREEN)
 		{
-			apply();
+			loginState = gs.getState();
+			return;
+		}
+
+		if (gs == GameState.LOGGING_IN && loginState > 0)
+		{
+			loginState = gs.getState();
+			return;
+		}
+
+		if (gs == GameState.LOGGED_IN)
+		{
+			if (loginState > 0)
+			{
+				apply();
+			}
+
+			loginState = -1;
 		}
 	}
 
@@ -195,6 +215,8 @@ public class SpritesOverride extends OverrideAction
 
 			client.getSpriteOverrides().remove(spriteOverride.getSpriteID());
 		}
+
+		loginState = -1;
 	}
 
 	@Override
