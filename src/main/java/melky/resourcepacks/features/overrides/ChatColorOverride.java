@@ -160,10 +160,14 @@ public class ChatColorOverride extends OverrideAction
 	@Override
 	public void reset()
 	{
+		parsedColors.clear();
+
 		if (savedColors.isEmpty())
 		{
 			return;
 		}
+
+		log.debug("Resetting chat color overrides");
 
 		for (var chatColor : ChatColorKey.values())
 		{
@@ -245,7 +249,7 @@ public class ChatColorOverride extends OverrideAction
 	@Subscribe(priority = Float.MIN_VALUE)
 	public void onConfigChanged(ConfigChanged event)
 	{
-		if (!packsService.isActiveProfile() || ignoreEvent)
+		if (!packsService.isActiveProfile() || ignoreEvent || savedColors.isEmpty())
 		{
 			return;
 		}
