@@ -38,6 +38,8 @@ import melky.resourcepacks.event.PackParsed;
 import melky.resourcepacks.features.overrides.model.OverrideAction;
 import melky.resourcepacks.features.packs.PacksService;
 import melky.resourcepacks.model.runelite.ChatColorKey;
+import static melky.resourcepacks.model.runelite.ConfigKeys.ResourcePacks.CHAT_COLOR_BACKUP_PREFIX;
+import static melky.resourcepacks.model.runelite.ConfigKeys.ResourcePacks.GROUP_NAME;
 import static melky.resourcepacks.model.runelite.ConfigKeys.RuneLiteConfig.CHAT_COLOR_CONFIG;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
@@ -74,14 +76,28 @@ public class ChatColorOverride extends OverrideAction
 	@Override
 	public boolean isEnabled(ResourcePacksConfig config)
 	{
-//		return config.allowChatColors() && !packsService.isPackPathEmpty();
-		return false;
+		return config.allowChatColors() && !packsService.isPackPathEmpty();
 	}
 
 	@Override
 	public void startUp()
 	{
+		var backupKeys = configManager.getConfigurationKeys(GROUP_NAME + "." + CHAT_COLOR_BACKUP_PREFIX);
+		if (backupKeys != null)
+		{
+			for (var fullKey : backupKeys)
+			{
+				String colorKey = fullKey.substring((GROUP_NAME + "." + CHAT_COLOR_BACKUP_PREFIX).length());
 
+				Color color = configManager.getConfiguration(GROUP_NAME, CHAT_COLOR_BACKUP_PREFIX + colorKey, Color.class);
+				if (color != null)
+				{
+					configManager.setConfiguration(CHAT_COLOR_CONFIG, colorKey, color);
+				}
+
+				configManager.unsetConfiguration(GROUP_NAME, CHAT_COLOR_BACKUP_PREFIX + colorKey);
+			}
+		}
 	}
 
 	@Override
@@ -102,6 +118,7 @@ public class ChatColorOverride extends OverrideAction
 
 		if (chatColors == null || chatColors.isEmpty())
 		{
+			ignoreEvent = false;
 			return;
 		}
 
@@ -160,6 +177,16 @@ public class ChatColorOverride extends OverrideAction
 		}
 
 		savedColors.clear();
+
+		var backupKeys = configManager.getConfigurationKeys(GROUP_NAME + "." + CHAT_COLOR_BACKUP_PREFIX);
+		if (backupKeys != null)
+		{
+			for (var fullKey : backupKeys)
+			{
+				String colorKey = fullKey.substring((GROUP_NAME + "." + CHAT_COLOR_BACKUP_PREFIX).length());
+				configManager.unsetConfiguration(GROUP_NAME, CHAT_COLOR_BACKUP_PREFIX + colorKey);
+			}
+		}
 	}
 
 	@Override
@@ -179,6 +206,11 @@ public class ChatColorOverride extends OverrideAction
 			{
 				savedColors.put(chatColor.transparentConfig(), transparent);
 			}
+		}
+
+		for (var entry : savedColors.entrySet())
+		{
+			configManager.setConfiguration(GROUP_NAME, CHAT_COLOR_BACKUP_PREFIX + entry.getKey(), entry.getValue());
 		}
 	}
 
@@ -226,7 +258,6 @@ public class ChatColorOverride extends OverrideAction
 				packsService.sendWarning("Your chat colors will be overwritten by your resource pack. You can disable this feature by turning off 'Allow chat colors to be changed'.");
 			}
 
-//			reset();
 			apply();
 		}
 	}
