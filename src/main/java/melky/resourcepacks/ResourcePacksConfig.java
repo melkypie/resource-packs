@@ -154,8 +154,7 @@ public interface ResourcePacksConfig extends Config
 		keyName = "allowChatColor",
 		name = "Allow chat colors to be changed",
 		description = "Gives permissions for resource packs to change your chat colors",
-		section = configurableOverrides,
-		hidden = true
+		section = configurableOverrides
 	)
 	default boolean allowChatColors()
 	{

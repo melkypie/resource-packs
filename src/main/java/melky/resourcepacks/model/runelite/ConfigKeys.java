@@ -49,4 +49,10 @@ public final class ConfigKeys
 		String OVERLAY_COLOR_CONFIG = "overlayBackgroundColor";
 		String CHAT_COLOR_CONFIG = "textrecolor";
 	}
+
+	public interface ResourcePacks
+	{
+		String GROUP_NAME = "resourcepacks";
+		String CHAT_COLOR_BACKUP_PREFIX = "chatColorBackup.";
+	}
 }
