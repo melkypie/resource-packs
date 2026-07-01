@@ -83,3 +83,11 @@ var pack = packBuilder()
 | [`PackReaderTest`](src/test/java/melky/resourcepacks/features/packs/PackReaderTest.java) | `PackReader` — pack loading and parsing |
 | [`ChatColorsTest`](src/test/java/melky/resourcepacks/features/overrides/ChatColorsTest.java) | Chat color parsing, save/apply/reset lifecycle |
 | [`OverridesTest`](src/test/java/melky/resourcepacks/features/overrides/OverridesTest.java) | Widget property override parsing |
+
+### Agent Rules
+
+* Only add code — do not generate Javadoc or inline comments unless explicitly asked.
+* Do not edit auto-generated files ([`PackVars.java`](src/main/java/melky/resourcepacks/features/packs/PackVars.java)).
+* Never add runtime variable resolution in consumers — all `"${var}"` resolution goes through [`VarResolver`](src/main/java/melky/resourcepacks/features/packs/VarResolver.java) before TOML parsing.
+* TOML integers from tomlj are `Long` — cast via `((Long) value).intValue()` for color conversions.
+* Trust `gradlew compileTestJava` over IntelliJ's Lombok analysis.
