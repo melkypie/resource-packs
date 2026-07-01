@@ -103,6 +103,11 @@ public class WidgetPropertiesOverride extends OverrideAction
 	@Subscribe
 	public void onReloadPack(ReloadPack event)
 	{
+		if (event.isNewPack())
+		{
+			return;
+		}
+
 		startUp();
 	}
 

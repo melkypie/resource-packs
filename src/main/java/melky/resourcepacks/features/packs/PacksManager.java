@@ -302,7 +302,7 @@ public class PacksManager implements PluginLifecycleComponent
 					// In case of total resource folder nuke
 					if (config.selectedHubPack().equals(manifest.getInternalName()))
 					{
-						clientThread.invokeLater(this::reloadPack);
+						clientThread.invokeLater(() -> reloadPack(false));
 					}
 				}
 				catch (IOException e)
@@ -506,14 +506,14 @@ public class PacksManager implements PluginLifecycleComponent
 				case "colorPack":
 				case "resourcePack":
 				case "allowOverlayColor":
-					clientThread.invokeLater(this::reloadPack);
+					clientThread.invokeLater(() -> reloadPack(true));
 					break;
 			}
 		}
 		else if (shouldReset(event))
 		{
 			// lazy reset to try and be after other plugins
-			clientThread.invokeLater(() -> clientThread.invokeLater(this::reloadPack));
+			clientThread.invokeLater(() -> clientThread.invokeLater(() -> reloadPack(false)));
 		}
 	}
 
@@ -548,9 +548,9 @@ public class PacksManager implements PluginLifecycleComponent
 			.build());
 	}
 
-	private void reloadPack()
+	private void reloadPack(boolean newPack)
 	{
-		eventBus.post(new ReloadPack());
+		eventBus.post(new ReloadPack(newPack));
 	}
 
 	private void queueReloadPack()
@@ -562,7 +562,7 @@ public class PacksManager implements PluginLifecycleComponent
 				return false;
 			}
 
-			reloadPack();
+			reloadPack(false);
 			return true;
 		});
 	}
@@ -600,7 +600,7 @@ public class PacksManager implements PluginLifecycleComponent
 		{
 			refreshPacks();
 
-			reloadPack();
+			reloadPack(false);
 		});
 	}
 

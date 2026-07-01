@@ -25,6 +25,17 @@
 
 package melky.resourcepacks.event;
 
+import lombok.AllArgsConstructor;
+import lombok.Value;
+
+@Value
+@AllArgsConstructor
 public class ReloadPack
 {
+	boolean newPack;
+
+	public ReloadPack()
+	{
+		this.newPack = false;
+	}
 }

@@ -27,30 +27,35 @@ package melky.resourcepacks.features.overrides;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 import javax.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
+import melky.resourcepacks.event.PackParsed;
+import melky.resourcepacks.event.ReloadPack;
 import melky.resourcepacks.features.overrides.model.WidgetOverride;
 import melky.resourcepacks.features.packs.PacksService;
 import melky.resourcepacks.harness.OverridesTestHarness;
 import melky.resourcepacks.harness.TestHarnessModule;
+import melky.resourcepacks.model.Pack;
 import net.runelite.api.Client;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.eventbus.EventBus;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
-import org.tomlj.Toml;
-import org.tomlj.TomlParseResult;
-import org.tomlj.TomlTable;
-
+import net.runelite.client.eventbus.Subscribe;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnitRunner;
+import org.tomlj.Toml;
+import org.tomlj.TomlParseResult;
+import org.tomlj.TomlTable;
 
 @Slf4j
 @RunWith(MockitoJUnitRunner.Silent.class)
@@ -222,5 +227,41 @@ public class OverridesTest extends OverridesTestHarness
 		assertNotEquals(list.get(0), defaultList.get(0));
 
 		assertEquals(0x000000, list.get(0).getNewColor());
+	}
+
+	@Test
+	public void reloadPackRefreshInvokesStartUp() throws IOException
+	{
+		TomlTable sources = loadSources();
+		TomlTable overrides = testPackReader.parseTestResource("parent-color.toml");
+
+		Pack pack = Pack.builder()
+			.sources(sources)
+			.overrides(overrides)
+			.build();
+
+		EventBus eventBus = new EventBus();
+		eventBus.register(widgetPropertiesOverride);
+
+		Object fakePackReader = new Object()
+		{
+			@Subscribe
+			public void onReloadPack(ReloadPack event)
+			{
+				eventBus.post(new PackParsed(pack));
+			}
+		};
+		eventBus.register(fakePackReader);
+
+		List<Runnable> invokeLaterTasks = new ArrayList<>();
+		Mockito.doAnswer(invocation ->
+		{
+			invokeLaterTasks.add(invocation.getArgument(0));
+			return null;
+		}).when(clientThread).invokeLater(Mockito.any(Runnable.class));
+
+		eventBus.post(new ReloadPack(false));
+
+		assertEquals("startUp should be invoked on a refresh reload", 1, invokeLaterTasks.size());
 	}
 }
