@@ -24,7 +24,7 @@ public interface ResourcePacksConfig extends Config
 
 	@ConfigSection(name = "Resource pack paths",
 		description = "Contains resource pack paths",
-		position = 2
+		position = 3
 	)
 	String resourcePackPaths = "resourcePackPaths";
 
@@ -99,7 +99,8 @@ public interface ResourcePacksConfig extends Config
 		keyName = "hideSidePanelButton",
 		name = "Hide side panel button",
 		description = "Allows you to hide the side panel button to reduce clutter when not changing packs frequently",
-		position = 5
+		section = configurableOverrides,
+		position = -5
 	)
 	default boolean hideSidePanelButton()
 	{
