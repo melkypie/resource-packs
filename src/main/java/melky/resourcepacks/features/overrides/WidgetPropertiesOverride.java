@@ -159,6 +159,8 @@ public class WidgetPropertiesOverride extends OverrideAction
 			return;
 		}
 
+		reset();
+
 		var keys = pack.getSources().keySet();
 		for (var key : keys)
 		{
