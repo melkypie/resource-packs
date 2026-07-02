@@ -157,9 +157,18 @@ public class SpritesOverride extends OverrideAction
 	{
 		clientThread.invokeLater(() ->
 		{
+			if (client.getWidgetSpriteCache() == null)
+			{
+				return false;
+			}
+
 			reset();
 			apply();
+
+			return true;
 		});
+
+		loginState = client.getGameState().getState();
 	}
 
 	@Override
@@ -184,12 +193,6 @@ public class SpritesOverride extends OverrideAction
 			return;
 		}
 
-		if (gs == GameState.LOGGING_IN && loginState > 0)
-		{
-			loginState = gs.getState();
-			return;
-		}
-
 		if (gs == GameState.LOGGED_IN)
 		{
 			if (loginState > 0)
@@ -204,6 +207,8 @@ public class SpritesOverride extends OverrideAction
 	@Override
 	public void reset()
 	{
+		log.debug("resetting sprite overrides");
+
 		client.getWidgetSpriteCache().reset();
 
 		for (SpriteOverride spriteOverride : SpriteOverride.values())
