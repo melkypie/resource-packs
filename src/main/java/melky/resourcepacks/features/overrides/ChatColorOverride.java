@@ -38,8 +38,8 @@ import melky.resourcepacks.event.PackParsed;
 import melky.resourcepacks.features.overrides.model.OverrideAction;
 import melky.resourcepacks.features.packs.PacksService;
 import melky.resourcepacks.model.runelite.ChatColorKey;
+import static melky.resourcepacks.model.runelite.ConfigKeys.ResourcePacks.CHAT_COLOR_BACKUP_GROUP;
 import static melky.resourcepacks.model.runelite.ConfigKeys.ResourcePacks.CHAT_COLOR_BACKUP_PREFIX;
-import static melky.resourcepacks.model.runelite.ConfigKeys.ResourcePacks.GROUP_NAME;
 import static melky.resourcepacks.model.runelite.ConfigKeys.RuneLiteConfig.CHAT_COLOR_CONFIG;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
@@ -82,20 +82,20 @@ public class ChatColorOverride extends OverrideAction
 	@Override
 	public void startUp()
 	{
-		var backupKeys = configManager.getConfigurationKeys(GROUP_NAME + "." + CHAT_COLOR_BACKUP_PREFIX);
+		var backupKeys = configManager.getConfigurationKeys(CHAT_COLOR_BACKUP_GROUP + "." + CHAT_COLOR_BACKUP_PREFIX);
 		if (backupKeys != null)
 		{
 			for (var fullKey : backupKeys)
 			{
-				String colorKey = fullKey.substring((GROUP_NAME + "." + CHAT_COLOR_BACKUP_PREFIX).length());
+				String colorKey = fullKey.substring((CHAT_COLOR_BACKUP_GROUP + "." + CHAT_COLOR_BACKUP_PREFIX).length());
 
-				Color color = configManager.getConfiguration(GROUP_NAME, CHAT_COLOR_BACKUP_PREFIX + colorKey, Color.class);
+				Color color = configManager.getConfiguration(CHAT_COLOR_BACKUP_GROUP, CHAT_COLOR_BACKUP_PREFIX + colorKey, Color.class);
 				if (color != null)
 				{
 					configManager.setConfiguration(CHAT_COLOR_CONFIG, colorKey, color);
 				}
 
-				configManager.unsetConfiguration(GROUP_NAME, CHAT_COLOR_BACKUP_PREFIX + colorKey);
+				configManager.unsetConfiguration(CHAT_COLOR_BACKUP_GROUP, CHAT_COLOR_BACKUP_PREFIX + colorKey);
 			}
 		}
 	}
@@ -182,13 +182,13 @@ public class ChatColorOverride extends OverrideAction
 
 		savedColors.clear();
 
-		var backupKeys = configManager.getConfigurationKeys(GROUP_NAME + "." + CHAT_COLOR_BACKUP_PREFIX);
+		var backupKeys = configManager.getConfigurationKeys(CHAT_COLOR_BACKUP_GROUP + "." + CHAT_COLOR_BACKUP_PREFIX);
 		if (backupKeys != null)
 		{
 			for (var fullKey : backupKeys)
 			{
-				String colorKey = fullKey.substring((GROUP_NAME + "." + CHAT_COLOR_BACKUP_PREFIX).length());
-				configManager.unsetConfiguration(GROUP_NAME, CHAT_COLOR_BACKUP_PREFIX + colorKey);
+				String colorKey = fullKey.substring((CHAT_COLOR_BACKUP_GROUP + "." + CHAT_COLOR_BACKUP_PREFIX).length());
+				configManager.unsetConfiguration(CHAT_COLOR_BACKUP_GROUP, CHAT_COLOR_BACKUP_PREFIX + colorKey);
 			}
 		}
 	}
@@ -214,7 +214,7 @@ public class ChatColorOverride extends OverrideAction
 
 		for (var entry : savedColors.entrySet())
 		{
-			configManager.setConfiguration(GROUP_NAME, CHAT_COLOR_BACKUP_PREFIX + entry.getKey(), entry.getValue());
+			configManager.setConfiguration(CHAT_COLOR_BACKUP_GROUP, CHAT_COLOR_BACKUP_PREFIX + entry.getKey(), entry.getValue());
 		}
 	}
 

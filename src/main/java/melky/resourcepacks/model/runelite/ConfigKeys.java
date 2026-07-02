@@ -53,6 +53,7 @@ public final class ConfigKeys
 	public interface ResourcePacks
 	{
 		String GROUP_NAME = "resourcepacks";
+		String CHAT_COLOR_BACKUP_GROUP = "resourcepacksbackup";
 		String CHAT_COLOR_BACKUP_PREFIX = "chatColorBackup.";
 	}
 }
