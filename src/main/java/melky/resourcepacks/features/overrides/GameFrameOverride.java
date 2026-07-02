@@ -119,9 +119,6 @@ public class GameFrameOverride extends OverrideAction
 			!config.disableInterfaceStylesPrompt())
 		{
 			setInterfaceStylesGameframeOption();
-
-			// todo: fix
-//			clientThread.invokeLater(packsManager::updateAllOverrides);
 		}
 	}
 
