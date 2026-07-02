@@ -126,6 +126,8 @@ public class ComponentManager
 			log.debug("Enabling resource packs component [{}]", component.getClass().getName());
 		}
 
+		states.put(component, true);
+
 		try
 		{
 			component.startUp();
@@ -137,10 +139,10 @@ public class ComponentManager
 			}
 
 			gameEventManager.simulateGameEvents(component);
-			states.put(component, true);
 		}
 		catch (Throwable e)
 		{
+			states.put(component, false);
 			log.error("Failed to start resource packs component [{}]", component.getClass().getName(), e);
 		}
 	}
