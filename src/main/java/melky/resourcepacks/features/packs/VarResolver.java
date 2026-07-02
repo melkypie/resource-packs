@@ -147,7 +147,7 @@ public class VarResolver
 
 			String value = line.substring(eqIdx + 1);
 			String resolved = resolve(value);
-			log.debug("resolved {} to {}", value, resolved);
+			log.trace("resolved {} to {}", value, resolved);
 			if (resolved.equals(value))
 			{
 				result.add(line);

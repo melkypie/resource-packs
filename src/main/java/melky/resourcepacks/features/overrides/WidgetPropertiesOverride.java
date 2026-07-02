@@ -184,7 +184,7 @@ public class WidgetPropertiesOverride extends OverrideAction
 				if (arrayId < 0)
 				{
 					var tmp = widgetToOverride.getDynamicChildren().length - (arrayId * -1);
-					log.debug("rewriting index {} to {} for {}", arrayId, tmp, widgetOverride);
+					log.trace("rewriting index {} to {} for {}", arrayId, tmp, widgetOverride);
 					arrayId = tmp;
 				}
 
@@ -517,7 +517,7 @@ public class WidgetPropertiesOverride extends OverrideAction
 
 		if (node.isValid())
 		{
-			log.debug("adding override {}", node);
+			log.trace("adding override {}", node);
 			overrides.put(node.getScript(), node);
 		}
 		else
