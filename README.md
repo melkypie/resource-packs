@@ -7,13 +7,19 @@ Works with all default UI layouts
 [download](https://github.com/Airships01/resource-packs/archive/refs/heads/pack-pinklite.zip)
 
 ## Screenshots
-![preview](https://i.ibb.co/1rYRcGy/2023-01-19-18-47-02.png)
-![preview](https://i.ibb.co/Wstcx2w/2023-01-19-18-45-21.png)
+[preview](https://i.ibb.co/1rYRcGy/2023-01-19-18-47-02.png)
+[preview](https://i.ibb.co/Wstcx2w/2023-01-19-18-45-21.png)
 
 ## Versions
+
+#### 1.1.0
+* Giants' foundry GUI & GE borders fix
 
 #### 1.2.0
 * Party emote, compass, more borders fixed
 
-#### 1.1.0
-* Giants' foundry GUI & GE borders fix
+#### 1.3.0
+* Update to resource-packs version 1.10.5
+* Added several missing textures
+* Fixed several broken textures
+* Redesigned fixed ui mode
