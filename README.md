@@ -16,6 +16,9 @@ Works with all default UI layouts
 * Giants' foundry GUI & GE borders fix
 
 #### 1.2.0
+* Party emote, compass, more borders fixed
+
+#### 1.3.0
 * Update to resource-packs version 1.10.5
 * Added several missing textures
 * Fixed several broken textures
