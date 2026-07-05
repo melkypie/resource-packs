@@ -91,3 +91,4 @@ var pack = packBuilder()
 * Never add runtime variable resolution in consumers — all `"${var}"` resolution goes through [`VarResolver`](src/main/java/melky/resourcepacks/features/packs/VarResolver.java) before TOML parsing.
 * TOML integers from tomlj are `Long` — cast via `((Long) value).intValue()` for color conversions.
 * Trust `gradlew compileTestJava` over IntelliJ's Lombok analysis.
+* **NEVER** edit resource packs config options inside of startUp functions

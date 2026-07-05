@@ -110,6 +110,8 @@ public class OverlayColorOverride extends OverrideAction
 		{
 			this.overlayColor = new Color(overrides.getLong("overlay.color").intValue(), true);
 		}
+
+		this.startUp();
 	}
 
 	@Subscribe(priority = Float.MIN_VALUE)
