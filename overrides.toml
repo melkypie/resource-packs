@@ -158,7 +158,7 @@ color=0x32414c
 opacity=0
 
 [colosseum.modifiers.selected]
-color=0x73a2ba#4b98bf#597c8e
+color=0x73a2ba
 opacity=0
 
 [colosseum.tab.border]
@@ -365,13 +365,13 @@ opacity=0
 color=0x32414c
 opacity=0
 
-#[forestry_shop.reward.hovered]
-#color=0xff0000
-#opacity=0
+[forestry_shop.reward.hovered]
+color=0x32414c
+opacity=0
 
-#[forestry_shop.reward.selected]
-#color=0xff0000
-#opacity=0
+[forestry_shop.reward.selected]
+color=0x73a2ba
+opacity=0
 
 [friends_chat.border.inner]
 color=0x000000
@@ -559,11 +559,11 @@ color=0x32414c
 opacity=0
 
 [make_all.background]
-color=0x17516b#286b8d#1b4256
+color=0x17516b
 opacity=0
 
 [make_all.quantity]
-color=0x17516b#0e394d#1b4256#73644f
+color=0x17516b
 opacity=0
 
 [minigame_teleports.border.inner]
@@ -612,17 +612,17 @@ opacity=0
 color=0x32414c
 opacity=0
 
-#[pvp_arena.confirm_options.separator]
-#color=0xff0000
-#opacity=100
+[pvp_arena.confirm_options.separator]
+color=0x32414c
+opacity=100
 
-#[pvp_arena.confirm_options.separator.accent]
-#color=0xff0000
-#opacity=100
+[pvp_arena.confirm_options.separator.accent]
+color=0x32414c
+opacity=100
 
-#[pvp_arena.duel_options.separator]
-#color=0xff0000
-#opacity=100
+[pvp_arena.duel_options.separator]
+color=0x32414c
+opacity=100
 
 [pvp_arena.recruitment.border.inner]
 color=0x000000
@@ -672,8 +672,8 @@ opacity=0
 color=0x32414c
 opacity=0
 
-#[pvp_arena.supplies.separator]
-#color=0xff0000
+[pvp_arena.supplies.separator]
+color=0x32414c
 
 [pvp_arena.supplies.stats.border.inner]
 color=0x000000
@@ -710,8 +710,8 @@ opacity=0
 [sailing.boats.other.row.background]
 color=0x0b1d2a
 
-#[sailing.boats.other.row.border]
-#color=0xff0000
+[sailing.boats.other.row.border]
+color=0x32414c
 
 [sailing.boats.recent.background]
 color=0x0b1d2a
@@ -776,9 +776,9 @@ opacity=0
 color=0x32414c
 opacity=0
 
-#[sailing.customize.highlight]
-#color=0xff0000
-#opacity=70
+[sailing.customize.highlight]
+color=0x86c2ff
+opacity=0
 
 [sailing.customize.popup.border.inner]
 color=0x000000
@@ -789,19 +789,19 @@ color=0x32414c
 opacity=0
 
 [sailing.customize.row.border]
-color=0x32414c
+color=0x182b36
 
 [sailing.customize.scroll.border.inner]
+color=0x182b36
+opacity=100
+
+[sailing.customize.scroll.border.outer]
 color=0x000000
 opacity=0
 
-[sailing.customize.scroll.border.outer]
-color=0x32414c
-opacity=0
-
 [sailing.customize.tab.border]
-color=0x32414c
-opacity=0
+color=0x536975
+opacity=100
 
 [sailing.customize.upgrade.border.inner]
 color=0x000000
@@ -838,11 +838,11 @@ opacity=0
 [sailing.tab.assign.background]
 color=0x0b1d2a
 
-#[sailing.tab.assign.background.alternate]
-#color=0xff0000
+[sailing.tab.assign.background.alternate]
+color=0x0a161e
 
-#[sailing.tab.assign.background.hovered]
-#color=0xff0000
+[sailing.tab.assign.background.hovered]
+color=0x32414c
 
 [sailing.tab.background]
 color=0x0b1d2a
@@ -856,13 +856,13 @@ opacity=0
 color=0x32414c
 opacity=0
 
-#[sailing.tab.crew.background]
-#color=0xff0000
-#opacity=0
+[sailing.tab.crew.background]
+color=0x0b1d2a
+opacity=0
 
-#[sailing.tab.crew.background.alternate]
-#color=0xff0000
-#opacity=0
+[sailing.tab.crew.background.alternate]
+color=0x0a161e
+opacity=0
 
 [sailing.tab.facilities.divider.inner]
 color=0x000000
@@ -872,20 +872,20 @@ opacity=0
 color=0x32414c
 opacity=0
 
-#[sailing.tab.facilities.row]
-#color=0xff0000
-#opacity=0
+[sailing.tab.facilities.row]
+color=0x0a161e
+opacity=0
 
 [sailing.tab.separator]
 color=0x32414c
 
-#[sailing.tab.stats.header]
-#color=0xff0000
-#opacity=0
+[sailing.tab.stats.header]
+color=0x32414c
+opacity=0
 
-#[sailing.tab.stats.row]
-#color=0xff0000
-#opacity=0
+[sailing.tab.stats.row]
+color=0x0a161e
+opacity=0
 
 [sailing.trials.border.inner]
 color=0x000000
@@ -895,13 +895,13 @@ opacity=0
 color=0x32414c
 opacity=0
 
-#[sailing.trials.row.background]
-#color=0xff0000
-#opacity=230
+[sailing.trials.row.background]
+color=0x0b1d2a
+opacity=230
 
-#[sailing.trials.row.background.alternate]
-#color=0xff0000
-#opacity=210
+[sailing.trials.row.background.alternate]
+color=0x0a161e
+opacity=210
 
 [settings.body.border.inner]
 color=0x233747
@@ -964,7 +964,7 @@ opacity=0
 
 [skill_guide.tab.border]
 color=0x536975
-opacity=0
+opacity=50
 
 [soul_wars.separator.bottom]
 color=0x32414c
