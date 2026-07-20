@@ -109,7 +109,7 @@ public class GameFrameOverride extends OverrideAction
 	@Subscribe
 	public void onGameStateChanged(GameStateChanged gameStateChanged)
 	{
-		if (gameStateChanged.getGameState() == GameState.LOGIN_SCREEN)
+		if (gameStateChanged.getGameState() == GameState.LOGGED_IN)
 		{
 			apply();
 		}
