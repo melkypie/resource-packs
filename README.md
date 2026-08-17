@@ -1,6 +1,6 @@
 # LITE+
 
-<img width="224" height="147" alt="icon" src="https://github.com/user-attachments/assets/7a3e3a50-ac5b-47e9-8971-b1d30e6cfb04" />
+![Profile_ico](icon.png)
 
 
 
@@ -9,21 +9,21 @@ A custom theme heavely inspired by RL Immersive Pack and lite:ui, combining thei
 <details>
   <summary>Resizeable-modern</summary>
 
-<img width="1647" height="1009" alt="resizeable modern" src="https://github.com/user-attachments/assets/21cc012d-a1b4-4a75-8994-a8cbee4d51c0" />
+![Profile_ico](modern.png)
 
 </details>
 
 <details>
   <summary>Resizeable-classic</summary>
-
-<img width="1647" height="1009" alt="resizeable classic" src="https://github.com/user-attachments/assets/0656fa94-0746-43a4-8300-5cf32ec3319a" />
+  
+![Profile_ico](classic.png)
 
 </details>
 
 <details>
   <summary>Fixed</summary>
 
- <img width="1534" height="1009" alt="fixed mode" src="https://github.com/user-attachments/assets/9f2da8c1-43c3-457f-abec-d3832c664115" />
+![Profile_ico](fixed.png)
 
 </details>
 
