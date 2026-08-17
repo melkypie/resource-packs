@@ -1,1 +1,0 @@
-{"internalName":"pack-rl-immersive","commit":"b24a5d8ef1a4ebc3c2e289169bb4f26d824e7cf2","displayName":"RL Immersive Pack","compatibleVersion":"1.4.3","author":"BasVonSpace","tags":["Dark"," Clean"," Organized"," Minimalistic"," Immersive"," Runelite"],"repo":"https://github.com/melkypie/resource-packs/tree/pack-rl-immersive","hasIcon":true}
