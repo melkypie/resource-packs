@@ -6,13 +6,17 @@ Mystic's pixel-art structure throughout, with the UI chrome remapped onto the OS
 Wiki's Browntown palette. The spell, prayer, skill, combat and icon art is Drunken
 Monk's work and is untouched — only neutral chrome greys are recoloured.
 
-## Screenshots
+## Resizeable mode - modern layout
 
-![Mystic Brown](https://raw.githubusercontent.com/SnavvieJD/resource-packs/mystic-brown-screenshots/mysticbrown1.png)
+![Resizeable modern](https://raw.githubusercontent.com/SnavvieJD/resource-packs/mystic-brown-screenshots/mysticbrown1.png)
 
-![Mystic Brown](https://raw.githubusercontent.com/SnavvieJD/resource-packs/mystic-brown-screenshots/mysticbrown2.png)
+## Resizeable mode - classic layout
 
-![Mystic Brown](https://raw.githubusercontent.com/SnavvieJD/resource-packs/mystic-brown-screenshots/mysticbrown3.png)
+![Resizeable classic](https://raw.githubusercontent.com/SnavvieJD/resource-packs/mystic-brown-screenshots/mysticbrown2.png)
+
+## Fixed mode
+
+![Fixed mode](https://raw.githubusercontent.com/SnavvieJD/resource-packs/mystic-brown-screenshots/mysticbrown3.png)
 
 ## Palette
 
