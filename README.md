@@ -67,8 +67,9 @@ Found a UI error or a misaligned icon?
 * Reach out to me directly on Discord: **[@kym4ra](https://www.discord.com/users/730058570812358708)**
 
 ## Changelog
-**1.01** - Login background fix
-1.0 - Release
+* **1.01** - Login background fix
+
+* 1.0 Release
 
 <div align="center">
   <p><a href="#top">Back to top ↑</a></p>
