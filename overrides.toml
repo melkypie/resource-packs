@@ -148,7 +148,7 @@ color=0x493018
 opacity=0
 
 [colosseum.modifiers.border]
-color=0x726451
+color=0xb68e69
 opacity=0
 
 [colosseum.modifiers.selected]
@@ -156,7 +156,7 @@ color=0x9d6a76
 opacity=0
 
 [colosseum.tab.border]
-color=0x726451
+color=0xb68e69
 opacity=0
 
 [colosseum.wave.background]
@@ -368,7 +368,7 @@ color=0xff981f
 opacity=0
 
 [forestry_shop.reward.unselected]
-color=0x726451
+color=0xb68e69
 opacity=0
 
 [friends_chat.border.inner]
@@ -703,7 +703,7 @@ opacity=0
 color=0xffffff
 
 [sailing.boats.other.row.border]
-color=0x726451
+color=0xb68e69
 
 [sailing.boats.recent.background]
 color=0xffffff
@@ -765,7 +765,7 @@ color=0x493018
 opacity=0
 
 [sailing.customize.body.border]
-color=0x726451
+color=0xb68e69
 opacity=0
 
 [sailing.customize.highlight]
@@ -773,7 +773,7 @@ color=0xff981f
 opacity=70
 
 [sailing.customize.row.border]
-color=0x726451
+color=0xb68e69
 
 [sailing.customize.scroll.border.inner]
 color=0x6d4528
@@ -784,7 +784,7 @@ color=0x493018
 opacity=0
 
 [sailing.customize.tab.border]
-color=0x726451
+color=0xb68e69
 opacity=0
 
 [sailing.customize.upgrade.border.inner]
@@ -914,7 +914,7 @@ color=0x493018
 opacity=0
 
 [skill_guide.tab.border]
-color=0x726451
+color=0xb68e69
 opacity=0
 
 [soul_wars.separator.bottom]
