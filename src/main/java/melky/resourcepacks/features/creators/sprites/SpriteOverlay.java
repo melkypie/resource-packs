@@ -33,10 +33,8 @@ import lombok.extern.slf4j.Slf4j;
 import melky.resourcepacks.ResourcePacksConfig;
 import melky.resourcepacks.features.state.LocalConfig;
 import melky.resourcepacks.module.PluginLifecycleComponent;
-import net.runelite.api.Client;
 import net.runelite.api.gameval.InterfaceID;
 import net.runelite.api.widgets.Widget;
-import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.ui.overlay.Overlay;
 import net.runelite.client.ui.overlay.OverlayLayer;
 import net.runelite.client.ui.overlay.OverlayPosition;
@@ -45,17 +43,13 @@ import net.runelite.client.ui.overlay.OverlayPosition;
 @Slf4j
 public class SpriteOverlay extends Overlay implements PluginLifecycleComponent
 {
-	private EventBus eventBus;
-	private Client client;
 	private SpriteTracker spriteTracker;
 
 	@Inject
 	public SpriteOverlay(
-		Client client, EventBus eventBus, SpriteTracker spriteTracker
+		SpriteTracker spriteTracker
 	)
 	{
-		this.client = client;
-		this.eventBus = eventBus;
 		this.spriteTracker = spriteTracker;
 
 		setPosition(OverlayPosition.DYNAMIC);
