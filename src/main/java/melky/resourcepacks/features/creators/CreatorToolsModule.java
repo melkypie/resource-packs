@@ -30,7 +30,6 @@ import java.awt.image.BufferedImage;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import melky.resourcepacks.ResourcePacksConfig;
-import melky.resourcepacks.features.hub.HubPanel;
 import melky.resourcepacks.module.PluginLifecycleComponent;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.ui.ClientToolbar;
