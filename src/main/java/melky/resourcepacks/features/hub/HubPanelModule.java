@@ -49,7 +49,6 @@ public class HubPanelModule implements PluginLifecycleComponent
 	@Inject
 	private Provider<HubPanel> hubPanelProvider;
 
-	private HubPanel hubPanel;
 	private NavigationButton navigationButton;
 
 	@Override
@@ -61,7 +60,7 @@ public class HubPanelModule implements PluginLifecycleComponent
 	@Override
 	public void startUp()
 	{
-		this.hubPanel = hubPanelProvider.get();
+		var hubPanel = hubPanelProvider.get();
 		final BufferedImage icon = ImageUtil.loadImageResource(getClass(), "/panel.png");
 
 		navigationButton = NavigationButton.builder()
@@ -78,14 +77,6 @@ public class HubPanelModule implements PluginLifecycleComponent
 	public void shutDown()
 	{
 		clientToolbar.removeNavigation(navigationButton);
-		this.hubPanel = null;
 		this.navigationButton = null;
-	}
-
-
-	@Subscribe
-	public void onResourcePacksChanged(ResourcePacksChanged packsChanged)
-	{
-		SwingUtilities.invokeLater(() -> hubPanel.reloadResourcePackList(packsChanged.getNewManifest()));
 	}
 }
