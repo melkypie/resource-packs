@@ -28,6 +28,7 @@ package melky.resourcepacks.features.creators.skillglow;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import melky.resourcepacks.ResourcePacksConfig;
+import melky.resourcepacks.features.state.LocalConfig;
 import melky.resourcepacks.module.PluginLifecycleComponent;
 import net.runelite.api.Client;
 import net.runelite.api.events.PostClientTick;
@@ -35,15 +36,15 @@ import net.runelite.api.gameval.InterfaceID;
 import net.runelite.client.eventbus.Subscribe;
 
 @Singleton
-public class ShowSkillGlow implements PluginLifecycleComponent
+public class SkillGlow implements PluginLifecycleComponent
 {
 	@Inject
 	private Client client;
 
 	@Override
-	public boolean isEnabled(ResourcePacksConfig config)
+	public boolean isEnabled(ResourcePacksConfig config, LocalConfig localConfig)
 	{
-		return config.developerTools() && config.showSkillGlow();
+		return config.developerTools() && localConfig.getState(SkillGlow.class);
 	}
 
 	int ticks = 0;
