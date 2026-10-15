@@ -34,7 +34,11 @@ import java.util.Set;
 import javax.inject.Named;
 import lombok.extern.slf4j.Slf4j;
 import melky.resourcepacks.ResourcePacksConfig;
-import melky.resourcepacks.features.creators.skillglow.ShowSkillGlow;
+import melky.resourcepacks.features.creators.CreatorToolsModule;
+import melky.resourcepacks.features.creators.sprites.SpriteOverlay;
+import melky.resourcepacks.features.creators.sprites.SpritePicker;
+import melky.resourcepacks.features.creators.sprites.SpriteTracker;
+import melky.resourcepacks.features.creators.skillglow.SkillGlow;
 import melky.resourcepacks.features.hub.HubClient;
 import melky.resourcepacks.features.hub.HubPanelModule;
 import melky.resourcepacks.features.overrides.ChatColorOverride;
@@ -85,8 +89,12 @@ public class ResourcePacksModule extends AbstractModule
 		OverlayColorOverride overlayColorOverride,
 		ChatColorOverride chatColorOverride,
 		GameFrameOverride gameFrameOverride,
-		ShowSkillGlow showSkillGlow,
-		PackReader packReader
+		SkillGlow showSkillGlow,
+		PackReader packReader,
+		SpriteTracker spriteTracker,
+		CreatorToolsModule creatorToolsModule,
+		SpriteOverlay spriteOverlay,
+		SpritePicker spritePicker
 	)
 	{
 		var builder = new ImmutableSet.Builder<PluginLifecycleComponent>();
@@ -107,6 +115,10 @@ public class ResourcePacksModule extends AbstractModule
 			.add(chatColorOverride)
 			.add(showSkillGlow)
 			.add(gameFrameOverride)
+			.add(creatorToolsModule)
+			.add(spriteTracker)
+			.add(spriteOverlay)
+			.add(spritePicker)
 			.add(packReader);
 
 		if (developerMode)
