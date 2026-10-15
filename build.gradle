@@ -77,6 +77,16 @@ tasks.register('shadowJar', Jar) {
     archiveFileName.set("${rootProject.name}-${project.version}-all.jar")
 }
 
+tasks.register('run', JavaExec) {
+    group = 'application'
+    description = 'Run the plugin via ResourcePacksPluginTest'
+    dependsOn tasks.named('classes'), tasks.named('testClasses')
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass = 'melky.resourcepacks.ResourcePacksPluginTest'
+    args '--debug', '--developer-mode', '--profile=phub-dev'
+    jvmArgs '-Dorg.slf4j.simpleLogger.defaultLogLevel=debug', '-ea', '-XX:-OmitStackTraceInFastThrow'
+}
+
 tasks.withType(Pmd) {
     enabled gradle.startParameter.taskNames.contains('pmdMain')
 }
