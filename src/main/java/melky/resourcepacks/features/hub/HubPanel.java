@@ -65,8 +65,10 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import lombok.extern.slf4j.Slf4j;
 import melky.resourcepacks.ResourcePacksConfig;
+import melky.resourcepacks.event.ResourcePacksChanged;
 import melky.resourcepacks.features.packs.PacksManager;
 import melky.resourcepacks.model.HubManifest;
+import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.discord.DiscordPlugin;
 import net.runelite.client.ui.ColorScheme;
 import net.runelite.client.ui.DynamicGridLayout;
@@ -384,5 +386,11 @@ public class HubPanel extends PluginPanel
 		searchBar.setText("");
 		reloadResourcePackList();
 		searchBar.requestFocusInWindow();
+	}
+
+	@Subscribe
+	public void onResourcePacksChanged(ResourcePacksChanged packsChanged)
+	{
+		SwingUtilities.invokeLater(() -> reloadResourcePackList(packsChanged.getNewManifest()));
 	}
 }
