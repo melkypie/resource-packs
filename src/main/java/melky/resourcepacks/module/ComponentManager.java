@@ -35,6 +35,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import melky.resourcepacks.ResourcePacksConfig;
 import melky.resourcepacks.event.ComponentStateChanged;
+import melky.resourcepacks.features.state.LocalConfig;
 import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.events.ConfigChanged;
@@ -57,6 +58,7 @@ public class ComponentManager
 	private final GameEventManager gameEventManager;
 	private final ResourcePacksConfig config;
 	private final Set<PluginLifecycleComponent> components;
+	private final LocalConfig localConfig;
 
 	private final Map<PluginLifecycleComponent, Boolean> states = new HashMap<>();
 
@@ -96,7 +98,7 @@ public class ComponentManager
 	{
 		components.forEach(c ->
 		{
-			boolean shouldBeEnabled = c.isEnabled(config);
+			boolean shouldBeEnabled = c.isEnabled(config) && c.isEnabled(config, localConfig);
 			boolean isEnabled = states.get(c);
 			if (shouldBeEnabled == isEnabled)
 			{
