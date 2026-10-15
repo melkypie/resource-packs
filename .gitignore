@@ -1,6 +1,7 @@
 .gradle
 build
 .idea/
+.vscode/
 .project
 .settings/
 .classpath
@@ -11,3 +12,7 @@ nbproject/
 plans/
 .kilo/
 tools/
+bin/
+.run
+scripts
+tmp
