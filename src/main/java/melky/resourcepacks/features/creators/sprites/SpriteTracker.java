@@ -88,8 +88,8 @@ public class SpriteTracker implements PluginLifecycleComponent
 		}
 	}
 
-	private Client client;
-	private EventBus eventBus;
+	private final Client client;
+	private final EventBus eventBus;
 
 	@Getter
 	private final Set<Widget> widgets = new LinkedHashSet<>();

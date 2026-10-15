@@ -43,7 +43,7 @@ import net.runelite.client.ui.overlay.OverlayPosition;
 @Slf4j
 public class SpriteOverlay extends Overlay implements PluginLifecycleComponent
 {
-	private SpriteTracker spriteTracker;
+	private final SpriteTracker spriteTracker;
 
 	@Inject
 	public SpriteOverlay(
