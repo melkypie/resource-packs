@@ -27,11 +27,17 @@
 package melky.resourcepacks.module;
 
 import melky.resourcepacks.ResourcePacksConfig;
+import melky.resourcepacks.features.state.LocalConfig;
 
 public interface PluginLifecycleComponent
 {
 
 	default boolean isEnabled(ResourcePacksConfig config)
+	{
+		return true;
+	}
+
+	default boolean isEnabled(ResourcePacksConfig config, LocalConfig localConfig)
 	{
 		return true;
 	}
