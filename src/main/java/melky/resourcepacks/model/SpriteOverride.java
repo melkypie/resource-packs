@@ -2281,6 +2281,22 @@ public enum SpriteOverride
 	TFA_BOSS_MOIA_LOCKED(SpriteID.TfaIconBossBlackout01._5, Folder.TFA),
 	TFA_BOSS_BORK_LOCKED(SpriteID.TfaIconBossBlackout01._6, Folder.TFA),
 	TFA_BOSS_OCELLUS_LOCKED(SpriteID.TfaIconBossBlackout01._7, Folder.TFA),
+
+	TFA_GROUPING_SORT_MEMBERS(SpriteID.TfaGroupingIcons._0, Folder.TFA),
+	TFA_GROUPING_SORT_NAME(SpriteID.TfaGroupingIcons._1, Folder.TFA),
+	TFA_GROUPING_SORT_COMPLETIONS(SpriteID.TfaGroupingIcons._17, Folder.TFA),
+	TFA_GROUPING_SORT_MODE(SpriteID.TfaGroupingIcons._14, Folder.TFA),
+	TFA_GROUPING_SORT_AGE(SpriteID.TfaGroupingIcons._5, Folder.TFA),
+
+	TFA_PARTY_SORT_COMBAT_LEVEL(SpriteID.TfaGroupingIcons._6, Folder.TFA),
+	TFA_PARTY_SORT_ATTACK(SpriteID.TfaGroupingIcons._7, Folder.TFA),
+	TFA_PARTY_SORT_STRENGTH(SpriteID.TfaGroupingIcons._8, Folder.TFA),
+	TFA_PARTY_SORT_RANGE(SpriteID.TfaGroupingIcons._9, Folder.TFA),
+	TFA_PARTY_SORT_MAGIC(SpriteID.TfaGroupingIcons._10, Folder.TFA),
+	TFA_PARTY_SORT_DEFENCE(SpriteID.TfaGroupingIcons._11, Folder.TFA),
+	TFA_PARTY_SORT_HITPOINTS(SpriteID.TfaGroupingIcons._12, Folder.TFA),
+	TFA_PARTY_SORT_PRAYER(SpriteID.TfaGroupingIcons._13, Folder.TFA),
+	TFA_PARTY_SORT_PRACTICE_COMPLETIONS(SpriteID.TfaGroupingIcons._2, Folder.TFA),
 	;
 
 	@Getter
