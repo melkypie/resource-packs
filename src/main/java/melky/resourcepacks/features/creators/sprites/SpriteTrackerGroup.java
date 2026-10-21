@@ -31,7 +31,9 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Insets;
+import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -88,9 +90,8 @@ public class SpriteTrackerGroup extends JPanel
 		groupCheckbox.setFocusPainted(false);
 		groupCheckbox.addActionListener(e -> toggleGroup());
 
-		expandLabel = new JLabel(">");
+		expandLabel = new JLabel(new ExpandIcon(true));
 		expandLabel.setForeground(Color.WHITE);
-		expandLabel.setFont(expandLabel.getFont().deriveFont(10f));
 		expandLabel.setPreferredSize(new Dimension(12, 12));
 		expandLabel.setMinimumSize(new Dimension(12, 12));
 		expandLabel.setMaximumSize(new Dimension(12, 12));
@@ -177,7 +178,7 @@ public class SpriteTrackerGroup extends JPanel
 	{
 		this.collapsed = collapsed;
 		itemsPanel.setVisible(!collapsed);
-		expandLabel.setText(collapsed ? ">" : "v");
+		expandLabel.setIcon(new ExpandIcon(collapsed));
 		revalidate();
 		repaint();
 	}
@@ -275,6 +276,45 @@ public class SpriteTrackerGroup extends JPanel
 		public int getIconHeight()
 		{
 			return 10;
+		}
+	}
+
+	private static class ExpandIcon implements Icon
+	{
+		private final boolean collapsed;
+
+		ExpandIcon(boolean collapsed)
+		{
+			this.collapsed = collapsed;
+		}
+
+		@Override
+		public void paintIcon(java.awt.Component component, Graphics graphics, int x, int y)
+		{
+			Graphics2D g = (Graphics2D) graphics.create();
+			g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+			g.setColor(Color.WHITE);
+			if (collapsed)
+			{
+				g.fillPolygon(new int[]{x + 3, x + 8, x + 3}, new int[]{y + 1, y + 5, y + 9}, 3);
+			}
+			else
+			{
+				g.fillPolygon(new int[]{x + 1, x + 10, x + 5}, new int[]{y + 3, y + 3, y + 8}, 3);
+			}
+			g.dispose();
+		}
+
+		@Override
+		public int getIconWidth()
+		{
+			return 12;
+		}
+
+		@Override
+		public int getIconHeight()
+		{
+			return 12;
 		}
 	}
 }
