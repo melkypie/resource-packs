@@ -2180,6 +2180,12 @@ public enum SpriteOverride
 	TFA_SCROLLBAR_TRACK(SpriteID.TfaBarScrollVertical01._3, Folder.TFA),
 	TFA_SCROLLBAR_ARROW_UP(SpriteID.TfaButtonArrowTfa01._0, Folder.TFA),
 	TFA_SCROLLBAR_ARROW_DOWN(SpriteID.TfaButtonArrowTfa01._1, Folder.TFA),
+	TFA_HORIZONTAL_SCROLLBAR_THUMB_RIGHT(SpriteID.TfaBarScrollHorizontal01._0, Folder.TFA),
+	TFA_HORIZONTAL_SCROLLBAR_THUMB_MIDDLE(SpriteID.TfaBarScrollHorizontal01._1, Folder.TFA),
+	TFA_HORIZONTAL_SCROLLBAR_THUMB_LEFT(SpriteID.TfaBarScrollHorizontal01._2, Folder.TFA),
+	TFA_HORIZONTAL_SCROLLBAR_TRACK(SpriteID.TfaBarScrollHorizontal01._3, Folder.TFA),
+	TFA_HORIZONTAL_SCROLLBAR_ARROW_RIGHT(SpriteID.TfaButtonArrowTfa01._3, Folder.TFA),
+	TFA_HORIZONTAL_SCROLLBAR_ARROW_LEFT(SpriteID.TfaButtonArrowTfa01._2, Folder.TFA),
 
 	TFA_BOSS_OVERALL(SpriteID.IconBoss25x25.THE_FRACTURED_ARCHIVE, Folder.TFA),
 	TFA_BOSS_ARCHIVE_GUARDIAN(SpriteID.IconBoss25x25._73, Folder.TFA),
