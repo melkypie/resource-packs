@@ -88,7 +88,7 @@ public class SpriteTrackerGroup extends JPanel
 		groupCheckbox.setFocusPainted(false);
 		groupCheckbox.addActionListener(e -> toggleGroup());
 
-		expandLabel = new JLabel("▶");
+		expandLabel = new JLabel(">");
 		expandLabel.setForeground(Color.WHITE);
 		expandLabel.setFont(expandLabel.getFont().deriveFont(10f));
 		expandLabel.setPreferredSize(new Dimension(12, 12));
@@ -177,7 +177,7 @@ public class SpriteTrackerGroup extends JPanel
 	{
 		this.collapsed = collapsed;
 		itemsPanel.setVisible(!collapsed);
-		expandLabel.setText(collapsed ? "▶" : "▼");
+		expandLabel.setText(collapsed ? ">" : "v");
 		revalidate();
 		repaint();
 	}
