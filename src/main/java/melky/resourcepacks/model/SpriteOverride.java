@@ -2283,6 +2283,8 @@ public enum SpriteOverride
 	TFA_BOSS_BORK_LOCKED(SpriteID.TfaIconBossBlackout01._6, Folder.TFA),
 	TFA_BOSS_OCELLUS_LOCKED(SpriteID.TfaIconBossBlackout01._7, Folder.TFA),
 
+	TFA_MVP_ICON(SpriteID.TFA_ICON_ROSETTE_TFA01, Folder.TFA),
+
 	TFA_GROUPING_SORT_MEMBERS(SpriteID.TfaGroupingIcons._0, Folder.TFA),
 	TFA_GROUPING_SORT_NAME(SpriteID.TfaGroupingIcons._1, Folder.TFA),
 	TFA_GROUPING_SORT_COMPLETIONS(SpriteID.TfaGroupingIcons._17, Folder.TFA),
