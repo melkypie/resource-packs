@@ -2110,8 +2110,10 @@ public enum SpriteOverride
 	ICON_CHECKMARK_GREEN(2264, Folder.ICON),
 	ICON_CHECKMARK_RED(2265, Folder.ICON),
 
-	EYE_FOCUS(4914, Folder.OTHER),
-	EYE_UNFOCUS(4913, Folder.OTHER),
+	EYE_FOCUS(SpriteID.IconTrackerLoot01_30x30._3, Folder.OTHER),
+	EYE_UNFOCUS(SpriteID.IconTrackerLoot01_30x30._2, Folder.OTHER),
+	EYE_FOCUS_SMALL(SpriteID.GroundItemsVisibility._0, Folder.OTHER),
+	EYE_UNFOCUS_SMALL(SpriteID.GroundItemsVisibility._1, Folder.OTHER),
 
 	SAILING_VIEW_COMBAT_OPTIONS(7066, Folder.SAILING),
 	SAILING_VIEW_SAILING_OPTIONS(7067, Folder.SAILING),
