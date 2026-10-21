@@ -32,6 +32,7 @@ import javax.inject.Singleton;
 import lombok.extern.slf4j.Slf4j;
 import melky.resourcepacks.ResourcePacksConfig;
 import melky.resourcepacks.module.PluginLifecycleComponent;
+import net.runelite.client.eventbus.EventBus;
 import net.runelite.client.ui.ClientToolbar;
 import net.runelite.client.ui.NavigationButton;
 import net.runelite.client.util.ImageUtil;
@@ -46,7 +47,11 @@ public class HubPanelModule implements PluginLifecycleComponent
 	@Inject
 	private Provider<HubPanel> hubPanelProvider;
 
+	@Inject
+	private EventBus eventBus;
+
 	private NavigationButton navigationButton;
+	private HubPanel hubPanel;
 
 	@Override
 	public boolean isEnabled(ResourcePacksConfig config)
@@ -57,7 +62,8 @@ public class HubPanelModule implements PluginLifecycleComponent
 	@Override
 	public void startUp()
 	{
-		var hubPanel = hubPanelProvider.get();
+		this.hubPanel = hubPanelProvider.get();
+		eventBus.register(this.hubPanel);
 		final BufferedImage icon = ImageUtil.loadImageResource(getClass(), "/panel.png");
 
 		navigationButton = NavigationButton.builder()
@@ -74,6 +80,8 @@ public class HubPanelModule implements PluginLifecycleComponent
 	public void shutDown()
 	{
 		clientToolbar.removeNavigation(navigationButton);
+		this.eventBus.unregister(this.hubPanel);
+		this.hubPanel = null;
 		this.navigationButton = null;
 	}
 }
