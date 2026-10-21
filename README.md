@@ -54,7 +54,7 @@ Standard SB|Arceuus SB
 * cue - combat achievement tier icons
 * Dem Hunter - bones-to-x icons
 * mantic. - base impish thralls icons
-* J.C.Wyntehr ([RS Voyager](https://github.com/melkypie/resource-packs/tree/pack-RS-Voyager)) - inspo + base skill icons
+* J.C.Wyntehr ([RS Voyager](https://github.com/melkypie/resource-packs/tree/pack-RS-Voyager)) - inspo + base skill icons idea
 * Adam - RL dev
 &nbsp;
 
@@ -67,9 +67,9 @@ Found a UI error or a misaligned icon?
 * Reach out to me directly on Discord: **[@kym4ra](https://www.discord.com/users/730058570812358708)**
 
 ## Changelog
-* **1.01** - Login background fix
-
-* 1.0 Release
+* **1.02** - Added TFA sprites
+* 1.01 - Login background fix
+* 1.0 - Release
 
 <div align="center">
   <p><a href="#top">Back to top ↑</a></p>
