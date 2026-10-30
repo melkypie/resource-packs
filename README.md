@@ -26,12 +26,12 @@ No sprite is redrawn. Every texture keeps the vanilla shapes, shading and transp
 
 `tools/` holds the PowerShell scripts that generate the pack from the vanilla sample pack:
 
-- `recolor.ps1 -Scheme gruvbox|bordo|noctis|minimus` recolours the shell sprites onto that variant's ramp (`schemes.ps1`).
-- `config.ps1 -Scheme ...` writes `vars.toml`, `overrides.toml` and `color.properties`.
+- `recolor.ps1 -Scheme gruvbox` recolours the shell sprites onto the Gruvbox ramp (`schemes.ps1`).
+- `config.ps1 -Scheme gruvbox` writes `vars.toml`, `overrides.toml` and `color.properties`.
 - `icon.ps1` builds `icon.png`.
 
 ## Credits
 
-- [Noctis](https://github.com/liviuschera/noctis) by Liviu Schera for the Noctis colour schemes and the tooling this pack began from.
+- [Gruvbox](https://github.com/morhetz/gruvbox) by Pavel Pertsev (morhetz) for the colour scheme.
 - [melkypie](https://github.com/melkypie/resource-packs) for the Resource Packs plugin and the vanilla sample pack.
 - The [Nord](https://github.com/melkypie/resource-packs/tree/pack-nord) and [Browntown](https://github.com/melkypie/resource-packs/tree/pack-browntown) packs, which were the inspiration for recolouring the vanilla shell.
