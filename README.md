@@ -1,40 +1,36 @@
-# Resource packs 
-[![Active Installs](http://img.shields.io/endpoint?url=https://api.runelite.net/pluginhub/shields/installs/plugin/resource-packs)](https://runelite.net/plugin-hub/melky) [![Plugin Rank](http://img.shields.io/endpoint?url=https://api.runelite.net/pluginhub/shields/rank/plugin/resource-packs)](https://runelite.net/plugin-hub)
+# Gruvbox 2005
 
-[![Discord](https://user-images.githubusercontent.com/5113962/116616080-e2a0ee80-a944-11eb-8c1f-b838233b29d5.png)](https://discord.com/invite/DsDhUz4NNN)
+[2005](https://github.com/melkypie/resource-packs/tree/pack-2005) by **GNASH0R**, recoloured to the [Gruvbox](https://github.com/morhetz/gruvbox) dark colour scheme for the RuneLite [Resource Packs](https://github.com/melkypie/resource-packs) plugin.
 
-Allows you to create your own custom interface styles by not being only restricted to 2005/2006/2010 ones.
+No sprite is redrawn. The 2005-specific art keeps its original shapes, shading and transparency and only the colours change, while the standard buttons and stones are the same recoloured vanilla sprites as the main Gruvbox pack. The compass dial keeps its red-and-orange look in Gruvbox orange, and icons are left exactly as the original author drew them.
 
-## [Contributing](CONTRIBUTING.md)
+## Screenshots
 
-## How to use the plugin
-### Resource packs hub
-1. Add the plugin from RuneLite's [Plugin Hub](https://github.com/runelite/runelite/wiki/Information-about-the-Plugin-Hub)
-2. Look for the paintbrush icon in the side panel: <img src="https://github.com/nickyGyul/resource-packs/blob/master/src/main/resources/panel.png?raw=true">
-3. To install one of the packs, click the green "**Install**" button. The pack will automatically install and be applied.
-<img src="https://i.imgur.com/80kwdnf.png">
+![Bank and chatbox in Resizeable mode](screenshots/bank.webp)
 
-5. If you want to switch between the installed packs use the selected pack dropdown menu. 
-<img src="https://i.imgur.com/RXUAAes.png">
+## Installation
 
-6. You can easily remove a pack by pressing the red "**Remove**" button.
+Install it from the Resource packs hub in RuneLite. As the original notes, 2005 can't match the original exactly in Resizeable mode because of the plugin's limits.
 
-7. ⚠️ Make sure your Interface Styles plugin's `Gameframe` setting is set to `Default` (it can cause weird issues otherwise). Everything else is fine but will require a restart of the plugin should you activate any of them after you have resource pack set up.
+## What changes
 
-The installed packs are automatically updated when starting the client or you can press the green "**Update**" button in the panel to update that pack.
+| Area | Source |
+| --- | --- |
+| Buttons, tab stones, bank, scrollbars, checkboxes and sliders, GE, equipment slots, dialog panels | Taken as-is from the [main Gruvbox pack](https://github.com/opher290/gruvbox-resource-pack), so they match it exactly |
+| Side panel, tab rows, minimap frame, window edges, the black steel dialog borders, chat buttons | The original 2005 art recoloured to Gruvbox dark greys (`#141617` through `#282828` to `#a89984`), darkened to the main pack's tone |
+| Chat parchment | Gruvbox grey tan `#a89984` to `#bdae93`, keeping the original shading and burnt edges |
+| Compass dial | Keeps its red-and-orange look, moved onto Gruvbox red #cc241d and orange #fe8019 |
+| Icons, emotes, prayer and quest art, selected tabs | Left exactly as the original author drew them |
 
-### Custom packs
-- [Using a custom pack](https://github.com/melkypie/resource-packs/wiki/Using-a-custom-pack-(not-from-the-hub))
-- [Creating a custom pack](https://github.com/melkypie/resource-packs/wiki/Creating-your-own-resource-pack)
+## Building it yourself
 
-See the plugin's [wiki](https://github.com/melkypie/resource-packs/wiki) for additional information.
+`tools/build.ps1` regenerates the pack from a checkout of the original (`pack-2005`):
 
-## Sample pack
+- `recolor.ps1 -Scheme gruvbox` recolours the shell sprites onto the Gruvbox ramp (`schemes.ps1`). The 2005 stone is about twice as bright as vanilla's, so with `-RefSrc` (the vanilla sample pack, passed as `-Vanilla` to `build.ps1`) each sprite is darkened to its vanilla counterpart's tone.
+- `icon.ps1` builds `icon.png`.
 
-- [Vanilla](https://github.com/melkypie/resource-packs/tree/sample-vanilla) ([Download](https://github.com/melkypie/resource-packs/archive/sample-vanilla.zip)) (Includes regular runescape sprites)
+## Credits
 
-<img src="https://user-images.githubusercontent.com/5113962/82244509-02b0eb00-994a-11ea-8343-0a7dd7ddaa82.png" width="765"><br/>
-
-## Change log
-
-All changes have been moved to [CHANGELOG.md](CHANGELOG.md)
+- **GNASH0R** for the 2005 pack this is based on.
+- [Gruvbox](https://github.com/morhetz/gruvbox) by Pavel Pertsev (morhetz) for the colour scheme.
+- [melkypie](https://github.com/melkypie/resource-packs) for the Resource Packs plugin.
