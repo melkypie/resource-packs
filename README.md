@@ -1,40 +1,37 @@
-# Resource packs 
-[![Active Installs](http://img.shields.io/endpoint?url=https://api.runelite.net/pluginhub/shields/installs/plugin/resource-packs)](https://runelite.net/plugin-hub/melky) [![Plugin Rank](http://img.shields.io/endpoint?url=https://api.runelite.net/pluginhub/shields/rank/plugin/resource-packs)](https://runelite.net/plugin-hub)
+# Gruvbox
 
-[![Discord](https://user-images.githubusercontent.com/5113962/116616080-e2a0ee80-a944-11eb-8c1f-b838233b29d5.png)](https://discord.com/invite/DsDhUz4NNN)
+A dark, warm resource pack for the RuneLite [Resource Packs](https://github.com/melkypie/resource-packs) plugin, based on the [Gruvbox](https://github.com/morhetz/gruvbox) dark colour scheme, with the dialog parchment in Gruvbox light creams and the chatbox in a Gruvbox grey tan.
 
-Allows you to create your own custom interface styles by not being only restricted to 2005/2006/2010 ones.
+No sprite is redrawn. Every texture keeps the vanilla shapes, shading and transparency, and only the colours change, so the pack stays easy to keep in step with game updates. Icons, items, spells, skills and other coloured art are left vanilla.
 
-## [Contributing](CONTRIBUTING.md)
+## Screenshots
 
-## How to use the plugin
-### Resource packs hub
-1. Add the plugin from RuneLite's [Plugin Hub](https://github.com/runelite/runelite/wiki/Information-about-the-Plugin-Hub)
-2. Look for the paintbrush icon in the side panel: <img src="https://github.com/nickyGyul/resource-packs/blob/master/src/main/resources/panel.png?raw=true">
-3. To install one of the packs, click the green "**Install**" button. The pack will automatically install and be applied.
-<img src="https://i.imgur.com/80kwdnf.png">
+![Bank and chatbox in Resizeable mode](screenshots/bank.webp)
 
-5. If you want to switch between the installed packs use the selected pack dropdown menu. 
-<img src="https://i.imgur.com/RXUAAes.png">
+![Settings and chatbox in Resizeable mode](screenshots/settings.webp)
 
-6. You can easily remove a pack by pressing the red "**Remove**" button.
+## What changes
 
-7. ⚠️ Make sure your Interface Styles plugin's `Gameframe` setting is set to `Default` (it can cause weird issues otherwise). Everything else is fine but will require a restart of the plugin should you activate any of them after you have resource pack set up.
+| Area | Colours |
+| --- | --- |
+| Stone shell, tabs, buttons, bank, GE | Gruvbox dark greys, from `#141617` outlines through `#282828` and `#32302f` to `#a89984` highlights |
+| Borders and separators | `#141617` (outer) to `#7c6f64` |
+| Dialog parchment | Gruvbox light creams `#d5c4a1` to `#fbf1c7`; vanilla dark text stays readable |
+| Chatbox fill and compass | Gruvbox greys `#a89984` to `#bdae93`, keeping the vanilla shading |
+| Chat frame | Gruvbox dark |
+| Selected and accent highlights | Gruvbox orange `#fe8019` |
+| Overlay | Translucent `#1d2021` |
 
-The installed packs are automatically updated when starting the client or you can press the green "**Update**" button in the panel to update that pack.
+## Building it yourself
 
-### Custom packs
-- [Using a custom pack](https://github.com/melkypie/resource-packs/wiki/Using-a-custom-pack-(not-from-the-hub))
-- [Creating a custom pack](https://github.com/melkypie/resource-packs/wiki/Creating-your-own-resource-pack)
+`tools/` holds the PowerShell scripts that generate the pack from the vanilla sample pack:
 
-See the plugin's [wiki](https://github.com/melkypie/resource-packs/wiki) for additional information.
+- `recolor.ps1 -Scheme gruvbox|bordo|noctis|minimus` recolours the shell sprites onto that variant's ramp (`schemes.ps1`).
+- `config.ps1 -Scheme ...` writes `vars.toml`, `overrides.toml` and `color.properties`.
+- `icon.ps1` builds `icon.png`.
 
-## Sample pack
+## Credits
 
-- [Vanilla](https://github.com/melkypie/resource-packs/tree/sample-vanilla) ([Download](https://github.com/melkypie/resource-packs/archive/sample-vanilla.zip)) (Includes regular runescape sprites)
-
-<img src="https://user-images.githubusercontent.com/5113962/82244509-02b0eb00-994a-11ea-8343-0a7dd7ddaa82.png" width="765"><br/>
-
-## Change log
-
-All changes have been moved to [CHANGELOG.md](CHANGELOG.md)
+- [Noctis](https://github.com/liviuschera/noctis) by Liviu Schera for the Noctis colour schemes and the tooling this pack began from.
+- [melkypie](https://github.com/melkypie/resource-packs) for the Resource Packs plugin and the vanilla sample pack.
+- The [Nord](https://github.com/melkypie/resource-packs/tree/pack-nord) and [Browntown](https://github.com/melkypie/resource-packs/tree/pack-browntown) packs, which were the inspiration for recolouring the vanilla shell.
