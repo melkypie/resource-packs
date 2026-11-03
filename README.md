@@ -67,7 +67,8 @@ Found a UI error or a misaligned icon?
 * Reach out to me directly on Discord: **[@kym4ra](https://www.discord.com/users/730058570812358708)**
 
 ## Changelog
-* **1.02** - Added TFA sprites
+* **1.03** - New sprites from v2.1.3
+* 1.02 - Added TFA sprites
 * 1.01 - Login background fix
 * 1.0 - Release
 
