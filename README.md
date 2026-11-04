@@ -4,7 +4,7 @@ GNASH0R's [2005](https://github.com/melkypie/resource-packs/tree/pack-2005) inte
 
 No sprite is redrawn. The 2005-specific art keeps its original shapes, shading and transparency and only the colours change, while the standard buttons and stones are the same recoloured vanilla sprites as the [Vanilla Gruvbox Dark pack](https://github.com/opher290/gruvbox-resource-pack), so the two sit side by side seamlessly. The compass dial keeps its original red-to-orange gradient in Gruvbox colours, and icons are left exactly as the original author drew them.
 
-**Why is the chatbox light?** The chatbox is deliberately not dark. It follows the Gruvbox **light** theme, so the chat parchment uses its warm cream (`#ebdbb2`) and the dark chat text sits on it with good contrast, while the rest of the interface stays on the dark Gruvbox greys.
+**Why is the chatbox light?** The chatbox is deliberately not dark. It follows the Gruvbox **light** theme, so the chat parchment uses the Gruvbox light grey-cream (`#bdae93`, fg3) and the dark chat text sits on it with good contrast, while the rest of the interface stays on the dark Gruvbox greys.
 
 ## Screenshots
 
@@ -41,37 +41,37 @@ On the opaque chatbox this pack recolours the chat text to the Gruvbox palette, 
 | Chat text | Before (default) | Current |
 | --- | --- | --- |
 | **Public chat** | | |
-| Public chat | `#0000FF` | `#076678` |
+| Public chat | `#0000FF` | `#254849` |
 | Public chat highlight | `#000000` | `#1d2021` |
 | **Private messages** | | |
-| Sent private messages | `#7F0000` | `#9d0006` |
-| Sent private messages highlight | `#002783` | `#0a4e5c` |
-| Received private messages | `#7F0000` | `#9d0006` |
-| Received private messages highlight | `#002783` | `#0a4e5c` |
+| Sent private messages | `#7F0000` | `#772702` |
+| Sent private messages highlight | `#002783` | `#304831` |
+| Received private messages | `#7F0000` | `#772702` |
+| Received private messages highlight | `#002783` | `#304831` |
 | **Friends chat** | | |
 | Friends chat info | `#000000` | `#1d2021` |
-| Friends chat info highlight | `#FF0000` | `#cc241d` |
-| Friends chat message | `#7F0000` | `#9d0006` |
+| Friends chat info highlight | `#FF0000` | `#8d0005` |
+| Friends chat message | `#7F0000` | `#772702` |
 | Friends chat message highlight | `#000000` | `#1d2021` |
-| Friends chat channel name | `#0000FF` | `#076678` |
+| Friends chat channel name | `#0000FF` | `#254849` |
 | **Clan chat** | | |
 | Clan chat info | `#000000` | `#1d2021` |
-| Clan chat info highlight | `#FF0000` | `#cc241d` |
-| Clan chat message | `#7F0000` | `#9d0006` |
+| Clan chat info highlight | `#FF0000` | `#8d0005` |
+| Clan chat message | `#7F0000` | `#772702` |
 | Clan chat message highlight | `#000000` | `#1d2021` |
-| Clan chat channel name | `#0000FF` | `#076678` |
+| Clan chat channel name | `#0000FF` | `#254849` |
 | **Guest clan chat** | | |
 | Guest clan chat info | `#000000` | `#1d2021` |
-| Guest clan chat info highlight | `#FF0000` | `#cc241d` |
-| Guest clan chat message | `#7F0000` | `#9d0006` |
+| Guest clan chat info highlight | `#FF0000` | `#8d0005` |
+| Guest clan chat message | `#7F0000` | `#772702` |
 | Guest clan chat message highlight | `#000000` | `#1d2021` |
-| Guest clan chat channel name | `#0000FF` | `#076678` |
+| Guest clan chat channel name | `#0000FF` | `#254849` |
 | **Game and system messages** | | |
 | Server message | `#000000` | `#1d2021` |
 | Game message | `#000000` | `#1d2021` |
 | Game message highlight | `#EF1020` | `#8f3f71` |
 | Examine | `#000000` | `#1d2021` |
-| Examine highlight | `#0000FF` | `#076678` |
+| Examine highlight | `#0000FF` | `#254849` |
 
 Everything else keeps its default colour.
 
@@ -81,9 +81,9 @@ A pack can only set the slots in the table above. These few chat colours come fr
 
 | Chat text | Where its colour comes from | Suggested to match this pack |
 | --- | --- | --- |
-| Broadcasts (server and world announcements) | Your own in-game chat colour settings | `#9d0006` (the message red) |
-| Challenge requests (duel and challenge invitations) | Your own in-game chat colour settings | `#9d0006` (the message red) |
-| What you type in the chat box | The game: blue on the opaque chatbox, light blue on the transparent one | `#076678` (the pack's blue) |
+| Broadcasts (server and world announcements) | Your own in-game chat colour settings | `#772702` (the message red) |
+| Challenge requests (duel and challenge invitations) | Your own in-game chat colour settings | `#772702` (the message red) |
+| What you type in the chat box | The game: blue on the opaque chatbox, light blue on the transparent one | `#254849` (the pack's blue) |
 | Coloured words inside game messages (the red and green lines, cyan numbers) | The game draws them itself | Not changeable; only the highlight slots above affect words the game marks as highlighted |
 
 Clan broadcasts, group ironman chat and broadcasts, and moderator chat have no colour of their own: they reuse the clan chat, friends chat and public chat slots, so they already follow this pack's colours. Usernames, the filtered, autochat and trade lines, and the **transparent** chatbox are left at their defaults.
@@ -99,13 +99,13 @@ If you prefer your own chat colours, untick **Allow chat colors to be changed** 
 | --- | --- |
 | Buttons, tab stones, bank, scrollbars, checkboxes and sliders, GE, equipment slots, dialog panels | Taken as-is from the [Vanilla Gruvbox Dark pack](https://github.com/opher290/gruvbox-resource-pack), so they match it exactly |
 | Side panel, tab rows, minimap frame, window edges, the black steel dialog borders, chat buttons | The original 2005 art recoloured to Gruvbox dark greys (`#141617` through `#282828` to `#a89984`), darkened to the Vanilla Gruvbox Dark pack's tone |
-| Chat parchment | Lifted onto the Gruvbox light cream `#ebdbb2`, keeping the original shading and torn edges, with its texture kept in the middle and flattened only near the torn edge, and the dark outline of the tear blended almost fully into the cream so the edge is seamless |
+| Chat parchment | Lifted onto the Gruvbox grey-cream `#bdae93` (fg3), keeping the original shading and torn edges, with its texture kept in the middle and flattened only near the torn edge, and the dark outline of the tear blended almost fully into the cream so the edge is seamless |
 | Compass dial | Keeps the original smooth gradient, a deep red rim fading through Gruvbox red and orange (`#c2411a`, `#d65d0e`) to a bright orange `#fe8019` centre |
 | Overlay, borders and separators | The Vanilla Gruvbox Dark pack's `vars.toml` and `overrides.toml`, unchanged |
 | Selected tab stones | GNASH0R's own chamfered selected stones, tinted to Gruvbox brick red #8f3f2a and keeping their shape, shading and outline |
 | Emote plates, and the grey squares behind the equipment stats, prices, items-lost, call-follower, sailing options and combat options icons | The original grey-olive plates moved onto the Gruvbox greys; the yellow and green labels and the icon art stay as drawn |
 | Bank PIN screen | The red marble buttons tinted to brick red `#8f3f2a`, keeping the bevel and texture; the olive marble behind Exit / I don't know it moved onto the Gruvbox greys |
-| Make-all panel (What would you like to make?) | The item buttons get a face `#d5c4a1`, a shade darker than the chat parchment so they stand out, and the selected item and quantity buttons are brick red `#8f3f2a` like the selected tab stones, drawn a little see-through so the grain shows faintly; the frames are the recoloured vanilla ones |
+| Make-all panel (What would you like to make?) | The item buttons get a face `#ab9c85`, a shade darker than the chat parchment so they stand out, and the selected item and quantity buttons are brick red `#8f3f2a` like the selected tab stones, drawn a little see-through so the grain shows faintly; the frames are the recoloured vanilla ones |
 | Bank Deposit inventory, equipment, looting bag and Worn items buttons | The [2005 Overhaul](https://github.com/melkypie/resource-packs/tree/pack-2005-overhaul) versions by Demonseance, as drawn; the inventory bag only gains the black outline every other icon has |
 | Seven tab icons: Chat-channel, Clan, Guest clan, the three group ironman tabs and Red minigames | Blank in the original; taken from the [2005 Overhaul](https://github.com/melkypie/resource-packs/tree/pack-2005-overhaul) pack by Demonseance, as drawn; only the Chat-channel icon is moved 5px right and 2px down to sit in its corner stone |
 | Tab icons | The [2005 Overhaul](https://github.com/melkypie/resource-packs/tree/pack-2005-overhaul) icon art by Demonseance, each placed exactly where GNASH0R's icon sits so the resizable layout stays aligned, with the 2005 shadow formula, a solid black shadow two pixels deep down and to the right, added to the prayer star and the sailing anchor, a one pixel version on the combat swords (with no stray dots) and a single soft row on the music harp; the other icons, including Skills, Inventory, Equipment, Emotes and Account management, are left as drawn. The music harp is moved one pixel up and two left to sit in the brick red corner stone, and the Sailing anchor stays GNASH0R's, moved two pixels up into its stone (the Overhaul helm looked rough scaled down) |
