@@ -4,7 +4,7 @@ GNASH0R's [2005](https://github.com/melkypie/resource-packs/tree/pack-2005) inte
 
 No sprite is redrawn. The 2005-specific art keeps its original shapes, shading and transparency and only the colours change, while the standard buttons and stones are the same recoloured vanilla sprites as the [Vanilla Noctis Bordo pack](https://github.com/opher290/bordo-resource-pack), so the two sit side by side seamlessly. The compass dial keeps its original red-to-orange gradient, with a wine rim and a yellow-orange centre, and icons are left exactly as the original author drew them.
 
-**Why is the chatbox light?** The chatbox is deliberately not dark. It is inspired by Noctis **Lux**, the light Noctis variant, so the chat parchment uses Lux's warm cream (`#e6d7b2`) and the Bordo wine, red and blue chat text sits on it with good contrast, while the rest of the interface stays on the dark Bordo rose-greys.
+**Why is the chatbox light?** The chatbox is deliberately not dark. It is inspired by Noctis **Lux**, the light Noctis variant, so the chat parchment uses a Lux cream deepened a little towards the vanilla tan (`#cdbe9c`) and the Bordo wine, red and blue chat text sits on it with good contrast, while the rest of the interface stays on the dark Bordo rose-greys.
 
 ## Screenshots
 
@@ -42,37 +42,37 @@ On the opaque chatbox this pack recolours the chat text to the Bordo palette, so
 | Chat text | Before (default) | Current |
 | --- | --- | --- |
 | **Public chat** | | |
-| Public chat | `#0000FF` | `#1b4f78` |
-| Public chat highlight | `#000000` | `#272022` |
+| Public chat | `#0000FF` | `#004d57` |
+| Public chat highlight | `#000000` | `#003b42` |
 | **Private messages** | | |
-| Sent private messages | `#7F0000` | `#8f2a1c` |
-| Sent private messages highlight | `#002783` | `#174a73` |
-| Received private messages | `#7F0000` | `#8f2a1c` |
-| Received private messages highlight | `#002783` | `#174a73` |
+| Sent private messages | `#7F0000` | `#882f11` |
+| Sent private messages highlight | `#002783` | `#5842ff` |
+| Received private messages | `#7F0000` | `#882f11` |
+| Received private messages highlight | `#002783` | `#5842ff` |
 | **Friends chat** | | |
-| Friends chat info | `#000000` | `#272022` |
-| Friends chat info highlight | `#FF0000` | `#8c2f45` |
-| Friends chat message | `#7F0000` | `#8f2a1c` |
-| Friends chat message highlight | `#000000` | `#272022` |
-| Friends chat channel name | `#0000FF` | `#1b4f78` |
+| Friends chat info | `#000000` | `#003b42` |
+| Friends chat info highlight | `#FF0000` | `#e64100` |
+| Friends chat message | `#7F0000` | `#882f11` |
+| Friends chat message highlight | `#000000` | `#003b42` |
+| Friends chat channel name | `#0000FF` | `#004d57` |
 | **Clan chat** | | |
-| Clan chat info | `#000000` | `#272022` |
-| Clan chat info highlight | `#FF0000` | `#8c2f45` |
-| Clan chat message | `#7F0000` | `#8f2a1c` |
-| Clan chat message highlight | `#000000` | `#272022` |
-| Clan chat channel name | `#0000FF` | `#1b4f78` |
+| Clan chat info | `#000000` | `#003b42` |
+| Clan chat info highlight | `#FF0000` | `#e64100` |
+| Clan chat message | `#7F0000` | `#882f11` |
+| Clan chat message highlight | `#000000` | `#003b42` |
+| Clan chat channel name | `#0000FF` | `#004d57` |
 | **Guest clan chat** | | |
-| Guest clan chat info | `#000000` | `#272022` |
-| Guest clan chat info highlight | `#FF0000` | `#8c2f45` |
-| Guest clan chat message | `#7F0000` | `#8f2a1c` |
-| Guest clan chat message highlight | `#000000` | `#272022` |
-| Guest clan chat channel name | `#0000FF` | `#1b4f78` |
+| Guest clan chat info | `#000000` | `#003b42` |
+| Guest clan chat info highlight | `#FF0000` | `#e64100` |
+| Guest clan chat message | `#7F0000` | `#882f11` |
+| Guest clan chat message highlight | `#000000` | `#003b42` |
+| Guest clan chat channel name | `#0000FF` | `#004d57` |
 | **Game and system messages** | | |
-| Server message | `#000000` | `#272022` |
-| Game message | `#000000` | `#272022` |
+| Server message | `#000000` | `#003b42` |
+| Game message | `#000000` | `#003b42` |
 | Game message highlight | `#EF1020` | `#e34e1c` |
-| Examine | `#000000` | `#272022` |
-| Examine highlight | `#0000FF` | `#1b4f78` |
+| Examine | `#000000` | `#003b42` |
+| Examine highlight | `#0000FF` | `#004d57` |
 
 Everything else keeps its default colour.
 
@@ -82,9 +82,9 @@ A pack can only set the slots in the table above. These few chat colours come fr
 
 | Chat text | Where its colour comes from | Suggested to match this pack |
 | --- | --- | --- |
-| Broadcasts (server and world announcements) | Your own in-game chat colour settings | `#8f2a1c` (the message red) |
-| Challenge requests (duel and challenge invitations) | Your own in-game chat colour settings | `#8f2a1c` (the message red) |
-| What you type in the chat box | The game: blue on the opaque chatbox, light blue on the transparent one | `#1b4f78` (the pack's blue) |
+| Broadcasts (server and world announcements) | Your own in-game chat colour settings | `#882f11` (the message red) |
+| Challenge requests (duel and challenge invitations) | Your own in-game chat colour settings | `#882f11` (the message red) |
+| What you type in the chat box | The game: blue on the opaque chatbox, light blue on the transparent one | `#004d57` (the pack's blue) |
 | Coloured words inside game messages (the red and green lines, cyan numbers) | The game draws them itself | Not changeable; only the highlight slots above affect words the game marks as highlighted |
 
 Clan broadcasts, group ironman chat and broadcasts, and moderator chat have no colour of their own: they reuse the clan chat, friends chat and public chat slots, so they already follow this pack's colours. Usernames, the filtered, autochat and trade lines, and the **transparent** chatbox are left at their defaults.
@@ -99,13 +99,13 @@ If you prefer your own chat colours, untick **Allow chat colors to be changed** 
 | --- | --- |
 | Buttons, tab stones, bank, scrollbars, checkboxes and sliders, GE, equipment slots, dialog panels | Taken as-is from the [Vanilla Noctis Bordo pack](https://github.com/opher290/bordo-resource-pack), so they match it exactly |
 | Side panel, tab rows, minimap frame, window edges, the black steel dialog borders, chat buttons | The original 2005 art recoloured to the Bordo rose-greys (`#1a1516` through `#33292a` to `#a88a86`), darkened to the Vanilla Noctis Bordo pack's tone |
-| Chat parchment | Lifted onto the Lux cream `#e6d7b2`, keeping the original shading and torn edges, with its texture kept in the middle and flattened only near the torn edge, and the dark outline of the tear blended almost fully into the cream so the edge is seamless |
+| Chat parchment | Lifted onto a Lux cream deepened towards the vanilla tan, `#cdbe9c`, keeping the original shading and torn edges, with its texture kept in the middle and flattened only near the torn edge, and the dark outline of the tear blended almost fully into the cream so the edge is seamless |
 | Compass dial | Keeps the original smooth gradient, from a Bordo wine rim (`#84303f`) through red-orange to a yellow-orange `#f2b13e` centre |
 | Overlay, borders and separators | The Vanilla Noctis Bordo pack's `vars.toml` and `overrides.toml`, unchanged |
 | Selected tab stones | GNASH0R's own chamfered selected stones, tinted to brick red #8f3f2a and keeping their shape, shading and outline |
 | Emote plates, and the grey squares behind the equipment stats, prices, items-lost, call-follower, sailing options and combat options icons | The original grey-olive plates moved onto the Bordo rose-greys; the yellow and green labels and the icon art stay as drawn |
 | Bank PIN screen | The red marble buttons tinted to Bordo wine red `#8c2f45`, keeping the bevel and texture; the olive marble behind Exit / I don't know it moved onto the Bordo rose-greys |
-| Make-all panel (What would you like to make?) | The item buttons get a face `#d6c59c`, a shade darker than the chat parchment so they stand out, and the selected item and quantity buttons are brick red `#8f3f2a` like the selected tab stones, drawn a little see-through so the grain shows faintly; the frames are the recoloured vanilla ones |
+| Make-all panel (What would you like to make?) | The item buttons get a face `#bfae89`, a shade darker than the chat parchment so they stand out, and the selected item and quantity buttons are brick red `#8f3f2a` like the selected tab stones, drawn a little see-through so the grain shows faintly; the frames are the recoloured vanilla ones |
 | Bank Deposit inventory, equipment, looting bag and Worn items buttons | The [2005 Overhaul](https://github.com/melkypie/resource-packs/tree/pack-2005-overhaul) versions by Demonseance, as drawn; the inventory bag only gains the black outline every other icon has |
 | Seven tab icons: Chat-channel, Clan, Guest clan, the three group ironman tabs and Red minigames | Blank in the original; taken from the [2005 Overhaul](https://github.com/melkypie/resource-packs/tree/pack-2005-overhaul) pack by Demonseance, as drawn; only the Chat-channel icon is moved 5px right and 2px down to sit in its corner stone |
 | Tab icons | The [2005 Overhaul](https://github.com/melkypie/resource-packs/tree/pack-2005-overhaul) icon art by Demonseance, each placed exactly where GNASH0R's icon sits so the resizable layout stays aligned, with the 2005 shadow formula, a solid black shadow two pixels deep down and to the right, added to the prayer star and the sailing anchor, a one pixel version on the combat swords (with no stray dots) and a single soft row on the music harp; the other icons, including Skills, Inventory, Equipment, Emotes and Account management, are left as drawn. The music harp is moved one pixel up and two left to sit in the brick red corner stone, and the Sailing anchor stays GNASH0R's, moved two pixels up into its stone (the Overhaul helm looked rough scaled down) |

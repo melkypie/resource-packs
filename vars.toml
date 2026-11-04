@@ -47,7 +47,7 @@ background_4=0x3b3031
 # make_all, report
 background_5=0x877b62
 # make_all (selected item and quantity buttons)
-make_all_selected=0x862d1b
+make_all_selected=0x89301d
 # cox, lms
 background_6=0x33292a
 # bounty_hunter
