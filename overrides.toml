@@ -1,0 +1,22 @@
+# Silver Black Theme by BornDied
+[achievement_diary.entry.border]
+color=0x3a3f45
+opacity=200
+
+[chatbox.separator]
+color=0x3a3f45
+
+[chatbox.separator.opaque]
+opacity=0
+
+[chatbox.separator.transparent]
+opacity=200
+
+[collection_log.border]
+color=0x101214
+
+[xp_tracker.border.inner]
+color=0x3a3f45
+
+[xp_tracker.border.outer]
+color=0x101214
