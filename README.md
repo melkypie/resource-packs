@@ -1,27 +1,25 @@
-A clean and modernized 'dark-mode' pack~
+A modernized 'dark-mode'-style pack.
+
+---
 
 <details>
   <summary>Fixed</summary>
-<img width="765" height="503" alt="2025-08-09_18-10-09" src="https://github.com/user-attachments/assets/73040a53-12bc-4427-87b9-796aae33d737" />
+  <img width="765" height="503" alt="2026-11-05_23-00-48" src="https://github.com/user-attachments/assets/f0dfa75f-6a5e-4fe9-9953-9f79299b9a06" />
 </details>
-
 
 <details>
   <summary>Resizable-classic</summary>
-<img width="900" height="834" alt="2025-08-09_18-10-38" src="https://github.com/user-attachments/assets/69b9446f-7d94-4afe-be30-a25f1893da1e" />
+  <img width="1050" height="1000" alt="2026-11-05_23-33-45" src="https://github.com/user-attachments/assets/37a001d3-6ab4-413b-9623-ce98afbd0c40" />
 </details>
   
 <details>
-  <summary>Resizable-modern</summary>
-
-<img width="900" height="834" alt="2025-08-09_18-26-45" src="https://github.com/user-attachments/assets/7023c28e-a643-45bf-9f0b-0fe15a236106" />
+  <summary>Resizable-modern</summary> 
+  <img width="1050" height="1000" alt="2026-11-05_23-12-47" src="https://github.com/user-attachments/assets/2c730e9a-1253-4973-b352-6af17822e462" />
 </details>
-  
 
+---
 
----------------------------------------------------------------------------------------------------------------------
-
-For those who may prefer an earlier version, here's a quick way on how to load older assets:
+For those who may prefer an earlier version, here's a quick way on how to get/load older assets:
 <details>
   <summary>Step-by-Step</summary>
 
@@ -44,14 +42,10 @@ For those who may prefer an earlier version, here's a quick way on how to load o
 
 </details>
 
----------------------------------------------------------------------------------------------------------------------
+---
 
-
-This pack was inspired by:
-
-[RuneLite](https://runelite.net) by RuneLite Devs
-
-[RL Immersive Pack](https://github.com/melkypie/resource-packs/tree/pack-rl-immersive) by BasVonSpace
-
-[Reaper](https://github.com/melkypie/resource-packs/tree/pack-reaper)  by EXpoZuR
+### Credits:
+- Scheme: [RuneLite](https://runelite.net) by `RuneLite`
+- Pack base: [RL Immersive Pack](https://github.com/melkypie/resource-packs/tree/pack-rl-immersive) by `BasVonSpace`
+- Combat & Prayer orb icons: [Mystic Pack](https://github.com/melkypie/resource-packs/tree/pack-mystic-pack) by `Drunken Monk`
 
