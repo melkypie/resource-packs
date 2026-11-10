@@ -148,7 +148,7 @@ public class PackReader implements PluginLifecycleComponent
 
 	protected TomlTable parseString(String data)
 	{
-		TomlParseResult toml = Toml.parse(data);
+		TomlParseResult toml = Toml.parse(Strings.nullToEmpty(data));
 		toml.errors().forEach(error -> log.error("parse error: {}", error.toString()));
 
 		return toml;
@@ -190,7 +190,7 @@ public class PackReader implements PluginLifecycleComponent
 			log.debug("error loading chat color overrides", e);
 		}
 
-		return null;
+		return "";
 	}
 
 	protected String getOverrides()
@@ -201,6 +201,13 @@ public class PackReader implements PluginLifecycleComponent
 			if (Files.exists(overridesFile))
 			{
 				return Files.readString(overridesFile);
+			}
+
+			var propertiesPath = packsService.getPath("color.properties");
+			if (!Files.exists(propertiesPath))
+			{
+				log.debug("color.properties not found");
+				return "";
 			}
 
 			log.debug("overrides.toml not found, trying color.properties");
@@ -232,7 +239,7 @@ public class PackReader implements PluginLifecycleComponent
 			log.error("error loading color overrides", e);
 		}
 
-		return null;
+		return "";
 	}
 
 	@VisibleForTesting
