@@ -19,8 +19,15 @@ scripts=[2199]
 [achievement_diary.entry.border]
 color="${color.border_3}"
 children=["${AREA_TASK_TASKBOX}"]
-dynamicChildren=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+dynamicChildren=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 opacity="${opacity.translucent}"
+
+[achievement_diary.entry.hovered]
+scripts=[2201]
+color="${color.background_2}"
+children=["${AREA_TASK_TASKBOX}"]
+dynamicChildren=[12, 24, 36, 48, 60, 72, 84, 96, 108, 120, 132, 144]
+opacity=200
 
 [achievement_diary.progress.background]
 color="${color.background}"
@@ -853,6 +860,26 @@ color="${color.border_outer}"
 opacity="${opacity.opaque}"
 dynamicChildren=[0]
 
+[forestry_kit.button]
+scripts=[85, 5288]
+children=[21]
+type=3
+
+[forestry_kit.button.hover]
+color="${color.hovered}"
+dynamicChildren=true
+opacity=0
+
+[forestry_kit.button.outline]
+color="${color.border}"
+dynamicChildren=true
+opacity=0
+
+[forestry_kit.button.selected]
+color="${color.border_inner_3}"
+dynamicChildren=true
+opacity=0
+
 ########################################
 
 [forestry_shop]
@@ -928,38 +955,26 @@ color="${color.border_outer}"
 opacity="${opacity.opaque}"
 dynamicChildren=[1]
 
-[forestry_shop.reward.hovered]
+[forestry_shop.reward]
+#on hover, on load, on clicked
+scripts=[85, 7146, 5288]
 children=["${OMNISHOP_MAIN_LIST}"]
-scripts=[85]
-opacity="${opacity.opaque}"
-color="${color.hovered}"
-activeWidget=true
+type=3
 
-#[[forestry_shop.reward.unselected]]
-#children=[34]
-#scripts=[85]
-#activeWidget=true
-#opacity=0
-#color=0x726451
-#type=3
-#
-#[[forestry_shop.reward.unselected]]
-#children=[34]
-#scripts=[7145, 7146]
-#dynamicChildren=true
-#explicit=true
-#opacity=0
-#color=0x726451
-#type=3
+[forestry_shop.reward.hover]
+color="${color.hovered}"
+dynamicChildren=true
+opacity="${opacity.opaque}"
+
+[forestry_shop.reward.outline]
+color="${color.border}"
+dynamicChildren=true
+opacity="${opacity.opaque}"
 
 [forestry_shop.reward.selected]
-children=["${OMNISHOP_MAIN_LIST}"]
-scripts=[7145, 7146]
-opacity="${opacity.opaque}"
 color="${color.border_inner_3}"
 dynamicChildren=true
-explicit=true
-type=3
+opacity="${opacity.opaque}"
 
 ########################################
 

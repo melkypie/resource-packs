@@ -29,9 +29,12 @@ import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Objects;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.WeakHashMap;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import javax.inject.Inject;
@@ -60,6 +63,7 @@ import melky.resourcepacks.features.packs.PacksService;
 import net.runelite.api.Client;
 import net.runelite.api.events.ScriptPostFired;
 import net.runelite.api.widgets.Widget;
+import net.runelite.api.widgets.WidgetType;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.eventbus.Subscribe;
 import org.tomlj.TomlArray;
@@ -72,6 +76,8 @@ public class WidgetPropertiesOverride extends OverrideAction
 	@Getter
 	@VisibleForTesting
 	private final Multimap<Integer, WidgetOverride> overrides = ArrayListMultimap.create();
+
+	private final Set<Widget> applied = Collections.newSetFromMap(new WeakHashMap<>());
 
 	@Inject
 	private Client client;
@@ -118,7 +124,8 @@ public class WidgetPropertiesOverride extends OverrideAction
 		{
 			for (var widgetOverride : overrides.get(event.getScriptId()))
 			{
-				addPropertyToWidget(widgetOverride, false);
+				updateWidgetProperty(widgetOverride, Stage.SCRIPT);
+				//log.debug("widget references: {}", applied.size());
 			}
 		}
 	}
@@ -130,10 +137,11 @@ public class WidgetPropertiesOverride extends OverrideAction
 
 		for (WidgetOverride widgetOverride : overrides.values())
 		{
-			addPropertyToWidget(widgetOverride, true);
+			updateWidgetProperty(widgetOverride, Stage.RESET);
 		}
 
 		overrides.clear();
+		applied.clear();
 	}
 
 	@Override
@@ -146,20 +154,20 @@ public class WidgetPropertiesOverride extends OverrideAction
 
 		for (WidgetOverride widgetOverride : overrides.values())
 		{
-			addPropertyToWidget(widgetOverride, false);
+			updateWidgetProperty(widgetOverride, Stage.APPLY);
 		}
 	}
 
 	@Subscribe
 	public void onPackParsed(PackParsed event)
 	{
+		reset();
+
 		var pack = event.getPack();
 		if (pack.getSources() == null || pack.getOverrides() == null)
 		{
 			return;
 		}
-
-		reset();
 
 		var keys = pack.getSources().keySet();
 		for (var key : keys)
@@ -167,116 +175,192 @@ public class WidgetPropertiesOverride extends OverrideAction
 			var table = pack.getSources().getTableOrEmpty(key);
 			walkChildren(new WidgetOverride().withName(key), table, pack.getOverrides());
 		}
+
+		apply();
 	}
 
-	public void addPropertyToWidget(WidgetOverride widgetOverride, boolean reset)
+	@Getter
+	private enum Stage
 	{
-		Widget widgetToOverride = client.getWidget(widgetOverride.getInterfaceId(), widgetOverride.getChildId());
-		if (widgetToOverride == null)
+		RESET,
+		APPLY,
+		SCRIPT;
+	}
+
+	private void updateWidgetProperty(WidgetOverride override, Stage stage)
+	{
+		Widget widget = client.getWidget(override.getInterfaceId(), override.getChildId());
+		if (widget == null)
 		{
 			return;
 		}
 
-		if (!widgetOverride.getDynamicChildren().isEmpty())
+		if (!override.getDynamicChildren().isEmpty())
 		{
-			for (var arrayId : widgetOverride.getDynamicChildren())
+			for (var arrayId : override.getDynamicChildren())
 			{
 				if (arrayId < 0)
 				{
-					var tmp = widgetToOverride.getDynamicChildren().length - (arrayId * -1);
-					log.trace("rewriting index {} to {} for {}", arrayId, tmp, widgetOverride);
+					var tmp = widget.getDynamicChildren().length - (arrayId * -1);
+					log.trace("rewriting index {} to {} for {}", arrayId, tmp, override);
 					arrayId = tmp;
 				}
 
-				Widget arrayWidget = widgetToOverride.getChild(arrayId);
-				if (arrayWidget == null)
+				Widget child = widget.getChild(arrayId);
+				if (child == null || child.getTextColor() == -1)
 				{
 					continue;
 				}
 
-				applyWidgetProperties(arrayWidget, widgetOverride, reset);
+				applyPropertyByStage(child, override, stage);
 			}
 		}
-		else if (widgetOverride.isAllChildren())
+		else if (override.isAllChildren())
 		{
-			for (var widget : widgetToOverride.getDynamicChildren())
+			for (var children : widget.getDynamicChildren())
 			{
-				if (widget == null)
+				if (children == null)
 				{
 					continue;
 				}
 
-				applyWidgetProperties(widget, widgetOverride, reset);
+				applyPropertyByStage(children, override, stage);
 			}
 		}
 		else
 		{
-			applyWidgetProperties(widgetToOverride, widgetOverride, reset);
+			applyPropertyByStage(widget, override, stage);
 		}
 	}
 
-	private void applyWidgetProperties(Widget widget, WidgetOverride widgetOverride, boolean reset)
+	private void applyPropertyByStage(Widget widget, WidgetOverride override, Stage stage)
 	{
-		if (widget == null || widget.getTextColor() == -1)
+		if (widget.getTextColor() == -1)
 		{
 			return;
 		}
 
-		int oldColor = widgetOverride.getColor();
-		int newColor = widgetOverride.getNewColor();
-
-		if (reset)
+		if (stage != Stage.SCRIPT)
 		{
-			widget.setTextColor(oldColor);
-
-			if (widget.getType() == widgetOverride.getNewType())
+			if (stage == Stage.RESET)
 			{
-				widget.setType(widgetOverride.getType());
+				applyProperty(widget, override, true);
+			}
+			else if (stage == Stage.APPLY)
+			{
+				applyProperty(widget, override, false);
 			}
 
-			if (widgetOverride.getOpacity() > -1)
+			if (widget.getType() == override.getNewType())
 			{
-				widget.setOpacity(widgetOverride.getOpacity());
+				widget.setType(override.getType());
 			}
 
 			return;
 		}
 
-		if (widget.getTextColor() == newColor ||
-			!widgetOverride.checkVarbit(client) ||
-			typeCompare(widgetOverride, widget) ||
-			explicitCompare(widgetOverride, widget))
+		revalidateOverride(widget, override);
+	}
+
+	private void applyProperty(Widget widget, WidgetOverride override, boolean reset)
+	{
+		//prevent mismatch using type when defining isAllChildren()
+		if (override.isAllChildren() && widget.getType() != override.getType())
 		{
 			return;
 		}
 
-		if (widgetOverride.isActiveWidget())
+		//reset should only touch widgets that had an override applied
+		if (reset ? !applied.contains(widget) : !colorMatches(widget, override))
 		{
-			var w = client.getScriptActiveWidget();
-			if (w == null || w.getId() != widget.getId() || w.getTextColor() != widgetOverride.getColor())
+			return;
+		}
+
+		int match;
+		int apply;
+		boolean overrideApplied = false;
+
+		//apply opacity before color
+		if (override.getNewOpacity() > -1 && override.getOpacity() > -1)
+		{
+			//reset: apply the default opacity against the current packs override
+			//apply: apply the current packs override against the default opacity
+			match = reset ? override.getNewOpacity() : override.getOpacity();
+			apply = reset ? override.getOpacity() : override.getNewOpacity();
+
+			if (widget.getOpacity() == match)
+			{
+				widget.setOpacity(apply);
+				overrideApplied = true;
+			}
+		}
+
+		if (override.getNewColor() > -1)
+		{
+			//reset: apply the default color against the current packs override
+			//apply: apply the current packs override against the default color
+			match = reset ? override.getNewColor() : override.getColor();
+			apply = reset ? override.getColor() : override.getNewColor();
+
+			if (widget.getTextColor() == match)
+			{
+				widget.setTextColor(apply);
+				overrideApplied = true;
+			}
+		}
+
+		if (!reset && overrideApplied)
+		{
+			applied.add(widget);
+		}
+	}
+
+	private void revalidateOverride(Widget widget, WidgetOverride override)
+	{
+		if (!override.checkVarbit(client) ||
+			typeCompare(override, widget) ||
+			explicitCompare(override, widget))
+		{
+			return;
+		}
+
+		if (!colorMatches(widget, override))
+		{
+			var active = client.getScriptActiveWidget();
+			if (active == null || active.getId() != widget.getId() || !colorMatches(active, override))
 			{
 				return;
 			}
-
-			widget = w;
+			widget = active;
 		}
 
+		boolean overrideApplied = false;
 
-		if (widgetOverride.getColor() != widgetOverride.getNewColor())
+		if (override.getNewColor() > -1 &&
+			widget.getTextColor() != override.getNewColor())
 		{
-			widget.setTextColor(widgetOverride.getNewColor());
+			widget.setTextColor(override.getNewColor());
+			overrideApplied = true;
 		}
 
-		if (widgetOverride.getNewOpacity() > -1)
+		if (override.getNewOpacity() > -1 &&
+			widget.getOpacity() != override.getNewOpacity() &&
+			opacityMatches(widget, override))
 		{
-			widget.setOpacity(widgetOverride.getNewOpacity());
+			widget.setOpacity(override.getNewOpacity());
+			overrideApplied = true;
 		}
 
-		if (widgetOverride.getNewType() > -1)
+		if (overrideApplied)
 		{
-			log.debug("{} overriding widget type {} to {}", widget.getId(), widget.getType(), widgetOverride.getNewType());
-			widget.setType(widgetOverride.getNewType());
-			if (widgetOverride.getNewType() == 3)
+			applied.add(widget);
+		}
+
+		if (override.getNewType() > -1)
+		{
+			log.debug("{} overriding widget type {} to {}", widget.getId(), widget.getType(), override.getNewType());
+			widget.setType(override.getNewType());
+			if (override.getNewType() == WidgetType.RECTANGLE)
 			{
 				widget.setFilled(true);
 			}
@@ -530,6 +614,18 @@ public class WidgetPropertiesOverride extends OverrideAction
 		}
 
 		return parent;
+	}
+
+	private boolean colorMatches(Widget widget, WidgetOverride override)
+	{
+		return widget.getTextColor() == override.getColor() ||
+			(override.getNewColor() > -1 && widget.getTextColor() == override.getNewColor());
+	}
+
+	private boolean opacityMatches(Widget widget, WidgetOverride override)
+	{
+		return override.getOpacity() == -1 ||
+			widget.getOpacity() == override.getOpacity();
 	}
 
 	private static boolean typeCompare(WidgetOverride widgetOverride, Widget widget)
