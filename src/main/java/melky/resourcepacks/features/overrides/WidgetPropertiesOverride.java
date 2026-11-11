@@ -29,9 +29,12 @@ import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Objects;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.WeakHashMap;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import javax.inject.Inject;
@@ -73,6 +76,8 @@ public class WidgetPropertiesOverride extends OverrideAction
 	@Getter
 	@VisibleForTesting
 	private final Multimap<Integer, WidgetOverride> overrides = ArrayListMultimap.create();
+
+	private final Set<Widget> applied = Collections.newSetFromMap(new WeakHashMap<>());
 
 	@Inject
 	private Client client;
@@ -120,6 +125,7 @@ public class WidgetPropertiesOverride extends OverrideAction
 			for (var widgetOverride : overrides.get(event.getScriptId()))
 			{
 				updateWidgetProperty(widgetOverride, Stage.SCRIPT);
+				//log.debug("widget references: {}", applied.size());
 			}
 		}
 	}
@@ -135,6 +141,7 @@ public class WidgetPropertiesOverride extends OverrideAction
 		}
 
 		overrides.clear();
+		applied.clear();
 	}
 
 	@Override
@@ -263,30 +270,48 @@ public class WidgetPropertiesOverride extends OverrideAction
 			return;
 		}
 
+		//reset should only touch widgets that had an override applied
+		if (reset ? !applied.contains(widget) : !colorMatches(widget, override))
+		{
+			return;
+		}
+
+		int match;
+		int apply;
+		boolean overrideApplied = false;
+
+		//apply opacity before color
+		if (override.getNewOpacity() > -1 && override.getOpacity() > -1)
+		{
+			//reset: apply the default opacity against the current packs override
+			//apply: apply the current packs override against the default opacity
+			match = reset ? override.getNewOpacity() : override.getOpacity();
+			apply = reset ? override.getOpacity() : override.getNewOpacity();
+
+			if (widget.getOpacity() == match)
+			{
+				widget.setOpacity(apply);
+				overrideApplied = true;
+			}
+		}
+
 		if (override.getNewColor() > -1)
 		{
 			//reset: apply the default color against the current packs override
 			//apply: apply the current packs override against the default color
-			int match = reset ? override.getNewColor() : override.getColor();
-			int color = reset ? override.getColor() : override.getNewColor();
+			match = reset ? override.getNewColor() : override.getColor();
+			apply = reset ? override.getColor() : override.getNewColor();
 
 			if (widget.getTextColor() == match)
 			{
-				widget.setTextColor(color);
+				widget.setTextColor(apply);
+				overrideApplied = true;
 			}
 		}
 
-		if (override.getNewOpacity() > -1)
+		if (!reset && overrideApplied)
 		{
-			//reset: apply the default opacity against the current packs override
-			//apply: apply the current packs override against the default opacity
-			int match = reset ? override.getNewOpacity() : override.getOpacity();
-			int opacity = reset ? override.getOpacity() : override.getNewOpacity();
-
-			if (widget.getOpacity() == match)
-			{
-				widget.setOpacity(opacity);
-			}
+			applied.add(widget);
 		}
 	}
 
@@ -309,10 +334,13 @@ public class WidgetPropertiesOverride extends OverrideAction
 			widget = active;
 		}
 
+		boolean overrideApplied = false;
+
 		if (override.getNewColor() > -1 &&
 			widget.getTextColor() != override.getNewColor())
 		{
 			widget.setTextColor(override.getNewColor());
+			overrideApplied = true;
 		}
 
 		if (override.getNewOpacity() > -1 &&
@@ -320,6 +348,12 @@ public class WidgetPropertiesOverride extends OverrideAction
 			opacityMatches(widget, override))
 		{
 			widget.setOpacity(override.getNewOpacity());
+			overrideApplied = true;
+		}
+
+		if (overrideApplied)
+		{
+			applied.add(widget);
 		}
 
 		if (override.getNewType() > -1)
